@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T07:11:50.366Z",
+ "generatedAt": "2026-09-28T08:09:40.672Z",
  "reference": "390x844 mobile",
  "states": {
   "A": {
@@ -128,13 +128,11 @@
    "touch": {
     "count": 4,
     "small": [],
-    "inheritedSmall": [
-     "Tutors Academy home 28x28"
-    ],
+    "inheritedSmall": [],
     "minGap": 8,
     "pair": "Switch to dark theme ↔ Open menu",
     "sizes": [
-     "Tutors Academy home 28x28",
+     "Tutors Academy home 44x44",
      "Switch to dark theme 44x44",
      "Open menu 44x44",
      "See the six subjects 196x48"
@@ -401,8 +399,8 @@
     "requests": 22,
     "webgl": [],
     "canvas": 0,
-    "scriptBytes": 152270,
-    "totalBytes": 278679,
+    "scriptBytes": 152301,
+    "totalBytes": 278714,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -425,8 +423,8 @@
       "type": "script"
      },
      {
-      "name": "0bma92pht_c97.js",
-      "bytes": 71928,
+      "name": "turbopack-3jyd33d-ci9l1.js",
+      "bytes": 4148,
       "type": "script"
      },
      {
@@ -435,8 +433,8 @@
       "type": "script"
      },
      {
-      "name": "turbopack-3jyd33d-ci9l1.js",
-      "bytes": 4148,
+      "name": "0bma92pht_c97.js",
+      "bytes": 71928,
       "type": "script"
      },
      {
@@ -445,13 +443,13 @@
       "type": "script"
      },
      {
-      "name": "021ib0sjfd8mh.js",
-      "bytes": 8959,
+      "name": "3inus7zioy109.js",
+      "bytes": 7606,
       "type": "script"
      },
      {
-      "name": "3b6xmbtt6mqja.js",
-      "bytes": 7575,
+      "name": "021ib0sjfd8mh.js",
+      "bytes": 8959,
       "type": "script"
      },
      {
@@ -471,22 +469,22 @@
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 582,
+      "bytes": 583,
       "type": "fetch"
      },
      {
       "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 580,
+      "bytes": 581,
       "type": "fetch"
      },
      {
       "name": "account?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 480,
+      "bytes": 483,
       "type": "fetch"
      },
      {
       "name": "student?_rsc=iUSOvukGHSRwsy2X",
-      "bytes": 1456,
+      "bytes": 1455,
       "type": "fetch"
      }
     ]
@@ -638,13 +636,11 @@
    "touch": {
     "count": 6,
     "small": [],
-    "inheritedSmall": [
-     "Tutors Academy home 28x28"
-    ],
+    "inheritedSmall": [],
     "minGap": 8,
     "pair": "Switch to dark theme ↔ Open menu",
     "sizes": [
-     "Tutors Academy home 28x28",
+     "Tutors Academy home 44x44",
      "Switch to dark theme 44x44",
      "Open menu 44x44",
      "Open Physics 192x48",
@@ -1076,8 +1072,8 @@
     "requests": 22,
     "webgl": [],
     "canvas": 0,
-    "scriptBytes": 152270,
-    "totalBytes": 277701,
+    "scriptBytes": 152301,
+    "totalBytes": 277739,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1115,13 +1111,13 @@
       "type": "script"
      },
      {
-      "name": "3b6xmbtt6mqja.js",
-      "bytes": 7575,
+      "name": "1-cz8gjjx6s9_.js",
+      "bytes": 6215,
       "type": "script"
      },
      {
-      "name": "1-cz8gjjx6s9_.js",
-      "bytes": 6215,
+      "name": "3inus7zioy109.js",
+      "bytes": 7606,
       "type": "script"
      },
      {
@@ -1146,22 +1142,22 @@
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 582,
+      "bytes": 583,
       "type": "fetch"
      },
      {
       "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 580,
+      "bytes": 581,
       "type": "fetch"
      },
      {
       "name": "account?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 480,
+      "bytes": 483,
       "type": "fetch"
      },
      {
       "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 478,
+      "bytes": 480,
       "type": "fetch"
      }
     ]
@@ -1173,7 +1169,7 @@
     "Last opened yesterday",
     "Physics — The Field",
     "Environment in draft",
-    "You were last here yesterday. You have opened it 3 times.",
+    "You were last here yesterday.",
     "Open Physics",
     "Your subjects",
     "Physics",
@@ -1211,20 +1207,20 @@
     },
     "runnerUp": {
      "tag": "P",
-     "text": "You were last here yesterday. You have o",
+     "text": "You were last here yesterday.",
      "fontSize": 16,
      "top": 291,
-     "area": 14502
+     "area": 7251
     },
     "fontRatio": 2.24,
-    "primaryArea": 118172,
+    "primaryArea": 109691,
     "rowsArea": 57242,
     "primaryButtons": 1,
     "h1s": 1
    },
    "fold": {
     "viewport": 844,
-    "primaryActionBottom": 413,
+    "primaryActionBottom": 388,
     "primaryActionVisible": true,
     "documentHeight": 844,
     "belowFold": []
@@ -1313,13 +1309,11 @@
    "touch": {
     "count": 6,
     "small": [],
-    "inheritedSmall": [
-     "Tutors Academy home 28x28"
-    ],
+    "inheritedSmall": [],
     "minGap": 8,
     "pair": "Switch to dark theme ↔ Open menu",
     "sizes": [
-     "Tutors Academy home 28x28",
+     "Tutors Academy home 44x44",
      "Switch to dark theme 44x44",
      "Open menu 44x44",
      "Open Physics 192x48",
@@ -1344,7 +1338,7 @@
    "textSpacing": {
     "overflow": false,
     "clipped": 0,
-    "primaryActionBottom": 469
+    "primaryActionBottom": 445
    },
    "keyboard": [
     {
@@ -1433,7 +1427,7 @@
     "StaticText: LAST OPENED YESTERDAY",
     "heading: Physics — The Field (h1)",
     "StaticText: ENVIRONMENT IN DRAFT",
-    "StaticText: You were last here yesterday. You have opened it 3 times.",
+    "StaticText: You were last here yesterday.",
     "link: Open Physics",
     "StaticText: Open Physics",
     "region: YOUR SUBJECTS",
@@ -1767,8 +1761,8 @@
     "requests": 22,
     "webgl": [],
     "canvas": 0,
-    "scriptBytes": 152270,
-    "totalBytes": 277701,
+    "scriptBytes": 152301,
+    "totalBytes": 277739,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1811,8 +1805,8 @@
       "type": "script"
      },
      {
-      "name": "3b6xmbtt6mqja.js",
-      "bytes": 7575,
+      "name": "3inus7zioy109.js",
+      "bytes": 7606,
       "type": "script"
      },
      {
@@ -1837,22 +1831,22 @@
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 582,
+      "bytes": 583,
       "type": "fetch"
      },
      {
       "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 580,
+      "bytes": 581,
       "type": "fetch"
      },
      {
       "name": "account?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 480,
+      "bytes": 483,
       "type": "fetch"
      },
      {
       "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 478,
+      "bytes": 480,
       "type": "fetch"
      }
     ]
@@ -1904,18 +1898,18 @@
  "perf": {
   "profile": "Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)",
   "finalUrl": "http://localhost:3100/student",
-  "performanceScore": 95,
+  "performanceScore": 91,
   "accessibilityScore": 100,
   "FCP": "1.4 s",
-  "LCP": "2.8 s",
-  "LCPElement": "<h1 id=\"student-primary-heading\" style=\"margin: var(--ta-space-2) 0 0; font-family: var(--ta-font-display);\">",
+  "LCP": "2.9 s",
+  "LCPElement": "n/a",
   "CLS": "0",
-  "TBT": "110 ms",
+  "TBT": "200 ms",
   "SpeedIndex": "1.4 s",
-  "TTI": "2.8 s",
-  "longTasksOver50ms": "159ms 1gd3h8x2ifg_a.js; 78ms Unattributable; 59ms student; 59ms student; 54ms student",
-  "totalBytes": 345888,
-  "totalKB": 338,
+  "TTI": "2.9 s",
+  "longTasksOver50ms": "250ms 0bma92pht_c97.js; 94ms Unattributable; 90ms student; 54ms student; 52ms 1gd3h8x2ifg_a.js",
+  "totalBytes": 346651,
+  "totalKB": 339,
   "scriptKB": 183,
   "requests": 30,
   "webglInWaterfall": 0
@@ -2031,11 +2025,11 @@
   },
   "hierarchy-C": {
    "pass": true,
-   "detail": "{\"largest\":{\"tag\":\"H1\",\"text\":\"Physics — The Field\",\"fontSize\":35.8,\"top\":174,\"area\":21976},\"runnerUp\":{\"tag\":\"P\",\"text\":\"You were last here yesterday. You have o\",\"fontSize\":16,\"top\":291,\"area\":14502},\"fontRatio\":2.24,\"primaryArea\":118172,\"rowsArea\":57242,\"primaryButtons\":1,\"h1s\":1}"
+   "detail": "{\"largest\":{\"tag\":\"H1\",\"text\":\"Physics — The Field\",\"fontSize\":35.8,\"top\":174,\"area\":21976},\"runnerUp\":{\"tag\":\"P\",\"text\":\"You were last here yesterday.\",\"fontSize\":16,\"top\":291,\"area\":7251},\"fontRatio\":2.24,\"primaryArea\":109691,\"rowsArea\":57242,\"primaryButtons\":1,\"h1s\":1}"
   },
   "fold-C": {
    "pass": true,
-   "detail": "{\"viewport\":844,\"primaryActionBottom\":413,\"primaryActionVisible\":true,\"documentHeight\":844,\"belowFold\":[]}"
+   "detail": "{\"viewport\":844,\"primaryActionBottom\":388,\"primaryActionVisible\":true,\"documentHeight\":844,\"belowFold\":[]}"
   },
   "no-empty-slots-C": {
    "pass": true,
@@ -2059,7 +2053,7 @@
   },
   "zoom-spacing-C": {
    "pass": true,
-   "detail": "{\"zoom\":{\"200%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":192,\"clipped\":0},\"400%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":192,\"clipped\":0}},\"textSpacing\":{\"overflow\":false,\"clipped\":0,\"primaryActionBottom\":469}}"
+   "detail": "{\"zoom\":{\"200%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":192,\"clipped\":0},\"400%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":192,\"clipped\":0}},\"textSpacing\":{\"overflow\":false,\"clipped\":0,\"primaryActionBottom\":445}}"
   },
   "keyboard-C": {
    "pass": true,
@@ -2083,11 +2077,11 @@
   },
   "slot-extremes": {
    "pass": true,
-   "detail": "{\"none\":{\"regions\":[],\"slots\":0,\"rowSlots\":0,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":413,\"primaryButtons\":1,\"docHeight\":844,\"overflow\":false},\"some\":{\"regions\":[\"today\",\"reflection\"],\"slots\":4,\"rowSlots\":2,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":413,\"primaryButtons\":1,\"docHeight\":1131,\"overflow\":false},\"all\":{\"regions\":[\"today\",\"library\",\"reflection\",\"tools\"],\"slots\":10,\"rowSlots\":2,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":413,\"primaryButtons\":1,\"docHeight\":1727,\"overflow\":false}}"
+   "detail": "{\"none\":{\"regions\":[],\"slots\":0,\"rowSlots\":0,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":388,\"primaryButtons\":1,\"docHeight\":844,\"overflow\":false},\"some\":{\"regions\":[\"today\",\"reflection\"],\"slots\":4,\"rowSlots\":2,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":388,\"primaryButtons\":1,\"docHeight\":1106,\"overflow\":false},\"all\":{\"regions\":[\"today\",\"library\",\"reflection\",\"tools\"],\"slots\":10,\"rowSlots\":2,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":388,\"primaryButtons\":1,\"docHeight\":1702,\"overflow\":false}}"
   },
   "perf-mid-range": {
    "pass": true,
-   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":95,\"accessibilityScore\":100,\"FCP\":\"1.4 s\",\"LCP\":\"2.8 s\",\"LCPElement\":\"<h1 id=\\\"student-primary-heading\\\" style=\\\"margin: var(--ta-space-2) 0 0; font-family: var(--ta-font-display);\\\">\",\"CLS\":\"0\",\"TBT\":\"110 ms\",\"SpeedIndex\":\"1.4 s\",\"TTI\":\"2.8 s\",\"longTasksOver50ms\":\"159ms 1gd3h8x2ifg_a.js; 78ms Unattributable; 59ms student; 59ms student; 54ms student\",\"totalBytes\":345888,\"totalKB\":338,\"scriptKB\":183,\"requests\":30,\"webglInWaterfall\":0}"
+   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":91,\"accessibilityScore\":100,\"FCP\":\"1.4 s\",\"LCP\":\"2.9 s\",\"LCPElement\":\"n/a\",\"CLS\":\"0\",\"TBT\":\"200 ms\",\"SpeedIndex\":\"1.4 s\",\"TTI\":\"2.9 s\",\"longTasksOver50ms\":\"250ms 0bma92pht_c97.js; 94ms Unattributable; 90ms student; 54ms student; 52ms 1gd3h8x2ifg_a.js\",\"totalBytes\":346651,\"totalKB\":339,\"scriptKB\":183,\"requests\":30,\"webglInWaterfall\":0}"
   }
  },
  "signedOut": {
@@ -2105,7 +2099,7 @@
    "rowSlots": 0,
    "h1Font": 35.8,
    "maxOtherFont": 16,
-   "primaryActionBottom": 413,
+   "primaryActionBottom": 388,
    "primaryButtons": 1,
    "docHeight": 844,
    "overflow": false
@@ -2119,9 +2113,9 @@
    "rowSlots": 2,
    "h1Font": 35.8,
    "maxOtherFont": 16,
-   "primaryActionBottom": 413,
+   "primaryActionBottom": 388,
    "primaryButtons": 1,
-   "docHeight": 1131,
+   "docHeight": 1106,
    "overflow": false
   },
   "all": {
@@ -2135,9 +2129,9 @@
    "rowSlots": 2,
    "h1Font": 35.8,
    "maxOtherFont": 16,
-   "primaryActionBottom": 413,
+   "primaryActionBottom": 388,
    "primaryButtons": 1,
-   "docHeight": 1727,
+   "docHeight": 1702,
    "overflow": false
   }
  },

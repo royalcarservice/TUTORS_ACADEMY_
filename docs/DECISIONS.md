@@ -16,3 +16,12 @@
 - **Module registry untouched:** `student-portal` remains `planned` (its summary is schedule/work/progress, none of which exists). The shell renders only identity, enrolments and environment state.
 - **Node ≥ 22 is now a runtime requirement** (`@supabase/supabase-js` 2.117 needs native WebSocket); lockfile moved 2.109.0 → 2.117.2 to satisfy `@supabase/ssr`'s peer range.
 - **Test accounts** provisioned via `scripts/test-account.mjs` (service role, CLI only) and SQL fixtures for B/C — flagged `is_test_account`, deletable with the same script.
+
+## DEC-004 — P5-R2 correction pass (2026-09-28)
+
+- FIX 1: `entry_count` is data, never screen. Resume surface renders environment + "You were last here {when}." only; with no `last_entered_at` it says nothing about time. No replacement metric.
+- FIX 2: NavShell brand link hit area 44×44 via padding + compensating negative margin; mark 28×28 and its position unchanged; page harness no diffs.
+- FIX 3: `audit/permissions.cjs` records the two authorization behaviours as EXPECTED in `audit/baseline.json` (`authorization` key) with 9 checks.
+- MEASURE 4: the 5.3 claim "844px tall, nothing below the fold in any state" is **withdrawn** — it held only at 390×844. Corrected claim: the primary action is above the fold at every measured viewport; subject rows scroll below it on 320×568/360×640 and with four subjects. No compression (no fixed heights, clamps, svh or clipped overflow in `main`).
+- Deploy requirement Node ≥ 22 recorded in `package.json#engines` and `.nvmrc`.
+- State A does not close the loop (no enrolment write) — accepted declared exception, 5.5 owns it. No enrol button, no note.

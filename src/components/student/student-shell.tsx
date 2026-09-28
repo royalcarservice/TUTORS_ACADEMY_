@@ -26,7 +26,8 @@ import type { ResolvedSlot } from "./slots";
 
    RESUME HONESTY RULE (Decision 5) — stated here, next to the render:
    the resume surface renders ONLY populated fields of environment_state.
-   `lastEnteredAt` and `entryCount` are always populated → they may be said.
+   `lastEnteredAt` is populated → WHEN may be said. `entryCount` is populated
+   but is a count with no action → NEVER rendered (P5-R2 FIX 1).
    `position` is NULL today → nothing about a place inside the environment is
    said. The action is therefore OPEN THE ENVIRONMENT, because that is the
    only real action. When 5.5+ populates `position`, a line may be added
@@ -127,16 +128,16 @@ export function primaryCopy(p: StudentShellProps): PrimaryCopy {
       subject: s ?? null,
     };
   }
-  // resume — ONLY populated fields (see rule above). position is not read for copy while null.
+  // resume — ONLY populated fields (see rule above). P5-R2 FIX 1: entry_count
+  // stays in the DATA (5.4 may rank on it) but is NEVER rendered — a count with
+  // no action attached is a report-only element, the shape a streak grows from.
+  // If lastEnteredAt were ever absent, nothing about time is said at all.
   const f = resumeFacts(a);
-  const st = p.environmentStates.find((x) => x.subjectId === f.subjectId);
-  const times = st ? (st.entryCount === 1 ? "once" : `${st.entryCount} times`) : null;
+  const when = f.lastEnteredAt ? whenPhrase(f.lastEnteredAt, p.now) : null;
   return {
-    eyebrow: `Last opened ${whenPhrase(f.lastEnteredAt, p.now)}`,
+    eyebrow: when ? `Last opened ${when}` : "Last opened",
     heading,
-    line: times
-      ? `You were last here ${whenPhrase(f.lastEnteredAt, p.now)}. You have opened it ${times}.`
-      : `You were last here ${whenPhrase(f.lastEnteredAt, p.now)}.`,
+    line: when ? `You were last here ${when}.` : "",
     action: `Open ${name}`,
     href: subjectHref(f.subjectId),
     subject: s ?? null,
@@ -172,9 +173,11 @@ export function StudentShell(props: StudentShellProps) {
       {copy.subject?.status === "draft" && (
         <p style={{ ...MONO, marginTop: "var(--ta-space-2)" }}>{DRAFT_LABEL}</p>
       )}
-      <p style={{ margin: "var(--ta-space-4) 0 0", fontSize: "var(--ta-text-base)", lineHeight: 1.55, color: "var(--ta-text-secondary)", maxWidth: "36rem" }}>
-        {copy.line}
-      </p>
+      {copy.line && (
+        <p style={{ margin: "var(--ta-space-4) 0 0", fontSize: "var(--ta-text-base)", lineHeight: 1.55, color: "var(--ta-text-secondary)", maxWidth: "36rem" }}>
+          {copy.line}
+        </p>
+      )}
       <div style={{ marginTop: "var(--ta-space-6)" }}>
         <Link href={copy.href} className="ta-btn" data-variant="primary" data-size="lg" data-primary-action style={{ minWidth: "12rem" }}>
           {copy.action}

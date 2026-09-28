@@ -176,7 +176,9 @@ export function NavShell({ mode = "stage", items = [], navLabel, account, childr
         }}
       />
       <div className="ta-container ta-container--wide" style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--ta-space-4)", paddingBlock: "var(--ta-space-3)" }}>
-        <Link href="/" aria-label="Tutors Academy home" style={{ borderRadius: "var(--ta-radius-2)", display: "inline-flex", alignItems: "center", gap: "calc(28px * 0.5)" }}>
+        {/* P5-R2 FIX 2: hit area ≥ 44×44 (2.4/2.5) — padding + compensating negative
+            margin, so the mark's visual size and position are unchanged. */}
+        <Link href="/" aria-label="Tutors Academy home" style={{ borderRadius: "var(--ta-radius-2)", display: "inline-flex", alignItems: "center", gap: "calc(28px * 0.5)", minHeight: "var(--ta-target-min)", minWidth: "var(--ta-target-min)", paddingInline: "var(--ta-space-2)", marginInline: "calc(-1 * var(--ta-space-2))" }}>
           <BrandMark size={28} variant="brass" title="Tutors Academy" />
           <BrandWordmark className="ta-brand-word" />
         </Link>

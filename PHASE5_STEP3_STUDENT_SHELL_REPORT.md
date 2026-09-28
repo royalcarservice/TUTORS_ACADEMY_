@@ -1,5 +1,7 @@
 # Phase 5 · Step 3 — The Student Shell — Report
 
+> **P5-R2 corrections applied (see `PHASE5_R2_CORRECTION_REPORT.md`):** the entry count no longer renders (§5/§6 strings superseded); the "844px tall, nothing below the fold in any state" claim in §4/§5 was measured at one viewport only and is withdrawn — the corrected, multi-viewport measurement is in the R2 report; brand link hit area is now 44×44.
+
 **Status: BUILT and VERIFIED against a real Supabase project. AUTH VERIFIED (Test 1 below).** 42/42 harness gates, 10/10 boundary checks, 0 axe violations, 4.9 harness "no diffs vs baseline". Two deliberate exceptions to "do not change" are declared in §18. Commit hash is in the turn message (committed after this file was written).
 
 ---
