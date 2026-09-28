@@ -1,12 +1,29 @@
 import { createClient } from "@/lib/supabase/server";
 
-import { deriveNextAction, deriveShellState, type Enrolment, type EnvironmentState, type ShellState, type NextAction, type SubjectId } from "./contract";
+import { nextActionFor, type Candidate, type ProviderInput } from "@/lib/next-action";
+import { SUBJECTS } from "@/lib/subjects/subjects";
+
+import { deriveShellState, type Enrolment, type EnvironmentState, type ShellState, type SubjectId } from "./contract";
 
 export interface StudentContext {
   enrolments: Enrolment[];
   environmentStates: EnvironmentState[];
   state: ShellState;
-  nextAction: NextAction;
+  /** The engine's one answer for this student, resolved once per request. */
+  candidate: Candidate;
+  /** Provider ids that threw this request (isolated; the answer still resolved). */
+  failedProviders: string[];
+}
+
+/** Everything the engine is allowed to know, assembled ONCE per request. The clock is read here and nowhere below. */
+export function providerInputFor(enrolments: readonly Enrolment[], environmentStates: readonly EnvironmentState[], now: string): ProviderInput {
+  return {
+    enrolments,
+    environmentStates,
+    subjects: SUBJECTS.map((s) => ({ id: s.id as SubjectId, name: s.name, environmentName: s.tagline.split(" — ")[0].trim() })),
+    now,
+    hrefs: { subject: (id) => `/subjects/${id}`, choose: "/subjects" },
+  };
 }
 
 /**
@@ -24,7 +41,8 @@ export async function getStudentContext(): Promise<StudentContext | null> {
   const enrolments: Enrolment[] = (enr ?? []).map((r) => ({ subjectId: r.subject_id as SubjectId, status: r.status as Enrolment["status"], enrolledAt: r.enrolled_at }));
   const environmentStates: EnvironmentState[] = (env ?? []).map((r) => ({ subjectId: r.subject_id as SubjectId, firstEnteredAt: r.first_entered_at, lastEnteredAt: r.last_entered_at, entryCount: r.entry_count, position: r.position ?? null }));
   const state = deriveShellState(enrolments, environmentStates);
-  return { enrolments, environmentStates, state, nextAction: deriveNextAction(state) };
+  const engine = nextActionFor(providerInputFor(enrolments, environmentStates, new Date().toISOString()));
+  return { enrolments, environmentStates, state, candidate: engine.action, failedProviders: engine.failedProviders };
 }
 
 /**

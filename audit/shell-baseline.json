@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T10:57:13.402Z",
+ "generatedAt": "2026-09-28T12:39:53.647Z",
  "reference": "390x844 mobile",
  "states": {
   "A": {
@@ -431,7 +431,7 @@
     "webgl": [],
     "canvas": 0,
     "scriptBytes": 152301,
-    "totalBytes": 278717,
+    "totalBytes": 278711,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -464,11 +464,6 @@
       "type": "script"
      },
      {
-      "name": "1gd3h8x2ifg_a.js",
-      "bytes": 44305,
-      "type": "script"
-     },
-     {
       "name": "1-cz8gjjx6s9_.js",
       "bytes": 6215,
       "type": "script"
@@ -476,6 +471,11 @@
      {
       "name": "3inus7zioy109.js",
       "bytes": 7606,
+      "type": "script"
+     },
+     {
+      "name": "1gd3h8x2ifg_a.js",
+      "bytes": 44305,
       "type": "script"
      },
      {
@@ -500,22 +500,22 @@
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 584,
+      "bytes": 583,
       "type": "fetch"
      },
      {
       "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 581,
+      "bytes": 579,
       "type": "fetch"
      },
      {
       "name": "account?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 483,
+      "bytes": 482,
       "type": "fetch"
      },
      {
       "name": "student?_rsc=iUSOvukGHSRwsy2X",
-      "bytes": 1457,
+      "bytes": 1455,
       "type": "fetch"
      }
     ]
@@ -1135,7 +1135,7 @@
     "webgl": [],
     "canvas": 0,
     "scriptBytes": 152301,
-    "totalBytes": 277740,
+    "totalBytes": 277735,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1158,6 +1158,11 @@
       "type": "script"
      },
      {
+      "name": "0bma92pht_c97.js",
+      "bytes": 71928,
+      "type": "script"
+     },
+     {
       "name": "turbopack-3jyd33d-ci9l1.js",
       "bytes": 4148,
       "type": "script"
@@ -1165,11 +1170,6 @@
      {
       "name": "1gd3h8x2ifg_a.js",
       "bytes": 44305,
-      "type": "script"
-     },
-     {
-      "name": "0bma92pht_c97.js",
-      "bytes": 71928,
       "type": "script"
      },
      {
@@ -1188,39 +1188,39 @@
       "type": "script"
      },
      {
-      "name": "70bc3e132a0a741e-s.3t6q91iet4nsy.woff2",
-      "bytes": 40780,
-      "type": "css"
-     },
-     {
       "name": "03bda585a99c6450-s.32sris142tqlb.woff2",
       "bytes": 36860,
       "type": "css"
      },
      {
-      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
-      "bytes": 663,
-      "type": "other"
+      "name": "70bc3e132a0a741e-s.3t6q91iet4nsy.woff2",
+      "bytes": 40780,
+      "type": "css"
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 584,
+      "bytes": 583,
       "type": "fetch"
      },
      {
       "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 581,
-      "type": "fetch"
-     },
-     {
-      "name": "account?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 483,
+      "bytes": 579,
       "type": "fetch"
      },
      {
       "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 480,
+      "bytes": 479,
       "type": "fetch"
+     },
+     {
+      "name": "account?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 482,
+      "type": "fetch"
+     },
+     {
+      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
+      "bytes": 663,
+      "type": "other"
      }
     ]
    }
@@ -1851,11 +1851,11 @@
     "passes": 37
    },
    "network": {
-    "requests": 22,
+    "requests": 21,
     "webgl": [],
     "canvas": 0,
     "scriptBytes": 152301,
-    "totalBytes": 277740,
+    "totalBytes": 277253,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1878,11 +1878,6 @@
       "type": "script"
      },
      {
-      "name": "0bma92pht_c97.js",
-      "bytes": 71928,
-      "type": "script"
-     },
-     {
       "name": "turbopack-3jyd33d-ci9l1.js",
       "bytes": 4148,
       "type": "script"
@@ -1890,6 +1885,11 @@
      {
       "name": "1gd3h8x2ifg_a.js",
       "bytes": 44305,
+      "type": "script"
+     },
+     {
+      "name": "0bma92pht_c97.js",
+      "bytes": 71928,
       "type": "script"
      },
      {
@@ -1924,22 +1924,17 @@
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 584,
+      "bytes": 583,
       "type": "fetch"
      },
      {
       "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 581,
-      "type": "fetch"
-     },
-     {
-      "name": "account?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 483,
+      "bytes": 579,
       "type": "fetch"
      },
      {
       "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 480,
+      "bytes": 479,
       "type": "fetch"
      }
     ]
@@ -2033,18 +2028,18 @@
  "perf": {
   "profile": "Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)",
   "finalUrl": "http://localhost:3100/student",
-  "performanceScore": 97,
+  "performanceScore": 95,
   "accessibilityScore": 100,
-  "FCP": "1.4 s",
-  "LCP": "2.4 s",
+  "FCP": "1.5 s",
+  "LCP": "2.9 s",
   "LCPElement": "n/a",
   "CLS": "0",
-  "TBT": "90 ms",
-  "SpeedIndex": "1.4 s",
+  "TBT": "70 ms",
+  "SpeedIndex": "1.5 s",
   "TTI": "3.3 s",
-  "longTasksOver50ms": "207ms 1gd3h8x2ifg_a.js; 82ms Unattributable; 64ms 0bma92pht_c97.js; 56ms student; 50ms student",
-  "totalBytes": 346050,
-  "totalKB": 338,
+  "longTasksOver50ms": "195ms 0bma92pht_c97.js; 81ms student; 64ms student; 63ms Unattributable",
+  "totalBytes": 348051,
+  "totalKB": 340,
   "scriptKB": 183,
   "requests": 30,
   "webglInWaterfall": 0
@@ -2220,7 +2215,7 @@
   },
   "perf-mid-range": {
    "pass": true,
-   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":97,\"accessibilityScore\":100,\"FCP\":\"1.4 s\",\"LCP\":\"2.4 s\",\"LCPElement\":\"n/a\",\"CLS\":\"0\",\"TBT\":\"90 ms\",\"SpeedIndex\":\"1.4 s\",\"TTI\":\"3.3 s\",\"longTasksOver50ms\":\"207ms 1gd3h8x2ifg_a.js; 82ms Unattributable; 64ms 0bma92pht_c97.js; 56ms student; 50ms student\",\"totalBytes\":346050,\"totalKB\":338,\"scriptKB\":183,\"requests\":30,\"webglInWaterfall\":0}"
+   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":95,\"accessibilityScore\":100,\"FCP\":\"1.5 s\",\"LCP\":\"2.9 s\",\"LCPElement\":\"n/a\",\"CLS\":\"0\",\"TBT\":\"70 ms\",\"SpeedIndex\":\"1.5 s\",\"TTI\":\"3.3 s\",\"longTasksOver50ms\":\"195ms 0bma92pht_c97.js; 81ms student; 64ms student; 63ms Unattributable\",\"totalBytes\":348051,\"totalKB\":340,\"scriptKB\":183,\"requests\":30,\"webglInWaterfall\":0}"
   }
  },
  "signedOut": {

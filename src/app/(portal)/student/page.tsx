@@ -21,7 +21,7 @@ export default async function StudentOverviewPage() {
   return (
     <StudentShell
       state={ctx.state}
-      nextAction={ctx.nextAction}
+      candidate={ctx.candidate}
       enrolments={ctx.enrolments}
       environmentStates={ctx.environmentStates}
       subjects={shellSubjectInfo()}

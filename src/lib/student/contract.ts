@@ -32,8 +32,11 @@ export type ShellState =
   | { kind: "C-enrolled-active"; subjects: SubjectId[]; latest: EnvironmentState };
 
 /**
- * NEXT-ACTION PRIORITY ORDER (5.1). Higher wins. 5.4 inserts classes/assignments
- * ABOVE resume when they exist; today only the bottom three rungs are real.
+ * NEXT-ACTION PRIORITY ORDER (5.1). Higher wins. Implemented by the engine in
+ * src/lib/next-action (5.4): rungs 1–2 → Tier 1, rung 3 → Tier 2, rungs 4–5 →
+ * Tier 3 (entered beats never-entered), rung 6 → Tier 4. `deriveNextAction`
+ * below is retained as the BENIGN FALLBACK shape only; the surface renders
+ * the engine's Candidate.
  *   1. (Phase 7) a class happening now            — not built
  *   2. (Phase 7) a class starting within the hour — not built
  *   3. (Phase 8) work due                          — not built

@@ -3,8 +3,9 @@ import Link from "next/link";
 import { SubjectMark } from "@/components/brand/subject-mark";
 import { Room } from "@/components/motif/stage";
 import { STUDENT_SLOT_REGIONS, type StudentSlotRegion } from "@/config/student-slots";
-import type { Enrolment, EnvironmentState, NextAction, ShellState, SubjectId } from "@/lib/student/contract";
-import { resumeFacts } from "@/lib/student/contract";
+import type { Candidate } from "@/lib/next-action";
+import { whenPhrase } from "@/lib/next-action/when";
+import type { Enrolment, EnvironmentState, ShellState, SubjectId } from "@/lib/student/contract";
 
 import type { ResolvedSlot } from "./slots";
 
@@ -12,8 +13,11 @@ import type { ResolvedSlot } from "./slots";
    THE STUDENT SHELL (Phase 5 · Step 3)
 
    ORIENTATION, not a dashboard. Reading order, fixed:
-     1. PRIMARY SURFACE — the one answer to WHAT NOW (rung 4/5/6 today; 5.4
-        adds rungs 1–3 by changing what it says, never where it is).
+     1. PRIMARY SURFACE — the one answer to WHAT NOW. Since 5.4 it renders
+        ONE Candidate from the next-action engine ({eyebrow, title, detail,
+        cta, href} + subject identity when subjectId is present). It does
+        not branch per feature: a new kind changes what it SAYS, never
+        where it is, how big it is, or what it looks like.
      2. TODAY region     — slots only; absent until Phase 7/8 data exists.
      3. SUBJECT ROWS     — quiet rows, equal weight, one link each.
      4. LIBRARY / PROGRESS / TOOLS regions — slots only; absent today.
@@ -46,7 +50,8 @@ export interface ShellSubjectInfo {
 
 export interface StudentShellProps {
   state: ShellState;
-  nextAction: NextAction;
+  /** The engine's one answer (src/lib/next-action). Server-resolved. */
+  candidate: Candidate;
   enrolments: Enrolment[];
   environmentStates: EnvironmentState[];
   subjects: Partial<Record<SubjectId, ShellSubjectInfo>>;
@@ -69,25 +74,7 @@ const MONO: React.CSSProperties = {
 
 const DRAFT_LABEL = "Environment in draft";
 
-/* ── honest relative dates ─────────────────────────────────────────────── */
-const DAY = 86_400_000;
-function calendarDays(fromIso: string, nowIso: string): number {
-  const a = new Date(fromIso), b = new Date(nowIso);
-  const ad = Date.UTC(a.getUTCFullYear(), a.getUTCMonth(), a.getUTCDate());
-  const bd = Date.UTC(b.getUTCFullYear(), b.getUTCMonth(), b.getUTCDate());
-  return Math.max(0, Math.round((bd - ad) / DAY));
-}
-function absDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
-}
-/** "today" · "yesterday" · "3 days ago" · "on 12 Sep 2026" — nothing finer than a day is claimed. */
-export function whenPhrase(iso: string, nowIso: string): string {
-  const d = calendarDays(iso, nowIso);
-  if (d === 0) return "today";
-  if (d === 1) return "yesterday";
-  if (d <= 14) return `${d} days ago`;
-  return `on ${absDate(iso)}`;
-}
+export { whenPhrase };
 
 /* ── primary surface copy, derived from the contract ───────────────────── */
 export interface PrimaryCopy {
@@ -99,49 +86,21 @@ export interface PrimaryCopy {
   subject: ShellSubjectInfo | null;
 }
 
+/**
+ * THE BINDING (5.4): the surface's strings come from the Candidate, verbatim.
+ * The shell adds nothing — no count, no time sentence, no place inside the
+ * environment. `subject` is looked up only so the Room can carry the 3.3
+ * identity (mark, accent, environment name, draft label).
+ */
 export function primaryCopy(p: StudentShellProps): PrimaryCopy {
-  const subjectHref = p.subjectHref ?? ((id: SubjectId) => `/subjects/${id}`);
-  const a = p.nextAction;
-  if (a.kind === "choose") {
-    return {
-      eyebrow: "What now",
-      heading: "Choose a subject",
-      // P5-R3 FIX 1: no availability claim. Only one of six is publicly reachable
-      // today and nothing can enrol yet; /subjects carries the honest labels.
-      line: "Choosing is where this begins.",
-      action: "See the six subjects",
-      href: p.chooseHref ?? "/subjects",
-      subject: null,
-    };
-  }
-  const s = p.subjects[a.subjectId];
-  const name = s?.name ?? a.subjectId;
-  const heading = s ? `${s.name} — ${s.environmentName}` : name;
-  if (a.kind === "begin") {
-    const enrolledAt = p.enrolments.find((e) => e.subjectId === a.subjectId)?.enrolledAt;
-    return {
-      eyebrow: "First session",
-      heading,
-      line: enrolledAt
-        ? `You chose ${name} ${whenPhrase(enrolledAt, p.now)}. Your first session begins when you open it.`
-        : `Your first session begins when you open it.`,
-      action: `Open ${name}`,
-      href: subjectHref(a.subjectId),
-      subject: s ?? null,
-    };
-  }
-  // resume — ONLY populated fields (see rule above). P5-R2 FIX 1: entry_count
-  // stays in the DATA (5.4 may rank on it) but is NEVER rendered — a count with
-  // no action attached is a report-only element, the shape a streak grows from.
-  // If lastEnteredAt were ever absent, nothing about time is said at all.
-  const f = resumeFacts(a);
-  const when = f.lastEnteredAt ? whenPhrase(f.lastEnteredAt, p.now) : null;
+  const c = p.candidate;
+  const s = c.subjectId ? p.subjects[c.subjectId as SubjectId] : undefined;
   return {
-    eyebrow: when ? `Last opened ${when}` : "Last opened",
-    heading,
-    line: when ? `You were last here ${when}.` : "",
-    action: `Open ${name}`,
-    href: subjectHref(f.subjectId),
+    eyebrow: c.eyebrow,
+    heading: c.title,
+    line: c.detail ?? "",
+    action: c.cta,
+    href: c.href,
     subject: s ?? null,
   };
 }

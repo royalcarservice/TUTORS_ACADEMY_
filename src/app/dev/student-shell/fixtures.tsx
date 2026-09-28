@@ -1,7 +1,9 @@
 import type { ResolvedSlot } from "@/components/student/slots";
 import type { StudentShellProps } from "@/components/student/student-shell";
 import { STUDENT_SLOTS } from "@/config/student-slots";
-import { deriveNextAction, deriveShellState, type Enrolment, type EnvironmentState } from "@/lib/student/contract";
+import { nextActionFor } from "@/lib/next-action";
+import { deriveShellState, type Enrolment, type EnvironmentState } from "@/lib/student/contract";
+import { providerInputFor } from "@/lib/student/data";
 import { shellSubjectInfo } from "@/lib/student/subject-info";
 
 /* DEV-ONLY FIXTURES for /dev/student-shell. These never reach production:
@@ -42,7 +44,7 @@ export function fixtureProps(state: "A" | "B" | "C", extreme: SlotExtreme = "non
   const shell = deriveShellState(f.enrolments, f.states);
   return {
     state: shell,
-    nextAction: deriveNextAction(shell),
+    candidate: nextActionFor(providerInputFor(f.enrolments, f.states, NOW)).action,
     enrolments: f.enrolments,
     environmentStates: f.states,
     subjects: shellSubjectInfo(),
