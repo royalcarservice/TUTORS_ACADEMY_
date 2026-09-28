@@ -1,21 +1,32 @@
-import { PageHeader } from "@/components/layout/page-header";
-import { NotBuiltYet } from "@/components/shared/not-built-yet";
-import { getPlannedModules } from "@/config/modules";
-import { PORTAL_META } from "@/config/routes";
+import { resolveSlots } from "@/components/student/slots";
+import { StudentShell } from "@/components/student/student-shell";
+import { getStudentContext } from "@/lib/student/data";
+import { shellSubjectInfo } from "@/lib/student/subject-info";
 
-export default function StudentOverviewPage() {
+/* /student — THE STUDENT SHELL (Phase 5 · Step 3)
+ *
+ * Server-rendered, complete without JavaScript, state decided HERE from the
+ * current identity's rows (RLS-bounded). The three states A/B/C are all
+ * server branches of one contract — never client-side.
+ * No test or demo data: an account with no rows renders state A, honestly.  */
+
+export const dynamic = "force-dynamic";
+
+export default async function StudentOverviewPage() {
+  const ctx = await getStudentContext();
+  // The layout already required an identity; a null context can only mean
+  // auth is unconfigured, which the proxy has already turned into a redirect.
+  if (!ctx) return null;
+  const slots = await resolveSlots(ctx);
   return (
-    <>
-      <PageHeader
-        title="Student overview"
-        description={PORTAL_META.student.blurb}
-      />
-
-      <NotBuiltYet
-        scope="Student dashboard"
-        modules={getPlannedModules("student")}
-        note="The dashboard is deliberately left out of this task; the next build drops it into this exact shell."
-      />
-    </>
+    <StudentShell
+      state={ctx.state}
+      nextAction={ctx.nextAction}
+      enrolments={ctx.enrolments}
+      environmentStates={ctx.environmentStates}
+      subjects={shellSubjectInfo()}
+      slots={slots}
+      now={new Date().toISOString()}
+    />
   );
 }

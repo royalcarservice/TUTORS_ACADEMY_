@@ -1,0 +1,2147 @@
+{
+ "generatedAt": "2026-09-28T07:11:50.366Z",
+ "reference": "390x844 mobile",
+ "states": {
+  "A": {
+   "serverState": "A-no-enrolment",
+   "strings": [
+    "What now",
+    "Choose a subject",
+    "Six environments are open. Choosing one is where this begins.",
+    "See the six subjects"
+   ],
+   "navStrings": [
+    "Tutors Academy home",
+    "Overview",
+    "Subjects",
+    "Account",
+    "Switch to dark theme",
+    "Student A",
+    "Sign out",
+    "Open menu",
+    "Overview",
+    "Subjects",
+    "Account",
+    "Student A",
+    "Sign out"
+   ],
+   "hierarchy": {
+    "largest": {
+     "tag": "H1",
+     "text": "Choose a subject",
+     "fontSize": 35.8,
+     "top": 142,
+     "area": 10988
+    },
+    "runnerUp": {
+     "tag": "P",
+     "text": "Six environments are open. Choosing one ",
+     "fontSize": 16,
+     "top": 196,
+     "area": 14502
+    },
+    "fontRatio": 2.24,
+    "primaryArea": 85623,
+    "rowsArea": 0,
+    "primaryButtons": 1,
+    "h1s": 1
+   },
+   "fold": {
+    "viewport": 844,
+    "primaryActionBottom": 318,
+    "primaryActionVisible": true,
+    "documentHeight": 844,
+    "belowFold": []
+   },
+   "slots": {
+    "slotRegions": 0,
+    "slots": 0,
+    "emptySections": 0,
+    "mainSections": [
+     "student-primary-heading"
+    ],
+    "emptyBoxes": 0
+   },
+   "sweeps": {
+    "dashboard": [],
+    "skeleton": [],
+    "banned": [],
+    "cliche": [],
+    "guilt": [],
+    "htmlDashboard": [],
+    "htmlSkeleton": []
+   },
+   "links": [
+    [
+     "/",
+     "200"
+    ],
+    [
+     "/student",
+     "200"
+    ],
+    [
+     "/subjects",
+     "200"
+    ],
+    [
+     "/student/account",
+     "200"
+    ]
+   ],
+   "forms": [
+    "/auth/signout post",
+    "/auth/signout post"
+   ],
+   "viewports": {
+    "320": {
+     "scrollW": 320,
+     "clientW": 320,
+     "overflow": false,
+     "primaryW": 272
+    },
+    "390": {
+     "scrollW": 390,
+     "clientW": 390,
+     "overflow": false,
+     "primaryW": 342
+    },
+    "768": {
+     "scrollW": 768,
+     "clientW": 768,
+     "overflow": false,
+     "primaryW": 704
+    },
+    "1280": {
+     "scrollW": 1280,
+     "clientW": 1280,
+     "overflow": false,
+     "primaryW": 1024
+    },
+    "1920": {
+     "scrollW": 1920,
+     "clientW": 1920,
+     "overflow": false,
+     "primaryW": 992
+    }
+   },
+   "touch": {
+    "count": 4,
+    "small": [],
+    "inheritedSmall": [
+     "Tutors Academy home 28x28"
+    ],
+    "minGap": 8,
+    "pair": "Switch to dark theme ↔ Open menu",
+    "sizes": [
+     "Tutors Academy home 28x28",
+     "Switch to dark theme 44x44",
+     "Open menu 44x44",
+     "See the six subjects 196x48"
+    ]
+   },
+   "zoom": {
+    "200%": {
+     "overflow": false,
+     "h1Visible": true,
+     "primaryActionW": 196,
+     "clipped": 0
+    },
+    "400%": {
+     "overflow": false,
+     "h1Visible": true,
+     "primaryActionW": 196,
+     "clipped": 0
+    }
+   },
+   "textSpacing": {
+    "overflow": false,
+    "clipped": 0,
+    "primaryActionBottom": 431
+   },
+   "keyboard": [
+    {
+     "el": "A",
+     "name": "Skip to content",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Tutors Academy home",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Switch to dark theme",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Open menu",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "See the six subjects",
+     "focused": true,
+     "ring": true
+    }
+   ],
+   "tabRing": [
+    {
+     "el": "A",
+     "name": "Skip to content",
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Tutors Academy home",
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Switch to dark theme",
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Open menu",
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "See the six subjects",
+     "ring": true
+    }
+   ],
+   "a11yOrder": [
+    "main",
+    "region: Choose a subject",
+    "StaticText: WHAT NOW",
+    "heading: Choose a subject (h1)",
+    "StaticText: Six environments are open. Choosing one is where this begins.",
+    "link: See the six subjects",
+    "StaticText: See the six subjects",
+    "alert"
+   ],
+   "a11yGroups": [
+    "student-primary-heading → Choose a subject"
+   ],
+   "contrast": {
+    "dark": [
+     {
+      "text": "Overview",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Subjects",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Account",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Student A",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 7.65,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Sign out",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 16.66,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "What now",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 7.18,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Choose a subject",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 16.66,
+      "need": 3,
+      "pass": true
+     },
+     {
+      "text": "Six environments are open. C",
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 15.26,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "See the six subjects",
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "ratio": 7.6,
+      "need": 4.5,
+      "pass": true
+     }
+    ],
+    "light": [
+     {
+      "text": "Overview",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Subjects",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Account",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Student A",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 8.93,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Sign out",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "What now",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 8.64,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Choose a subject",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 17.75,
+      "need": 3,
+      "pass": true
+     },
+     {
+      "text": "Six environments are open. C",
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 15.19,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "See the six subjects",
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "ratio": 7.6,
+      "need": 4.5,
+      "pass": true
+     }
+    ]
+   },
+   "reducedMotion": {
+    "state": "A-no-enrolment",
+    "animated": 0,
+    "reveals": 0
+   },
+   "noJs": {
+    "state": "A-no-enrolment",
+    "h1": "Choose a subject",
+    "action": "See the six subjects",
+    "rows": 0,
+    "signOutForm": true
+   },
+   "axe": {
+    "violations": [],
+    "passes": 35
+   },
+   "network": {
+    "requests": 22,
+    "webgl": [],
+    "canvas": 0,
+    "scriptBytes": 152270,
+    "totalBytes": 278679,
+    "entries": [
+     {
+      "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
+      "bytes": 30204,
+      "type": "link"
+     },
+     {
+      "name": "0tqa28nu7s8i1.css",
+      "bytes": 12534,
+      "type": "link"
+     },
+     {
+      "name": "310vm2bl3xxpt.js",
+      "bytes": 2270,
+      "type": "link"
+     },
+     {
+      "name": "0eo1cde-rr3bs.js",
+      "bytes": 9140,
+      "type": "script"
+     },
+     {
+      "name": "0bma92pht_c97.js",
+      "bytes": 71928,
+      "type": "script"
+     },
+     {
+      "name": "1gd3h8x2ifg_a.js",
+      "bytes": 44305,
+      "type": "script"
+     },
+     {
+      "name": "turbopack-3jyd33d-ci9l1.js",
+      "bytes": 4148,
+      "type": "script"
+     },
+     {
+      "name": "1-cz8gjjx6s9_.js",
+      "bytes": 6215,
+      "type": "script"
+     },
+     {
+      "name": "021ib0sjfd8mh.js",
+      "bytes": 8959,
+      "type": "script"
+     },
+     {
+      "name": "3b6xmbtt6mqja.js",
+      "bytes": 7575,
+      "type": "script"
+     },
+     {
+      "name": "70bc3e132a0a741e-s.3t6q91iet4nsy.woff2",
+      "bytes": 40780,
+      "type": "css"
+     },
+     {
+      "name": "03bda585a99c6450-s.32sris142tqlb.woff2",
+      "bytes": 36860,
+      "type": "css"
+     },
+     {
+      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
+      "bytes": 663,
+      "type": "other"
+     },
+     {
+      "name": "?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 582,
+      "type": "fetch"
+     },
+     {
+      "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 580,
+      "type": "fetch"
+     },
+     {
+      "name": "account?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 480,
+      "type": "fetch"
+     },
+     {
+      "name": "student?_rsc=iUSOvukGHSRwsy2X",
+      "bytes": 1456,
+      "type": "fetch"
+     }
+    ]
+   }
+  },
+  "B": {
+   "serverState": "B-enrolled-never-entered",
+   "strings": [
+    "First session",
+    "Physics — The Field",
+    "Environment in draft",
+    "You chose Physics yesterday. Your first session begins when you open it.",
+    "Open Physics",
+    "Your subjects",
+    "Physics",
+    "The Field",
+    "Not opened yet",
+    "Environment in draft",
+    "Mathematics",
+    "The Lattice",
+    "Not opened yet",
+    "[aria-label] Open Physics — The Field",
+    "[aria-label] Open Mathematics — The Lattice"
+   ],
+   "navStrings": [
+    "Tutors Academy home",
+    "Overview",
+    "Subjects",
+    "Account",
+    "Switch to dark theme",
+    "Student B",
+    "Sign out",
+    "Open menu",
+    "Overview",
+    "Subjects",
+    "Account",
+    "Student B",
+    "Sign out"
+   ],
+   "hierarchy": {
+    "largest": {
+     "tag": "H1",
+     "text": "Physics — The Field",
+     "fontSize": 35.8,
+     "top": 174,
+     "area": 21976
+    },
+    "runnerUp": {
+     "tag": "P",
+     "text": "You chose Physics yesterday. Your first ",
+     "fontSize": 16,
+     "top": 291,
+     "area": 14502
+    },
+    "fontRatio": 2.24,
+    "primaryArea": 118172,
+    "rowsArea": 57242,
+    "primaryButtons": 1,
+    "h1s": 1
+   },
+   "fold": {
+    "viewport": 844,
+    "primaryActionBottom": 413,
+    "primaryActionVisible": true,
+    "documentHeight": 844,
+    "belowFold": []
+   },
+   "slots": {
+    "slotRegions": 0,
+    "slots": 0,
+    "emptySections": 0,
+    "mainSections": [
+     "student-primary-heading",
+     "student-subjects-heading"
+    ],
+    "emptyBoxes": 0
+   },
+   "sweeps": {
+    "dashboard": [],
+    "skeleton": [],
+    "banned": [],
+    "cliche": [],
+    "guilt": [],
+    "htmlDashboard": [],
+    "htmlSkeleton": []
+   },
+   "links": [
+    [
+     "/",
+     "200"
+    ],
+    [
+     "/student",
+     "200"
+    ],
+    [
+     "/subjects",
+     "200"
+    ],
+    [
+     "/student/account",
+     "200"
+    ],
+    [
+     "/subjects/physics",
+     "200"
+    ],
+    [
+     "/subjects/mathematics",
+     "200"
+    ]
+   ],
+   "forms": [
+    "/auth/signout post",
+    "/auth/signout post"
+   ],
+   "viewports": {
+    "320": {
+     "scrollW": 320,
+     "clientW": 320,
+     "overflow": false,
+     "primaryW": 272
+    },
+    "390": {
+     "scrollW": 390,
+     "clientW": 390,
+     "overflow": false,
+     "primaryW": 342
+    },
+    "768": {
+     "scrollW": 768,
+     "clientW": 768,
+     "overflow": false,
+     "primaryW": 704
+    },
+    "1280": {
+     "scrollW": 1280,
+     "clientW": 1280,
+     "overflow": false,
+     "primaryW": 1024
+    },
+    "1920": {
+     "scrollW": 1920,
+     "clientW": 1920,
+     "overflow": false,
+     "primaryW": 992
+    }
+   },
+   "touch": {
+    "count": 6,
+    "small": [],
+    "inheritedSmall": [
+     "Tutors Academy home 28x28"
+    ],
+    "minGap": 8,
+    "pair": "Switch to dark theme ↔ Open menu",
+    "sizes": [
+     "Tutors Academy home 28x28",
+     "Switch to dark theme 44x44",
+     "Open menu 44x44",
+     "Open Physics 192x48",
+     "Open Physics — The Field 272x90",
+     "Open Mathematics — The Lattice 272x71"
+    ]
+   },
+   "zoom": {
+    "200%": {
+     "overflow": false,
+     "h1Visible": true,
+     "primaryActionW": 192,
+     "clipped": 0
+    },
+    "400%": {
+     "overflow": false,
+     "h1Visible": true,
+     "primaryActionW": 192,
+     "clipped": 0
+    }
+   },
+   "textSpacing": {
+    "overflow": false,
+    "clipped": 0,
+    "primaryActionBottom": 493
+   },
+   "keyboard": [
+    {
+     "el": "A",
+     "name": "Skip to content",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Tutors Academy home",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Switch to dark theme",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Open menu",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Physics",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Physics — The Field",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Mathematics — The Lattice",
+     "focused": true,
+     "ring": true
+    }
+   ],
+   "tabRing": [
+    {
+     "el": "A",
+     "name": "Skip to content",
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Tutors Academy home",
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Switch to dark theme",
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Open menu",
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Physics",
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Physics — The Field",
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Mathematics — The Lattice",
+     "ring": true
+    }
+   ],
+   "a11yOrder": [
+    "main",
+    "region: Physics — The Field",
+    "StaticText: FIRST SESSION",
+    "heading: Physics — The Field (h1)",
+    "StaticText: ENVIRONMENT IN DRAFT",
+    "StaticText: You chose Physics yesterday. Your first session begins when you open it.",
+    "link: Open Physics",
+    "StaticText: Open Physics",
+    "region: YOUR SUBJECTS",
+    "heading: YOUR SUBJECTS (h2)",
+    "link: Open Physics — The Field",
+    "StaticText: Physics",
+    "StaticText: The Field",
+    "StaticText: Not opened yet",
+    "StaticText: ENVIRONMENT IN DRAFT",
+    "link: Open Mathematics — The Lattice",
+    "StaticText: Mathematics",
+    "StaticText: The Lattice",
+    "StaticText: Not opened yet",
+    "alert"
+   ],
+   "a11yGroups": [
+    "student-primary-heading → Physics — The Field",
+    "student-subjects-heading → Your subjects"
+   ],
+   "contrast": {
+    "dark": [
+     {
+      "text": "Overview",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Subjects",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Account",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Student B",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 7.65,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Sign out",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 16.66,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "First session",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 7.18,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Physics — The Field",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 16.66,
+      "need": 3,
+      "pass": true
+     },
+     {
+      "text": "Environment in draft",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 7.18,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "You chose Physics yesterday.",
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 15.26,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Open Physics",
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "ratio": 7.6,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Your subjects",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 7.65,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Physics",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "The Field",
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 16.27,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Not opened yet",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 7.65,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Environment in draft",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 7.65,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Mathematics",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "The Lattice",
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 16.27,
+      "need": 4.5,
+      "pass": true
+     }
+    ],
+    "light": [
+     {
+      "text": "Overview",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Subjects",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Account",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Student B",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 8.93,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Sign out",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "First session",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 8.64,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Physics — The Field",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 17.75,
+      "need": 3,
+      "pass": true
+     },
+     {
+      "text": "Environment in draft",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 8.64,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "You chose Physics yesterday.",
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 15.19,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Open Physics",
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "ratio": 7.6,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Your subjects",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 8.93,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Physics",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "The Field",
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 15.71,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Not opened yet",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 8.93,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Environment in draft",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 8.93,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Mathematics",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "The Lattice",
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 15.71,
+      "need": 4.5,
+      "pass": true
+     }
+    ]
+   },
+   "reducedMotion": {
+    "state": "B-enrolled-never-entered",
+    "animated": 0,
+    "reveals": 0
+   },
+   "noJs": {
+    "state": "B-enrolled-never-entered",
+    "h1": "Physics — The Field",
+    "action": "Open Physics",
+    "rows": 2,
+    "signOutForm": true
+   },
+   "axe": {
+    "violations": [],
+    "passes": 37
+   },
+   "network": {
+    "requests": 22,
+    "webgl": [],
+    "canvas": 0,
+    "scriptBytes": 152270,
+    "totalBytes": 277701,
+    "entries": [
+     {
+      "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
+      "bytes": 30204,
+      "type": "link"
+     },
+     {
+      "name": "0tqa28nu7s8i1.css",
+      "bytes": 12534,
+      "type": "link"
+     },
+     {
+      "name": "310vm2bl3xxpt.js",
+      "bytes": 2270,
+      "type": "link"
+     },
+     {
+      "name": "0eo1cde-rr3bs.js",
+      "bytes": 9140,
+      "type": "script"
+     },
+     {
+      "name": "0bma92pht_c97.js",
+      "bytes": 71928,
+      "type": "script"
+     },
+     {
+      "name": "turbopack-3jyd33d-ci9l1.js",
+      "bytes": 4148,
+      "type": "script"
+     },
+     {
+      "name": "1gd3h8x2ifg_a.js",
+      "bytes": 44305,
+      "type": "script"
+     },
+     {
+      "name": "3b6xmbtt6mqja.js",
+      "bytes": 7575,
+      "type": "script"
+     },
+     {
+      "name": "1-cz8gjjx6s9_.js",
+      "bytes": 6215,
+      "type": "script"
+     },
+     {
+      "name": "021ib0sjfd8mh.js",
+      "bytes": 8959,
+      "type": "script"
+     },
+     {
+      "name": "70bc3e132a0a741e-s.3t6q91iet4nsy.woff2",
+      "bytes": 40780,
+      "type": "css"
+     },
+     {
+      "name": "03bda585a99c6450-s.32sris142tqlb.woff2",
+      "bytes": 36860,
+      "type": "css"
+     },
+     {
+      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
+      "bytes": 663,
+      "type": "other"
+     },
+     {
+      "name": "?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 582,
+      "type": "fetch"
+     },
+     {
+      "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 580,
+      "type": "fetch"
+     },
+     {
+      "name": "account?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 480,
+      "type": "fetch"
+     },
+     {
+      "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 478,
+      "type": "fetch"
+     }
+    ]
+   }
+  },
+  "C": {
+   "serverState": "C-enrolled-active",
+   "strings": [
+    "Last opened yesterday",
+    "Physics — The Field",
+    "Environment in draft",
+    "You were last here yesterday. You have opened it 3 times.",
+    "Open Physics",
+    "Your subjects",
+    "Physics",
+    "The Field",
+    "Last opened yesterday",
+    "Environment in draft",
+    "Mathematics",
+    "The Lattice",
+    "Not opened yet",
+    "[aria-label] Open Physics — The Field",
+    "[aria-label] Open Mathematics — The Lattice"
+   ],
+   "navStrings": [
+    "Tutors Academy home",
+    "Overview",
+    "Subjects",
+    "Account",
+    "Switch to dark theme",
+    "Student C",
+    "Sign out",
+    "Open menu",
+    "Overview",
+    "Subjects",
+    "Account",
+    "Student C",
+    "Sign out"
+   ],
+   "hierarchy": {
+    "largest": {
+     "tag": "H1",
+     "text": "Physics — The Field",
+     "fontSize": 35.8,
+     "top": 174,
+     "area": 21976
+    },
+    "runnerUp": {
+     "tag": "P",
+     "text": "You were last here yesterday. You have o",
+     "fontSize": 16,
+     "top": 291,
+     "area": 14502
+    },
+    "fontRatio": 2.24,
+    "primaryArea": 118172,
+    "rowsArea": 57242,
+    "primaryButtons": 1,
+    "h1s": 1
+   },
+   "fold": {
+    "viewport": 844,
+    "primaryActionBottom": 413,
+    "primaryActionVisible": true,
+    "documentHeight": 844,
+    "belowFold": []
+   },
+   "slots": {
+    "slotRegions": 0,
+    "slots": 0,
+    "emptySections": 0,
+    "mainSections": [
+     "student-primary-heading",
+     "student-subjects-heading"
+    ],
+    "emptyBoxes": 0
+   },
+   "sweeps": {
+    "dashboard": [],
+    "skeleton": [],
+    "banned": [],
+    "cliche": [],
+    "guilt": [],
+    "htmlDashboard": [],
+    "htmlSkeleton": []
+   },
+   "links": [
+    [
+     "/",
+     "200"
+    ],
+    [
+     "/student",
+     "200"
+    ],
+    [
+     "/subjects",
+     "200"
+    ],
+    [
+     "/student/account",
+     "200"
+    ],
+    [
+     "/subjects/physics",
+     "200"
+    ],
+    [
+     "/subjects/mathematics",
+     "200"
+    ]
+   ],
+   "forms": [
+    "/auth/signout post",
+    "/auth/signout post"
+   ],
+   "viewports": {
+    "320": {
+     "scrollW": 320,
+     "clientW": 320,
+     "overflow": false,
+     "primaryW": 272
+    },
+    "390": {
+     "scrollW": 390,
+     "clientW": 390,
+     "overflow": false,
+     "primaryW": 342
+    },
+    "768": {
+     "scrollW": 768,
+     "clientW": 768,
+     "overflow": false,
+     "primaryW": 704
+    },
+    "1280": {
+     "scrollW": 1280,
+     "clientW": 1280,
+     "overflow": false,
+     "primaryW": 1024
+    },
+    "1920": {
+     "scrollW": 1920,
+     "clientW": 1920,
+     "overflow": false,
+     "primaryW": 992
+    }
+   },
+   "touch": {
+    "count": 6,
+    "small": [],
+    "inheritedSmall": [
+     "Tutors Academy home 28x28"
+    ],
+    "minGap": 8,
+    "pair": "Switch to dark theme ↔ Open menu",
+    "sizes": [
+     "Tutors Academy home 28x28",
+     "Switch to dark theme 44x44",
+     "Open menu 44x44",
+     "Open Physics 192x48",
+     "Open Physics — The Field 272x90",
+     "Open Mathematics — The Lattice 272x71"
+    ]
+   },
+   "zoom": {
+    "200%": {
+     "overflow": false,
+     "h1Visible": true,
+     "primaryActionW": 192,
+     "clipped": 0
+    },
+    "400%": {
+     "overflow": false,
+     "h1Visible": true,
+     "primaryActionW": 192,
+     "clipped": 0
+    }
+   },
+   "textSpacing": {
+    "overflow": false,
+    "clipped": 0,
+    "primaryActionBottom": 469
+   },
+   "keyboard": [
+    {
+     "el": "A",
+     "name": "Skip to content",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Tutors Academy home",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Switch to dark theme",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Open menu",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Physics",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Physics — The Field",
+     "focused": true,
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Mathematics — The Lattice",
+     "focused": true,
+     "ring": true
+    }
+   ],
+   "tabRing": [
+    {
+     "el": "A",
+     "name": "Skip to content",
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Tutors Academy home",
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Switch to dark theme",
+     "ring": true
+    },
+    {
+     "el": "BUTTON",
+     "name": "Open menu",
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Physics",
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Physics — The Field",
+     "ring": true
+    },
+    {
+     "el": "A",
+     "name": "Open Mathematics — The Lattice",
+     "ring": true
+    }
+   ],
+   "a11yOrder": [
+    "main",
+    "region: Physics — The Field",
+    "StaticText: LAST OPENED YESTERDAY",
+    "heading: Physics — The Field (h1)",
+    "StaticText: ENVIRONMENT IN DRAFT",
+    "StaticText: You were last here yesterday. You have opened it 3 times.",
+    "link: Open Physics",
+    "StaticText: Open Physics",
+    "region: YOUR SUBJECTS",
+    "heading: YOUR SUBJECTS (h2)",
+    "link: Open Physics — The Field",
+    "StaticText: Physics",
+    "StaticText: The Field",
+    "StaticText: Last opened yesterday",
+    "StaticText: ENVIRONMENT IN DRAFT",
+    "link: Open Mathematics — The Lattice",
+    "StaticText: Mathematics",
+    "StaticText: The Lattice",
+    "StaticText: Not opened yet",
+    "alert"
+   ],
+   "a11yGroups": [
+    "student-primary-heading → Physics — The Field",
+    "student-subjects-heading → Your subjects"
+   ],
+   "contrast": {
+    "dark": [
+     {
+      "text": "Overview",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Subjects",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Account",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Student C",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 7.65,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Sign out",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 16.66,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Last opened yesterday",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 7.18,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Physics — The Field",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 16.66,
+      "need": 3,
+      "pass": true
+     },
+     {
+      "text": "Environment in draft",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 7.18,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "You were last here yesterday",
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(18, 22, 28)",
+      "ratio": 15.26,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Open Physics",
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "ratio": 7.6,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Your subjects",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 7.65,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Physics",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "The Field",
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 16.27,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Last opened yesterday",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 7.65,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Environment in draft",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 7.65,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Mathematics",
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "The Lattice",
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 16.27,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Not opened yet",
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "ratio": 7.65,
+      "need": 4.5,
+      "pass": true
+     }
+    ],
+    "light": [
+     {
+      "text": "Overview",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Subjects",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Account",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Student C",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 8.93,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Sign out",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 17.75,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Last opened yesterday",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 8.64,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Physics — The Field",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 17.75,
+      "need": 3,
+      "pass": true
+     },
+     {
+      "text": "Environment in draft",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 8.64,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "You were last here yesterday",
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(247, 245, 240)",
+      "ratio": 15.19,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Open Physics",
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "ratio": 7.6,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Your subjects",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 8.93,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Physics",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "The Field",
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 15.71,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Last opened yesterday",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 8.93,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Environment in draft",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 8.93,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Mathematics",
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 18.36,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "The Lattice",
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 15.71,
+      "need": 4.5,
+      "pass": true
+     },
+     {
+      "text": "Not opened yet",
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "ratio": 8.93,
+      "need": 4.5,
+      "pass": true
+     }
+    ]
+   },
+   "reducedMotion": {
+    "state": "C-enrolled-active",
+    "animated": 0,
+    "reveals": 0
+   },
+   "noJs": {
+    "state": "C-enrolled-active",
+    "h1": "Physics — The Field",
+    "action": "Open Physics",
+    "rows": 2,
+    "signOutForm": true
+   },
+   "axe": {
+    "violations": [],
+    "passes": 37
+   },
+   "network": {
+    "requests": 22,
+    "webgl": [],
+    "canvas": 0,
+    "scriptBytes": 152270,
+    "totalBytes": 277701,
+    "entries": [
+     {
+      "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
+      "bytes": 30204,
+      "type": "link"
+     },
+     {
+      "name": "0tqa28nu7s8i1.css",
+      "bytes": 12534,
+      "type": "link"
+     },
+     {
+      "name": "310vm2bl3xxpt.js",
+      "bytes": 2270,
+      "type": "link"
+     },
+     {
+      "name": "0eo1cde-rr3bs.js",
+      "bytes": 9140,
+      "type": "script"
+     },
+     {
+      "name": "1gd3h8x2ifg_a.js",
+      "bytes": 44305,
+      "type": "script"
+     },
+     {
+      "name": "0bma92pht_c97.js",
+      "bytes": 71928,
+      "type": "script"
+     },
+     {
+      "name": "turbopack-3jyd33d-ci9l1.js",
+      "bytes": 4148,
+      "type": "script"
+     },
+     {
+      "name": "1-cz8gjjx6s9_.js",
+      "bytes": 6215,
+      "type": "script"
+     },
+     {
+      "name": "3b6xmbtt6mqja.js",
+      "bytes": 7575,
+      "type": "script"
+     },
+     {
+      "name": "021ib0sjfd8mh.js",
+      "bytes": 8959,
+      "type": "script"
+     },
+     {
+      "name": "70bc3e132a0a741e-s.3t6q91iet4nsy.woff2",
+      "bytes": 40780,
+      "type": "css"
+     },
+     {
+      "name": "03bda585a99c6450-s.32sris142tqlb.woff2",
+      "bytes": 36860,
+      "type": "css"
+     },
+     {
+      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
+      "bytes": 663,
+      "type": "other"
+     },
+     {
+      "name": "?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 582,
+      "type": "fetch"
+     },
+     {
+      "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 580,
+      "type": "fetch"
+     },
+     {
+      "name": "account?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 480,
+      "type": "fetch"
+     },
+     {
+      "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 478,
+      "type": "fetch"
+     }
+    ]
+   }
+  }
+ },
+ "boundary": {
+  "no stat cards / metric grid": {
+   "pass": true,
+   "evidence": "strings + source: no stat/metric words, no 3–4 column card grid"
+  },
+  "no streak / xp / badge / leaderboard / points": {
+   "pass": true,
+   "evidence": "0 hits across A/B/C strings"
+  },
+  "no notification affordance": {
+   "pass": true,
+   "evidence": "no bell/inbox/message icon imported; 0 string hits"
+  },
+  "no skeleton or shimmer": {
+   "pass": true,
+   "evidence": "0 hits in strings and source"
+  },
+  "no greeting banner": {
+   "pass": true,
+   "evidence": "no greeting words in any state"
+  },
+  "one dominant surface": {
+   "pass": true,
+   "evidence": "A: h1/runner-up font ratio 2.24, 1 primary button · B: h1/runner-up font ratio 2.24, 1 primary button · C: h1/runner-up font ratio 2.24, 1 primary button"
+  },
+  "no invented activity": {
+   "pass": true,
+   "evidence": "0 hits for praise/guilt/momentum phrases"
+  },
+  "no dead nav items": {
+   "pass": true,
+   "evidence": "/ → 200 · /student → 200 · /subjects → 200 · /student/account → 200 · /subjects/physics → 200 · /subjects/mathematics → 200"
+  },
+  "draft subjects labelled, not locked": {
+   "pass": true,
+   "evidence": "label present in B/C; /subjects/physics (draft) → 200 for enrolled student on the production build"
+  },
+  "no search": {
+   "pass": true,
+   "evidence": "no input/search in shell source"
+  }
+ },
+ "perf": {
+  "profile": "Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)",
+  "finalUrl": "http://localhost:3100/student",
+  "performanceScore": 95,
+  "accessibilityScore": 100,
+  "FCP": "1.4 s",
+  "LCP": "2.8 s",
+  "LCPElement": "<h1 id=\"student-primary-heading\" style=\"margin: var(--ta-space-2) 0 0; font-family: var(--ta-font-display);\">",
+  "CLS": "0",
+  "TBT": "110 ms",
+  "SpeedIndex": "1.4 s",
+  "TTI": "2.8 s",
+  "longTasksOver50ms": "159ms 1gd3h8x2ifg_a.js; 78ms Unattributable; 59ms student; 59ms student; 54ms student",
+  "totalBytes": 345888,
+  "totalKB": 338,
+  "scriptKB": 183,
+  "requests": 30,
+  "webglInWaterfall": 0
+ },
+ "gates": {
+  "no-fake-signed-in": {
+   "pass": true,
+   "detail": "{\"landed\":\"http://localhost:3100/login?next=%2Fstudent\",\"chain\":[\"307 http://localhost:3100/student\"],\"shellInLoginHtml\":false,\"subjectRowsInLoginHtml\":false}"
+  },
+  "hierarchy-A": {
+   "pass": true,
+   "detail": "{\"largest\":{\"tag\":\"H1\",\"text\":\"Choose a subject\",\"fontSize\":35.8,\"top\":142,\"area\":10988},\"runnerUp\":{\"tag\":\"P\",\"text\":\"Six environments are open. Choosing one \",\"fontSize\":16,\"top\":196,\"area\":14502},\"fontRatio\":2.24,\"primaryArea\":85623,\"rowsArea\":0,\"primaryButtons\":1,\"h1s\":1}"
+  },
+  "fold-A": {
+   "pass": true,
+   "detail": "{\"viewport\":844,\"primaryActionBottom\":318,\"primaryActionVisible\":true,\"documentHeight\":844,\"belowFold\":[]}"
+  },
+  "no-empty-slots-A": {
+   "pass": true,
+   "detail": "{\"slotRegions\":0,\"slots\":0,\"emptySections\":0,\"mainSections\":[\"student-primary-heading\"],\"emptyBoxes\":0}"
+  },
+  "sweeps-A": {
+   "pass": true,
+   "detail": "{\"dashboard\":[],\"skeleton\":[],\"banned\":[],\"cliche\":[],\"guilt\":[],\"htmlDashboard\":[],\"htmlSkeleton\":[]}"
+  },
+  "links-A": {
+   "pass": true,
+   "detail": "[[\"/\",\"200\"],[\"/student\",\"200\"],[\"/subjects\",\"200\"],[\"/student/account\",\"200\"]]"
+  },
+  "no-hscroll-A": {
+   "pass": true,
+   "detail": "{\"320\":{\"scrollW\":320,\"clientW\":320,\"overflow\":false,\"primaryW\":272},\"390\":{\"scrollW\":390,\"clientW\":390,\"overflow\":false,\"primaryW\":342},\"768\":{\"scrollW\":768,\"clientW\":768,\"overflow\":false,\"primaryW\":704},\"1280\":{\"scrollW\":1280,\"clientW\":1280,\"overflow\":false,\"primaryW\":1024},\"1920\":{\"scrollW\":1920,\"clientW\":1920,\"overflow\":false,\"primaryW\":992}}"
+  },
+  "touch-A": {
+   "pass": true,
+   "detail": "{\"small\":[],\"minGap\":8,\"pair\":\"Switch to dark theme ↔ Open menu\"}"
+  },
+  "zoom-spacing-A": {
+   "pass": true,
+   "detail": "{\"zoom\":{\"200%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":196,\"clipped\":0},\"400%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":196,\"clipped\":0}},\"textSpacing\":{\"overflow\":false,\"clipped\":0,\"primaryActionBottom\":431}}"
+  },
+  "keyboard-A": {
+   "pass": true,
+   "detail": "[{\"el\":\"A\",\"name\":\"Skip to content\",\"ring\":true},{\"el\":\"A\",\"name\":\"Tutors Academy home\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Switch to dark theme\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Open menu\",\"ring\":true},{\"el\":\"A\",\"name\":\"See the six subjects\",\"ring\":true}]"
+  },
+  "contrast-A": {
+   "pass": true,
+   "detail": "{\"dark\":[],\"light\":[]}"
+  },
+  "nojs-A": {
+   "pass": true,
+   "detail": "{\"state\":\"A-no-enrolment\",\"h1\":\"Choose a subject\",\"action\":\"See the six subjects\",\"rows\":0,\"signOutForm\":true}"
+  },
+  "axe-A": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "webgl-absent-A": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "hierarchy-B": {
+   "pass": true,
+   "detail": "{\"largest\":{\"tag\":\"H1\",\"text\":\"Physics — The Field\",\"fontSize\":35.8,\"top\":174,\"area\":21976},\"runnerUp\":{\"tag\":\"P\",\"text\":\"You chose Physics yesterday. Your first \",\"fontSize\":16,\"top\":291,\"area\":14502},\"fontRatio\":2.24,\"primaryArea\":118172,\"rowsArea\":57242,\"primaryButtons\":1,\"h1s\":1}"
+  },
+  "fold-B": {
+   "pass": true,
+   "detail": "{\"viewport\":844,\"primaryActionBottom\":413,\"primaryActionVisible\":true,\"documentHeight\":844,\"belowFold\":[]}"
+  },
+  "no-empty-slots-B": {
+   "pass": true,
+   "detail": "{\"slotRegions\":0,\"slots\":0,\"emptySections\":0,\"mainSections\":[\"student-primary-heading\",\"student-subjects-heading\"],\"emptyBoxes\":0}"
+  },
+  "sweeps-B": {
+   "pass": true,
+   "detail": "{\"dashboard\":[],\"skeleton\":[],\"banned\":[],\"cliche\":[],\"guilt\":[],\"htmlDashboard\":[],\"htmlSkeleton\":[]}"
+  },
+  "links-B": {
+   "pass": true,
+   "detail": "[[\"/\",\"200\"],[\"/student\",\"200\"],[\"/subjects\",\"200\"],[\"/student/account\",\"200\"],[\"/subjects/physics\",\"200\"],[\"/subjects/mathematics\",\"200\"]]"
+  },
+  "no-hscroll-B": {
+   "pass": true,
+   "detail": "{\"320\":{\"scrollW\":320,\"clientW\":320,\"overflow\":false,\"primaryW\":272},\"390\":{\"scrollW\":390,\"clientW\":390,\"overflow\":false,\"primaryW\":342},\"768\":{\"scrollW\":768,\"clientW\":768,\"overflow\":false,\"primaryW\":704},\"1280\":{\"scrollW\":1280,\"clientW\":1280,\"overflow\":false,\"primaryW\":1024},\"1920\":{\"scrollW\":1920,\"clientW\":1920,\"overflow\":false,\"primaryW\":992}}"
+  },
+  "touch-B": {
+   "pass": true,
+   "detail": "{\"small\":[],\"minGap\":8,\"pair\":\"Switch to dark theme ↔ Open menu\"}"
+  },
+  "zoom-spacing-B": {
+   "pass": true,
+   "detail": "{\"zoom\":{\"200%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":192,\"clipped\":0},\"400%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":192,\"clipped\":0}},\"textSpacing\":{\"overflow\":false,\"clipped\":0,\"primaryActionBottom\":493}}"
+  },
+  "keyboard-B": {
+   "pass": true,
+   "detail": "[{\"el\":\"A\",\"name\":\"Skip to content\",\"ring\":true},{\"el\":\"A\",\"name\":\"Tutors Academy home\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Switch to dark theme\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Open menu\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Physics\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Physics — The Field\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Mathematics — The Lattice\",\"ring\":true}]"
+  },
+  "contrast-B": {
+   "pass": true,
+   "detail": "{\"dark\":[],\"light\":[]}"
+  },
+  "nojs-B": {
+   "pass": true,
+   "detail": "{\"state\":\"B-enrolled-never-entered\",\"h1\":\"Physics — The Field\",\"action\":\"Open Physics\",\"rows\":2,\"signOutForm\":true}"
+  },
+  "axe-B": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "webgl-absent-B": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "hierarchy-C": {
+   "pass": true,
+   "detail": "{\"largest\":{\"tag\":\"H1\",\"text\":\"Physics — The Field\",\"fontSize\":35.8,\"top\":174,\"area\":21976},\"runnerUp\":{\"tag\":\"P\",\"text\":\"You were last here yesterday. You have o\",\"fontSize\":16,\"top\":291,\"area\":14502},\"fontRatio\":2.24,\"primaryArea\":118172,\"rowsArea\":57242,\"primaryButtons\":1,\"h1s\":1}"
+  },
+  "fold-C": {
+   "pass": true,
+   "detail": "{\"viewport\":844,\"primaryActionBottom\":413,\"primaryActionVisible\":true,\"documentHeight\":844,\"belowFold\":[]}"
+  },
+  "no-empty-slots-C": {
+   "pass": true,
+   "detail": "{\"slotRegions\":0,\"slots\":0,\"emptySections\":0,\"mainSections\":[\"student-primary-heading\",\"student-subjects-heading\"],\"emptyBoxes\":0}"
+  },
+  "sweeps-C": {
+   "pass": true,
+   "detail": "{\"dashboard\":[],\"skeleton\":[],\"banned\":[],\"cliche\":[],\"guilt\":[],\"htmlDashboard\":[],\"htmlSkeleton\":[]}"
+  },
+  "links-C": {
+   "pass": true,
+   "detail": "[[\"/\",\"200\"],[\"/student\",\"200\"],[\"/subjects\",\"200\"],[\"/student/account\",\"200\"],[\"/subjects/physics\",\"200\"],[\"/subjects/mathematics\",\"200\"]]"
+  },
+  "no-hscroll-C": {
+   "pass": true,
+   "detail": "{\"320\":{\"scrollW\":320,\"clientW\":320,\"overflow\":false,\"primaryW\":272},\"390\":{\"scrollW\":390,\"clientW\":390,\"overflow\":false,\"primaryW\":342},\"768\":{\"scrollW\":768,\"clientW\":768,\"overflow\":false,\"primaryW\":704},\"1280\":{\"scrollW\":1280,\"clientW\":1280,\"overflow\":false,\"primaryW\":1024},\"1920\":{\"scrollW\":1920,\"clientW\":1920,\"overflow\":false,\"primaryW\":992}}"
+  },
+  "touch-C": {
+   "pass": true,
+   "detail": "{\"small\":[],\"minGap\":8,\"pair\":\"Switch to dark theme ↔ Open menu\"}"
+  },
+  "zoom-spacing-C": {
+   "pass": true,
+   "detail": "{\"zoom\":{\"200%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":192,\"clipped\":0},\"400%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":192,\"clipped\":0}},\"textSpacing\":{\"overflow\":false,\"clipped\":0,\"primaryActionBottom\":469}}"
+  },
+  "keyboard-C": {
+   "pass": true,
+   "detail": "[{\"el\":\"A\",\"name\":\"Skip to content\",\"ring\":true},{\"el\":\"A\",\"name\":\"Tutors Academy home\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Switch to dark theme\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Open menu\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Physics\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Physics — The Field\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Mathematics — The Lattice\",\"ring\":true}]"
+  },
+  "contrast-C": {
+   "pass": true,
+   "detail": "{\"dark\":[],\"light\":[]}"
+  },
+  "nojs-C": {
+   "pass": true,
+   "detail": "{\"state\":\"C-enrolled-active\",\"h1\":\"Physics — The Field\",\"action\":\"Open Physics\",\"rows\":2,\"signOutForm\":true}"
+  },
+  "axe-C": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "webgl-absent-C": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "slot-extremes": {
+   "pass": true,
+   "detail": "{\"none\":{\"regions\":[],\"slots\":0,\"rowSlots\":0,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":413,\"primaryButtons\":1,\"docHeight\":844,\"overflow\":false},\"some\":{\"regions\":[\"today\",\"reflection\"],\"slots\":4,\"rowSlots\":2,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":413,\"primaryButtons\":1,\"docHeight\":1131,\"overflow\":false},\"all\":{\"regions\":[\"today\",\"library\",\"reflection\",\"tools\"],\"slots\":10,\"rowSlots\":2,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":413,\"primaryButtons\":1,\"docHeight\":1727,\"overflow\":false}}"
+  },
+  "perf-mid-range": {
+   "pass": true,
+   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":95,\"accessibilityScore\":100,\"FCP\":\"1.4 s\",\"LCP\":\"2.8 s\",\"LCPElement\":\"<h1 id=\\\"student-primary-heading\\\" style=\\\"margin: var(--ta-space-2) 0 0; font-family: var(--ta-font-display);\\\">\",\"CLS\":\"0\",\"TBT\":\"110 ms\",\"SpeedIndex\":\"1.4 s\",\"TTI\":\"2.8 s\",\"longTasksOver50ms\":\"159ms 1gd3h8x2ifg_a.js; 78ms Unattributable; 59ms student; 59ms student; 54ms student\",\"totalBytes\":345888,\"totalKB\":338,\"scriptKB\":183,\"requests\":30,\"webglInWaterfall\":0}"
+  }
+ },
+ "signedOut": {
+  "landed": "http://localhost:3100/login?next=%2Fstudent",
+  "chain": [
+   "307 http://localhost:3100/student"
+  ],
+  "shellInLoginHtml": false,
+  "subjectRowsInLoginHtml": false
+ },
+ "slotExtremes": {
+  "none": {
+   "regions": [],
+   "slots": 0,
+   "rowSlots": 0,
+   "h1Font": 35.8,
+   "maxOtherFont": 16,
+   "primaryActionBottom": 413,
+   "primaryButtons": 1,
+   "docHeight": 844,
+   "overflow": false
+  },
+  "some": {
+   "regions": [
+    "today",
+    "reflection"
+   ],
+   "slots": 4,
+   "rowSlots": 2,
+   "h1Font": 35.8,
+   "maxOtherFont": 16,
+   "primaryActionBottom": 413,
+   "primaryButtons": 1,
+   "docHeight": 1131,
+   "overflow": false
+  },
+  "all": {
+   "regions": [
+    "today",
+    "library",
+    "reflection",
+    "tools"
+   ],
+   "slots": 10,
+   "rowSlots": 2,
+   "h1Font": 35.8,
+   "maxOtherFont": 16,
+   "primaryActionBottom": 413,
+   "primaryButtons": 1,
+   "docHeight": 1727,
+   "overflow": false
+  }
+ },
+ "specimenAxe": [],
+ "pass": true,
+ "failed": []
+}

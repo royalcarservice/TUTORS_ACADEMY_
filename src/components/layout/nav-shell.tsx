@@ -20,8 +20,12 @@ import { buttonClass } from "@/components/ui/button";
    No height animation, no reflow. One enter/exit pair from the 2.3 grammar.
    Reduced motion: instant, fully functional (global contract zeroes durations).
 
-   THE HONESTY RULE: there is no real signed-in state. We render an honest
-   "Sign in" entry to the real /login route — never a fake avatar/menu.
+   THE HONESTY RULE: with no identity we render an honest "Sign in" entry to
+   the real /login route — never a fake avatar/menu. Since 5.1 a real cookie
+   session exists; a Room-mode consumer that HAS an identity passes `account`
+   (name + real sign-out) and it replaces the "Sign in" entry. Structure,
+   modes and motion are unchanged (5.3: the shell uses Room mode, it does not
+   build a second bar).
    ════════════════════════════════════════════════════════════════════════ */
 
 export function SkipLink() {
@@ -107,10 +111,12 @@ export interface NavShellProps {
   items?: Array<{ label: string; href: string }>;
   /** unique accessible name when several shells share a page (specimens) */
   navLabel?: string;
+  /** Room mode with a REAL identity: replaces the "Sign in" entry (desktop) and the sheet's auth block. */
+  account?: React.ReactNode;
   children?: React.ReactNode;
 }
 
-export function NavShell({ mode = "stage", items = [], navLabel, children }: NavShellProps) {
+export function NavShell({ mode = "stage", items = [], navLabel, account, children }: NavShellProps) {
   const baseLabel = navLabel ?? (mode === "stage" ? "Primary" : "Portal");
   const scrolled = useScrolled();
   const solid = mode === "room" || scrolled;
@@ -184,7 +190,7 @@ export function NavShell({ mode = "stage", items = [], navLabel, children }: Nav
 
         <div style={{ display: "flex", alignItems: "center", gap: "var(--ta-space-2)" }}>
           <ThemeToggle />
-          <div className="ta-nav-desktop" style={{ display: "none" }}>{mode === "stage" ? <NavActions /> : <UserMenu />}</div>
+          <div className="ta-nav-desktop" style={{ display: "none" }}>{mode === "stage" ? <NavActions /> : account ?? <UserMenu />}</div>
           <button
             ref={triggerRef}
             type="button"
@@ -235,7 +241,7 @@ export function NavShell({ mode = "stage", items = [], navLabel, children }: Nav
                 <Link href="/login" onClick={() => setOpen(false)} className={buttonClass("outline", "md", "w-full")}>Sign in</Link>
               </>
             ) : (
-              <Link href="/login" onClick={() => setOpen(false)} className={buttonClass("outline", "md", "w-full")}>Sign in</Link>
+              account ?? <Link href="/login" onClick={() => setOpen(false)} className={buttonClass("outline", "md", "w-full")}>Sign in</Link>
             )}
           </div>
         </nav>

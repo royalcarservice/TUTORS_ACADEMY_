@@ -42,3 +42,19 @@ export async function recordEnvironmentEntry(userId: string, subjectId: SubjectI
     : await supabase.from("environment_state").insert({ student_id: userId, subject_id: subjectId, first_entered_at: now, last_entered_at: now, entry_count: 1 });
   return error ? { ok: false, error: error.message } : { ok: true };
 }
+
+/**
+ * Subject ids the CURRENT identity is actively enrolled in — empty when
+ * there is no identity. Used by the environment route's draft guard (5.3
+ * decision: enrolment is a stronger relationship than public availability,
+ * so an enrolled student is never locked out of their own draft environment;
+ * the draft status is labelled there, not enforced).
+ */
+export async function getEnrolledSubjectIds(): Promise<Set<string>> {
+  const supabase = await createClient();
+  if (!supabase) return new Set();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return new Set();
+  const { data } = await supabase.from("enrolments").select("subject_id").eq("status", "active");
+  return new Set((data ?? []).map((r) => r.subject_id as string));
+}
