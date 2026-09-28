@@ -1,29 +1,30 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useActionState } from "react";
 import { LogIn } from "lucide-react";
 
 import {
   Alert,
   Button,
   Checkbox,
-  Divider,
   Input,
   Label,
 } from "@/components/ui";
-import { PORTAL_ENTRIES } from "@/config/navigation";
 import { ROUTES } from "@/config/routes";
 
+import { signIn, type AuthResult } from "./actions";
+
 /**
- * Sign-in form.
+ * Sign-in form (Phase 5 · 5.1). Posts to the `signIn` server action, which
+ * creates a COOKIE session via Supabase Auth (@supabase/ssr). When the
+ * deployment has no Supabase configuration the action says so in plain words
+ * and no session is created — there is no demo identity.
  *
- * Foundation scope: fully interactive and validated markup, but deliberately
- * NOT wired to any authentication service — nothing is sent anywhere and no
- * session is created. Wiring it to a real provider is the next task.
+ * Phase 5 accounts are TEST ACCOUNTS ONLY (ruling P5-R1 Part 7).
  */
-export function LoginForm() {
-  const [submitted, setSubmitted] = useState(false);
+export function LoginForm({ configured, next, error }: { configured: boolean; next: string; error?: string | null }) {
+  const [state, action, pending] = useActionState<AuthResult, FormData>(signIn, { error: null });
 
   return (
     <div>
@@ -34,33 +35,37 @@ export function LoginForm() {
         Use your Tutors Academy account to reach your portal.
       </p>
 
-      <div className="mt-6">
-        {submitted ? (
-          <Alert variant="success" title="Form validated — nothing was sent">
+      <div className="mt-6 flex flex-col gap-3">
+        {!configured && (
+          <Alert variant="info" title="Authentication is not configured in this deployment">
             <p>
-              The form captured your input correctly. There is no
-              authentication service in this foundation build, so no request
-              was made and no session was created.
+              The Supabase environment variables are not set, so signing in
+              cannot create a session. Nothing is sent anywhere.
             </p>
           </Alert>
-        ) : (
-          <Alert variant="info" title="Authentication is not connected yet">
+        )}
+        {configured && (
+          <Alert variant="info" title="Test accounts only">
             <p>
-              This screen is part of the foundation build. The fields work and
-              validate, but submitting does not call an API.
+              Phase 5 sign-in is for test accounts. Real student onboarding
+              waits on the privacy, terms and data-protection work.
             </p>
+          </Alert>
+        )}
+        {error === "confirmation" && (
+          <Alert variant="info" title="That confirmation link did not work">
+            <p>It may have expired. Sign in, or create the account again.</p>
+          </Alert>
+        )}
+        {state.error && (
+          <Alert variant="info" title="Could not sign in" role="alert">
+            <p>{state.error}</p>
           </Alert>
         )}
       </div>
 
-      <form
-        className="mt-6 flex flex-col gap-4"
-        noValidate={false}
-        onSubmit={(event) => {
-          event.preventDefault();
-          setSubmitted(true);
-        }}
-      >
+      <form className="mt-6 flex flex-col gap-4" action={action}>
+        <input type="hidden" name="next" value={next} />
         <div className="flex flex-col gap-2">
           <Label htmlFor="login-email">Email address</Label>
           <Input
@@ -76,14 +81,6 @@ export function LoginForm() {
         <div className="flex flex-col gap-2">
           <div className="flex items-baseline justify-between gap-4">
             <Label htmlFor="login-password">Password</Label>
-            <button
-              type="button"
-              disabled
-              title="Password reset ships with the authentication service"
-              className="text-sm font-medium text-foreground-subtle disabled:cursor-not-allowed"
-            >
-              Forgot password?
-            </button>
           </div>
           <Input
             id="login-password"
@@ -102,26 +99,11 @@ export function LoginForm() {
           </span>
         </label>
 
-        <Button type="submit" size="lg" className="mt-2 w-full">
+        <Button type="submit" size="lg" className="mt-2 w-full" disabled={pending || !configured}>
           <LogIn className="size-4" aria-hidden />
-          Sign in
+          {pending ? "Signing in…" : "Sign in"}
         </Button>
       </form>
-
-      <Divider label="or go directly to" className="my-8" />
-
-      <ul className="grid gap-2 sm:grid-cols-3">
-        {PORTAL_ENTRIES.map((entry) => (
-          <li key={entry.id}>
-            <Link
-              href={entry.href}
-              className="block rounded-lg border border-border px-3 py-2.5 text-center text-sm font-medium text-foreground-muted transition-colors hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
-            >
-              {entry.id.charAt(0).toUpperCase() + entry.id.slice(1)}
-            </Link>
-          </li>
-        ))}
-      </ul>
 
       <p className="mt-8 text-center text-sm text-foreground-muted">
         New to Tutors Academy?{" "}

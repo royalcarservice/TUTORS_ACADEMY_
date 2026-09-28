@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-27T12:51:45.301Z",
+ "generatedAt": "2026-09-28T04:58:41.282Z",
  "ceiling": 12,
  "declared": {
   "arrival": {
@@ -2344,7 +2344,7 @@
     "byScene": {}
    },
    "lcp": {
-    "t": 140,
+    "t": 148,
     "el": "H1#scene-arrival"
    },
    "sizesBy": {
@@ -3282,16 +3282,16 @@
   }
  },
  "skim": {
-  "midFlingAnimating": 14,
+  "midFlingAnimating": 13,
   "y": 8205,
   "atBottom": true,
   "hiddenLeft": [],
   "enterLayers": 1,
   "enterStickyOffscreen": true,
   "frames": {
-   "n": 74,
-   "avg": 16.7,
-   "worst": 28.3,
+   "n": 73,
+   "avg": 16.9,
+   "worst": 26.3,
    "over50": 0,
    "over33": 0
   },
@@ -3299,26 +3299,25 @@
   "cls": 0
  },
  "payload": {
-  "requests": 26,
-  "bytes": 1089767,
-  "js": 594509,
+  "requests": 25,
+  "bytes": 1067363,
+  "js": 576029,
   "webgl": [],
   "canvas": 0,
   "chunks": [
-   "3iegc31wi02oy.css:59802",
+   "1pmu696bri259.css:59695",
    "310vm2bl3xxpt.js:5364",
    "0eo1cde-rr3bs.js:33395",
    "0bma92pht_c97.js:229156",
-   "021ib0sjfd8mh.js:27703",
    "1gd3h8x2ifg_a.js:161255",
    "turbopack-3jyd33d-ci9l1.js:9721",
-   "1xovt1cefart7.js:18384",
    "1-cz8gjjx6s9_.js:19709",
-   "39_aak4o4r66c.js:29802",
+   "38-1fhcruqr22.js:18256",
+   "021ib0sjfd8mh.js:27703",
    "1_j1dqh-q6_rf.js:14319",
+   "39_aak4o4r66c.js:29802",
    "22i43cg4l4-dq.js:8868",
-   "3-3o22a_ux7x5.js:18594",
-   "2eqc2wn0bmyb3.js:18239"
+   "23w-47w9035co.js:18481"
   ]
  },
  "noJs": {
@@ -3503,7 +3502,7 @@
    "text": 5057,
    "fontsSettled": "loaded"
   },
-  "loadMs": 2540,
+  "loadMs": 2542,
   "afterLoad": {
    "h1": true,
    "ctas": 2,
@@ -3560,7 +3559,9 @@
    "prod": 404,
    "dev": 200,
    "hydration": 0,
-   "axe": []
+   "axe": [
+    "region:1"
+   ]
   },
   {
    "route": "/dev/page",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { RegisterForm } from "@/features/auth/register-form";
+import { isAuthConfigured } from "@/lib/supabase/env";
 
 export const metadata: Metadata = {
   title: "Create account",
@@ -9,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function RegisterPage() {
-  return <RegisterForm />;
+  return <RegisterForm configured={isAuthConfigured()} />;
 }

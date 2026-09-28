@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useActionState } from "react";
 import { UserPlus } from "lucide-react";
 
 import {
@@ -15,15 +15,18 @@ import {
 } from "@/components/ui";
 import { ROUTES } from "@/config/routes";
 
+import { signUp, type AuthResult } from "./actions";
+
 /**
- * Registration form.
+ * Registration form (Phase 5 · 5.1). Posts to the `signUp` server action
+ * (Supabase Auth). Role is student or tutor; admin is never self-serve.
  *
- * Foundation scope: role selection, validation attributes and layout only.
- * Nothing is posted and no account is created — the identity service is a
- * later task.
+ * PHASE 5: TEST ACCOUNTS ONLY (ruling P5-R1 Part 7). No privacy policy, terms
+ * or contact route exist yet, so this form does not pretend to collect
+ * agreement to them. Real onboarding is out of scope for all of Phase 5.
  */
-export function RegisterForm() {
-  const [submitted, setSubmitted] = useState(false);
+export function RegisterForm({ configured }: { configured: boolean }) {
+  const [state, action, pending] = useActionState<AuthResult, FormData>(signUp, { error: null });
 
   return (
     <div>
@@ -34,32 +37,33 @@ export function RegisterForm() {
         One account covers every portal. You can change your role later.
       </p>
 
-      <div className="mt-6">
-        {submitted ? (
-          <Alert variant="success" title="Form validated — nothing was sent">
+      <div className="mt-6 flex flex-col gap-3">
+        {!configured && (
+          <Alert variant="info" title="Account creation is not configured in this deployment">
+            <p>The Supabase environment variables are not set, so no account can be created. Nothing is sent anywhere.</p>
+          </Alert>
+        )}
+        {configured && (
+          <Alert variant="info" title="Test accounts only">
             <p>
-              Your details passed the client-side checks. No account was
-              created because the identity service is not part of this
-              foundation build.
+              Accounts created here are test accounts. There is no privacy
+              policy or terms of use yet, so this is not open to real students.
             </p>
           </Alert>
-        ) : (
-          <Alert variant="info" title="Account creation is not connected yet">
-            <p>
-              This screen is part of the foundation build. The fields work and
-              validate, but submitting does not call an API.
-            </p>
+        )}
+        {state.notice && (
+          <Alert variant="success" title="Almost there" role="status">
+            <p>{state.notice}</p>
+          </Alert>
+        )}
+        {state.error && (
+          <Alert variant="info" title="Could not create the account" role="alert">
+            <p>{state.error}</p>
           </Alert>
         )}
       </div>
 
-      <form
-        className="mt-6 flex flex-col gap-5"
-        onSubmit={(event) => {
-          event.preventDefault();
-          setSubmitted(true);
-        }}
-      >
+      <form className="mt-6 flex flex-col gap-5" action={action}>
         <fieldset className="flex flex-col gap-2">
           <legend className="mb-1 text-sm font-medium text-foreground">
             I am joining as
@@ -121,18 +125,15 @@ export function RegisterForm() {
         </div>
 
         <label className="flex cursor-pointer items-start gap-2.5">
-          <Checkbox name="terms" required className="mt-0.5" />
+          <Checkbox name="test_ack" required className="mt-0.5" />
           <span className="text-sm leading-relaxed text-foreground-muted">
-            I agree to the terms of use and privacy policy.{" "}
-            <span className="text-foreground-subtle">
-              (Policy pages ship with the legal module.)
-            </span>
+            I understand this is a test account and may be deleted.
           </span>
         </label>
 
-        <Button type="submit" size="lg" className="mt-1 w-full">
+        <Button type="submit" size="lg" className="mt-1 w-full" disabled={pending || !configured}>
           <UserPlus className="size-4" aria-hidden />
-          Create account
+          {pending ? "Creating…" : "Create test account"}
         </Button>
       </form>
 
