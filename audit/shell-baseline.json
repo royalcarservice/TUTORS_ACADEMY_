@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T08:09:40.672Z",
+ "generatedAt": "2026-09-28T10:57:13.402Z",
  "reference": "390x844 mobile",
  "states": {
   "A": {
@@ -7,7 +7,7 @@
    "strings": [
     "What now",
     "Choose a subject",
-    "Six environments are open. Choosing one is where this begins.",
+    "Choosing is where this begins.",
     "See the six subjects"
    ],
    "navStrings": [
@@ -35,23 +35,54 @@
     },
     "runnerUp": {
      "tag": "P",
-     "text": "Six environments are open. Choosing one ",
+     "text": "Choosing is where this begins.",
      "fontSize": 16,
      "top": 196,
-     "area": 14502
+     "area": 7251
     },
     "fontRatio": 2.24,
-    "primaryArea": 85623,
+    "primaryArea": 77142,
     "rowsArea": 0,
     "primaryButtons": 1,
     "h1s": 1
    },
-   "fold": {
-    "viewport": 844,
-    "primaryActionBottom": 318,
-    "primaryActionVisible": true,
-    "documentHeight": 844,
-    "belowFold": []
+   "primaryAboveFold": {
+    "320x568": {
+     "viewport": "320x568",
+     "primaryActionBottom": 326,
+     "visible": true,
+     "rows": 0
+    },
+    "360x640": {
+     "viewport": "360x640",
+     "primaryActionBottom": 328,
+     "visible": true,
+     "rows": 0
+    },
+    "390x844": {
+     "viewport": "390x844",
+     "primaryActionBottom": 293,
+     "visible": true,
+     "rows": 0
+    },
+    "1280x800": {
+     "viewport": "1280x800",
+     "primaryActionBottom": 326,
+     "visible": true,
+     "rows": 0
+    },
+    "zoom200": {
+     "viewport": "640x400",
+     "primaryActionBottom": 303,
+     "visible": true,
+     "rows": 0
+    },
+    "textSpacing390": {
+     "viewport": "390x844",
+     "primaryActionBottom": 383,
+     "visible": true,
+     "rows": 0
+    }
    },
    "slots": {
     "slotRegions": 0,
@@ -155,7 +186,7 @@
    "textSpacing": {
     "overflow": false,
     "clipped": 0,
-    "primaryActionBottom": 431
+    "primaryActionBottom": 383
    },
    "keyboard": [
     {
@@ -221,7 +252,7 @@
     "region: Choose a subject",
     "StaticText: WHAT NOW",
     "heading: Choose a subject (h1)",
-    "StaticText: Six environments are open. Choosing one is where this begins.",
+    "StaticText: Choosing is where this begins.",
     "link: See the six subjects",
     "StaticText: See the six subjects",
     "alert"
@@ -288,7 +319,7 @@
       "pass": true
      },
      {
-      "text": "Six environments are open. C",
+      "text": "Choosing is where this begin",
       "fg": "rgb(239, 235, 227)",
       "bg": "rgb(18, 22, 28)",
       "ratio": 15.26,
@@ -362,7 +393,7 @@
       "pass": true
      },
      {
-      "text": "Six environments are open. C",
+      "text": "Choosing is where this begin",
       "fg": "rgb(26, 31, 39)",
       "bg": "rgb(247, 245, 240)",
       "ratio": 15.19,
@@ -400,7 +431,7 @@
     "webgl": [],
     "canvas": 0,
     "scriptBytes": 152301,
-    "totalBytes": 278714,
+    "totalBytes": 278717,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -423,6 +454,11 @@
       "type": "script"
      },
      {
+      "name": "0bma92pht_c97.js",
+      "bytes": 71928,
+      "type": "script"
+     },
+     {
       "name": "turbopack-3jyd33d-ci9l1.js",
       "bytes": 4148,
       "type": "script"
@@ -430,11 +466,6 @@
      {
       "name": "1gd3h8x2ifg_a.js",
       "bytes": 44305,
-      "type": "script"
-     },
-     {
-      "name": "0bma92pht_c97.js",
-      "bytes": 71928,
       "type": "script"
      },
      {
@@ -469,7 +500,7 @@
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 583,
+      "bytes": 584,
       "type": "fetch"
      },
      {
@@ -484,7 +515,7 @@
      },
      {
       "name": "student?_rsc=iUSOvukGHSRwsy2X",
-      "bytes": 1455,
+      "bytes": 1457,
       "type": "fetch"
      }
     ]
@@ -545,12 +576,43 @@
     "primaryButtons": 1,
     "h1s": 1
    },
-   "fold": {
-    "viewport": 844,
-    "primaryActionBottom": 413,
-    "primaryActionVisible": true,
-    "documentHeight": 844,
-    "belowFold": []
+   "primaryAboveFold": {
+    "320x568": {
+     "viewport": "320x568",
+     "primaryActionBottom": 433,
+     "visible": true,
+     "rows": 2
+    },
+    "360x640": {
+     "viewport": "360x640",
+     "primaryActionBottom": 436,
+     "visible": true,
+     "rows": 2
+    },
+    "390x844": {
+     "viewport": "390x844",
+     "primaryActionBottom": 413,
+     "visible": true,
+     "rows": 2
+    },
+    "1280x800": {
+     "viewport": "1280x800",
+     "primaryActionBottom": 383,
+     "visible": true,
+     "rows": 2
+    },
+    "zoom200": {
+     "viewport": "640x400",
+     "primaryActionBottom": 361,
+     "visible": true,
+     "rows": 2
+    },
+    "textSpacing390": {
+     "viewport": "390x844",
+     "primaryActionBottom": 493,
+     "visible": true,
+     "rows": 2
+    }
    },
    "slots": {
     "slotRegions": 0,
@@ -1073,7 +1135,7 @@
     "webgl": [],
     "canvas": 0,
     "scriptBytes": 152301,
-    "totalBytes": 277739,
+    "totalBytes": 277740,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1096,11 +1158,6 @@
       "type": "script"
      },
      {
-      "name": "0bma92pht_c97.js",
-      "bytes": 71928,
-      "type": "script"
-     },
-     {
       "name": "turbopack-3jyd33d-ci9l1.js",
       "bytes": 4148,
       "type": "script"
@@ -1108,6 +1165,11 @@
      {
       "name": "1gd3h8x2ifg_a.js",
       "bytes": 44305,
+      "type": "script"
+     },
+     {
+      "name": "0bma92pht_c97.js",
+      "bytes": 71928,
       "type": "script"
      },
      {
@@ -1142,7 +1204,7 @@
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 583,
+      "bytes": 584,
       "type": "fetch"
      },
      {
@@ -1218,12 +1280,43 @@
     "primaryButtons": 1,
     "h1s": 1
    },
-   "fold": {
-    "viewport": 844,
-    "primaryActionBottom": 388,
-    "primaryActionVisible": true,
-    "documentHeight": 844,
-    "belowFold": []
+   "primaryAboveFold": {
+    "320x568": {
+     "viewport": "320x568",
+     "primaryActionBottom": 384,
+     "visible": true,
+     "rows": 2
+    },
+    "360x640": {
+     "viewport": "360x640",
+     "primaryActionBottom": 386,
+     "visible": true,
+     "rows": 2
+    },
+    "390x844": {
+     "viewport": "390x844",
+     "primaryActionBottom": 388,
+     "visible": true,
+     "rows": 2
+    },
+    "1280x800": {
+     "viewport": "1280x800",
+     "primaryActionBottom": 383,
+     "visible": true,
+     "rows": 2
+    },
+    "zoom200": {
+     "viewport": "640x400",
+     "primaryActionBottom": 361,
+     "visible": true,
+     "rows": 2
+    },
+    "textSpacing390": {
+     "viewport": "390x844",
+     "primaryActionBottom": 445,
+     "visible": true,
+     "rows": 2
+    }
    },
    "slots": {
     "slotRegions": 0,
@@ -1762,7 +1855,7 @@
     "webgl": [],
     "canvas": 0,
     "scriptBytes": 152301,
-    "totalBytes": 277739,
+    "totalBytes": 277740,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1785,11 +1878,6 @@
       "type": "script"
      },
      {
-      "name": "1gd3h8x2ifg_a.js",
-      "bytes": 44305,
-      "type": "script"
-     },
-     {
       "name": "0bma92pht_c97.js",
       "bytes": 71928,
       "type": "script"
@@ -1797,6 +1885,11 @@
      {
       "name": "turbopack-3jyd33d-ci9l1.js",
       "bytes": 4148,
+      "type": "script"
+     },
+     {
+      "name": "1gd3h8x2ifg_a.js",
+      "bytes": 44305,
       "type": "script"
      },
      {
@@ -1831,7 +1924,7 @@
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 583,
+      "bytes": 584,
       "type": "fetch"
      },
      {
@@ -1851,6 +1944,48 @@
      }
     ]
    }
+  },
+  "C4": {
+   "note": "State C, four enrolled subjects — fold gate only",
+   "primaryAboveFold": {
+    "320x568": {
+     "viewport": "320x568",
+     "primaryActionBottom": 384,
+     "visible": true,
+     "rows": 4
+    },
+    "360x640": {
+     "viewport": "360x640",
+     "primaryActionBottom": 386,
+     "visible": true,
+     "rows": 4
+    },
+    "390x844": {
+     "viewport": "390x844",
+     "primaryActionBottom": 388,
+     "visible": true,
+     "rows": 4
+    },
+    "1280x800": {
+     "viewport": "1280x800",
+     "primaryActionBottom": 383,
+     "visible": true,
+     "rows": 4
+    },
+    "zoom200": {
+     "viewport": "640x400",
+     "primaryActionBottom": 361,
+     "visible": true,
+     "rows": 4
+    },
+    "textSpacing390": {
+     "viewport": "390x844",
+     "primaryActionBottom": 445,
+     "visible": true,
+     "rows": 4
+    }
+   },
+   "rows": 4
   }
  },
  "boundary": {
@@ -1898,18 +2033,18 @@
  "perf": {
   "profile": "Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)",
   "finalUrl": "http://localhost:3100/student",
-  "performanceScore": 91,
+  "performanceScore": 97,
   "accessibilityScore": 100,
   "FCP": "1.4 s",
-  "LCP": "2.9 s",
+  "LCP": "2.4 s",
   "LCPElement": "n/a",
   "CLS": "0",
-  "TBT": "200 ms",
+  "TBT": "90 ms",
   "SpeedIndex": "1.4 s",
-  "TTI": "2.9 s",
-  "longTasksOver50ms": "250ms 0bma92pht_c97.js; 94ms Unattributable; 90ms student; 54ms student; 52ms 1gd3h8x2ifg_a.js",
-  "totalBytes": 346651,
-  "totalKB": 339,
+  "TTI": "3.3 s",
+  "longTasksOver50ms": "207ms 1gd3h8x2ifg_a.js; 82ms Unattributable; 64ms 0bma92pht_c97.js; 56ms student; 50ms student",
+  "totalBytes": 346050,
+  "totalKB": 338,
   "scriptKB": 183,
   "requests": 30,
   "webglInWaterfall": 0
@@ -1921,11 +2056,11 @@
   },
   "hierarchy-A": {
    "pass": true,
-   "detail": "{\"largest\":{\"tag\":\"H1\",\"text\":\"Choose a subject\",\"fontSize\":35.8,\"top\":142,\"area\":10988},\"runnerUp\":{\"tag\":\"P\",\"text\":\"Six environments are open. Choosing one \",\"fontSize\":16,\"top\":196,\"area\":14502},\"fontRatio\":2.24,\"primaryArea\":85623,\"rowsArea\":0,\"primaryButtons\":1,\"h1s\":1}"
+   "detail": "{\"largest\":{\"tag\":\"H1\",\"text\":\"Choose a subject\",\"fontSize\":35.8,\"top\":142,\"area\":10988},\"runnerUp\":{\"tag\":\"P\",\"text\":\"Choosing is where this begins.\",\"fontSize\":16,\"top\":196,\"area\":7251},\"fontRatio\":2.24,\"primaryArea\":77142,\"rowsArea\":0,\"primaryButtons\":1,\"h1s\":1}"
   },
-  "fold-A": {
+  "primary-action-above-fold-A": {
    "pass": true,
-   "detail": "{\"viewport\":844,\"primaryActionBottom\":318,\"primaryActionVisible\":true,\"documentHeight\":844,\"belowFold\":[]}"
+   "detail": "{\"320x568\":{\"viewport\":\"320x568\",\"primaryActionBottom\":326,\"visible\":true,\"rows\":0},\"360x640\":{\"viewport\":\"360x640\",\"primaryActionBottom\":328,\"visible\":true,\"rows\":0},\"390x844\":{\"viewport\":\"390x844\",\"primaryActionBottom\":293,\"visible\":true,\"rows\":0},\"1280x800\":{\"viewport\":\"1280x800\",\"primaryActionBottom\":326,\"visible\":true,\"rows\":0},\"zoom200\":{\"viewport\":\"640x400\",\"primaryActionBottom\":303,\"visible\":true,\"rows\":0},\"textSpacing390\":{\"viewport\":\"390x844\",\"primaryActionBottom\":383,\"visible\":true,\"rows\":0}}"
   },
   "no-empty-slots-A": {
    "pass": true,
@@ -1949,7 +2084,7 @@
   },
   "zoom-spacing-A": {
    "pass": true,
-   "detail": "{\"zoom\":{\"200%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":196,\"clipped\":0},\"400%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":196,\"clipped\":0}},\"textSpacing\":{\"overflow\":false,\"clipped\":0,\"primaryActionBottom\":431}}"
+   "detail": "{\"zoom\":{\"200%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":196,\"clipped\":0},\"400%\":{\"overflow\":false,\"h1Visible\":true,\"primaryActionW\":196,\"clipped\":0}},\"textSpacing\":{\"overflow\":false,\"clipped\":0,\"primaryActionBottom\":383}}"
   },
   "keyboard-A": {
    "pass": true,
@@ -1975,9 +2110,9 @@
    "pass": true,
    "detail": "{\"largest\":{\"tag\":\"H1\",\"text\":\"Physics — The Field\",\"fontSize\":35.8,\"top\":174,\"area\":21976},\"runnerUp\":{\"tag\":\"P\",\"text\":\"You chose Physics yesterday. Your first \",\"fontSize\":16,\"top\":291,\"area\":14502},\"fontRatio\":2.24,\"primaryArea\":118172,\"rowsArea\":57242,\"primaryButtons\":1,\"h1s\":1}"
   },
-  "fold-B": {
+  "primary-action-above-fold-B": {
    "pass": true,
-   "detail": "{\"viewport\":844,\"primaryActionBottom\":413,\"primaryActionVisible\":true,\"documentHeight\":844,\"belowFold\":[]}"
+   "detail": "{\"320x568\":{\"viewport\":\"320x568\",\"primaryActionBottom\":433,\"visible\":true,\"rows\":2},\"360x640\":{\"viewport\":\"360x640\",\"primaryActionBottom\":436,\"visible\":true,\"rows\":2},\"390x844\":{\"viewport\":\"390x844\",\"primaryActionBottom\":413,\"visible\":true,\"rows\":2},\"1280x800\":{\"viewport\":\"1280x800\",\"primaryActionBottom\":383,\"visible\":true,\"rows\":2},\"zoom200\":{\"viewport\":\"640x400\",\"primaryActionBottom\":361,\"visible\":true,\"rows\":2},\"textSpacing390\":{\"viewport\":\"390x844\",\"primaryActionBottom\":493,\"visible\":true,\"rows\":2}}"
   },
   "no-empty-slots-B": {
    "pass": true,
@@ -2027,9 +2162,9 @@
    "pass": true,
    "detail": "{\"largest\":{\"tag\":\"H1\",\"text\":\"Physics — The Field\",\"fontSize\":35.8,\"top\":174,\"area\":21976},\"runnerUp\":{\"tag\":\"P\",\"text\":\"You were last here yesterday.\",\"fontSize\":16,\"top\":291,\"area\":7251},\"fontRatio\":2.24,\"primaryArea\":109691,\"rowsArea\":57242,\"primaryButtons\":1,\"h1s\":1}"
   },
-  "fold-C": {
+  "primary-action-above-fold-C": {
    "pass": true,
-   "detail": "{\"viewport\":844,\"primaryActionBottom\":388,\"primaryActionVisible\":true,\"documentHeight\":844,\"belowFold\":[]}"
+   "detail": "{\"320x568\":{\"viewport\":\"320x568\",\"primaryActionBottom\":384,\"visible\":true,\"rows\":2},\"360x640\":{\"viewport\":\"360x640\",\"primaryActionBottom\":386,\"visible\":true,\"rows\":2},\"390x844\":{\"viewport\":\"390x844\",\"primaryActionBottom\":388,\"visible\":true,\"rows\":2},\"1280x800\":{\"viewport\":\"1280x800\",\"primaryActionBottom\":383,\"visible\":true,\"rows\":2},\"zoom200\":{\"viewport\":\"640x400\",\"primaryActionBottom\":361,\"visible\":true,\"rows\":2},\"textSpacing390\":{\"viewport\":\"390x844\",\"primaryActionBottom\":445,\"visible\":true,\"rows\":2}}"
   },
   "no-empty-slots-C": {
    "pass": true,
@@ -2075,13 +2210,17 @@
    "pass": true,
    "detail": "[]"
   },
+  "primary-action-above-fold-C4": {
+   "pass": true,
+   "detail": "{\"320x568\":{\"viewport\":\"320x568\",\"primaryActionBottom\":384,\"visible\":true,\"rows\":4},\"360x640\":{\"viewport\":\"360x640\",\"primaryActionBottom\":386,\"visible\":true,\"rows\":4},\"390x844\":{\"viewport\":\"390x844\",\"primaryActionBottom\":388,\"visible\":true,\"rows\":4},\"1280x800\":{\"viewport\":\"1280x800\",\"primaryActionBottom\":383,\"visible\":true,\"rows\":4},\"zoom200\":{\"viewport\":\"640x400\",\"primaryActionBottom\":361,\"visible\":true,\"rows\":4},\"textSpacing390\":{\"viewport\":\"390x844\",\"primaryActionBottom\":445,\"visible\":true,\"rows\":4}}"
+  },
   "slot-extremes": {
    "pass": true,
    "detail": "{\"none\":{\"regions\":[],\"slots\":0,\"rowSlots\":0,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":388,\"primaryButtons\":1,\"docHeight\":844,\"overflow\":false},\"some\":{\"regions\":[\"today\",\"reflection\"],\"slots\":4,\"rowSlots\":2,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":388,\"primaryButtons\":1,\"docHeight\":1106,\"overflow\":false},\"all\":{\"regions\":[\"today\",\"library\",\"reflection\",\"tools\"],\"slots\":10,\"rowSlots\":2,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":388,\"primaryButtons\":1,\"docHeight\":1702,\"overflow\":false}}"
   },
   "perf-mid-range": {
    "pass": true,
-   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":91,\"accessibilityScore\":100,\"FCP\":\"1.4 s\",\"LCP\":\"2.9 s\",\"LCPElement\":\"n/a\",\"CLS\":\"0\",\"TBT\":\"200 ms\",\"SpeedIndex\":\"1.4 s\",\"TTI\":\"2.9 s\",\"longTasksOver50ms\":\"250ms 0bma92pht_c97.js; 94ms Unattributable; 90ms student; 54ms student; 52ms 1gd3h8x2ifg_a.js\",\"totalBytes\":346651,\"totalKB\":339,\"scriptKB\":183,\"requests\":30,\"webglInWaterfall\":0}"
+   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":97,\"accessibilityScore\":100,\"FCP\":\"1.4 s\",\"LCP\":\"2.4 s\",\"LCPElement\":\"n/a\",\"CLS\":\"0\",\"TBT\":\"90 ms\",\"SpeedIndex\":\"1.4 s\",\"TTI\":\"3.3 s\",\"longTasksOver50ms\":\"207ms 1gd3h8x2ifg_a.js; 82ms Unattributable; 64ms 0bma92pht_c97.js; 56ms student; 50ms student\",\"totalBytes\":346050,\"totalKB\":338,\"scriptKB\":183,\"requests\":30,\"webglInWaterfall\":0}"
   }
  },
  "signedOut": {

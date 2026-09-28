@@ -2,19 +2,19 @@
  "requestedUrl": "http://localhost:3100/student",
  "finalUrl": "http://localhost:3100/student",
  "categories": {
-  "performance": 0.91,
+  "performance": 0.93,
   "accessibility": 1
  },
  "audits": {
   "first-contentful-paint": {
    "score": 0.97,
-   "value": 1413.26025,
+   "value": 1406.9475,
    "display": "1.4 s"
   },
   "largest-contentful-paint": {
-   "score": 0.79,
-   "value": 2940.1735000000003,
-   "display": "2.9 s"
+   "score": 0.96,
+   "value": 2122.9475,
+   "display": "2.1 s"
   },
   "cumulative-layout-shift": {
    "score": 1,
@@ -22,28 +22,28 @@
    "display": "0"
   },
   "total-blocking-time": {
-   "score": 0.89,
-   "value": 202,
-   "display": "200 ms"
+   "score": 0.82,
+   "value": 273.5,
+   "display": "270 ms"
   },
   "speed-index": {
    "score": 1,
-   "value": 1413.26025,
+   "value": 1424.2623640001443,
    "display": "1.4 s"
   },
   "interactive": {
-   "score": 0.96,
-   "value": 2940.1735000000003,
-   "display": "2.9 s"
+   "score": 0.95,
+   "value": 3039.5149999999994,
+   "display": "3.0 s"
   },
   "total-byte-weight": {
    "score": 1,
-   "value": 346651,
+   "value": 347296,
    "display": "Total size was 339 KiB"
   },
   "long-tasks": {
    "score": 1,
-   "display": "5 long tasks found"
+   "display": "8 long tasks found"
   },
   "largest-contentful-paint-element": {}
  }

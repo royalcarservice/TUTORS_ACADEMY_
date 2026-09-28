@@ -106,7 +106,9 @@ export function primaryCopy(p: StudentShellProps): PrimaryCopy {
     return {
       eyebrow: "What now",
       heading: "Choose a subject",
-      line: "Six environments are open. Choosing one is where this begins.",
+      // P5-R3 FIX 1: no availability claim. Only one of six is publicly reachable
+      // today and nothing can enrol yet; /subjects carries the honest labels.
+      line: "Choosing is where this begins.",
       action: "See the six subjects",
       href: p.chooseHref ?? "/subjects",
       subject: null,

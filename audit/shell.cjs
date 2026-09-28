@@ -27,6 +27,7 @@ const ACCOUNTS = {
   A: process.env.TEST_A || "student-a@test.tutorsacademy.invalid",
   B: process.env.TEST_B || "student-b@test.tutorsacademy.invalid",
   C: process.env.TEST_C || "student-c@test.tutorsacademy.invalid",
+  C4: process.env.TEST_C4 || "student-d@test.tutorsacademy.invalid", // State C with FOUR enrolled subjects (fold gate only)
 };
 const mode = process.argv.includes("--write") ? "write" : process.argv.includes("--check") ? "check" : "run";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -111,14 +112,24 @@ const TEXT_SPACING_CSS = `*{line-height:1.5 !important;letter-spacing:0.12em !im
     });
     gate(`hierarchy-${state}`, S.hierarchy.fontRatio >= 1.6 && S.hierarchy.primaryButtons === 1 && S.hierarchy.h1s === 1 && S.hierarchy.largest.tag === "H1", JSON.stringify(S.hierarchy));
 
-    /* fold (Test 5) */
-    S.fold = await p.evaluate(() => {
-      const a = document.querySelector("[data-primary-action]").getBoundingClientRect();
-      const below = Array.from(document.querySelectorAll("main section, main h2, main li")).filter((e) => e.getBoundingClientRect().top >= innerHeight).map((e) => e.tagName + " " + (e.getAttribute("aria-labelledby") || e.getAttribute("data-subject") || e.textContent.trim().slice(0, 30)));
-      const docH = document.documentElement.scrollHeight;
-      return { viewport: innerHeight, primaryActionBottom: Math.round(a.bottom), primaryActionVisible: a.bottom <= innerHeight, documentHeight: docH, belowFold: below };
-    });
-    gate(`fold-${state}`, S.fold.primaryActionVisible, JSON.stringify(S.fold));
+    /* ── GATE: PRIMARY ACTION ABOVE THE FOLD (P5-R3 FIX 3) ──────────────────
+       At 320×568, 360×640, 390×844, 1280×800, at 200% zoom (1280 desktop →
+       640 CSS px) and under WCAG 1.4.12 text spacing at 390×844.
+       DOCUMENT HEIGHT IS NOT ASSERTED. The old "page fits in 844px" claim was
+       measured at one viewport and was false at others — the shell's height
+       grows with subject rows, which is correct behaviour for a list. The
+       invariant is the primary action's visibility, so that is the gate.   */
+    S.primaryAboveFold = {};
+    const foldMeasure = () => { const a = document.querySelector("[data-primary-action]").getBoundingClientRect(); return { viewport: `${innerWidth}x${innerHeight}`, primaryActionBottom: Math.round(a.bottom), visible: a.bottom <= innerHeight && a.top >= 0, rows: document.querySelectorAll("[data-subject-rows] li").length }; };
+    for (const [label, w, h, mobile] of [["320x568", 320, 568, true], ["360x640", 360, 640, true], ["390x844", 390, 844, true], ["1280x800", 1280, 800, false], ["zoom200", 640, 400, false]]) {
+      await p.setViewport({ width: w, height: h, isMobile: mobile, hasTouch: mobile, deviceScaleFactor: 1 }); await gotoShell(p);
+      S.primaryAboveFold[label] = await p.evaluate(foldMeasure);
+    }
+    await p.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 1 }); await gotoShell(p);
+    await p.addStyleTag({ content: TEXT_SPACING_CSS }); await sleep(100);
+    S.primaryAboveFold["textSpacing390"] = await p.evaluate(foldMeasure);
+    await p.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 1 }); await gotoShell(p);
+    gate(`primary-action-above-fold-${state}`, Object.values(S.primaryAboveFold).every((v) => v.visible), JSON.stringify(S.primaryAboveFold));
 
     /* empty slots (Test 7) */
     S.slots = await p.evaluate(() => ({
@@ -297,8 +308,26 @@ const TEXT_SPACING_CSS = `*{line-height:1.5 !important;letter-spacing:0.12em !im
     await ctx.close();
   }
 
+  /* ── State C with FOUR enrolled subjects: fold gate only (P5-R3) ─────── */
+  {
+    const { ctx, p } = await login(browser, "C4");
+    const res = {};
+    const foldMeasure = () => { const a = document.querySelector("[data-primary-action]").getBoundingClientRect(); return { viewport: `${innerWidth}x${innerHeight}`, primaryActionBottom: Math.round(a.bottom), visible: a.bottom <= innerHeight && a.top >= 0, rows: document.querySelectorAll("[data-subject-rows] li").length }; };
+    for (const [label, w, h, mobile] of [["320x568", 320, 568, true], ["360x640", 360, 640, true], ["390x844", 390, 844, true], ["1280x800", 1280, 800, false], ["zoom200", 640, 400, false]]) {
+      await p.setViewport({ width: w, height: h, isMobile: mobile, hasTouch: mobile, deviceScaleFactor: 1 }); await gotoShell(p);
+      res[label] = await p.evaluate(foldMeasure);
+    }
+    await p.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 1 }); await gotoShell(p);
+    await p.addStyleTag({ content: TEXT_SPACING_CSS }); await sleep(100);
+    res["textSpacing390"] = await p.evaluate(foldMeasure);
+    R.states.C4 = { note: "State C, four enrolled subjects — fold gate only", primaryAboveFold: res, rows: res["390x844"].rows };
+    gate("primary-action-above-fold-C4", res["390x844"].rows === 4 && Object.values(res).every((v) => v.visible), JSON.stringify(res));
+    await ctx.close();
+  }
+
   /* ── boundary checklist (Part 4 / specimen) ────────────────────────── */
-  const allStrings = Object.values(R.states).flatMap((s) => s.strings.concat(s.navStrings)).join("\n");
+  const FULL = () => ["A", "B", "C"].map((k) => R.states[k]);
+  const allStrings = FULL().flatMap((s) => s.strings.concat(s.navStrings)).join("\n");
   const srcFiles = ["src/components/student/student-shell.tsx", "src/components/student/account-entry.tsx", "src/app/(portal)/student/page.tsx", "src/app/(portal)/student/layout.tsx", "src/app/(portal)/student/account/page.tsx", "src/config/student-nav.ts"].map((f) => fs.readFileSync(path.join(ROOT, f), "utf8")).join("\n");
   const srcHits = (list) => list.filter((w) => new RegExp(w, "i").test(srcFiles.replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, "")));
   R.boundary = {
@@ -307,9 +336,9 @@ const TEXT_SPACING_CSS = `*{line-height:1.5 !important;letter-spacing:0.12em !im
     "no notification affordance": { pass: hits(allStrings, ["notification", "unread", "message", "inbox"]).length === 0 && srcHits(["\\bBell\\b", "\\bInbox\\b", "MessageSquare", "BellDot"]).length === 0, evidence: "no bell/inbox/message icon imported; 0 string hits" },
     "no skeleton or shimmer": { pass: hits(allStrings, SKELETON).length === 0 && srcHits(["skeleton", "shimmer", "animate-pulse"]).length === 0, evidence: "0 hits in strings and source" },
     "no greeting banner": { pass: hits(allStrings, ["welcome", "hello", "good morning", "good evening", "hi,"]).length === 0, evidence: "no greeting words in any state" },
-    "one dominant surface": { pass: Object.values(R.states).every((s) => s.hierarchy.fontRatio >= 1.6 && s.hierarchy.primaryButtons === 1 && s.hierarchy.h1s === 1), evidence: Object.entries(R.states).map(([k, s]) => `${k}: h1/runner-up font ratio ${s.hierarchy.fontRatio}, ${s.hierarchy.primaryButtons} primary button`).join(" · ") },
+    "one dominant surface": { pass: FULL().every((s) => s.hierarchy.fontRatio >= 1.6 && s.hierarchy.primaryButtons === 1 && s.hierarchy.h1s === 1), evidence: ["A", "B", "C"].map((k) => [k, R.states[k]]).map(([k, s]) => `${k}: h1/runner-up font ratio ${s.hierarchy.fontRatio}, ${s.hierarchy.primaryButtons} primary button`).join(" · ") },
     "no invented activity": { pass: hits(allStrings, GUILT).length === 0 && hits(allStrings, ["keep it up", "doing great", "momentum", "on track"]).length === 0, evidence: "0 hits for praise/guilt/momentum phrases" },
-    "no dead nav items": { pass: Object.values(R.states).every((s) => s.links.every(([, st]) => st.startsWith("200"))), evidence: Object.values(R.states)[2].links.map((l) => l.join(" → ")).join(" · ") },
+    "no dead nav items": { pass: FULL().every((s) => s.links.every(([, st]) => st.startsWith("200"))), evidence: R.states.C.links.map((l) => l.join(" → ")).join(" · ") },
     "draft subjects labelled, not locked": { pass: /Environment in draft/.test(allStrings) && R.states.C.links.some(([h, st]) => h === "/subjects/physics" && st.startsWith("200")), evidence: "label present in B/C; /subjects/physics (draft) → 200 for enrolled student on the production build" },
     "no search": { pass: srcHits(["<input", "type=\"search\"", "Search"]).length === 0, evidence: "no input/search in shell source" },
   };

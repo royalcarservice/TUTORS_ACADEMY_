@@ -25,3 +25,9 @@
 - MEASURE 4: the 5.3 claim "844px tall, nothing below the fold in any state" is **withdrawn** — it held only at 390×844. Corrected claim: the primary action is above the fold at every measured viewport; subject rows scroll below it on 320×568/360×640 and with four subjects. No compression (no fixed heights, clamps, svh or clipped overflow in `main`).
 - Deploy requirement Node ≥ 22 recorded in `package.json#engines` and `.nvmrc`.
 - State A does not close the loop (no enrolment write) — accepted declared exception, 5.5 owns it. No enrol button, no note.
+
+## DEC-005 — P5-R3 correction pass (owner ruling)
+- FIX 1: State A line "Six environments are open…" was FALSE (one subject `ready`, five `draft`; visitor gets 404 on draft) → replaced with "Choosing is where this begins." No explainer added. All other shipped shell strings verified TRUE (table in `PHASE5_R3_CORRECTION_REPORT.md`).
+- Draft enrolment: `enrolments` INSERT policy checks only that the slug is one of the six; it does NOT check `status`. A signed-in student MAY enrol in a draft subject once 5.5 ships enrolment. This is intended (enrolment outranks public availability); enrolled students already get 200 + "Environment in draft" on draft routes.
+- FIX 2: middleware runs on `/`; measured no cost for signed-out requests (getUser() with no cookie is local). No no-cookie fast path added. Phase 10 item: per-request `getUser()` on signed-in requests (~420 ms TTFB on `/student`) → consider `getClaims()`/JWT verification.
+- FIX 3: old "page fits" assertion (documentHeight / belowFold) REMOVED from `audit/shell.cjs`; replaced by named gate "PRIMARY ACTION ABOVE THE FOLD" at six conditions × states A/B/C + State C with four subjects (persistent test account `student-d`, four enrolments — test account only, not prod data). Document height is deliberately not asserted.
