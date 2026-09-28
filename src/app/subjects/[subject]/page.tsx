@@ -3,7 +3,11 @@ import { notFound } from "next/navigation";
 
 import { SubjectShell } from "@/components/shell/subject-shell";
 import type { ShellNavEntry } from "@/components/shell/subject-nav";
+import { EnvironmentRegions, resolveEnvironmentSlots } from "@/components/student/environment-regions";
+import { Threshold } from "@/components/student/threshold";
+import { getIdentity } from "@/lib/auth/session";
 import { getEnrolledSubjectIds } from "@/lib/student/data";
+import { mayEnrol } from "@/lib/student/enrol";
 import { getSubject, SUBJECTS } from "@/lib/subjects/subjects";
 
 /* /subjects/[subject] — THE SUBJECT ENVIRONMENT (Phase 3 · Step 6 · Part 1)
@@ -21,6 +25,15 @@ import { getSubject, SUBJECTS } from "@/lib/subjects/subjects";
  * stronger relationship than public availability; the draft status stays
  * labelled (banner), never enforced as a lock against the student's own
  * environment. Visitors and non-enrolled students still get the 404.
+ *
+ * 5.5 (P5-R5 — ONE ENVIRONMENT, ROLE-SCOPED REGIONS): this is the same place
+ * for everyone. What differs by identity is decided HERE, server-side:
+ *   · signed-in student, not enrolled, door enterable (`mayEnrol`) → the
+ *     THRESHOLD control (a form POST to /subjects/[id]/enter);
+ *   · signed-in student, enrolled → their own regions (registry- and data-
+ *     gated; all absent today) — access is unconditional, draft included;
+ *   · anyone else → exactly the certified 3.6 composition.
+ * Rendering this page WRITES NOTHING in any state. Entry is the POST.
  */
 
 interface Params {
@@ -48,9 +61,15 @@ export default async function SubjectEnvironmentPage({ params }: Params) {
   if (!s) notFound();
 
   const prod = process.env.NODE_ENV === "production";
+  /* Identity + enrolments, read once (RLS-bounded; a null identity is a visitor). */
+  const identity = await getIdentity();
+  const enrolled = identity ? await getEnrolledSubjectIds() : new Set<string>();
   /* DRAFT GUARD AT THE ROUTE (production) — enrolled students are admitted (5.3). */
-  const enrolled = prod ? await getEnrolledSubjectIds() : new Set<string>();
   if (s.status === "draft" && prod && !enrolled.has(s.id)) notFound();
+
+  const isEnrolled = enrolled.has(s.id);
+  const showThreshold = !!identity && !isEnrolled && mayEnrol(identity, s.id);
+  const studentSlots = identity?.role === "student" && isEnrolled ? resolveEnvironmentSlots(s.id) : [];
 
   const entries: ShellNavEntry[] = SUBJECTS.map((x) => ({
     id: x.id,
@@ -79,6 +98,8 @@ export default async function SubjectEnvironmentPage({ params }: Params) {
       }}
       draft={s.status === "draft"}
       entries={entries}
+      threshold={showThreshold ? <Threshold subjectId={s.id} subjectName={s.name} /> : undefined}
+      regions={studentSlots.length > 0 ? <EnvironmentRegions slots={studentSlots} /> : undefined}
     />
   );
 }

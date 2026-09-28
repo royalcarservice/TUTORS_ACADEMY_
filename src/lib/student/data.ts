@@ -46,9 +46,10 @@ export async function getStudentContext(): Promise<StudentContext | null> {
 }
 
 /**
- * Records a real entry into an environment (called by the environment route
- * once 5.5 wires it — NOT called anywhere yet). Upsert keyed on (student,
- * subject); `position` is never written here because nothing supplies one.
+ * Records a real entry into an environment. Called ONLY by
+ * POST /subjects/[subject]/enter (5.5) — never by a page render. Keyed on
+ * (student, subject); `position` is never written because nothing supplies
+ * one; `entry_count` is bookkeeping that no surface renders (P5-R2).
  */
 export async function recordEnvironmentEntry(userId: string, subjectId: SubjectId): Promise<{ ok: boolean; error?: string }> {
   const supabase = await createClient();

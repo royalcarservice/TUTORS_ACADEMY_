@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T04:58:41.282Z",
+ "generatedAt": "2026-09-28T16:57:43.634Z",
  "ceiling": 12,
  "declared": {
   "arrival": {
@@ -848,7 +848,7 @@
      },
      {
       "tag": "SPAN",
-      "text": "Next · not built yet",
+      "text": "In foundation",
       "mono": true,
       "size": "14px",
       "upper": true
@@ -872,7 +872,7 @@
      "paddingBottom": "0px",
      "borderBottom": "1px"
     },
-    "words": 166,
+    "words": 163,
     "motifs": {
      "surfaces": 0,
      "commands": 0,
@@ -989,7 +989,7 @@
      },
      {
       "tag": "SPAN",
-      "text": "Next · not built yet",
+      "text": "In foundation",
       "mono": true,
       "size": "14px",
       "upper": true
@@ -1006,7 +1006,7 @@
      "paddingBottom": "0px",
      "borderBottom": "1px"
     },
-    "words": 96,
+    "words": 93,
     "motifs": {
      "surfaces": 0,
      "commands": 0,
@@ -1838,7 +1838,7 @@
      },
      {
       "tag": "SPAN",
-      "text": "Next · not built yet",
+      "text": "In foundation",
       "mono": true,
       "size": "14px",
       "upper": true
@@ -1862,7 +1862,7 @@
      "paddingBottom": "0px",
      "borderBottom": "1px"
     },
-    "words": 166,
+    "words": 163,
     "motifs": {
      "surfaces": 0,
      "commands": 0,
@@ -1979,7 +1979,7 @@
      },
      {
       "tag": "SPAN",
-      "text": "Next · not built yet",
+      "text": "In foundation",
       "mono": true,
       "size": "14px",
       "upper": true
@@ -1996,7 +1996,7 @@
      "paddingBottom": "0px",
      "borderBottom": "1px"
     },
-    "words": 96,
+    "words": 93,
     "motifs": {
      "surfaces": 0,
      "commands": 0,
@@ -2106,7 +2106,7 @@
     "byScene": {}
    },
    "lcp": {
-    "t": 308,
+    "t": 216,
     "el": "H1#scene-arrival"
    },
    "sizesBy": {
@@ -2344,7 +2344,7 @@
     "byScene": {}
    },
    "lcp": {
-    "t": 148,
+    "t": 172,
     "el": "H1#scene-arrival"
    },
    "sizesBy": {
@@ -3282,7 +3282,7 @@
   }
  },
  "skim": {
-  "midFlingAnimating": 13,
+  "midFlingAnimating": 14,
   "y": 8205,
   "atBottom": true,
   "hiddenLeft": [],
@@ -3290,34 +3290,34 @@
   "enterStickyOffscreen": true,
   "frames": {
    "n": 73,
-   "avg": 16.9,
-   "worst": 26.3,
-   "over50": 0,
-   "over33": 0
+   "avg": 18.9,
+   "worst": 101.3,
+   "over50": 2,
+   "over33": 4
   },
   "long": [],
   "cls": 0
  },
  "payload": {
   "requests": 25,
-  "bytes": 1067363,
-  "js": 576029,
+  "bytes": 1070002,
+  "js": 576356,
   "webgl": [],
   "canvas": 0,
   "chunks": [
-   "1pmu696bri259.css:59695",
+   "0tqa28nu7s8i1.css:59835",
    "310vm2bl3xxpt.js:5364",
    "0eo1cde-rr3bs.js:33395",
-   "0bma92pht_c97.js:229156",
    "1gd3h8x2ifg_a.js:161255",
+   "0bma92pht_c97.js:229156",
    "turbopack-3jyd33d-ci9l1.js:9721",
-   "1-cz8gjjx6s9_.js:19709",
    "38-1fhcruqr22.js:18256",
-   "021ib0sjfd8mh.js:27703",
-   "1_j1dqh-q6_rf.js:14319",
+   "1-cz8gjjx6s9_.js:19709",
    "39_aak4o4r66c.js:29802",
+   "021ib0sjfd8mh.js:27703",
+   "03-wuj5agr0xs.js:14642",
    "22i43cg4l4-dq.js:8868",
-   "23w-47w9035co.js:18481"
+   "06ydshfabodr4.js:18485"
   ]
  },
  "noJs": {
@@ -3328,8 +3328,8 @@
    "choice:451w",
    "enter:467w",
    "people:193w",
-   "practice:402w",
-   "promise:396w",
+   "practice:399w",
+   "promise:393w",
    "return:133w"
   ],
   "hiddenByMotion": 1,
@@ -3499,10 +3499,10 @@
  "slow3g": {
   "at2500ms": {
    "h1": true,
-   "text": 5057,
+   "text": 5043,
    "fontsSettled": "loaded"
   },
-  "loadMs": 2542,
+  "loadMs": 2566,
   "afterLoad": {
    "h1": true,
    "ctas": 2,
@@ -3564,6 +3564,15 @@
    ]
   },
   {
+   "route": "/dev/next-action",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "empty-table-header:10"
+   ]
+  },
+  {
    "route": "/dev/page",
    "prod": 404,
    "dev": 200,
@@ -3585,11 +3594,9 @@
   {
    "route": "/dev/scene-choice",
    "prod": 404,
-   "dev": 200,
+   "dev": "ERR",
    "hydration": 0,
-   "axe": [
-    "skip-link:10"
-   ]
+   "axe": null
   },
   {
    "route": "/dev/scene-enter",
@@ -3654,6 +3661,15 @@
    "axe": []
   },
   {
+   "route": "/dev/student-shell",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "landmark-unique:5"
+   ]
+  },
+  {
    "route": "/dev/subjects",
    "prod": 404,
    "dev": 200,
@@ -3690,11 +3706,11 @@
   }
  ],
  "subjectsScaffold": {
-  "status": 304,
+  "status": 200,
   "text": "TEMPORARY SCAFFOLD\n\nSubjects\n\nEach subject is a place, not a page of content. This list is a scaffold so the environments are reachable — the real subject chooser is built in Phase 4 and will replace it. Draft subjects are not linkable in production.\n\nMathematics\nPhysics · in foundation — not yet available\nChemistry · in foundation — not yet available\nBiology · in foundation — not yet available\nEn"
  },
  "totals": {
-  "words": 722,
+  "words": 716,
   "readingMin": 3.1,
   "scrollActual": 11.01,
   "scrollDeclared": 11,
@@ -3715,179 +3731,5 @@
    "note": "3.3 ceilings are PER SURFACE (src/lib/motif/budgets.ts). `dom` here counts every SVG descendant incl. defs/mask/title (stricter than motifBudget() grouped count); `commands` counts path commands, same as 3.3."
   }
  },
- "pass": true,
- "authorization": {
-  "generatedAt": "2026-09-28T08:02:52.774Z",
-  "note": "EXPECTED behaviour since 5.3 (P5-R1/P5-R2): enrolled identity admitted to own draft environment; role checked server-side on /tutor and /admin.",
-  "results": {
-   "visitor": {
-    "/tutor": {
-     "firstStatus": 307,
-     "landed": "/login?next=%2Ftutor",
-     "finalStatus": 200,
-     "h1": "Sign in",
-     "surface": "login form",
-     "shellMarkup": false,
-     "draftBanner": false,
-     "js": false
-    },
-    "/admin": {
-     "firstStatus": 307,
-     "landed": "/login?next=%2Fadmin",
-     "finalStatus": 200,
-     "h1": "Sign in",
-     "surface": "login form",
-     "shellMarkup": false,
-     "draftBanner": false,
-     "js": false
-    },
-    "/subjects/physics": {
-     "firstStatus": 404,
-     "landed": "/subjects/physics",
-     "finalStatus": 404,
-     "h1": "(no h1)",
-     "surface": "404 page",
-     "shellMarkup": false,
-     "draftBanner": false,
-     "js": false
-    },
-    "/subjects/mathematics": {
-     "firstStatus": 200,
-     "landed": "/subjects/mathematics",
-     "finalStatus": 200,
-     "h1": "Mathematics",
-     "surface": "subject environment",
-     "shellMarkup": false,
-     "draftBanner": false,
-     "js": false
-    },
-    "/student": {
-     "firstStatus": 307,
-     "landed": "/login?next=%2Fstudent",
-     "finalStatus": 200,
-     "h1": "Sign in",
-     "surface": "login form",
-     "shellMarkup": false,
-     "draftBanner": false,
-     "js": false
-    }
-   },
-   "student-A": {
-    "/tutor": {
-     "firstStatus": "3xx (redirect, server)",
-     "firstSurface": "(redirect)",
-     "landed": "/student",
-     "finalStatus": 200,
-     "h1": "Choose a subject",
-     "surface": "student shell",
-     "shellMarkup": true,
-     "draftBanner": false
-    },
-    "/admin": {
-     "firstStatus": "3xx (redirect, server)",
-     "firstSurface": "(redirect)",
-     "landed": "/student",
-     "finalStatus": 200,
-     "h1": "Choose a subject",
-     "surface": "student shell",
-     "shellMarkup": true,
-     "draftBanner": false
-    },
-    "/subjects/physics": {
-     "firstStatus": 404,
-     "firstSurface": "404 page",
-     "landed": "/subjects/physics",
-     "finalStatus": 404,
-     "h1": "We couldn't find that page",
-     "surface": "404 page",
-     "shellMarkup": false,
-     "draftBanner": false
-    },
-    "/subjects/mathematics": {
-     "firstStatus": 200,
-     "firstSurface": "subject environment",
-     "landed": "/subjects/mathematics",
-     "finalStatus": 200,
-     "h1": "Mathematics",
-     "surface": "subject environment",
-     "shellMarkup": false,
-     "draftBanner": false
-    },
-    "/student": {
-     "firstStatus": 200,
-     "firstSurface": "student shell",
-     "landed": "/student",
-     "finalStatus": 200,
-     "h1": "Choose a subject",
-     "surface": "student shell",
-     "shellMarkup": true,
-     "draftBanner": false
-    }
-   },
-   "student-C": {
-    "/tutor": {
-     "firstStatus": "3xx (redirect, server)",
-     "firstSurface": "(redirect)",
-     "landed": "/student",
-     "finalStatus": 200,
-     "h1": "Physics — The Field",
-     "surface": "student shell",
-     "shellMarkup": true,
-     "draftBanner": true
-    },
-    "/admin": {
-     "firstStatus": "3xx (redirect, server)",
-     "firstSurface": "(redirect)",
-     "landed": "/student",
-     "finalStatus": 200,
-     "h1": "Physics — The Field",
-     "surface": "student shell",
-     "shellMarkup": true,
-     "draftBanner": true
-    },
-    "/subjects/physics": {
-     "firstStatus": 200,
-     "firstSurface": "subject environment",
-     "landed": "/subjects/physics",
-     "finalStatus": 200,
-     "h1": "Physics",
-     "surface": "subject environment",
-     "shellMarkup": false,
-     "draftBanner": true
-    },
-    "/subjects/mathematics": {
-     "firstStatus": 200,
-     "firstSurface": "subject environment",
-     "landed": "/subjects/mathematics",
-     "finalStatus": 200,
-     "h1": "Mathematics",
-     "surface": "subject environment",
-     "shellMarkup": false,
-     "draftBanner": false
-    },
-    "/student": {
-     "firstStatus": 200,
-     "firstSurface": "student shell",
-     "landed": "/student",
-     "finalStatus": 200,
-     "h1": "Physics — The Field",
-     "surface": "student shell",
-     "shellMarkup": true,
-     "draftBanner": true
-    }
-   }
-  },
-  "checks": {
-   "visitor /tutor → login": true,
-   "visitor /admin → login": true,
-   "visitor draft env → 404": true,
-   "visitor ready env → 200": true,
-   "student /tutor → /student, server-side": true,
-   "student /admin → /student, server-side": true,
-   "student never sees tutor/admin placeholder": true,
-   "non-enrolled student draft env → 404": true,
-   "enrolled student draft env → 200 + draft label": true
-  },
-  "pass": true
- }
+ "pass": true
 }

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T12:39:53.647Z",
+ "generatedAt": "2026-09-28T17:11:56.870Z",
  "reference": "390x844 mobile",
  "states": {
   "A": {
@@ -124,6 +124,11 @@
     "/auth/signout post",
     "/auth/signout post"
    ],
+   "action": {
+    "kind": "link",
+    "href": "/subjects",
+    "status": 200
+   },
    "viewports": {
     "320": {
      "scrollW": 320,
@@ -431,7 +436,7 @@
     "webgl": [],
     "canvas": 0,
     "scriptBytes": 152301,
-    "totalBytes": 278711,
+    "totalBytes": 278602,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -454,6 +459,11 @@
       "type": "script"
      },
      {
+      "name": "1gd3h8x2ifg_a.js",
+      "bytes": 44305,
+      "type": "script"
+     },
+     {
       "name": "0bma92pht_c97.js",
       "bytes": 71928,
       "type": "script"
@@ -471,11 +481,6 @@
      {
       "name": "3inus7zioy109.js",
       "bytes": 7606,
-      "type": "script"
-     },
-     {
-      "name": "1gd3h8x2ifg_a.js",
-      "bytes": 44305,
       "type": "script"
      },
      {
@@ -505,7 +510,7 @@
      },
      {
       "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 579,
+      "bytes": 467,
       "type": "fetch"
      },
      {
@@ -515,7 +520,7 @@
      },
      {
       "name": "student?_rsc=iUSOvukGHSRwsy2X",
-      "bytes": 1455,
+      "bytes": 1458,
       "type": "fetch"
      }
     ]
@@ -661,8 +666,17 @@
    ],
    "forms": [
     "/auth/signout post",
-    "/auth/signout post"
+    "/auth/signout post",
+    "/subjects/physics/enter post"
    ],
+   "action": {
+    "kind": "form",
+    "method": "post",
+    "action": "/subjects/physics/enter",
+    "getOnEndpoint": 405,
+    "dest": "/subjects/physics",
+    "destStatus": 200
+   },
    "viewports": {
     "320": {
      "scrollW": 320,
@@ -755,7 +769,7 @@
      "ring": true
     },
     {
-     "el": "A",
+     "el": "BUTTON",
      "name": "Open Physics",
      "focused": true,
      "ring": true
@@ -795,7 +809,7 @@
      "ring": true
     },
     {
-     "el": "A",
+     "el": "BUTTON",
      "name": "Open Physics",
      "ring": true
     },
@@ -817,8 +831,8 @@
     "heading: Physics — The Field (h1)",
     "StaticText: ENVIRONMENT IN DRAFT",
     "StaticText: You chose Physics yesterday. Your first session begins when you open it.",
-    "link: Open Physics",
-    "StaticText: Open Physics",
+    "form",
+    "button: Open Physics",
     "region: YOUR SUBJECTS",
     "heading: YOUR SUBJECTS (h2)",
     "link: Open Physics — The Field",
@@ -1131,11 +1145,11 @@
     "passes": 37
    },
    "network": {
-    "requests": 22,
+    "requests": 21,
     "webgl": [],
     "canvas": 0,
     "scriptBytes": 152301,
-    "totalBytes": 277735,
+    "totalBytes": 277041,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1158,6 +1172,11 @@
       "type": "script"
      },
      {
+      "name": "1gd3h8x2ifg_a.js",
+      "bytes": 44305,
+      "type": "script"
+     },
+     {
       "name": "0bma92pht_c97.js",
       "bytes": 71928,
       "type": "script"
@@ -1165,11 +1184,6 @@
      {
       "name": "turbopack-3jyd33d-ci9l1.js",
       "bytes": 4148,
-      "type": "script"
-     },
-     {
-      "name": "1gd3h8x2ifg_a.js",
-      "bytes": 44305,
       "type": "script"
      },
      {
@@ -1188,28 +1202,23 @@
       "type": "script"
      },
      {
-      "name": "03bda585a99c6450-s.32sris142tqlb.woff2",
-      "bytes": 36860,
-      "type": "css"
-     },
-     {
       "name": "70bc3e132a0a741e-s.3t6q91iet4nsy.woff2",
       "bytes": 40780,
       "type": "css"
      },
      {
-      "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 583,
-      "type": "fetch"
+      "name": "03bda585a99c6450-s.32sris142tqlb.woff2",
+      "bytes": 36860,
+      "type": "css"
+     },
+     {
+      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
+      "bytes": 663,
+      "type": "other"
      },
      {
       "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 579,
-      "type": "fetch"
-     },
-     {
-      "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 479,
+      "bytes": 467,
       "type": "fetch"
      },
      {
@@ -1218,9 +1227,9 @@
       "type": "fetch"
      },
      {
-      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
-      "bytes": 663,
-      "type": "other"
+      "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 480,
+      "type": "fetch"
      }
     ]
    }
@@ -1365,8 +1374,17 @@
    ],
    "forms": [
     "/auth/signout post",
-    "/auth/signout post"
+    "/auth/signout post",
+    "/subjects/physics/enter post"
    ],
+   "action": {
+    "kind": "form",
+    "method": "post",
+    "action": "/subjects/physics/enter",
+    "getOnEndpoint": 405,
+    "dest": "/subjects/physics",
+    "destStatus": 200
+   },
    "viewports": {
     "320": {
      "scrollW": 320,
@@ -1459,7 +1477,7 @@
      "ring": true
     },
     {
-     "el": "A",
+     "el": "BUTTON",
      "name": "Open Physics",
      "focused": true,
      "ring": true
@@ -1499,7 +1517,7 @@
      "ring": true
     },
     {
-     "el": "A",
+     "el": "BUTTON",
      "name": "Open Physics",
      "ring": true
     },
@@ -1521,8 +1539,8 @@
     "heading: Physics — The Field (h1)",
     "StaticText: ENVIRONMENT IN DRAFT",
     "StaticText: You were last here yesterday.",
-    "link: Open Physics",
-    "StaticText: Open Physics",
+    "form",
+    "button: Open Physics",
     "region: YOUR SUBJECTS",
     "heading: YOUR SUBJECTS (h2)",
     "link: Open Physics — The Field",
@@ -1851,11 +1869,11 @@
     "passes": 37
    },
    "network": {
-    "requests": 21,
+    "requests": 19,
     "webgl": [],
     "canvas": 0,
     "scriptBytes": 152301,
-    "totalBytes": 277253,
+    "totalBytes": 276195,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1878,11 +1896,6 @@
       "type": "script"
      },
      {
-      "name": "turbopack-3jyd33d-ci9l1.js",
-      "bytes": 4148,
-      "type": "script"
-     },
-     {
       "name": "1gd3h8x2ifg_a.js",
       "bytes": 44305,
       "type": "script"
@@ -1890,6 +1903,11 @@
      {
       "name": "0bma92pht_c97.js",
       "bytes": 71928,
+      "type": "script"
+     },
+     {
+      "name": "turbopack-3jyd33d-ci9l1.js",
+      "bytes": 4148,
       "type": "script"
      },
      {
@@ -1926,22 +1944,12 @@
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
       "bytes": 583,
       "type": "fetch"
-     },
-     {
-      "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 579,
-      "type": "fetch"
-     },
-     {
-      "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 479,
-      "type": "fetch"
      }
     ]
    }
   },
   "C4": {
-   "note": "State C, four enrolled subjects — fold gate only",
+   "note": "State C, four enrolled subjects — fold gate + live POST",
    "primaryAboveFold": {
     "320x568": {
      "viewport": "320x568",
@@ -1980,7 +1988,15 @@
      "rows": 4
     }
    },
-   "rows": 4
+   "rows": 4,
+   "post": {
+    "kind": "form",
+    "type": "opaqueredirect",
+    "status": 0,
+    "location": null,
+    "dest": "/subjects/physics",
+    "destStatusAfterPost": 200
+   }
   }
  },
  "boundary": {
@@ -2028,20 +2044,20 @@
  "perf": {
   "profile": "Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)",
   "finalUrl": "http://localhost:3100/student",
-  "performanceScore": 95,
+  "performanceScore": 67,
   "accessibilityScore": 100,
-  "FCP": "1.5 s",
-  "LCP": "2.9 s",
+  "FCP": "0.9 s",
+  "LCP": "3.5 s",
   "LCPElement": "n/a",
   "CLS": "0",
-  "TBT": "70 ms",
-  "SpeedIndex": "1.5 s",
-  "TTI": "3.3 s",
-  "longTasksOver50ms": "195ms 0bma92pht_c97.js; 81ms student; 64ms student; 63ms Unattributable",
-  "totalBytes": 348051,
-  "totalKB": 340,
-  "scriptKB": 183,
-  "requests": 30,
+  "TBT": "1,220 ms",
+  "SpeedIndex": "1.7 s",
+  "TTI": "4.1 s",
+  "longTasksOver50ms": "828ms 0bma92pht_c97.js; 257ms 1gd3h8x2ifg_a.js; 231ms Unattributable; 130ms student; 127ms student; 120ms 0bma92pht_c97.js; 105ms student; 89ms student; 77ms 1gd3h8x2ifg_a.js; 63ms 0bma92pht_c97.js; 60ms 0bma92pht_c97.js; 59ms 1gd3h8x2ifg_a.js; 54ms Unattributable; 53ms turbopack-3jyd33d-ci9l1.js; 50ms Unattributable",
+  "totalBytes": 335919,
+  "totalKB": 328,
+  "scriptKB": 176,
+  "requests": 29,
   "webglInWaterfall": 0
  },
  "gates": {
@@ -2068,6 +2084,10 @@
   "links-A": {
    "pass": true,
    "detail": "[[\"/\",\"200\"],[\"/student\",\"200\"],[\"/subjects\",\"200\"],[\"/student/account\",\"200\"]]"
+  },
+  "action-resolves-A": {
+   "pass": true,
+   "detail": "{\"kind\":\"link\",\"href\":\"/subjects\",\"status\":200}"
   },
   "no-hscroll-A": {
    "pass": true,
@@ -2121,6 +2141,10 @@
    "pass": true,
    "detail": "[[\"/\",\"200\"],[\"/student\",\"200\"],[\"/subjects\",\"200\"],[\"/student/account\",\"200\"],[\"/subjects/physics\",\"200\"],[\"/subjects/mathematics\",\"200\"]]"
   },
+  "action-resolves-B": {
+   "pass": true,
+   "detail": "{\"kind\":\"form\",\"method\":\"post\",\"action\":\"/subjects/physics/enter\",\"getOnEndpoint\":405,\"dest\":\"/subjects/physics\",\"destStatus\":200}"
+  },
   "no-hscroll-B": {
    "pass": true,
    "detail": "{\"320\":{\"scrollW\":320,\"clientW\":320,\"overflow\":false,\"primaryW\":272},\"390\":{\"scrollW\":390,\"clientW\":390,\"overflow\":false,\"primaryW\":342},\"768\":{\"scrollW\":768,\"clientW\":768,\"overflow\":false,\"primaryW\":704},\"1280\":{\"scrollW\":1280,\"clientW\":1280,\"overflow\":false,\"primaryW\":1024},\"1920\":{\"scrollW\":1920,\"clientW\":1920,\"overflow\":false,\"primaryW\":992}}"
@@ -2135,7 +2159,7 @@
   },
   "keyboard-B": {
    "pass": true,
-   "detail": "[{\"el\":\"A\",\"name\":\"Skip to content\",\"ring\":true},{\"el\":\"A\",\"name\":\"Tutors Academy home\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Switch to dark theme\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Open menu\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Physics\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Physics — The Field\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Mathematics — The Lattice\",\"ring\":true}]"
+   "detail": "[{\"el\":\"A\",\"name\":\"Skip to content\",\"ring\":true},{\"el\":\"A\",\"name\":\"Tutors Academy home\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Switch to dark theme\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Open menu\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Open Physics\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Physics — The Field\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Mathematics — The Lattice\",\"ring\":true}]"
   },
   "contrast-B": {
    "pass": true,
@@ -2173,6 +2197,10 @@
    "pass": true,
    "detail": "[[\"/\",\"200\"],[\"/student\",\"200\"],[\"/subjects\",\"200\"],[\"/student/account\",\"200\"],[\"/subjects/physics\",\"200\"],[\"/subjects/mathematics\",\"200\"]]"
   },
+  "action-resolves-C": {
+   "pass": true,
+   "detail": "{\"kind\":\"form\",\"method\":\"post\",\"action\":\"/subjects/physics/enter\",\"getOnEndpoint\":405,\"dest\":\"/subjects/physics\",\"destStatus\":200}"
+  },
   "no-hscroll-C": {
    "pass": true,
    "detail": "{\"320\":{\"scrollW\":320,\"clientW\":320,\"overflow\":false,\"primaryW\":272},\"390\":{\"scrollW\":390,\"clientW\":390,\"overflow\":false,\"primaryW\":342},\"768\":{\"scrollW\":768,\"clientW\":768,\"overflow\":false,\"primaryW\":704},\"1280\":{\"scrollW\":1280,\"clientW\":1280,\"overflow\":false,\"primaryW\":1024},\"1920\":{\"scrollW\":1920,\"clientW\":1920,\"overflow\":false,\"primaryW\":992}}"
@@ -2187,7 +2215,7 @@
   },
   "keyboard-C": {
    "pass": true,
-   "detail": "[{\"el\":\"A\",\"name\":\"Skip to content\",\"ring\":true},{\"el\":\"A\",\"name\":\"Tutors Academy home\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Switch to dark theme\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Open menu\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Physics\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Physics — The Field\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Mathematics — The Lattice\",\"ring\":true}]"
+   "detail": "[{\"el\":\"A\",\"name\":\"Skip to content\",\"ring\":true},{\"el\":\"A\",\"name\":\"Tutors Academy home\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Switch to dark theme\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Open menu\",\"ring\":true},{\"el\":\"BUTTON\",\"name\":\"Open Physics\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Physics — The Field\",\"ring\":true},{\"el\":\"A\",\"name\":\"Open Mathematics — The Lattice\",\"ring\":true}]"
   },
   "contrast-C": {
    "pass": true,
@@ -2209,13 +2237,17 @@
    "pass": true,
    "detail": "{\"320x568\":{\"viewport\":\"320x568\",\"primaryActionBottom\":384,\"visible\":true,\"rows\":4},\"360x640\":{\"viewport\":\"360x640\",\"primaryActionBottom\":386,\"visible\":true,\"rows\":4},\"390x844\":{\"viewport\":\"390x844\",\"primaryActionBottom\":388,\"visible\":true,\"rows\":4},\"1280x800\":{\"viewport\":\"1280x800\",\"primaryActionBottom\":383,\"visible\":true,\"rows\":4},\"zoom200\":{\"viewport\":\"640x400\",\"primaryActionBottom\":361,\"visible\":true,\"rows\":4},\"textSpacing390\":{\"viewport\":\"390x844\",\"primaryActionBottom\":445,\"visible\":true,\"rows\":4}}"
   },
+  "action-post-303-then-200 (C4)": {
+   "pass": true,
+   "detail": "{\"kind\":\"form\",\"type\":\"opaqueredirect\",\"status\":0,\"location\":null,\"dest\":\"/subjects/physics\",\"destStatusAfterPost\":200}"
+  },
   "slot-extremes": {
    "pass": true,
    "detail": "{\"none\":{\"regions\":[],\"slots\":0,\"rowSlots\":0,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":388,\"primaryButtons\":1,\"docHeight\":844,\"overflow\":false},\"some\":{\"regions\":[\"today\",\"reflection\"],\"slots\":4,\"rowSlots\":2,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":388,\"primaryButtons\":1,\"docHeight\":1106,\"overflow\":false},\"all\":{\"regions\":[\"today\",\"library\",\"reflection\",\"tools\"],\"slots\":10,\"rowSlots\":2,\"h1Font\":35.8,\"maxOtherFont\":16,\"primaryActionBottom\":388,\"primaryButtons\":1,\"docHeight\":1702,\"overflow\":false}}"
   },
   "perf-mid-range": {
    "pass": true,
-   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":95,\"accessibilityScore\":100,\"FCP\":\"1.5 s\",\"LCP\":\"2.9 s\",\"LCPElement\":\"n/a\",\"CLS\":\"0\",\"TBT\":\"70 ms\",\"SpeedIndex\":\"1.5 s\",\"TTI\":\"3.3 s\",\"longTasksOver50ms\":\"195ms 0bma92pht_c97.js; 81ms student; 64ms student; 63ms Unattributable\",\"totalBytes\":348051,\"totalKB\":340,\"scriptKB\":183,\"requests\":30,\"webglInWaterfall\":0}"
+   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":67,\"accessibilityScore\":100,\"FCP\":\"0.9 s\",\"LCP\":\"3.5 s\",\"LCPElement\":\"n/a\",\"CLS\":\"0\",\"TBT\":\"1,220 ms\",\"SpeedIndex\":\"1.7 s\",\"TTI\":\"4.1 s\",\"longTasksOver50ms\":\"828ms 0bma92pht_c97.js; 257ms 1gd3h8x2ifg_a.js; 231ms Unattributable; 130ms student; 127ms student; 120ms 0bma92pht_c97.js; 105ms student; 89ms student; 77ms 1gd3h8x2ifg_a.js; 63ms 0bma92pht_c97.js; 60ms 0bma92pht_c97.js; 59ms 1gd3h8x2ifg_a.js; 54ms Unattributable; 53ms turbopack-3jyd33d-ci9l1.js; 50ms Unattributable\",\"totalBytes\":335919,\"totalKB\":328,\"scriptKB\":176,\"requests\":29,\"webglInWaterfall\":0}"
   }
  },
  "signedOut": {
@@ -2270,6 +2302,28 @@
   }
  },
  "specimenAxe": [],
+ "notedVariance": {
+  "metric": "LCP /student, Lighthouse mobile simulated",
+  "runs": {
+   "5.4": {
+    "2.1-2.2s": 3,
+    "2.9-3.0s": 6
+   },
+   "5.5-cold-after-warmup": {
+    "2.1-2.5s": 2,
+    "3.2-3.4s": 7
+   },
+   "5.5-repeat-visit": {
+    "0.9-1.1s": 9
+   }
+  },
+  "ttfbMedianMs": {
+   "5.4": 404,
+   "5.5": 460
+  },
+  "gate": false,
+  "owner": "Phase 10"
+ },
  "pass": true,
  "failed": []
 }

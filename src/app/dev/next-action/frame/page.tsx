@@ -6,6 +6,7 @@ import { StudentShell } from "@/components/student/student-shell";
 import { STUDENT_NAV_ITEMS } from "@/config/student-nav";
 import { nextActionFor, resolverStateFor, judge, type Candidate } from "@/lib/next-action";
 import { deriveShellState } from "@/lib/student/contract";
+import { entryAction } from "@/lib/student/enrol";
 import { shellSubjectInfo } from "@/lib/student/subject-info";
 
 import { FUTURE, FUTURE_INPUT, MATRIX, NOW, pretendLive } from "../fixtures";
@@ -43,7 +44,7 @@ export default async function NextActionFrame({ searchParams }: { searchParams: 
       <NavShell mode="room" navLabel="Student" items={[...STUDENT_NAV_ITEMS]} account={<AccountEntry displayName="Specimen student" />} />
       <main id="main">
         <div className="ta-container ta-container--content" style={{ paddingBlock: "var(--ta-space-6) var(--ta-space-16)" }}>
-          <StudentShell state={state} candidate={candidate} enrolments={[...input.enrolments]} environmentStates={[...input.environmentStates]} subjects={shellSubjectInfo()} slots={[]} now={NOW} />
+          <StudentShell state={state} candidate={candidate} enrolments={[...input.enrolments]} environmentStates={[...input.environmentStates]} subjects={shellSubjectInfo()} slots={[]} now={NOW} entryAction={entryAction} />
         </div>
       </main>
     </div>

@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+
+import { isOpen } from "@/lib/subjects/door";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { SubjectMark } from "@/components/brand/subject-mark";
@@ -86,7 +88,8 @@ export function taglineRest(tagline?: string) {
   const i = tagline.indexOf(" — ");
   return i === -1 ? tagline : tagline.slice(i + 3).trim();
 }
-export const isOpen = (e: { status?: string }) => !!e.status && e.status !== "draft";
+/* 5.5: the door predicate now lives in src/lib/subjects/door.ts (one place, readable by the server-side enrolment predicate). Re-exported unchanged. */
+export { isOpen };
 /** Default environment: first ready in config order; else the first entry. */
 export function defaultEnvironment(entries: EnterEntry[]) {
   return (entries.find(isOpen) ?? entries[0])?.id ?? "";

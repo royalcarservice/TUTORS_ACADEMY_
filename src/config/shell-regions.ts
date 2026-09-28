@@ -30,7 +30,11 @@ export const SHELL_REGIONS: readonly ShellRegion[] = [
   {
     id: "work-progress",
     title: "Assignments, tests & progress",
-    note: "Your work and progress will appear here when the student portal ships (currently planned in the module registry).",
+    /* 5.5 · Addendum 2: the registry now says `in-progress` (the student shell
+       exists; assignments, tests and progress do not). The note follows the
+       registry — a declared change to the visitor HTML, re-pinned in
+       audit/environment-baseline.json. */
+    note: "Your work and progress will appear here when the student portal ships (in progress in the module registry — the student shell exists; assignments, tests and progress do not yet).",
   },
   {
     id: "recordings-notes",

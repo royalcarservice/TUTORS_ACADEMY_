@@ -1,0 +1,66 @@
+import { PLATFORM_MODULES } from "@/config/modules";
+import { ENVIRONMENT_REGIONS, ENVIRONMENT_SLOTS, type EnvironmentRegion } from "@/config/student-slots";
+
+/* STUDENT REGIONS INSIDE AN ENVIRONMENT (Phase 5 · Step 5 · Part 5)
+ *
+ * The second scope of 5.3's slot map. Rendered by the environment page ONLY
+ * for the signed-in, enrolled student — a visitor's HTML never contains
+ * [data-student-region]. Each slot is gated twice: by src/config/modules
+ * (the module must be `live`) and by data (the resolver must return an
+ * element). Today every slot resolves to null, so this component renders
+ * NOTHING — not a heading, not a box. 3.6's honest labels remain the single
+ * honest statement about what is not built.
+ */
+
+export interface ResolvedEnvironmentSlot {
+  id: string;
+  region: EnvironmentRegion;
+  element: React.ReactNode;
+}
+
+const isLive = (moduleId: string) => PLATFORM_MODULES.some((m) => m.id === moduleId && m.status === "live");
+
+/**
+ * Resolve the environment slots for one subject. Resolvers are looked up by
+ * slot id; a slot whose module is not live is never even asked. Returns only
+ * slots with an element. Today the resolver table is EMPTY — nothing exists.
+ */
+export function resolveEnvironmentSlots(
+  subjectId: string,
+  resolvers: Partial<Record<string, (subjectId: string) => React.ReactNode | null>> = ENVIRONMENT_SLOT_RESOLVERS,
+): ResolvedEnvironmentSlot[] {
+  const out: ResolvedEnvironmentSlot[] = [];
+  for (const def of ENVIRONMENT_SLOTS) {
+    if (!isLive(def.module)) continue;             // REGISTRY GATE
+    const r = resolvers[def.id];
+    const element = r ? r(subjectId) : null;
+    if (element) out.push({ id: def.id, region: def.region, element });
+  }
+  return out;
+}
+
+/** THE FILL POINT for the environment scope. Empty: nothing inside an environment exists yet. */
+export const ENVIRONMENT_SLOT_RESOLVERS: Partial<Record<string, (subjectId: string) => React.ReactNode | null>> = {};
+
+const MONO: React.CSSProperties = { fontFamily: "var(--ta-font-mono)", fontSize: "var(--ta-text-2xs)", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--ta-text-muted)", margin: 0 };
+
+export function EnvironmentRegions({ slots }: { slots: ResolvedEnvironmentSlot[] }) {
+  if (slots.length === 0) return null;
+  const regions = (Object.keys(ENVIRONMENT_REGIONS) as EnvironmentRegion[])
+    .filter((r) => r !== "threshold")
+    .sort((a, b) => ENVIRONMENT_REGIONS[a].order - ENVIRONMENT_REGIONS[b].order)
+    .map((r) => ({ region: r, items: slots.filter((s) => s.region === r) }))
+    .filter((x) => x.items.length > 0);
+  return (
+    <div data-student-regions style={{ display: "grid", gap: "var(--ta-space-stack)" }}>
+      {regions.map(({ region, items }) => (
+        <section key={region} data-student-region={region} aria-labelledby={`student-region-${region}`}>
+          <h3 id={`student-region-${region}`} style={{ ...MONO, marginBottom: "var(--ta-space-2)" }}>{ENVIRONMENT_REGIONS[region].title}</h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: "var(--ta-space-3)" }}>
+            {items.map((x) => <div key={x.id} data-slot={x.id}>{x.element}</div>)}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}

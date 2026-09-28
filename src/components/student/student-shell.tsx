@@ -61,6 +61,13 @@ export interface StudentShellProps {
   /** Where the subject rows link and the primary action opens. */
   subjectHref?: (id: SubjectId) => string;
   chooseHref?: string;
+  /**
+   * 5.5: when the answer OPENS an environment the student is already enrolled
+   * in (kind begin | resume), the action is a form POST to this endpoint —
+   * the act records an entry (recency = last explicit entry). Same element
+   * size, position and hierarchy; different element semantics. Absent → link.
+   */
+  entryAction?: (id: SubjectId) => string;
 }
 
 const MONO: React.CSSProperties = {
@@ -110,6 +117,8 @@ export function StudentShell(props: StudentShellProps) {
   const { state, enrolments, environmentStates, subjects, slots, now } = props;
   const subjectHref = props.subjectHref ?? ((id: SubjectId) => `/subjects/${id}`);
   const copy = primaryCopy(props);
+  const c = props.candidate;
+  const entryPost = props.entryAction && c.subjectId && (c.kind === "begin" || c.kind === "resume") ? props.entryAction(c.subjectId as SubjectId) : null;
   const activeEnrolments = enrolments.filter((e) => e.status === "active");
   const regionSlots = (r: StudentSlotRegion) => slots.filter((s) => s.region === r);
 
@@ -140,9 +149,21 @@ export function StudentShell(props: StudentShellProps) {
         </p>
       )}
       <div style={{ marginTop: "var(--ta-space-6)" }}>
-        <Link href={copy.href} className="ta-btn" data-variant="primary" data-size="lg" data-primary-action style={{ minWidth: "12rem" }}>
-          {copy.action}
-        </Link>
+        {entryPost ? (
+          /* POST, not GET: opening is an explicit entry and is recorded. A form
+             button cannot be opened in a new tab like a link; on the target
+             surface (390, the one primary action) that affordance is not one
+             the student uses — the subject rows below remain plain links. */
+          <form method="post" action={entryPost} style={{ margin: 0 }}>
+            <button type="submit" className="ta-btn" data-variant="primary" data-size="lg" data-primary-action style={{ minWidth: "12rem" }}>
+              {copy.action}
+            </button>
+          </form>
+        ) : (
+          <Link href={copy.href} className="ta-btn" data-variant="primary" data-size="lg" data-primary-action style={{ minWidth: "12rem" }}>
+            {copy.action}
+          </Link>
+        )}
       </div>
     </>
   );

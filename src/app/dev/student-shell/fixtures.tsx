@@ -4,6 +4,7 @@ import { STUDENT_SLOTS } from "@/config/student-slots";
 import { nextActionFor } from "@/lib/next-action";
 import { deriveShellState, type Enrolment, type EnvironmentState } from "@/lib/student/contract";
 import { providerInputFor } from "@/lib/student/data";
+import { entryAction } from "@/lib/student/enrol";
 import { shellSubjectInfo } from "@/lib/student/subject-info";
 
 /* DEV-ONLY FIXTURES for /dev/student-shell. These never reach production:
@@ -50,6 +51,7 @@ export function fixtureProps(state: "A" | "B" | "C", extreme: SlotExtreme = "non
     subjects: shellSubjectInfo(),
     slots: fixtureSlots(extreme),
     now: NOW,
+    entryAction,
   };
 }
 

@@ -1,6 +1,7 @@
 import { resolveSlots } from "@/components/student/slots";
 import { StudentShell } from "@/components/student/student-shell";
 import { getStudentContext } from "@/lib/student/data";
+import { entryAction } from "@/lib/student/enrol";
 import { shellSubjectInfo } from "@/lib/student/subject-info";
 
 /* /student — THE STUDENT SHELL (Phase 5 · Step 3)
@@ -27,6 +28,7 @@ export default async function StudentOverviewPage() {
       subjects={shellSubjectInfo()}
       slots={slots}
       now={new Date().toISOString()}
+      entryAction={entryAction}
     />
   );
 }

@@ -62,11 +62,21 @@ export function SubjectShell({
   ambient,
   draft,
   entries,
+  threshold,
+  regions,
 }: {
   subject: ShellSubject;
   ambient: ShellAmbientSubject;
   draft: boolean;
   entries: ShellNavEntry[];
+  /* 5.5 · P5-R5 (one environment, role-scoped regions). Both optional and
+     decided by the PAGE from the identity; when absent NOTHING is rendered,
+     so a visitor's HTML is unchanged from the certified 3.6 composition.
+     `threshold` — the Begin control, header position, one state only.
+     `regions`   — the student's own regions inside the Room, after 3.6's
+                   honest labels (which stay the single honest statement). */
+  threshold?: React.ReactNode;
+  regions?: React.ReactNode;
 }) {
   return (
     <div data-subject={subject.id} data-spatial="stage" data-shell-root>
@@ -128,6 +138,7 @@ export function SubjectShell({
             >
               {subject.tagline}
             </p>
+            {threshold}
           </header>
 
           {/* navigation position */}
@@ -213,6 +224,7 @@ export function SubjectShell({
                   );
                 })}
               </div>
+              {regions}
             </Room>
           </div>
         </div>

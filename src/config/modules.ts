@@ -50,7 +50,14 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
     id: "student-portal",
     name: "Student portal",
     summary: "The student's home for learning: schedule, work and progress.",
-    status: "planned",
+    /* 5.5 (P5-R4 Addendum 2): corrected from "planned". The student SPACE
+       exists in production — sign-in, the /student shell, the next-action
+       engine, enrolment and entry. Schedule, work and progress do NOT. The
+       schema's one status per module cannot say "shell built, contents not";
+       "in-progress" is the honest value it can express. Consumers already
+       map it: homepage beats → "In foundation"; provider gate still requires
+       "live", so nothing new is emitted. */
+    status: "in-progress",
     surfaces: ["student"],
     routePrefix: "/student",
   },

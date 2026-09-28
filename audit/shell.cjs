@@ -156,6 +156,30 @@ const TEXT_SPACING_CSS = `*{line-height:1.5 !important;letter-spacing:0.12em !im
     S.forms = await p.evaluate(() => Array.from(document.querySelectorAll("form")).map((f) => f.getAttribute("action") + " " + f.method));
     gate(`links-${state}`, S.links.every(([, s]) => s.startsWith("200")), JSON.stringify(S.links));
 
+    /* THE ACTION RESOLVES (5.3 Test 10, updated in 5.5). Since 5.5 the primary
+       action is a form POST to /subjects/[id]/enter when it opens an enrolled
+       environment (entering is recorded), and a link for the choice. Here we
+       assert the SEMANTICS and that the destination resolves, WITHOUT posting:
+       a real POST would enter the environment and change this test account's
+       state (B would become C). The live POST → 303 → 200 is exercised in the
+       C4 block below on student-d, whose state may move. */
+    S.action = await p.evaluate(async () => {
+      const a = document.querySelector("[data-primary-action]");
+      const form = a.closest("form");
+      if (form) {
+        const action = form.getAttribute("action");
+        const getOnEndpoint = (await fetch(action, { redirect: "manual" })).status;      // must NOT be a write path: 405
+        const dest = action.replace(/\/enter$/, "");
+        const destStatus = (await fetch(dest, { redirect: "manual" })).status;
+        return { kind: "form", method: form.getAttribute("method"), action, getOnEndpoint, dest, destStatus };
+      }
+      const href = a.getAttribute("href");
+      return { kind: "link", href, status: (await fetch(href, { redirect: "manual" })).status };
+    });
+    gate(`action-resolves-${state}`, S.action.kind === "form"
+      ? S.action.method === "post" && /^\/subjects\/[a-z]+\/enter$/.test(S.action.action) && S.action.getOnEndpoint === 405 && S.action.destStatus === 200
+      : S.action.status === 200, JSON.stringify(S.action));
+
     /* screenshots both themes 390 + 1280 (Test 2) + grayscale (Test 19) */
     for (const theme of ["dark", "light"]) {
       await setTheme(p, theme);
@@ -320,8 +344,20 @@ const TEXT_SPACING_CSS = `*{line-height:1.5 !important;letter-spacing:0.12em !im
     await p.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 1 }); await gotoShell(p);
     await p.addStyleTag({ content: TEXT_SPACING_CSS }); await sleep(100);
     res["textSpacing390"] = await p.evaluate(foldMeasure);
-    R.states.C4 = { note: "State C, four enrolled subjects — fold gate only", primaryAboveFold: res, rows: res["390x844"].rows };
+    R.states.C4 = { note: "State C, four enrolled subjects — fold gate + live POST", primaryAboveFold: res, rows: res["390x844"].rows };
     gate("primary-action-above-fold-C4", res["390x844"].rows === 4 && Object.values(res).every((v) => v.visible), JSON.stringify(res));
+    /* live POST (5.5): the primary action's form → 303 → the environment returns 200. student-d only. */
+    R.states.C4.post = await p.evaluate(async () => {
+      const form = document.querySelector("[data-primary-action]").closest("form");
+      if (!form) return { kind: "link" };
+      const r = await fetch(form.getAttribute("action"), { method: "POST", redirect: "manual" });
+      const location = r.headers.get("location");
+      // opaqueredirect hides the status in browsers; follow by hand
+      const dest = form.getAttribute("action").replace(/\/enter$/, "");
+      const after = (await fetch(dest)).status;
+      return { kind: "form", type: r.type, status: r.status, location, dest, destStatusAfterPost: after };
+    });
+    gate("action-post-303-then-200 (C4)", R.states.C4.post.kind === "form" && R.states.C4.post.type === "opaqueredirect" && R.states.C4.post.destStatusAfterPost === 200, JSON.stringify(R.states.C4.post));
     await ctx.close();
   }
 
@@ -385,6 +421,15 @@ const TEXT_SPACING_CSS = `*{line-height:1.5 !important;letter-spacing:0.12em !im
     const lcpEl = a["largest-contentful-paint-element"]?.details?.items?.[0]?.items?.[0]?.node?.snippet || a["largest-contentful-paint-element"]?.details?.items?.[0]?.node?.snippet || "n/a";
     const longTasks = (a["long-tasks"]?.details?.items || []).map((t) => `${Math.round(t.duration)}ms ${t.url?.split("/").pop()?.slice(0, 40) || ""}`);
     const total = a["total-byte-weight"]?.numericValue;
+    /* NOTED VARIANCE (P5-R4 Addendum 3) — recorded, NOT a gate. LCP of /student
+       on this profile is bimodal across identical builds. Values + counts:
+         5.4 (post-build, no warm-up):      2.1–2.2 s ×3 · 2.9–3.0 s ×6
+         5.5 (1 discarded warm-up, 9 kept): 2.1–2.5 s ×2 · 3.2–3.4 s ×7   (cold HTTP cache each run)
+         5.5 repeat-visit (cache kept):      0.9–1.1 s ×9                  (unimodal)
+       Reading: the gap is asset fetch under simulated slow-4G (display font /
+       CSS ordering), not server work — TTFB medians 404 / 427 / 460 ms. Still
+       bimodal after warm-up → logged for Phase 10; no optimisation now. */
+    R.notedVariance = { metric: "LCP /student, Lighthouse mobile simulated", runs: { "5.4": { "2.1-2.2s": 3, "2.9-3.0s": 6 }, "5.5-cold-after-warmup": { "2.1-2.5s": 2, "3.2-3.4s": 7 }, "5.5-repeat-visit": { "0.9-1.1s": 9 } }, ttfbMedianMs: { "5.4": 404, "5.5": 460 }, gate: false, owner: "Phase 10" };
     R.perf = {
       profile: "Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)",
       finalUrl: lhr.finalDisplayedUrl,
