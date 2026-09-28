@@ -1,0 +1,3718 @@
+{
+ "generatedAt": "2026-09-27T12:51:45.301Z",
+ "ceiling": 12,
+ "declared": {
+  "arrival": {
+   "status": "authored",
+   "behaviour": "reveal-once",
+   "budget": 1.2
+  },
+  "premise": {
+   "status": "authored",
+   "behaviour": "reveal-once",
+   "budget": 1
+  },
+  "difference": {
+   "status": "authored",
+   "behaviour": "reveal-once",
+   "budget": 1.2
+  },
+  "choice": {
+   "status": "authored",
+   "behaviour": "static",
+   "budget": 1.4
+  },
+  "enter": {
+   "status": "authored",
+   "behaviour": "sticky-stage",
+   "budget": 1.6
+  },
+  "people": {
+   "status": "authored",
+   "behaviour": "reveal-once",
+   "budget": 1.2
+  },
+  "practice": {
+   "status": "authored",
+   "behaviour": "sequence",
+   "budget": 1.6
+  },
+  "promise": {
+   "status": "authored",
+   "behaviour": "reveal-once",
+   "budget": 1
+  },
+  "return": {
+   "status": "authored",
+   "behaviour": "static",
+   "budget": 0.8
+  }
+ },
+ "corrections": [
+  {
+   "scene": "choice",
+   "field": "scrollBudget",
+   "from": 1.2,
+   "to": 1.4,
+   "step": "4.9 (D-08)",
+   "measuredWhenCorrected": {
+    "1280x800": 1.39,
+    "390x844": 1.73
+   },
+   "reason": "Declared in 4.1 against the skeleton; the 4.4 amendment mandated the six-door colonnade (floor ≈982px > 960px), making 1.2 unreachable without degrading touch/reading targets. Disclosed by 4.4 §12 at the time.",
+   "oneTimeOnly": true
+  }
+ ],
+ "correctionPolicy": "ONE-TIME. A declaration may be corrected retroactively only where it predates the geometry it describes. Every later scope change updates its declaration when it lands; an overrun found by this harness after 4.9 is a defect in the scene, never in the declaration.",
+ "gate": {
+  "G1_contrast": {
+   "pass": true,
+   "fails": []
+  },
+  "G2_primaries": {
+   "pass": true,
+   "max": 1,
+   "violations": []
+  },
+  "G3_scroll": {
+   "pass": true,
+   "actualTotal": 11.01,
+   "declaredTotal": 11,
+   "ceiling": 12,
+   "perSceneOverruns": []
+  },
+  "G4_links": {
+   "pass": true,
+   "dead": []
+  },
+  "G5_outline": {
+   "pass": true,
+   "h1": 1,
+   "skipped": false
+  },
+  "G6_axe": {
+   "pass": true,
+   "serious": [],
+   "all": {
+    "dark": [],
+    "light": []
+   }
+  },
+  "G7_motion": {
+   "pass": true,
+   "longTasks": [],
+   "hiddenAfterSecondPass": [],
+   "hiddenAfterSkim": []
+  },
+  "G8_cls": {
+   "pass": true,
+   "dark": {
+    "total": 0,
+    "byScene": {}
+   },
+   "light": {
+    "total": 0,
+    "byScene": {}
+   }
+  }
+ },
+ "warnings": [],
+ "scenes": {
+  "dark": {
+   "arrival": {
+    "extentPx": 960,
+    "extentVh": 1.2,
+    "contentVh": 1,
+    "top": 39,
+    "behaviour": "reveal-once",
+    "sticky": 0,
+    "headings": [
+     "H1:Every subject is a place you can enter."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": true,
+      "ratio": 17.75,
+      "sample": "Every subject is a place you can enter.",
+      "tag": "H1",
+      "count": 1
+     },
+     {
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 16.27,
+      "sample": "Each subject is its own environment. Cho",
+      "tag": "P",
+      "count": 1
+     },
+     {
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "large": false,
+      "ratio": 7.6,
+      "sample": "Enter a world",
+      "tag": "A",
+      "count": 1
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 17.75,
+      "sample": "Understand it",
+      "tag": "A",
+      "count": 1
+     },
+     {
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.65,
+      "sample": "·",
+      "tag": "SPAN",
+      "count": 2
+     }
+    ],
+    "sizes": {
+     "88px": 1,
+     "16px": 3,
+     "11px": 2
+    },
+    "treatment": [],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [
+     {
+      "tag": "A",
+      "text": "Enter a world",
+      "href": "#for-students",
+      "primary": true,
+      "w": 147,
+      "h": 48
+     },
+     {
+      "tag": "A",
+      "text": "Understand it",
+      "href": "#how-it-works",
+      "primary": false,
+      "w": 153,
+      "h": 48
+     },
+     {
+      "tag": "A",
+      "text": "Continue to the premise",
+      "href": "#how-it-works",
+      "primary": false,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "spacing": {
+     "minHeight": "960px",
+     "height": "960px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 21,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   },
+   "premise": {
+    "extentPx": 800,
+    "extentVh": 1,
+    "contentVh": 0.88,
+    "top": 1000,
+    "behaviour": "reveal-once",
+    "sticky": 0,
+    "headings": [
+     "H2:Built as places, not pages.",
+     "H3:Six subjects, six environments.",
+     "H3:The environment steps back when you work.",
+     "H3:Moving between subjects is one motion."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.65,
+      "sample": "The premise",
+      "tag": "P",
+      "count": 1
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": true,
+      "ratio": 17.75,
+      "sample": "Built as places, not pages.",
+      "tag": "H2",
+      "count": 1
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 17.75,
+      "sample": "Tutors Academy is a set of subject envir",
+      "tag": "P",
+      "count": 4
+     },
+     {
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 16.27,
+      "sample": "Mathematics is a lattice on graphite. En",
+      "tag": "P",
+      "count": 3
+     }
+    ],
+    "sizes": {
+     "11px": 1,
+     "36px": 1,
+     "20px": 1,
+     "18px": 3,
+     "16px": 3
+    },
+    "treatment": [],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [],
+    "spacing": {
+     "minHeight": "800px",
+     "height": "800px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 106,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   },
+   "difference": {
+    "extentPx": 970,
+    "extentVh": 1.21,
+    "contentVh": 1.21,
+    "top": 1801,
+    "behaviour": "reveal-once",
+    "sticky": 0,
+    "headings": [
+     "H2:One brand. Six environments.",
+     "H3:Six environments, side by side"
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.65,
+      "sample": "The difference",
+      "tag": "P",
+      "count": 8
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": true,
+      "ratio": 17.75,
+      "sample": "One brand. Six environments.",
+      "tag": "H2",
+      "count": 1
+     },
+     {
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 16.27,
+      "sample": "From one subject to the next, two things",
+      "tag": "P",
+      "count": 2
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 17.75,
+      "sample": "Mathematics",
+      "tag": "SPAN",
+      "count": 7
+     }
+    ],
+    "sizes": {
+     "11px": 8,
+     "36px": 1,
+     "18px": 2,
+     "20px": 6,
+     "16px": 1
+    },
+    "treatment": [],
+    "accentElements": 39,
+    "subjectScoped": 6,
+    "focusables": [],
+    "spacing": {
+     "minHeight": "960px",
+     "height": "969.844px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 74,
+    "motifs": {
+     "surfaces": 6,
+     "commands": 255,
+     "dom": 84,
+     "maxCommands": 109,
+     "maxDom": 15
+    }
+   },
+   "choice": {
+    "extentPx": 1120,
+    "extentVh": 1.4,
+    "contentVh": 1.39,
+    "top": 2771,
+    "behaviour": "static",
+    "sticky": 0,
+    "headings": [
+     "H2:Six environments. This is the threshold."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.65,
+      "sample": "The choice",
+      "tag": "P",
+      "count": 6
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": true,
+      "ratio": 17.75,
+      "sample": "Six environments. This is the threshold.",
+      "tag": "H2",
+      "count": 7
+     },
+     {
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 16.27,
+      "sample": "Each door below is a subject built as a ",
+      "tag": "P",
+      "count": 8
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 17.75,
+      "sample": "One of the six is open today: Mathematic",
+      "tag": "P",
+      "count": 3
+     },
+     {
+      "fg": "rgb(143, 160, 255)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.96,
+      "sample": "The Lattice",
+      "tag": "SPAN",
+      "count": 1
+     },
+     {
+      "fg": "rgb(255, 144, 104)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 8.7,
+      "sample": "The Field",
+      "tag": "SPAN",
+      "count": 1
+     },
+     {
+      "fg": "rgb(199, 149, 255)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 8.45,
+      "sample": "The Vessel",
+      "tag": "SPAN",
+      "count": 1
+     },
+     {
+      "fg": "rgb(124, 231, 165)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 12.74,
+      "sample": "The Organism",
+      "tag": "SPAN",
+      "count": 1
+     },
+     {
+      "fg": "rgb(255, 143, 163)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 8.94,
+      "sample": "The Page",
+      "tag": "SPAN",
+      "count": 1
+     },
+     {
+      "fg": "rgb(127, 214, 232)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 11.68,
+      "sample": "The Record",
+      "tag": "SPAN",
+      "count": 1
+     }
+    ],
+    "sizes": {
+     "11px": 12,
+     "48px": 1,
+     "18px": 1,
+     "16px": 2,
+     "36px": 6,
+     "14px": 8
+    },
+    "treatment": [
+     {
+      "tag": "P",
+      "text": "One of the six is open today: Mathematics. The rest are in f",
+      "mono": false,
+      "size": "16px",
+      "upper": false
+     },
+     {
+      "tag": "SPAN",
+      "text": "In foundation",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "In foundation",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "In foundation",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "In foundation",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "In foundation",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     }
+    ],
+    "accentElements": 39,
+    "subjectScoped": 6,
+    "focusables": [
+     {
+      "tag": "A",
+      "text": "MathematicsThe Latticestructur",
+      "href": "/subjects/mathematics",
+      "primary": false,
+      "w": 1024,
+      "h": 116
+     }
+    ],
+    "spacing": {
+     "minHeight": "1120px",
+     "height": "1120px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 72,
+    "motifs": {
+     "surfaces": 6,
+     "commands": 275,
+     "dom": 84,
+     "maxCommands": 129,
+     "maxDom": 15
+    }
+   },
+   "enter": {
+    "extentPx": 1280,
+    "extentVh": 1.6,
+    "contentVh": 1,
+    "top": 3892,
+    "behaviour": "sticky-stage",
+    "sticky": 1,
+    "headings": [
+     "H2:The environment becomes the subject.",
+     "H3:Mathematics"
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.65,
+      "sample": "The crossing",
+      "tag": "P",
+      "count": 5
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": true,
+      "ratio": 17.75,
+      "sample": "The environment becomes the subject.",
+      "tag": "H2",
+      "count": 2
+     },
+     {
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 16.27,
+      "sample": "You have seen six environments side by s",
+      "tag": "P",
+      "count": 2
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 17.75,
+      "sample": "← Previous environment",
+      "tag": "BUTTON",
+      "count": 4
+     },
+     {
+      "fg": "rgb(143, 160, 255)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.96,
+      "sample": "The Lattice",
+      "tag": "P",
+      "count": 1
+     },
+     {
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "large": false,
+      "ratio": 7.6,
+      "sample": "Enter Mathematics",
+      "tag": "A",
+      "count": 1
+     }
+    ],
+    "sizes": {
+     "11px": 4,
+     "36px": 1,
+     "16px": 2,
+     "14px": 5,
+     "48px": 1,
+     "12px": 1,
+     "18px": 1
+    },
+    "treatment": [],
+    "accentElements": 8,
+    "subjectScoped": 2,
+    "focusables": [
+     {
+      "tag": "BUTTON",
+      "text": "← Previous environment",
+      "href": null,
+      "primary": false,
+      "w": 206,
+      "h": 44
+     },
+     {
+      "tag": "BUTTON",
+      "text": "Next environment →",
+      "href": null,
+      "primary": false,
+      "w": 181,
+      "h": 44
+     },
+     {
+      "tag": "A",
+      "text": "Enter Mathematics",
+      "href": "/subjects/mathematics",
+      "primary": true,
+      "w": 191,
+      "h": 48
+     }
+    ],
+    "spacing": {
+     "minHeight": "0px",
+     "height": "1280px",
+     "justify": "normal",
+     "paddingTop": "24px",
+     "paddingBottom": "24px",
+     "borderBottom": "1px"
+    },
+    "words": 71,
+    "motifs": {
+     "surfaces": 1,
+     "commands": 50,
+     "dom": 10,
+     "maxCommands": 50,
+     "maxDom": 10
+    }
+   },
+   "people": {
+    "extentPx": 960,
+    "extentVh": 1.2,
+    "contentVh": 0.49,
+    "top": 5173,
+    "behaviour": "reveal-once",
+    "sticky": 0,
+    "headings": [
+     "H2:A tutor here has a place, not a profile."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.65,
+      "sample": "The people",
+      "tag": "P",
+      "count": 1
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": true,
+      "ratio": 17.75,
+      "sample": "A tutor here has a place, not a profile.",
+      "tag": "H2",
+      "count": 2
+     },
+     {
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 16.27,
+      "sample": "Five things are theirs to set: accent, a",
+      "tag": "P",
+      "count": 4
+     }
+    ],
+    "sizes": {
+     "11px": 1,
+     "36px": 1,
+     "24px": 1,
+     "18px": 2,
+     "14px": 1,
+     "16px": 1
+    },
+    "treatment": [
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     }
+    ],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [],
+    "spacing": {
+     "minHeight": "960px",
+     "height": "960px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 68,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   },
+   "practice": {
+    "extentPx": 1280,
+    "extentVh": 1.6,
+    "contentVh": 1.36,
+    "top": 6134,
+    "behaviour": "sequence",
+    "sticky": 0,
+    "headings": [
+     "H2:One session, start to finish.",
+     "H3:You attend",
+     "H3:You revisit",
+     "H3:You work",
+     "H3:You see yourself move"
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.65,
+      "sample": "The practice",
+      "tag": "P",
+      "count": 6
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": true,
+      "ratio": 17.75,
+      "sample": "One session, start to finish.",
+      "tag": "H2",
+      "count": 1
+     },
+     {
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 16.27,
+      "sample": "Everything below happens inside an envir",
+      "tag": "P",
+      "count": 10
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 17.75,
+      "sample": "You attend",
+      "tag": "H3",
+      "count": 5
+     }
+    ],
+    "sizes": {
+     "11px": 5,
+     "36px": 1,
+     "18px": 6,
+     "20px": 4,
+     "14px": 4,
+     "16px": 2
+    },
+    "treatment": [
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "Live today: six environments and the switch between them.",
+      "mono": false,
+      "size": "16px",
+      "upper": false
+     }
+    ],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [],
+    "spacing": {
+     "minHeight": "1280px",
+     "height": "1280px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 166,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   },
+   "promise": {
+    "extentPx": 800,
+    "extentVh": 1,
+    "contentVh": 0.62,
+    "top": 7415,
+    "behaviour": "reveal-once",
+    "sticky": 0,
+    "headings": [
+     "H2:What happens to you."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.65,
+      "sample": "The promise",
+      "tag": "P",
+      "count": 2
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": true,
+      "ratio": 17.75,
+      "sample": "What happens to you.",
+      "tag": "H2",
+      "count": 2
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 17.75,
+      "sample": "See the system",
+      "tag": "P",
+      "count": 8
+     },
+     {
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 16.27,
+      "sample": "done, on this page",
+      "tag": "P",
+      "count": 9
+     }
+    ],
+    "sizes": {
+     "11px": 8,
+     "36px": 1,
+     "24px": 1,
+     "14px": 8,
+     "18px": 2,
+     "16px": 1
+    },
+    "treatment": [
+     {
+      "tag": "P",
+      "text": "done, on this page",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "done, on this page",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "done, on this page",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "ahead",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "ahead",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "ahead",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "ahead",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     }
+    ],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [],
+    "spacing": {
+     "minHeight": "800px",
+     "height": "800px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 96,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   },
+   "return": {
+    "extentPx": 640,
+    "extentVh": 0.8,
+    "contentVh": 0.56,
+    "top": 8216,
+    "behaviour": "static",
+    "sticky": 0,
+    "headings": [
+     "H2:Every subject is a place you can enter."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(154, 164, 176)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 7.65,
+      "sample": "The return",
+      "tag": "P",
+      "count": 2
+     },
+     {
+      "fg": "rgb(247, 245, 240)",
+      "bg": "rgb(11, 14, 18)",
+      "large": true,
+      "ratio": 17.75,
+      "sample": "Every subject is a place you can enter.",
+      "tag": "H2",
+      "count": 1
+     },
+     {
+      "fg": "rgb(239, 235, 227)",
+      "bg": "rgb(11, 14, 18)",
+      "large": false,
+      "ratio": 16.27,
+      "sample": "You have now seen what that means: the s",
+      "tag": "P",
+      "count": 2
+     },
+     {
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "large": false,
+      "ratio": 7.6,
+      "sample": "Enter a world",
+      "tag": "A",
+      "count": 1
+     }
+    ],
+    "sizes": {
+     "11px": 1,
+     "48px": 1,
+     "18px": 2,
+     "16px": 2
+    },
+    "treatment": [
+     {
+      "tag": "P",
+      "text": "You have now seen what that means: the system, the doors, th",
+      "mono": false,
+      "size": "18px",
+      "upper": false
+     }
+    ],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [
+     {
+      "tag": "A",
+      "text": "Enter a world",
+      "href": "#for-students",
+      "primary": true,
+      "w": 147,
+      "h": 48
+     }
+    ],
+    "spacing": {
+     "minHeight": "640px",
+     "height": "640px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 48,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   }
+  },
+  "light": {
+   "arrival": {
+    "extentPx": 960,
+    "extentVh": 1.2,
+    "contentVh": 1,
+    "top": 39,
+    "behaviour": "reveal-once",
+    "sticky": 0,
+    "headings": [
+     "H1:Every subject is a place you can enter."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": true,
+      "ratio": 18.36,
+      "sample": "Every subject is a place you can enter.",
+      "tag": "H1",
+      "count": 1
+     },
+     {
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 15.71,
+      "sample": "Each subject is its own environment. Cho",
+      "tag": "P",
+      "count": 1
+     },
+     {
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "large": false,
+      "ratio": 7.6,
+      "sample": "Enter a world",
+      "tag": "A",
+      "count": 1
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 18.36,
+      "sample": "Understand it",
+      "tag": "A",
+      "count": 1
+     },
+     {
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 8.93,
+      "sample": "·",
+      "tag": "SPAN",
+      "count": 2
+     }
+    ],
+    "sizes": {
+     "88px": 1,
+     "16px": 3,
+     "11px": 2
+    },
+    "treatment": [],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [
+     {
+      "tag": "A",
+      "text": "Enter a world",
+      "href": "#for-students",
+      "primary": true,
+      "w": 147,
+      "h": 48
+     },
+     {
+      "tag": "A",
+      "text": "Understand it",
+      "href": "#how-it-works",
+      "primary": false,
+      "w": 153,
+      "h": 48
+     },
+     {
+      "tag": "A",
+      "text": "Continue to the premise",
+      "href": "#how-it-works",
+      "primary": false,
+      "w": 44,
+      "h": 44
+     }
+    ],
+    "spacing": {
+     "minHeight": "960px",
+     "height": "960px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 21,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   },
+   "premise": {
+    "extentPx": 800,
+    "extentVh": 1,
+    "contentVh": 0.88,
+    "top": 1000,
+    "behaviour": "reveal-once",
+    "sticky": 0,
+    "headings": [
+     "H2:Built as places, not pages.",
+     "H3:Six subjects, six environments.",
+     "H3:The environment steps back when you work.",
+     "H3:Moving between subjects is one motion."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 8.93,
+      "sample": "The premise",
+      "tag": "P",
+      "count": 1
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": true,
+      "ratio": 18.36,
+      "sample": "Built as places, not pages.",
+      "tag": "H2",
+      "count": 1
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 18.36,
+      "sample": "Tutors Academy is a set of subject envir",
+      "tag": "P",
+      "count": 4
+     },
+     {
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 15.71,
+      "sample": "Mathematics is a lattice on graphite. En",
+      "tag": "P",
+      "count": 3
+     }
+    ],
+    "sizes": {
+     "11px": 1,
+     "36px": 1,
+     "20px": 1,
+     "18px": 3,
+     "16px": 3
+    },
+    "treatment": [],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [],
+    "spacing": {
+     "minHeight": "800px",
+     "height": "800px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 106,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   },
+   "difference": {
+    "extentPx": 970,
+    "extentVh": 1.21,
+    "contentVh": 1.21,
+    "top": 1801,
+    "behaviour": "reveal-once",
+    "sticky": 0,
+    "headings": [
+     "H2:One brand. Six environments.",
+     "H3:Six environments, side by side"
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 8.93,
+      "sample": "The difference",
+      "tag": "P",
+      "count": 8
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": true,
+      "ratio": 18.36,
+      "sample": "One brand. Six environments.",
+      "tag": "H2",
+      "count": 1
+     },
+     {
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 15.71,
+      "sample": "From one subject to the next, two things",
+      "tag": "P",
+      "count": 2
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 18.36,
+      "sample": "Mathematics",
+      "tag": "SPAN",
+      "count": 7
+     }
+    ],
+    "sizes": {
+     "11px": 8,
+     "36px": 1,
+     "18px": 2,
+     "20px": 6,
+     "16px": 1
+    },
+    "treatment": [],
+    "accentElements": 39,
+    "subjectScoped": 6,
+    "focusables": [],
+    "spacing": {
+     "minHeight": "960px",
+     "height": "969.844px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 74,
+    "motifs": {
+     "surfaces": 6,
+     "commands": 255,
+     "dom": 84,
+     "maxCommands": 109,
+     "maxDom": 15
+    }
+   },
+   "choice": {
+    "extentPx": 1120,
+    "extentVh": 1.4,
+    "contentVh": 1.39,
+    "top": 2771,
+    "behaviour": "static",
+    "sticky": 0,
+    "headings": [
+     "H2:Six environments. This is the threshold."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 8.93,
+      "sample": "The choice",
+      "tag": "P",
+      "count": 6
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": true,
+      "ratio": 18.36,
+      "sample": "Six environments. This is the threshold.",
+      "tag": "H2",
+      "count": 7
+     },
+     {
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 15.71,
+      "sample": "Each door below is a subject built as a ",
+      "tag": "P",
+      "count": 8
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 18.36,
+      "sample": "One of the six is open today: Mathematic",
+      "tag": "P",
+      "count": 3
+     },
+     {
+      "fg": "rgb(67, 83, 201)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 6.01,
+      "sample": "The Lattice",
+      "tag": "SPAN",
+      "count": 1
+     },
+     {
+      "fg": "rgb(194, 65, 12)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 4.92,
+      "sample": "The Field",
+      "tag": "SPAN",
+      "count": 1
+     },
+     {
+      "fg": "rgb(138, 63, 252)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 4.75,
+      "sample": "The Vessel",
+      "tag": "SPAN",
+      "count": 1
+     },
+     {
+      "fg": "rgb(21, 128, 61)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 4.76,
+      "sample": "The Organism",
+      "tag": "SPAN",
+      "count": 1
+     },
+     {
+      "fg": "rgb(190, 18, 60)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 5.97,
+      "sample": "The Page",
+      "tag": "SPAN",
+      "count": 1
+     },
+     {
+      "fg": "rgb(14, 116, 144)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 5.09,
+      "sample": "The Record",
+      "tag": "SPAN",
+      "count": 1
+     }
+    ],
+    "sizes": {
+     "11px": 12,
+     "48px": 1,
+     "18px": 1,
+     "16px": 2,
+     "36px": 6,
+     "14px": 8
+    },
+    "treatment": [
+     {
+      "tag": "P",
+      "text": "One of the six is open today: Mathematics. The rest are in f",
+      "mono": false,
+      "size": "16px",
+      "upper": false
+     },
+     {
+      "tag": "SPAN",
+      "text": "In foundation",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "In foundation",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "In foundation",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "In foundation",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "In foundation",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     }
+    ],
+    "accentElements": 39,
+    "subjectScoped": 6,
+    "focusables": [
+     {
+      "tag": "A",
+      "text": "MathematicsThe Latticestructur",
+      "href": "/subjects/mathematics",
+      "primary": false,
+      "w": 1024,
+      "h": 116
+     }
+    ],
+    "spacing": {
+     "minHeight": "1120px",
+     "height": "1120px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 72,
+    "motifs": {
+     "surfaces": 6,
+     "commands": 275,
+     "dom": 84,
+     "maxCommands": 129,
+     "maxDom": 15
+    }
+   },
+   "enter": {
+    "extentPx": 1280,
+    "extentVh": 1.6,
+    "contentVh": 1,
+    "top": 3892,
+    "behaviour": "sticky-stage",
+    "sticky": 1,
+    "headings": [
+     "H2:The environment becomes the subject.",
+     "H3:Mathematics"
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 8.93,
+      "sample": "The crossing",
+      "tag": "P",
+      "count": 5
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": true,
+      "ratio": 18.36,
+      "sample": "The environment becomes the subject.",
+      "tag": "H2",
+      "count": 2
+     },
+     {
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 15.71,
+      "sample": "You have seen six environments side by s",
+      "tag": "P",
+      "count": 2
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 18.36,
+      "sample": "← Previous environment",
+      "tag": "BUTTON",
+      "count": 4
+     },
+     {
+      "fg": "rgb(67, 83, 201)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 6.01,
+      "sample": "The Lattice",
+      "tag": "P",
+      "count": 1
+     },
+     {
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "large": false,
+      "ratio": 7.6,
+      "sample": "Enter Mathematics",
+      "tag": "A",
+      "count": 1
+     }
+    ],
+    "sizes": {
+     "11px": 4,
+     "36px": 1,
+     "16px": 2,
+     "14px": 5,
+     "48px": 1,
+     "12px": 1,
+     "18px": 1
+    },
+    "treatment": [],
+    "accentElements": 8,
+    "subjectScoped": 2,
+    "focusables": [
+     {
+      "tag": "BUTTON",
+      "text": "← Previous environment",
+      "href": null,
+      "primary": false,
+      "w": 206,
+      "h": 44
+     },
+     {
+      "tag": "BUTTON",
+      "text": "Next environment →",
+      "href": null,
+      "primary": false,
+      "w": 181,
+      "h": 44
+     },
+     {
+      "tag": "A",
+      "text": "Enter Mathematics",
+      "href": "/subjects/mathematics",
+      "primary": true,
+      "w": 191,
+      "h": 48
+     }
+    ],
+    "spacing": {
+     "minHeight": "0px",
+     "height": "1280px",
+     "justify": "normal",
+     "paddingTop": "24px",
+     "paddingBottom": "24px",
+     "borderBottom": "1px"
+    },
+    "words": 71,
+    "motifs": {
+     "surfaces": 1,
+     "commands": 50,
+     "dom": 10,
+     "maxCommands": 50,
+     "maxDom": 10
+    }
+   },
+   "people": {
+    "extentPx": 960,
+    "extentVh": 1.2,
+    "contentVh": 0.49,
+    "top": 5173,
+    "behaviour": "reveal-once",
+    "sticky": 0,
+    "headings": [
+     "H2:A tutor here has a place, not a profile."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 8.93,
+      "sample": "The people",
+      "tag": "P",
+      "count": 1
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": true,
+      "ratio": 18.36,
+      "sample": "A tutor here has a place, not a profile.",
+      "tag": "H2",
+      "count": 2
+     },
+     {
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 15.71,
+      "sample": "Five things are theirs to set: accent, a",
+      "tag": "P",
+      "count": 4
+     }
+    ],
+    "sizes": {
+     "11px": 1,
+     "36px": 1,
+     "24px": 1,
+     "18px": 2,
+     "14px": 1,
+     "16px": 1
+    },
+    "treatment": [
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     }
+    ],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [],
+    "spacing": {
+     "minHeight": "960px",
+     "height": "960px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 68,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   },
+   "practice": {
+    "extentPx": 1280,
+    "extentVh": 1.6,
+    "contentVh": 1.36,
+    "top": 6134,
+    "behaviour": "sequence",
+    "sticky": 0,
+    "headings": [
+     "H2:One session, start to finish.",
+     "H3:You attend",
+     "H3:You revisit",
+     "H3:You work",
+     "H3:You see yourself move"
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 8.93,
+      "sample": "The practice",
+      "tag": "P",
+      "count": 6
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": true,
+      "ratio": 18.36,
+      "sample": "One session, start to finish.",
+      "tag": "H2",
+      "count": 1
+     },
+     {
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 15.71,
+      "sample": "Everything below happens inside an envir",
+      "tag": "P",
+      "count": 10
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 18.36,
+      "sample": "You attend",
+      "tag": "H3",
+      "count": 5
+     }
+    ],
+    "sizes": {
+     "11px": 5,
+     "36px": 1,
+     "18px": 6,
+     "20px": 4,
+     "14px": 4,
+     "16px": 2
+    },
+    "treatment": [
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "Live today: six environments and the switch between them.",
+      "mono": false,
+      "size": "16px",
+      "upper": false
+     }
+    ],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [],
+    "spacing": {
+     "minHeight": "1280px",
+     "height": "1280px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 166,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   },
+   "promise": {
+    "extentPx": 800,
+    "extentVh": 1,
+    "contentVh": 0.62,
+    "top": 7415,
+    "behaviour": "reveal-once",
+    "sticky": 0,
+    "headings": [
+     "H2:What happens to you."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 8.93,
+      "sample": "The promise",
+      "tag": "P",
+      "count": 2
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": true,
+      "ratio": 18.36,
+      "sample": "What happens to you.",
+      "tag": "H2",
+      "count": 2
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 18.36,
+      "sample": "See the system",
+      "tag": "P",
+      "count": 8
+     },
+     {
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 15.71,
+      "sample": "done, on this page",
+      "tag": "P",
+      "count": 9
+     }
+    ],
+    "sizes": {
+     "11px": 8,
+     "36px": 1,
+     "24px": 1,
+     "14px": 8,
+     "18px": 2,
+     "16px": 1
+    },
+    "treatment": [
+     {
+      "tag": "P",
+      "text": "done, on this page",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "done, on this page",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "done, on this page",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "ahead",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "ahead",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "ahead",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "P",
+      "text": "ahead",
+      "mono": true,
+      "size": "11px",
+      "upper": true
+     },
+     {
+      "tag": "SPAN",
+      "text": "Next · not built yet",
+      "mono": true,
+      "size": "14px",
+      "upper": true
+     }
+    ],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [],
+    "spacing": {
+     "minHeight": "800px",
+     "height": "800px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 96,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   },
+   "return": {
+    "extentPx": 640,
+    "extentVh": 0.8,
+    "contentVh": 0.56,
+    "top": 8216,
+    "behaviour": "static",
+    "sticky": 0,
+    "headings": [
+     "H2:Every subject is a place you can enter."
+    ],
+    "pairs": [
+     {
+      "fg": "rgb(62, 71, 83)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 8.93,
+      "sample": "The return",
+      "tag": "P",
+      "count": 2
+     },
+     {
+      "fg": "rgb(11, 14, 18)",
+      "bg": "rgb(250, 249, 245)",
+      "large": true,
+      "ratio": 18.36,
+      "sample": "Every subject is a place you can enter.",
+      "tag": "H2",
+      "count": 1
+     },
+     {
+      "fg": "rgb(26, 31, 39)",
+      "bg": "rgb(250, 249, 245)",
+      "large": false,
+      "ratio": 15.71,
+      "sample": "You have now seen what that means: the s",
+      "tag": "P",
+      "count": 2
+     },
+     {
+      "fg": "rgb(7, 9, 11)",
+      "bg": "rgb(194, 154, 69)",
+      "large": false,
+      "ratio": 7.6,
+      "sample": "Enter a world",
+      "tag": "A",
+      "count": 1
+     }
+    ],
+    "sizes": {
+     "11px": 1,
+     "48px": 1,
+     "18px": 2,
+     "16px": 2
+    },
+    "treatment": [
+     {
+      "tag": "P",
+      "text": "You have now seen what that means: the system, the doors, th",
+      "mono": false,
+      "size": "18px",
+      "upper": false
+     }
+    ],
+    "accentElements": 0,
+    "subjectScoped": 0,
+    "focusables": [
+     {
+      "tag": "A",
+      "text": "Enter a world",
+      "href": "#for-students",
+      "primary": true,
+      "w": 147,
+      "h": 48
+     }
+    ],
+    "spacing": {
+     "minHeight": "640px",
+     "height": "640px",
+     "justify": "center",
+     "paddingTop": "0px",
+     "paddingBottom": "0px",
+     "borderBottom": "1px"
+    },
+    "words": 48,
+    "motifs": {
+     "surfaces": 0,
+     "commands": 0,
+     "dom": 0,
+     "maxCommands": 0,
+     "maxDom": 0
+    }
+   }
+  }
+ },
+ "consistency": {
+  "dark": {
+   "cls": {
+    "total": 0,
+    "byScene": {}
+   },
+   "lcp": {
+    "t": 308,
+    "el": "H1#scene-arrival"
+   },
+   "sizesBy": {
+    "88px": [
+     "arrival"
+    ],
+    "16px": [
+     "arrival",
+     "premise",
+     "difference",
+     "choice",
+     "enter",
+     "people",
+     "practice",
+     "promise",
+     "return"
+    ],
+    "11px": [
+     "arrival",
+     "premise",
+     "difference",
+     "choice",
+     "enter",
+     "people",
+     "practice",
+     "promise",
+     "return"
+    ],
+    "36px": [
+     "premise",
+     "difference",
+     "choice",
+     "enter",
+     "people",
+     "practice",
+     "promise"
+    ],
+    "20px": [
+     "premise",
+     "difference",
+     "practice"
+    ],
+    "18px": [
+     "premise",
+     "difference",
+     "choice",
+     "enter",
+     "people",
+     "practice",
+     "promise",
+     "return"
+    ],
+    "48px": [
+     "choice",
+     "enter",
+     "return"
+    ],
+    "14px": [
+     "choice",
+     "enter",
+     "people",
+     "practice",
+     "promise"
+    ],
+    "12px": [
+     "enter"
+    ],
+    "24px": [
+     "people",
+     "promise"
+    ]
+   },
+   "h1": 1,
+   "outline": [
+    1,
+    2,
+    3,
+    3,
+    3,
+    2,
+    3,
+    2,
+    2,
+    3,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2
+   ],
+   "landmarks": [
+    "header",
+    "nav[Primary]",
+    "nav[Mobile]",
+    "main",
+    "footer[Site footer]",
+    "nav[Footer]"
+   ],
+   "pageH": 9005,
+   "footer": {
+    "h": 147,
+    "insideSpine": false
+   },
+   "focus": [
+    {
+     "where": "header",
+     "text": "Skip to content",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "Tutors Academy home",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "How it works",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "For students",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "For tutors",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "Platform",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "Sign in",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "Create account",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "arrival",
+     "text": "Enter a world",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "arrival",
+     "text": "Understand it",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "arrival",
+     "text": "Continue to the premise",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "choice",
+     "text": "MathematicsThe Latticestruct",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "enter",
+     "text": "← Previous environment",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "enter",
+     "text": "Next environment →",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "enter",
+     "text": "Enter Mathematics",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "return",
+     "text": "Enter a world",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "footer",
+     "text": "Tutors Academy home",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "footer",
+     "text": "How it works",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "footer",
+     "text": "Subjects",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "footer",
+     "text": "Sign in",
+     "visible": true,
+     "ring": "solid 2px"
+    }
+   ],
+   "axe": [],
+   "hydration": []
+  },
+  "light": {
+   "cls": {
+    "total": 0,
+    "byScene": {}
+   },
+   "lcp": {
+    "t": 140,
+    "el": "H1#scene-arrival"
+   },
+   "sizesBy": {
+    "88px": [
+     "arrival"
+    ],
+    "16px": [
+     "arrival",
+     "premise",
+     "difference",
+     "choice",
+     "enter",
+     "people",
+     "practice",
+     "promise",
+     "return"
+    ],
+    "11px": [
+     "arrival",
+     "premise",
+     "difference",
+     "choice",
+     "enter",
+     "people",
+     "practice",
+     "promise",
+     "return"
+    ],
+    "36px": [
+     "premise",
+     "difference",
+     "choice",
+     "enter",
+     "people",
+     "practice",
+     "promise"
+    ],
+    "20px": [
+     "premise",
+     "difference",
+     "practice"
+    ],
+    "18px": [
+     "premise",
+     "difference",
+     "choice",
+     "enter",
+     "people",
+     "practice",
+     "promise",
+     "return"
+    ],
+    "48px": [
+     "choice",
+     "enter",
+     "return"
+    ],
+    "14px": [
+     "choice",
+     "enter",
+     "people",
+     "practice",
+     "promise"
+    ],
+    "12px": [
+     "enter"
+    ],
+    "24px": [
+     "people",
+     "promise"
+    ]
+   },
+   "h1": 1,
+   "outline": [
+    1,
+    2,
+    3,
+    3,
+    3,
+    2,
+    3,
+    2,
+    2,
+    3,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2
+   ],
+   "landmarks": [
+    "header",
+    "nav[Primary]",
+    "nav[Mobile]",
+    "main",
+    "footer[Site footer]",
+    "nav[Footer]"
+   ],
+   "pageH": 9005,
+   "footer": {
+    "h": 147,
+    "insideSpine": false
+   },
+   "focus": [
+    {
+     "where": "header",
+     "text": "Skip to content",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "Tutors Academy home",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "How it works",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "For students",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "For tutors",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "Platform",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "Sign in",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "header",
+     "text": "Create account",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "arrival",
+     "text": "Enter a world",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "arrival",
+     "text": "Understand it",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "arrival",
+     "text": "Continue to the premise",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "choice",
+     "text": "MathematicsThe Latticestruct",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "enter",
+     "text": "← Previous environment",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "enter",
+     "text": "Next environment →",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "enter",
+     "text": "Enter Mathematics",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "return",
+     "text": "Enter a world",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "footer",
+     "text": "Tutors Academy home",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "footer",
+     "text": "How it works",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "footer",
+     "text": "Subjects",
+     "visible": true,
+     "ring": "solid 2px"
+    },
+    {
+     "where": "footer",
+     "text": "Sign in",
+     "visible": true,
+     "ring": "solid 2px"
+    }
+   ],
+   "axe": [],
+   "hydration": []
+  },
+  "singleUseTypeSteps": [
+   "88px only in arrival",
+   "12px only in enter"
+  ]
+ },
+ "primaries": {
+  "positions": 91,
+  "perPosition": [
+   {
+    "y": 0,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 100,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 200,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 300,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 400,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 500,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 600,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 700,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 800,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 900,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 1000,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 1100,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 1200,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 1300,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 1400,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 1500,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 1600,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 1700,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 1800,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 1900,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 2000,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 2100,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 2200,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 2300,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 2400,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 2500,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 2600,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 2700,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 2800,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 2900,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 3000,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 3100,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 3200,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 3300,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 3400,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 3500,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 3600,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 3700,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 3800,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 3900,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 4000,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 4100,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 4200,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 4300,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 4400,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 4500,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 4600,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 4700,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 4800,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 4900,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 5000,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 5100,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 5200,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 5300,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 5400,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 5500,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 5600,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 5700,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 5800,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 5900,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 6000,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 6100,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 6200,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 6300,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 6400,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 6500,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 6600,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 6700,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 6800,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 6900,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 7000,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 7100,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 7200,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 7300,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 7400,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 7500,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 7600,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 7700,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 7800,
+    "body": 0,
+    "header": 1
+   },
+   {
+    "y": 7900,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 8000,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 8100,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 8200,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 8300,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 8400,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 8500,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 8600,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 8700,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 8800,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 8900,
+    "body": 1,
+    "header": 1
+   },
+   {
+    "y": 9000,
+    "body": 1,
+    "header": 1
+   }
+  ],
+  "maxBodyPrimaries": 1,
+  "violations": [],
+  "headerAlwaysHas": true,
+  "seen": [
+   "Enter a world@arrival",
+   "Enter Mathematics@enter",
+   "Enter a world@return"
+  ]
+ },
+ "ctas": [
+  {
+   "scene": "arrival",
+   "label": "Enter a world",
+   "aria": null,
+   "href": "#for-students",
+   "variant": "primary",
+   "tag": "A"
+  },
+  {
+   "scene": "arrival",
+   "label": "Understand it",
+   "aria": null,
+   "href": "#how-it-works",
+   "variant": "link",
+   "tag": "A"
+  },
+  {
+   "scene": "arrival",
+   "label": "·↓",
+   "aria": "Continue to the premise",
+   "href": "#how-it-works",
+   "variant": "link",
+   "tag": "A"
+  },
+  {
+   "scene": "choice",
+   "label": "MathematicsThe Latticestructure you can stand on.Enter →",
+   "aria": null,
+   "href": "/subjects/mathematics",
+   "variant": "link",
+   "tag": "A"
+  },
+  {
+   "scene": "enter",
+   "label": "← Previous environment",
+   "aria": null,
+   "href": null,
+   "variant": "link",
+   "tag": "BUTTON"
+  },
+  {
+   "scene": "enter",
+   "label": "Next environment →",
+   "aria": null,
+   "href": null,
+   "variant": "link",
+   "tag": "BUTTON"
+  },
+  {
+   "scene": "enter",
+   "label": "Enter Mathematics",
+   "aria": null,
+   "href": "/subjects/mathematics",
+   "variant": "primary",
+   "tag": "A"
+  },
+  {
+   "scene": "return",
+   "label": "Enter a world",
+   "aria": null,
+   "href": "#for-students",
+   "variant": "primary",
+   "tag": "A"
+  }
+ ],
+ "footerLinks": [
+  {
+   "scene": "footer",
+   "label": "Tutors Academy home",
+   "href": "/",
+   "variant": "link"
+  },
+  {
+   "scene": "footer",
+   "label": "How it works",
+   "href": "/#how-it-works",
+   "variant": "link"
+  },
+  {
+   "scene": "footer",
+   "label": "Subjects",
+   "href": "/subjects",
+   "variant": "link"
+  },
+  {
+   "scene": "footer",
+   "label": "Sign in",
+   "href": "/login",
+   "variant": "link"
+  }
+ ],
+ "headerLinks": [
+  {
+   "label": "Tutors Academy home",
+   "href": "/"
+  },
+  {
+   "label": "How it works",
+   "href": "/#how-it-works"
+  },
+  {
+   "label": "For students",
+   "href": "/#for-students"
+  },
+  {
+   "label": "For tutors",
+   "href": "/#for-tutors"
+  },
+  {
+   "label": "Platform",
+   "href": "/#platform"
+  },
+  {
+   "label": "Sign in",
+   "href": "/login"
+  },
+  {
+   "label": "Create account",
+   "href": "/register"
+  },
+  {
+   "label": "How it works",
+   "href": "/#how-it-works"
+  },
+  {
+   "label": "For students",
+   "href": "/#for-students"
+  },
+  {
+   "label": "For tutors",
+   "href": "/#for-tutors"
+  },
+  {
+   "label": "Platform",
+   "href": "/#platform"
+  },
+  {
+   "label": "Create account",
+   "href": "/register"
+  },
+  {
+   "label": "Sign in",
+   "href": "/login"
+  }
+ ],
+ "links": [
+  {
+   "href": "#for-students",
+   "status": 304,
+   "anchor": true,
+   "ok": true
+  },
+  {
+   "href": "#how-it-works",
+   "status": 304,
+   "anchor": true,
+   "ok": true
+  },
+  {
+   "href": "/subjects/mathematics",
+   "status": 200,
+   "anchor": null,
+   "ok": true
+  },
+  {
+   "href": "/",
+   "status": 304,
+   "anchor": null,
+   "ok": true
+  },
+  {
+   "href": "/#how-it-works",
+   "status": 304,
+   "anchor": true,
+   "ok": true
+  },
+  {
+   "href": "/subjects",
+   "status": 200,
+   "anchor": null,
+   "ok": true
+  },
+  {
+   "href": "/login",
+   "status": 200,
+   "anchor": null,
+   "ok": true
+  },
+  {
+   "href": "/#for-students",
+   "status": 304,
+   "anchor": true,
+   "ok": true
+  },
+  {
+   "href": "/#for-tutors",
+   "status": 304,
+   "anchor": true,
+   "ok": true
+  },
+  {
+   "href": "/#platform",
+   "status": 304,
+   "anchor": true,
+   "ok": true
+  },
+  {
+   "href": "/register",
+   "status": 200,
+   "anchor": null,
+   "ok": true
+  }
+ ],
+ "secondPass": {
+  "firstPassHiddenAtTop": 0,
+  "revealContainers": 8,
+  "hiddenAfterSecondPass": [],
+  "beatsVisible": true,
+  "markersVisible": true,
+  "markerStates": "done,done,done,ahead,ahead,ahead,ahead",
+  "enterLayers": 1,
+  "enterName": "Mathematics",
+  "emptyContainers": [],
+  "reenterFromBelow": {
+   "layers": 1,
+   "stagePosition": "sticky",
+   "name": "Mathematics",
+   "cta": "Enter Mathematics",
+   "tier": null
+  }
+ },
+ "skim": {
+  "midFlingAnimating": 14,
+  "y": 8205,
+  "atBottom": true,
+  "hiddenLeft": [],
+  "enterLayers": 1,
+  "enterStickyOffscreen": true,
+  "frames": {
+   "n": 74,
+   "avg": 16.7,
+   "worst": 28.3,
+   "over50": 0,
+   "over33": 0
+  },
+  "long": [],
+  "cls": 0
+ },
+ "payload": {
+  "requests": 26,
+  "bytes": 1089767,
+  "js": 594509,
+  "webgl": [],
+  "canvas": 0,
+  "chunks": [
+   "3iegc31wi02oy.css:59802",
+   "310vm2bl3xxpt.js:5364",
+   "0eo1cde-rr3bs.js:33395",
+   "0bma92pht_c97.js:229156",
+   "021ib0sjfd8mh.js:27703",
+   "1gd3h8x2ifg_a.js:161255",
+   "turbopack-3jyd33d-ci9l1.js:9721",
+   "1xovt1cefart7.js:18384",
+   "1-cz8gjjx6s9_.js:19709",
+   "39_aak4o4r66c.js:29802",
+   "1_j1dqh-q6_rf.js:14319",
+   "22i43cg4l4-dq.js:8868",
+   "3-3o22a_ux7x5.js:18594",
+   "2eqc2wn0bmyb3.js:18239"
+  ]
+ },
+ "noJs": {
+  "scenes": [
+   "arrival:100w",
+   "premise:211w",
+   "difference:296w",
+   "choice:451w",
+   "enter:467w",
+   "people:193w",
+   "practice:402w",
+   "promise:396w",
+   "return:133w"
+  ],
+  "hiddenByMotion": 1,
+  "links": 6,
+  "footer": true
+ },
+ "reducedMotion": {
+  "motionClasses": 0,
+  "hidden": 0,
+  "order": "arrival>premise>difference>choice>enter>people>practice>promise>return"
+ },
+ "mobile": {
+  "pageH": 9262,
+  "screens": 10.97,
+  "overflow": false,
+  "scenes": [
+   [
+    "arrival",
+    1.2
+   ],
+   [
+    "premise",
+    1
+   ],
+   [
+    "difference",
+    1.2
+   ],
+   [
+    "choice",
+    1.73
+   ],
+   [
+    "enter",
+    0.86
+   ],
+   [
+    "people",
+    1.2
+   ],
+   [
+    "practice",
+    1.6
+   ],
+   [
+    "promise",
+    1.05
+   ],
+   [
+    "return",
+    0.8
+   ]
+  ],
+  "median": 1.2,
+  "ratioToMedian": {
+   "arrival": 1,
+   "premise": 0.83,
+   "difference": 1,
+   "choice": 1.44,
+   "enter": 0.72,
+   "people": 1,
+   "practice": 1.33,
+   "promise": 0.88,
+   "return": 0.67
+  },
+  "outliersReportOnly": [],
+  "note": "Total mobile screens are PINNED in the baseline and drift-checked (±0.02 screens ≈ 17px, measured jitter 0px). Per-scene ratio-to-median is report-only; ≥2× median is listed as an outlier signal."
+ },
+ "touch": [
+  {
+   "where": "arrival",
+   "text": "Enter a world",
+   "w": 147,
+   "h": 48,
+   "ok": true
+  },
+  {
+   "where": "arrival",
+   "text": "Understand it",
+   "w": 153,
+   "h": 48,
+   "ok": true
+  },
+  {
+   "where": "arrival",
+   "text": "Continue to the premise",
+   "w": 44,
+   "h": 44,
+   "ok": true
+  },
+  {
+   "where": "choice",
+   "text": "MathematicsThe Latticest",
+   "w": 272,
+   "h": 167,
+   "ok": true
+  },
+  {
+   "where": "enter",
+   "text": "← Previous environment",
+   "w": 206,
+   "h": 44,
+   "ok": true
+  },
+  {
+   "where": "enter",
+   "text": "Next environment →",
+   "w": 181,
+   "h": 44,
+   "ok": true
+  },
+  {
+   "where": "enter",
+   "text": "Enter Mathematics",
+   "w": 191,
+   "h": 48,
+   "ok": true
+  },
+  {
+   "where": "return",
+   "text": "Enter a world",
+   "w": 272,
+   "h": 48,
+   "ok": true
+  },
+  {
+   "where": "footer",
+   "text": "Tutors Academy home",
+   "w": 233,
+   "h": 44,
+   "ok": true
+  },
+  {
+   "where": "footer",
+   "text": "How it works",
+   "w": 81,
+   "h": 44,
+   "ok": true
+  },
+  {
+   "where": "footer",
+   "text": "Subjects",
+   "w": 56,
+   "h": 44,
+   "ok": true
+  },
+  {
+   "where": "footer",
+   "text": "Sign in",
+   "w": 43,
+   "h": 44,
+   "ok": false
+  }
+ ],
+ "touch320overflow": false,
+ "zoom400": {
+  "overflow": false,
+  "clipped": []
+ },
+ "zoom200": {
+  "overflow": false
+ },
+ "textSpacing": {
+  "overflow": false,
+  "clipped": []
+ },
+ "slow3g": {
+  "at2500ms": {
+   "h1": true,
+   "text": 5057,
+   "fontsSettled": "loaded"
+  },
+  "loadMs": 2540,
+  "afterLoad": {
+   "h1": true,
+   "ctas": 2,
+   "hidden": 19
+  }
+ },
+ "devRoutes": [
+  {
+   "route": "/dev/ambient",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": []
+  },
+  {
+   "route": "/dev/brand",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "color-contrast:1",
+    "landmark-one-main:1",
+    "region:25",
+    "skip-link:1"
+   ]
+  },
+  {
+   "route": "/dev/marks",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": []
+  },
+  {
+   "route": "/dev/motifs",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": []
+  },
+  {
+   "route": "/dev/motion",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "color-contrast:2",
+    "region:1",
+    "skip-link:1"
+   ]
+  },
+  {
+   "route": "/dev/nav",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": []
+  },
+  {
+   "route": "/dev/page",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "landmark-unique:1"
+   ]
+  },
+  {
+   "route": "/dev/primitives",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "region:1",
+    "skip-link:1"
+   ]
+  },
+  {
+   "route": "/dev/scene-choice",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "skip-link:10"
+   ]
+  },
+  {
+   "route": "/dev/scene-enter",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": []
+  },
+  {
+   "route": "/dev/scene-promise",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "region:1",
+    "skip-link:1"
+   ]
+  },
+  {
+   "route": "/dev/scene-return",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "region:1",
+    "skip-link:1"
+   ]
+  },
+  {
+   "route": "/dev/scenes",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": []
+  },
+  {
+   "route": "/dev/scenes-practice",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "region:1",
+    "skip-link:1"
+   ]
+  },
+  {
+   "route": "/dev/spatial",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "landmark-one-main:1",
+    "region:26",
+    "skip-link:1"
+   ]
+  },
+  {
+   "route": "/dev/spine",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": []
+  },
+  {
+   "route": "/dev/subjects",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": []
+  },
+  {
+   "route": "/dev/switch",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": []
+  },
+  {
+   "route": "/dev/tokens",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "empty-table-header:1",
+    "region:1",
+    "skip-link:1"
+   ]
+  },
+  {
+   "route": "/dev/type",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "region:1",
+    "skip-link:1"
+   ]
+  }
+ ],
+ "subjectsScaffold": {
+  "status": 304,
+  "text": "TEMPORARY SCAFFOLD\n\nSubjects\n\nEach subject is a place, not a page of content. This list is a scaffold so the environments are reachable — the real subject chooser is built in Phase 4 and will replace it. Draft subjects are not linkable in production.\n\nMathematics\nPhysics · in foundation — not yet available\nChemistry · in foundation — not yet available\nBiology · in foundation — not yet available\nEn"
+ },
+ "totals": {
+  "words": 722,
+  "readingMin": 3.1,
+  "scrollActual": 11.01,
+  "scrollDeclared": 11,
+  "ceiling": 12,
+  "motifs": {
+   "surfaces": 13,
+   "commands": 580,
+   "dom": 178,
+   "maxCommandsPerSurface": 129,
+   "maxDomPerSurface": 15
+  },
+  "motifCeilings": {
+   "perSurface": {
+    "commands": 400,
+    "domGrouped": 12,
+    "genMs": 8
+   },
+   "note": "3.3 ceilings are PER SURFACE (src/lib/motif/budgets.ts). `dom` here counts every SVG descendant incl. defs/mask/title (stricter than motifBudget() grouped count); `commands` counts path commands, same as 3.3."
+  }
+ },
+ "pass": true
+}

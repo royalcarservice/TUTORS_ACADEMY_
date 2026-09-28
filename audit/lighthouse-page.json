@@ -1,0 +1,100 @@
+{
+ "desktop-dark": {
+  "scores": {
+   "performance": 100,
+   "accessibility": 100,
+   "best-practices": 100,
+   "seo": 100
+  },
+  "lcp": "0.6 s",
+  "lcpEl": "div > div > div > h1#scene-arrival",
+  "cls": "0",
+  "tbt": "0 ms",
+  "fcp": "0.4 s",
+  "si": "0.4 s",
+  "ttfb": "Root document took 10 ms",
+  "jsKB": 359,
+  "longTasks": [],
+  "a11yFails": [
+   "label-content-name-mismatch"
+  ],
+  "bpFails": []
+ },
+ "desktop-light": {
+  "scores": {
+   "performance": 100,
+   "accessibility": 100,
+   "best-practices": 100,
+   "seo": 100
+  },
+  "lcp": "0.6 s",
+  "lcpEl": "div > div > div > h1#scene-arrival",
+  "cls": "0",
+  "tbt": "0 ms",
+  "fcp": "0.4 s",
+  "si": "0.4 s",
+  "ttfb": "Root document took 10 ms",
+  "jsKB": 359,
+  "longTasks": [],
+  "a11yFails": [
+   "label-content-name-mismatch"
+  ],
+  "bpFails": []
+ },
+ "mobile-dark": {
+  "scores": {
+   "performance": 98,
+   "accessibility": 100,
+   "best-practices": 100,
+   "seo": 100
+  },
+  "lcp": "2.3 s",
+  "lcpEl": "div > div > div > h1#scene-arrival",
+  "cls": "0",
+  "tbt": "50 ms",
+  "fcp": "1.5 s",
+  "si": "1.5 s",
+  "ttfb": "Root document took 0 ms",
+  "jsKB": 359,
+  "longTasks": [
+   144,
+   118,
+   71,
+   66,
+   64,
+   61,
+   53
+  ],
+  "a11yFails": [
+   "label-content-name-mismatch"
+  ],
+  "bpFails": []
+ },
+ "mobile-light": {
+  "scores": {
+   "performance": 97,
+   "accessibility": 100,
+   "best-practices": 100,
+   "seo": 100
+  },
+  "lcp": "2.4 s",
+  "lcpEl": "div > div > div > h1#scene-arrival",
+  "cls": "0",
+  "tbt": "70 ms",
+  "fcp": "1.5 s",
+  "si": "1.5 s",
+  "ttfb": "Root document took 10 ms",
+  "jsKB": 359,
+  "longTasks": [
+   190,
+   141,
+   70,
+   56,
+   50
+  ],
+  "a11yFails": [
+   "label-content-name-mismatch"
+  ],
+  "bpFails": []
+ }
+}

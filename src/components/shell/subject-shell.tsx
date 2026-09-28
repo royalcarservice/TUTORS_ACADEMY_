@@ -1,0 +1,222 @@
+import { AmbientStage } from "@/components/ambient/ambient-stage";
+import { SubjectMark } from "@/components/brand/subject-mark";
+import { Room } from "@/components/motif/stage";
+import { SHELL_REGIONS } from "@/config/shell-regions";
+
+import { REGION_SLOTS } from "./slots";
+import { SubjectNav, type ShellNavEntry } from "./subject-nav";
+
+/* ════════════════════════════════════════════════════════════════════════
+   ENVIRONMENT SHELL (Phase 3 · Step 6 · Part 2)
+
+   A subject route = STAGE at the root, one ROOM region beneath the identity.
+   The shell ships IDENTITY, NOT FEATURES. Its responsibilities, in order:
+
+     1. APPLY SUBJECT SCOPE   — [data-subject] on the environment root; tokens
+                                resolve inside the subtree and nowhere else.
+     2. APPLY LAYER MODE      — root is Stage (data-spatial="stage"); the room
+                                region is data-spatial="room" + compact density
+                                (spacing-only switch, 2.4).
+     3. RENDER IDENTITY       — mark (3.2), name in the single h1, tagline.
+     4. RENDER THE MOTIF      — Stage substrate + Room edge vector, both via
+                                the 3.3 renderer, server-rendered.
+     5. MOUNT THE AMBIENT     — AmbientStage (3.5): Stage-only, lazy, SVG
+                                substrate already beneath; never in the Room.
+     6. SUBJECT CONTEXT       — scoping is the [data-subject] mechanism (3.1);
+                                nothing more is exposed to the client.
+     7. ENTRY SEMANTICS       — heading is the focus target; the layout-level
+                                SubjectEntry handles announce/focus (Part 4).
+
+   It contains NO feature logic: no fetches, no roles, no assumptions.
+   It imports NO subject config (3.1 guard) — the page passes everything in.
+   ════════════════════════════════════════════════════════════════════════ */
+
+export interface ShellSubject {
+  id: string;
+  name: string;
+  tagline: string;
+  motif: "lattice" | "field" | "bonds" | "living" | "typographic" | "strata";
+  density: "sparse" | "balanced" | "dense";
+}
+
+export interface ShellAmbientSubject {
+  id: string;
+  name: string;
+  motif: ShellSubject["motif"];
+  density: ShellSubject["density"];
+  motionChar: string;
+  accent: { ink: string; ivory: string };
+}
+
+const MONO_LABEL: React.CSSProperties = {
+  fontFamily: "var(--ta-font-mono)",
+  fontSize: "var(--ta-text-2xs)",
+  letterSpacing: "0.08em",
+  textTransform: "uppercase",
+  color: "var(--ta-text-muted)",
+  margin: 0,
+};
+
+export function SubjectShell({
+  subject,
+  ambient,
+  draft,
+  entries,
+}: {
+  subject: ShellSubject;
+  ambient: ShellAmbientSubject;
+  draft: boolean;
+  entries: ShellNavEntry[];
+}) {
+  return (
+    <div data-subject={subject.id} data-spatial="stage" data-shell-root>
+      {/* 5 + 4: Stage layer — SVG substrate first, ambient lens lazy on top. */}
+      <AmbientStage subject={ambient} scope="stage">
+        <div
+          style={{
+            maxWidth: "76rem",
+            margin: "0 auto",
+            padding: "var(--ta-space-16) var(--ta-gutter) var(--ta-space-section)",
+          }}
+        >
+          {draft && (
+            <p
+              role="note"
+              data-shell-draft
+              style={{
+                border: "1px dashed var(--ta-accent-1)",
+                borderRadius: "var(--ta-radius-2)",
+                padding: "var(--ta-space-2) var(--ta-space-3)",
+                marginBottom: "var(--ta-space-6)",
+                fontSize: "var(--ta-text-sm)",
+                color: "var(--ta-text-secondary)",
+              }}
+            >
+              Draft subject — visible in development only. In production this
+              route returns the framework 404.
+            </p>
+          )}
+
+          {/* 3: identity — mark, single h1, tagline. */}
+          <header data-shell-identity>
+            <span style={{ color: "var(--ta-accent-1)", display: "inline-flex" }}>
+              <SubjectMark subject={subject.id} size={48} />
+            </span>
+            <h1
+              id="subject-heading"
+              tabIndex={-1}
+              data-subject-name={subject.name}
+              data-subject-tagline={subject.tagline}
+              style={{
+                margin: "var(--ta-space-3) 0 0",
+                fontFamily: "var(--ta-font-display)",
+                fontSize: "var(--ta-display-md)",
+                fontWeight: 500,
+                color: "var(--ta-accent-1)",
+                outline: "none",
+              }}
+            >
+              {subject.name}
+            </h1>
+            <p
+              style={{
+                margin: "var(--ta-space-2) 0 0",
+                fontSize: "var(--ta-text-md)",
+                color: "var(--ta-text-secondary)",
+                maxWidth: "46rem",
+              }}
+            >
+              {subject.tagline}
+            </p>
+          </header>
+
+          {/* navigation position */}
+          <div style={{ marginTop: "var(--ta-space-8)" }}>
+            <SubjectNav current={subject.id} entries={entries} />
+          </div>
+
+          {/* 2: ROOM region — contained, compact, vector-only, calm. */}
+          <div style={{ marginTop: "var(--ta-space-block)" }} data-density="compact">
+            <Room subject={subject.id} motif={subject.motif} density={subject.density} role="edge">
+              <p style={MONO_LABEL}>Room · compact density · vector only</p>
+              <h2
+                style={{
+                  margin: "var(--ta-space-2) 0 0",
+                  fontFamily: "var(--ta-font-display)",
+                  fontSize: "var(--ta-display-xs)",
+                  fontWeight: 500,
+                  color: "var(--ta-text-primary)",
+                }}
+              >
+                Inside this room
+              </h2>
+              <p
+                style={{
+                  margin: "var(--ta-space-2) 0 0",
+                  fontSize: "var(--ta-text-sm)",
+                  color: "var(--ta-text-secondary)",
+                  maxWidth: "46rem",
+                }}
+              >
+                The room is the working surface of this environment. It holds no
+                substrate and no canvas — only calm, compact space for the
+                features that arrive in later phases. Nothing here is loading;
+                nothing here is built yet.
+              </p>
+
+              <div
+                style={{
+                  marginTop: "var(--ta-space-block)",
+                  display: "grid",
+                  gap: "var(--ta-space-stack)",
+                }}
+              >
+                {SHELL_REGIONS.map((r) => {
+                  const Slot = REGION_SLOTS[r.id];
+                  return (
+                    <section key={r.id} data-shell-region={r.id} aria-label={r.title}>
+                      {Slot ? (
+                        <Slot />
+                      ) : (
+                        <div
+                          style={{
+                            border: "1px solid var(--ta-border-subtle)",
+                            borderLeft: "2px solid var(--ta-accent-3)",
+                            borderRadius: "var(--ta-radius-2)",
+                            background: "var(--ta-surface-base)",
+                            padding: "var(--ta-space-4)",
+                          }}
+                        >
+                          <p style={MONO_LABEL}>System state · not built</p>
+                          <h3
+                            style={{
+                              margin: "var(--ta-space-1) 0 0",
+                              fontSize: "var(--ta-text-md)",
+                              fontWeight: 600,
+                              color: "var(--ta-text-primary)",
+                            }}
+                          >
+                            {r.title}
+                          </h3>
+                          <p
+                            style={{
+                              margin: "var(--ta-space-1) 0 0",
+                              fontSize: "var(--ta-text-sm)",
+                              color: "var(--ta-text-secondary)",
+                            }}
+                          >
+                            {r.note}
+                          </p>
+                        </div>
+                      )}
+                    </section>
+                  );
+                })}
+              </div>
+            </Room>
+          </div>
+        </div>
+      </AmbientStage>
+    </div>
+  );
+}

@@ -1,0 +1,997 @@
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════════════════════════════
+   TUTORS ACADEMY — TOKEN LAYER  ·  "INK & SIGNAL"
+   ────────────────────────────────────────────────────────────────────────
+   TWO-TIER ARCHITECTURE (mandatory rule):
+
+     TIER 1 · PRIMITIVE   --ta-<family>-<step>      raw values ONLY.
+                            NEVER referenced by components.
+     TIER 2 · SEMANTIC    --ta-surface-* / --ta-text-* / --ta-brand / …
+                            meaning-bearing. The ONLY tier components may
+                            consume (directly, or via the Tailwind utilities
+                            mapped below).
+
+   A component that references a primitive token is a BUG.
+
+   HUE IS LOCKED to ink / slate / ivory / brass / signal. Lightness was tuned
+   only where a WCAG check demanded it (see docs report). The single `danger`
+   red is a flagged functional exception, isolated to --ta-state-danger.
+
+   THEME SCOPES — same semantic names, never forked:
+     :root                    → dark, cinematic (brand default)
+     [data-theme="light"]     → light reading surfaces
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────────────
+   TIER 1 · PRIMITIVES  (raw values — components must not use these)
+   ────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Ink — dark environments */
+  --ta-ink-950: #07090b;
+  --ta-ink-900: #0b0e12;
+  --ta-ink-800: #12161c;
+  --ta-ink-700: #1a1f27;
+
+  /* Slate — structure, borders */
+  --ta-slate-700: #2a313b;
+  --ta-slate-600: #3e4753;
+  --ta-slate-400: #6b7683;
+  --ta-slate-300: #9aa4b0;
+  --ta-slate-200: #c6cdd6;
+
+  /* Ivory — light reading surfaces */
+  --ta-ivory-300: #f7f5f0;
+  --ta-ivory-200: #efebe3;
+  --ta-ivory-100: #e2dcd1;
+  --ta-ivory-50: #faf9f5;
+
+  /* Brass — brand, used sparingly */
+  --ta-brass-700: #7a5a1f;
+  --ta-brass-600: #9e7a33;
+  --ta-brass-500: #c29a45;
+  --ta-brass-400: #d9b563;
+  --ta-brass-300: #e7cb8a;
+
+  /* Signal — live / interactive only */
+  --ta-signal-700: #0e7c6e;
+  --ta-signal-600: #21a896;
+  --ta-signal-500: #35c9b4;
+  --ta-signal-400: #6fe0d0;
+  --ta-signal-300: #a5ede3;
+
+  /* Danger — FLAGGED functional exception (only new hue). */
+  --ta-danger-600: #c6383e;
+  --ta-danger-500: #e5484d;
+  --ta-danger-400: #f2666b;
+
+  /* ── Non-colour primitives ─────────────────────────────────────────── */
+  /* Spacing (px) */
+  --ta-space-1: 0.25rem; /* 4  */
+  --ta-space-2: 0.5rem; /* 8  */
+  --ta-space-3: 0.75rem; /* 12 */
+  --ta-space-4: 1rem; /* 16 */
+  --ta-space-6: 1.5rem; /* 24 */
+  --ta-space-8: 2rem; /* 32 */
+  --ta-space-12: 3rem; /* 48 */
+  --ta-space-16: 4rem; /* 64 */
+  --ta-space-24: 6rem; /* 96 */
+  --ta-space-32: 8rem; /* 128*/
+  --ta-space-40: 10rem; /* 160*/
+
+  /* Radius (px) */
+  --ta-radius-1: 0.25rem; /* 4  */
+  --ta-radius-2: 0.5rem; /* 8  */
+  --ta-radius-3: 0.75rem; /* 12 */
+  --ta-radius-4: 1rem; /* 16 */
+  --ta-radius-5: 1.5rem; /* 24 */
+  --ta-radius-full: 9999px;
+
+  /* Elevation — layered, ink-tinted (never flat grey) */
+  --ta-elev-0: none;
+  --ta-elev-1: 0 1px 2px rgb(7 9 11 / 0.5), 0 1px 1px rgb(7 9 11 / 0.35);
+  --ta-elev-2:
+    0 2px 6px rgb(7 9 11 / 0.45), 0 1px 2px rgb(7 9 11 / 0.4),
+    0 0 0 1px rgb(7 9 11 / 0.2);
+  --ta-elev-3:
+    0 8px 20px rgb(7 9 11 / 0.5), 0 3px 8px rgb(7 9 11 / 0.4),
+    0 0 0 1px rgb(7 9 11 / 0.2);
+  --ta-elev-4:
+    0 20px 48px rgb(7 9 11 / 0.55), 0 8px 20px rgb(7 9 11 / 0.45),
+    0 0 0 1px rgb(7 9 11 / 0.25);
+
+  /* Motion — the formal grammar (Phase 2 · Step 3). Values live ONLY here.
+     Rules:
+       · EXITS ARE ALWAYS FASTER THAN ENTRIES  (enter=base, exit=fast).
+       · --ta-dur-cinematic is RATIONED — hero / scene transitions only.
+       · Anything above --ta-dur-base must be INTERRUPTIBLE.
+       · Animate transform + opacity ONLY (compositor). */
+  --ta-dur-instant: 90ms; /* input feedback, hover */
+  --ta-dur-fast: 160ms; /* small state changes, tooltips, EXITS */
+  --ta-dur-base: 240ms; /* DEFAULT — most transitions, ENTRIES */
+  --ta-dur-slow: 400ms; /* panels, section reveals */
+  --ta-dur-slower: 700ms; /* scene-level transitions */
+  --ta-dur-cinematic: 1000ms; /* hero / ceremonial ONLY */
+  --ta-ease-enter: cubic-bezier(0.16, 1, 0.3, 1); /* arriving */
+  --ta-ease-exit: cubic-bezier(0.7, 0, 0.84, 0); /* leaving */
+  --ta-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* bidirectional */
+  --ta-ease-cinematic: cubic-bezier(0.83, 0, 0.17, 1); /* weighted, hero */
+  --ta-ease-linear: linear; /* progress, loops */
+
+  /* Motion budget — max concurrently animated elements per section. */
+  --ta-motion-budget: 8;
+  /* Stagger — per-item step, hard-capped total. */
+  --ta-stagger-step: 40ms;
+  --ta-stagger-cap: 300ms;
+
+  /* Z-index */
+  --ta-z-base: 0;
+  --ta-z-sticky: 100;
+  --ta-z-overlay: 300;
+  --ta-z-modal: 400;
+  --ta-z-toast: 500;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   TIER 2 · SEMANTIC  — dark default (brand)
+   ────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Surfaces */
+  --ta-surface-base: var(--ta-ink-900);
+  --ta-surface-raised: var(--ta-ink-800);
+  --ta-surface-sunken: var(--ta-ink-950);
+  --ta-surface-overlay: color-mix(in srgb, var(--ta-ink-700) 78%, transparent);
+  --ta-surface-brand: var(--ta-brass-500);
+
+  /* Text */
+  --ta-text-primary: var(--ta-ivory-300);
+  --ta-text-secondary: var(--ta-ivory-200);
+  --ta-text-muted: var(--ta-slate-300);
+  --ta-text-inverse: var(--ta-ink-950);
+  --ta-text-on-brand: var(--ta-ink-950);
+
+  /* Brand */
+  --ta-brand: var(--ta-brass-500);
+  --ta-brand-strong: var(--ta-brass-400);
+  --ta-brand-quiet: color-mix(in srgb, var(--ta-brass-500) 16%, transparent);
+
+  /* Signal */
+  --ta-signal: var(--ta-signal-500);
+  --ta-signal-quiet: color-mix(in srgb, var(--ta-signal-500) 16%, transparent);
+
+  /* Borders */
+  --ta-border-subtle: var(--ta-slate-400);
+  --ta-border-strong: var(--ta-slate-300);
+  --ta-border-focus: var(--ta-signal-400);
+
+  /* Subject slots — Phase 3 fills per subject. Defaults only. */
+  --ta-accent-1: var(--ta-brand);
+  --ta-accent-2: var(--ta-signal);
+  --ta-accent-3: var(--ta-slate-300);
+
+  /* State */
+  --ta-state-success: var(--ta-signal-500);
+  --ta-state-warning: var(--ta-brass-400);
+  --ta-state-danger: var(--ta-danger-400);
+  --ta-state-info: var(--ta-slate-300);
+
+  /* Focus — visible, high-contrast, non-negotiable */
+  --ta-focus-ring: var(--ta-signal-400);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   TIER 2 · SEMANTIC  — light reading surfaces (same names)
+   ────────────────────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --ta-surface-base: var(--ta-ivory-50);
+  --ta-surface-raised: var(--ta-ivory-300);
+  --ta-surface-sunken: var(--ta-ivory-100);
+  --ta-surface-overlay: color-mix(in srgb, var(--ta-ivory-300) 86%, transparent);
+  --ta-surface-brand: var(--ta-brass-500);
+
+  --ta-text-primary: var(--ta-ink-900);
+  --ta-text-secondary: var(--ta-ink-700);
+  --ta-text-muted: var(--ta-slate-600);
+  --ta-text-inverse: var(--ta-ivory-300);
+  --ta-text-on-brand: var(--ta-ink-950);
+
+  --ta-brand: var(--ta-brass-700);
+  --ta-brand-strong: var(--ta-brass-600);
+  --ta-brand-quiet: color-mix(in srgb, var(--ta-brass-600) 14%, transparent);
+
+  --ta-signal: var(--ta-signal-700);
+  --ta-signal-quiet: color-mix(in srgb, var(--ta-signal-700) 14%, transparent);
+
+  --ta-border-subtle: var(--ta-slate-400);
+  --ta-border-strong: var(--ta-slate-600);
+  --ta-border-focus: var(--ta-signal-700);
+
+  --ta-accent-1: var(--ta-brand);
+  --ta-accent-2: var(--ta-signal);
+  --ta-accent-3: var(--ta-slate-600);
+
+  --ta-state-success: var(--ta-signal-700);
+  --ta-state-warning: var(--ta-brass-600);
+  --ta-state-danger: var(--ta-danger-600);
+  --ta-state-info: var(--ta-slate-600);
+
+  --ta-focus-ring: var(--ta-signal-700);
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   TYPE — the brand frame (Phase 2 · Step 2)
+   ────────────────────────────────────────────────────────────────────────
+   LOCKED RULE: families are the BRAND FRAME. Subjects may tune treatment
+   (tracking / italic / casing / one accent) but NEVER the families.
+
+     display  Fraunces (variable)          headlines & hero statements only
+     text     Instrument Sans (variable)   all UI + body copy (default)
+     mono     JetBrains Mono (variable)    code, equations, IDs, timers
+
+   next/font emits "<Name> Fallback" metric-matched faces; they are listed in
+   each stack so the swap is shift-free even before utilities load.
+   ════════════════════════════════════════════════════════════════════════ */
+:root {
+  --ta-font-display:
+    var(--font-fraunces), "Fraunces Fallback", Georgia, "Times New Roman", serif;
+  --ta-font-text:
+    var(--font-instrument-sans), "Instrument Sans Fallback", ui-sans-serif,
+    system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ta-font-mono:
+    var(--font-jetbrains-mono), "JetBrains Mono Fallback", ui-monospace,
+    SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Fluid, rem-only modular scale. Body floor = 1rem (16px) at all viewports. */
+  --ta-text-2xs: 0.6875rem;
+  --ta-text-xs: 0.75rem;
+  --ta-text-sm: 0.875rem;
+  --ta-text-base: 1rem;
+  --ta-text-lg: 1.125rem;
+  --ta-text-xl: 1.25rem;
+  --ta-text-2xl: 1.5rem;
+  --ta-display-sm: clamp(1.75rem, 1.5rem + 1.2vw, 2.25rem);
+  --ta-display-md: clamp(2.125rem, 1.75rem + 2vw, 3rem);
+  --ta-display-lg: clamp(2.75rem, 2.1rem + 3.2vw, 4.25rem);
+  --ta-display-xl: clamp(3.25rem, 2.4rem + 4.5vw, 5.5rem);
+
+  /* Rhythm — line-height & tracking inverse with size; weight disciplined. */
+  --ta-leading-display-xl: 0.98;
+  --ta-leading-display: 1.04;
+  --ta-leading-ui: 1.4;
+  --ta-leading-body: 1.6;
+  --ta-tracking-display-xl: -0.03em;
+  --ta-tracking-display: -0.02em;
+  --ta-tracking-body: 0em;
+  --ta-tracking-caps: 0.08em;
+  /* Max 2 display weights product-wide. */
+  --ta-weight-display: 500;
+  --ta-weight-display-strong: 600;
+  --ta-weight-body: 400;
+  --ta-weight-ui: 500;
+  --ta-weight-emph: 600;
+
+  /* Reading measure: 45–75 characters. */
+  --ta-measure: 68ch;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   FRAMEWORK MAPPING — semantic tier → Tailwind utilities.
+   Only semantic names (and the LEGACY aliases below) are exposed to markup.
+   Primitives are deliberately NOT mapped, so they cannot be consumed.
+   ════════════════════════════════════════════════════════════════════════ */
+@theme inline {
+  /* type — semantic families */
+  --font-sans: var(--ta-font-text);
+  --font-display: var(--ta-font-display);
+  --font-text: var(--ta-font-text);
+  --font-mono: var(--ta-font-mono);
+
+  /* display scale as NEW utilities (default text-* left untouched for legacy) */
+  --text-display-sm: var(--ta-display-sm);
+  --text-display-sm--line-height: var(--ta-leading-display);
+  --text-display-sm--letter-spacing: var(--ta-tracking-display);
+  --text-display-sm--font-weight: var(--ta-weight-display);
+  --text-display-md: var(--ta-display-md);
+  --text-display-md--line-height: var(--ta-leading-display);
+  --text-display-md--letter-spacing: var(--ta-tracking-display);
+  --text-display-md--font-weight: var(--ta-weight-display);
+  --text-display-lg: var(--ta-display-lg);
+  --text-display-lg--line-height: var(--ta-leading-display);
+  --text-display-lg--letter-spacing: var(--ta-tracking-display-xl);
+  --text-display-lg--font-weight: var(--ta-weight-display-strong);
+  --text-display-xl: var(--ta-display-xl);
+  --text-display-xl--line-height: var(--ta-leading-display-xl);
+  --text-display-xl--letter-spacing: var(--ta-tracking-display-xl);
+  --text-display-xl--font-weight: var(--ta-weight-display-strong);
+
+  /* surfaces */
+  --color-surface-base: var(--ta-surface-base);
+  --color-surface-raised: var(--ta-surface-raised);
+  --color-surface-sunken: var(--ta-surface-sunken);
+  --color-surface-overlay: var(--ta-surface-overlay);
+  --color-surface-brand: var(--ta-surface-brand);
+
+  /* text */
+  --color-text-primary: var(--ta-text-primary);
+  --color-text-secondary: var(--ta-text-secondary);
+  --color-text-muted: var(--ta-text-muted);
+  --color-text-inverse: var(--ta-text-inverse);
+  --color-text-on-brand: var(--ta-text-on-brand);
+
+  /* brand / signal */
+  --color-brand: var(--ta-brand);
+  --color-brand-strong: var(--ta-brand-strong);
+  --color-brand-quiet: var(--ta-brand-quiet);
+  --color-signal: var(--ta-signal);
+  --color-signal-quiet: var(--ta-signal-quiet);
+
+  /* borders */
+  --color-border-subtle: var(--ta-border-subtle);
+  --color-border-strong: var(--ta-border-strong);
+  --color-border-focus: var(--ta-border-focus);
+
+  /* subject slots */
+  --color-accent-1: var(--ta-accent-1);
+  --color-accent-2: var(--ta-accent-2);
+  --color-accent-3: var(--ta-accent-3);
+
+  /* state */
+  --color-state-success: var(--ta-state-success);
+  --color-state-warning: var(--ta-state-warning);
+  --color-state-danger: var(--ta-state-danger);
+  --color-state-info: var(--ta-state-info);
+
+  /* focus */
+  --color-focus-ring: var(--ta-focus-ring);
+
+  /* radius (mapped to requested scale) */
+  --radius-sm: var(--ta-radius-1);
+  --radius-md: var(--ta-radius-2);
+  --radius-lg: var(--ta-radius-3);
+  --radius-xl: var(--ta-radius-4);
+  --radius-2xl: var(--ta-radius-5);
+
+  /* elevation → shadow utilities, ink-tinted */
+  --shadow-xs: var(--ta-elev-1);
+  --shadow-sm: var(--ta-elev-1);
+  --shadow-md: var(--ta-elev-2);
+  --shadow-lg: var(--ta-elev-3);
+  --shadow-xl: var(--ta-elev-4);
+  --shadow-brand: var(--ta-elev-2);
+
+  /* ── LEGACY ALIASES ─────────────────────────────────────────────────
+     The foundation components (pre-Phase-2) reference these names. They are
+     pure aliases onto the semantic tier — no new values, no second source of
+     truth. A later phase migrates components to semantic names and deletes
+     this block. Until then these keep existing pages rendering (now in
+     INK & SIGNAL). */
+  --color-background: var(--ta-surface-base);
+  --color-surface: var(--ta-surface-base);
+  --color-surface-muted: var(--ta-surface-sunken);
+  --color-surface-inverse: var(--ta-ivory-300);
+  --color-foreground: var(--ta-text-primary);
+  --color-foreground-muted: var(--ta-text-muted);
+  --color-foreground-subtle: var(--ta-text-muted);
+  --color-foreground-inverse: var(--ta-text-inverse);
+  --color-border: var(--ta-border-subtle);
+  --color-ring: var(--ta-focus-ring);
+
+  --color-ink-50: var(--ta-surface-sunken);
+  --color-ink-100: var(--ta-surface-sunken);
+  --color-ink-200: var(--ta-border-subtle);
+  --color-ink-300: var(--ta-border-strong);
+  --color-ink-400: var(--ta-text-muted);
+  --color-ink-500: var(--ta-text-muted);
+  --color-ink-600: var(--ta-text-muted);
+  --color-ink-700: var(--ta-text-secondary);
+  --color-ink-800: var(--ta-surface-raised);
+  --color-ink-900: var(--ta-surface-base);
+  --color-ink-950: var(--ta-surface-sunken);
+
+  --color-brand-50: var(--ta-brand-quiet);
+  --color-brand-100: var(--ta-brand-quiet);
+  --color-brand-200: var(--ta-brass-300);
+  --color-brand-300: var(--ta-brass-300);
+  --color-brand-400: var(--ta-brass-400);
+  --color-brand-500: var(--ta-brass-500);
+  --color-brand-600: var(--ta-brand);
+  --color-brand-700: var(--ta-brand-strong);
+  --color-brand-800: var(--ta-brass-600);
+  --color-brand-900: var(--ta-brass-700);
+  --color-brand-950: var(--ta-ink-900);
+
+  --color-accent-50: var(--ta-signal-quiet);
+  --color-accent-100: var(--ta-signal-quiet);
+  --color-accent-200: var(--ta-signal-300);
+  --color-accent-300: var(--ta-signal-300);
+  --color-accent-400: var(--ta-signal-400);
+  --color-accent-500: var(--ta-signal);
+  --color-accent-600: var(--ta-signal-600);
+  --color-accent-700: var(--ta-signal-700);
+  --color-accent-800: var(--ta-signal-700);
+  --color-accent-900: var(--ta-signal-700);
+  --color-accent-950: var(--ta-ink-900);
+
+  --color-success-50: var(--ta-signal-quiet);
+  --color-success-500: var(--ta-state-success);
+  --color-success-700: var(--ta-state-success);
+  --color-warning-50: var(--ta-brand-quiet);
+  --color-warning-500: var(--ta-state-warning);
+  --color-warning-700: var(--ta-state-warning);
+  --color-danger-50: color-mix(in srgb, var(--ta-danger-500) 12%, transparent);
+  --color-danger-500: var(--ta-state-danger);
+  --color-danger-700: var(--ta-state-danger);
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   BASE LAYER
+   ════════════════════════════════════════════════════════════════════════ */
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--ta-border-subtle);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  [data-theme="light"] {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--ta-surface-base);
+    color: var(--ta-text-primary);
+    font-family: var(--ta-font-text);
+    font-size: var(--ta-text-base); /* 16px floor; rem-scaled with OS settings */
+    line-height: var(--ta-leading-body);
+    font-weight: var(--ta-weight-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--ta-brand);
+    color: var(--ta-text-on-brand);
+  }
+
+  /* Focus — 2px ring + offset, high contrast. Non-negotiable. */
+  :focus-visible {
+    outline: 2px solid var(--ta-focus-ring);
+    outline-offset: 2px;
+    border-radius: var(--ta-radius-1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   TYPE UTILITIES — rhythm, measure and numerals
+   ════════════════════════════════════════════════════════════════════════ */
+@layer utilities {
+  /* Constrain reading text to a comfortable 45–75 character measure. */
+  .ta-measure {
+    max-width: var(--ta-measure);
+  }
+
+  /* Tabular, lining figures for scores, timers, counters and tables. */
+  .ta-num {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+  }
+
+  /* Data / code / equations — mono with stable digit width. */
+  .ta-mono {
+    font-family: var(--ta-font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Small all-caps label — real caps + positive tracking, never faux. */
+  .ta-caps {
+    text-transform: uppercase;
+    letter-spacing: var(--ta-tracking-caps);
+    font-weight: var(--ta-weight-ui);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   MOTION GRAMMAR — choreography primitives (Phase 2 · Step 3)
+   Every animation must TRANSITION, ORIENT, CONFIRM or REVEAL — else deleted.
+   Components select from this vocabulary; they never invent their own.
+   Compositor-only: transform + opacity. Exits faster than entries.
+   ════════════════════════════════════════════════════════════════════════ */
+
+@keyframes ta-enter {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes ta-exit {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-6px) scale(0.98); }
+}
+@keyframes ta-confirm {
+  0% { transform: scale(1); }
+  40% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+@keyframes ta-attention {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+@keyframes ta-ambient-drift {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+@layer components {
+  /* REVEAL — one-shot scroll entrance. Fade + ≤16px directional offset. */
+  .ta-reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity var(--ta-dur-slow) var(--ta-ease-enter),
+      transform var(--ta-dur-slow) var(--ta-ease-enter);
+  }
+  .ta-reveal[data-dir="left"] { transform: translateX(-12px); }
+  .ta-reveal[data-dir="right"] { transform: translateX(12px); }
+  .ta-reveal[data-dir="up"] { transform: translateY(12px); }
+  .ta-reveal.is-in { opacity: 1; transform: none; }
+
+  /* STAGGER — sequence children in reading order; total capped ~300ms. */
+  .ta-stagger > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity var(--ta-dur-base) var(--ta-ease-enter),
+      transform var(--ta-dur-base) var(--ta-ease-enter);
+    transition-delay: min(
+      calc(var(--i, 0) * var(--ta-stagger-step)),
+      var(--ta-stagger-cap)
+    );
+  }
+  .ta-stagger.is-in > * { opacity: 1; transform: none; }
+
+  /* ORIENT — spatial movement matching the element's origin. */
+  .ta-orient {
+    opacity: 0;
+    transition:
+      opacity var(--ta-dur-base) var(--ta-ease-in-out),
+      transform var(--ta-dur-base) var(--ta-ease-in-out);
+  }
+  .ta-orient[data-from="left"] { transform: translateX(-16px); }
+  .ta-orient[data-from="right"] { transform: translateX(16px); }
+  .ta-orient[data-from="top"] { transform: translateY(-16px); }
+  .ta-orient[data-from="bottom"] { transform: translateY(16px); }
+  .ta-orient.is-in { opacity: 1; transform: none; }
+
+  /* ENTER / EXIT — default mount/unmount pair (exit faster). */
+  .ta-enter { animation: ta-enter var(--ta-dur-base) var(--ta-ease-enter) both; }
+  .ta-exit { animation: ta-exit var(--ta-dur-fast) var(--ta-ease-exit) both; }
+
+  /* CONFIRM — instant tactile micro-feedback. No flourish. */
+  .ta-confirm { animation: ta-confirm var(--ta-dur-instant) var(--ta-ease-enter); }
+
+  /* ATTENTION — brief, rationed emphasis. One on screen, never loops. */
+  .ta-attention { animation: ta-attention var(--ta-dur-slow) var(--ta-ease-enter) 1; }
+
+  /* MORPH — shared-element continuity (FLIP). Real users land in Phase 3. */
+  .ta-morph {
+    transition:
+      transform var(--ta-dur-slow) var(--ta-ease-in-out),
+      opacity var(--ta-dur-slow) var(--ta-ease-in-out);
+  }
+
+  /* AMBIENT — continuous background motion. OFF by default; desktop only. */
+  .ta-ambient { will-change: transform; }
+}
+
+/* Ambient runs only when explicitly enabled on large screens. */
+@media (min-width: 64rem) {
+  html[data-ambient="on"] .ta-ambient {
+    animation: ta-ambient-drift var(--ta-dur-slower) var(--ta-ease-linear)
+      infinite;
+  }
+  html[data-ambient-paused="true"] .ta-ambient {
+    animation-play-state: paused;
+  }
+}
+
+/* ── REDUCED-MOTION CONTRACT — mandatory, not a fallback ─────────────────
+   All movement removed, meaning preserved, NOTHING invisible.           */
+@media (prefers-reduced-motion: reduce) {
+  .ta-reveal,
+  .ta-stagger > *,
+  .ta-orient {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: opacity var(--ta-dur-fast) linear !important;
+  }
+  .ta-enter,
+  .ta-exit,
+  .ta-confirm,
+  .ta-attention,
+  .ta-ambient {
+    animation: none !important;
+  }
+  .ta-exit { opacity: 1 !important; }
+}
+
+/* Dev-only override so the specimen can verify without touching the OS. */
+[data-reduced-motion="on"] .ta-reveal,
+[data-reduced-motion="on"] .ta-stagger > *,
+[data-reduced-motion="on"] .ta-orient {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity var(--ta-dur-fast) linear !important;
+}
+[data-reduced-motion="on"] .ta-enter,
+[data-reduced-motion="on"] .ta-exit,
+[data-reduced-motion="on"] .ta-confirm,
+[data-reduced-motion="on"] .ta-attention,
+[data-reduced-motion="on"] .ta-ambient {
+  animation: none !important;
+}
+[data-reduced-motion="on"] .ta-exit { opacity: 1 !important; }
+
+/* Dev-only attribute mirror of the OS media query: makes the specimen's
+   reduced-motion toggle truly instant across ALL transitions/animations. */
+[data-reduced-motion="on"] *,
+[data-reduced-motion="on"] ::before,
+[data-reduced-motion="on"] ::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   SUBJECT SCOPING (Phase 3 · Step 1)
+   [data-subject="<id>"] re-points the THREE EMPTY ACCENT SLOTS for a subtree.
+   NOTHING else changes — brand frame tokens are untouched; the mark stays
+   brass. Raw values are declared per theme (on-ink at :root, on-ivory under
+   [data-theme="light"]) so every accent is proven on both surfaces.
+   NESTING RULE (Stage→Room): a Room inside a Stage keeps the subject accent
+   identity but reduces atmosphere and disables ambience — handled by the
+   provider/roomMood, not by new colours here.
+   ════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --subj-mathematics-1: #8fa0ff; --subj-mathematics-2: #a5b0ff; --subj-mathematics-3: #4a527c;
+  --subj-physics-1: #ff9068;     --subj-physics-2: #d37959;     --subj-physics-3: #794939;
+  --subj-chemistry-1: #c795ff;   --subj-chemistry-2: #a57dd4;   --subj-chemistry-3: #604b7d;
+  --subj-biology-1: #7ce7a5;     --subj-biology-2: #68c08b;     --subj-biology-3: #3e7054;
+  --subj-english-1: #ff8fa3;     --subj-english-2: #d37889;     --subj-english-3: #794853;
+  --subj-history-1: #7fd6e8;     --subj-history-2: #6ab2c1;     --subj-history-3: #3f6872;
+}
+[data-theme="light"] {
+  --subj-mathematics-1: #4353c9; --subj-mathematics-2: #5a6be0; --subj-mathematics-3: #9aa1c6;
+  --subj-physics-1: #c2410c;     --subj-physics-2: #cc6236;     --subj-physics-3: #e1a68c;
+  --subj-chemistry-1: #8a3ffc;   --subj-chemistry-2: #9e60fb;   --subj-chemistry-3: #c8a5f8;
+  --subj-biology-1: #15803d;     --subj-biology-2: #3e965e;     --subj-biology-3: #93c3a2;
+  --subj-english-1: #be123c;     --subj-english-2: #c93c5d;     --subj-english-3: #df91a2;
+  --subj-history-1: #0e7490;     --subj-history-2: #388ca2;     --subj-history-3: #90bdc8;
+}
+
+[data-subject="mathematics"] { --ta-accent-1: var(--subj-mathematics-1); --ta-accent-2: var(--subj-mathematics-2); --ta-accent-3: var(--subj-mathematics-3); }
+[data-subject="physics"] { --ta-accent-1: var(--subj-physics-1); --ta-accent-2: var(--subj-physics-2); --ta-accent-3: var(--subj-physics-3); }
+[data-subject="chemistry"] { --ta-accent-1: var(--subj-chemistry-1); --ta-accent-2: var(--subj-chemistry-2); --ta-accent-3: var(--subj-chemistry-3); }
+[data-subject="biology"] { --ta-accent-1: var(--subj-biology-1); --ta-accent-2: var(--subj-biology-2); --ta-accent-3: var(--subj-biology-3); }
+[data-subject="english"] { --ta-accent-1: var(--subj-english-1); --ta-accent-2: var(--subj-english-2); --ta-accent-3: var(--subj-english-3); }
+[data-subject="history"] { --ta-accent-1: var(--subj-history-1); --ta-accent-2: var(--subj-history-2); --ta-accent-3: var(--subj-history-3); }
+
+/* ════════════════════════════════════════════════════════════════════════
+   SPATIAL SYSTEM — grid · containers · breakpoints · density (Step 4)
+   ────────────────────────────────────────────────────────────────────────
+   !! SYNC PAIR !!  The min-width values below MUST exactly match
+   `BREAKPOINTS` in `src/lib/spatial.ts`. Custom properties cannot be used
+   inside media queries, so the numbers are mirrored as literals here.
+   Verify with:  node scripts/check-breakpoints.mjs
+
+   TWO SPATIAL MODES (locked):
+     THE STAGE — full-bleed, cinematic; owns the edges; may contain Rooms.
+     THE ROOM  — contained, calm; never breaks the container; never holds
+                 Stage content. A view is one or the other.
+
+   PROXIMITY PRINCIPLE:
+     1 step apart = tightly related. 2 steps = grouped. 4+ steps = separate
+     sections. If two things look equally spaced, users assume they are
+     equally related. This is how structure reads WITHOUT borders/dividers.
+   ════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Breakpoint-derived role tokens. xs/sm floor. */
+  --ta-gutter: var(--ta-space-6); /* 24 */
+
+  /* Containers — max-width only, centred with auto margins, never fixed. */
+  --ta-container-prose: var(--ta-measure); /* long-form reading only */
+  --ta-container-content: 70rem; /* 1120 — the ONE default (Rooms, forms) */
+  --ta-container-wide: 90rem; /* 1440 — galleries, subject grids */
+  --ta-container-stage: none; /* full-bleed + safe insets — Stage only */
+
+  /* Vertical rhythm (role tokens, fluid). See PROXIMITY PRINCIPLE above. */
+  --ta-space-section: clamp(4rem, 3rem + 5vw, 10rem); /* 64 → 160 */
+  --ta-space-block: clamp(2rem, 1.5rem + 2.5vw, 4rem); /* 32 → 64 */
+  --ta-space-stack: clamp(0.75rem, 0.6rem + 0.8vw, 1.5rem); /* 12 → 24 */
+  --ta-pad-card: clamp(1rem, 0.75rem + 1.2vw, 2rem); /* 16 → 32 */
+
+  /* Touch targets — never shrink a target to make a layout work. */
+  --ta-target-min: 2.75rem; /* 44 */
+  --ta-target-primary: 3rem; /* 48 */
+  --ta-target-gap: 0.5rem; /* 8  — min gap between adjacent targets */
+
+  /* Control height (comfortable default). */
+  --ta-control-h: 3rem; /* 48 */
+
+  /* Media aspect ratios (explicit, to prevent CLS). Never on text. */
+  --ta-aspect-video: 16 / 9;
+  --ta-aspect-photo: 4 / 3;
+  --ta-aspect-square: 1 / 1;
+}
+
+/* Gutters per canonical band — min-width ONLY, ascending. (pair: spatial.ts)
+   Bands with no change (sm, xl) are re-asserted so the full set stays live. */
+@media (min-width: 480px) { :root { --ta-gutter: var(--ta-space-6); } } /* sm 24 */
+@media (min-width: 768px) { :root { --ta-gutter: var(--ta-space-8); } } /* md 32 */
+@media (min-width: 1024px) { :root { --ta-gutter: var(--ta-space-12); } } /* lg 48 */
+@media (min-width: 1280px) { :root { --ta-gutter: var(--ta-space-12); } } /* xl 48 */
+@media (min-width: 1536px) { :root { --ta-gutter: var(--ta-space-16); } } /* 2xl 64 */
+
+/* ── DENSITY MODES ───────────────────────────────────────────────────────
+   comfortable (:root) = Stage / marketing. compact = working surfaces.
+   Compact remaps ROLE TOKENS ONLY — spacing + control heights. It must NOT
+   change colour, type scale, radius or elevation (those stay put below).   */
+[data-density="compact"] {
+  --ta-space-block: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+  --ta-space-stack: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --ta-pad-card: clamp(0.75rem, 0.6rem + 0.8vw, 1.25rem);
+  --ta-control-h: 2.5rem; /* 40 — pointer-dense working surfaces */
+}
+
+@layer components {
+  /* CONTAINERS — max-width + auto margins; gutter applied here, never in a
+     component. ONE default: `content` unless a stated reason says otherwise. */
+  .ta-container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--ta-gutter);
+  }
+  .ta-container--prose { max-width: var(--ta-container-prose); }
+  .ta-container--content { max-width: var(--ta-container-content); }
+  .ta-container--wide { max-width: var(--ta-container-wide); }
+  .ta-container--stage {
+    max-width: none;
+    padding-inline: max(var(--ta-gutter), env(safe-area-inset-left),
+      env(safe-area-inset-right));
+  }
+
+  /* GRID — mobile-first, min-width only. Columns/gap from the canonical
+     bands. Content spans WHOLE columns; a "5.5 column" span is a design
+     failure — fix the composition, not the grid. */
+  .ta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--ta-space-6); /* 24 */
+  }
+  .ta-grid--cols8 { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+  .ta-grid--cols12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+}
+@media (min-width: 768px) {
+  .ta-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .ta-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--ta-space-8); }
+}
+
+/* ── COMPONENT ADAPTIVITY (locked) ──────────────────────────────────────
+   Pages/sections respond to the VIEWPORT (media queries above). Reusable
+   components respond to their CONTAINER (container queries below) — the
+   same card sits in a hero, a dashboard grid and a sidebar. MANDATORY for
+   Phase 3+. Wrap a component's parent in .ta-cq and query with @container. */
+.ta-cq { container-type: inline-size; }
+
+/* Container-query demonstration (MANDATORY pattern for Phase 3+ components).
+   The card re-composes by its CONTAINER'S width, not the viewport's. */
+.cq-card { display: grid; grid-template-columns: 1fr; gap: var(--ta-space-3); }
+@container (min-width: 480px) {
+  .cq-card { grid-template-columns: 1fr 2fr; }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   CORE PRIMITIVES — skin layer (Phase 2 · Step 5)
+   Behavior lives in the TSX; ALL visuals below are driven ENTIRELY by the
+   semantic tokens from 2.1–2.4. No hardcoded colour/radius/duration/spacing.
+   Subjects re-skin in Phase 3 by overriding tokens ONLY — never the TSX.
+   ════════════════════════════════════════════════════════════════════════ */
+
+@keyframes ta-spin { to { transform: rotate(360deg); } }
+@keyframes ta-progress-ind {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+@layer components {
+  /* ── BUTTON ───────────────────────────────────────────────────────────
+     FOUR roles only (primary/secondary/ghost/danger). ONE shared skin for
+     <button> and <a>. EMPHASIS RULE: exactly ONE primary per view.        */
+  .ta-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ta-space-2);
+    border: 1px solid transparent;
+    border-radius: var(--ta-radius-2);
+    font-family: var(--ta-font-text);
+    font-weight: var(--ta-weight-ui);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      background-color var(--ta-dur-instant) var(--ta-ease-enter),
+      border-color var(--ta-dur-instant) var(--ta-ease-enter),
+      color var(--ta-dur-instant) var(--ta-ease-enter),
+      transform var(--ta-dur-instant) var(--ta-ease-enter);
+  }
+  .ta-btn:disabled, .ta-btn[aria-disabled="true"] { cursor: not-allowed; opacity: 0.55; }
+  .ta-btn[aria-busy="true"] { pointer-events: none; }
+
+  /* sizes — touch floor 44; primary 48; density shrinks only via control-h,
+     never below the floor. */
+  .ta-btn[data-size="sm"] { min-height: max(2.75rem, var(--ta-control-h)); padding-inline: var(--ta-space-3); font-size: var(--ta-text-sm); }
+  .ta-btn[data-size="md"] { min-height: max(2.75rem, var(--ta-control-h)); padding-inline: var(--ta-space-4); font-size: var(--ta-text-sm); }
+  .ta-btn[data-size="lg"] { min-height: 3rem; padding-inline: var(--ta-space-6); font-size: var(--ta-text-base); }
+  .ta-btn[data-size="icon"] { width: 2.75rem; height: 2.75rem; padding-inline: 0; }
+
+  /* roles */
+  .ta-btn[data-variant="primary"] { min-height: 3rem; background: var(--ta-surface-brand); color: var(--ta-text-on-brand); }
+  .ta-btn[data-variant="primary"]:hover { background: var(--ta-brand-strong); }
+  .ta-btn[data-variant="secondary"] { background: var(--ta-surface-raised); color: var(--ta-text-primary); border-color: var(--ta-border-strong); }
+  .ta-btn[data-variant="secondary"]:hover { border-color: var(--ta-border-focus); }
+  .ta-btn[data-variant="ghost"] { background: transparent; color: var(--ta-text-muted); }
+  .ta-btn[data-variant="ghost"]:hover { background: var(--ta-surface-raised); color: var(--ta-text-primary); }
+  .ta-btn[data-variant="danger"] { background: var(--ta-state-danger); color: var(--ta-text-inverse); }
+  .ta-btn[data-variant="danger"]:hover { background: var(--ta-danger-600); }
+
+  /* SIGNATURE press: 1px compress + brief brass edge-light (confirm only). */
+  .ta-btn[data-variant="primary"]:active {
+    transform: translateY(1px) scale(0.99);
+    box-shadow: 0 0 0 1px var(--ta-brand-strong);
+  }
+  /* Focus ring stays visible on brass: dark halo separates ring from fill. */
+  .ta-btn:focus-visible {
+    outline: 2px solid var(--ta-focus-ring);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--ta-surface-base);
+  }
+
+  .ta-btn__spinner {
+    width: 1em; height: 1em; flex: none;
+    border-radius: var(--ta-radius-full);
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    animation: ta-spin var(--ta-dur-slower) var(--ta-ease-linear) infinite;
+  }
+
+  /* ── CARD / SURFACE ──────────────────────────────────────────────────
+     flat (default)=hairline; raised=shadow, NO border (one signal only);
+     inset=sunken; interactive=whole card is ONE link, no nested controls. */
+  .ta-card {
+    display: flex; flex-direction: column;
+    background: var(--ta-surface-base);
+    border: 1px solid var(--ta-border-subtle);
+    border-radius: var(--ta-radius-4);
+    box-shadow: var(--ta-elev-1);
+    overflow: clip;
+  }
+  .ta-card > .ta-card__media { padding: 0; }
+  .ta-card[data-variant="raised"] { border-color: transparent; box-shadow: var(--ta-elev-2); }
+  .ta-card[data-variant="inset"] { border-color: transparent; box-shadow: none; background: var(--ta-surface-sunken); }
+  .ta-card[data-variant="interactive"] {
+    cursor: pointer;
+    transition: transform var(--ta-dur-instant) var(--ta-ease-enter), border-color var(--ta-dur-instant) var(--ta-ease-enter);
+  }
+  .ta-card[data-variant="interactive"]:hover { transform: translateY(-1px); border-color: var(--ta-border-strong); }
+  .ta-card[data-variant="interactive"]:focus-within { outline: 2px solid var(--ta-focus-ring); outline-offset: 2px; }
+  .ta-card > * { padding: var(--ta-pad-card); }
+  .ta-card__media { aspect-ratio: var(--ta-aspect-video); overflow: clip; }
+  .ta-card__media > * { width: 100%; height: 100%; object-fit: cover; padding: 0; }
+  .ta-card__footer { border-top: 1px solid var(--ta-border-subtle); background: var(--ta-surface-sunken); }
+
+  /* ── FIELD + INPUT ─────────────────────────────────────────────────── */
+  .ta-label { display: block; font-size: var(--ta-text-sm); font-weight: var(--ta-weight-ui); color: var(--ta-text-primary); margin-bottom: var(--ta-space-1); }
+  .ta-hint { font-size: var(--ta-text-xs); color: var(--ta-text-muted); margin-top: var(--ta-space-1); }
+  .ta-error { font-size: var(--ta-text-xs); color: var(--ta-state-danger); margin-top: var(--ta-space-1); display: flex; gap: var(--ta-space-1); align-items: center; }
+  .ta-success { font-size: var(--ta-text-xs); color: var(--ta-state-success); margin-top: var(--ta-space-1); display: flex; gap: var(--ta-space-1); align-items: center; }
+
+  .ta-input {
+    position: relative;
+    width: 100%;
+    min-height: max(2.75rem, var(--ta-control-h));
+    border: 1px solid var(--ta-border-subtle);
+    border-radius: var(--ta-radius-2);
+    background: var(--ta-surface-sunken);
+    color: var(--ta-text-primary);
+    font-family: var(--ta-font-text);
+    font-size: var(--ta-text-base);
+    padding-inline: var(--ta-space-3);
+    transition: border-color var(--ta-dur-instant) var(--ta-ease-enter), background-color var(--ta-dur-instant) var(--ta-ease-enter);
+  }
+  .ta-input::placeholder { color: var(--ta-text-muted); }
+  .ta-input:hover:not(:disabled):not([readonly]) { border-color: var(--ta-border-strong); }
+  .ta-input:focus-visible, .ta-input:focus {
+    outline: 2px solid var(--ta-focus-ring);
+    outline-offset: 1px;
+    border-color: var(--ta-border-focus);
+  }
+  .ta-input:disabled { opacity: 0.55; cursor: not-allowed; }
+  .ta-input[readonly] { background: var(--ta-surface-raised); }
+  .ta-input[aria-invalid="true"] { border-color: var(--ta-state-danger); }
+  .ta-input[data-state="success"] { border-color: var(--ta-state-success); }
+
+  /* ── PROGRESS ────────────────────────────────────────────────────────
+     Fill uses brand. SIGNAL is reserved for live states — not used here. */
+  .ta-progress { position: relative; height: var(--ta-space-2); border-radius: var(--ta-radius-full); background: var(--ta-surface-sunken); overflow: clip; }
+  .ta-progress__fill { position: absolute; inset: 0 auto 0 0; background: var(--ta-brand); border-radius: inherit; transition: transform var(--ta-dur-base) var(--ta-ease-in-out); }
+  .ta-progress[data-indeterminate="true"] .ta-progress__fill {
+    width: 40%;
+    animation: ta-progress-ind var(--ta-dur-slower) var(--ta-ease-in-out) infinite;
+  }
+  .ta-progress__label { font-variant-numeric: tabular-nums lining-nums; }
+}
+
+/* Reduced motion: press keeps state (background) but no movement;
+   indeterminate becomes a STATIC bar, not a stall. */
+@media (prefers-reduced-motion: reduce) {
+  .ta-btn[data-variant="primary"]:active { transform: none; }
+  .ta-btn__spinner { animation-duration: 1.5s; }
+  .ta-progress[data-indeterminate="true"] .ta-progress__fill { animation: none; width: 40%; transform: none; }
+}
+[data-reduced-motion="on"] .ta-btn[data-variant="primary"]:active { transform: none; }
+[data-reduced-motion="on"] .ta-progress[data-indeterminate="true"] .ta-progress__fill { animation: none; width: 40%; transform: none; }
+
+@layer components {
+  /* OVERFLOW — wide tables / long equations scroll INSIDE their own
+     container, never the page. Fade edges advertise more content; the
+     element is keyboard-reachable (add tabindex="0" when scrollable). */
+  .ta-scroll-x {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+  .ta-scroll-fade {
+    mask-image: linear-gradient(to right, transparent 0, #000 24px,
+      #000 calc(100% - 24px), transparent 100%);
+  }
+
+  /* MEDIA — explicit aspect ratio + fluid width to prevent CLS.
+     NEVER apply an aspect ratio to a text container (no fixed text heights). */
+  .ta-media { aspect-ratio: var(--ta-aspect-video); width: 100%; height: auto; }
+  .ta-media--photo { aspect-ratio: var(--ta-aspect-photo); }
+  .ta-media--square { aspect-ratio: var(--ta-aspect-square); }
+
+  /* SAFE AREAS — fixed/sticky/Stage chrome respects notches. The --ta-safe-*
+     vars let the specimen simulate a notch without a real device. */
+  .ta-safe {
+    padding-top: max(env(safe-area-inset-top), var(--ta-safe-sim-top, 0px));
+    padding-bottom: max(env(safe-area-inset-bottom), var(--ta-safe-sim-bottom, 0px));
+    padding-left: max(env(safe-area-inset-left), var(--ta-safe-sim-left, 0px));
+    padding-right: max(env(safe-area-inset-right), var(--ta-safe-sim-right, 0px));
+  }
+}
