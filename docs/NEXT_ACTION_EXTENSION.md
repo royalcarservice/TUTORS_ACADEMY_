@@ -27,3 +27,7 @@ Each row's provider signs the contract at the top of `src/lib/next-action/provid
 ## What is real today
 
 Tier 3 (`enrolment` provider: resume / begin) and Tier 4 (`origin` provider: choose), both gated by `public-website` (the only live module — it owns `/subjects/*`). Tier 1 and Tier 2 exist as types, ordering rules and tests with fixtures on `/dev/next-action`. No shipped provider can emit them.
+
+## Note for Phase 7 (recorded at the 5.6 close-out)
+
+When P7 defines the `join` / `attend` kinds, the engine must keep **two different sentences apart**: *"this is happening now"* (a Tier 1/2 candidate from a scheduled session, source `class`) and *"this is the thing you last did"* (recency from a recorded `session-attended` event, source `progress_record`). They are different kinds with different sources and **must never share one string**. Prerequisite for any of it: `progress_record` exists — creating it is Phase 7's first task (`docs/proposed/progress_record.sql`).

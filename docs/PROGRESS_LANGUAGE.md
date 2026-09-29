@@ -83,6 +83,14 @@ who · which environment (immutable subject id) · which kind (closed set, one p
 
 This is personal data about minors. No export, no aggregation, no sharing, no third-party access, and no retention behaviour beyond the (undecided) policy. What a tutor may see is a Phase 6 decision, made in RLS policy — the row shape (student id · subject id · kind · at · ref) is what makes that a policy decision rather than a schema rewrite.
 
+## Master is a direction, not a state to complete
+
+**Owner ruling (5.6 close-out):** the arc's last step, `master`, gains **no evidence rule at any phase without a ruling, and the default answer is that it never gains one.** It names a direction, not a destination; nobody finishes a subject on this product. `interact` gains its rule from Phase 7 and `progress` from Phase 9 — and Phase 9's rule must satisfy P5-R6 when it arrives. Until then both are ahead.
+
+## The event table is a proposal, not a migration
+
+`docs/proposed/progress_record.sql` holds the accepted shape with its open question (how one table references heterogeneous objects — typed columns, polymorphic id, or join table per kind) stated and unchosen, and RLS as a placeholder that names its dependencies. **Creating `progress_record` is Phase 7's first task.** The file lives outside `supabase/migrations/` on purpose: the location is the control.
+
 ## A note on the `Progress` primitive
 
-`src/components/ui/progress.tsx` (Phase 2) is a linear progress bar with `role="progressbar"`. It is imported by **no route** today. Under P5-R6 it may never be used for a student's record: a bar is a ratio, and a ratio needs a denominator this product does not have. It remains available for genuinely determinate, non-evaluative operations (an upload, a file being processed) and for nothing about a person.
+`src/components/ui/progress.tsx` (Phase 2) is a linear progress bar with `role="progressbar"`. It is imported by **no route** today. Under P5-R6 it may never be used for a student's record: a bar is a ratio, and a ratio needs a denominator this product does not have. **Owner ruling (5.6 close-out):** it is permitted **only where the denominator is real and simultaneous** — an operation in flight, such as a transfer — and **forbidden for a person's learning over time, in any form, at any phase**, because that denominator would be invented by us. The component's header comment now points here.

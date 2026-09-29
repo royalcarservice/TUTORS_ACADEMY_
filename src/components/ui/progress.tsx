@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 
-/* --------------------------------------------------------------------------
+/* RULE (P5-R6, docs/PROGRESS_LANGUAGE.md): permitted ONLY where the denominator is real and simultaneous — an operation in flight (a transfer). FORBIDDEN for a person's learning over time, in any form, at any phase.
+   --------------------------------------------------------------------------
    Progress — the product's linear progress language (student · tutor · admin).
    Determinate and indeterminate only; ring/dial deferred.
 

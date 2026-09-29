@@ -78,6 +78,10 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
     routePrefix: "/admin",
   },
   {
+    /* PHASE 7 PREREQUISITE (5.6 close-out): before this module records anything,
+       create public.progress_record from docs/proposed/progress_record.sql —
+       Phase 7's FIRST task. The open referent question in that file must be
+       decided with the real session table in hand. */
     id: "live-classroom",
     name: "Live classroom",
     summary: "Real-time video sessions with a shared whiteboard and chat.",

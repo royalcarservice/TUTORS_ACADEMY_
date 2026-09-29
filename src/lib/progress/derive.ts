@@ -133,8 +133,11 @@ export interface ArcPosition {
 export const STEP_EVIDENCE: Readonly<Partial<Record<ArcStepId, readonly ProgressEventKind[]>>> = {
   learn: ["session-attended", "recording-watched"],
   progress: ["session-attended", "recording-watched", "work-submitted"],
-  // interact: a tutor–student relationship is not an event kind (P6 decides). Ahead.
-  // master: no evidence rule exists and none is invented. Ahead.
+  // interact: gains its rule from PHASE 7 (a real session with a tutor). Ahead until then.
+  // progress: the rule above is provisional; PHASE 9's rule must satisfy P5-R6 when it arrives.
+  // master: A DIRECTION, NOT A STATE TO COMPLETE. Gains NO evidence rule at any phase
+  //         without an owner ruling, and the default answer is that it never gains one.
+  //         Nobody finishes a subject on this product. (Owner ruling, 5.6 close-out.)
 };
 
 /**
