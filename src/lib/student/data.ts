@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 
 import { nextActionFor, type Candidate, type ProviderInput } from "@/lib/next-action";
+import type { EnvironmentFacts } from "@/lib/progress";
 import { SUBJECTS } from "@/lib/subjects/subjects";
 
 import { deriveShellState, type Enrolment, type EnvironmentState, type ShellState, type SubjectId } from "./contract";
@@ -76,4 +77,19 @@ export async function getEnrolledSubjectIds(): Promise<Set<string>> {
   if (!user) return new Set();
   const { data } = await supabase.from("enrolments").select("subject_id").eq("status", "active");
   return new Set((data ?? []).map((r) => r.subject_id as string));
+}
+
+/**
+ * 5.6: the facts the arc region stands on, for the CURRENT identity and ONE
+ * environment. Reads through the anon client (RLS-bounded). `firstEnteredAt`
+ * is null when there is no environment_state row — MISSING, a state; a
+ * present-but-malformed value is passed through so the pure module can
+ * report it as a defect rather than silently treating it as missing.
+ * Reads nothing else: no counts, no events (there is no event table).
+ */
+export async function getEnvironmentFacts(subjectId: SubjectId, enrolled: boolean): Promise<EnvironmentFacts> {
+  const supabase = await createClient();
+  if (!supabase) return { subjectId, hasAccount: false, enrolled, firstEnteredAt: null };
+  const { data } = await supabase.from("environment_state").select("first_entered_at").eq("subject_id", subjectId).maybeSingle();
+  return { subjectId, hasAccount: true, enrolled, firstEnteredAt: data?.first_entered_at ?? null };
 }

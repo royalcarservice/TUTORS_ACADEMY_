@@ -1,5 +1,8 @@
 import { PLATFORM_MODULES } from "@/config/modules";
 import { ENVIRONMENT_REGIONS, ENVIRONMENT_SLOTS, type EnvironmentRegion } from "@/config/student-slots";
+import type { EnvironmentFacts, ProgressEvent } from "@/lib/progress";
+
+import { resolveArc } from "./arc-region";
 
 /* STUDENT REGIONS INSIDE AN ENVIRONMENT (Phase 5 · Step 5 · Part 5)
  *
@@ -19,28 +22,44 @@ export interface ResolvedEnvironmentSlot {
 }
 
 const isLive = (moduleId: string) => PLATFORM_MODULES.some((m) => m.id === moduleId && m.status === "live");
+export const liveModuleIds = () => PLATFORM_MODULES.filter((m) => m.status === "live").map((m) => m.id);
+
+/** What a resolver may read: the student's facts for THIS environment, already RLS-bounded by the page. */
+export interface SlotContext {
+  subjectId: string;
+  subjectName: string;
+  facts: EnvironmentFacts;
+  /** Progress events for this student. `[]` in production today — there is no table (5.1 amendment pending). */
+  events: readonly ProgressEvent[];
+  liveModules: readonly string[];
+}
+export type SlotResolver = (ctx: SlotContext) => React.ReactNode | null;
 
 /**
  * Resolve the environment slots for one subject. Resolvers are looked up by
- * slot id; a slot whose module is not live is never even asked. Returns only
- * slots with an element. Today the resolver table is EMPTY — nothing exists.
+ * slot id. A slot gated "module-live" (the default) is never even asked while
+ * its module is not live; a slot gated "facts" (5.6, the arc only) is asked
+ * and gates its own later parts on `ctx.liveModules`. Returns only slots with
+ * an element.
  */
 export function resolveEnvironmentSlots(
-  subjectId: string,
-  resolvers: Partial<Record<string, (subjectId: string) => React.ReactNode | null>> = ENVIRONMENT_SLOT_RESOLVERS,
+  ctx: SlotContext,
+  resolvers: Partial<Record<string, SlotResolver>> = ENVIRONMENT_SLOT_RESOLVERS,
 ): ResolvedEnvironmentSlot[] {
   const out: ResolvedEnvironmentSlot[] = [];
   for (const def of ENVIRONMENT_SLOTS) {
-    if (!isLive(def.module)) continue;             // REGISTRY GATE
+    if ((def.gate ?? "module-live") === "module-live" && !isLive(def.module)) continue;   // REGISTRY GATE
     const r = resolvers[def.id];
-    const element = r ? r(subjectId) : null;
+    const element = r ? r(ctx) : null;
     if (element) out.push({ id: def.id, region: def.region, element });
   }
   return out;
 }
 
-/** THE FILL POINT for the environment scope. Empty: nothing inside an environment exists yet. */
-export const ENVIRONMENT_SLOT_RESOLVERS: Partial<Record<string, (subjectId: string) => React.ReactNode | null>> = {};
+/** THE FILL POINT for the environment scope. One entry: the arc (5.6). Every other capability is absent. */
+export const ENVIRONMENT_SLOT_RESOLVERS: Partial<Record<string, SlotResolver>> = {
+  progress: (ctx) => resolveArc(ctx.facts, ctx.events, ctx.liveModules, ctx.subjectName),
+};
 
 const MONO: React.CSSProperties = { fontFamily: "var(--ta-font-mono)", fontSize: "var(--ta-text-2xs)", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--ta-text-muted)", margin: 0 };
 

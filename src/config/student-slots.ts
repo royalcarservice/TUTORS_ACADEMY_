@@ -32,7 +32,7 @@ export type StudentSlotPosition = "region" | "row";
  * Region visibility is decided server-side; a visitor's HTML never carries a
  * student region.
  */
-export type EnvironmentRegion = "threshold" | "sessions" | "work" | "library" | "assistance";
+export type EnvironmentRegion = "threshold" | "sessions" | "record" | "work" | "library" | "assistance";
 
 export interface EnvironmentSlotDef {
   /** Same id as the shell slot it mirrors — one capability, two places. */
@@ -43,16 +43,24 @@ export interface EnvironmentSlotDef {
   region: EnvironmentRegion;
   /** src/config/modules id that must be `live` before this slot may render. */
   module: string;
+  /** 5.6: HOW the slot is gated. Default "module-live". "facts" = the slot
+      renders from facts that already exist (enrolment, entry) and gates each
+      of its OWN later parts on the registry — used by the arc region only,
+      whose first three steps are true today while `student-portal` is still
+      `in-progress`. A declared extension of the contract (DEC-008). */
+  gate?: "module-live" | "facts";
   needs: string;
-  today: "nothing (absent)";
+  today: string;
 }
 
 export const ENVIRONMENT_REGIONS: Record<EnvironmentRegion, { title: string; order: number }> = {
   threshold: { title: "Begin", order: 0 },
   sessions: { title: "Sessions", order: 1 },
-  work: { title: "Work", order: 2 },
-  library: { title: "Library", order: 3 },
-  assistance: { title: "Assistance", order: 4 },
+  /* 5.6: the student's own record in this environment — the arc. Not a dashboard; nothing is counted here today. */
+  record: { title: "Your record", order: 2 },
+  work: { title: "Work", order: 3 },
+  library: { title: "Library", order: 4 },
+  assistance: { title: "Assistance", order: 5 },
 };
 
 export const ENVIRONMENT_SLOTS: readonly EnvironmentSlotDef[] = [
@@ -60,7 +68,7 @@ export const ENVIRONMENT_SLOTS: readonly EnvironmentSlotDef[] = [
   { id: "upcoming-class", name: "Next class here", phase: "Phase 7", region: "sessions", module: "live-classroom", needs: "the next scheduled session in this subject", today: "nothing (absent)" },
   { id: "tutor-presence", name: "Your tutor here", phase: "Phase 6–7", region: "sessions", module: "tutor-portal", needs: "a tutor–student assignment for this subject", today: "nothing (absent)" },
   { id: "assignments", name: "Work due here", phase: "Phase 8", region: "work", module: "assignments", needs: "assignments in this subject with due dates", today: "nothing (absent)" },
-  { id: "progress", name: "Progress here", phase: "5.6 / Phase 9", region: "work", module: "student-portal", needs: "a measured progress language (5.6) with real observations in this subject", today: "nothing (absent)" },
+  { id: "progress", name: "Where you are", phase: "5.6", region: "record", module: "student-portal", gate: "facts", needs: "an enrolment (the arc's first steps); later steps need live modules AND real events", today: "the arc — seven steps, three done, four ahead; no count" },
   { id: "recordings", name: "Recordings here", phase: "Phase 8", region: "library", module: "recorded-classes", needs: "recorded sessions in this subject the student attended", today: "nothing (absent)" },
   { id: "resources", name: "Resources here", phase: "Phase 8", region: "library", module: "recorded-classes", needs: "tutor-shared material scoped to this enrolment", today: "nothing (absent)" },
   { id: "ai-assistance", name: "Assistance here", phase: "Phase 9", region: "assistance", module: "ai-assistant", needs: "a real assistant scoped to this subject's material", today: "nothing (absent)" },

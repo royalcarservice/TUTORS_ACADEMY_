@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { NavShell } from "@/components/layout/nav-shell";
 import { SubjectShell } from "@/components/shell/subject-shell";
 import type { ShellNavEntry } from "@/components/shell/subject-nav";
-import { EnvironmentRegions, resolveEnvironmentSlots } from "@/components/student/environment-regions";
+import { EnvironmentRegions, liveModuleIds, resolveEnvironmentSlots } from "@/components/student/environment-regions";
 import { Threshold } from "@/components/student/threshold";
 import { STUDENT_NAV_ITEMS } from "@/config/student-nav";
 import { ENVIRONMENT_SLOTS } from "@/config/student-slots";
@@ -50,7 +50,7 @@ export default async function EnvironmentFrame({ searchParams }: { searchParams:
   const slots = isEnrolled
     ? q.regions === "specimen"
       ? ENVIRONMENT_SLOTS.map((d) => ({ id: d.id, region: d.region, element: SPECIMEN_RESOLVERS[d.id]() }))
-      : resolveEnvironmentSlots(s.id)
+      : resolveEnvironmentSlots({ subjectId: s.id, subjectName: s.name, facts: { subjectId: s.id as import("@/lib/student/contract").SubjectId, hasAccount: true, enrolled: true, firstEnteredAt: "2026-09-20T09:00:00Z" }, events: [], liveModules: liveModuleIds() })
     : [];
   const entries: ShellNavEntry[] = SUBJECTS.map((x) => ({ id: x.id, name: x.name, href: `/subjects/${x.id}`, available: x.status !== "draft" || (isEnrolled && x.id === s.id), draft: x.status === "draft" }));
   const items = isStudent ? [STUDENT_NAV_ITEMS[0], { label: "Subjects", href: "/subjects" }] : [{ label: "Subjects", href: "/subjects" }];

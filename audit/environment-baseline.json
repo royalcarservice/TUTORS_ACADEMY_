@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T17:06:52.768Z",
+ "generatedAt": "2026-09-29T14:37:11.023Z",
  "reference": "390x844 mobile",
  "states": {
   "visitor-ready": {
@@ -15,6 +15,7 @@
    "primaryAction": null,
    "threshold": false,
    "studentRegions": [],
+   "arc": null,
    "backToSpace": [],
    "draftBanner": false,
    "draftLabel": false,
@@ -22,7 +23,7 @@
    "text": "Mathematics The Lattice — structure you can stand on. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STAT",
    "subjectRoot": "mathematics",
    "htmlHash": "47456ef7283919cd",
-   "rscHash": "37d6ebb8a27d295c",
+   "rscHash": "f84351faf03bf1b2",
    "htmlBytes": 42482,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
@@ -41,6 +42,7 @@
    "primaryAction": null,
    "threshold": false,
    "studentRegions": [],
+   "arc": null,
    "backToSpace": [
     "Student portal"
    ],
@@ -50,7 +52,7 @@
    "text": "404 We couldn't find that page The link may be out of date, or the page you're after hasn't been built yet — this is the platform's foundation release. Back to home Sign in AVAILABLE PORTALS Student portal Tutor portal Admin portal",
    "subjectRoot": null,
    "htmlHash": "82aeed8cc55cbfcd",
-   "rscHash": "d786abff44494b94",
+   "rscHash": "cfff4b94fb413c04",
    "htmlBytes": 14159,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
@@ -78,6 +80,7 @@
    },
    "threshold": true,
    "studentRegions": [],
+   "arc": null,
    "backToSpace": [
     "Overview",
     "Overview"
@@ -88,7 +91,7 @@
    "text": "Mathematics The Lattice — structure you can stand on. Begin Mathematics NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays ",
    "subjectRoot": "mathematics",
    "htmlHash": "da5889072d12a6c2",
-   "rscHash": "5cc31aac24ced078",
+   "rscHash": "dce2239c1f058c9f",
    "htmlBytes": 44241,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": true,
@@ -144,6 +147,7 @@
     },
     "threshold": true,
     "studentRegions": [],
+    "arc": null,
     "backToSpace": [
      "Overview",
      "Overview"
@@ -168,6 +172,7 @@
    "primaryAction": null,
    "threshold": false,
    "studentRegions": [],
+   "arc": null,
    "backToSpace": [
     "Student portal"
    ],
@@ -177,7 +182,7 @@
    "text": "404 We couldn't find that page The link may be out of date, or the page you're after hasn't been built yet — this is the platform's foundation release. Back to home Sign in AVAILABLE PORTALS Student portal Tutor portal Admin portal",
    "subjectRoot": null,
    "htmlHash": "e839e90057eb246d",
-   "rscHash": "747c0fabc7f7a3e5",
+   "rscHash": "bbae2578c4ecf79b",
    "htmlBytes": 18125,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
@@ -195,7 +200,63 @@
    "primaryCount": 0,
    "primaryAction": null,
    "threshold": false,
-   "studentRegions": [],
+   "studentRegions": [
+    "record"
+   ],
+   "arc": {
+    "steps": [
+     [
+      "discover",
+      "See the system",
+      "done"
+     ],
+     [
+      "choose",
+      "See the doors",
+      "done"
+     ],
+     [
+      "enter",
+      "Watch the crossing",
+      "done"
+     ],
+     [
+      "learn",
+      "Learn in the room",
+      "ahead"
+     ],
+     [
+      "interact",
+      "Work with a tutor",
+      "ahead"
+     ],
+     [
+      "progress",
+      "Watch your record grow",
+      "ahead"
+     ],
+     [
+      "master",
+      "Master the subject",
+      "ahead"
+     ]
+    ],
+    "strings": [
+     "See the system — DONE",
+     "See the doors — DONE",
+     "Watch the crossing — DONE",
+     "Learn in the room — AHEAD",
+     "Work with a tutor — AHEAD",
+     "Watch your record grow — AHEAD",
+     "Master the subject — AHEAD",
+     "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist."
+    ],
+    "interactive": 0,
+    "digits": 0,
+    "regionHeading": "Your record",
+    "hasAnimation": false,
+    "widthOK": true
+   },
    "backToSpace": [
     "Overview",
     "Overview"
@@ -205,10 +266,10 @@
    "honestLabels": 3,
    "text": "Draft subject — visible in development only. In production this route returns the framework 404. Physics The Field — forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will ",
    "subjectRoot": "physics",
-   "htmlHash": "b4aa8dcbc9582f53",
-   "rscHash": "a676e09e9221b261",
-   "htmlBytes": 45047,
-   "htmlHasStudentRegion": false,
+   "htmlHash": "71ee809f3158003b",
+   "rscHash": "a4f4eece5d9203cc",
+   "htmlBytes": 59269,
+   "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
   },
@@ -224,7 +285,63 @@
    "primaryCount": 0,
    "primaryAction": null,
    "threshold": false,
-   "studentRegions": [],
+   "studentRegions": [
+    "record"
+   ],
+   "arc": {
+    "steps": [
+     [
+      "discover",
+      "See the system",
+      "done"
+     ],
+     [
+      "choose",
+      "See the doors",
+      "done"
+     ],
+     [
+      "enter",
+      "Watch the crossing",
+      "ahead"
+     ],
+     [
+      "learn",
+      "Learn in the room",
+      "ahead"
+     ],
+     [
+      "interact",
+      "Work with a tutor",
+      "ahead"
+     ],
+     [
+      "progress",
+      "Watch your record grow",
+      "ahead"
+     ],
+     [
+      "master",
+      "Master the subject",
+      "ahead"
+     ]
+    ],
+    "strings": [
+     "See the system — DONE",
+     "See the doors — DONE",
+     "Watch the crossing — AHEAD",
+     "Learn in the room — AHEAD",
+     "Work with a tutor — AHEAD",
+     "Watch your record grow — AHEAD",
+     "Master the subject — AHEAD",
+     "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist."
+    ],
+    "interactive": 0,
+    "digits": 0,
+    "regionHeading": "Your record",
+    "hasAnimation": false,
+    "widthOK": true
+   },
    "backToSpace": [
     "Overview",
     "Overview"
@@ -234,10 +351,10 @@
    "honestLabels": 3,
    "text": "Mathematics The Lattice — structure you can stand on. NAVIGATION POSITION Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT As",
    "subjectRoot": "mathematics",
-   "htmlHash": "c397e5c249f8ff15",
-   "rscHash": "11b33ad1bd8bb651",
-   "htmlBytes": 43597,
-   "htmlHasStudentRegion": false,
+   "htmlHash": "e3007fd9cbe42d06",
+   "rscHash": "74a54e21948d6bf3",
+   "htmlBytes": 58022,
+   "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
   },
@@ -253,7 +370,63 @@
    "primaryCount": 0,
    "primaryAction": null,
    "threshold": false,
-   "studentRegions": [],
+   "studentRegions": [
+    "record"
+   ],
+   "arc": {
+    "steps": [
+     [
+      "discover",
+      "See the system",
+      "done"
+     ],
+     [
+      "choose",
+      "See the doors",
+      "done"
+     ],
+     [
+      "enter",
+      "Watch the crossing",
+      "ahead"
+     ],
+     [
+      "learn",
+      "Learn in the room",
+      "ahead"
+     ],
+     [
+      "interact",
+      "Work with a tutor",
+      "ahead"
+     ],
+     [
+      "progress",
+      "Watch your record grow",
+      "ahead"
+     ],
+     [
+      "master",
+      "Master the subject",
+      "ahead"
+     ]
+    ],
+    "strings": [
+     "See the system — DONE",
+     "See the doors — DONE",
+     "Watch the crossing — AHEAD",
+     "Learn in the room — AHEAD",
+     "Work with a tutor — AHEAD",
+     "Watch your record grow — AHEAD",
+     "Master the subject — AHEAD",
+     "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist."
+    ],
+    "interactive": 0,
+    "digits": 0,
+    "regionHeading": "Your record",
+    "hasAnimation": false,
+    "widthOK": true
+   },
    "backToSpace": [
     "Overview",
     "Overview"
@@ -263,10 +436,10 @@
    "honestLabels": 3,
    "text": "Draft subject — visible in development only. In production this route returns the framework 404. Physics The Field — forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will ",
    "subjectRoot": "physics",
-   "htmlHash": "b4aa8dcbc9582f53",
-   "rscHash": "a676e09e9221b261",
-   "htmlBytes": 45047,
-   "htmlHasStudentRegion": false,
+   "htmlHash": "e2acbf5c8c747d71",
+   "rscHash": "e7db95187d84cca7",
+   "htmlBytes": 59456,
+   "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
   }
@@ -274,7 +447,7 @@
  "gates": {
   "no write on GET (rows before == after across every state)": {
    "pass": true,
-   "detail": "9/3/2026-09-28 17:06:41.041+00 → 9/3/2026-09-28 17:06:41.041+00"
+   "detail": "9/3/2026-09-29 14:37:06.213+00 → 9/3/2026-09-29 14:37:06.213+00"
   },
   "write: GET and prefetch write nothing": {
    "pass": true,
@@ -282,7 +455,7 @@
   },
   "write: POST → 303 → 200, one enrolment + one state row, position NULL": {
    "pass": true,
-   "detail": "{\"post\":[\"POST /subjects/mathematics/enter → 303\",\"GET /subjects/mathematics → 200\"],\"landed\":\"/subjects/mathematics\",\"rows\":\"enrolments=1 env_state=1 entry_count=1\",\"row\":\"mathematics | active | enrolled 2026-09-28 17:07:23.641823+00 | last_entered 2026-09-28 17:07:23.794+00 | position NULL\"}"
+   "detail": "{\"post\":[\"POST /subjects/mathematics/enter → 303\",\"GET /subjects/mathematics → 200\"],\"landed\":\"/subjects/mathematics\",\"rows\":\"enrolments=1 env_state=1 entry_count=1\",\"row\":\"mathematics | active | enrolled 2026-09-29 14:37:38.968458+00 | last_entered 2026-09-29 14:37:39.116+00 | position NULL\"}"
   },
   "write: idempotent — second submit, still one enrolment, no error": {
    "pass": true,
@@ -316,6 +489,30 @@
    "pass": true,
    "detail": "{\"region\":false,\"threshold\":false}"
   },
+  "arc: present for every enrolled 200 state; absent for visitor and non-enrolled": {
+   "pass": true,
+   "detail": "{\"visitor-ready\":false,\"visitor-draft\":false,\"nonenrolled-ready\":false,\"nonenrolled-draft\":false,\"enrolled-draft-entered\":true,\"enrolled-ready-no-state\":true,\"enrolled-draft-no-state\":true}"
+  },
+  "arc: same seven steps as 4.7, same order, state in words only": {
+   "pass": true,
+   "detail": "[[\"enrolled-draft-entered\",\"done,done,done,ahead,ahead,ahead,ahead\"],[\"enrolled-ready-no-state\",\"done,done,ahead,ahead,ahead,ahead,ahead\"],[\"enrolled-draft-no-state\",\"done,done,ahead,ahead,ahead,ahead,ahead\"]]"
+  },
+  "arc: no CTA, no link, no interactive element, no animation": {
+   "pass": true,
+   "detail": "[[\"enrolled-draft-entered\",0,false],[\"enrolled-ready-no-state\",0,false],[\"enrolled-draft-no-state\",0,false]]"
+  },
+  "arc: never a digit — no count, no zero, no 'n of 7'": {
+   "pass": true,
+   "detail": "[[\"enrolled-draft-entered\",0],[\"enrolled-ready-no-state\",0],[\"enrolled-draft-no-state\",0]]"
+  },
+  "arc: never-entered enrolment shows 'enter' as ahead (missing = state, not defaulted)": {
+   "pass": true,
+   "detail": "{\"noState\":[\"done\",\"done\",\"ahead\",\"ahead\",\"ahead\",\"ahead\",\"ahead\"],\"entered\":[\"done\",\"done\",\"done\",\"ahead\",\"ahead\",\"ahead\",\"ahead\"]}"
+  },
+  "arc: the boundary sentence is present with an empty record and fits 390": {
+   "pass": true,
+   "detail": "[[\"enrolled-draft-entered\",true],[\"enrolled-ready-no-state\",true],[\"enrolled-draft-no-state\",true]]"
+  },
   "one h1 in every 200 state": {
    "pass": true,
    "detail": "{\"visitor-ready\":1,\"visitor-draft\":1,\"nonenrolled-ready\":1,\"nonenrolled-draft\":1,\"enrolled-draft-entered\":1,\"enrolled-ready-no-state\":1,\"enrolled-draft-no-state\":1}"
@@ -334,8 +531,8 @@
   }
  },
  "notes": {
-  "dbCountsBeforeGets": "9/3/2026-09-28 17:06:41.041+00",
-  "dbCountsAfterGets": "9/3/2026-09-28 17:06:41.041+00"
+  "dbCountsBeforeGets": "9/3/2026-09-29 14:37:06.213+00",
+  "dbCountsAfterGets": "9/3/2026-09-29 14:37:06.213+00"
  },
  "write": {
   "rowsStart": "enrolments=0 env_state=0 entry_count=-",
@@ -355,7 +552,7 @@
   ],
   "landed": "/subjects/mathematics",
   "rowsAfterPost": "enrolments=1 env_state=1 entry_count=1",
-  "row": "mathematics | active | enrolled 2026-09-28 17:07:23.641823+00 | last_entered 2026-09-28 17:07:23.794+00 | position NULL",
+  "row": "mathematics | active | enrolled 2026-09-29 14:37:38.968458+00 | last_entered 2026-09-29 14:37:39.116+00 | position NULL",
   "thresholdAfter": false,
   "doubleSubmit": {
    "status": 200,

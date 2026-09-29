@@ -24,29 +24,18 @@
    behaviour and carries the 4.6 status label, derived from the registry.
    ════════════════════════════════════════════════════════════════════════ */
 
+import { ARC_STEPS, type ArcStep } from "@/config/arc";
 import { PLATFORM_MODULES } from "@/config/modules";
 
 import { PromiseStagger } from "./promise-stagger";
 import { STATUS_LABEL, statusFor, type ModuleEntry, type StatusState } from "./status";
 
-export interface Marker {
-  id: "discover" | "choose" | "enter" | "learn" | "interact" | "progress" | "master";
-  /** Visitor-language label, ≤4 words. */
-  label: string;
-  /** Scene id(s) that PERFORM this step on this page; empty = not on this page. */
-  doneBy: readonly string[];
-}
+export type Marker = ArcStep;
 
-/* Marker labels — the internal step names are never rendered. */
-export const MARKERS: readonly Marker[] = [
-  { id: "discover", label: "See the system", doneBy: ["premise", "difference"] },
-  { id: "choose", label: "See the doors", doneBy: ["choice"] },
-  { id: "enter", label: "Watch the crossing", doneBy: ["enter"] },
-  { id: "learn", label: "Learn in the room", doneBy: [] },
-  { id: "interact", label: "Work with a tutor", doneBy: [] },
-  { id: "progress", label: "Watch your record grow", doneBy: [] },
-  { id: "master", label: "Master the subject", doneBy: [] },
-] as const;
+/* Marker labels — the internal step names are never rendered.
+   5.6: the definition lives in src/config/arc.ts (ONE arc for homepage and
+   environment); re-exported here unchanged. */
+export const MARKERS: readonly Marker[] = ARC_STEPS;
 
 export const STATE_TEXT = { done: "done, on this page", ahead: "ahead" } as const;
 

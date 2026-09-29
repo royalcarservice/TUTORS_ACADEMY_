@@ -87,6 +87,16 @@ const inspect = () => {
     primaryAction: a ? { tag: a.tagName, text: a.textContent.trim(), form: a.closest("form") ? { method: a.closest("form").getAttribute("method"), action: a.closest("form").getAttribute("action") } : null, href: a.getAttribute("href"), accessibleName: a.getAttribute("aria-label") || a.textContent.trim() } : null,
     threshold: !!document.querySelector("[data-threshold]"),
     studentRegions: q("[data-student-region]").map((e) => e.getAttribute("data-student-region")),
+    /* 5.6 — the arc region: strings, steps, interactivity, digits. */
+    arc: (() => { const a = document.querySelector("[data-arc]"); if (!a) return null; return {
+      steps: q("[data-arc] [data-arc-step]").map((li) => [li.getAttribute("data-arc-step"), li.querySelector("[data-arc-label]").textContent.trim(), li.querySelector("[data-arc-state]").textContent.trim()]),
+      strings: q("[data-arc] li, [data-arc] p").map((e) => e.innerText.replace(/\s+/g, " ").trim()),
+      interactive: a.querySelectorAll("a,button,input,select,textarea,form,[tabindex],[role=button],[onclick]").length,
+      digits: (a.innerText.match(/\d/g) || []).length,
+      regionHeading: a.closest("[data-student-region]")?.querySelector("h3")?.textContent.trim() || null,
+      hasAnimation: q("[data-arc] *").some((e) => { const cs = getComputedStyle(e); return (cs.animationName && cs.animationName !== "none") || (cs.transitionDuration && cs.transitionDuration !== "0s"); }),
+      widthOK: a.getBoundingClientRect().right <= innerWidth,
+    }; })(),
     backToSpace: q('main a[href="/student"], nav a[href="/student"]').map((e) => e.textContent.trim()),
     draftBanner: !!document.querySelector("[data-shell-draft]"),
     draftLabel: (main?.innerText || "").includes("Environment in draft") || (main?.innerText || "").includes("Draft subject"),
@@ -199,6 +209,15 @@ const foldMeasure = () => { const a = document.querySelector("[data-primary-acti
   gate("non-enrolled student: ready 200, draft 404", s["nonenrolled-ready"].status === 200 && s["nonenrolled-draft"].status === 404, `${s["nonenrolled-ready"].status}/${s["nonenrolled-draft"].status}`);
   gate("enrolled student: draft 200 + draft label", s["enrolled-draft-entered"].status === 200 && s["enrolled-draft-entered"].draftLabel && s["enrolled-draft-no-state"].status === 200, JSON.stringify([s["enrolled-draft-entered"].status, s["enrolled-draft-entered"].draftLabel]));
   gate("region visibility: no student region / threshold in visitor HTML", !s["visitor-ready"].htmlHasStudentRegion && !s["visitor-ready"].htmlHasThreshold && !s["visitor-ready"].htmlHasBeginForm, JSON.stringify({ region: s["visitor-ready"].htmlHasStudentRegion, threshold: s["visitor-ready"].htmlHasThreshold }));
+  /* ── 5.6 ARC GATES ── */
+  const ARC = ["discover|See the system", "choose|See the doors", "enter|Watch the crossing", "learn|Learn in the room", "interact|Work with a tutor", "progress|Watch your record grow", "master|Master the subject"];
+  const enrolled200 = Object.entries(s).filter(([k, v]) => k.startsWith("enrolled") && v.status === 200);
+  gate("arc: present for every enrolled 200 state; absent for visitor and non-enrolled", enrolled200.every(([, v]) => v.arc) && !s["visitor-ready"].arc && !s["nonenrolled-ready"].arc && !/data-arc/.test(fs.readFileSync(path.join(OUT, "visitor-ready.html"), "utf8")), JSON.stringify(Object.fromEntries(Object.entries(s).map(([k, v]) => [k, !!v.arc]))));
+  gate("arc: same seven steps as 4.7, same order, state in words only", enrolled200.every(([, v]) => JSON.stringify(v.arc.steps.map((x) => x[0] + "|" + x[1])) === JSON.stringify(ARC) && v.arc.steps.every((x) => x[2] === "done" || x[2] === "ahead")), JSON.stringify(enrolled200.map(([k, v]) => [k, v.arc.steps.map((x) => x[2]).join(",")])));
+  gate("arc: no CTA, no link, no interactive element, no animation", enrolled200.every(([, v]) => v.arc.interactive === 0 && !v.arc.hasAnimation), JSON.stringify(enrolled200.map(([k, v]) => [k, v.arc.interactive, v.arc.hasAnimation])));
+  gate("arc: never a digit — no count, no zero, no 'n of 7'", enrolled200.every(([, v]) => v.arc.digits === 0 && !v.arc.strings.some((t) => /\bof 7\b|%|complete|remaining|left|streak|level|badge|behind|on track|haven't/i.test(t))), JSON.stringify(enrolled200.map(([k, v]) => [k, v.arc.digits])));
+  gate("arc: never-entered enrolment shows 'enter' as ahead (missing = state, not defaulted)", (s["enrolled-ready-no-state"].arc?.steps.find((x) => x[0] === "enter") || [])[2] === "ahead" && (s["enrolled-draft-entered"].arc?.steps.find((x) => x[0] === "enter") || [])[2] === "done", JSON.stringify({ noState: s["enrolled-ready-no-state"].arc?.steps.map((x) => x[2]), entered: s["enrolled-draft-entered"].arc?.steps.map((x) => x[2]) }));
+  gate("arc: the boundary sentence is present with an empty record and fits 390", enrolled200.every(([, v]) => v.arc.strings.some((t) => t.startsWith("Nothing is recorded here yet.")) && v.arc.widthOK), JSON.stringify(enrolled200.map(([k, v]) => [k, v.arc.widthOK])));
   gate("one h1 in every 200 state", Object.values(s).filter((x) => x.status === 200).every((x) => x.h1Count === 1), JSON.stringify(Object.fromEntries(Object.entries(s).map(([k, v]) => [k, v.h1Count]))));
   gate("one primary per view (≤1 in main)", Object.values(s).every((x) => x.primaryCount <= 1), JSON.stringify(Object.fromEntries(Object.entries(s).map(([k, v]) => [k, v.primaryCount]))));
   const withAction = Object.entries(s).filter(([, v]) => v.primaryAction);

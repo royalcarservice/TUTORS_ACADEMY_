@@ -3,11 +3,12 @@ import { notFound } from "next/navigation";
 
 import { SubjectShell } from "@/components/shell/subject-shell";
 import type { ShellNavEntry } from "@/components/shell/subject-nav";
-import { EnvironmentRegions, resolveEnvironmentSlots } from "@/components/student/environment-regions";
+import { EnvironmentRegions, liveModuleIds, resolveEnvironmentSlots } from "@/components/student/environment-regions";
 import { Threshold } from "@/components/student/threshold";
 import { getIdentity } from "@/lib/auth/session";
-import { getEnrolledSubjectIds } from "@/lib/student/data";
+import { getEnrolledSubjectIds, getEnvironmentFacts } from "@/lib/student/data";
 import { mayEnrol } from "@/lib/student/enrol";
+import type { SubjectId } from "@/lib/student/contract";
 import { getSubject, SUBJECTS } from "@/lib/subjects/subjects";
 
 /* /subjects/[subject] — THE SUBJECT ENVIRONMENT (Phase 3 · Step 6 · Part 1)
@@ -69,7 +70,12 @@ export default async function SubjectEnvironmentPage({ params }: Params) {
 
   const isEnrolled = enrolled.has(s.id);
   const showThreshold = !!identity && !isEnrolled && mayEnrol(identity, s.id);
-  const studentSlots = identity?.role === "student" && isEnrolled ? resolveEnvironmentSlots(s.id) : [];
+  /* 5.6: the student's own regions read FACTS (enrolment, entry) and EVENTS.
+     Events are `[]` today — progress_record does not exist (5.1 amendment
+     pending); nothing is inferred in its place. */
+  const studentSlots = identity?.role === "student" && isEnrolled
+    ? resolveEnvironmentSlots({ subjectId: s.id, subjectName: s.name, facts: await getEnvironmentFacts(s.id as SubjectId, true), events: [], liveModules: liveModuleIds() })
+    : [];
 
   const entries: ShellNavEntry[] = SUBJECTS.map((x) => ({
     id: x.id,
