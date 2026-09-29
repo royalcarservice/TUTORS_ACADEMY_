@@ -6,6 +6,7 @@ import type { ShellNavEntry } from "@/components/shell/subject-nav";
 import { EnvironmentRegions, liveModuleIds, resolveEnvironmentSlots } from "@/components/student/environment-regions";
 import { Threshold } from "@/components/student/threshold";
 import { getIdentity } from "@/lib/auth/session";
+import { isolateAsync } from "@/lib/state/isolate";
 import { getEnrolledSubjectIds, getEnvironmentFacts } from "@/lib/student/data";
 import { mayEnrol } from "@/lib/student/enrol";
 import type { SubjectId } from "@/lib/student/contract";
@@ -39,6 +40,7 @@ import { getSubject, SUBJECTS } from "@/lib/subjects/subjects";
 
 interface Params {
   params: Promise<{ subject: string }>;
+  searchParams: Promise<{ entry?: string }>;
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
@@ -53,7 +55,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-export default async function SubjectEnvironmentPage({ params }: Params) {
+export default async function SubjectEnvironmentPage({ params, searchParams }: Params) {
   const { subject } = await params;
   const s = getSubject(subject);
 
@@ -73,9 +75,20 @@ export default async function SubjectEnvironmentPage({ params }: Params) {
   /* 5.6: the student's own regions read FACTS (enrolment, entry) and EVENTS.
      Events are `[]` today — progress_record does not exist (5.1 amendment
      pending); nothing is inferred in its place. */
-  const studentSlots = identity?.role === "student" && isEnrolled
-    ? resolveEnvironmentSlots({ subjectId: s.id, subjectName: s.name, facts: await getEnvironmentFacts(s.id as SubjectId, true), events: [], liveModules: liveModuleIds() })
-    : [];
+  let studentSlots: ReturnType<typeof resolveEnvironmentSlots> = [];
+  if (identity?.role === "student" && isEnrolled) {
+    /* 5.7: the regions are SUPPLEMENTAL — the environment (the primary answer)
+       stands without them. A failed facts read renders no region and one log
+       line (src/lib/state/isolate.ts); the page itself never fails for it. */
+    const facts = await isolateAsync("region:facts", () => getEnvironmentFacts(s.id as SubjectId, true), { subject: s.id });
+    if (facts.ok) studentSlots = resolveEnvironmentSlots({ subjectId: s.id, subjectName: s.name, facts: facts.value, events: [], liveModules: liveModuleIds() });
+  }
+  /* 5.7 · ACTION scope: the entry POST answered with a KNOWN failure and sent
+     the student back here (303 ?entry=failed). The sentence renders only while
+     the truth still says "not enrolled" — if the row exists, the environment
+     simply opens (failed-after-commit ends on the true state, not a message). */
+  const { entry } = await searchParams;
+  const entryFailed = showThreshold && entry === "failed";
 
   const entries: ShellNavEntry[] = SUBJECTS.map((x) => ({
     id: x.id,
@@ -104,7 +117,7 @@ export default async function SubjectEnvironmentPage({ params }: Params) {
       }}
       draft={s.status === "draft"}
       entries={entries}
-      threshold={showThreshold ? <Threshold subjectId={s.id} subjectName={s.name} /> : undefined}
+      threshold={showThreshold ? <Threshold subjectId={s.id} subjectName={s.name} failed={entryFailed} /> : undefined}
       regions={studentSlots.length > 0 ? <EnvironmentRegions slots={studentSlots} /> : undefined}
     />
   );

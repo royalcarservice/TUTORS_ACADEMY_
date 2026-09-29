@@ -42,9 +42,16 @@ export async function updateSession(request: NextRequest) {
   }
 
   if (isProtectedPath(pathname) && !userId) {
+    /* 5.7 · Part 6: WHY they are at /login is knowable here and nowhere else.
+       Auth cookies present but no valid user = a session that ENDED (expired
+       or signed out elsewhere); no auth cookies at all = never signed in. The
+       login page turns `reason=ended` into one plain sentence; `next` still
+       carries where they were, so signing in returns them there (a GET —
+       never a replay of a write). */
+    const hadSession = request.cookies.getAll().some((c) => c.name.startsWith("sb-") && c.name.includes("-auth-token"));
     const url = request.nextUrl.clone();
     url.pathname = ROUTES.login;
-    url.search = `?next=${encodeURIComponent(pathname)}`;
+    url.search = `?next=${encodeURIComponent(pathname)}${hadSession ? "&reason=ended" : ""}`;
     return NextResponse.redirect(url);
   }
   return response;

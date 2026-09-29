@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T16:57:43.634Z",
+ "generatedAt": "2026-09-29T17:53:23.690Z",
  "ceiling": 12,
  "declared": {
   "arrival": {
@@ -2106,7 +2106,7 @@
     "byScene": {}
    },
    "lcp": {
-    "t": 216,
+    "t": 168,
     "el": "H1#scene-arrival"
    },
    "sizesBy": {
@@ -2344,7 +2344,7 @@
     "byScene": {}
    },
    "lcp": {
-    "t": 172,
+    "t": 112,
     "el": "H1#scene-arrival"
    },
    "sizesBy": {
@@ -3282,42 +3282,43 @@
   }
  },
  "skim": {
-  "midFlingAnimating": 14,
+  "midFlingAnimating": 15,
   "y": 8205,
   "atBottom": true,
   "hiddenLeft": [],
   "enterLayers": 1,
   "enterStickyOffscreen": true,
   "frames": {
-   "n": 73,
-   "avg": 18.9,
-   "worst": 101.3,
-   "over50": 2,
-   "over33": 4
+   "n": 72,
+   "avg": 16.9,
+   "worst": 38.7,
+   "over50": 0,
+   "over33": 1
   },
   "long": [],
   "cls": 0
  },
  "payload": {
   "requests": 25,
-  "bytes": 1070002,
-  "js": 576356,
+  "bytes": 1074210,
+  "js": 591695,
   "webgl": [],
   "canvas": 0,
   "chunks": [
-   "0tqa28nu7s8i1.css:59835",
-   "310vm2bl3xxpt.js:5364",
-   "0eo1cde-rr3bs.js:33395",
-   "1gd3h8x2ifg_a.js:161255",
-   "0bma92pht_c97.js:229156",
-   "turbopack-3jyd33d-ci9l1.js:9721",
-   "38-1fhcruqr22.js:18256",
+   "2n3a03jy8m4xu.css:59324",
+   "3qq9fjtagffmo.js:32897",
+   "0gpuh00-wx325.js:161753",
+   "turbopack-2hed_g4u0mqek.js:9688",
    "1-cz8gjjx6s9_.js:19709",
-   "39_aak4o4r66c.js:29802",
+   "0-dwrmfx07sb2.js:14450",
    "021ib0sjfd8mh.js:27703",
+   "0a-21ye_4ec4_.js:968",
+   "38-1fhcruqr22.js:18256",
    "03-wuj5agr0xs.js:14642",
+   "39_aak4o4r66c.js:29802",
+   "0542cuk_va8g1.js:234406",
    "22i43cg4l4-dq.js:8868",
-   "06ydshfabodr4.js:18485"
+   "40yl1fnrnazsv.js:18553"
   ]
  },
  "noJs": {
@@ -3502,7 +3503,7 @@
    "text": 5043,
    "fontsSettled": "loaded"
   },
-  "loadMs": 2566,
+  "loadMs": 2533,
   "afterLoad": {
    "h1": true,
    "ctas": 2,
@@ -3530,6 +3531,15 @@
    ]
   },
   {
+   "route": "/dev/environment-workspace",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "landmark-unique:8"
+   ]
+  },
+  {
    "route": "/dev/marks",
    "prod": 404,
    "dev": 200,
@@ -3549,7 +3559,8 @@
    "dev": 200,
    "hydration": 0,
    "axe": [
-    "color-contrast:2",
+    "landmark-one-main:1",
+    "page-has-heading-one:1",
     "region:1",
     "skip-link:1"
    ]
@@ -3560,16 +3571,20 @@
    "dev": 200,
    "hydration": 0,
    "axe": [
-    "region:1"
+    "landmark-one-main:1",
+    "page-has-heading-one:1",
+    "region:1",
+    "skip-link:1"
    ]
   },
   {
    "route": "/dev/next-action",
    "prod": 404,
    "dev": 200,
-   "hydration": 0,
+   "hydration": 2,
    "axe": [
-    "empty-table-header:10"
+    "empty-table-header:10",
+    "region:1"
    ]
   },
   {
@@ -3589,6 +3604,15 @@
    "axe": [
     "region:1",
     "skip-link:1"
+   ]
+  },
+  {
+   "route": "/dev/progress-language",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": [
+    "landmark-unique:7"
    ]
   },
   {
@@ -3668,6 +3692,13 @@
    "axe": [
     "landmark-unique:5"
    ]
+  },
+  {
+   "route": "/dev/student-states",
+   "prod": 404,
+   "dev": 200,
+   "hydration": 0,
+   "axe": []
   },
   {
    "route": "/dev/subjects",

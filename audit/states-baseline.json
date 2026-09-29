@@ -1,0 +1,3446 @@
+{
+ "generatedAt": "2026-09-29T17:59:44.761Z",
+ "reference": "390x844 mobile",
+ "gates": {
+  "T19 404: status 404, one h1, one action, no numeral, no portal list": {
+   "pass": true,
+   "detail": "[[404,1,1],[404,1,1],[404,1,1]]"
+  },
+  "T19 404: draft-visitor byte-identical to no-subject (draft not announced)": {
+   "pass": true,
+   "detail": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects"
+  },
+  "T19 no-JS: unmatched route 404 is server-rendered (h1 present)": {
+   "pass": true,
+   "detail": "{\"h1\":1,\"bodyLen\":141}"
+  },
+  "T19 no-JS: notFound() 404 is EMPTY without JS — framework defect next#99287 (recorded; flips when fixed)": {
+   "pass": true,
+   "detail": "{\"h1\":0,\"bodyLen\":0,\"id\":\"__next_error__\"}"
+  },
+  "T17 shape: a plain <p role=alert> beside the control, aria-describedby from the button, no panel background/border": {
+   "pass": true,
+   "detail": "{\"role\":\"alert\",\"describes\":true,\"bg\":\"rgba(0, 0, 0, 0)\",\"border\":\"0px\",\"tag\":\"P\"}"
+  },
+  "T17 wrong password: the chosen sentence, no driver message, no blame": {
+   "pass": true,
+   "detail": "That email and password do not match an account here."
+  },
+  "T18 expiry: GET /student → 307 /login?next=/student&reason=ended → sentence → sign in → back at /student": {
+   "pass": true,
+   "detail": "{\"hops\":[[307,\"/student\"],[200,\"/login?next=%2Fstudent&reason=ended\"]],\"loginUrl\":\"/login?next=%2Fstudent&reason=ended\",\"context\":\"That session ended. Signing in again goes back to your subjects.\",\"back\":\"/student\"}"
+  },
+  "T18 expiry: POST /enter with a dead session is refused (opaque redirect = 303 to /login), no write": {
+   "pass": true,
+   "detail": "{\"status\":0,\"type\":\"opaqueredirect\"}"
+  },
+  "T18/T23 no session: /login?next=/student with NO 'ended' claim (nothing observed, nothing claimed)": {
+   "pass": true,
+   "detail": "{\"url\":\"/login?next=%2Fstudent\",\"context\":null}"
+  },
+  "T23 arrived for an environment: 'Signing in opens Mathematics.'": {
+   "pass": true,
+   "detail": "Signing in opens Mathematics."
+  },
+  "T5 double submit (two concurrent POSTs): ONE enrolment, ONE state row": {
+   "pass": true,
+   "detail": "{\"before\":\"0/0\",\"two\":[\"opaqueredirect:0\",\"opaqueredirect:0\"],\"afterTwo\":\"1/1\"}"
+  },
+  "T6 a third submit writes no new row (idempotent; entry_count is bookkeeping only)": {
+   "pass": true,
+   "detail": "{\"afterThird\":\"1/1\",\"entryCount\":\"3\"}"
+  },
+  "T21 no-JS double click on Begin: one row, environment opens, no client guard needed": {
+   "pass": true,
+   "detail": "{\"hadButton\":true,\"rows\":\"1/1\",\"nowShows\":{\"threshold\":false,\"record\":true},\"url\":\"/subjects/mathematics\"}"
+  },
+  "T3a network cut before the POST leaves: nothing of ours renders (browser error page), no row, GET shows the threshold again": {
+   "pass": true,
+   "detail": "{\"navErr\":null,\"afterAbort\":{\"url\":\"chrome-error://chromewebdata/\",\"text\":\"This site can’t be reached localhost is currently unreachable. ERR_CONNECTION_FAILED\",\"ours\":false},\"rowsA\":\"0/0\",\"backStatus\":200,\"showsA\":{\"threshold\":true,\"outcome\":null}}"
+  },
+  "T3b response lost mid-flight: no verdict of ours anywhere; the GET shows exactly the true state (row present ⇔ threshold absent)": {
+   "pass": true,
+   "detail": "{\"raced\":[\"aborted:AbortError\",\"aborted:AbortError\",\"aborted:AbortError\",\"aborted:AbortError\",\"aborted:AbortError\",\"aborted:AbortError\"],\"rowsB\":\"0/0\",\"backStatus\":200,\"showsB\":{\"threshold\":true,\"outcome\":null,\"h1\":1}}"
+  },
+  "T4 failed after commit: 303 → environment as ENROLLED, no threshold, no message, arc says enter=ahead (true state)": {
+   "pass": true,
+   "detail": "{\"url\":\"/subjects/mathematics\",\"rows\":\"1/0\",\"h1\":1,\"text\":\"Mathematics The Lattice — structure you can stand on. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT Assignments, tests & progress Your work and progress will appear here when the student portal ships (in progress in the module registry — the student shell exists; assignments, tests and progress do not yet). SYSTEM STATE · NOT BUILT Recorded classes & notes Recordings and lesson notes will appear here with the recorded-classes module (planned). YOUR RECORD See the system — DONE See the doors — DONE Watch the crossing — AHEAD Learn in the room — AHEAD Work with a tutor — AHEAD Watch your record grow — AHEAD Master the subject — AHEAD Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.\",\"threshold\":false,\"outcome\":null,\"arc\":[\"discover:done\",\"choose:done\",\"enter:ahead\",\"learn:ahead\",\"interact:ahead\",\"progress:ahead\",\"master:ahead\"]}"
+  },
+  "T4 log line: class + route + ids, no student content": {
+   "pass": true,
+   "detail": "{\"level\":\"error\",\"at\":\"2026-09-29T18:00:25.148Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"EntryWriteFailed\",\"what\":\"entry stamp failed after enrolment commit\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
+  },
+  "T7b known write failure: 303 ?entry=failed → threshold + ONE sentence beside Begin, no row, no internals, no red, no icon": {
+   "pass": true,
+   "detail": "{\"url\":\"/subjects/mathematics?entry=failed\",\"rows\":\"0/0\",\"status\":null,\"threshold\":true,\"outcome\":\"Beginning did not go through, and nothing was recorded — beginning again is safe.\",\"describedby\":\"threshold-outcome\",\"h1\":1,\"primaries\":1,\"hscroll\":false,\"headings\":[\"H1:Mathematics\",\"H2:Inside this room\",\"H3:Live classes\",\"H3:Assignments, tests & progress\",\"H3:Recorded classes & notes\"],\"icons\":3,\"redish\":0,\"targets\":[[\"Begin Mathematics\",194,48],[\"Mathematics\",113,44]],\"focusFirst\":{\"focused\":true,\"outline\":true},\"text\":\"Mathematics The Lattice — structure you can stand on. Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT Assignments, tests & progress Your work and progress will appear here when the student portal ships (in progress in the module registry — the student shell exists; assignments, tests and progress do not yet). SYSTEM STATE · NOT BUILT Recorded classes & notes Recordings and lesson notes will appear here with the recorded-classes module (planned).\"}"
+  },
+  "T7b log line for the refused write": {
+   "pass": true,
+   "detail": "{\"level\":\"error\",\"at\":\"2026-09-29T18:00:31.517Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"enrolment upsert failed — no row written\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
+  },
+  "T7b after a successful retry: environment opens, sentence gone, one row": {
+   "pass": true,
+   "detail": "{\"url\":\"/subjects/mathematics\",\"rows\":\"1/1\",\"outcome\":null}"
+  },
+  "T7b ?entry=failed while enrolled renders no sentence and no threshold": {
+   "pass": true,
+   "detail": "{\"outcome\":false,\"threshold\":false}"
+  },
+  "T8 /student read failure → honest page (500, one h1, one action → /student), never state A, never a hole": {
+   "pass": true,
+   "detail": "{\"status\":500,\"h1\":1,\"primaries\":1,\"hscroll\":false,\"headings\":[\"H1:Your subjects could not be read just now\"],\"icons\":0,\"redish\":0,\"targets\":[[\"Open your subjects again\",238,48]],\"focusFirst\":{\"focused\":true,\"outline\":true},\"text\":\"NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again\",\"statePage\":\"page-failed\",\"action\":\"/student\",\"noJs\":{\"h1\":0,\"bodyLen\":0,\"id\":\"__next_error__\"}}"
+  },
+  "T8 /subjects/[id] read failure → honest page (500, one h1, one action → same path), never the threshold, never a 404": {
+   "pass": true,
+   "detail": "{\"status\":500,\"h1\":1,\"primaries\":1,\"hscroll\":false,\"headings\":[\"H1:This environment could not be opened jus\"],\"icons\":0,\"redish\":0,\"targets\":[[\"Open it again\",192,48]],\"focusFirst\":{\"focused\":true,\"outline\":true},\"text\":\"NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again\",\"statePage\":\"page-failed\",\"action\":\"/subjects/mathematics\"}"
+  },
+  "T16 forced 500: NO internals in the HTML or RSC payload (no table, no driver class, no SQL, no stack, no message)": {
+   "pass": true,
+   "detail": "clean"
+  },
+  "T16 the honest page reads as decided: no red, no icon, no banned word, product is the subject": {
+   "pass": true,
+   "detail": "NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again || NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+  },
+  "T8 log line for the failed read: class, scope, no content": {
+   "pass": true,
+   "detail": "[\"{\\\"level\\\":\\\"error\\\",\\\"at\\\":\\\"2026-09-29T18:01:12.175Z\\\",\\\"scope\\\":\\\"read:enrolments\\\",\\\"errorClass\\\":\\\"PostgrestError(42501)\\\",\\\"what\\\":\\\"read failed — the caller decides: page failure (primary) or silence (region)\\\",\\\"ids\\\":{}}\",\"⨯ Error [DataReadError]: read failed: enrolments\"]"
+  },
+  "T8 no-JS on a failed page: recorded (framework renders error boundaries client-side)": {
+   "pass": true,
+   "detail": "{\"h1\":0,\"bodyLen\":0,\"id\":\"__next_error__\"}"
+  },
+  "T7 region failure: page 200, NOTHING in the broken region's DOM, healthy twin renders the arc": {
+   "pass": true,
+   "detail": "{\"broken\":0,\"brokenText\":\"\",\"healthy\":1,\"healthyHasArc\":true}"
+  },
+  "T7 region failure log line: scope region:progress, TypeError, subject id, no content": {
+   "pass": true,
+   "detail": "{\"level\":\"error\",\"at\":\"2026-09-29T18:01:13.363Z\",\"scope\":\"region:progress\",\"errorClass\":\"TypeError\",\"what\":\"isolated failure — rendered nothing\",\"ids\":{\"subject\":\"mathematics\"}}"
+  },
+  "T15 dev forced throw → the real root boundary: 500, one h1, one action, the chosen sentence": {
+   "pass": true,
+   "detail": "{\"status\":500,\"h1\":1,\"primaries\":1,\"hscroll\":false,\"headings\":[\"H1:This page could not be shown just now.\"],\"icons\":0,\"redish\":0,\"targets\":[[\"Open it again\",192,48]],\"focusFirst\":{\"focused\":true,\"outline\":true},\"text\":\"NOT SHOWN This page could not be shown just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again\"}"
+  },
+  "T2 inventory: ≥19 rows rendered from docs/STATE_LANGUAGE.md; every specimen has a claim beneath": {
+   "pass": true,
+   "detail": "{\"rows\":23,\"specimens\":12,\"claims\":12}"
+  },
+  "T29 production: /dev/student-states, its frame and its throw route are 404": {
+   "pass": true,
+   "detail": "404/404/404"
+  },
+  "T23 every state × {light,dark} × {390,1280}: one h1, no h-scroll, 0 contrast violations (axe, measured), no red, targets ≥44, no banned word, product is the subject": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "T24 honest page at 200%/400% zoom and 1.4.12: no h-scroll, action visible, nothing clipped; reduced motion: 0 animations": {
+   "pass": true,
+   "detail": "{\"200%\":{\"hscroll\":false,\"actionVisible\":true},\"400%\":{\"hscroll\":false,\"actionVisible\":true},\"1.4.12\":{\"hscroll\":false,\"clipped\":false},\"reducedMotion\":{\"animations\":0,\"which\":[]}}"
+  },
+  "T11 offline: nothing of ours renders on any route (browser error, no cached page)": {
+   "pass": true,
+   "detail": "{\"/student\":{\"result\":\"net::ERR_INTERNET_DISCONNECTED at http://localhost:3100/student\",\"ours\":\"no-doc\",\"text\":\"Press space to play\\n\\nTry:\\n\\nChecking the network cables, modem, and router\\nReconn\"},\"/subjects/mathematics\":{\"result\":\"net::ERR_INTERNET_DISCONNECTED at http://localhost:3100/subjects/mathematics\",\"ours\":\"no-doc\",\"text\":\"Press space to play\\n\\nTry:\\n\\nChecking the network cables, modem, and router\\nReconn\"},\"/subjects\":{\"result\":\"net::ERR_INTERNET_DISCONNECTED at http://localhost:3100/subjects\",\"ours\":\"no-doc\",\"text\":\"Press space to play\\n\\nTry:\\n\\nChecking the network cables, modem, and router\\nReconn\"}}"
+  },
+  "T12 no service worker registered, no CacheStorage entries (browser)": {
+   "pass": true,
+   "detail": "{\"sw\":0,\"caches\":[],\"swOffline\":\"n/a\"}"
+  },
+  "T13 nothing at rest after a full journey: localStorage = [ta-theme] only, sessionStorage/IndexedDB empty; cookies = the session only": {
+   "pass": true,
+   "detail": "{\"atRest\":{\"localStorage\":[],\"sessionStorage\":[],\"indexedDB\":[],\"caches\":[],\"serviceWorkers\":0},\"cookies\":[{\"name\":\"sb-<ref>-auth-token\",\"httpOnly\":false,\"secure\":false,\"sameSite\":\"Lax\",\"bytes\":2849}]}"
+  },
+  "T22 JS payload pinned: /subjects/mathematics ≤ 16 scripts, ≤ 632 KB decoded (before 5.7: 14 / 610); /student ≤ 13 scripts, ≤ 578 KB (before: 11 / 556)": {
+   "pass": true,
+   "detail": "{\"env\":{\"status\":200,\"ttfb\":11,\"requests\":31,\"scripts\":16,\"scriptEncodedKB\":199,\"scriptDecodedKB\":628,\"wall\":747},\"student\":{\"status\":200,\"ttfb\":535,\"requests\":41,\"scripts\":13,\"scriptEncodedKB\":179,\"scriptDecodedKB\":574,\"wall\":1553}}"
+  }
+ },
+ "tests": {
+  "notFound": {
+   "no-subject": {
+    "status": 404,
+    "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects",
+    "h1": 1,
+    "primaries": 1,
+    "hscroll": false,
+    "headings": [
+     "H1:There is no page at this address."
+    ],
+    "icons": 0,
+    "redish": 0,
+    "targets": [
+     [
+      "See the subjects",
+      192,
+      48
+     ]
+    ],
+    "focusFirst": {
+     "focused": true,
+     "outline": true
+    }
+   },
+   "draft-visitor": {
+    "status": 404,
+    "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects",
+    "h1": 1,
+    "primaries": 1,
+    "hscroll": false,
+    "headings": [
+     "H1:There is no page at this address."
+    ],
+    "icons": 0,
+    "redish": 0,
+    "targets": [
+     [
+      "See the subjects",
+      192,
+      48
+     ]
+    ],
+    "focusFirst": {
+     "focused": true,
+     "outline": true
+    }
+   },
+   "root": {
+    "status": 404,
+    "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects",
+    "h1": 1,
+    "primaries": 1,
+    "hscroll": false,
+    "headings": [
+     "H1:There is no page at this address."
+    ],
+    "icons": 0,
+    "redish": 0,
+    "targets": [
+     [
+      "See the subjects",
+      192,
+      48
+     ]
+    ],
+    "focusFirst": {
+     "focused": true,
+     "outline": true
+    }
+   }
+  },
+  "nojs404": {
+   "fromNotFoundCall": {
+    "h1": 0,
+    "bodyLen": 0,
+    "id": "__next_error__"
+   },
+   "unmatchedRoute": {
+    "h1": 1,
+    "bodyLen": 141
+   }
+  },
+  "states": {
+   "not-found": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:There is no page at this address."
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "See the subjects",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects"
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:There is no page at this address."
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "See the subjects",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects"
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:There is no page at this address."
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "See the subjects",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects"
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:There is no page at this address."
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "See the subjects",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects"
+    }
+   },
+   "login-refused-live": {
+    "light-390": {
+     "text": "That email and password do not match an account here.",
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in",
+      "H2:Live tutoring, built for real learning o"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".opacity-90 > p",
+       ".text-brand-700"
+      ],
+      "passes": 13
+     }
+    }
+   },
+   "login-ended-live": {
+    "light-390": {
+     "text": "That session ended. Signing in again goes back to your subjects."
+    }
+   },
+   "login-continue-live": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in",
+      "H2:Live tutoring, built for real learning o"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".opacity-90 > p",
+       ".text-brand-700"
+      ],
+      "passes": 13
+     },
+     "text": "Skip to content TUTORS ACADEMY Back Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in",
+      "H2:Live tutoring, built for real learning o"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".opacity-90 > p",
+       ".text-brand-700"
+      ],
+      "passes": 13
+     },
+     "text": "Skip to content TUTORS ACADEMY Back to website Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account TUTORS ACADEMY Live tutoring, built for real learning outcomes. One account gives you access to every surface of the platform. Student portal Classes, assignments, tests and progress. Tutor portal Teach, schedule, assess and get paid. Admin portal Operations, people, content and billing. © 2026 Tutors Academy"
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in",
+      "H2:Live tutoring, built for real learning o"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".min-w-0 > .font-semibold",
+       ".opacity-90 > p"
+      ],
+      "passes": 13
+     },
+     "text": "Skip to content TUTORS ACADEMY Back Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in",
+      "H2:Live tutoring, built for real learning o"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".min-w-0 > .font-semibold",
+       ".opacity-90 > p"
+      ],
+      "passes": 13
+     },
+     "text": "Skip to content TUTORS ACADEMY Back to website Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account TUTORS ACADEMY Live tutoring, built for real learning outcomes. One account gives you access to every surface of the platform. Student portal Classes, assignments, tests and progress. Tutor portal Teach, schedule, assess and get paid. Admin portal Operations, people, content and billing. © 2026 Tutors Academy"
+    }
+   },
+   "entry-failed-live": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Mathematics",
+      "H2:Inside this room",
+      "H3:Live classes",
+      "H3:Assignments, tests & progress",
+      "H3:Recorded classes & notes"
+     ],
+     "icons": 3,
+     "redish": 0,
+     "targets": [
+      [
+       "Begin Mathematics",
+       194,
+       48
+      ],
+      [
+       "Mathematics",
+       113,
+       44
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 9
+     },
+     "text": "Mathematics The Lattice — structure you can stand on. Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT Assignments, tests & progress Your work and progress will appear here when the student portal ships (in progress in the module registry — the student shell exists; assignments, tests and progress do not yet). SYSTEM STATE · NOT BUILT Recorded classes & notes Recordings and lesson notes will appear here with the recorded-classes module (planned)."
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Mathematics",
+      "H2:Inside this room",
+      "H3:Live classes",
+      "H3:Assignments, tests & progress",
+      "H3:Recorded classes & notes"
+     ],
+     "icons": 3,
+     "redish": 0,
+     "targets": [
+      [
+       "Begin Mathematics",
+       194,
+       48
+      ],
+      [
+       "Mathematics",
+       113,
+       44
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 15
+     },
+     "text": "Mathematics The Lattice — structure you can stand on. Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT Assignments, tests & progress Your work and progress will appear here when the student portal ships (in progress in the module registry — the student shell exists; assignments, tests and progress do not yet). SYSTEM STATE · NOT BUILT Recorded classes & notes Recordings and lesson notes will appear here with the recorded-classes module (planned)."
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Mathematics",
+      "H2:Inside this room",
+      "H3:Live classes",
+      "H3:Assignments, tests & progress",
+      "H3:Recorded classes & notes"
+     ],
+     "icons": 3,
+     "redish": 0,
+     "targets": [
+      [
+       "Begin Mathematics",
+       194,
+       48
+      ],
+      [
+       "Mathematics",
+       113,
+       44
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 9
+     },
+     "text": "Mathematics The Lattice — structure you can stand on. Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT Assignments, tests & progress Your work and progress will appear here when the student portal ships (in progress in the module registry — the student shell exists; assignments, tests and progress do not yet). SYSTEM STATE · NOT BUILT Recorded classes & notes Recordings and lesson notes will appear here with the recorded-classes module (planned)."
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Mathematics",
+      "H2:Inside this room",
+      "H3:Live classes",
+      "H3:Assignments, tests & progress",
+      "H3:Recorded classes & notes"
+     ],
+     "icons": 3,
+     "redish": 0,
+     "targets": [
+      [
+       "Begin Mathematics",
+       194,
+       48
+      ],
+      [
+       "Mathematics",
+       113,
+       44
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 15
+     },
+     "text": "Mathematics The Lattice — structure you can stand on. Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT Assignments, tests & progress Your work and progress will appear here when the student portal ships (in progress in the module registry — the student shell exists; assignments, tests and progress do not yet). SYSTEM STATE · NOT BUILT Recorded classes & notes Recordings and lesson notes will appear here with the recorded-classes module (planned)."
+    }
+   },
+   "student-failed-live": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Your subjects could not be read just now"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open your subjects again",
+       238,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again"
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Your subjects could not be read just now"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open your subjects again",
+       238,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 10
+     },
+     "text": "NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again"
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Your subjects could not be read just now"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open your subjects again",
+       238,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again"
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Your subjects could not be read just now"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open your subjects again",
+       238,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 10
+     },
+     "text": "NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again"
+    }
+   },
+   "environment-failed-live": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This environment could not be opened jus"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This environment could not be opened jus"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 9
+     },
+     "text": "NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This environment could not be opened jus"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This environment could not be opened jus"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 9
+     },
+     "text": "NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    }
+   },
+   "region-failing": {
+    "light-390": {
+     "h1": 0,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H3:Your record"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 18
+     },
+     "text": "REAL · REGIONS WITH THE ARC RESOLVER THROWING → RENDERED BELOW THIS LINE: NOTHING REAL · THE SAME REGIONS, HEALTHY, FOR CONTRAST: YOUR RECORD See the system — DONE See the doors — DONE Watch the crossing — AHEAD Learn in the room — AHEAD Work with a tutor — AHEAD Watch your record grow — AHEAD Master the subject — AHEAD Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist."
+    },
+    "light-1280": {
+     "h1": 0,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H3:Your record"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 22
+     },
+     "text": "REAL · REGIONS WITH THE ARC RESOLVER THROWING → RENDERED BELOW THIS LINE: NOTHING REAL · THE SAME REGIONS, HEALTHY, FOR CONTRAST: YOUR RECORD See the system — DONE See the doors — DONE Watch the crossing — AHEAD Learn in the room — AHEAD Work with a tutor — AHEAD Watch your record grow — AHEAD Master the subject — AHEAD Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist."
+    },
+    "dark-390": {
+     "h1": 0,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H3:Your record"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 18
+     },
+     "text": "REAL · REGIONS WITH THE ARC RESOLVER THROWING → RENDERED BELOW THIS LINE: NOTHING REAL · THE SAME REGIONS, HEALTHY, FOR CONTRAST: YOUR RECORD See the system — DONE See the doors — DONE Watch the crossing — AHEAD Learn in the room — AHEAD Work with a tutor — AHEAD Watch your record grow — AHEAD Master the subject — AHEAD Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist."
+    },
+    "dark-1280": {
+     "h1": 0,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H3:Your record"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 22
+     },
+     "text": "REAL · REGIONS WITH THE ARC RESOLVER THROWING → RENDERED BELOW THIS LINE: NOTHING REAL · THE SAME REGIONS, HEALTHY, FOR CONTRAST: YOUR RECORD See the system — DONE See the doors — DONE Watch the crossing — AHEAD Learn in the room — AHEAD Work with a tutor — AHEAD Watch your record grow — AHEAD Master the subject — AHEAD Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist."
+    }
+   },
+   "page-failed": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This page could not be shown just now."
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT SHOWN This page could not be shown just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This page could not be shown just now."
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 8
+     },
+     "text": "NOT SHOWN This page could not be shown just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This page could not be shown just now."
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT SHOWN This page could not be shown just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This page could not be shown just now."
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 8
+     },
+     "text": "NOT SHOWN This page could not be shown just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    }
+   },
+   "student-failed": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Your subjects could not be read just now"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open your subjects again",
+       238,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again"
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Your subjects could not be read just now"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open your subjects again",
+       238,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 8
+     },
+     "text": "NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again"
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Your subjects could not be read just now"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open your subjects again",
+       238,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again"
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Your subjects could not be read just now"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open your subjects again",
+       238,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 8
+     },
+     "text": "NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again"
+    }
+   },
+   "environment-failed": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This environment could not be opened jus"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This environment could not be opened jus"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 8
+     },
+     "text": "NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This environment could not be opened jus"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:This environment could not be opened jus"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open it again",
+       192,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 8
+     },
+     "text": "NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+    }
+   },
+   "entry-failed": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Mathematics"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Begin Mathematics",
+       194,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "ENVIRONMENT HEADER · AFTER A 303 ?ENTRY=FAILED Mathematics Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe."
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Mathematics"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Begin Mathematics",
+       194,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 8
+     },
+     "text": "ENVIRONMENT HEADER · AFTER A 303 ?ENTRY=FAILED Mathematics Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe."
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Mathematics"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Begin Mathematics",
+       194,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "ENVIRONMENT HEADER · AFTER A 303 ?ENTRY=FAILED Mathematics Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe."
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 1,
+     "hscroll": false,
+     "headings": [
+      "H1:Mathematics"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Begin Mathematics",
+       194,
+       48
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 8
+     },
+     "text": "ENVIRONMENT HEADER · AFTER A 303 ?ENTRY=FAILED Mathematics Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe."
+    }
+   },
+   "login-ended": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".opacity-90 > p",
+       ".text-brand-700"
+      ],
+      "passes": 11
+     },
+     "text": "Skip to content Sign in Use your Tutors Academy account to reach your portal. That session ended. Signing in again goes back to Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".opacity-90 > p",
+       ".text-brand-700"
+      ],
+      "passes": 11
+     },
+     "text": "Skip to content Sign in Use your Tutors Academy account to reach your portal. That session ended. Signing in again goes back to Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".min-w-0 > .font-semibold",
+       ".opacity-90 > p"
+      ],
+      "passes": 11
+     },
+     "text": "Skip to content Sign in Use your Tutors Academy account to reach your portal. That session ended. Signing in again goes back to Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".min-w-0 > .font-semibold",
+       ".opacity-90 > p"
+      ],
+      "passes": 11
+     },
+     "text": "Skip to content Sign in Use your Tutors Academy account to reach your portal. That session ended. Signing in again goes back to Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+    }
+   },
+   "login-continue": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".opacity-90 > p",
+       ".text-brand-700"
+      ],
+      "passes": 11
+     },
+     "text": "Skip to content Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".opacity-90 > p",
+       ".text-brand-700"
+      ],
+      "passes": 11
+     },
+     "text": "Skip to content Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".min-w-0 > .font-semibold",
+       ".opacity-90 > p"
+      ],
+      "passes": 11
+     },
+     "text": "Skip to content Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [
+       ".min-w-0 > .font-semibold",
+       ".opacity-90 > p"
+      ],
+      "passes": 11
+     },
+     "text": "Skip to content Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+    }
+   },
+   "login-refused": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 RESULT LINE, STATIC, WITH THE CHOSEN SENTENCE Sign in Sign in That email and password do not match an account here."
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 RESULT LINE, STATIC, WITH THE CHOSEN SENTENCE Sign in Sign in That email and password do not match an account here."
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 RESULT LINE, STATIC, WITH THE CHOSEN SENTENCE Sign in Sign in That email and password do not match an account here."
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 RESULT LINE, STATIC, WITH THE CHOSEN SENTENCE Sign in Sign in That email and password do not match an account here."
+    }
+   },
+   "login-unavailable": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 RESULT LINE, STATIC, WITH THE CHOSEN SENTENCE Sign in Sign in Sign-in could not be completed just now. Nothing was changed; signing in again is safe."
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 RESULT LINE, STATIC, WITH THE CHOSEN SENTENCE Sign in Sign in Sign-in could not be completed just now. Nothing was changed; signing in again is safe."
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 RESULT LINE, STATIC, WITH THE CHOSEN SENTENCE Sign in Sign in Sign-in could not be completed just now. Nothing was changed; signing in again is safe."
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Sign in"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 RESULT LINE, STATIC, WITH THE CHOSEN SENTENCE Sign in Sign in Sign-in could not be completed just now. Nothing was changed; signing in again is safe."
+    }
+   },
+   "in-flight": {
+    "light-390": {
+     "h1": 0,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 1
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 BUTTON WHILE `PENDING` IS TRUE (NO OUTCOME CLAIMED) Signing in…"
+    },
+    "light-1280": {
+     "h1": 0,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 1
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 BUTTON WHILE `PENDING` IS TRUE (NO OUTCOME CLAIMED) Signing in…"
+    },
+    "dark-390": {
+     "h1": 0,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 1
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 BUTTON WHILE `PENDING` IS TRUE (NO OUTCOME CLAIMED) Signing in…"
+    },
+    "dark-1280": {
+     "h1": 0,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [],
+     "icons": 0,
+     "redish": 0,
+     "targets": [],
+     "focusFirst": null,
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 1
+     },
+     "text": "Skip to content SIMULATION — THE 5.1 BUTTON WHILE `PENDING` IS TRUE (NO OUTCOME CLAIMED) Signing in…"
+    }
+   },
+   "global-error": {
+    "light-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Tutors Academy could not be shown just n"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open Tutors Academy",
+       176,
+       44
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "RENDERED AS GLOBAL-ERROR.TSX RENDERS IT (SYSTEM FONT, NO THEME) Tutors Academy could not be shown just now. Nothing was recorded. Opening the site again only reads — it is safe to do. Open Tutors Academy"
+    },
+    "light-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Tutors Academy could not be shown just n"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open Tutors Academy",
+       176,
+       44
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "RENDERED AS GLOBAL-ERROR.TSX RENDERS IT (SYSTEM FONT, NO THEME) Tutors Academy could not be shown just now. Nothing was recorded. Opening the site again only reads — it is safe to do. Open Tutors Academy"
+    },
+    "dark-390": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Tutors Academy could not be shown just n"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open Tutors Academy",
+       176,
+       44
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "RENDERED AS GLOBAL-ERROR.TSX RENDERS IT (SYSTEM FONT, NO THEME) Tutors Academy could not be shown just now. Nothing was recorded. Opening the site again only reads — it is safe to do. Open Tutors Academy"
+    },
+    "dark-1280": {
+     "h1": 1,
+     "primaries": 0,
+     "hscroll": false,
+     "headings": [
+      "H1:Tutors Academy could not be shown just n"
+     ],
+     "icons": 0,
+     "redish": 0,
+     "targets": [
+      [
+       "Open Tutors Academy",
+       176,
+       44
+      ]
+     ],
+     "focusFirst": {
+      "focused": true,
+      "outline": true
+     },
+     "contrast": {
+      "violations": 0,
+      "preexisting51": [],
+      "passes": 4
+     },
+     "text": "RENDERED AS GLOBAL-ERROR.TSX RENDERS IT (SYSTEM FONT, NO THEME) Tutors Academy could not be shown just now. Nothing was recorded. Opening the site again only reads — it is safe to do. Open Tutors Academy"
+    }
+   }
+  },
+  "wrongPasswordShape": {
+   "role": "alert",
+   "describes": true,
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "0px",
+   "tag": "P"
+  },
+  "wrongPassword": "That email and password do not match an account here.",
+  "sessionExpiry": {
+   "hops": [
+    [
+     307,
+     "/student"
+    ],
+    [
+     200,
+     "/login?next=%2Fstudent&reason=ended"
+    ]
+   ],
+   "loginUrl": "/login?next=%2Fstudent&reason=ended",
+   "context": "That session ended. Signing in again goes back to your subjects.",
+   "back": "/student",
+   "deadPost": {
+    "status": 0,
+    "type": "opaqueredirect"
+   }
+  },
+  "noSession": {
+   "finalStatus": 200,
+   "url": "/login?next=%2Fstudent",
+   "context": null
+  },
+  "doubleSubmit": {
+   "before": "0/0",
+   "two": [
+    "opaqueredirect:0",
+    "opaqueredirect:0"
+   ],
+   "afterTwo": "1/1",
+   "third": "opaqueredirect:0",
+   "afterThird": "1/1",
+   "entryCount": "3"
+  },
+  "noJsDoubleClick": {
+   "hadButton": true,
+   "rows": "1/1",
+   "nowShows": {
+    "threshold": false,
+    "record": true
+   },
+   "url": "/subjects/mathematics"
+  },
+  "unknownOutcome": {
+   "a": {
+    "navErr": null,
+    "afterAbort": {
+     "url": "chrome-error://chromewebdata/",
+     "text": "This site can’t be reached localhost is currently unreachable. ERR_CONNECTION_FAILED",
+     "ours": false
+    },
+    "rowsA": "0/0",
+    "backStatus": 200,
+    "showsA": {
+     "threshold": true,
+     "outcome": null
+    }
+   },
+   "b": {
+    "raced": [
+     "aborted:AbortError",
+     "aborted:AbortError",
+     "aborted:AbortError",
+     "aborted:AbortError",
+     "aborted:AbortError",
+     "aborted:AbortError"
+    ],
+    "rowsB": "0/0",
+    "backStatus": 200,
+    "showsB": {
+     "threshold": true,
+     "outcome": null,
+     "h1": 1
+    }
+   }
+  },
+  "failedAfterCommit": {
+   "url": "/subjects/mathematics",
+   "rows": "1/0",
+   "h1": 1,
+   "text": "Mathematics The Lattice — structure you can stand on. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT Assignments, tests & progress Your work and progress will appear here when the student portal ships (in progress in the module registry — the student shell exists; assignments, tests and progress do not yet). SYSTEM STATE · NOT BUILT Recorded classes & notes Recordings and lesson notes will appear here with the recorded-classes module (planned). YOUR RECORD See the system — DONE See the doors — DONE Watch the crossing — AHEAD Learn in the room — AHEAD Work with a tutor — AHEAD Watch your record grow — AHEAD Master the subject — AHEAD Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+   "threshold": false,
+   "outcome": null,
+   "arc": [
+    "discover:done",
+    "choose:done",
+    "enter:ahead",
+    "learn:ahead",
+    "interact:ahead",
+    "progress:ahead",
+    "master:ahead"
+   ],
+   "logLine": "{\"level\":\"error\",\"at\":\"2026-09-29T18:00:25.148Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"EntryWriteFailed\",\"what\":\"entry stamp failed after enrolment commit\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
+  },
+  "entryFailed": {
+   "url": "/subjects/mathematics?entry=failed",
+   "rows": "0/0",
+   "status": null,
+   "threshold": true,
+   "outcome": "Beginning did not go through, and nothing was recorded — beginning again is safe.",
+   "describedby": "threshold-outcome",
+   "h1": 1,
+   "primaries": 1,
+   "hscroll": false,
+   "headings": [
+    "H1:Mathematics",
+    "H2:Inside this room",
+    "H3:Live classes",
+    "H3:Assignments, tests & progress",
+    "H3:Recorded classes & notes"
+   ],
+   "icons": 3,
+   "redish": 0,
+   "targets": [
+    [
+     "Begin Mathematics",
+     194,
+     48
+    ],
+    [
+     "Mathematics",
+     113,
+     44
+    ]
+   ],
+   "focusFirst": {
+    "focused": true,
+    "outline": true
+   },
+   "text": "Mathematics The Lattice — structure you can stand on. Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT Assignments, tests & progress Your work and progress will appear here when the student portal ships (in progress in the module registry — the student shell exists; assignments, tests and progress do not yet). SYSTEM STATE · NOT BUILT Recorded classes & notes Recordings and lesson notes will appear here with the recorded-classes module (planned).",
+   "logLine": "{\"level\":\"error\",\"at\":\"2026-09-29T18:00:31.517Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"enrolment upsert failed — no row written\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
+  },
+  "forcedPageFailure": {
+   "shell": {
+    "status": 500,
+    "h1": 1,
+    "primaries": 1,
+    "hscroll": false,
+    "headings": [
+     "H1:Your subjects could not be read just now"
+    ],
+    "icons": 0,
+    "redish": 0,
+    "targets": [
+     [
+      "Open your subjects again",
+      238,
+      48
+     ]
+    ],
+    "focusFirst": {
+     "focused": true,
+     "outline": true
+    },
+    "text": "NOT SHOWN Your subjects could not be read just now. Nothing was recorded. Opening the page again only reads — it is safe to do. Open your subjects again",
+    "statePage": "page-failed",
+    "action": "/student",
+    "noJs": {
+     "h1": 0,
+     "bodyLen": 0,
+     "id": "__next_error__"
+    }
+   },
+   "env": {
+    "status": 500,
+    "h1": 1,
+    "primaries": 1,
+    "hscroll": false,
+    "headings": [
+     "H1:This environment could not be opened jus"
+    ],
+    "icons": 0,
+    "redish": 0,
+    "targets": [
+     [
+      "Open it again",
+      192,
+      48
+     ]
+    ],
+    "focusFirst": {
+     "focused": true,
+     "outline": true
+    },
+    "text": "NOT SHOWN This environment could not be opened just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again",
+    "statePage": "page-failed",
+    "action": "/subjects/mathematics"
+   },
+   "logLines": [
+    "⨯ Error [DataReadError]: read failed: enrolments",
+    "{\"level\":\"error\",\"at\":\"2026-09-29T18:01:12.175Z\",\"scope\":\"read:enrolments\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"read failed — the caller decides: page failure (primary) or silence (region)\",\"ids\":{}}",
+    "⨯ Error [DataReadError]: read failed: enrolments"
+   ]
+  },
+  "regionFailure": {
+   "status": 200,
+   "dom": {
+    "broken": 0,
+    "brokenText": "",
+    "healthy": 1,
+    "healthyHasArc": true
+   },
+   "logLine": "{\"level\":\"error\",\"at\":\"2026-09-29T18:01:13.363Z\",\"scope\":\"region:progress\",\"errorClass\":\"TypeError\",\"what\":\"isolated failure — rendered nothing\",\"ids\":{\"subject\":\"mathematics\"}}"
+  },
+  "devThrow": {
+   "status": 500,
+   "h1": 1,
+   "primaries": 1,
+   "hscroll": false,
+   "headings": [
+    "H1:This page could not be shown just now."
+   ],
+   "icons": 0,
+   "redish": 0,
+   "targets": [
+    [
+     "Open it again",
+     192,
+     48
+    ]
+   ],
+   "focusFirst": {
+    "focused": true,
+    "outline": true
+   },
+   "text": "NOT SHOWN This page could not be shown just now. Nothing was recorded. Opening it again only reads — it is safe to do. Open it again"
+  },
+  "inventoryPage": {
+   "status": 200,
+   "rows": 23,
+   "specimens": 12,
+   "claims": 12
+  },
+  "a11y": {
+   "not-found/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:There is no page at this address."
+    ]
+   },
+   "not-found/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:There is no page at this address."
+    ]
+   },
+   "not-found/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:There is no page at this address."
+    ]
+   },
+   "not-found/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:There is no page at this address."
+    ]
+   },
+   "login-refused-live/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".opacity-90 > p",
+      ".text-brand-700"
+     ],
+     "passes": 13
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in",
+     "H2:Live tutoring, built for real learning o"
+    ]
+   },
+   "login-continue-live/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".opacity-90 > p",
+      ".text-brand-700"
+     ],
+     "passes": 13
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in",
+     "H2:Live tutoring, built for real learning o"
+    ]
+   },
+   "login-continue-live/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".opacity-90 > p",
+      ".text-brand-700"
+     ],
+     "passes": 13
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in",
+     "H2:Live tutoring, built for real learning o"
+    ]
+   },
+   "login-continue-live/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".min-w-0 > .font-semibold",
+      ".opacity-90 > p"
+     ],
+     "passes": 13
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in",
+     "H2:Live tutoring, built for real learning o"
+    ]
+   },
+   "login-continue-live/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".min-w-0 > .font-semibold",
+      ".opacity-90 > p"
+     ],
+     "passes": 13
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in",
+     "H2:Live tutoring, built for real learning o"
+    ]
+   },
+   "entry-failed-live/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 9
+    },
+    "redish": 0,
+    "icons": 3,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Mathematics",
+     "H2:Inside this room",
+     "H3:Live classes",
+     "H3:Assignments, tests & progress"
+    ]
+   },
+   "entry-failed-live/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 15
+    },
+    "redish": 0,
+    "icons": 3,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Mathematics",
+     "H2:Inside this room",
+     "H3:Live classes",
+     "H3:Assignments, tests & progress"
+    ]
+   },
+   "entry-failed-live/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 9
+    },
+    "redish": 0,
+    "icons": 3,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Mathematics",
+     "H2:Inside this room",
+     "H3:Live classes",
+     "H3:Assignments, tests & progress"
+    ]
+   },
+   "entry-failed-live/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 15
+    },
+    "redish": 0,
+    "icons": 3,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Mathematics",
+     "H2:Inside this room",
+     "H3:Live classes",
+     "H3:Assignments, tests & progress"
+    ]
+   },
+   "student-failed-live/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Your subjects could not be read just now"
+    ]
+   },
+   "student-failed-live/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 10
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Your subjects could not be read just now"
+    ]
+   },
+   "student-failed-live/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Your subjects could not be read just now"
+    ]
+   },
+   "student-failed-live/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 10
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Your subjects could not be read just now"
+    ]
+   },
+   "environment-failed-live/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This environment could not be opened jus"
+    ]
+   },
+   "environment-failed-live/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 9
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This environment could not be opened jus"
+    ]
+   },
+   "environment-failed-live/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This environment could not be opened jus"
+    ]
+   },
+   "environment-failed-live/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 9
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This environment could not be opened jus"
+    ]
+   },
+   "region-failing/light-390": {
+    "h1": 0,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 18
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H3:Your record"
+    ]
+   },
+   "region-failing/light-1280": {
+    "h1": 0,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 22
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H3:Your record"
+    ]
+   },
+   "region-failing/dark-390": {
+    "h1": 0,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 18
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H3:Your record"
+    ]
+   },
+   "region-failing/dark-1280": {
+    "h1": 0,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 22
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H3:Your record"
+    ]
+   },
+   "page-failed/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This page could not be shown just now."
+    ]
+   },
+   "page-failed/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 8
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This page could not be shown just now."
+    ]
+   },
+   "page-failed/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This page could not be shown just now."
+    ]
+   },
+   "page-failed/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 8
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This page could not be shown just now."
+    ]
+   },
+   "student-failed/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Your subjects could not be read just now"
+    ]
+   },
+   "student-failed/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 8
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Your subjects could not be read just now"
+    ]
+   },
+   "student-failed/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Your subjects could not be read just now"
+    ]
+   },
+   "student-failed/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 8
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Your subjects could not be read just now"
+    ]
+   },
+   "environment-failed/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This environment could not be opened jus"
+    ]
+   },
+   "environment-failed/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 8
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This environment could not be opened jus"
+    ]
+   },
+   "environment-failed/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This environment could not be opened jus"
+    ]
+   },
+   "environment-failed/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 8
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:This environment could not be opened jus"
+    ]
+   },
+   "entry-failed/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Mathematics"
+    ]
+   },
+   "entry-failed/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 8
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Mathematics"
+    ]
+   },
+   "entry-failed/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Mathematics"
+    ]
+   },
+   "entry-failed/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 8
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Mathematics"
+    ]
+   },
+   "login-ended/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".opacity-90 > p",
+      ".text-brand-700"
+     ],
+     "passes": 11
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-ended/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".opacity-90 > p",
+      ".text-brand-700"
+     ],
+     "passes": 11
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-ended/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".min-w-0 > .font-semibold",
+      ".opacity-90 > p"
+     ],
+     "passes": 11
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-ended/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".min-w-0 > .font-semibold",
+      ".opacity-90 > p"
+     ],
+     "passes": 11
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-continue/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".opacity-90 > p",
+      ".text-brand-700"
+     ],
+     "passes": 11
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-continue/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".opacity-90 > p",
+      ".text-brand-700"
+     ],
+     "passes": 11
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-continue/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".min-w-0 > .font-semibold",
+      ".opacity-90 > p"
+     ],
+     "passes": 11
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-continue/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [
+      ".min-w-0 > .font-semibold",
+      ".opacity-90 > p"
+     ],
+     "passes": 11
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-refused/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-refused/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-refused/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-refused/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-unavailable/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-unavailable/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-unavailable/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "login-unavailable/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": [
+     "H1:Sign in"
+    ]
+   },
+   "in-flight/light-390": {
+    "h1": 0,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 1
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": []
+   },
+   "in-flight/light-1280": {
+    "h1": 0,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 1
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": []
+   },
+   "in-flight/dark-390": {
+    "h1": 0,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 1
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": []
+   },
+   "in-flight/dark-1280": {
+    "h1": 0,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 1
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": null,
+    "headings": []
+   },
+   "global-error/light-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Tutors Academy could not be shown just n"
+    ]
+   },
+   "global-error/light-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Tutors Academy could not be shown just n"
+    ]
+   },
+   "global-error/dark-390": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Tutors Academy could not be shown just n"
+    ]
+   },
+   "global-error/dark-1280": {
+    "h1": 1,
+    "hscroll": false,
+    "contrast": {
+     "violations": 0,
+     "preexisting51": [],
+     "passes": 4
+    },
+    "redish": 0,
+    "icons": 0,
+    "smallTargets": [],
+    "focus": {
+     "focused": true,
+     "outline": true
+    },
+    "headings": [
+     "H1:Tutors Academy could not be shown just n"
+    ]
+   }
+  },
+  "zoomMotion": {
+   "200%": {
+    "hscroll": false,
+    "actionVisible": true
+   },
+   "400%": {
+    "hscroll": false,
+    "actionVisible": true
+   },
+   "1.4.12": {
+    "hscroll": false,
+    "clipped": false
+   },
+   "reducedMotion": {
+    "animations": 0,
+    "which": []
+   }
+  },
+  "atRest": {
+   "storage": {
+    "localStorage": [],
+    "sessionStorage": [],
+    "indexedDB": [],
+    "caches": [],
+    "serviceWorkers": 0
+   },
+   "cookies": [
+    {
+     "name": "sb-<ref>-auth-token",
+     "httpOnly": false,
+     "secure": false,
+     "sameSite": "Lax",
+     "bytes": 2849
+    }
+   ],
+   "offline": {
+    "/student": {
+     "result": "net::ERR_INTERNET_DISCONNECTED at http://localhost:3100/student",
+     "ours": "no-doc",
+     "text": "Press space to play\n\nTry:\n\nChecking the network cables, modem, and router\nReconn"
+    },
+    "/subjects/mathematics": {
+     "result": "net::ERR_INTERNET_DISCONNECTED at http://localhost:3100/subjects/mathematics",
+     "ours": "no-doc",
+     "text": "Press space to play\n\nTry:\n\nChecking the network cables, modem, and router\nReconn"
+    },
+    "/subjects": {
+     "result": "net::ERR_INTERNET_DISCONNECTED at http://localhost:3100/subjects",
+     "ours": "no-doc",
+     "text": "Press space to play\n\nTry:\n\nChecking the network cables, modem, and router\nReconn"
+    }
+   },
+   "swOffline": "n/a"
+  },
+  "payload": {
+   "/": {
+    "status": 200,
+    "ttfb": 11,
+    "requests": 25,
+    "scripts": 13,
+    "scriptEncodedKB": 180,
+    "scriptDecodedKB": 578,
+    "wall": 749
+   },
+   "/subjects": {
+    "status": 200,
+    "ttfb": 10,
+    "requests": 30,
+    "scripts": 15,
+    "scriptEncodedKB": 189,
+    "scriptDecodedKB": 602,
+    "wall": 748
+   },
+   "/subjects/mathematics": {
+    "status": 200,
+    "ttfb": 11,
+    "requests": 31,
+    "scripts": 16,
+    "scriptEncodedKB": 199,
+    "scriptDecodedKB": 628,
+    "wall": 747
+   },
+   "/login": {
+    "status": 200,
+    "ttfb": 24,
+    "requests": 24,
+    "scripts": 14,
+    "scriptEncodedKB": 186,
+    "scriptDecodedKB": 595,
+    "wall": 758
+   },
+   "/subjects/nonsense": {
+    "status": 404,
+    "ttfb": 15,
+    "requests": 23,
+    "scripts": 14,
+    "scriptEncodedKB": 183,
+    "scriptDecodedKB": 583,
+    "wall": 733
+   },
+   "student:/student": {
+    "status": 200,
+    "ttfb": 535,
+    "requests": 41,
+    "scripts": 13,
+    "scriptEncodedKB": 179,
+    "scriptDecodedKB": 574,
+    "wall": 1553
+   },
+   "student:/subjects/mathematics": {
+    "status": 200,
+    "ttfb": 690,
+    "requests": 34,
+    "scripts": 16,
+    "scriptEncodedKB": 199,
+    "scriptDecodedKB": 628,
+    "wall": 1948
+   }
+  },
+  "envTiming": {
+   "ttfbRuns": [
+    767,
+    662,
+    669,
+    698,
+    707,
+    631,
+    644
+   ],
+   "ttfbUsed": [
+    662,
+    669,
+    698,
+    707,
+    631,
+    644
+   ],
+   "lcpRunsMs": [
+    760,
+    704,
+    732,
+    704,
+    724,
+    708,
+    744
+   ],
+   "lcpUsed": [
+    704,
+    732,
+    704,
+    724,
+    708,
+    744
+   ],
+   "note": "warm-up discarded; unthrottled sandbox, variance noted not gated (D-08)"
+  }
+ },
+ "grantsAfter": "enrolments:DELETE,enrolments:INSERT,enrolments:REFERENCES,enrolments:SELECT,enrolments:TRIGGER,enrolments:TRUNCATE,enrolments:UPDATE,environment_state:DELETE,environment_state:INSERT,environment_state:REFERENCES,environment_state:SELECT,environment_state:TRIGGER,environment_state:TRUNCATE,environment_state:UPDATE"
+}

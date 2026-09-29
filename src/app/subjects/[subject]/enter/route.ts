@@ -5,6 +5,7 @@ import { getIdentity } from "@/lib/auth/session";
 import type { SubjectId } from "@/lib/student/contract";
 import { recordEnvironmentEntry } from "@/lib/student/data";
 import { mayEnrol } from "@/lib/student/enrol";
+import { errorClassOf, logFailure } from "@/lib/state/log";
 import { createClient } from "@/lib/supabase/server";
 import { getSubject } from "@/lib/subjects/subjects";
 
@@ -52,12 +53,26 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
     const { error } = await supabase
       .from("enrolments")
       .upsert({ student_id: identity.id, subject_id: s.id, status: "active" }, { onConflict: "student_id,subject_id", ignoreDuplicates: true });
-    if (error) return new NextResponse(`Could not begin: ${error.message}`, { status: 500 });
+    if (error) {
+      /* 5.7 · KNOWN FAILURE before any row: log the class (never the student),
+         then 303 back to the environment — the GET re-reads the truth and the
+         threshold renders one sentence beside the control. Never a text/plain
+         500 carrying the driver's message (P5-R8.6). */
+      logFailure({ scope: "route:/subjects/[subject]/enter", errorClass: errorClassOf(error), what: "enrolment upsert failed — no row written", ids: { subject: s.id, identity: identity.id } });
+      return seeOther(`/subjects/${s.id}?entry=failed`);
+    }
   }
 
   // The explicit act of entering. Recency means THIS, never a page view.
   const entry = await recordEnvironmentEntry(identity.id, s.id as SubjectId);
-  if (!entry.ok) return new NextResponse(`Could not record entry: ${entry.error}`, { status: 500 });
+  if (!entry.ok) {
+    /* FAILED AFTER COMMIT (when the enrolment was just created): the enrolment
+       stands, the entry stamp did not. The truth is "enrolled, never entered"
+       and the environment GET shows exactly that — no message claims more or
+       less. Logged so the system knows what the interface does not say. */
+    logFailure({ scope: "route:/subjects/[subject]/enter", errorClass: "EntryWriteFailed", what: enrolled ? "entry stamp failed — enrolment already existed" : "entry stamp failed after enrolment commit", ids: { subject: s.id, identity: identity.id } });
+    return seeOther(`/subjects/${s.id}`);
+  }
 
   return seeOther(`/subjects/${s.id}`);
 }

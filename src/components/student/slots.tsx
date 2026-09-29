@@ -1,3 +1,4 @@
+import { isolate, isolateAsync } from "@/lib/state/isolate";
 import type { ReactElement } from "react";
 
 import type { StudentSlotRegion } from "@/config/student-slots";
@@ -40,9 +41,12 @@ export interface ResolvedSlot {
 export async function resolveSlots(ctx: StudentContext): Promise<ResolvedSlot[]> {
   const out: ResolvedSlot[] = [];
   for (const [id, slot] of Object.entries(STUDENT_SLOT_COMPONENTS)) {
-    const data = await slot.load(ctx);
+    // 5.7: a slot that throws renders nothing and is logged — the same isolation as 5.4's providers.
+    const res = await isolateAsync(`slot:${id}`, () => slot.load(ctx));
+    const data = res.ok ? res.value : null;
     if (data === null || data === undefined) continue;
-    out.push({ id, region: slot.region, element: slot.render(data) });
+    const el = isolate(`slot:${id}:render`, () => slot.render(data));
+    if (el.ok) out.push({ id, region: slot.region, element: el.value });
   }
   return out;
 }

@@ -45,6 +45,7 @@
  * ═══════════════════════════════════════════════════════════════════════
  */
 
+import { isolate } from "@/lib/state/isolate";
 import { PLATFORM_MODULES } from "../../config/modules";
 import type { Enrolment, EnvironmentState, SubjectId } from "../student/contract";
 
@@ -196,12 +197,10 @@ export function collectCandidates(providers: readonly CandidateProvider[], input
   const candidates: Candidate[] = [];
   const failed: string[] = [];
   for (const p of providers) {
-    try {
-      const got = p.provide(input);
-      if (Array.isArray(got)) candidates.push(...got);
-    } catch {
-      failed.push(p.id);
-    }
+    // 5.7: the ONE isolation pattern (src/lib/state/isolate.ts), shared with the regions.
+    const r = isolate(`provider:${p.id}`, () => p.provide(input));
+    if (r.ok) { if (Array.isArray(r.value)) candidates.push(...r.value); }
+    else failed.push(p.id);
   }
   return { candidates, failed };
 }

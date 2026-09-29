@@ -23,7 +23,7 @@ import { signIn, type AuthResult } from "./actions";
  *
  * Phase 5 accounts are TEST ACCOUNTS ONLY (ruling P5-R1 Part 7).
  */
-export function LoginForm({ configured, next, error }: { configured: boolean; next: string; error?: string | null }) {
+export function LoginForm({ configured, next, error, context }: { configured: boolean; next: string; error?: string | null; context?: string | null }) {
   const [state, action, pending] = useActionState<AuthResult, FormData>(signIn, { error: null });
 
   return (
@@ -34,6 +34,12 @@ export function LoginForm({ configured, next, error }: { configured: boolean; ne
       <p className="mt-2 text-sm leading-relaxed text-foreground-muted">
         Use your Tutors Academy account to reach your portal.
       </p>
+      {/* 5.7 · Part 6: why this page, in the same type — no panel, no colour. */}
+      {context && (
+        <p data-login-context className="mt-2 text-sm leading-relaxed text-foreground">
+          {context}
+        </p>
+      )}
 
       <div className="mt-6 flex flex-col gap-3">
         {!configured && (
@@ -55,11 +61,6 @@ export function LoginForm({ configured, next, error }: { configured: boolean; ne
         {error === "confirmation" && (
           <Alert variant="info" title="That confirmation link did not work">
             <p>It may have expired. Sign in, or create the account again.</p>
-          </Alert>
-        )}
-        {state.error && (
-          <Alert variant="info" title="Could not sign in" role="alert">
-            <p>{state.error}</p>
           </Alert>
         )}
       </div>
@@ -99,10 +100,18 @@ export function LoginForm({ configured, next, error }: { configured: boolean; ne
           </span>
         </label>
 
-        <Button type="submit" size="lg" className="mt-2 w-full" disabled={pending || !configured}>
+        <Button type="submit" size="lg" className="mt-2 w-full" disabled={pending || !configured} aria-describedby={state.error ? "login-outcome" : undefined}>
           <LogIn className="size-4" aria-hidden />
           {pending ? "Signing in…" : "Sign in"}
         </Button>
+        {/* 5.7 · ACTION scope: the outcome is ONE sentence beside the control, in the
+            running type — not a panel (the 5.1 info panel's body sat at 4.21:1 and
+            carried a verdict title). role=alert so it is announced when it arrives. */}
+        {state.error && (
+          <p id="login-outcome" role="alert" data-form-outcome className="text-sm leading-relaxed text-foreground">
+            {state.error}
+          </p>
+        )}
       </form>
 
       <p className="mt-8 text-center text-sm text-foreground-muted">

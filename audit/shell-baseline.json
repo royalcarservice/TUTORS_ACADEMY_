@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T17:11:56.870Z",
+ "generatedAt": "2026-09-29T16:21:10.853Z",
  "reference": "390x844 mobile",
  "states": {
   "A": {
@@ -432,11 +432,11 @@
     "passes": 35
    },
    "network": {
-    "requests": 22,
+    "requests": 26,
     "webgl": [],
     "canvas": 0,
-    "scriptBytes": 152301,
-    "totalBytes": 278602,
+    "scriptBytes": 166027,
+    "totalBytes": 314553,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -444,33 +444,28 @@
       "type": "link"
      },
      {
-      "name": "0tqa28nu7s8i1.css",
-      "bytes": 12534,
+      "name": "2n3a03jy8m4xu.css",
+      "bytes": 12452,
       "type": "link"
      },
      {
-      "name": "310vm2bl3xxpt.js",
-      "bytes": 2270,
+      "name": "3qq9fjtagffmo.js",
+      "bytes": 9088,
       "type": "link"
      },
      {
-      "name": "0eo1cde-rr3bs.js",
-      "bytes": 9140,
+      "name": "0gpuh00-wx325.js",
+      "bytes": 44363,
       "type": "script"
      },
      {
-      "name": "1gd3h8x2ifg_a.js",
-      "bytes": 44305,
+      "name": "0542cuk_va8g1.js",
+      "bytes": 73626,
       "type": "script"
      },
      {
-      "name": "0bma92pht_c97.js",
-      "bytes": 71928,
-      "type": "script"
-     },
-     {
-      "name": "turbopack-3jyd33d-ci9l1.js",
-      "bytes": 4148,
+      "name": "turbopack-2hed_g4u0mqek.js",
+      "bytes": 4136,
       "type": "script"
      },
      {
@@ -479,13 +474,23 @@
       "type": "script"
      },
      {
-      "name": "3inus7zioy109.js",
-      "bytes": 7606,
+      "name": "0-dwrmfx07sb2.js",
+      "bytes": 6042,
       "type": "script"
      },
      {
       "name": "021ib0sjfd8mh.js",
       "bytes": 8959,
+      "type": "script"
+     },
+     {
+      "name": "0a-21ye_4ec4_.js",
+      "bytes": 1268,
+      "type": "script"
+     },
+     {
+      "name": "3inus7zioy109.js",
+      "bytes": 7606,
       "type": "script"
      },
      {
@@ -499,29 +504,49 @@
       "type": "css"
      },
      {
-      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
-      "bytes": 663,
-      "type": "other"
+      "name": "1cwsoh3w32k-3.js",
+      "bytes": 1521,
+      "type": "script"
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 583,
+      "bytes": 586,
       "type": "fetch"
      },
      {
       "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 467,
+      "bytes": 468,
       "type": "fetch"
      },
      {
       "name": "account?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 482,
+      "bytes": 483,
       "type": "fetch"
      },
      {
       "name": "student?_rsc=iUSOvukGHSRwsy2X",
       "bytes": 1458,
       "type": "fetch"
+     },
+     {
+      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
+      "bytes": 663,
+      "type": "other"
+     },
+     {
+      "name": "?_rsc=aOP07nVEi3G8PlVk",
+      "bytes": 15484,
+      "type": "fetch"
+     },
+     {
+      "name": "38-1fhcruqr22.js",
+      "bytes": 7201,
+      "type": "script"
+     },
+     {
+      "name": "03-wuj5agr0xs.js",
+      "bytes": 5090,
+      "type": "script"
      }
     ]
    }
@@ -1145,11 +1170,11 @@
     "passes": 37
    },
    "network": {
-    "requests": 21,
+    "requests": 24,
     "webgl": [],
     "canvas": 0,
-    "scriptBytes": 152301,
-    "totalBytes": 277041,
+    "scriptBytes": 153736,
+    "totalBytes": 285800,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1157,33 +1182,23 @@
       "type": "link"
      },
      {
-      "name": "0tqa28nu7s8i1.css",
-      "bytes": 12534,
+      "name": "2n3a03jy8m4xu.css",
+      "bytes": 12452,
       "type": "link"
      },
      {
-      "name": "310vm2bl3xxpt.js",
-      "bytes": 2270,
+      "name": "3qq9fjtagffmo.js",
+      "bytes": 9088,
       "type": "link"
      },
      {
-      "name": "0eo1cde-rr3bs.js",
-      "bytes": 9140,
+      "name": "0gpuh00-wx325.js",
+      "bytes": 44363,
       "type": "script"
      },
      {
-      "name": "1gd3h8x2ifg_a.js",
-      "bytes": 44305,
-      "type": "script"
-     },
-     {
-      "name": "0bma92pht_c97.js",
-      "bytes": 71928,
-      "type": "script"
-     },
-     {
-      "name": "turbopack-3jyd33d-ci9l1.js",
-      "bytes": 4148,
+      "name": "0542cuk_va8g1.js",
+      "bytes": 73626,
       "type": "script"
      },
      {
@@ -1192,13 +1207,28 @@
       "type": "script"
      },
      {
-      "name": "3inus7zioy109.js",
-      "bytes": 7606,
+      "name": "turbopack-2hed_g4u0mqek.js",
+      "bytes": 4136,
+      "type": "script"
+     },
+     {
+      "name": "0-dwrmfx07sb2.js",
+      "bytes": 6042,
+      "type": "script"
+     },
+     {
+      "name": "0a-21ye_4ec4_.js",
+      "bytes": 1268,
       "type": "script"
      },
      {
       "name": "021ib0sjfd8mh.js",
       "bytes": 8959,
+      "type": "script"
+     },
+     {
+      "name": "3inus7zioy109.js",
+      "bytes": 7606,
       "type": "script"
      },
      {
@@ -1212,18 +1242,28 @@
       "type": "css"
      },
      {
+      "name": "1cwsoh3w32k-3.js",
+      "bytes": 1521,
+      "type": "script"
+     },
+     {
       "name": "icon.svg?icon.3as69rh9ej_7p.svg",
       "bytes": 663,
       "type": "other"
      },
      {
+      "name": "?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 586,
+      "type": "fetch"
+     },
+     {
       "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 467,
+      "bytes": 468,
       "type": "fetch"
      },
      {
       "name": "account?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 482,
+      "bytes": 483,
       "type": "fetch"
      },
      {
@@ -1869,11 +1909,11 @@
     "passes": 37
    },
    "network": {
-    "requests": 19,
+    "requests": 29,
     "webgl": [],
     "canvas": 0,
-    "scriptBytes": 152301,
-    "totalBytes": 276195,
+    "scriptBytes": 177752,
+    "totalBytes": 325783,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1881,33 +1921,28 @@
       "type": "link"
      },
      {
-      "name": "0tqa28nu7s8i1.css",
-      "bytes": 12534,
+      "name": "2n3a03jy8m4xu.css",
+      "bytes": 12452,
       "type": "link"
      },
      {
-      "name": "310vm2bl3xxpt.js",
-      "bytes": 2270,
+      "name": "3qq9fjtagffmo.js",
+      "bytes": 9088,
       "type": "link"
      },
      {
-      "name": "0eo1cde-rr3bs.js",
-      "bytes": 9140,
+      "name": "0gpuh00-wx325.js",
+      "bytes": 44363,
       "type": "script"
      },
      {
-      "name": "1gd3h8x2ifg_a.js",
-      "bytes": 44305,
+      "name": "turbopack-2hed_g4u0mqek.js",
+      "bytes": 4136,
       "type": "script"
      },
      {
-      "name": "0bma92pht_c97.js",
-      "bytes": 71928,
-      "type": "script"
-     },
-     {
-      "name": "turbopack-3jyd33d-ci9l1.js",
-      "bytes": 4148,
+      "name": "0542cuk_va8g1.js",
+      "bytes": 73626,
       "type": "script"
      },
      {
@@ -1916,13 +1951,23 @@
       "type": "script"
      },
      {
-      "name": "3inus7zioy109.js",
-      "bytes": 7606,
+      "name": "0-dwrmfx07sb2.js",
+      "bytes": 6042,
       "type": "script"
      },
      {
       "name": "021ib0sjfd8mh.js",
       "bytes": 8959,
+      "type": "script"
+     },
+     {
+      "name": "3inus7zioy109.js",
+      "bytes": 7606,
+      "type": "script"
+     },
+     {
+      "name": "0a-21ye_4ec4_.js",
+      "bytes": 1268,
       "type": "script"
      },
      {
@@ -1936,14 +1981,59 @@
       "type": "css"
      },
      {
+      "name": "1cwsoh3w32k-3.js",
+      "bytes": 1521,
+      "type": "script"
+     },
+     {
+      "name": "?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 586,
+      "type": "fetch"
+     },
+     {
+      "name": "subjects?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 468,
+      "type": "fetch"
+     },
+     {
+      "name": "account?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 483,
+      "type": "fetch"
+     },
+     {
+      "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 480,
+      "type": "fetch"
+     },
+     {
       "name": "icon.svg?icon.3as69rh9ej_7p.svg",
       "bytes": 663,
       "type": "other"
      },
      {
-      "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 583,
+      "name": "mathematics?_rsc=wy2C4U3hr_QWUTlX",
+      "bytes": 483,
       "type": "fetch"
+     },
+     {
+      "name": "?_rsc=aOP07nVEi3G8PlVk",
+      "bytes": 15484,
+      "type": "fetch"
+     },
+     {
+      "name": "38-1fhcruqr22.js",
+      "bytes": 7201,
+      "type": "script"
+     },
+     {
+      "name": "03-wuj5agr0xs.js",
+      "bytes": 5090,
+      "type": "script"
+     },
+     {
+      "name": "39_aak4o4r66c.js",
+      "bytes": 11725,
+      "type": "script"
      }
     ]
    }
@@ -2044,20 +2134,20 @@
  "perf": {
   "profile": "Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)",
   "finalUrl": "http://localhost:3100/student",
-  "performanceScore": 67,
+  "performanceScore": 94,
   "accessibilityScore": 100,
-  "FCP": "0.9 s",
-  "LCP": "3.5 s",
+  "FCP": "1.4 s",
+  "LCP": "2.5 s",
   "LCPElement": "n/a",
   "CLS": "0",
-  "TBT": "1,220 ms",
-  "SpeedIndex": "1.7 s",
-  "TTI": "4.1 s",
-  "longTasksOver50ms": "828ms 0bma92pht_c97.js; 257ms 1gd3h8x2ifg_a.js; 231ms Unattributable; 130ms student; 127ms student; 120ms 0bma92pht_c97.js; 105ms student; 89ms student; 77ms 1gd3h8x2ifg_a.js; 63ms 0bma92pht_c97.js; 60ms 0bma92pht_c97.js; 59ms 1gd3h8x2ifg_a.js; 54ms Unattributable; 53ms turbopack-3jyd33d-ci9l1.js; 50ms Unattributable",
-  "totalBytes": 335919,
-  "totalKB": 328,
-  "scriptKB": 176,
-  "requests": 29,
+  "TBT": "180 ms",
+  "SpeedIndex": "1.4 s",
+  "TTI": "3.2 s",
+  "longTasksOver50ms": "233ms 0gpuh00-wx325.js; 100ms student; 96ms student; 62ms Unattributable",
+  "totalBytes": 342287,
+  "totalKB": 334,
+  "scriptKB": 184,
+  "requests": 30,
   "webglInWaterfall": 0
  },
  "gates": {
@@ -2247,9 +2337,10 @@
   },
   "perf-mid-range": {
    "pass": true,
-   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":67,\"accessibilityScore\":100,\"FCP\":\"0.9 s\",\"LCP\":\"3.5 s\",\"LCPElement\":\"n/a\",\"CLS\":\"0\",\"TBT\":\"1,220 ms\",\"SpeedIndex\":\"1.7 s\",\"TTI\":\"4.1 s\",\"longTasksOver50ms\":\"828ms 0bma92pht_c97.js; 257ms 1gd3h8x2ifg_a.js; 231ms Unattributable; 130ms student; 127ms student; 120ms 0bma92pht_c97.js; 105ms student; 89ms student; 77ms 1gd3h8x2ifg_a.js; 63ms 0bma92pht_c97.js; 60ms 0bma92pht_c97.js; 59ms 1gd3h8x2ifg_a.js; 54ms Unattributable; 53ms turbopack-3jyd33d-ci9l1.js; 50ms Unattributable\",\"totalBytes\":335919,\"totalKB\":328,\"scriptKB\":176,\"requests\":29,\"webglInWaterfall\":0}"
+   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":94,\"accessibilityScore\":100,\"FCP\":\"1.4 s\",\"LCP\":\"2.5 s\",\"LCPElement\":\"n/a\",\"CLS\":\"0\",\"TBT\":\"180 ms\",\"SpeedIndex\":\"1.4 s\",\"TTI\":\"3.2 s\",\"longTasksOver50ms\":\"233ms 0gpuh00-wx325.js; 100ms student; 96ms student; 62ms Unattributable\",\"totalBytes\":342287,\"totalKB\":334,\"scriptKB\":184,\"requests\":30,\"webglInWaterfall\":0}"
   }
  },
+ "fixtures": "mathematics:00d00h,physics:01d00h | C.physics last_entered 01d00h",
  "signedOut": {
   "landed": "http://localhost:3100/login?next=%2Fstudent",
   "chain": [

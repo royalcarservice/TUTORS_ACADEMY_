@@ -222,7 +222,14 @@ const foldMeasure = () => { const a = document.querySelector("[data-primary-acti
   gate("one primary per view (≤1 in main)", Object.values(s).every((x) => x.primaryCount <= 1), JSON.stringify(Object.fromEntries(Object.entries(s).map(([k, v]) => [k, v.primaryCount]))));
   const withAction = Object.entries(s).filter(([, v]) => v.primaryAction);
   gate("PRIMARY ACTION ABOVE THE FOLD — 320x568, 360x640, 390x844, 1280x800, 200% zoom, 1.4.12 text spacing; document height not asserted", withAction.every(([, v]) => Object.values(v.primaryAboveFold).every((f) => f && f.visible)), JSON.stringify(Object.fromEntries(withAction.map(([k, v]) => [k, Object.fromEntries(Object.entries(v.primaryAboveFold).map(([c, f]) => [c, f ? f.primaryActionBottom : null]))]))));
-  gate("no-JS: primary action present and is a form or a link in plain HTML", withAction.every(([, v]) => v.noJs && v.noJs.primaryAction && (v.noJs.primaryAction.form || v.noJs.primaryAction.href)), JSON.stringify(Object.fromEntries(withAction.map(([k, v]) => [k, v.noJs?.primaryAction]))));
+  /* 5.7: the honest 404 page now carries ONE action, so 404 states join `withAction`. Their no-JS HTML is
+     EMPTY — Next 16.3.6 answers notFound() with the `__next_error__` document and renders not-found.tsx
+     client-side (vercel/next.js#99287; reproduced at /subjects/nonsense). That is a framework defect,
+     reported in PHASE5_STEP7 and tracked as its own gate below, so the 200-state gate keeps its meaning. */
+  const withAction200 = withAction.filter(([, v]) => v.status === 200);
+  const withAction404 = withAction.filter(([, v]) => v.status === 404);
+  gate("no-JS: primary action present and is a form or a link in plain HTML", withAction200.every(([, v]) => v.noJs && v.noJs.primaryAction && (v.noJs.primaryAction.form || v.noJs.primaryAction.href)), JSON.stringify(Object.fromEntries(withAction200.map(([k, v]) => [k, v.noJs?.primaryAction]))));
+  gate("no-JS: 404 pages — KNOWN FRAMEWORK DEFECT (next#99287): not-found is client-rendered; recorded, not accepted", withAction404.every(([, v]) => v.noJs && v.noJs.primaryAction === null), "no-JS body empty for: " + JSON.stringify(withAction404.map(([k]) => k)) + " — flips to FAIL the day the framework SSRs it, so the note gets removed");
 
   /* ── compare ───────────────────────────────────────────────────────── */
   if (MODE === "check" && fs.existsSync(BASE)) {

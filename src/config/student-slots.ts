@@ -56,7 +56,15 @@ export interface EnvironmentSlotDef {
 export const ENVIRONMENT_REGIONS: Record<EnvironmentRegion, { title: string; order: number }> = {
   threshold: { title: "Begin", order: 0 },
   sessions: { title: "Sessions", order: 1 },
-  /* 5.6: the student's own record in this environment — the arc. Not a dashboard; nothing is counted here today. */
+  /* 5.6: the student's own record in this environment — the arc. Not a dashboard; nothing is counted here today.
+     COMPOSITION RULE (5.7 · Part 0, DEC-010): the environment's `record`
+     region and the shell's `progress` slot are DISTINCT OBJECTS with distinct
+     headings ("Your record" here; "Progress" in the shell's reflection
+     region). The arc NEVER merges with a progress figure: when a measured
+     progress language arrives (Phase 9) it renders in the shell's `progress`
+     slot as prose; the arc stays in `record`, keeps 4.7's vocabulary
+     (discover · choose · enter · learn · progress · interact · master) and
+     is never re-labelled, re-scaled or summarised into a number. */
   record: { title: "Your record", order: 2 },
   work: { title: "Work", order: 3 },
   library: { title: "Library", order: 4 },

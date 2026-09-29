@@ -1,6 +1,7 @@
 import { PLATFORM_MODULES } from "@/config/modules";
 import { ENVIRONMENT_REGIONS, ENVIRONMENT_SLOTS, type EnvironmentRegion } from "@/config/student-slots";
 import type { EnvironmentFacts, ProgressEvent } from "@/lib/progress";
+import { isolate } from "@/lib/state/isolate";
 
 import { resolveArc } from "./arc-region";
 
@@ -50,7 +51,10 @@ export function resolveEnvironmentSlots(
   for (const def of ENVIRONMENT_SLOTS) {
     if ((def.gate ?? "module-live") === "module-live" && !isLive(def.module)) continue;   // REGISTRY GATE
     const r = resolvers[def.id];
-    const element = r ? r(ctx) : null;
+    if (!r) continue;
+    // A supplemental region that fails is SILENT — nothing renders — and logged (P5-R8.9, src/lib/state/isolate.ts).
+    const res = isolate(`region:${def.id}`, () => r(ctx), { subject: ctx.subjectId });
+    const element = res.ok ? res.value : null;
     if (element) out.push({ id: def.id, region: def.region, element });
   }
   return out;

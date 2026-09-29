@@ -29,6 +29,30 @@ const ACCOUNTS = {
   C: process.env.TEST_C || "student-c@test.tutorsacademy.invalid",
   C4: process.env.TEST_C4 || "student-d@test.tutorsacademy.invalid", // State C with FOUR enrolled subjects (fold gate only)
 };
+const { execFileSync } = require("child_process");
+function sql(q) {
+  try {
+    const env = fs.readFileSync(path.join(ROOT, ".env.local"), "utf8").match(/^DATABASE_URL=(.+)$/m);
+    if (!env) return null;
+    return execFileSync("psql", [env[1].trim().replace(/^"|"$/g, ""), "-Atc", q], { encoding: "utf8" }).trim();
+  } catch { return null; }
+}
+/* 5.7 · Part 0 (fixture-date drift): the baseline's B/C strings are CLOCK-
+ * RELATIVE ("yesterday"), so the fixture rows are re-stamped at run time,
+ * relative to now(), IDEMPOTENTLY — same relative shape every run, whatever
+ * the calendar says. Only the three fixture accounts' timestamps move; no row
+ * is created or deleted, no write account is touched. */
+function stampFixtures() {
+  if (sql("select 1") !== "1") return "no-db";
+  const uid = (email) => `(select id from auth.users where email='${email}')`;
+  sql(`update public.enrolments set enrolled_at = now() - interval '1 day' where student_id=${uid(ACCOUNTS.B)} and subject_id='physics'`);
+  sql(`update public.enrolments set enrolled_at = now() - interval '5 minutes' where student_id=${uid(ACCOUNTS.B)} and subject_id='mathematics'`);
+  sql(`update public.enrolments set enrolled_at = now() - interval '10 days' where student_id=${uid(ACCOUNTS.C)} and subject_id='physics'`);
+  sql(`update public.enrolments set enrolled_at = now() - interval '10 days' + interval '1 minute' where student_id=${uid(ACCOUNTS.C)} and subject_id='mathematics'`);
+  sql(`update public.environment_state set first_entered_at = now() - interval '9 days', last_entered_at = now() - interval '1 day' where student_id=${uid(ACCOUNTS.C)} and subject_id='physics'`);
+  return sql(`select string_agg(e.subject_id||':'||to_char(now()-e.enrolled_at,'DD"d"HH24"h"'), ',' order by e.subject_id) from public.enrolments e where e.student_id=${uid(ACCOUNTS.B)}`)
+    + " | C.physics last_entered " + sql(`select to_char(now()-last_entered_at,'DD"d"HH24"h"') from public.environment_state where student_id=${uid(ACCOUNTS.C)} and subject_id='physics'`);
+}
 const mode = process.argv.includes("--write") ? "write" : process.argv.includes("--check") ? "check" : "run";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 fs.mkdirSync(OUT, { recursive: true });
@@ -64,6 +88,7 @@ const TEXT_SPACING_CSS = `*{line-height:1.5 !important;letter-spacing:0.12em !im
   const R = { generatedAt: new Date().toISOString(), reference: "390x844 mobile", states: {}, boundary: {}, perf: {}, gates: {} };
   const fail = [];
   const gate = (name, ok, detail) => { R.gates[name] = { pass: !!ok, detail }; if (!ok) fail.push(name + ": " + detail); };
+  R.fixtures = stampFixtures(); console.log("fixtures re-stamped relative to now():", R.fixtures);
 
   /* ── signed-out: no fake signed-in state ───────────────────────────── */
   {

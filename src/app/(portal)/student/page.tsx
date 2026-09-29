@@ -16,8 +16,9 @@ export const dynamic = "force-dynamic";
 export default async function StudentOverviewPage() {
   const ctx = await getStudentContext();
   // The layout already required an identity; a null context can only mean
-  // auth is unconfigured, which the proxy has already turned into a redirect.
-  if (!ctx) return null;
+  // auth is unconfigured. 5.7: that is a page failure, never a shell with a
+  // hole in it — the root error boundary renders the honest page.
+  if (!ctx) throw new Error("student context unavailable");
   const slots = await resolveSlots(ctx);
   return (
     <StudentShell

@@ -1,3 +1,4 @@
+import { logFailure } from "@/lib/state/log";
 import { createClient } from "@/lib/supabase/server";
 
 import { nextActionFor, type Candidate, type ProviderInput } from "@/lib/next-action";
@@ -27,6 +28,18 @@ export function providerInputFor(enrolments: readonly Enrolment[], environmentSt
   };
 }
 
+/** A read that returned an error. Carries the table (an internal for the LOG only — never rendered) and the driver's code; never the row content. */
+export class DataReadError extends Error {
+  readonly code: string;
+  constructor(readonly table: string, cause: { code?: string; message?: string }) {
+    super(`read failed: ${table}`);
+    this.name = "DataReadError";
+    this.code = cause.code ?? "";
+    // The system knows what the interface will not say (P5-R8.9/11): class + table, never a row.
+    logFailure({ scope: `read:${table}`, errorClass: `PostgrestError(${this.code || "?"})`, what: "read failed — the caller decides: page failure (primary) or silence (region)" });
+  }
+}
+
 /**
  * Everything the student shell needs, for the CURRENT user only. Both reads
  * go through the anon-key client, so RLS bounds them to auth.uid() — this
@@ -35,10 +48,16 @@ export function providerInputFor(enrolments: readonly Enrolment[], environmentSt
 export async function getStudentContext(): Promise<StudentContext | null> {
   const supabase = await createClient();
   if (!supabase) return null;
-  const [{ data: enr }, { data: env }] = await Promise.all([
+  const [{ data: enr, error: enrErr }, { data: env, error: envErr }] = await Promise.all([
     supabase.from("enrolments").select("subject_id, status, enrolled_at").order("enrolled_at"),
     supabase.from("environment_state").select("subject_id, first_entered_at, last_entered_at, entry_count, position"),
   ]);
+  /* 5.7 (P5-R8.1/9): a failed read is NOT an empty read. Rendering state A
+     ("no enrolments") from a database error would be a claim we cannot make;
+     the primary answer needs BOTH rows truthfully, so the page fails honestly
+     (root error boundary) rather than answering wrongly. */
+  if (enrErr) throw new DataReadError("enrolments", enrErr);
+  if (envErr) throw new DataReadError("environment_state", envErr);
   const enrolments: Enrolment[] = (enr ?? []).map((r) => ({ subjectId: r.subject_id as SubjectId, status: r.status as Enrolment["status"], enrolledAt: r.enrolled_at }));
   const environmentStates: EnvironmentState[] = (env ?? []).map((r) => ({ subjectId: r.subject_id as SubjectId, firstEnteredAt: r.first_entered_at, lastEnteredAt: r.last_entered_at, entryCount: r.entry_count, position: r.position ?? null }));
   const state = deriveShellState(enrolments, environmentStates);
@@ -60,7 +79,7 @@ export async function recordEnvironmentEntry(userId: string, subjectId: SubjectI
   const { error } = existing
     ? await supabase.from("environment_state").update({ last_entered_at: now, entry_count: existing.entry_count + 1 }).eq("student_id", userId).eq("subject_id", subjectId)
     : await supabase.from("environment_state").insert({ student_id: userId, subject_id: subjectId, first_entered_at: now, last_entered_at: now, entry_count: 1 });
-  return error ? { ok: false, error: error.message } : { ok: true };
+  return error ? { ok: false, error: error.code ?? "write failed" } : { ok: true }; // 5.7: the code, never the message (it is only ever logged)
 }
 
 /**
@@ -75,7 +94,9 @@ export async function getEnrolledSubjectIds(): Promise<Set<string>> {
   if (!supabase) return new Set();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Set();
-  const { data } = await supabase.from("enrolments").select("subject_id").eq("status", "active");
+  const { data, error } = await supabase.from("enrolments").select("subject_id").eq("status", "active");
+  // 5.7: a failed read must not become "not enrolled" — that would 404 a student's own draft environment or offer Begin to someone already enrolled.
+  if (error) throw new DataReadError("enrolments", error);
   return new Set((data ?? []).map((r) => r.subject_id as string));
 }
 
@@ -90,6 +111,8 @@ export async function getEnrolledSubjectIds(): Promise<Set<string>> {
 export async function getEnvironmentFacts(subjectId: SubjectId, enrolled: boolean): Promise<EnvironmentFacts> {
   const supabase = await createClient();
   if (!supabase) return { subjectId, hasAccount: false, enrolled, firstEnteredAt: null };
-  const { data } = await supabase.from("environment_state").select("first_entered_at").eq("subject_id", subjectId).maybeSingle();
+  const { data, error } = await supabase.from("environment_state").select("first_entered_at").eq("subject_id", subjectId).maybeSingle();
+  // 5.7: a failed read is not "never entered". The caller (a SUPPLEMENTAL region) isolates this throw: silence + log.
+  if (error) throw new DataReadError("environment_state", error);
   return { subjectId, hasAccount: true, enrolled, firstEnteredAt: data?.first_entered_at ?? null };
 }

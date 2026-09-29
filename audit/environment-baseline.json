@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-29T14:37:11.023Z",
+ "generatedAt": "2026-09-29T16:17:37.666Z",
  "reference": "390x844 mobile",
  "states": {
   "visitor-ready": {
@@ -22,9 +22,9 @@
    "honestLabels": 3,
    "text": "Mathematics The Lattice — structure you can stand on. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STAT",
    "subjectRoot": "mathematics",
-   "htmlHash": "47456ef7283919cd",
-   "rscHash": "f84351faf03bf1b2",
-   "htmlBytes": 42482,
+   "htmlHash": "635bd39d2b29c4fc",
+   "rscHash": "c918e9ee8b6a5b90",
+   "htmlBytes": 41782,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -35,28 +35,80 @@
    "status": 404,
    "title": "Subjects · Tutors Academy",
    "h1": [
-    "We couldn't find that page"
+    "There is no page at this address."
    ],
    "h1Count": 1,
-   "primaryCount": 0,
-   "primaryAction": null,
+   "primaryCount": 1,
+   "primaryAction": {
+    "tag": "A",
+    "text": "See the subjects",
+    "form": null,
+    "href": "/subjects",
+    "accessibleName": "See the subjects"
+   },
    "threshold": false,
    "studentRegions": [],
    "arc": null,
-   "backToSpace": [
-    "Student portal"
-   ],
+   "backToSpace": [],
    "draftBanner": false,
    "draftLabel": false,
    "honestLabels": 0,
-   "text": "404 We couldn't find that page The link may be out of date, or the page you're after hasn't been built yet — this is the platform's foundation release. Back to home Sign in AVAILABLE PORTALS Student portal Tutor portal Admin portal",
+   "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects",
    "subjectRoot": null,
-   "htmlHash": "82aeed8cc55cbfcd",
-   "rscHash": "cfff4b94fb413c04",
-   "htmlBytes": 14159,
+   "htmlHash": "8c2618771284e56e",
+   "rscHash": "349cffb850bdb42c",
+   "htmlBytes": 13249,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
-   "htmlHasBeginForm": false
+   "htmlHasBeginForm": false,
+   "primaryAboveFold": {
+    "320x568": {
+     "viewport": "320x568",
+     "primaryActionBottom": 368,
+     "visible": true
+    },
+    "360x640": {
+     "viewport": "360x640",
+     "primaryActionBottom": 370,
+     "visible": true
+    },
+    "390x844": {
+     "viewport": "390x844",
+     "primaryActionBottom": 371,
+     "visible": true
+    },
+    "1280x800": {
+     "viewport": "1280x800",
+     "primaryActionBottom": 322,
+     "visible": true
+    },
+    "zoom200": {
+     "viewport": "640x400",
+     "primaryActionBottom": 357,
+     "visible": true
+    },
+    "textSpacing390": {
+     "viewport": "390x844",
+     "primaryActionBottom": 477,
+     "visible": true
+    }
+   },
+   "noJs": {
+    "title": "Subjects · Tutors Academy",
+    "h1": [],
+    "h1Count": 0,
+    "primaryCount": 0,
+    "primaryAction": null,
+    "threshold": false,
+    "studentRegions": [],
+    "arc": null,
+    "backToSpace": [],
+    "draftBanner": false,
+    "draftLabel": false,
+    "honestLabels": 0,
+    "text": "",
+    "subjectRoot": null
+   }
   },
   "nonenrolled-ready": {
    "account": "A",
@@ -90,9 +142,9 @@
    "honestLabels": 3,
    "text": "Mathematics The Lattice — structure you can stand on. Begin Mathematics NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays ",
    "subjectRoot": "mathematics",
-   "htmlHash": "da5889072d12a6c2",
-   "rscHash": "dce2239c1f058c9f",
-   "htmlBytes": 44241,
+   "htmlHash": "bb089c60c85c06aa",
+   "rscHash": "51b531dbbd0dbc27",
+   "htmlBytes": 43576,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": true,
    "htmlHasBeginForm": true,
@@ -165,28 +217,80 @@
    "status": 404,
    "title": "Subjects · Tutors Academy",
    "h1": [
-    "We couldn't find that page"
+    "There is no page at this address."
    ],
    "h1Count": 1,
-   "primaryCount": 0,
-   "primaryAction": null,
+   "primaryCount": 1,
+   "primaryAction": {
+    "tag": "A",
+    "text": "See the subjects",
+    "form": null,
+    "href": "/subjects",
+    "accessibleName": "See the subjects"
+   },
    "threshold": false,
    "studentRegions": [],
    "arc": null,
-   "backToSpace": [
-    "Student portal"
-   ],
+   "backToSpace": [],
    "draftBanner": false,
    "draftLabel": false,
    "honestLabels": 0,
-   "text": "404 We couldn't find that page The link may be out of date, or the page you're after hasn't been built yet — this is the platform's foundation release. Back to home Sign in AVAILABLE PORTALS Student portal Tutor portal Admin portal",
+   "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects",
    "subjectRoot": null,
-   "htmlHash": "e839e90057eb246d",
-   "rscHash": "bbae2578c4ecf79b",
-   "htmlBytes": 18125,
+   "htmlHash": "79f16dee77e524fb",
+   "rscHash": "7e7cc2968651d489",
+   "htmlBytes": 16543,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
-   "htmlHasBeginForm": false
+   "htmlHasBeginForm": false,
+   "primaryAboveFold": {
+    "320x568": {
+     "viewport": "320x568",
+     "primaryActionBottom": 368,
+     "visible": true
+    },
+    "360x640": {
+     "viewport": "360x640",
+     "primaryActionBottom": 370,
+     "visible": true
+    },
+    "390x844": {
+     "viewport": "390x844",
+     "primaryActionBottom": 371,
+     "visible": true
+    },
+    "1280x800": {
+     "viewport": "1280x800",
+     "primaryActionBottom": 322,
+     "visible": true
+    },
+    "zoom200": {
+     "viewport": "640x400",
+     "primaryActionBottom": 357,
+     "visible": true
+    },
+    "textSpacing390": {
+     "viewport": "390x844",
+     "primaryActionBottom": 477,
+     "visible": true
+    }
+   },
+   "noJs": {
+    "title": "Subjects · Tutors Academy",
+    "h1": [],
+    "h1Count": 0,
+    "primaryCount": 0,
+    "primaryAction": null,
+    "threshold": false,
+    "studentRegions": [],
+    "arc": null,
+    "backToSpace": [],
+    "draftBanner": false,
+    "draftLabel": false,
+    "honestLabels": 0,
+    "text": "",
+    "subjectRoot": null
+   }
   },
   "enrolled-draft-entered": {
    "account": "C",
@@ -266,9 +370,9 @@
    "honestLabels": 3,
    "text": "Draft subject — visible in development only. In production this route returns the framework 404. Physics The Field — forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will ",
    "subjectRoot": "physics",
-   "htmlHash": "71ee809f3158003b",
-   "rscHash": "a4f4eece5d9203cc",
-   "htmlBytes": 59269,
+   "htmlHash": "8b9577c7135a5de9",
+   "rscHash": "5162363b41b15bdf",
+   "htmlBytes": 58743,
    "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -351,9 +455,9 @@
    "honestLabels": 3,
    "text": "Mathematics The Lattice — structure you can stand on. NAVIGATION POSITION Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT As",
    "subjectRoot": "mathematics",
-   "htmlHash": "e3007fd9cbe42d06",
-   "rscHash": "74a54e21948d6bf3",
-   "htmlBytes": 58022,
+   "htmlHash": "3f1411071404e734",
+   "rscHash": "66e6aa1f29354430",
+   "htmlBytes": 57313,
    "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -436,9 +540,9 @@
    "honestLabels": 3,
    "text": "Draft subject — visible in development only. In production this route returns the framework 404. Physics The Field — forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will ",
    "subjectRoot": "physics",
-   "htmlHash": "e2acbf5c8c747d71",
-   "rscHash": "e7db95187d84cca7",
-   "htmlBytes": 59456,
+   "htmlHash": "4634c3a1f2cd98f8",
+   "rscHash": "60a59be8dd44dca2",
+   "htmlBytes": 58747,
    "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -447,7 +551,7 @@
  "gates": {
   "no write on GET (rows before == after across every state)": {
    "pass": true,
-   "detail": "9/3/2026-09-29 14:37:06.213+00 → 9/3/2026-09-29 14:37:06.213+00"
+   "detail": "8/2/2026-09-29 15:39:03.284+00 → 8/2/2026-09-29 15:39:03.284+00"
   },
   "write: GET and prefetch write nothing": {
    "pass": true,
@@ -455,7 +559,7 @@
   },
   "write: POST → 303 → 200, one enrolment + one state row, position NULL": {
    "pass": true,
-   "detail": "{\"post\":[\"POST /subjects/mathematics/enter → 303\",\"GET /subjects/mathematics → 200\"],\"landed\":\"/subjects/mathematics\",\"rows\":\"enrolments=1 env_state=1 entry_count=1\",\"row\":\"mathematics | active | enrolled 2026-09-29 14:37:38.968458+00 | last_entered 2026-09-29 14:37:39.116+00 | position NULL\"}"
+   "detail": "{\"post\":[\"POST /subjects/mathematics/enter → 303\",\"GET /subjects/mathematics → 200\"],\"landed\":\"/subjects/mathematics\",\"rows\":\"enrolments=1 env_state=1 entry_count=1\",\"row\":\"mathematics | active | enrolled 2026-09-29 16:18:10.899729+00 | last_entered 2026-09-29 16:18:11.053+00 | position NULL\"}"
   },
   "write: idempotent — second submit, still one enrolment, no error": {
    "pass": true,
@@ -519,20 +623,24 @@
   },
   "one primary per view (≤1 in main)": {
    "pass": true,
-   "detail": "{\"visitor-ready\":0,\"visitor-draft\":0,\"nonenrolled-ready\":1,\"nonenrolled-draft\":0,\"enrolled-draft-entered\":0,\"enrolled-ready-no-state\":0,\"enrolled-draft-no-state\":0}"
+   "detail": "{\"visitor-ready\":0,\"visitor-draft\":1,\"nonenrolled-ready\":1,\"nonenrolled-draft\":1,\"enrolled-draft-entered\":0,\"enrolled-ready-no-state\":0,\"enrolled-draft-no-state\":0}"
   },
   "PRIMARY ACTION ABOVE THE FOLD — 320x568, 360x640, 390x844, 1280x800, 200% zoom, 1.4.12 text spacing; document height not asserted": {
    "pass": true,
-   "detail": "{\"nonenrolled-ready\":{\"320x568\":386,\"360x640\":362,\"390x844\":362,\"1280x800\":382,\"zoom200\":370,\"textSpacing390\":388}}"
+   "detail": "{\"visitor-draft\":{\"320x568\":368,\"360x640\":370,\"390x844\":371,\"1280x800\":322,\"zoom200\":357,\"textSpacing390\":477},\"nonenrolled-ready\":{\"320x568\":386,\"360x640\":362,\"390x844\":362,\"1280x800\":382,\"zoom200\":370,\"textSpacing390\":388},\"nonenrolled-draft\":{\"320x568\":368,\"360x640\":370,\"390x844\":371,\"1280x800\":322,\"zoom200\":357,\"textSpacing390\":477}}"
   },
   "no-JS: primary action present and is a form or a link in plain HTML": {
    "pass": true,
    "detail": "{\"nonenrolled-ready\":{\"tag\":\"BUTTON\",\"text\":\"Begin Mathematics\",\"form\":{\"method\":\"post\",\"action\":\"/subjects/mathematics/enter\"},\"href\":null,\"accessibleName\":\"Begin Mathematics\"}}"
+  },
+  "no-JS: 404 pages — KNOWN FRAMEWORK DEFECT (next#99287): not-found is client-rendered; recorded, not accepted": {
+   "pass": true,
+   "detail": "no-JS body empty for: [\"visitor-draft\",\"nonenrolled-draft\"] — flips to FAIL the day the framework SSRs it, so the note gets removed"
   }
  },
  "notes": {
-  "dbCountsBeforeGets": "9/3/2026-09-29 14:37:06.213+00",
-  "dbCountsAfterGets": "9/3/2026-09-29 14:37:06.213+00"
+  "dbCountsBeforeGets": "8/2/2026-09-29 15:39:03.284+00",
+  "dbCountsAfterGets": "8/2/2026-09-29 15:39:03.284+00"
  },
  "write": {
   "rowsStart": "enrolments=0 env_state=0 entry_count=-",
@@ -552,7 +660,7 @@
   ],
   "landed": "/subjects/mathematics",
   "rowsAfterPost": "enrolments=1 env_state=1 entry_count=1",
-  "row": "mathematics | active | enrolled 2026-09-29 14:37:38.968458+00 | last_entered 2026-09-29 14:37:39.116+00 | position NULL",
+  "row": "mathematics | active | enrolled 2026-09-29 16:18:10.899729+00 | last_entered 2026-09-29 16:18:11.053+00 | position NULL",
   "thresholdAfter": false,
   "doubleSubmit": {
    "status": 200,

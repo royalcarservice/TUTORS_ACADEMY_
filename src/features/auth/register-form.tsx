@@ -56,11 +56,6 @@ export function RegisterForm({ configured }: { configured: boolean }) {
             <p>{state.notice}</p>
           </Alert>
         )}
-        {state.error && (
-          <Alert variant="info" title="Could not create the account" role="alert">
-            <p>{state.error}</p>
-          </Alert>
-        )}
       </div>
 
       <form className="mt-6 flex flex-col gap-5" action={action}>
@@ -131,10 +126,16 @@ export function RegisterForm({ configured }: { configured: boolean }) {
           </span>
         </label>
 
-        <Button type="submit" size="lg" className="mt-1 w-full" disabled={pending || !configured}>
+        <Button type="submit" size="lg" className="mt-1 w-full" disabled={pending || !configured} aria-describedby={state.error ? "register-outcome" : undefined}>
           <UserPlus className="size-4" aria-hidden />
           {pending ? "Creating…" : "Create test account"}
         </Button>
+        {/* 5.7 · ACTION scope: one sentence beside the control, running type, no panel. */}
+        {state.error && (
+          <p id="register-outcome" role="alert" data-form-outcome className="text-sm leading-relaxed text-foreground">
+            {state.error}
+          </p>
+        )}
       </form>
 
       <p className="mt-8 text-center text-sm text-foreground-muted">
