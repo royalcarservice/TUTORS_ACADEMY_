@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-29T16:21:10.853Z",
+ "generatedAt": "2026-09-30T01:43:23.863Z",
  "reference": "390x844 mobile",
  "states": {
   "A": {
@@ -432,11 +432,11 @@
     "passes": 35
    },
    "network": {
-    "requests": 26,
+    "requests": 23,
     "webgl": [],
     "canvas": 0,
-    "scriptBytes": 166027,
-    "totalBytes": 314553,
+    "scriptBytes": 153736,
+    "totalBytes": 286781,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -444,8 +444,8 @@
       "type": "link"
      },
      {
-      "name": "2n3a03jy8m4xu.css",
-      "bytes": 12452,
+      "name": "2cwm2w0ttswkp.css",
+      "bytes": 12457,
       "type": "link"
      },
      {
@@ -494,13 +494,13 @@
       "type": "script"
      },
      {
-      "name": "70bc3e132a0a741e-s.3t6q91iet4nsy.woff2",
-      "bytes": 40780,
+      "name": "03bda585a99c6450-s.32sris142tqlb.woff2",
+      "bytes": 36860,
       "type": "css"
      },
      {
-      "name": "03bda585a99c6450-s.32sris142tqlb.woff2",
-      "bytes": 36860,
+      "name": "70bc3e132a0a741e-s.3t6q91iet4nsy.woff2",
+      "bytes": 40780,
       "type": "css"
      },
      {
@@ -509,8 +509,13 @@
       "type": "script"
      },
      {
+      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
+      "bytes": 663,
+      "type": "other"
+     },
+     {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 586,
+      "bytes": 584,
       "type": "fetch"
      },
      {
@@ -527,26 +532,6 @@
       "name": "student?_rsc=iUSOvukGHSRwsy2X",
       "bytes": 1458,
       "type": "fetch"
-     },
-     {
-      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
-      "bytes": 663,
-      "type": "other"
-     },
-     {
-      "name": "?_rsc=aOP07nVEi3G8PlVk",
-      "bytes": 15484,
-      "type": "fetch"
-     },
-     {
-      "name": "38-1fhcruqr22.js",
-      "bytes": 7201,
-      "type": "script"
-     },
-     {
-      "name": "03-wuj5agr0xs.js",
-      "bytes": 5090,
-      "type": "script"
      }
     ]
    }
@@ -856,7 +841,6 @@
     "heading: Physics — The Field (h1)",
     "StaticText: ENVIRONMENT IN DRAFT",
     "StaticText: You chose Physics yesterday. Your first session begins when you open it.",
-    "form",
     "button: Open Physics",
     "region: YOUR SUBJECTS",
     "heading: YOUR SUBJECTS (h2)",
@@ -1174,7 +1158,7 @@
     "webgl": [],
     "canvas": 0,
     "scriptBytes": 153736,
-    "totalBytes": 285800,
+    "totalBytes": 285804,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1182,8 +1166,8 @@
       "type": "link"
      },
      {
-      "name": "2n3a03jy8m4xu.css",
-      "bytes": 12452,
+      "name": "2cwm2w0ttswkp.css",
+      "bytes": 12457,
       "type": "link"
      },
      {
@@ -1202,23 +1186,18 @@
       "type": "script"
      },
      {
-      "name": "1-cz8gjjx6s9_.js",
-      "bytes": 6215,
-      "type": "script"
-     },
-     {
       "name": "turbopack-2hed_g4u0mqek.js",
       "bytes": 4136,
       "type": "script"
      },
      {
-      "name": "0-dwrmfx07sb2.js",
-      "bytes": 6042,
+      "name": "1-cz8gjjx6s9_.js",
+      "bytes": 6215,
       "type": "script"
      },
      {
-      "name": "0a-21ye_4ec4_.js",
-      "bytes": 1268,
+      "name": "0-dwrmfx07sb2.js",
+      "bytes": 6042,
       "type": "script"
      },
      {
@@ -1229,6 +1208,11 @@
      {
       "name": "3inus7zioy109.js",
       "bytes": 7606,
+      "type": "script"
+     },
+     {
+      "name": "0a-21ye_4ec4_.js",
+      "bytes": 1268,
       "type": "script"
      },
      {
@@ -1253,7 +1237,7 @@
      },
      {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 586,
+      "bytes": 584,
       "type": "fetch"
      },
      {
@@ -1268,7 +1252,7 @@
      },
      {
       "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 480,
+      "bytes": 481,
       "type": "fetch"
      }
     ]
@@ -1579,7 +1563,6 @@
     "heading: Physics — The Field (h1)",
     "StaticText: ENVIRONMENT IN DRAFT",
     "StaticText: You were last here yesterday.",
-    "form",
     "button: Open Physics",
     "region: YOUR SUBJECTS",
     "heading: YOUR SUBJECTS (h2)",
@@ -1909,11 +1892,11 @@
     "passes": 37
    },
    "network": {
-    "requests": 29,
+    "requests": 24,
     "webgl": [],
     "canvas": 0,
-    "scriptBytes": 177752,
-    "totalBytes": 325783,
+    "scriptBytes": 153736,
+    "totalBytes": 285804,
     "entries": [
      {
       "name": "f06bf9da926bae75-s.p.2874ccu1_u7jf.woff2",
@@ -1921,8 +1904,8 @@
       "type": "link"
      },
      {
-      "name": "2n3a03jy8m4xu.css",
-      "bytes": 12452,
+      "name": "2cwm2w0ttswkp.css",
+      "bytes": 12457,
       "type": "link"
      },
      {
@@ -1936,13 +1919,13 @@
       "type": "script"
      },
      {
-      "name": "turbopack-2hed_g4u0mqek.js",
-      "bytes": 4136,
+      "name": "0542cuk_va8g1.js",
+      "bytes": 73626,
       "type": "script"
      },
      {
-      "name": "0542cuk_va8g1.js",
-      "bytes": 73626,
+      "name": "turbopack-2hed_g4u0mqek.js",
+      "bytes": 4136,
       "type": "script"
      },
      {
@@ -1961,13 +1944,13 @@
       "type": "script"
      },
      {
-      "name": "3inus7zioy109.js",
-      "bytes": 7606,
+      "name": "0a-21ye_4ec4_.js",
+      "bytes": 1268,
       "type": "script"
      },
      {
-      "name": "0a-21ye_4ec4_.js",
-      "bytes": 1268,
+      "name": "3inus7zioy109.js",
+      "bytes": 7606,
       "type": "script"
      },
      {
@@ -1986,8 +1969,13 @@
       "type": "script"
      },
      {
+      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
+      "bytes": 663,
+      "type": "other"
+     },
+     {
       "name": "?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 586,
+      "bytes": 584,
       "type": "fetch"
      },
      {
@@ -2002,38 +1990,8 @@
      },
      {
       "name": "physics?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 480,
+      "bytes": 481,
       "type": "fetch"
-     },
-     {
-      "name": "icon.svg?icon.3as69rh9ej_7p.svg",
-      "bytes": 663,
-      "type": "other"
-     },
-     {
-      "name": "mathematics?_rsc=wy2C4U3hr_QWUTlX",
-      "bytes": 483,
-      "type": "fetch"
-     },
-     {
-      "name": "?_rsc=aOP07nVEi3G8PlVk",
-      "bytes": 15484,
-      "type": "fetch"
-     },
-     {
-      "name": "38-1fhcruqr22.js",
-      "bytes": 7201,
-      "type": "script"
-     },
-     {
-      "name": "03-wuj5agr0xs.js",
-      "bytes": 5090,
-      "type": "script"
-     },
-     {
-      "name": "39_aak4o4r66c.js",
-      "bytes": 11725,
-      "type": "script"
      }
     ]
    }
@@ -2134,18 +2092,18 @@
  "perf": {
   "profile": "Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)",
   "finalUrl": "http://localhost:3100/student",
-  "performanceScore": 94,
+  "performanceScore": 95,
   "accessibilityScore": 100,
   "FCP": "1.4 s",
-  "LCP": "2.5 s",
-  "LCPElement": "n/a",
+  "LCP": "2.3 s",
+  "LCPElement": "<h1 id=\"student-primary-heading\" style=\"margin: var(--ta-space-2) 0 0; font-family: var(--ta-font-display);\">",
   "CLS": "0",
-  "TBT": "180 ms",
+  "TBT": "190 ms",
   "SpeedIndex": "1.4 s",
-  "TTI": "3.2 s",
-  "longTasksOver50ms": "233ms 0gpuh00-wx325.js; 100ms student; 96ms student; 62ms Unattributable",
-  "totalBytes": 342287,
-  "totalKB": 334,
+  "TTI": "3.3 s",
+  "longTasksOver50ms": "241ms 0542cuk_va8g1.js; 101ms Unattributable; 96ms student; 73ms student; 60ms 0542cuk_va8g1.js; 59ms Unattributable; 56ms student",
+  "totalBytes": 342834,
+  "totalKB": 335,
   "scriptKB": 184,
   "requests": 30,
   "webglInWaterfall": 0
@@ -2337,7 +2295,7 @@
   },
   "perf-mid-range": {
    "pass": true,
-   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":94,\"accessibilityScore\":100,\"FCP\":\"1.4 s\",\"LCP\":\"2.5 s\",\"LCPElement\":\"n/a\",\"CLS\":\"0\",\"TBT\":\"180 ms\",\"SpeedIndex\":\"1.4 s\",\"TTI\":\"3.2 s\",\"longTasksOver50ms\":\"233ms 0gpuh00-wx325.js; 100ms student; 96ms student; 62ms Unattributable\",\"totalBytes\":342287,\"totalKB\":334,\"scriptKB\":184,\"requests\":30,\"webglInWaterfall\":0}"
+   "detail": "{\"profile\":\"Lighthouse mobile, simulated: Moto G Power-class, 4× CPU slowdown, slow-4G (150ms RTT, 1.6 Mbps)\",\"finalUrl\":\"http://localhost:3100/student\",\"performanceScore\":95,\"accessibilityScore\":100,\"FCP\":\"1.4 s\",\"LCP\":\"2.3 s\",\"LCPElement\":\"<h1 id=\\\"student-primary-heading\\\" style=\\\"margin: var(--ta-space-2) 0 0; font-family: var(--ta-font-display);\\\">\",\"CLS\":\"0\",\"TBT\":\"190 ms\",\"SpeedIndex\":\"1.4 s\",\"TTI\":\"3.3 s\",\"longTasksOver50ms\":\"241ms 0542cuk_va8g1.js; 101ms Unattributable; 96ms student; 73ms student; 60ms 0542cuk_va8g1.js; 59ms Unattributable; 56ms student\",\"totalBytes\":342834,\"totalKB\":335,\"scriptKB\":184,\"requests\":30,\"webglInWaterfall\":0}"
   }
  },
  "fixtures": "mathematics:00d00h,physics:01d00h | C.physics last_entered 01d00h",

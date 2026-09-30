@@ -47,7 +47,7 @@
   --ta-ivory-50: #faf9f5;
 
   /* Brass — brand, used sparingly */
-  --ta-brass-700: #7a5a1f;
+  --ta-brass-700: #72541d; /* P5-R9 correction: was #7a5a1f (hsl 38.9 59.5% 30%) → L 28%, hue/sat unchanged — the light auth-panel body sat at 4.21:1 */
   --ta-brass-600: #9e7a33;
   --ta-brass-500: #c29a45;
   --ta-brass-400: #d9b563;
@@ -397,7 +397,7 @@
   --color-brand-600: var(--ta-brand);
   --color-brand-700: var(--ta-brand-strong);
   --color-brand-800: var(--ta-brass-600);
-  --color-brand-900: var(--ta-brass-700);
+  --color-brand-900: var(--ta-brand); /* P5-R9 correction: was the fixed brass-700 in BOTH themes (2.43:1 on the dark panel); now the themed brand text token (light brass-700, dark brass-500) */
   --color-brand-950: var(--ta-ink-900);
 
   --color-accent-50: var(--ta-signal-quiet);

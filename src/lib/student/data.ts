@@ -1,4 +1,4 @@
-import { logFailure } from "@/lib/state/log";
+import { DataReadError } from "@/lib/state/read-error";
 import { createClient } from "@/lib/supabase/server";
 
 import { nextActionFor, type Candidate, type ProviderInput } from "@/lib/next-action";
@@ -28,17 +28,7 @@ export function providerInputFor(enrolments: readonly Enrolment[], environmentSt
   };
 }
 
-/** A read that returned an error. Carries the table (an internal for the LOG only — never rendered) and the driver's code; never the row content. */
-export class DataReadError extends Error {
-  readonly code: string;
-  constructor(readonly table: string, cause: { code?: string; message?: string }) {
-    super(`read failed: ${table}`);
-    this.name = "DataReadError";
-    this.code = cause.code ?? "";
-    // The system knows what the interface will not say (P5-R8.9/11): class + table, never a row.
-    logFailure({ scope: `read:${table}`, errorClass: `PostgrestError(${this.code || "?"})`, what: "read failed — the caller decides: page failure (primary) or silence (region)" });
-  }
-}
+export { DataReadError };
 
 /**
  * Everything the student shell needs, for the CURRENT user only. Both reads
@@ -74,7 +64,9 @@ export async function getStudentContext(): Promise<StudentContext | null> {
 export async function recordEnvironmentEntry(userId: string, subjectId: SubjectId): Promise<{ ok: boolean; error?: string }> {
   const supabase = await createClient();
   if (!supabase) return { ok: false, error: "auth not configured" };
-  const { data: existing } = await supabase.from("environment_state").select("entry_count").eq("student_id", userId).eq("subject_id", subjectId).maybeSingle();
+  const { data: existing, error: readError } = await supabase.from("environment_state").select("entry_count").eq("student_id", userId).eq("subject_id", subjectId).maybeSingle();
+  // P5-R9: a failed read is not "no row yet" — it must not choose the INSERT branch. Refuse the write; the caller logs and the GET shows the truth.
+  if (readError) return { ok: false, error: `read:${readError.code ?? "?"}` };
   const now = new Date().toISOString();
   const { error } = existing
     ? await supabase.from("environment_state").update({ last_entered_at: now, entry_count: existing.entry_count + 1 }).eq("student_id", userId).eq("subject_id", subjectId)

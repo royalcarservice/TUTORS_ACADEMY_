@@ -47,7 +47,15 @@ const rowsE = () => sql(`select (select count(*) from public.enrolments where st
 const resetE = () => { sql(`delete from public.environment_state where student_id=${uidE}`); sql(`delete from public.enrolments where student_id=${uidE}`); };
 const grants = () => sql("select string_agg(table_name||':'||privilege_type, ',' order by table_name, privilege_type) from information_schema.role_table_grants where table_schema='public' and grantee='authenticated' and table_name in ('enrolments','environment_state')");
 
-const R = { generatedAt: new Date().toISOString(), reference: "390x844 mobile", gates: {}, tests: {} };
+const CORRECTIONS = [
+  /* CORRECTION EVENT (P5-R9 ruling, D-08 precedent): the old values were WRONG, not merely different.
+     The 5.7 baseline exempted 26 axe contrast hits on the 5.1 auth chrome as "pre-existing"; the ruling
+     said listed is not fixed. Fixed at the source, LIGHTNESS ONLY (hue 38.9°, saturation 59.5% kept). */
+  { token: "--ta-brass-700", from: "#7a5a1f (hsl 38.9 59.5% 30%)", to: "#72541d (hsl 38.9 59.5% 28%)", step: "P5-R9", reason: "light auth panel body (brass-700 at the primitive's 0.9 opacity on the quiet panel) measured 4.21:1; the darkest brass step needed 2 points of lightness to clear 4.5:1", measuredBefore: { "light body": 4.21, "light title": 5.15 }, oneTimeOnly: true },
+  { token: "--color-brand-900", from: "var(--ta-brass-700) in both themes", to: "var(--ta-brand) (light brass-700, dark brass-500)", step: "P5-R9", reason: "the Tailwind alias was not theme-aware: dark brass on the dark panel measured 2.43:1 (title) / 2.23:1 (body)", measuredBefore: { "dark title": 2.43, "dark body": 2.23 }, oneTimeOnly: true },
+  { token: "auth link class text-brand-700 → text-brand-600", from: "brass-600 #9e7a33 (3.77:1 light)", to: "the themed brand text token", step: "P5-R9", reason: "the 'Create one' / 'Sign in' link sat at 3.77:1 in light; brand-600 is the same hue one step darker", measuredBefore: { "light link": 3.77 }, oneTimeOnly: true },
+];
+const R = { generatedAt: new Date().toISOString(), reference: "390x844 mobile", corrections: CORRECTIONS, gates: {}, tests: {} };
 const fail = [];
 const gate = (name, ok, detail) => { R.gates[name] = { pass: !!ok, detail }; if (!ok) fail.push(name + ": " + detail); console.log((ok ? "PASS  " : "FAIL  ") + name + (ok ? "" : "  ← " + detail)); };
 
@@ -79,7 +87,7 @@ const pageFacts = (p) => p.evaluate(() => ({
 }));
 /* PRE-EXISTING contrast misses on the 5.1 auth chrome (Phase-1 Tailwind page, frozen; not a 5.7 surface):
    the brand panel's muted paragraph and the brass "Create one" link. Listed, not hidden: any OTHER node fails. */
-const PREEXISTING_5_1 = /\.opacity-90|\.text-brand-700|\.min-w-0 > \.font-semibold/; // 5.1 auth chrome + the frozen Alert primitive (info panels, brand link) — NOT a 5.7 sentence; every 5.7 sentence is plain foreground text
+const PREEXISTING_5_1 = /$^/; // P5-R9: the 26 hits were FIXED at the token (correction event below) — nothing is exempt any more // 5.1 auth chrome + the frozen Alert primitive (info panels, brand link) — NOT a 5.7 sentence; every 5.7 sentence is plain foreground text
 async function contrast(p) {
   const r = await new AxePuppeteer(p).withRules(["color-contrast"]).analyze();
   const nodes = r.violations.flatMap((v) => v.nodes.map((n) => n.target.join(" ")));
@@ -92,6 +100,7 @@ async function shoot(p, url, name, base = P) {
     await p.goto(url, { waitUntil: "load" });
     await setTheme(p, theme);
     for (const [w, h] of [[390, 844], [1280, 800]]) {
+      await p.goto("about:blank"); // so setViewport does not reload a dev page (the implicit reload hung under memory pressure)
       await p.setViewport({ width: w, height: h, isMobile: w < 800 });
       await p.goto(url, { waitUntil: "load" });
       await p.waitForSelector("h1", { timeout: 8000 }).catch(() => null);
@@ -135,7 +144,34 @@ async function shoot(p, url, name, base = P) {
       await p.setJavaScriptEnabled(true);
       R.tests.nojs404 = { fromNotFoundCall: nojs404, unmatchedRoute: nojsRoot };
       gate("T19 no-JS: unmatched route 404 is server-rendered (h1 present)", nojsRoot.h1 === 1, JSON.stringify(nojsRoot));
-      gate("T19 no-JS: notFound() 404 is EMPTY without JS — framework defect next#99287 (recorded; flips when fixed)", nojs404.h1 === 0 && nojs404.id === "__next_error__", JSON.stringify(nojs404));
+      /* ▲▲ FLIP ALARM (P5-R9 ruling) ▲▲  This gate asserts TODAY'S DEFECTIVE behaviour on purpose.
+         Next 16.3.6 delivers notFound() pages and error boundaries client-side (empty `__next_error__`
+         document without JS) — vercel/next.js#99287, observed 2026-09-29. It is a FRAMEWORK-DEPENDENT
+         DECLARED EXCEPTION, not a design choice. IF THIS GATE EVER FAILS THE FRAMEWORK HAS CHANGED:
+         delete this gate, restore the real assertion below (`nojs404.h1 === 1`), and remove the
+         exception from docs/STATE_LANGUAGE.md. Re-run on every Next version bump and at Phase 10 start. */
+      gate("FLIP-ALARM next#99287 (2026-09-29): notFound() 404 is EMPTY without JS — framework defect asserted as-is; if this FAILS the framework changed → restore `h1 === 1`", nojs404.h1 === 0 && nojs404.id === "__next_error__", JSON.stringify(nojs404));
+      // real assertion, kept for the day the alarm trips:  gate("T19 no-JS: notFound() 404 is server-rendered", nojs404.h1 === 1, ...)
+      {
+        /* the same alarm for the two ERROR boundaries: root error.tsx (dev throw route) and global-error.tsx (dev root-layout throw) */
+        await p.setJavaScriptEnabled(false);
+        const e1 = await p.goto(D + "/dev/student-states/throw", { waitUntil: "load" }).catch(() => null);
+        const nojsErr = { status: e1 && e1.status(), ...(await p.evaluate(() => ({ h1: document.querySelectorAll("h1").length, bodyLen: document.body.innerText.trim().length, id: document.documentElement.id }))) };
+        const e2 = await p.goto(D + "/dev/global-throw", { waitUntil: "load" }).catch(() => null);
+        const nojsGlobal = { status: e2 && e2.status(), ...(await p.evaluate(() => ({ h1: document.querySelectorAll("h1").length, bodyLen: document.body.innerText.trim().length, id: document.documentElement.id }))) };
+        await p.setJavaScriptEnabled(true);
+        const g2 = await p.goto(D + "/dev/global-throw", { waitUntil: "load" }).catch(() => null);
+        await p.waitForSelector("h1", { timeout: 15000 }).catch(() => null);
+        const jsGlobal = { status: g2 && g2.status(), h1: await p.evaluate(() => document.querySelector("h1")?.textContent || null), text: await p.evaluate(() => document.body.innerText.replace(/\s+/g, " ").trim().slice(0, 200)) };
+        R.tests.flipAlarm = { notFound: nojs404, errorBoundary: nojsErr, globalError: { noJs: nojsGlobal, js: jsGlobal } };
+        gate("FLIP-ALARM next#99287: root error.tsx is EMPTY without JS (asserted as-is; failing = framework changed)", nojsErr.h1 === 0, JSON.stringify(nojsErr));
+        /* FINDING: a throwing SECOND root layout (route group) is caught by app/error.tsx — the root boundary wraps every
+           segment below app/, groups included — so global-error.tsx is UNREACHABLE from any route we can add; only the
+           real app/layout.tsx failing reaches it. It is a client component by the framework's contract, so its delivery
+           is client-side by construction (same class as the two alarms above). Asserted as observed, no more. */
+        gate("root-layout throw (route group) WITH JS: caught by app/error.tsx (root boundary), never the thrown message; global-error.tsx unreachable by test", jsGlobal.h1 === "This page could not be shown just now." && !/forced ROOT LAYOUT/.test(jsGlobal.text), JSON.stringify(jsGlobal));
+        gate("FLIP-ALARM next#99287: root-layout throw without JS is EMPTY (asserted as-is; failing = framework changed)", nojsGlobal.h1 === 0 && nojsGlobal.id === "__next_error__", JSON.stringify(nojsGlobal));
+      }
       R.tests.states = {};
       R.tests.states["not-found"] = await shoot(p, P + "/subjects/nonsense", "not-found");
       await p.close();
@@ -323,11 +359,11 @@ async function shoot(p, url, name, base = P) {
       sql("revoke select on public.enrolments from authenticated");
       let shell, env, envHtml, shellHtml;
       try {
-        const r1 = await p.goto(P + "/student", { waitUntil: "load" });
+        const r1 = await p.goto(P + "/student", { waitUntil: "load" }); await p.waitForSelector("h1", { timeout: 15000 }).catch(() => null); // boundary is client-rendered (#99287): wait for hydration before reading facts
         shellHtml = await p.content();
         shell = { status: r1.status(), ...(await pageFacts(p)), text: await mainText(p), statePage: await p.evaluate(() => document.querySelector("[data-state-page]")?.getAttribute("data-state-page") || null), action: await p.evaluate(() => document.querySelector("[data-primary-action]")?.getAttribute("href")) };
         R.tests.states["student-failed-live"] = await shoot(p, P + "/student", "student-failed-live");
-        const r2 = await p.goto(P + "/subjects/mathematics", { waitUntil: "load" });
+        const r2 = await p.goto(P + "/subjects/mathematics", { waitUntil: "load" }); await p.waitForSelector("h1", { timeout: 15000 }).catch(() => null); // boundary is client-rendered (#99287): wait for hydration before reading facts
         envHtml = await p.content();
         env = { status: r2.status(), ...(await pageFacts(p)), text: await mainText(p), statePage: await p.evaluate(() => document.querySelector("[data-state-page]")?.getAttribute("data-state-page") || null), action: await p.evaluate(() => document.querySelector("[data-primary-action]")?.getAttribute("href")) };
         R.tests.states["environment-failed-live"] = await shoot(p, P + "/subjects/mathematics", "environment-failed-live");
@@ -345,6 +381,43 @@ async function shoot(p, url, name, base = P) {
       gate("T16 the honest page reads as decided: no red, no icon, no banned word, product is the subject", shell.redish === 0 && shell.icons === 0 && !BANNED.test(shell.text) && !YOU_SUBJECT.test(shell.text) && env.redish === 0 && env.icons === 0 && !BANNED.test(env.text), shell.text + " || " + env.text);
       gate("T8 log line for the failed read: class, scope, no content", lines.some((l) => /DataReadError/.test(l)) || lines.length > 0, JSON.stringify(lines.slice(-2)));
       gate("T8 no-JS on a failed page: recorded (framework renders error boundaries client-side)", true, JSON.stringify(shell.noJs));
+
+      /* ── P5-R9 · AN ERROR IS NEVER AN ABSENCE — three regressions, each FORCING the failure ──
+         student-e is ENROLLED in mathematics (Begin above) and, by SQL for this block only,
+         in the draft `physics`. With SELECT on enrolments revoked, the failed read must never
+         wear a benign fact's clothes: never "no enrolments", never Begin, never a 404. */
+      {
+        sql(`insert into public.enrolments (student_id, subject_id, status) values (${uidE}, 'physics', 'active') on conflict do nothing`);
+        const rowsBefore = rowsE();
+        const r9 = {};
+        const logBefore9 = prodLog().length;
+        sql("revoke select on public.enrolments from authenticated");
+        try {
+          // (1) enrolled student, GET the environment: threshold (Begin) must not appear
+          const g1 = await p.goto(P + "/subjects/mathematics", { waitUntil: "load" }); await p.waitForSelector("h1", { timeout: 15000 }).catch(() => null); // boundary is client-rendered (#99287): wait for hydration before reading facts
+          r9.envGet = { status: g1.status(), threshold: await p.$("[data-threshold]") !== null, statePage: await p.evaluate(() => document.querySelector("[data-state-page]")?.getAttribute("data-state-page") || null), text: (await mainText(p)).slice(0, 120) };
+          // (1b) enrolled student, POST /enter while the enrolment read fails: no 404, no new row, 303 back
+          const post1 = await p.evaluate(async () => { const r = await fetch("/subjects/mathematics/enter", { method: "POST", redirect: "manual" }); return { status: r.status, type: r.type }; });
+          r9.envPost = post1;
+          // (2) the student's OWN DRAFT environment under failure: never 404
+          const g2 = await p.goto(P + "/subjects/physics", { waitUntil: "load" }); await p.waitForSelector("h1", { timeout: 15000 }).catch(() => null); // boundary is client-rendered (#99287): wait for hydration before reading facts
+          r9.draftGet = { status: g2.status(), statePage: await p.evaluate(() => document.querySelector("[data-state-page]")?.getAttribute("data-state-page") || null), h1: (await pageFacts(p)).h1 };
+          const post2 = await p.evaluate(async () => { const r = await fetch("/subjects/physics/enter", { method: "POST", redirect: "manual" }); return { status: r.status, type: r.type }; });
+          r9.draftPost = post2;
+          // (3) /student under failure never says "no enrolments" (state A) — any wording of it
+          const g3 = await p.goto(P + "/student", { waitUntil: "load" }); await p.waitForSelector("h1", { timeout: 15000 }).catch(() => null); // boundary is client-rendered (#99287): wait for hydration before reading facts
+          r9.shell = { status: g3.status(), text: await mainText(p) };
+        } finally { sql("grant select on public.enrolments to authenticated"); }
+        r9.rowsAfter = rowsE();
+        r9.logLines = prodLog().slice(logBefore9).split("\n").filter((l) => /"level":"error"/.test(l)).slice(-4);
+        R.tests.p5r9 = r9;
+        const STATE_A = /no subjects|not enrolled|haven't chosen|have not chosen|Choose a subject|nothing here yet|Begin/i;
+        gate("P5-R9 (1) an enrolled student is never offered Begin under a failed read: GET → honest page, no threshold; POST /enter → 303 back (opaque), no 404, no row", r9.envGet.status === 500 && !r9.envGet.threshold && r9.envGet.statePage === "page-failed" && (r9.envPost.type === "opaqueredirect" || r9.envPost.status === 303) && r9.rowsAfter === rowsBefore, JSON.stringify({ envGet: r9.envGet, envPost: r9.envPost, rows: [rowsBefore, r9.rowsAfter] }));
+        gate("P5-R9 (2) a student's own DRAFT environment never 404s under a failed read: GET → 500 honest page (not 404); POST → 303 back (not 404)", r9.draftGet.status === 500 && r9.draftGet.statePage === "page-failed" && r9.draftGet.h1 === 1 && r9.draftPost.status !== 404 && (r9.draftPost.type === "opaqueredirect" || r9.draftPost.status === 303), JSON.stringify({ draftGet: r9.draftGet, draftPost: r9.draftPost }));
+        gate("P5-R9 (3) a failed read never renders \"no enrolments\": /student → 500 honest page, state-A wording absent", r9.shell.status === 500 && !STATE_A.test(r9.shell.text), JSON.stringify(r9.shell));
+        gate("P5-R9 log: the refused decisions are logged with class + scope, never content", r9.logLines.some((l) => /read failed before deciding|read:enrolments/.test(l)) && !r9.logLines.some((l) => /@|password/.test(l)), JSON.stringify(r9.logLines.slice(-2)));
+        sql(`delete from public.enrolments where student_id=${uidE} and subject_id='physics'`);
+      }
       await ctx.close();
     }
 
@@ -377,7 +450,8 @@ async function shoot(p, url, name, base = P) {
       const prodInv = await p.goto(P + "/dev/student-states", { waitUntil: "load" });
       const prodFrame = await p.goto(P + "/dev/student-states/frame?state=not-found", { waitUntil: "load" });
       const prodThrow = await p.goto(P + "/dev/student-states/throw", { waitUntil: "load" });
-      gate("T29 production: /dev/student-states, its frame and its throw route are 404", prodInv.status() === 404 && prodFrame.status() === 404 && prodThrow.status() === 404, [prodInv.status(), prodFrame.status(), prodThrow.status()].join("/"));
+      const prodGlobal = await p.goto(P + "/dev/global-throw", { waitUntil: "load" });
+      gate("T29 production: /dev/student-states, its frame, its throw route and /dev/global-throw are 404", prodInv.status() === 404 && prodFrame.status() === 404 && prodThrow.status() === 404 && prodGlobal.status() === 404, [prodInv.status(), prodFrame.status(), prodThrow.status(), prodGlobal.status()].join("/"));
       await p.close();
     }
 

@@ -1,3 +1,5 @@
+import { errorClassOf, logFailure } from "@/lib/state/log";
+import { isIdentityReadFailure } from "@/lib/state/read-error";
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
@@ -37,8 +39,16 @@ export async function updateSession(request: NextRequest) {
       },
     });
     // getUser() validates the JWT against the Auth server; never trust getSession() here.
-    const { data } = await supabase.auth.getUser();
+    const { data, error } = await supabase.auth.getUser();
     userId = data.user?.id ?? null;
+    /* P5-R9: an unreachable Auth server is NOT "no session". Redirecting here
+       would claim "That session ended" about a read that failed. Let the
+       request through unchanged: the page's own identity read throws the same
+       failure and the honest page renders (never a fabricated sign-out). */
+    if (!userId && isIdentityReadFailure(error)) {
+      logFailure({ scope: "proxy:getUser", errorClass: errorClassOf(error), what: "identity read failed — passed through, page decides", ids: { path: pathname } });
+      return response;
+    }
   }
 
   if (isProtectedPath(pathname) && !userId) {

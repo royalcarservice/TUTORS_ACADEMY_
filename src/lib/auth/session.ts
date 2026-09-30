@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { ROUTES } from "@/config/routes";
+import { DataReadError, isIdentityReadFailure } from "@/lib/state/read-error";
 import { createClient } from "@/lib/supabase/server";
 
 export type UserRole = "student" | "tutor" | "admin";
@@ -21,13 +22,17 @@ export interface Identity {
 export async function getIdentity(): Promise<Identity | null> {
   const supabase = await createClient();
   if (!supabase) return null;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  // P5-R9: "no session" is an absence; an unreachable Auth server is a failed read. They are never the same value.
+  if (!user && isIdentityReadFailure(authError)) throw new DataReadError("auth.getUser", authError!);
   if (!user) return null;
-  const { data: profile } = await supabase
+  const { data: profile, error: profileError } = await supabase
     .from("profiles")
     .select("role, display_name, is_test_account")
     .eq("id", user.id)
     .maybeSingle();
+  // P5-R9: a failed profile read must not become role "student" / an empty name.
+  if (profileError) throw new DataReadError("profiles", profileError);
   return {
     id: user.id,
     email: user.email ?? null,

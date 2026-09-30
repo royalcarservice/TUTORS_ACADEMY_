@@ -144,3 +144,4 @@ No existing layout, token or component file needs rewriting.
   camelCase in the initial HTML (browsers ignore them) but React repairs both
   on hydration. Verified — see comment in `components/ui/input.tsx`.
 - No dark mode / i18n / theme toggle yet — tokens are structured to support it.
+- **Framework-bound delivery of page-level failure states (Next 16.3.6, vercel/next.js#99287):** `notFound()` pages and error boundaries render client-side; re-tested on every Next bump and at Phase 10 start via the FLIP-ALARM gates in `audit/states.cjs` (see `docs/PHASE_TRACKER.md`).

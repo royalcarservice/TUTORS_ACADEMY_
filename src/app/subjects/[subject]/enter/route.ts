@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { ROUTES } from "@/config/routes";
 import { getIdentity } from "@/lib/auth/session";
+import { isolateAsync } from "@/lib/state/isolate";
 import type { SubjectId } from "@/lib/student/contract";
 import { recordEnvironmentEntry } from "@/lib/student/data";
 import { mayEnrol } from "@/lib/student/enrol";
@@ -35,7 +36,12 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
   const s = getSubject(subject);
   if (!s) return new NextResponse("Not found", { status: 404 });
 
-  const identity = await getIdentity();
+  /* P5-R9: an identity READ FAILURE is not "no session" (that would send a
+     signed-in student to /login) — nothing was written, so 303 back to the
+     environment; the GET decides (honest page or the truth). */
+  const identityRead = await isolateAsync("route:/subjects/[subject]/enter", () => getIdentity(), { subject: s.id });
+  if (!identityRead.ok) return seeOther(`/subjects/${s.id}?entry=failed`);
+  const identity = identityRead.value;
   // A session is required. No identity → the write is refused; the visitor is
   // sent to sign in with this environment as the return path (works with JS off).
   if (!identity) return seeOther(`${ROUTES.login}?next=${encodeURIComponent(`/subjects/${s.id}`)}`);
@@ -44,7 +50,14 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
   const supabase = await createClient();
   if (!supabase) return new NextResponse("Auth not configured", { status: 503 });
 
-  const { data: existing } = await supabase.from("enrolments").select("subject_id, status").eq("subject_id", s.id).maybeSingle();
+  const { data: existing, error: readError } = await supabase.from("enrolments").select("subject_id, status").eq("subject_id", s.id).maybeSingle();
+  /* P5-R9: a failed read is not "not enrolled". Deciding from it would 404 an
+     enrolled student's own draft environment or re-upsert an enrolment that
+     exists. No row was written — 303 back; the GET reads the truth. */
+  if (readError) {
+    logFailure({ scope: "route:/subjects/[subject]/enter", errorClass: errorClassOf(readError), what: "enrolment read failed before deciding — no row written", ids: { subject: s.id, identity: identity.id } });
+    return seeOther(`/subjects/${s.id}?entry=failed`);
+  }
   const enrolled = existing?.status === "active";
 
   if (!enrolled) {

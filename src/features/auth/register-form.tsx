@@ -142,7 +142,7 @@ export function RegisterForm({ configured }: { configured: boolean }) {
         Already have an account?{" "}
         <Link
           href={ROUTES.login}
-          className="font-semibold text-brand-700 hover:text-brand-800"
+          className="font-semibold text-brand-600 hover:text-brand-900" /* P5-R9: brand-600 = the themed brand text token (was brand-700 = brass-600, 3.77:1 light) */
         >
           Sign in
         </Link>

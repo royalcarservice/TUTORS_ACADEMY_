@@ -15,6 +15,13 @@ shows a **state** ("the environment as the server now sees it"), never a
 the sentence's **subject is the page, the environment, the sign-in — never the
 student** ("This page could not be shown", never "You have an error").
 
+**P5-R9 — an error is never an absence.** In the data layer a MISSING VALUE and a
+FAILED READ must never be the same value: every reader throws `DataReadError`
+(`src/lib/state/read-error.ts`) when the driver reports an error, and the caller
+decides — page failure (primary) or silence + log (region, `isolate.ts`) — never
+emptiness, never "no enrolments", never "not signed in", never a 404 for a row that
+could not be read. (Found by 5.7: `data ?? []` had rendered fabricated states.)
+
 ## Three scopes — one shape each
 
 | Scope | Shape | Where it lives |
@@ -132,6 +139,26 @@ not go through.* Never *You are not allowed*, *You entered the wrong password*,
 *You are offline*, *Your session has expired* (the session was ours to keep).
 The single deliberate vagueness — the sign-in refusal — is a security decision,
 recorded here, not a failure of nerve.
+
+## Framework-dependent declared exception (not a design choice) — FLIP ALARM
+
+Next **16.3.6** delivers `notFound()` pages and **error boundaries client-side**: the
+server answers with the empty `__next_error__` document and the honest page appears
+only after hydration, so PAGE-level states are blank without JavaScript. Unmatched
+routes (no `notFound()` call) are server-rendered. Reference **vercel/next.js#99287**,
+observed **2026-09-29**. `global-error.tsx` could not be reached by test: a throwing
+second root layout (`/dev/global-throw`, route group) is caught by `app/error.tsx`,
+which wraps every segment below `app/`; only the real `app/layout.tsx` failing reaches
+it. It is a client component by the framework's contract, so its delivery is
+client-side by construction — the same class of exception, stated without a
+measurement. Not worked around: a
+`[...catchall]` would change the frozen 404 behaviour. The copy inside those pages is
+correct; only its delivery is framework-bound.
+
+`audit/states.cjs` carries three **FLIP-ALARM** gates that assert TODAY'S DEFECTIVE
+behaviour on purpose. **If any of them fails, the framework has changed**: delete the
+alarm, restore the real assertion (`h1 === 1` without JS), and remove this section.
+Re-test on every Next version bump and at the start of Phase 10.
 
 ## Known tension (reported, not redesigned)
 
