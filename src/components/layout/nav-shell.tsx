@@ -76,11 +76,20 @@ export function NavLinkItem({ href, children }: { href: string; children: React.
   );
 }
 
+/* 5.8 (validation gate): "Sign in" from INSIDE an environment carries `next`,
+ * so signing in returns the student to the environment they were looking at —
+ * measured before the fix: /student → /subjects → /subjects/<id>, three extra
+ * page loads on a slow connection before Begin. Elsewhere the link is unchanged. */
+export function loginHref(pathname: string | null): string {
+  return pathname && /^\/subjects\/[a-z-]+$/.test(pathname) ? `/login?next=${encodeURIComponent(pathname)}` : "/login";
+}
+
 /** Public-mode CTA cluster. */
 export function NavActions() {
+  const pathname = usePathname();
   return (
     <div style={{ display: "flex", gap: "var(--ta-space-2)", alignItems: "center" }}>
-      <Link href="/login" className={buttonClass("ghost", "sm")}>Sign in</Link>
+      <Link href={loginHref(pathname)} className={buttonClass("ghost", "sm")}>Sign in</Link>
       <Link href="/register" className={buttonClass("primary", "sm")}>Create account</Link>
     </div>
   );
@@ -88,7 +97,8 @@ export function NavActions() {
 
 /** Honest auth entry — a real route, never a fake account menu. */
 export function UserMenu() {
-  return <Link href="/login" className={buttonClass("outline", "sm")}>Sign in</Link>;
+  const pathname = usePathname();
+  return <Link href={loginHref(pathname)} className={buttonClass("outline", "sm")}>Sign in</Link>;
 }
 
 function useScrolled(threshold = 8) {
@@ -118,6 +128,7 @@ export interface NavShellProps {
 
 export function NavShell({ mode = "stage", items = [], navLabel, account, children }: NavShellProps) {
   const baseLabel = navLabel ?? (mode === "stage" ? "Primary" : "Portal");
+  const pathname = usePathname();
   const scrolled = useScrolled();
   const solid = mode === "room" || scrolled;
   const [open, setOpen] = useState(false);
@@ -240,10 +251,10 @@ export function NavShell({ mode = "stage", items = [], navLabel, account, childr
             {mode === "stage" ? (
               <>
                 <Link href="/register" onClick={() => setOpen(false)} className={buttonClass("primary", "md", "w-full")}>Create account</Link>
-                <Link href="/login" onClick={() => setOpen(false)} className={buttonClass("outline", "md", "w-full")}>Sign in</Link>
+                <Link href={loginHref(pathname)} onClick={() => setOpen(false)} className={buttonClass("outline", "md", "w-full")}>Sign in</Link>
               </>
             ) : (
-              account ?? <Link href="/login" onClick={() => setOpen(false)} className={buttonClass("outline", "md", "w-full")}>Sign in</Link>
+              account ?? <Link href={loginHref(pathname)} onClick={() => setOpen(false)} className={buttonClass("outline", "md", "w-full")}>Sign in</Link>
             )}
           </div>
         </nav>

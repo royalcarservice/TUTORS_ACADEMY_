@@ -1,0 +1,202 @@
+{
+ "firstNight": [
+  {
+   "step": "1 homepage",
+   "url": "/",
+   "wall": 7496,
+   "ttfb": 119,
+   "domContentLoaded": 2381,
+   "load": 7182,
+   "fcp": 2392,
+   "lcp": 2392,
+   "h1": "Every subject is a place you can enter.",
+   "hscroll": false,
+   "primary": "Enter a world"
+  },
+  {
+   "step": "2 subjects",
+   "url": "/subjects",
+   "wall": 1630,
+   "ttfb": 240,
+   "domContentLoaded": 558,
+   "load": 1320,
+   "fcp": 500,
+   "lcp": 500,
+   "h1": "Subjects",
+   "hscroll": false,
+   "primary": "Mathematics"
+  },
+  {
+   "step": "3 environment (visitor)",
+   "url": "/subjects/mathematics",
+   "wall": 1479,
+   "ttfb": 39,
+   "domContentLoaded": 604,
+   "load": 1156,
+   "fcp": 484,
+   "lcp": 524,
+   "h1": "Mathematics",
+   "hscroll": false,
+   "primary": "Mathematics"
+  },
+  {
+   "step": "4 visitor's way in → /login",
+   "url": "/login?next=%2Fsubjects%2Fmathematics",
+   "wall": 2030,
+   "ttfb": 39,
+   "domContentLoaded": 604,
+   "load": 1156,
+   "fcp": 484,
+   "lcp": 524,
+   "h1": "Sign in",
+   "hscroll": false,
+   "primary": null,
+   "linkText": "Sign in",
+   "visibleInMain": [
+    "Mathematics→/subjects/mathematics"
+   ],
+   "signInVisibleBeforeMenu": true,
+   "viaMenu": true,
+   "context": "Signing in opens Mathematics."
+  },
+  {
+   "step": "5 sign in (typing on a phone)",
+   "url": "/subjects/mathematics",
+   "wall": 2244,
+   "ttfb": 39,
+   "domContentLoaded": 604,
+   "load": 1156,
+   "fcp": 484,
+   "lcp": 524,
+   "h1": "Mathematics",
+   "hscroll": false,
+   "primary": "Begin Mathematics",
+   "submitToArrive": 1700,
+   "inflightSeen": [
+    "[\"Signing in…\",true]"
+   ]
+  },
+  {
+   "step": "6 Begin Mathematics (POST, slow 3G)",
+   "url": "/subjects/mathematics",
+   "wall": 2370,
+   "ttfb": 1792,
+   "domContentLoaded": 2014,
+   "load": 2014,
+   "fcp": 1868,
+   "lcp": 1904,
+   "h1": "Mathematics",
+   "hscroll": false,
+   "primary": "Mathematics",
+   "clickToArrive": 2031,
+   "inflightSeen": [
+    "\"gone\""
+   ],
+   "arc": "discover:done choose:done enter:done learn:ahead interact:ahead progress:ahead master:ahead",
+   "text": "Mathematics The Lattice — structure you can stand on. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STAT"
+  },
+  {
+   "step": "7 back to /student",
+   "url": "/student",
+   "wall": 1434,
+   "ttfb": 430,
+   "domContentLoaded": 643,
+   "load": 1117,
+   "fcp": 528,
+   "lcp": 576,
+   "h1": "Mathematics — The Lattice",
+   "hscroll": false,
+   "primary": "Open Mathematics"
+  },
+  {
+   "step": "bytes (whole first night)",
+   "encodedKB": 462,
+   "requestsByType": {
+    "document": 6,
+    "stylesheet": 5,
+    "script": 60,
+    "font": 15,
+    "other": 8,
+    "fetch": 37
+   }
+  }
+ ],
+ "nextDay": [
+  {
+   "step": "1 sign in → /student (returning)",
+   "url": "/student",
+   "wall": 1715,
+   "ttfb": 33,
+   "domContentLoaded": 2167,
+   "load": 5925,
+   "fcp": 2196,
+   "lcp": 2196,
+   "h1": "Physics — The Field",
+   "hscroll": false,
+   "primary": "Open Physics",
+   "text": "LAST OPENED YESTERDAY Physics — The Field ENVIRONMENT IN DRAFT You were last here yesterday. Open Physics YOUR SUBJECTS Physics The Field Last opened yesterday ENVIRONMENT IN DRAFT Mathematics The Lattice Not opened yet"
+  },
+  {
+   "step": "2 the primary action (read only — never POST as student-c): GET the environment",
+   "url": "/subjects/physics",
+   "wall": 3100,
+   "ttfb": 765,
+   "domContentLoaded": 1180,
+   "load": 2753,
+   "fcp": 1000,
+   "lcp": 1076,
+   "h1": "Physics",
+   "hscroll": false,
+   "primary": "Mathematics",
+   "primaryForm": {
+    "action": "/subjects/physics/enter",
+    "method": "post",
+    "button": "Open Physics"
+   },
+   "arc": "discover:done choose:done enter:done learn:ahead interact:ahead progress:ahead master:ahead",
+   "text": "Draft subject — still in foundation. Open here ahead of its public listing. Physics The Field — forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT Assignments, tests & progress Your work"
+  },
+  {
+   "step": "3 /student/account",
+   "url": "/student/account",
+   "wall": 878,
+   "ttfb": 407,
+   "domContentLoaded": 568,
+   "load": 569,
+   "fcp": 516,
+   "lcp": 516,
+   "h1": "Student C",
+   "hscroll": false,
+   "primary": "Sign out"
+  },
+  {
+   "step": "bytes (next day)",
+   "encodedKB": 396,
+   "requestsByType": {
+    "document": 3,
+    "stylesheet": 3,
+    "script": 38,
+    "font": 8,
+    "other": 3,
+    "fetch": 22
+   }
+  }
+ ],
+ "blankWindow": {
+  "notFoundCall": {
+   "url": "/subjects/nonsense",
+   "msFirstByte": 406,
+   "msDomContentLoaded": 464,
+   "msH1": 5696,
+   "blankAfterDocumentMs": 5232
+  },
+  "unmatched": {
+   "url": "/no/such/route",
+   "msFirstByte": 529,
+   "msDomContentLoaded": 601,
+   "msH1": 653,
+   "blankAfterDocumentMs": 52
+  },
+  "note": "notFound() pages are client-rendered (next#99287): the honest 404 appears only after the JS arrives; the unmatched route is in the HTML"
+ }
+}

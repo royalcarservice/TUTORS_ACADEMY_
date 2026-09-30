@@ -160,6 +160,11 @@ behaviour on purpose. **If any of them fails, the framework has changed**: delet
 alarm, restore the real assertion (`h1 === 1` without JS), and remove this section.
 Re-test on every Next version bump and at the start of Phase 10.
 
+Measured cost (5.8, Slow-3G 400 kbps/400 ms, 4× CPU, production build): a
+`notFound()` 404 is **blank for ≈5.2 s after its document arrives** (h1 at 5.7 s);
+the server-rendered unmatched-route 404 shows its h1 **52 ms** after the document.
+That is the size of the exception on the connection the product is for.
+
 ## Known tension (reported, not redesigned)
 
 `/subjects` lists a draft subject as plain text ("in foundation") while the direct

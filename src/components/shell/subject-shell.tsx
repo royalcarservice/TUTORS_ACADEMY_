@@ -102,8 +102,10 @@ export function SubjectShell({
                 color: "var(--ta-text-secondary)",
               }}
             >
-              Draft subject — visible in development only. In production this
-              route returns the framework 404.
+              {/* 5.8: the old sentence ("visible in development only — in production this
+                  route returns the framework 404") was FALSE for the one audience that sees it
+                  in production: an enrolled student (5.3 door logic). Now true in both. */}
+              Draft subject — still in foundation. Open here ahead of its public listing.
             </p>
           )}
 

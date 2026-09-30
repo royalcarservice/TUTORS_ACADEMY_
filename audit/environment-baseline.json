@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-30T01:23:57.796Z",
+ "generatedAt": "2026-09-30T02:16:35.930Z",
  "reference": "390x844 mobile",
  "states": {
   "visitor-ready": {
@@ -22,9 +22,9 @@
    "honestLabels": 3,
    "text": "Mathematics The Lattice \u2014 structure you can stand on. NAVIGATION POSITION Mathematics Physics \u00b7 in foundation Chemistry \u00b7 in foundation Biology \u00b7 in foundation English \u00b7 in foundation History \u00b7 in foundation ROOM \u00b7 COMPACT DENSITY \u00b7 VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas \u2014 only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE \u00b7 NOT BUILT Live classes Live classes will appear here \u2014 Phase 7. Until then this room stays quiet. SYSTEM STAT",
    "subjectRoot": "mathematics",
-   "htmlHash": "67f492035e8202bf",
-   "rscHash": "e5273bd6eda472ad",
-   "htmlBytes": 41782,
+   "htmlHash": "2e2e49a0c24c797d",
+   "rscHash": "377a55bdd1d37e3d",
+   "htmlBytes": 41844,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -56,7 +56,7 @@
    "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects",
    "subjectRoot": null,
    "htmlHash": "8c2618771284e56e",
-   "rscHash": "ddaadec4de3ca4c7",
+   "rscHash": "1ac5bab9a1993b3c",
    "htmlBytes": 13249,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
@@ -142,9 +142,9 @@
    "honestLabels": 3,
    "text": "Mathematics The Lattice \u2014 structure you can stand on. Begin Mathematics NAVIGATION POSITION Mathematics Physics \u00b7 in foundation Chemistry \u00b7 in foundation Biology \u00b7 in foundation English \u00b7 in foundation History \u00b7 in foundation ROOM \u00b7 COMPACT DENSITY \u00b7 VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas \u2014 only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE \u00b7 NOT BUILT Live classes Live classes will appear here \u2014 Phase 7. Until then this room stays ",
    "subjectRoot": "mathematics",
-   "htmlHash": "39f11fa9c701fbfc",
-   "rscHash": "4763946ad993d988",
-   "htmlBytes": 43576,
+   "htmlHash": "923239d89759fb20",
+   "rscHash": "ff72047b6d62a286",
+   "htmlBytes": 43638,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": true,
    "htmlHasBeginForm": true,
@@ -238,7 +238,7 @@
    "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects",
    "subjectRoot": null,
    "htmlHash": "1a06ca90e0072d37",
-   "rscHash": "01322677ba35d449",
+   "rscHash": "dd99f66f07e90cdb",
    "htmlBytes": 16360,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
@@ -368,11 +368,11 @@
    "draftBanner": true,
    "draftLabel": true,
    "honestLabels": 3,
-   "text": "Draft subject \u2014 visible in development only. In production this route returns the framework 404. Physics The Field \u2014 forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry \u00b7 in foundation Biology \u00b7 in foundation English \u00b7 in foundation History \u00b7 in foundation ROOM \u00b7 COMPACT DENSITY \u00b7 VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas \u2014 only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE \u00b7 NOT BUILT Live classes Live classes will ",
+   "text": "Draft subject \u2014 still in foundation. Open here ahead of its public listing. Physics The Field \u2014 forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry \u00b7 in foundation Biology \u00b7 in foundation English \u00b7 in foundation History \u00b7 in foundation ROOM \u00b7 COMPACT DENSITY \u00b7 VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas \u2014 only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE \u00b7 NOT BUILT Live classes Live classes will appear here \u2014 Phase 7",
    "subjectRoot": "physics",
-   "htmlHash": "0d04dfd1f55301e3",
-   "rscHash": "da7dccafcaf06b5f",
-   "htmlBytes": 58743,
+   "htmlHash": "8a37bfc0afa89033",
+   "rscHash": "935cd3bd62d90aac",
+   "htmlBytes": 58572,
    "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -455,9 +455,9 @@
    "honestLabels": 3,
    "text": "Mathematics The Lattice \u2014 structure you can stand on. NAVIGATION POSITION Mathematics Physics Chemistry \u00b7 in foundation Biology \u00b7 in foundation English \u00b7 in foundation History \u00b7 in foundation ROOM \u00b7 COMPACT DENSITY \u00b7 VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas \u2014 only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE \u00b7 NOT BUILT Live classes Live classes will appear here \u2014 Phase 7. Until then this room stays quiet. SYSTEM STATE \u00b7 NOT BUILT As",
    "subjectRoot": "mathematics",
-   "htmlHash": "2314058879434ff6",
-   "rscHash": "cbc628ce926a680a",
-   "htmlBytes": 57313,
+   "htmlHash": "b210eee95acc2f58",
+   "rscHash": "138a78c33d29a521",
+   "htmlBytes": 57192,
    "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -538,11 +538,11 @@
    "draftBanner": true,
    "draftLabel": true,
    "honestLabels": 3,
-   "text": "Draft subject \u2014 visible in development only. In production this route returns the framework 404. Physics The Field \u2014 forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry \u00b7 in foundation Biology \u00b7 in foundation English \u00b7 in foundation History \u00b7 in foundation ROOM \u00b7 COMPACT DENSITY \u00b7 VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas \u2014 only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE \u00b7 NOT BUILT Live classes Live classes will ",
+   "text": "Draft subject \u2014 still in foundation. Open here ahead of its public listing. Physics The Field \u2014 forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry \u00b7 in foundation Biology \u00b7 in foundation English \u00b7 in foundation History \u00b7 in foundation ROOM \u00b7 COMPACT DENSITY \u00b7 VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas \u2014 only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE \u00b7 NOT BUILT Live classes Live classes will appear here \u2014 Phase 7",
    "subjectRoot": "physics",
-   "htmlHash": "1fd7d173f15a3066",
-   "rscHash": "14c6b2c1a088a061",
-   "htmlBytes": 58747,
+   "htmlHash": "3cbb5b48dcd84ebc",
+   "rscHash": "ec7bcd1e5a1bae8f",
+   "htmlBytes": 58576,
    "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -551,7 +551,7 @@
  "gates": {
   "no write on GET (rows before == after across every state)": {
    "pass": true,
-   "detail": "9/3/2026-09-30 01:23:46.085+00 \u2192 9/3/2026-09-30 01:23:46.085+00"
+   "detail": "9/3/2026-09-30 02:16:19.988+00 \u2192 9/3/2026-09-30 02:16:19.988+00"
   },
   "write: GET and prefetch write nothing": {
    "pass": true,
@@ -559,7 +559,7 @@
   },
   "write: POST \u2192 303 \u2192 200, one enrolment + one state row, position NULL": {
    "pass": true,
-   "detail": "{\"post\":[\"POST /subjects/mathematics/enter \u2192 303\",\"GET /subjects/mathematics \u2192 200\"],\"landed\":\"/subjects/mathematics\",\"rows\":\"enrolments=1 env_state=1 entry_count=1\",\"row\":\"mathematics | active | enrolled 2026-09-30 01:24:34.11193+00 | last_entered 2026-09-30 01:24:34.266+00 | position NULL\"}"
+   "detail": "{\"post\":[\"POST /subjects/mathematics/enter \u2192 303\",\"GET /subjects/mathematics \u2192 200\"],\"landed\":\"/subjects/mathematics\",\"rows\":\"enrolments=1 env_state=1 entry_count=1\",\"row\":\"mathematics | active | enrolled 2026-09-30 02:17:13.677101+00 | last_entered 2026-09-30 02:17:13.788+00 | position NULL\"}"
   },
   "write: idempotent \u2014 second submit, still one enrolment, no error": {
    "pass": true,
@@ -639,8 +639,8 @@
   }
  },
  "notes": {
-  "dbCountsBeforeGets": "9/3/2026-09-30 01:23:46.085+00",
-  "dbCountsAfterGets": "9/3/2026-09-30 01:23:46.085+00"
+  "dbCountsBeforeGets": "9/3/2026-09-30 02:16:19.988+00",
+  "dbCountsAfterGets": "9/3/2026-09-30 02:16:19.988+00"
  },
  "write": {
   "rowsStart": "enrolments=0 env_state=0 entry_count=-",
@@ -660,7 +660,7 @@
   ],
   "landed": "/subjects/mathematics",
   "rowsAfterPost": "enrolments=1 env_state=1 entry_count=1",
-  "row": "mathematics | active | enrolled 2026-09-30 01:24:34.11193+00 | last_entered 2026-09-30 01:24:34.266+00 | position NULL",
+  "row": "mathematics | active | enrolled 2026-09-30 02:17:13.677101+00 | last_entered 2026-09-30 02:17:13.788+00 | position NULL",
   "thresholdAfter": false,
   "doubleSubmit": {
    "status": 200,
@@ -687,10 +687,16 @@
  "declaredExceptions": [],
  "correctionEvents": [
   {
-   "step": "P5-R9",
+   "step": "5.8",
    "date": "2026-09-30",
-   "what": "visitor-ready DOM hash 635bd39d2b29c4fc \u2192 re-pinned",
-   "reason": "globals.css token correction for WCAG AA on the auth chrome (brass-700 L 30\u219228 %, brand-900 alias themed): only CSS/JS chunk filenames changed in the visitor document"
+   "what": "visitor-ready DOM hash re-pinned",
+   "reason": "nav 'Sign in' inside an environment now carries ?next=<environment> (journey defect: signing in from an environment dropped the student on /student \u2014 three extra loads on slow 3G before Begin)"
+  },
+  {
+   "step": "5.8",
+   "date": "2026-09-30",
+   "what": "enrolled-draft-* main text",
+   "reason": "the draft notice claimed 'visible in development only \u2014 in production this route returns the framework 404', which was false for the one audience that sees it in production (an enrolled student). Now: 'Draft subject \u2014 still in foundation. Open here ahead of its public listing.'"
   }
  ]
 }
