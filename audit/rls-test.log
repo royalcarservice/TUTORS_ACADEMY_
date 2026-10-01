@@ -1,0 +1,60 @@
+local:
+psql:supabase/tests/rls_test.sql:43: NOTICE:  ok — every fixture identity has exactly one profile (manifest-derived)
+psql:supabase/tests/rls_test.sql:45: NOTICE:  ok — no profile belongs to a non-test identity
+psql:supabase/tests/rls_test.sql:47: NOTICE:  ok — no profile without an auth identity
+psql:supabase/tests/rls_test.sql:48: NOTICE:  ok — tutor role honoured from metadata
+psql:supabase/tests/rls_test.sql:49: NOTICE:  ok — requested admin collapsed to student
+psql:supabase/tests/rls_test.sql:50: NOTICE:  ok — every account is flagged test (E-07: no real identity exists)
+psql:supabase/tests/rls_test.sql:58: NOTICE:  ok — A sees exactly her own enrolment
+psql:supabase/tests/rls_test.sql:59: NOTICE:  ok — A sees exactly her own profile
+psql:supabase/tests/rls_test.sql:60: NOTICE:  ok — position is NULL by default (nothing to be AT yet)
+psql:supabase/tests/rls_test.sql:66: NOTICE:  ok — A cannot enrol B (new row violates row-level security policy for table "enrolments")
+psql:supabase/tests/rls_test.sql:73: NOTICE:  ok — no seventh subject (new row for relation "enrolments" violates check constraint "enrolments_subject_id_check")
+psql:supabase/tests/rls_test.sql:80: NOTICE:  ok — A cannot change her own role (new row violates row-level security policy for table "profiles")
+psql:supabase/tests/rls_test.sql:84: NOTICE:  ok — A can update her own display name
+psql:supabase/tests/rls_test.sql:88: NOTICE:  ok — B sees none of A's enrolments
+psql:supabase/tests/rls_test.sql:89: NOTICE:  ok — B sees none of A's environment_state
+psql:supabase/tests/rls_test.sql:90: NOTICE:  ok — B cannot read A's profile
+psql:supabase/tests/rls_test.sql:100: NOTICE:  ok — state requires enrolment (insert or update on table "environment_state" violates foreign key constraint "environment_state_student_id_subject_id_fkey")
+psql:supabase/tests/rls_test.sql:116: NOTICE:  ok — P6-R1 no relationship exists by default
+psql:supabase/tests/rls_test.sql:117: NOTICE:  ok — P6-R1 nothing inferred: tutor with no relationship sees no enrolment
+psql:supabase/tests/rls_test.sql:118: NOTICE:  ok — P6-R1 nothing inferred: tutor with no relationship sees no environment_state
+psql:supabase/tests/rls_test.sql:119: NOTICE:  ok — P6-R1 nothing inferred: tutor with no relationship sees only own profile
+psql:supabase/tests/rls_test.sql:121: NOTICE:  ok — P6-R1 reading created no relationship
+psql:supabase/tests/rls_test.sql:127: NOTICE:  ok — tutor cannot create a relationship (permission denied for table relationships)
+psql:supabase/tests/rls_test.sql:142: NOTICE:  ok — one active relationship per tutor·student·subject (duplicate key value violates unique constraint "relationships_one_active")
+psql:supabase/tests/rls_test.sql:148: NOTICE:  ok — E-13 subject identity checked in DB (new row for relation "relationships" violates check constraint "relationships_subject_id_check")
+psql:supabase/tests/rls_test.sql:154: NOTICE:  ok — ended requires ended_at (new row for relation "relationships" violates check constraint "relationships_ended_consistent")
+psql:supabase/tests/rls_test.sql:161: NOTICE:  ok — tutor sees own relationships, active and ended (ended ≠ never existed)
+psql:supabase/tests/rls_test.sql:164: NOTICE:  ok — P6-R2 tutor sees A's PHYSICS enrolment and nothing else
+psql:supabase/tests/rls_test.sql:167: NOTICE:  ok — P6-R2 tutor sees A's PHYSICS environment_state (arc facts) and nothing else
+psql:supabase/tests/rls_test.sql:170: NOTICE:  ok — P6-R2 tutor reads the related student's display name
+psql:supabase/tests/rls_test.sql:172: NOTICE:  ok — BREAK other-subject: A's mathematics enrolment invisible to her physics tutor
+psql:supabase/tests/rls_test.sql:173: NOTICE:  ok — BREAK other-subject: A's mathematics environment_state invisible
+psql:supabase/tests/rls_test.sql:175: NOTICE:  ok — BREAK ended: B's enrolment invisible after the relationship ended
+psql:supabase/tests/rls_test.sql:176: NOTICE:  ok — BREAK ended: B's environment_state invisible
+psql:supabase/tests/rls_test.sql:177: NOTICE:  ok — BREAK ended: B's profile invisible
+psql:supabase/tests/rls_test.sql:179: NOTICE:  ok — BREAK shared-subject: physics enrolments visible = the ONE related student, not everyone in physics
+psql:supabase/tests/rls_test.sql:185: NOTICE:  ok — tutor cannot end a relationship (permission denied for table relationships)
+psql:supabase/tests/rls_test.sql:191: NOTICE:  ok — tutor cannot write the related student's environment_state (0 rows)
+psql:supabase/tests/rls_test.sql:197: NOTICE:  ok — tutor cannot write the related student's profile (0 rows)
+psql:supabase/tests/rls_test.sql:202: NOTICE:  ok — BREAK non-related: U sees no relationships
+psql:supabase/tests/rls_test.sql:203: NOTICE:  ok — BREAK non-related: U sees no enrolments
+psql:supabase/tests/rls_test.sql:204: NOTICE:  ok — BREAK non-related: U sees no environment_state
+psql:supabase/tests/rls_test.sql:205: NOTICE:  ok — BREAK non-related: U sees no other profile
+psql:supabase/tests/rls_test.sql:209: NOTICE:  ok — A sees her one active relationship (who can see her)
+psql:supabase/tests/rls_test.sql:210: NOTICE:  ok — A still sees only her own profile (no reverse grant to the tutor's row)
+psql:supabase/tests/rls_test.sql:214: NOTICE:  ok — student cannot create a relationship (permission denied for table relationships)
+psql:supabase/tests/rls_test.sql:217: NOTICE:  ok — B sees the ENDED relationship (ended ≠ never existed; nothing is granted by it)
+psql:supabase/tests/rls_test.sql:224: NOTICE:  ok — revocation retains the row (ended ≠ deleted)
+psql:supabase/tests/rls_test.sql:228: NOTICE:  ok — revoked: tutor sees no enrolments
+psql:supabase/tests/rls_test.sql:229: NOTICE:  ok — revoked: tutor sees no environment_state
+psql:supabase/tests/rls_test.sql:230: NOTICE:  ok — revoked: tutor sees no student profile
+psql:supabase/tests/rls_test.sql:231: NOTICE:  ok — revoked: tutor still sees that the relationships existed
+psql:supabase/tests/rls_test.sql:237: NOTICE:  ok — tutor cannot enrol (new row violates row-level security policy for table "enrolments")
+psql:supabase/tests/rls_test.sql:247: NOTICE:  ok — anon has no table privilege on enrolments
+psql:supabase/tests/rls_test.sql:252: NOTICE:  ok — anon has no table privilege on relationships
+psql:supabase/tests/rls_test.sql:259: NOTICE:  ok — B's update touched 0 of A's rows
+psql:supabase/tests/rls_test.sql:262: NOTICE:  RLS: all 56 assertions passed
+project:
+psql:supabase/tests/rls_test.sql:262: NOTICE:  RLS: all 56 assertions passed

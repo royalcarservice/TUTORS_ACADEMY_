@@ -8,11 +8,25 @@
 begin;
 
 -- two students and a tutor, created the way Supabase Auth would create them
-insert into auth.users (id, email, raw_user_meta_data) values
+-- ── FIXTURE MANIFEST (E-14) ──────────────────────────────────────────────────
+-- The set of identities this test creates. Every assertion about "how many
+-- profiles exist" is derived from THIS table — never from a literal number —
+-- so the test holds on an empty local database AND on the project database,
+-- where other test accounts (…@test.tutorsacademy.invalid) already live.
+create temp table fixture (id uuid primary key, email text not null, meta jsonb not null);
+insert into fixture values
   ('11111111-1111-1111-1111-111111111111', 'student-a@test.local', '{"role":"student","display_name":"Student A (test)"}'),
   ('22222222-2222-2222-2222-222222222222', 'student-b@test.local', '{"role":"student","display_name":"Student B (test)"}'),
   ('33333333-3333-3333-3333-333333333333', 'tutor-t@test.local',   '{"role":"tutor","display_name":"Tutor T (test)"}'),
-  ('44444444-4444-4444-4444-444444444444', 'sneaky@test.local',    '{"role":"admin","display_name":"Wants admin"}');
+  ('44444444-4444-4444-4444-444444444444', 'sneaky@test.local',    '{"role":"admin","display_name":"Wants admin"}'),
+  ('55555555-5555-5555-5555-555555555555', 'tutor-u@test.local',   '{"role":"tutor","display_name":"Tutor U (test)"}');
+-- A "test identity" is: a fixture row, or an account on the project's test domain.
+create or replace function pg_temp.is_test_identity(p_email text) returns boolean language sql as $$
+  select p_email in (select email from fixture) or p_email like '%@test.tutorsacademy.invalid'
+$$;
+grant all on fixture to public;
+
+insert into auth.users (id, email, raw_user_meta_data) select id, email, meta from fixture;
 
 create temp table t (n int); insert into t values (0);
 create or replace function pg_temp.ok(cond boolean, label text) returns void language plpgsql as $$
@@ -24,10 +38,16 @@ end $$;
 grant all on t to public; grant execute on function pg_temp.ok(boolean, text) to public;
 
 -- ── trigger created profiles; admin cannot be self-served ───────────────────
-select pg_temp.ok((select count(*) from public.profiles) = 4, 'signup trigger created 4 profiles');
+-- E-14: invariants derived from the manifest, not a magic number.
+select pg_temp.ok((select count(*) from fixture f join public.profiles p on p.id = f.id) = (select count(*) from fixture),
+  'every fixture identity has exactly one profile (manifest-derived)');
+select pg_temp.ok(not exists (select 1 from public.profiles p join auth.users u on u.id = p.id where not pg_temp.is_test_identity(u.email)),
+  'no profile belongs to a non-test identity');
+select pg_temp.ok(not exists (select 1 from public.profiles p where not exists (select 1 from auth.users u where u.id = p.id)),
+  'no profile without an auth identity');
 select pg_temp.ok((select role from public.profiles where id = '33333333-3333-3333-3333-333333333333') = 'tutor', 'tutor role honoured from metadata');
 select pg_temp.ok((select role from public.profiles where id = '44444444-4444-4444-4444-444444444444') = 'student', 'requested admin collapsed to student');
-select pg_temp.ok((select bool_and(is_test_account) from public.profiles), 'every Phase-5 account is flagged test');
+select pg_temp.ok((select bool_and(is_test_account) from public.profiles), 'every account is flagged test (E-07: no real identity exists)');
 
 -- ── as Student A ─────────────────────────────────────────────────────────────
 set local role authenticated;
@@ -80,10 +100,137 @@ do $$ begin
 exception when foreign_key_violation then raise notice 'ok — state requires enrolment (%)', sqlerrm; end $$;
 update t set n = n + 1;
 
--- ── as Tutor: no roster policies exist yet → sees only own profile ──────────
+-- ═══ PHASE 6 · P6-R1 / P6-R2 — THE RELATIONSHIP ══════════════════════════════
+-- Setup facts (as students, through their own policies):
+--   A is enrolled in physics (above) AND mathematics; B is enrolled in physics.
+--   So A and B SHARE physics. No relationship exists yet.
+select set_config('request.jwt.claims', '{"sub":"11111111-1111-1111-1111-111111111111","role":"authenticated"}', true);
+insert into public.enrolments (student_id, subject_id) values (auth.uid(), 'mathematics');
+insert into public.environment_state (student_id, subject_id) values (auth.uid(), 'mathematics');
+select set_config('request.jwt.claims', '{"sub":"22222222-2222-2222-2222-222222222222","role":"authenticated"}', true);
+insert into public.enrolments (student_id, subject_id) values (auth.uid(), 'physics');
+insert into public.environment_state (student_id, subject_id) values (auth.uid(), 'physics');
+
+-- ── as Tutor T, BEFORE any relationship: NO DEFAULT, NO INFERENCE ───────────
 select set_config('request.jwt.claims', '{"sub":"33333333-3333-3333-3333-333333333333","role":"authenticated"}', true);
-select pg_temp.ok((select count(*) from public.enrolments) = 0, 'tutor sees no enrolments (Phase 6 adds roster policies)');
-select pg_temp.ok((select count(*) from public.environment_state) = 0, 'tutor sees no environment_state');
+select pg_temp.ok((select count(*) from public.relationships) = 0, 'P6-R1 no relationship exists by default');
+select pg_temp.ok((select count(*) from public.enrolments) = 0, 'P6-R1 nothing inferred: tutor with no relationship sees no enrolment');
+select pg_temp.ok((select count(*) from public.environment_state) = 0, 'P6-R1 nothing inferred: tutor with no relationship sees no environment_state');
+select pg_temp.ok((select count(*) from public.profiles) = 1, 'P6-R1 nothing inferred: tutor with no relationship sees only own profile');
+-- browsing creates nothing
+select pg_temp.ok((select count(*) from public.relationships) = 0, 'P6-R1 reading created no relationship');
+
+-- a tutor cannot create a relationship (no write path exists for any role)
+do $$ begin
+  insert into public.relationships (tutor_id, student_id, subject_id) values (auth.uid(), '11111111-1111-1111-1111-111111111111', 'physics');
+  raise exception 'RLS ASSERTION FAILED: tutor created a relationship';
+exception when insufficient_privilege then raise notice 'ok — tutor cannot create a relationship (%)', sqlerrm; end $$;
+update t set n = n + 1;
+
+-- ── service role (the only writer today) records: T↔A physics ACTIVE, T↔B physics ENDED ──
+reset role;
+set local role service_role;
+insert into public.relationships (tutor_id, student_id, subject_id) values
+  ('33333333-3333-3333-3333-333333333333', '11111111-1111-1111-1111-111111111111', 'physics');
+insert into public.relationships (tutor_id, student_id, subject_id, state, started_at, ended_at) values
+  ('33333333-3333-3333-3333-333333333333', '22222222-2222-2222-2222-222222222222', 'physics', 'ended', now() - interval '30 days', now() - interval '1 day');
+-- model constraints
+do $$ begin
+  insert into public.relationships (tutor_id, student_id, subject_id) values
+    ('33333333-3333-3333-3333-333333333333', '11111111-1111-1111-1111-111111111111', 'physics');
+  raise exception 'RLS ASSERTION FAILED: second ACTIVE relationship for same tutor·student·subject';
+exception when unique_violation then raise notice 'ok — one active relationship per tutor·student·subject (%)', sqlerrm; end $$;
+update t set n = n + 1;
+do $$ begin
+  insert into public.relationships (tutor_id, student_id, subject_id) values
+    ('33333333-3333-3333-3333-333333333333', '11111111-1111-1111-1111-111111111111', 'astrology');
+  raise exception 'RLS ASSERTION FAILED: relationship in a seventh subject';
+exception when check_violation then raise notice 'ok — E-13 subject identity checked in DB (%)', sqlerrm; end $$;
+update t set n = n + 1;
+do $$ begin
+  insert into public.relationships (tutor_id, student_id, subject_id, state) values
+    ('33333333-3333-3333-3333-333333333333', '11111111-1111-1111-1111-111111111111', 'biology', 'ended');
+  raise exception 'RLS ASSERTION FAILED: ended without ended_at';
+exception when check_violation then raise notice 'ok — ended requires ended_at (%)', sqlerrm; end $$;
+update t set n = n + 1;
+reset role;
+set local role authenticated;
+
+-- ── as Tutor T, WITH the relationship: exactly the scoped view ──────────────
+select set_config('request.jwt.claims', '{"sub":"33333333-3333-3333-3333-333333333333","role":"authenticated"}', true);
+select pg_temp.ok((select count(*) from public.relationships) = 2, 'tutor sees own relationships, active and ended (ended ≠ never existed)');
+select pg_temp.ok((select count(*) from public.enrolments) = 1
+  and (select bool_and(student_id = '11111111-1111-1111-1111-111111111111' and subject_id = 'physics') from public.enrolments),
+  'P6-R2 tutor sees A''s PHYSICS enrolment and nothing else');
+select pg_temp.ok((select count(*) from public.environment_state) = 1
+  and (select bool_and(student_id = '11111111-1111-1111-1111-111111111111' and subject_id = 'physics') from public.environment_state),
+  'P6-R2 tutor sees A''s PHYSICS environment_state (arc facts) and nothing else');
+select pg_temp.ok((select count(*) from public.profiles where id <> auth.uid()) = 1
+  and (select display_name from public.profiles where id = '11111111-1111-1111-1111-111111111111') = 'A renamed',
+  'P6-R2 tutor reads the related student''s display name');
+-- BREAK 1 · other subject of the SAME related student
+select pg_temp.ok((select count(*) from public.enrolments where subject_id = 'mathematics') = 0, 'BREAK other-subject: A''s mathematics enrolment invisible to her physics tutor');
+select pg_temp.ok((select count(*) from public.environment_state where subject_id = 'mathematics') = 0, 'BREAK other-subject: A''s mathematics environment_state invisible');
+-- BREAK 2 · ended relationship grants nothing
+select pg_temp.ok((select count(*) from public.enrolments where student_id = '22222222-2222-2222-2222-222222222222') = 0, 'BREAK ended: B''s enrolment invisible after the relationship ended');
+select pg_temp.ok((select count(*) from public.environment_state where student_id = '22222222-2222-2222-2222-222222222222') = 0, 'BREAK ended: B''s environment_state invisible');
+select pg_temp.ok((select count(*) from public.profiles where id = '22222222-2222-2222-2222-222222222222') = 0, 'BREAK ended: B''s profile invisible');
+-- BREAK 3 · shared subject without a relationship: B shares physics with A; T is NOT related to B in physics (only an ended row)
+select pg_temp.ok((select count(*) from public.enrolments where subject_id = 'physics') = 1, 'BREAK shared-subject: physics enrolments visible = the ONE related student, not everyone in physics');
+-- tutor cannot write through the relationship
+do $$ begin
+  update public.relationships set state = 'ended', ended_at = now() where tutor_id = auth.uid();
+  if found then raise exception 'RLS ASSERTION FAILED: tutor ended a relationship'; end if;
+  raise notice 'ok — tutor cannot end a relationship (0 rows)';
+exception when insufficient_privilege then raise notice 'ok — tutor cannot end a relationship (%)', sqlerrm; end $$;
+update t set n = n + 1;
+do $$ begin
+  update public.environment_state set entry_count = 99 where student_id = '11111111-1111-1111-1111-111111111111';
+  if found then raise exception 'RLS ASSERTION FAILED: tutor wrote student state'; end if;
+  raise notice 'ok — tutor cannot write the related student''s environment_state (0 rows)';
+exception when insufficient_privilege then raise notice 'ok — tutor cannot write the related student''s environment_state (%)', sqlerrm; end $$;
+update t set n = n + 1;
+do $$ begin
+  update public.profiles set display_name = 'renamed by tutor' where id = '11111111-1111-1111-1111-111111111111';
+  if found then raise exception 'RLS ASSERTION FAILED: tutor renamed student'; end if;
+  raise notice 'ok — tutor cannot write the related student''s profile (0 rows)';
+exception when insufficient_privilege then raise notice 'ok — tutor cannot write the related student''s profile (%)', sqlerrm; end $$;
+update t set n = n + 1;
+
+-- BREAK 4 · NON-RELATED tutor U: a tutor with no relationship sees nothing, even in a subject with students
+select set_config('request.jwt.claims', '{"sub":"55555555-5555-5555-5555-555555555555","role":"authenticated"}', true);
+select pg_temp.ok((select count(*) from public.relationships) = 0, 'BREAK non-related: U sees no relationships');
+select pg_temp.ok((select count(*) from public.enrolments) = 0, 'BREAK non-related: U sees no enrolments');
+select pg_temp.ok((select count(*) from public.environment_state) = 0, 'BREAK non-related: U sees no environment_state');
+select pg_temp.ok((select count(*) from public.profiles where id <> auth.uid()) = 0, 'BREAK non-related: U sees no other profile');
+
+-- ── students see who is related to them, and cannot create or alter it ─────
+select set_config('request.jwt.claims', '{"sub":"11111111-1111-1111-1111-111111111111","role":"authenticated"}', true);
+select pg_temp.ok((select count(*) from public.relationships) = 1 and (select tutor_id from public.relationships) = '33333333-3333-3333-3333-333333333333', 'A sees her one active relationship (who can see her)');
+select pg_temp.ok((select count(*) from public.profiles) = 1, 'A still sees only her own profile (no reverse grant to the tutor''s row)');
+do $$ begin
+  insert into public.relationships (tutor_id, student_id, subject_id) values ('55555555-5555-5555-5555-555555555555', auth.uid(), 'physics');
+  raise exception 'RLS ASSERTION FAILED: student created a relationship';
+exception when insufficient_privilege then raise notice 'ok — student cannot create a relationship (%)', sqlerrm; end $$;
+update t set n = n + 1;
+select set_config('request.jwt.claims', '{"sub":"22222222-2222-2222-2222-222222222222","role":"authenticated"}', true);
+select pg_temp.ok((select count(*) from public.relationships) = 1 and (select state from public.relationships) = 'ended', 'B sees the ENDED relationship (ended ≠ never existed; nothing is granted by it)');
+
+-- ── revocation: service role ends T↔A; T immediately loses the view, the record stays ──
+reset role;
+set local role service_role;
+update public.relationships set state = 'ended', ended_at = now() where tutor_id = '33333333-3333-3333-3333-333333333333' and student_id = '11111111-1111-1111-1111-111111111111';
+-- scoped to the fixture tutor (E-14 discipline: the project DB holds relationships of its own)
+select pg_temp.ok((select count(*) from public.relationships where tutor_id = '33333333-3333-3333-3333-333333333333') = 2, 'revocation retains the row (ended ≠ deleted)');
+reset role;
+set local role authenticated;
+select set_config('request.jwt.claims', '{"sub":"33333333-3333-3333-3333-333333333333","role":"authenticated"}', true);
+select pg_temp.ok((select count(*) from public.enrolments) = 0, 'revoked: tutor sees no enrolments');
+select pg_temp.ok((select count(*) from public.environment_state) = 0, 'revoked: tutor sees no environment_state');
+select pg_temp.ok((select count(*) from public.profiles where id <> auth.uid()) = 0, 'revoked: tutor sees no student profile');
+select pg_temp.ok((select count(*) from public.relationships where state = 'ended') = 2, 'revoked: tutor still sees that the relationships existed');
+
+-- ── as Tutor T: remaining Phase-5 checks (tutor is not a student) ───────────
 do $$ begin
   insert into public.enrolments (student_id, subject_id) values (auth.uid(), 'mathematics');
   raise exception 'RLS ASSERTION FAILED: tutor enrolled as student';
@@ -98,6 +245,11 @@ do $$ begin
   perform count(*) from public.enrolments;
   raise exception 'RLS ASSERTION FAILED: anon could select enrolments';
 exception when insufficient_privilege then raise notice 'ok — anon has no table privilege on enrolments'; end $$;
+update t set n = n + 1;
+do $$ begin
+  perform count(*) from public.relationships;
+  raise exception 'RLS ASSERTION FAILED: anon could select relationships';
+exception when insufficient_privilege then raise notice 'ok — anon has no table privilege on relationships'; end $$;
 update t set n = n + 1;
 
 -- ── back as A: B's write attempt changed nothing ────────────────────────────

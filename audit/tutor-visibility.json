@@ -1,0 +1,87 @@
+{
+  "ranAt": "2026-10-01T16:21:27.261Z",
+  "path": "anon key + test-account JWT → PostgREST → RLS",
+  "passed": 17,
+  "total": 17,
+  "results": [
+    {
+      "ok": true,
+      "label": "ground truth: related student is enrolled in physics",
+      "detail": "subjects=mathematics,physics"
+    },
+    {
+      "ok": true,
+      "label": "student can see who is related to her (one active, physics)"
+    },
+    {
+      "ok": true,
+      "label": "ground truth: unrelated student shares physics"
+    },
+    {
+      "ok": true,
+      "label": "unrelated student sees no relationship (none exists for her)"
+    },
+    {
+      "ok": true,
+      "label": "tutor sees exactly the one relationship (student-c · physics · active)"
+    },
+    {
+      "ok": true,
+      "label": "P6-R2 tutor sees the related student's PHYSICS enrolment and nothing else",
+      "detail": "rows=1"
+    },
+    {
+      "ok": true,
+      "label": "BREAK other-subject: none of the student's other subjects are visible",
+      "detail": "student has 2 enrolment(s)"
+    },
+    {
+      "ok": true,
+      "label": "BREAK shared-subject: the other physics student is invisible"
+    },
+    {
+      "ok": true,
+      "label": "tutor's environment_state rows = the student's own PHYSICS row, no more, no less",
+      "detail": "tutor rows=1, student physics state=true"
+    },
+    {
+      "ok": true,
+      "label": "tutor reads exactly one other profile: the related student's display name",
+      "detail": "display_name=\"Student C\""
+    },
+    {
+      "ok": true,
+      "label": "BREAK non-related: the unrelated student's profile is invisible"
+    },
+    {
+      "ok": true,
+      "label": "tutor cannot create a relationship",
+      "detail": "permission denied for table relationships"
+    },
+    {
+      "ok": true,
+      "label": "tutor cannot end a relationship",
+      "detail": "permission denied for table relationships"
+    },
+    {
+      "ok": true,
+      "label": "tutor cannot write the related student's environment_state",
+      "detail": "0 rows"
+    },
+    {
+      "ok": true,
+      "label": "tutor cannot write the related student's profile",
+      "detail": "0 rows"
+    },
+    {
+      "ok": true,
+      "label": "count() over enrolments is the policy's row count, not the table's",
+      "detail": "count=1"
+    },
+    {
+      "ok": true,
+      "label": "anon reads nothing from relationships",
+      "detail": "permission denied for table relationships"
+    }
+  ]
+}

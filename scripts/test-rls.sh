@@ -15,6 +15,5 @@ if [[ "${1:-}" == "--local" ]]; then
   echo "local Postgres $("$PGBIN/postgres" --version | awk '{print $3}') with auth shim (NOT Supabase Auth)"
 fi
 : "${DATABASE_URL:?set DATABASE_URL or pass --local}"
-psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f supabase/migrations/20260927000001_identity.sql
-echo "migration applied"
+for m in supabase/migrations/*.sql; do psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f "$m"; echo "migration applied: $m"; done
 psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f supabase/tests/rls_test.sql 2>&1 | grep -E "ok —|RLS:|FAILED|ERROR"

@@ -70,6 +70,20 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
     routePrefix: "/tutor",
   },
   {
+    id: "tutor-relationship",
+    name: "Tutor relationship",
+    summary: "One tutor, one student, one subject — explicit, revocable, never inferred.",
+    /* 6.1 (P6-R1/R2): the MODEL exists in production — `public.relationships`
+       and the four tutor read policies gated by it (migration 0002). No surface
+       reads it yet: the tutor portal is still a placeholder and the student's
+       `tutor-presence` slot stays gated on `tutor-portal`. "in-progress" is the
+       honest value: built below the surface, nothing to open. It becomes "live"
+       only when a surface that resolves depends on it (6.2+). */
+    status: "in-progress",
+    surfaces: ["tutor"],
+    routePrefix: null,
+  },
+  {
     id: "admin-portal",
     name: "Admin portal",
     summary: "Back office for operations, users, content and finance.",
