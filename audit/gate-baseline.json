@@ -1,0 +1,2890 @@
+{
+ "generatedAt": "2026-10-01T09:33:01.300Z",
+ "reference": "390x844 · dark · 8 pm profile (400 ms RTT / 1.6 Mbps) · 4× CPU · cold cache",
+ "profile": {
+  "eightPm": {
+   "offline": false,
+   "download": 209715.2,
+   "upload": 96000,
+   "latency": 400
+  },
+  "slowerTier": {
+   "offline": false,
+   "download": 51200,
+   "upload": 51200,
+   "latency": 400
+  },
+  "cpu": 4
+ },
+ "gates": {
+  "J0 journey: every step completed (a step that throws — a missing door, a dead button — is a broken journey, not an instrument error)": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "J1 journey: every surface on the path has exactly one h1 and no horizontal scroll at 390": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "J2 journey: the primary action is inside the first viewport on every step that has one (threshold, shell, 404, login)": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "J3 journey: nothing in the STUDENT SPACE claims a figure the student cannot verify (no %, no 'x of y', no streak/score/level) — the homepage's '1 of 4' sequence numbering is Scene 6's, excluded": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "J4 first visit: sign-in from the environment returns to the environment and Begin lands on the true state (arc enter:done)": {
+   "pass": true,
+   "detail": "{\"afterSignIn\":\"/subjects/mathematics\",\"primary\":{\"text\":\"Begin Mathematics\",\"href\":\"/subjects/mathematics/enter\",\"inFold\":true,\"bottom\":362},\"arc\":\"discover:done choose:done enter:done learn:ahead interact:ahead progress:ahead master:ahead\",\"broke\":null}"
+  },
+  "J5 second visit: the shell leads with the last-opened environment (h1 names it, the fold says when, the primary opens it) and the environment carries the arc": {
+   "pass": true,
+   "detail": "{\"h1\":\"Physics — The Field\",\"primary\":\"Open Physics\",\"fold\":\"Overview Subjects Account Student C Sign out Last opened yesterday Physics — The Field Environment in draft You were last here yesterday. Open Physics Your subj\",\"arc\":\"discover:done choose:done enter:done learn:ahead interact:ahead progress:ahead master:ahead\"}"
+  },
+  "L1 LCP reported as a distribution: n ≥ 5 used samples per route after a discarded warm-up": {
+   "pass": true,
+   "detail": "{\"/\":5,\"/subjects/mathematics (visitor)\":5,\"/student (state C)\":5}"
+  },
+  "F1 fold gate (P5-R3): h1 and the one primary inside the first viewport, ≤1 primary visible, no h-scroll — every journey surface × 320/360/390/1280/1920": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "M1 matrix: every cell filled — PASS or a declared EXCEPTION with its reason; zero FAIL": {
+   "pass": true,
+   "detail": "{\"cells\":168,\"pass\":163,\"fail\":0,\"exception\":5}"
+  }
+ },
+ "journey": {
+  "firstVisit": {
+   "steps": [
+    {
+     "step": "1 land on / as a stranger",
+     "url": "/",
+     "wall": 2761,
+     "h1": [
+      "Every subject is a place you can enter."
+     ],
+     "h1InFold": true,
+     "primary": [],
+     "primariesVisible": 0,
+     "actionsInMain": 8,
+     "foldWords": 28,
+     "foldText": "Tutors Academy Sign in Every subject is a place you can enter. Each subject is its own environment. Choose one and step inside. Enter a world Understand it",
+     "hscroll": false,
+     "ttfb": 16,
+     "fcp": 1420,
+     "lcp": 1420,
+     "load": 2343,
+     "claimsProgress": true,
+     "shot": "journey-01.png"
+    },
+    {
+     "step": "2 the door list (/subjects)",
+     "url": "/subjects",
+     "wall": 1299,
+     "h1": [
+      "Subjects"
+     ],
+     "h1InFold": true,
+     "primary": [],
+     "primariesVisible": 0,
+     "actionsInMain": 1,
+     "foldWords": 90,
+     "foldText": "Subjects Create account Sign in Temporary scaffold Subjects Each subject is a place, not a page of content. This list is a scaffold so the environments are reachable; the six doors on the homepage are the chooser, and this list is not. Draft subjects are not linkable in production. Mathematics Physics · in foundation — not yet available Chemistry · in foundation — not yet available Biology · in fo",
+     "hscroll": false,
+     "ttfb": 16,
+     "fcp": 624,
+     "lcp": 624,
+     "load": 956,
+     "claimsProgress": false,
+     "shot": "journey-02.png"
+    },
+    {
+     "step": "3 the open door → environment as visitor",
+     "url": "/subjects/mathematics",
+     "wall": 1356,
+     "h1": [
+      "Mathematics"
+     ],
+     "h1InFold": true,
+     "primary": [],
+     "primariesVisible": 0,
+     "actionsInMain": 1,
+     "foldWords": 106,
+     "foldText": "Subjects Create account Sign in Mathematics The Lattice — structure you can stand on. Navigation position Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, comp",
+     "hscroll": false,
+     "ttfb": 16,
+     "fcp": 556,
+     "lcp": 556,
+     "load": 950,
+     "claimsProgress": false,
+     "shot": "journey-03.png"
+    },
+    {
+     "step": "4 Sign in from the environment (on a phone: behind the menu trigger — nothing in <main> offers a way in)",
+     "url": "/login?next=%2Fsubjects%2Fmathematics",
+     "wall": 1977,
+     "h1": [
+      "Sign in"
+     ],
+     "h1InFold": true,
+     "primary": [
+      {
+       "text": "Sign in",
+       "href": "javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')",
+       "inFold": true,
+       "bottom": 687
+      }
+     ],
+     "primariesVisible": 1,
+     "actionsInMain": 0,
+     "foldWords": 56,
+     "foldText": "Back Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account",
+     "hscroll": false,
+     "ttfb": 16,
+     "fcp": 556,
+     "lcp": 556,
+     "load": 950,
+     "claimsProgress": false,
+     "visibleActionsInMainBefore": [
+      "Mathematics→/subjects/mathematics"
+     ],
+     "viaMenu": true,
+     "context": "Signing in opens Mathematics.",
+     "shot": "journey-04.png"
+    },
+    {
+     "step": "5 sign in → back to the environment (threshold)",
+     "url": "/subjects/mathematics",
+     "wall": 1813,
+     "h1": [
+      "Mathematics"
+     ],
+     "h1InFold": true,
+     "primary": [
+      {
+       "text": "Begin Mathematics",
+       "href": "/subjects/mathematics/enter",
+       "inFold": true,
+       "bottom": 362
+      }
+     ],
+     "primariesVisible": 1,
+     "actionsInMain": 2,
+     "foldWords": 88,
+     "foldText": "Overview Subjects Student E Sign out Mathematics The Lattice — structure you can stand on. Begin Mathematics Navigation position Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. It holds no substrate and no c",
+     "hscroll": false,
+     "ttfb": 16,
+     "fcp": 556,
+     "lcp": 556,
+     "load": 950,
+     "claimsProgress": false,
+     "submitToArrive": 999,
+     "inFlight": [
+      "[\"Signing in…\",true]"
+     ],
+     "shot": "journey-05.png"
+    },
+    {
+     "step": "6 Begin Mathematics (the one write)",
+     "url": "/subjects/mathematics",
+     "wall": 2254,
+     "h1": [
+      "Mathematics"
+     ],
+     "h1InFold": true,
+     "primary": [],
+     "primariesVisible": 0,
+     "actionsInMain": 1,
+     "foldWords": 107,
+     "foldText": "Overview Subjects Student E Sign out Mathematics The Lattice — structure you can stand on. Navigation position Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm,",
+     "hscroll": false,
+     "ttfb": 1633,
+     "fcp": 1792,
+     "lcp": 1792,
+     "load": 1821,
+     "claimsProgress": false,
+     "clickToArrive": 1876,
+     "arc": "discover:done choose:done enter:done learn:ahead interact:ahead progress:ahead master:ahead",
+     "regionHeadings": [
+      "Inside this room",
+      "Live classes",
+      "Assignments, tests & progress",
+      "Recorded classes & notes",
+      "Your record"
+     ],
+     "shot": "journey-06.png"
+    },
+    {
+     "step": "7 back to the shell (/student)",
+     "url": "/student",
+     "wall": 1329,
+     "h1": [
+      "Mathematics — The Lattice"
+     ],
+     "h1InFold": true,
+     "primary": [
+      {
+       "text": "Open Mathematics",
+       "href": "/subjects/mathematics/enter",
+       "inFold": true,
+       "bottom": 362
+      }
+     ],
+     "primariesVisible": 1,
+     "actionsInMain": 2,
+     "foldWords": 29,
+     "foldText": "Overview Subjects Account Student E Sign out Last opened today Mathematics — The Lattice You were last here today. Open Mathematics Your subjects Mathematics The Lattice Last opened today",
+     "hscroll": false,
+     "ttfb": 421,
+     "fcp": 528,
+     "lcp": 528,
+     "load": 976,
+     "claimsProgress": false,
+     "shot": "journey-07.png"
+    },
+    {
+     "step": "8 the account page",
+     "url": "/student/account",
+     "wall": 899,
+     "h1": [
+      "Student E"
+     ],
+     "h1InFold": true,
+     "primary": [
+      {
+       "text": "Sign out",
+       "href": "/auth/signout",
+       "inFold": true,
+       "bottom": 413
+      }
+     ],
+     "primariesVisible": 1,
+     "actionsInMain": 1,
+     "foldWords": 34,
+     "foldText": "Overview Subjects Account Student E Sign out Account Student E This is a test account. It may be deleted while the academy is being built. Name Student E Email student-e@test.tutorsacademy.invalid Role student Sign out",
+     "hscroll": false,
+     "ttfb": 372,
+     "fcp": 528,
+     "lcp": 528,
+     "load": 549,
+     "claimsProgress": false,
+     "shot": "journey-08.png"
+    }
+   ],
+   "encodedKB": 479,
+   "requests": 146
+  },
+  "secondVisit": {
+   "steps": [
+    {
+     "step": "1 return: sign in (cold cache, next day)",
+     "url": "/student",
+     "wall": 4338,
+     "h1": [
+      "Physics — The Field"
+     ],
+     "h1InFold": true,
+     "primary": [
+      {
+       "text": "Open Physics",
+       "href": "/subjects/physics/enter",
+       "inFold": true,
+       "bottom": 388
+      }
+     ],
+     "primariesVisible": 1,
+     "actionsInMain": 3,
+     "foldWords": 41,
+     "foldText": "Overview Subjects Account Student C Sign out Last opened yesterday Physics — The Field Environment in draft You were last here yesterday. Open Physics Your subjects Physics The Field Last opened yesterday Environment in draft Mathematics The Lattice Not opened yet",
+     "hscroll": false,
+     "ttfb": 31,
+     "fcp": 1264,
+     "lcp": 1264,
+     "load": 2169,
+     "claimsProgress": false,
+     "submitToArrive": 1228,
+     "shot": "return-01.png"
+    },
+    {
+     "step": "2 the environment it points at (GET — this account never POSTs)",
+     "url": "/subjects/physics",
+     "wall": 1652,
+     "h1": [
+      "Physics"
+     ],
+     "h1InFold": true,
+     "primary": [],
+     "primariesVisible": 0,
+     "actionsInMain": 2,
+     "foldWords": 95,
+     "foldText": "Overview Subjects Student C Sign out Draft subject — still in foundation. Open here ahead of its public listing. Physics The Field — forces you can feel. Navigation position Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. I",
+     "hscroll": false,
+     "ttfb": 515,
+     "fcp": 724,
+     "lcp": 724,
+     "load": 1221,
+     "claimsProgress": false,
+     "primaryForm": {
+      "action": "/subjects/physics/enter",
+      "method": "post",
+      "button": "Open Physics"
+     },
+     "arc": "discover:done choose:done enter:done learn:ahead interact:ahead progress:ahead master:ahead",
+     "recordText": "See the system — DONE See the doors — DONE Watch the crossing — DONE Learn in the room — AHEAD Work with a tutor — AHEAD Watch your record grow — AHEAD Master the subject — AHEAD Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+     "shot": "return-02.png"
+    },
+    {
+     "step": "3 the other subject (not entered)",
+     "url": "/subjects/mathematics",
+     "wall": 1249,
+     "h1": [
+      "Mathematics"
+     ],
+     "h1InFold": true,
+     "primary": [],
+     "primariesVisible": 0,
+     "actionsInMain": 2,
+     "foldWords": 104,
+     "foldText": "Overview Subjects Student C Sign out Mathematics The Lattice — structure you can stand on. Navigation position Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space f",
+     "hscroll": false,
+     "ttfb": 638,
+     "fcp": 820,
+     "lcp": 820,
+     "load": 888,
+     "claimsProgress": false,
+     "shot": "return-03.png"
+    },
+    {
+     "step": "4 the shell again",
+     "url": "/student",
+     "wall": 920,
+     "h1": [
+      "Physics — The Field"
+     ],
+     "h1InFold": true,
+     "primary": [
+      {
+       "text": "Open Physics",
+       "href": "/subjects/physics/enter",
+       "inFold": true,
+       "bottom": 388
+      }
+     ],
+     "primariesVisible": 1,
+     "actionsInMain": 3,
+     "foldWords": 41,
+     "foldText": "Overview Subjects Account Student C Sign out Last opened yesterday Physics — The Field Environment in draft You were last here yesterday. Open Physics Your subjects Physics The Field Last opened yesterday Environment in draft Mathematics The Lattice Not opened yet",
+     "hscroll": false,
+     "ttfb": 362,
+     "fcp": 544,
+     "lcp": 544,
+     "load": 569,
+     "claimsProgress": false,
+     "shot": "return-04.png"
+    }
+   ],
+   "encodedKB": 422,
+   "requests": 97
+  }
+ },
+ "lcp": {
+  "/": {
+   "samples": [
+    {
+     "fcp": 1388,
+     "lcp": 1388,
+     "ttfb": 10,
+     "load": 2339
+    },
+    {
+     "fcp": 1360,
+     "lcp": 1360,
+     "ttfb": 10,
+     "load": 2324
+    },
+    {
+     "fcp": 1396,
+     "lcp": 1396,
+     "ttfb": 7,
+     "load": 2338
+    },
+    {
+     "fcp": 1360,
+     "lcp": 1360,
+     "ttfb": 7,
+     "load": 2340
+    },
+    {
+     "fcp": 1356,
+     "lcp": 1356,
+     "ttfb": 9,
+     "load": 2349
+    },
+    {
+     "fcp": 1380,
+     "lcp": 1380,
+     "ttfb": 7,
+     "load": 2327
+    }
+   ],
+   "used": [
+    1356,
+    1360,
+    1360,
+    1380,
+    1396
+   ],
+   "min": 1356,
+   "median": 1360,
+   "max": 1396,
+   "n": 5,
+   "discardedWarmUp": {
+    "fcp": 1388,
+    "lcp": 1388,
+    "ttfb": 10,
+    "load": 2339
+   }
+  },
+  "/subjects/mathematics (visitor)": {
+   "samples": [
+    {
+     "fcp": 1316,
+     "lcp": 1316,
+     "ttfb": 24,
+     "load": 2339
+    },
+    {
+     "fcp": 1360,
+     "lcp": 1360,
+     "ttfb": 19,
+     "load": 2340
+    },
+    {
+     "fcp": 1380,
+     "lcp": 1380,
+     "ttfb": 14,
+     "load": 2332
+    },
+    {
+     "fcp": 1360,
+     "lcp": 1360,
+     "ttfb": 22,
+     "load": 2390
+    },
+    {
+     "fcp": 1336,
+     "lcp": 1336,
+     "ttfb": 21,
+     "load": 2357
+    },
+    {
+     "fcp": 1364,
+     "lcp": 1364,
+     "ttfb": 9,
+     "load": 2343
+    }
+   ],
+   "used": [
+    1336,
+    1360,
+    1360,
+    1364,
+    1380
+   ],
+   "min": 1336,
+   "median": 1360,
+   "max": 1380,
+   "n": 5,
+   "discardedWarmUp": {
+    "fcp": 1316,
+    "lcp": 1316,
+    "ttfb": 24,
+    "load": 2339
+   }
+  },
+  "/student (state C)": {
+   "samples": [
+    {
+     "fcp": 1260,
+     "lcp": 1260,
+     "ttfb": 19,
+     "load": 2155
+    },
+    {
+     "fcp": 1264,
+     "lcp": 1264,
+     "ttfb": 14,
+     "load": 2117
+    },
+    {
+     "fcp": 1272,
+     "lcp": 1272,
+     "ttfb": 26,
+     "load": 2151
+    },
+    {
+     "fcp": 1216,
+     "lcp": 1216,
+     "ttfb": 14,
+     "load": 2164
+    },
+    {
+     "fcp": 1260,
+     "lcp": 1260,
+     "ttfb": 22,
+     "load": 2131
+    },
+    {
+     "fcp": 1308,
+     "lcp": 1308,
+     "ttfb": 23,
+     "load": 2098
+    }
+   ],
+   "used": [
+    1216,
+    1260,
+    1264,
+    1272,
+    1308
+   ],
+   "min": 1216,
+   "median": 1264,
+   "max": 1308,
+   "n": 5,
+   "discardedWarmUp": {
+    "fcp": 1260,
+    "lcp": 1260,
+    "ttfb": 19,
+    "load": 2155
+   }
+  }
+ },
+ "fold": {
+  "A /student (no enrolment)": {
+   "320x568": {
+    "primary": {
+     "text": "See the six subjects",
+     "href": "/subjects",
+     "inFold": true,
+     "bottom": 326
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "360x640": {
+    "primary": {
+     "text": "See the six subjects",
+     "href": "/subjects",
+     "inFold": true,
+     "bottom": 328
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "390x844": {
+    "primary": {
+     "text": "See the six subjects",
+     "href": "/subjects",
+     "inFold": true,
+     "bottom": 330
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1280x800": {
+    "primary": {
+     "text": "See the six subjects",
+     "href": "/subjects",
+     "inFold": true,
+     "bottom": 326
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1920x1080": {
+    "primary": {
+     "text": "See the six subjects",
+     "href": "/subjects",
+     "inFold": true,
+     "bottom": 326
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   }
+  },
+  "B /student (enrolled, never entered)": {
+   "320x568": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 341
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "360x640": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 436
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "390x844": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 413
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1280x800": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 383
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1920x1080": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 383
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   }
+  },
+  "C /student (active)": {
+   "320x568": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 292
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "360x640": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 386
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "390x844": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 388
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1280x800": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 383
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1920x1080": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 383
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   }
+  },
+  "C+4 /student (four subjects)": {
+   "320x568": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 292
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "360x640": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 386
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "390x844": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 388
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1280x800": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 383
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1920x1080": {
+    "primary": {
+     "text": "Open Physics",
+     "href": "/subjects/physics/enter",
+     "inFold": true,
+     "bottom": 383
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   }
+  },
+  "threshold /subjects/mathematics (student-a)": {
+   "320x568": {
+    "primary": {
+     "text": "Begin Mathematics",
+     "href": "/subjects/mathematics/enter",
+     "inFold": true,
+     "bottom": 318
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "360x640": {
+    "primary": {
+     "text": "Begin Mathematics",
+     "href": "/subjects/mathematics/enter",
+     "inFold": true,
+     "bottom": 358
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "390x844": {
+    "primary": {
+     "text": "Begin Mathematics",
+     "href": "/subjects/mathematics/enter",
+     "inFold": true,
+     "bottom": 362
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1280x800": {
+    "primary": {
+     "text": "Begin Mathematics",
+     "href": "/subjects/mathematics/enter",
+     "inFold": true,
+     "bottom": 386
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1920x1080": {
+    "primary": {
+     "text": "Begin Mathematics",
+     "href": "/subjects/mathematics/enter",
+     "inFold": true,
+     "bottom": 386
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   }
+  },
+  "404 /subjects/nonsense": {
+   "320x568": {
+    "primary": {
+     "text": "See the subjects",
+     "href": "/subjects",
+     "inFold": true,
+     "bottom": 405
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "360x640": {
+    "primary": {
+     "text": "See the subjects",
+     "href": "/subjects",
+     "inFold": true,
+     "bottom": 370
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "390x844": {
+    "primary": {
+     "text": "See the subjects",
+     "href": "/subjects",
+     "inFold": true,
+     "bottom": 371
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1280x800": {
+    "primary": {
+     "text": "See the subjects",
+     "href": "/subjects",
+     "inFold": true,
+     "bottom": 322
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1920x1080": {
+    "primary": {
+     "text": "See the subjects",
+     "href": "/subjects",
+     "inFold": true,
+     "bottom": 322
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   }
+  },
+  "login /login?next=/subjects/mathematics": {
+   "320x568": {
+    "primary": {
+     "text": "Sign in",
+     "href": null,
+     "inFold": false,
+     "bottom": 667
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "360x640": {
+    "primary": {
+     "text": "Sign in",
+     "href": null,
+     "inFold": false,
+     "bottom": 644
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "390x844": {
+    "primary": {
+     "text": "Sign in",
+     "href": null,
+     "inFold": true,
+     "bottom": 687
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1280x800": {
+    "primary": {
+     "text": "Sign in",
+     "href": null,
+     "inFold": true,
+     "bottom": 667
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   },
+   "1920x1080": {
+    "primary": {
+     "text": "Sign in",
+     "href": null,
+     "inFold": true,
+     "bottom": 807
+    },
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 1
+   }
+  },
+  "home / (Scene 0)": {
+   "320x568": {
+    "primary": null,
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 0
+   },
+   "360x640": {
+    "primary": null,
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 0
+   },
+   "390x844": {
+    "primary": null,
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 0
+   },
+   "1280x800": {
+    "primary": null,
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 0
+   },
+   "1920x1080": {
+    "primary": null,
+    "h1InFold": true,
+    "hscroll": false,
+    "primariesVisible": 0
+   }
+  }
+ },
+ "pin": {
+  "firstVisitEncodedKB": 479,
+  "secondVisitEncodedKB": 422,
+  "policy": "pin-and-drift ±5 % (D-08 / P5-R3): a ceiling is never asserted; drift beyond the band is a finding that needs a declared reason"
+ },
+ "matrix": {
+  "A · no enrolment": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 30,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": 0,
+    "clipped": false,
+    "url": "/student"
+   },
+   "no-JS": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 23,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   }
+  },
+  "B · enrolled, never entered": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 47,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 44,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 47,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 56,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 47,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 47,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 47,
+    "animations": 0,
+    "clipped": false,
+    "url": "/student"
+   },
+   "no-JS": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 47,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 38,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 47,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 47,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 47,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   }
+  },
+  "C · active": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 50,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": 0,
+    "clipped": false,
+    "url": "/student"
+   },
+   "no-JS": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 31,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   }
+  },
+  "environment · visitor": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 29,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 44,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 106,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 152,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 106,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 106,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 106,
+    "animations": 0,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "no-JS": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 106,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 27,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 85,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 106,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 106,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   }
+  },
+  "environment · threshold": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 40,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 40,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 88,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 117,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 88,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 88,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 88,
+    "animations": 0,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "no-JS": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 88,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 87,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 50,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 88,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 88,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/mathematics"
+   }
+  },
+  "environment · enrolled (arc)": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 54,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 47,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 95,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 124,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 95,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 95,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 95,
+    "animations": 0,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "no-JS": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 95,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 82,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 95,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 95,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 95,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/physics"
+   }
+  },
+  "login (next=environment)": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": false,
+    "foldWords": 40,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": false,
+    "foldWords": 49,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 56,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 106,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 56,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 56,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 56,
+    "animations": 0,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "no-JS": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 56,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": false,
+    "foldWords": 43,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 56,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 56,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 56,
+    "animations": null,
+    "clipped": false,
+    "url": "/login?next=%2Fsubjects%2Fmathematics"
+   }
+  },
+  "account": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 43,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": 0,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "no-JS": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "/student/account"
+   }
+  },
+  "404 · notFound()": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": 0,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   },
+   "no-JS": {
+    "verdict": "EXCEPTION",
+    "reason": "notFound()/error boundaries render client-side (Next 16.3.6, vercel/next.js#99287) — flip alarm in audit/states.cjs"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 22,
+    "animations": null,
+    "clipped": false,
+    "url": "/subjects/nonsense"
+   }
+  },
+  "error page (specimen)": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 41,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": 0,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   },
+   "no-JS": {
+    "verdict": "EXCEPTION",
+    "reason": "specimen is a dev frame of a client-rendered boundary; the live boundary is the same exception (#99287)"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 36,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 34,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=student-failed"
+   }
+  },
+  "session ended (specimen)": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": false,
+    "foldWords": 52,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": false,
+    "foldWords": 54,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 61,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 61,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 61,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 61,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 61,
+    "animations": 0,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   },
+   "no-JS": {
+    "verdict": "EXCEPTION",
+    "reason": "specimen is a dev frame of a client-rendered boundary; the live boundary is the same exception (#99287)"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": false,
+    "foldWords": 45,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 61,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 61,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 61,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=login-ended"
+   }
+  },
+  "entry failed (unknown-outcome recovery surface)": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 29,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 29,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 29,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 36,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 29,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 29,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 29,
+    "animations": 0,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   },
+   "no-JS": {
+    "verdict": "EXCEPTION",
+    "reason": "specimen is a dev frame of a client-rendered boundary; the live boundary is the same exception (#99287)"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 31,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 29,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 29,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 29,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=entry-failed"
+   }
+  },
+  "region failing (specimen)": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 67,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 96,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 96,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 103,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 96,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 96,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 96,
+    "animations": 0,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   },
+   "no-JS": {
+    "verdict": "EXCEPTION",
+    "reason": "specimen is a dev frame of a client-rendered boundary; the live boundary is the same exception (#99287)"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 52,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 96,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 96,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 0,
+    "hscroll": false,
+    "primaries": 0,
+    "primaryInFold": null,
+    "foldWords": 96,
+    "animations": null,
+    "clipped": false,
+    "url": "dev:/dev/student-states/frame?state=region-failing"
+   }
+  },
+  "role redirect (/tutor as student)": {
+   "320": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "360": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "390": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "1280": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 30,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "dark": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "light": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "reduced motion": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": 0,
+    "clipped": false,
+    "url": "/student"
+   },
+   "no-JS": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "200% zoom": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 23,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "1.4.12": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "slow network": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   },
+   "4x CPU": {
+    "verdict": "PASS",
+    "h1": 1,
+    "hscroll": false,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 21,
+    "animations": null,
+    "clipped": false,
+    "url": "/student"
+   }
+  }
+ },
+ "unfillable": [
+  {
+   "state": "404 · notFound()",
+   "condition": "no-JS",
+   "reason": "framework: client-rendered page state (#99287)"
+  },
+  {
+   "state": "error page (specimen)",
+   "condition": "no-JS",
+   "reason": "framework: client-rendered page state (#99287)"
+  },
+  {
+   "state": "session ended (specimen)",
+   "condition": "no-JS",
+   "reason": "framework: client-rendered page state (#99287)"
+  },
+  {
+   "state": "entry failed (unknown-outcome recovery surface)",
+   "condition": "no-JS",
+   "reason": "framework: client-rendered page state (#99287)"
+  },
+  {
+   "state": "region failing (specimen)",
+   "condition": "no-JS",
+   "reason": "framework: client-rendered page state (#99287)"
+  }
+ ],
+ "foldExceptions": [
+  "login /login?next=/subjects/mathematics@320x568: primary bottom 667 (declared, see register)",
+  "login /login?next=/subjects/mathematics@360x640: primary bottom 644 (declared, see register)"
+ ],
+ "matrixTotals": {
+  "cells": 168,
+  "pass": 163,
+  "fail": 0,
+  "exception": 5
+ },
+ "sectionsRun": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "pass": true
+}

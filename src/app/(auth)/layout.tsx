@@ -20,11 +20,16 @@ export default function AuthLayout({
   return (
     <div className="grid min-h-screen lg:grid-cols-[1.05fr_0.95fr]">
       {/* ------------------------- Form column ------------------------- */}
-      <div className="flex flex-col bg-background">
+      {/* 5.8 gate fix: `min-w-0` — a grid item's min-width:auto let the form's intrinsic input width (≈322 px)
+          widen this column to 354 px at 320 px viewports → horizontal scroll on the sign-in page. */}
+      <div className="flex min-w-0 flex-col bg-background">
         <header className="border-b border-border">
           <Container className="flex h-[var(--ta-header-h)] items-center justify-between">
-            <Link href={ROUTES.home} aria-label="Tutors Academy home">
-              <Logo />
+            <Link href={ROUTES.home} aria-label="Tutors Academy home" className="inline-flex min-w-0 items-center">
+              {/* 5.8 gate fix: at <640 px the lockup (252 px) + "Back" (70 px) exceed the 288 px content width → overflow.
+                  Below `sm` the mark alone stands, exactly as the nav shell's own mobile frame does. */}
+              <span className="sm:hidden"><Logo withWordmark={false} /></span>
+              <span className="hidden sm:inline-flex"><Logo /></span>
             </Link>
             <Link
               href={ROUTES.home}

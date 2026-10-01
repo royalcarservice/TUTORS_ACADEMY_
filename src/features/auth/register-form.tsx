@@ -68,14 +68,14 @@ export function RegisterForm({ configured }: { configured: boolean }) {
               name="role"
               value="student"
               title="Student"
-              description="Learn, submit work and track progress."
+              description="Learn inside a subject's environment." /* 5.8 gate fix: "submit work and track progress" named two capabilities that do not exist and used the banned "track progress" family (5.6) */
               defaultChecked
             />
             <RadioCard
               name="role"
               value="tutor"
               title="Tutor"
-              description="Teach, grade and manage your sessions."
+              description="Teach inside a subject's environment." /* 5.8 gate fix: "grade and manage your sessions" named capabilities that do not exist */
             />
           </div>
         </fieldset>

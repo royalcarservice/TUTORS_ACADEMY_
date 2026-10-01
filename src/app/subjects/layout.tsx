@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { NavShell } from "@/components/layout/nav-shell";
+import { AccountEntry } from "@/components/student/account-entry";
 import { SubjectEntry } from "@/components/shell/subject-entry";
 import { STUDENT_NAV_ITEMS } from "@/config/student-nav";
 import { getIdentity } from "@/lib/auth/session";
@@ -40,7 +41,9 @@ export default async function SubjectsLayout({
     : [{ label: "Subjects", href: "/subjects" }];
   return (
     <>
-      <NavShell mode="stage" items={items} />
+      {/* 5.8 gate fix: the identity already read above also fills the nav's account entry (name + real sign-out),
+          so a signed-in student is never offered "Sign in" inside their own environment. Visitor chrome unchanged. */}
+      <NavShell mode="stage" items={items} account={identity?.role === "student" ? <AccountEntry displayName={identity.displayName} /> : undefined} />
       <main id="main" style={{ flex: 1 }}>
         {children}
         <SubjectEntry />

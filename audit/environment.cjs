@@ -112,7 +112,7 @@ const foldMeasure = () => { const a = document.querySelector("[data-primary-acti
   const browser = await puppeteer.launch({ headless: "new", args: ["--no-sandbox", "--disable-gpu"] });
   const R = { generatedAt: new Date().toISOString(), reference: "390x844 mobile", states: {}, gates: {}, notes: {} };
   const fail = [];
-  const gate = (name, ok, detail) => { R.gates[name] = { pass: !!ok, detail }; if (!ok) fail.push(name + ": " + detail); console.log(`${ok ? "PASS" : "FAIL"}  ${name}`); };
+  const gate = (name, ok, detail) => { R.gates[name] = { pass: !!ok, detail }; if (!ok) fail.push(name + ": " + detail); console.log(`${ok ? "PASS" : "FAIL"}  ${name}${ok ? "" : "  ← " + String(detail).slice(0, 600)}`); }; // 5.8: a FAIL prints its evidence
 
   const MATRIX = [
     ["visitor-ready", null, "/subjects/mathematics"],
@@ -217,6 +217,11 @@ const foldMeasure = () => { const a = document.querySelector("[data-primary-acti
   gate("arc: no CTA, no link, no interactive element, no animation", enrolled200.every(([, v]) => v.arc.interactive === 0 && !v.arc.hasAnimation), JSON.stringify(enrolled200.map(([k, v]) => [k, v.arc.interactive, v.arc.hasAnimation])));
   gate("arc: never a digit — no count, no zero, no 'n of 7'", enrolled200.every(([, v]) => v.arc.digits === 0 && !v.arc.strings.some((t) => /\bof 7\b|%|complete|remaining|left|streak|level|badge|behind|on track|haven't/i.test(t))), JSON.stringify(enrolled200.map(([k, v]) => [k, v.arc.digits])));
   gate("arc: never-entered enrolment shows 'enter' as ahead (missing = state, not defaulted)", (s["enrolled-ready-no-state"].arc?.steps.find((x) => x[0] === "enter") || [])[2] === "ahead" && (s["enrolled-draft-entered"].arc?.steps.find((x) => x[0] === "enter") || [])[2] === "done", JSON.stringify({ noState: s["enrolled-ready-no-state"].arc?.steps.map((x) => x[2]), entered: s["enrolled-draft-entered"].arc?.steps.map((x) => x[2]) }));
+  /* 5.8 gate (breakage (h) was NOT caught before this): the rendered arc must match the evidence rule, not just
+     the vocabulary. Today no evidence module is live (modules.ts: no learning kind is admissible — test-progress #21),
+     so no step after "enter" can read "done" in ANY enrolled state; "discover" and "choose" are done by enrolment;
+     "enter" is done only where an environment_state row exists. A consumer that invents a done step fails here. */
+  gate("arc: states follow the evidence — discover/choose done; enter done only with an entry row; learn/interact/progress/master never done today (no live evidence module)", enrolled200.every(([k, v]) => { const st = Object.fromEntries(v.arc.steps.map((x) => [x[0], x[2]])); const entered = /entered/.test(k); return st.discover === "done" && st.choose === "done" && st.enter === (entered ? "done" : "ahead") && ["learn", "interact", "progress", "master"].every((id) => st[id] === "ahead"); }), JSON.stringify(enrolled200.map(([k, v]) => [k, v.arc.steps.map((x) => x[0] + ":" + x[2]).join(" ")])));
   gate("arc: the boundary sentence is present with an empty record and fits 390", enrolled200.every(([, v]) => v.arc.strings.some((t) => t.startsWith("Nothing is recorded here yet.")) && v.arc.widthOK), JSON.stringify(enrolled200.map(([k, v]) => [k, v.arc.widthOK])));
   gate("one h1 in every 200 state", Object.values(s).filter((x) => x.status === 200).every((x) => x.h1Count === 1), JSON.stringify(Object.fromEntries(Object.entries(s).map(([k, v]) => [k, v.h1Count]))));
   gate("one primary per view (≤1 in main)", Object.values(s).every((x) => x.primaryCount <= 1), JSON.stringify(Object.fromEntries(Object.entries(s).map(([k, v]) => [k, v.primaryCount]))));

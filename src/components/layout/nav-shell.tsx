@@ -203,7 +203,9 @@ export function NavShell({ mode = "stage", items = [], navLabel, account, childr
 
         <div style={{ display: "flex", alignItems: "center", gap: "var(--ta-space-2)" }}>
           <ThemeToggle />
-          <div className="ta-nav-desktop" style={{ display: "none" }}>{mode === "stage" ? <NavActions /> : account ?? <UserMenu />}</div>
+          {/* 5.8 gate fix: a REAL identity wins in either mode — a signed-in student on /subjects/<id> was shown
+              "Sign in · Create account" while /student showed "Student C · Sign out" (back-to-back disagreement). */}
+          <div className="ta-nav-desktop" style={{ display: "none" }}>{account ?? (mode === "stage" ? <NavActions /> : <UserMenu />)}</div>
           <button
             ref={triggerRef}
             type="button"
@@ -248,14 +250,14 @@ export function NavShell({ mode = "stage", items = [], navLabel, account, childr
             ))}
           </ul>
           <div style={{ marginTop: "var(--ta-space-6)", display: "flex", flexDirection: "column", gap: "var(--ta-space-2)" }}>
-            {mode === "stage" ? (
+            {account ?? (mode === "stage" ? (
               <>
                 <Link href="/register" onClick={() => setOpen(false)} className={buttonClass("primary", "md", "w-full")}>Create account</Link>
                 <Link href={loginHref(pathname)} onClick={() => setOpen(false)} className={buttonClass("outline", "md", "w-full")}>Sign in</Link>
               </>
             ) : (
-              account ?? <Link href={loginHref(pathname)} onClick={() => setOpen(false)} className={buttonClass("outline", "md", "w-full")}>Sign in</Link>
-            )}
+              <Link href={loginHref(pathname)} onClick={() => setOpen(false)} className={buttonClass("outline", "md", "w-full")}>Sign in</Link>
+            ))}
           </div>
         </nav>
       </div>

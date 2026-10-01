@@ -172,3 +172,23 @@ route `/subjects/<draft>` is a 404 for anyone not enrolled. A student who reads 
 list learns the subject exists; a student who types the address is told there is no
 page. Both are individually honest; together they are two answers to one question.
 5.7 leaves it: the 404 is not redesigned, the list is 3.6's. Recorded for the owner.
+
+## The action vocabulary — three verbs, one sequence (5.8 addendum)
+
+Read as a set across the student's path, the primary actions are not one verb; they are three,
+and each belongs to a state. Verbatim, as rendered (390, production, 2026-10-01):
+
+| where | state | the one primary | what the verb claims |
+|---|---|---|---|
+| `/` Scene 0 / Scene 8 | stranger | **Enter a world** (→ `#for-students`) | you may go in; the page points at the doors |
+| `/` Scene 3 (The choice) | stranger | **Enter →** on the one open door; **Enter Mathematics** in Scene 4 | this door is open |
+| `/subjects/mathematics` | visitor | *(none in `<main>`)* — header → **Sign in** | the door is open but the room is a student's; identity first (see `docs/EXCEPTIONS.md` E-23) |
+| `/subjects/mathematics` | signed-in, not enrolled | **Begin Mathematics** (POST `/subjects/mathematics/enter`) | the first, recorded crossing |
+| `/student` | enrolled | **Open Physics** (POST `/subjects/physics/enter`) | return to a room you already have |
+| `/student` | no enrolment | **See the six subjects** (→ `/subjects`) | choosing is where this begins |
+| 404 | anyone | **See the subjects** (→ `/subjects`) | the way back to the doors |
+
+**Enter** is the homepage's verb (a place you can enter); **Begin** is the threshold's (one write, the first time);
+**Open** is the shell's (every time after). They never appear together on one surface, and no surface uses a
+fourth verb for the same act. The sequence is deliberate and is now written down so a later surface does not
+introduce "Start", "Go to" or "Continue" for any of these three states.

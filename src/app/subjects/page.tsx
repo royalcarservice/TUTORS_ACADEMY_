@@ -16,7 +16,7 @@ import { SUBJECTS } from "@/lib/subjects/subjects";
 export const metadata: Metadata = {
   title: "Subjects",
   description:
-    "The six subject environments of Tutors Academy. This is a temporary scaffold — the real subject chooser arrives in Phase 4.",
+    "The six subject environments of Tutors Academy. This list is a temporary scaffold; the six doors on the homepage are the chooser.",
 };
 
 export default function SubjectsIndexPage() {
@@ -57,9 +57,13 @@ export default function SubjectsIndexPage() {
           maxWidth: "46rem",
         }}
       >
+        {/* 5.8 gate fix (contradiction): the old sentence promised "the real subject chooser is built in
+            Phase 4 and will replace it" — Phase 4 closed with the homepage's six doors as the chooser and
+            this list still here (4.9 §14 recommended its replacement; not done). A claim about a past
+            future is false. Now it says what is true today. */}
         Each subject is a place, not a page of content. This list is a scaffold
-        so the environments are reachable — the real subject chooser is built
-        in Phase 4 and will replace it. Draft subjects are not linkable in
+        so the environments are reachable; the six doors on the homepage are
+        the chooser, and this list is not. Draft subjects are not linkable in
         production.
       </p>
 
