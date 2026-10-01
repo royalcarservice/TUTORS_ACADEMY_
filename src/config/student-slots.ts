@@ -139,3 +139,53 @@ export const STUDENT_SLOTS: readonly StudentSlotDef[] = [
 
 export const slotsForRegion = (region: StudentSlotRegion, position: StudentSlotPosition = "region") =>
   STUDENT_SLOTS.filter((s) => s.region === region && s.position === position);
+
+/* ── THIRD SCOPE (6.2 · Part 4): THE TUTOR'S SPACE ──────────────────────────
+ * ONE registry, three scopes. The same capabilities, seen from the tutor's
+ * side of the relationship. Every region below is gated the same way: a
+ * module must be `live` in src/config/modules AND the data must exist for
+ * THIS tutor through the relationship-scoped reader — otherwise NOTHING
+ * renders (no heading, no box, no count). Nothing renders today.
+ * The `relationships` region is the one real region: it holds the subject
+ * groups and their rows (display name · subject · nothing else).
+ * NOT a region, by ruling: anything evaluative about a student (P6-R2 on a
+ * row, P6-R3 everywhere) — there is no "attention", "progress" or "activity"
+ * region in this scope and none may be added.
+ */
+export type TutorRegion = "today" | "relationships" | "work" | "library" | "tools";
+
+export interface TutorSlotDef {
+  /** Same id as the student slot it mirrors — one capability, three places. */
+  id: string;
+  name: string;
+  phase: string;
+  region: TutorRegion;
+  /** src/config/modules id that must be `live` before this slot may render. */
+  module: string;
+  /** What real data it needs — always reached through the relationship (tutor · student · subject). */
+  needs: string;
+  today: "nothing (absent)";
+}
+
+export const TUTOR_REGIONS: Record<TutorRegion, { title: string; order: number }> = {
+  today: { title: "Today", order: 1 },
+  relationships: { title: "Students placed with you", order: 2 },
+  work: { title: "Work", order: 3 },
+  library: { title: "Library", order: 4 },
+  tools: { title: "Tools", order: 5 },
+};
+
+export const TUTOR_SLOTS: readonly TutorSlotDef[] = [
+  { id: "todays-sessions", name: "Today's sessions", phase: "Phase 7", region: "today", module: "live-classroom",
+    needs: "scheduled sessions for this tutor, each one inside a relationship's subject", today: "nothing (absent)" },
+  { id: "upcoming-class", name: "Next class", phase: "Phase 7", region: "today", module: "live-classroom",
+    needs: "the next scheduled session beyond today", today: "nothing (absent)" },
+  { id: "assignments", name: "Work set", phase: "Phase 8", region: "work", module: "assignments",
+    needs: "assignments this tutor set, scoped to a relationship; never a queue of submissions sorted by anything", today: "nothing (absent)" },
+  { id: "recordings", name: "Recordings", phase: "Phase 8", region: "library", module: "recorded-classes",
+    needs: "recorded sessions this tutor gave, by subject", today: "nothing (absent)" },
+  { id: "resources", name: "Resources", phase: "Phase 8", region: "library", module: "recorded-classes",
+    needs: "material this tutor shared, scoped to a relationship", today: "nothing (absent)" },
+  { id: "ai-assistance", name: "AI assistance", phase: "Phase 9", region: "tools", module: "ai-assistant",
+    needs: "a real assistant scoped to this tutor's own material", today: "nothing (absent)" },
+] as const;

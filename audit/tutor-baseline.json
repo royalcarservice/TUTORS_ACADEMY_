@@ -1,0 +1,548 @@
+{
+ "generatedAt": "2026-10-01T19:04:07.207Z",
+ "reference": "390x844 mobile",
+ "states": {
+  "A": {
+   "strings": [
+    "Now",
+    "No student is placed with you.",
+    "The academy places a student with a tutor, one subject at a time; it is not done from this page. Teaching surfaces are not built."
+   ],
+   "dom": {
+    "state": "A-no-relationships",
+    "h1Count": 1,
+    "h1Text": "No student is placed with you.",
+    "primaryControls": 0,
+    "primaryActions": 0,
+    "shellLinks": 0,
+    "shellButtons": 0,
+    "shellForms": 0,
+    "disabled": 0,
+    "subjectGroups": 0,
+    "subjects": [],
+    "slotRegions": 0,
+    "slots": 0,
+    "rows": [],
+    "imgs": 0,
+    "hierarchyRatio": null,
+    "h1Px": 35.8,
+    "numerals": []
+   },
+   "fold": {
+    "primaryBottom": 358,
+    "h1Bottom": 218,
+    "firstGroupHeadingBottom": null,
+    "firstRowBottom": null,
+    "viewport": 844
+   },
+   "targets": [
+    {
+     "t": "Tutors Academy home",
+     "w": 44,
+     "h": 44,
+     "visible": true
+    },
+    {
+     "t": "Switch to dark theme",
+     "w": 44,
+     "h": 44,
+     "visible": true
+    },
+    {
+     "t": "Open menu",
+     "w": 44,
+     "h": 44,
+     "visible": true
+    },
+    {
+     "t": "Overview",
+     "w": 342,
+     "h": 53,
+     "visible": true
+    },
+    {
+     "t": "Subjects",
+     "w": 342,
+     "h": 53,
+     "visible": true
+    },
+    {
+     "t": "Account",
+     "w": 342,
+     "h": 53,
+     "visible": true
+    },
+    {
+     "t": "Tutor U",
+     "w": 74,
+     "h": 48,
+     "visible": true
+    },
+    {
+     "t": "Sign out",
+     "w": 80,
+     "h": 48,
+     "visible": true
+    }
+   ],
+   "network": {
+    "scriptBytes": 588002,
+    "scriptFiles": 13
+   },
+   "sweeps": {
+    "dashboard": [],
+    "skeleton": [],
+    "p6r3": [],
+    "money": [],
+    "stale": [],
+    "htmlNumerals": []
+   },
+   "fold1280": {
+    "primaryBottom": 320,
+    "h1Count": 1
+   },
+   "axe": []
+  },
+  "B": {
+   "strings": [
+    "Now",
+    "Nothing to do here.",
+    "The students placed with you are listed below, by subject. Placing is done by the academy, not from this page. Teaching surfaces are not built.",
+    "Students placed with you",
+    "Physics",
+    "The Field",
+    "Environment in draft",
+    "Student C",
+    "Physics"
+   ],
+   "dom": {
+    "state": "B-relationships-no-events",
+    "h1Count": 1,
+    "h1Text": "Nothing to do here.",
+    "primaryControls": 0,
+    "primaryActions": 0,
+    "shellLinks": 0,
+    "shellButtons": 0,
+    "shellForms": 0,
+    "disabled": 0,
+    "subjectGroups": 1,
+    "subjects": [
+     "physics"
+    ],
+    "slotRegions": 0,
+    "slots": 0,
+    "rows": [
+     {
+      "text": "Student CPhysics",
+      "spans": 2,
+      "links": 0
+     }
+    ],
+    "imgs": 0,
+    "hierarchyRatio": 2.24,
+    "h1Px": 35.8,
+    "numerals": []
+   },
+   "fold": {
+    "primaryBottom": 358,
+    "h1Bottom": 218,
+    "firstGroupHeadingBottom": 452,
+    "firstRowBottom": 516,
+    "viewport": 844
+   },
+   "targets": [
+    {
+     "t": "Tutors Academy home",
+     "w": 44,
+     "h": 44,
+     "visible": true
+    },
+    {
+     "t": "Switch to dark theme",
+     "w": 44,
+     "h": 44,
+     "visible": true
+    },
+    {
+     "t": "Open menu",
+     "w": 44,
+     "h": 44,
+     "visible": true
+    },
+    {
+     "t": "Overview",
+     "w": 342,
+     "h": 53,
+     "visible": true
+    },
+    {
+     "t": "Subjects",
+     "w": 342,
+     "h": 53,
+     "visible": true
+    },
+    {
+     "t": "Account",
+     "w": 342,
+     "h": 53,
+     "visible": true
+    },
+    {
+     "t": "Tutor A",
+     "w": 74,
+     "h": 48,
+     "visible": true
+    },
+    {
+     "t": "Sign out",
+     "w": 80,
+     "h": 48,
+     "visible": true
+    }
+   ],
+   "network": {
+    "scriptBytes": 588002,
+    "scriptFiles": 13
+   },
+   "sweeps": {
+    "dashboard": [],
+    "skeleton": [],
+    "p6r3": [],
+    "money": [],
+    "stale": [],
+    "htmlNumerals": []
+   },
+   "fold1280": {
+    "primaryBottom": 320,
+    "h1Count": 1
+   },
+   "axe": []
+  }
+ },
+ "gates": {
+  "no-fake-signed-in": {
+   "pass": true,
+   "detail": "http://localhost:3100/login?next=%2Ftutor"
+  },
+  "A: one h1": {
+   "pass": true,
+   "detail": "1"
+  },
+  "A: expected state": {
+   "pass": true,
+   "detail": "A-no-relationships"
+  },
+  "A: no control in the primary surface, no primary action, no disabled control (P6-R4)": {
+   "pass": true,
+   "detail": "[0,0,0]"
+  },
+  "A: no links, buttons or forms inside the shell (nothing a tutor does here changes anything)": {
+   "pass": true,
+   "detail": "[0,0,0]"
+  },
+  "A: no region DOM, no slot": {
+   "pass": true,
+   "detail": ""
+  },
+  "A: no numerals in the shell (no counts)": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "A: never-contains sweep clean": {
+   "pass": true,
+   "detail": "{\"dashboard\":[],\"skeleton\":[],\"p6r3\":[],\"money\":[],\"stale\":[],\"htmlNumerals\":[]}"
+  },
+  "A: primary surface complete above the 390 fold": {
+   "pass": true,
+   "detail": "{\"primaryBottom\":358,\"h1Bottom\":218,\"firstGroupHeadingBottom\":null,\"firstRowBottom\":null,\"viewport\":844}"
+  },
+  "A: every chrome target ≥44×44": {
+   "pass": true,
+   "detail": "[{\"t\":\"Tutors Academy home\",\"w\":44,\"h\":44,\"visible\":true},{\"t\":\"Switch to dark theme\",\"w\":44,\"h\":44,\"visible\":true},{\"t\":\"Open menu\",\"w\":44,\"h\":44,\"visible\":true},{\"t\":\"Overview\",\"w\":342,\"h\":53,\"visible\":true},{\"t\":\"Subjects\",\"w\":342,\"h\":53,\"visible\":true},{\"t\":\"Account\",\"w\":342,\"h\":53,\"visible\":true},{\"t\":\"Tutor U\",\"w\":74,\"h\":48,\"visible\":true},{\"t\":\"Sign out\",\"w\":80,\"h\":48,\"visible\":true}]"
+  },
+  "A: nothing at rest in storage": {
+   "pass": true,
+   "detail": "0"
+  },
+  "A: script bytes within 2 KB of the student shell, same method (no client JS added)": {
+   "pass": true,
+   "detail": "588002 (13 files) vs /student 588004 (13 files)"
+  },
+  "A: no subject groups, no rows": {
+   "pass": true,
+   "detail": ""
+  },
+  "A: claims reproduce at 1280 (one h1, primary above fold)": {
+   "pass": true,
+   "detail": "{\"primaryBottom\":320,\"h1Count\":1}"
+  },
+  "A: identical shell text without JavaScript": {
+   "pass": true,
+   "detail": "3 vs 3"
+  },
+  "A: axe clean": {
+   "pass": true,
+   "detail": ""
+  },
+  "B: one h1": {
+   "pass": true,
+   "detail": "1"
+  },
+  "B: expected state": {
+   "pass": true,
+   "detail": "B-relationships-no-events"
+  },
+  "B: no control in the primary surface, no primary action, no disabled control (P6-R4)": {
+   "pass": true,
+   "detail": "[0,0,0]"
+  },
+  "B: no links, buttons or forms inside the shell (nothing a tutor does here changes anything)": {
+   "pass": true,
+   "detail": "[0,0,0]"
+  },
+  "B: no region DOM, no slot": {
+   "pass": true,
+   "detail": ""
+  },
+  "B: no numerals in the shell (no counts)": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "B: never-contains sweep clean": {
+   "pass": true,
+   "detail": "{\"dashboard\":[],\"skeleton\":[],\"p6r3\":[],\"money\":[],\"stale\":[],\"htmlNumerals\":[]}"
+  },
+  "B: primary surface complete above the 390 fold": {
+   "pass": true,
+   "detail": "{\"primaryBottom\":358,\"h1Bottom\":218,\"firstGroupHeadingBottom\":452,\"firstRowBottom\":516,\"viewport\":844}"
+  },
+  "B: every chrome target ≥44×44": {
+   "pass": true,
+   "detail": "[{\"t\":\"Tutors Academy home\",\"w\":44,\"h\":44,\"visible\":true},{\"t\":\"Switch to dark theme\",\"w\":44,\"h\":44,\"visible\":true},{\"t\":\"Open menu\",\"w\":44,\"h\":44,\"visible\":true},{\"t\":\"Overview\",\"w\":342,\"h\":53,\"visible\":true},{\"t\":\"Subjects\",\"w\":342,\"h\":53,\"visible\":true},{\"t\":\"Account\",\"w\":342,\"h\":53,\"visible\":true},{\"t\":\"Tutor A\",\"w\":74,\"h\":48,\"visible\":true},{\"t\":\"Sign out\",\"w\":80,\"h\":48,\"visible\":true}]"
+  },
+  "B: nothing at rest in storage": {
+   "pass": true,
+   "detail": "0"
+  },
+  "B: script bytes within 2 KB of the student shell, same method (no client JS added)": {
+   "pass": true,
+   "detail": "588002 (13 files) vs /student 588004 (13 files)"
+  },
+  "B: subject groups present, rows are name · subject · nothing else, rows are not links": {
+   "pass": true,
+   "detail": "[{\"text\":\"Student CPhysics\",\"spans\":2,\"links\":0}]"
+  },
+  "B: DOM rows equal the DB relationship rows (name · subject), in the fixed order": {
+   "pass": true,
+   "detail": "{\"dbRows\":[\"Student C · physics\"],\"domRows\":[\"Student CPhysics\"]}"
+  },
+  "B: first subject group heading above the 390 fold": {
+   "pass": true,
+   "detail": "{\"primaryBottom\":358,\"h1Bottom\":218,\"firstGroupHeadingBottom\":452,\"firstRowBottom\":516,\"viewport\":844}"
+  },
+  "B: hierarchy — h1 is the dominant text (ratio ≥ 1.6 over a row)": {
+   "pass": true,
+   "detail": "2.24"
+  },
+  "B: claims reproduce at 1280 (one h1, primary above fold)": {
+   "pass": true,
+   "detail": "{\"primaryBottom\":320,\"h1Count\":1}"
+  },
+  "B: identical shell text without JavaScript": {
+   "pass": true,
+   "detail": "9 vs 9"
+  },
+  "B: axe clean": {
+   "pass": true,
+   "detail": ""
+  },
+  "Test 28: no stale string, no money word on any public route": {
+   "pass": true,
+   "detail": "{\"/\":{\"stale\":[],\"money\":[]},\"/login\":{\"stale\":[],\"money\":[]},\"/register\":{\"stale\":[],\"money\":[]},\"/subjects\":{\"stale\":[],\"money\":[]},\"/login?next=%2Ftutor\":{\"stale\":[],\"money\":[]}}"
+  },
+  "Test 28: no stale string left in src": {
+   "pass": true,
+   "detail": ""
+  }
+ },
+ "sweep": {
+  "/": {
+   "stale": [],
+   "money": []
+  },
+  "/login": {
+   "stale": [],
+   "money": []
+  },
+  "/register": {
+   "stale": [],
+   "money": []
+  },
+  "/subjects": {
+   "stale": [],
+   "money": []
+  },
+  "/login?next=%2Ftutor": {
+   "stale": [],
+   "money": []
+  }
+ },
+ "fixture": "Student C · physics",
+ "studentScript": {
+  "scriptBytes": 588004,
+  "scriptFiles": 13
+ },
+ "homepageStrings": [
+  "Every subject is a place you can enter.",
+  "Each subject is its own environment. Choose one and step inside.",
+  "Enter a world",
+  "Understand it",
+  "[data-arrival] { padding-top: var(--ta-space-16); padding-bottom: var(--ta-space-12); }\n        [data-arrival] h1 { max-width: 12ch; }\n        [data-arrival-cta] { margin-top: var(--ta-space-6); }\n        [data-arrival-support] { margin: var(--ta-space-4) 0 0; font-size: var(--ta-text-md); line-height: 1.6; }\n        @media (max-height: 40rem) { [data-arrival-cue] { display: none; } }\n        @media (max-height: 42rem), (max-width: 30rem) {\n          [data-arrival] { padding-top: var(--ta-space-4); padding-bottom: var(--ta-space-12); }\n          [data-arrival] h1 { max-width: 18ch; }\n          [data-arrival-support] { margin-top: var(--ta-space-2); font-size: var(--ta-text-sm); }\n          [data-arrival-cta] { margin-top: var(--ta-space-2); gap: var(--ta-space-2); }\n          [data-arrival-support] { margin-top: var(--ta-space-2); }\n        }",
+  "·",
+  "↓",
+  "[data-premise] { max-width: var(--ta-container-prose); padding-block: var(--ta-space-block); }\n        [data-premise-lead] { margin: var(--ta-space-4) 0 0; font-size: var(--ta-text-xl); line-height: 1.5; color: var(--ta-text-primary); text-wrap: pretty; }\n        [data-premise-beats] { list-style: none; margin: var(--ta-space-block) 0 0; padding: var(--ta-space-block) 0 0; border-top: 1px solid var(--ta-brand-quiet); display: grid; gap: var(--ta-space-stack); }\n        [data-premise-beats] h3 { margin: 0; font-family: var(--ta-font-display); font-weight: 500; font-size: var(--ta-text-lg); color: var(--ta-text-primary); }\n        [data-premise-beats] p { margin: var(--ta-space-1) 0 0; font-size: var(--ta-text-md); line-height: 1.6; color: var(--ta-text-secondary); }\n        [data-premise-beats] li { padding-block: var(--ta-space-2); }\n        @media (max-width: 30rem) {\n          [data-premise-lead] { font-size: var(--ta-text-lg); }\n          [data-premise] { padding-block: var(--ta-space-6); }\n          [data-premise-beats] { margin-top: var(--ta-space-6); padding-top: var(--ta-space-6); }\n          [data-premise-beats] p { font-size: var(--ta-text-sm); }\n        }",
+  "The premise",
+  "Built as places, not pages.",
+  "Tutors Academy is a set of subject environments. Each subject has its own structure, colour and calm, and you work inside it rather than scrolling past it.",
+  "Six subjects, six environments.",
+  "Mathematics is a lattice on graphite. English is a page. The structure changes with the subject; the way you read does not.",
+  "The environment steps back when you work.",
+  "Inside a room the atmosphere quiets and the reading measure holds. The subject's accent stays; nothing else competes with the text.",
+  "Moving between subjects is one motion.",
+  "Switch from one subject to another and the environment changes in place, in under a second, without the text moving.",
+  "[data-difference] { padding-block: var(--ta-space-block); }\n        [data-difference-lead] { margin: var(--ta-space-4) 0 0; max-width: var(--ta-measure); font-size: var(--ta-text-lg); line-height: 1.55; color: var(--ta-text-secondary); text-wrap: pretty; }\n        [data-specimen-row] { list-style: none; margin: var(--ta-space-3) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ta-space-3); }\n        [data-specimen-row] > li { margin: 0; padding: 0; min-width: 0; }\n        [data-specimen] { position: relative; isolation: isolate; margin: 0; aspect-ratio: 4 / 3; padding: var(--ta-pad-card); }\n        [data-specimen-face] { position: relative; z-index: 1; display: flex; flex-direction: column; height: auto; min-height: 100%; }\n        [data-specimen-top] { display: flex; align-items: center; justify-content: space-between; }\n        [data-specimen-caption] { margin-top: auto; display: flex; flex-direction: column; gap: var(--ta-space-1); }\n        [data-specimen-rule] { display: block; width: 2rem; height: 2px; border-radius: 1px; background: var(--ta-accent-1); margin-bottom: var(--ta-space-1); }\n        [data-specimen-name] { font-family: var(--ta-font-display); font-weight: 500; font-size: var(--ta-text-xl); line-height: 1.1; color: var(--ta-text-primary); overflow-wrap: anywhere; }\n        [data-specimen-motif] { font-family: var(--ta-font-mono); font-size: var(--ta-text-2xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ta-text-muted); }\n        [data-difference-constancy] { margin: var(--ta-space-block) 0 0; max-width: var(--ta-measure); font-size: var(--ta-text-lg); line-height: 1.55; color: var(--ta-text-primary); }\n        [data-difference-next] { margin: var(--ta-space-3) 0 0; max-width: var(--ta-measure); font-size: var(--ta-text-md); line-height: 1.6; color: var(--ta-text-secondary); }\n        @media (max-width: 48rem) {\n          [data-specimen-row] { grid-template-columns: repeat(2, minmax(0, 1fr)); }\n        }\n        @media (max-width: 30rem) {\n          [data-specimen-row] { gap: var(--ta-space-2); }\n          [data-specimen] { aspect-ratio: 1 / 1; padding: var(--ta-space-3); }\n          [data-specimen-name] { font-size: var(--ta-text-sm); }\n          [data-difference] { padding-block: var(--ta-space-6); }\n          [data-difference-lead], [data-difference-constancy] { font-size: var(--ta-text-md); }\n        }",
+  "The difference",
+  "One brand. Six environments.",
+  "From one subject to the next, two things change: the accent and the motif. Everything else holds. The mark, the type and its scale, the spacing, the shape of each component, the way things move.",
+  "Six environments, side by side",
+  "Mathematics",
+  "lattice motif",
+  "Physics",
+  "field motif",
+  "Chemistry",
+  "bonds motif",
+  "Biology",
+  "living motif",
+  "English",
+  "typographic motif",
+  "History",
+  "strata motif",
+  "The same components, the same type, the same rhythm. Only the environment changes.",
+  "One of these six is the subject you are here for. It is next.",
+  "[data-choice] { padding-block: var(--ta-space-block); }\n        [data-choice-lead] { margin: var(--ta-space-4) 0 0; max-width: var(--ta-measure); font-size: var(--ta-text-lg); line-height: 1.55; color: var(--ta-text-secondary); text-wrap: pretty; }\n        [data-choice-availability] { margin: var(--ta-space-2) 0 0; max-width: var(--ta-measure); font-size: var(--ta-text-md); line-height: 1.6; color: var(--ta-text-primary); }\n        [data-doors] { list-style: none; margin: var(--ta-space-block) 0 0; padding: 0; border-top: 1px solid var(--ta-border-subtle); }\n        [data-doors] > li { margin: 0; padding: 0; border-bottom: 1px solid var(--ta-border-subtle); }\n        [data-door] { position: relative; isolation: isolate; overflow: clip; display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; align-items: center; gap: var(--ta-space-4); padding: var(--ta-space-4) var(--ta-space-3); min-height: 6rem; color: inherit; text-decoration: none; box-shadow: inset 2px 0 0 var(--ta-accent-3); transition: transform var(--ta-dur-fast) var(--ta-ease-enter), box-shadow var(--ta-dur-fast) var(--ta-ease-enter); }\n        [data-door] > * { position: relative; z-index: 1; }\n        [data-door] > [data-motif] { z-index: 0; }\n        [data-door-mark] { color: var(--ta-accent-1); display: block; }\n        [data-door-text] { display: grid; gap: 2px; min-width: 0; }\n        [data-door-name] { font-family: var(--ta-font-display); font-weight: 500; font-size: var(--ta-display-sm); line-height: 1.05; color: var(--ta-text-primary); }\n        [data-door-env] { font-family: var(--ta-font-mono); font-size: var(--ta-text-2xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ta-accent-1); margin-top: var(--ta-space-1); }\n        [data-door-tagline] { font-size: var(--ta-text-sm); color: var(--ta-text-secondary); line-height: 1.5; }\n        [data-door-action] { display: flex; align-items: center; justify-content: flex-end; min-width: 7rem; min-height: max(2.75rem, var(--ta-control-h)); }\n        [data-door-cta] { pointer-events: none; }\n        [data-door-status] { font-family: var(--ta-font-mono); font-size: var(--ta-text-2xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ta-text-muted); white-space: nowrap; }\n        a[data-door]:hover, a[data-door]:focus-visible { transform: translateY(-2px); box-shadow: inset 3px 0 0 var(--ta-accent-1); }\n        a[data-door]:hover [data-door-cta], a[data-door]:focus-visible [data-door-cta] { border-color: var(--ta-accent-1); color: var(--ta-text-primary); }\n        a[data-door]:focus-visible { outline: 2px solid var(--ta-focus-ring); outline-offset: -2px; }\n        [data-door-inert] { cursor: default; }\n        [data-choice-next] { margin: var(--ta-space-block) 0 0; max-width: var(--ta-measure); font-size: var(--ta-text-md); line-height: 1.6; color: var(--ta-text-secondary); }\n        @media (prefers-reduced-motion: reduce) {\n          [data-door] { transition: none; }\n          a[data-door]:hover, a[data-door]:focus-visible { transform: none; }\n        }\n        [data-reduced-motion=\"on\"] [data-door] { transition: none; }\n        [data-reduced-motion=\"on\"] a[data-door]:hover, [data-reduced-motion=\"on\"] a[data-door]:focus-visible { transform: none; }\n        @media (max-width: 48rem) {\n          [data-door] { grid-template-columns: 1.5rem minmax(0, 1fr); gap: var(--ta-space-3); padding: var(--ta-space-3) var(--ta-space-2); }\n          [data-door-mark] svg { width: 24px; height: 24px; }\n          [data-door-action] { grid-column: 2; justify-content: flex-start; min-width: 0; }\n          [data-door-name] { font-size: var(--ta-text-xl); }\n          /* equal weight: every row reserves two tagline lines so length of copy never changes the door's size */\n          [data-door-tagline] { min-height: 3em; }\n        }\n        @media (max-width: 30rem) {\n          [data-choice] { padding-block: var(--ta-space-6); }\n          [data-choice-lead] { font-size: var(--ta-text-md); }\n          [data-doors] { margin-top: var(--ta-space-6); }\n          [data-door-tagline] { font-size: var(--ta-text-xs); }\n        }",
+  "The choice",
+  "Six environments. This is the threshold.",
+  "Each door below is a subject built as a place. Behind it is the environment itself, as it stands today.",
+  "One of the six is open today: Mathematics. The rest are in foundation.",
+  "Mathematics",
+  "The Lattice",
+  "structure you can stand on.",
+  "→",
+  "Physics",
+  "The Field",
+  "forces you can feel.",
+  "In foundation",
+  "Chemistry",
+  "The Vessel",
+  "reactions, contained.",
+  "In foundation",
+  "Biology",
+  "The Organism",
+  "life, layered.",
+  "In foundation",
+  "English",
+  "The Page",
+  "reading first.",
+  "In foundation",
+  "History",
+  "The Record",
+  "layered, archival.",
+  "In foundation",
+  "The door opens onto the environment, and the environment becomes the page.",
+  "/* ── STICKY RELEASE RULE (see ENTER_STICKY_RULE) ─────────────────── */\n        @media (max-width: 47.99rem), (max-height: 29.99rem), (prefers-reduced-motion: reduce) {\n          section[data-scene=\"enter\"] { height: auto !important; min-height: 0 !important; }\n          section[data-scene=\"enter\"] > div { position: static !important; min-height: 0 !important; }\n        }\n        [data-reduced-motion=\"on\"] section[data-scene=\"enter\"] { height: auto !important; min-height: 0 !important; }\n        [data-reduced-motion=\"on\"] section[data-scene=\"enter\"] > div { position: static !important; min-height: 0 !important; }\n        section[data-scene=\"enter\"] > div { padding-block: var(--ta-space-6); box-sizing: border-box; }\n\n        /* ── STAGE ──────────────────────────────────────────────────────── */\n        [data-enter-stage] { margin: var(--ta-space-4) 0 0; border: 1px solid var(--ta-border-subtle); border-radius: var(--ta-radius-2); overflow: clip; }\n        [data-enter-stage] [data-switch-surface] { min-height: min(26rem, 46vh) !important; display: flex; flex-direction: column; }\n        [data-enter-stage] [data-switch-surface] > div:not([data-switch-layer]):not([data-switch-announce]) { flex: 1; display: flex; }\n        [data-enter-identity] { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--ta-space-5); align-items: start; align-content: center; padding: var(--ta-space-6) var(--ta-space-8); width: 100%; }\n        [data-enter-mark] { color: var(--ta-accent-1); display: block; line-height: 0; }\n        [data-enter-mark] svg { width: 72px; height: 72px; }\n        [data-enter-name] { margin: 0; font-family: var(--ta-font-display); font-weight: 500; font-size: var(--ta-display-md); line-height: 1; color: var(--ta-text-primary); }\n        [data-enter-env] { font-family: var(--ta-font-mono); font-size: var(--ta-text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ta-accent-1); margin: var(--ta-space-2) 0 0; }\n        [data-enter-tagline] { margin: var(--ta-space-3) 0 0; font-size: var(--ta-text-lg); color: var(--ta-text-secondary); max-width: 28rem; line-height: 1.45; }\n        [data-enter-action] { margin-top: var(--ta-space-5); display: grid; gap: var(--ta-space-3); justify-items: start; }\n        [data-enter-depth] { margin: 0; font-size: var(--ta-text-sm); color: var(--ta-text-muted); max-width: 28rem; }\n        [data-enter-status] { font-family: var(--ta-font-mono); font-size: var(--ta-text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ta-text-muted); display: inline-flex; align-items: center; min-height: var(--ta-control-h); padding-inline: var(--ta-space-1); box-shadow: inset 0 -1px 0 var(--ta-accent-3); }\n        [data-enter-caption] { margin: var(--ta-space-3) 0 0; }\n\n        /* ── CONTROL — steps, never chooses ─────────────────────────────── */\n        [data-enter-control] { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ta-space-3); margin-top: var(--ta-space-5); }\n        [data-enter-control] button { min-height: var(--ta-target-min); min-width: var(--ta-target-min); }\n        [data-enter-control] button:focus-visible { outline: 2px solid var(--ta-focus-ring); outline-offset: 2px; }\n        [data-enter-position] { font-family: var(--ta-font-mono); font-size: var(--ta-text-2xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ta-text-muted); margin: 0 0 0 var(--ta-space-2); }\n\n        @media (max-width: 48rem) {\n          [data-enter-identity] { grid-template-columns: 1fr; gap: var(--ta-space-4); padding: var(--ta-space-6) var(--ta-space-5); }\n          [data-enter-mark] svg { width: 48px; height: 48px; }\n          [data-enter-name] { font-size: var(--ta-display-sm); }\n          [data-enter-tagline] { font-size: var(--ta-text-md); }\n          [data-enter-stage] [data-switch-surface] { min-height: 0 !important; }\n        }\n        @media (max-width: 30rem) {\n          [data-enter-identity] { padding: var(--ta-space-5) var(--ta-space-4); }\n          [data-enter-name] { font-size: var(--ta-display-xs); }\n          [data-enter-position] { width: 100%; margin: 0; }\n        }",
+  "<style>section[data-scene=\"enter\"] { height: auto !important; min-height: 0 !important; } section[data-scene=\"enter\"] > div { position: static !important; min-height: 0 !important; } [data-enter-control] { visibility: hidden; }</style>",
+  "The crossing",
+  "The environment becomes the subject.",
+  "You have seen six environments side by side. Now watch one become another. The mark, the wordmark, the type and the controls hold still. Only the environment moves.",
+  "←",
+  "→",
+  "Mathematics · one of six",
+  "Environment",
+  "Mathematics",
+  "The Lattice",
+  "structure you can stand on.",
+  "Enter Mathematics",
+  "Inside, the environment runs its ambient layer. This page never loads it.",
+  "What stays: the mark, the wordmark, the nav, the type. What changes: the environment.",
+  "[data-people-lead] { margin: var(--ta-space-4) 0 0; font-family: var(--ta-font-display); font-weight: 400; font-size: var(--ta-text-2xl); line-height: 1.35; color: var(--ta-text-primary); max-width: 30ch; }\n        [data-people-lines] { margin: var(--ta-space-6) 0 0; padding: var(--ta-space-6) 0 0; border-top: 1px solid var(--ta-border-subtle); max-width: var(--ta-measure); display: grid; gap: var(--ta-space-3); }\n        [data-people-lines] p { margin: 0; font-size: var(--ta-text-lg); line-height: 1.5; color: var(--ta-text-secondary); }\n        [data-people-lines] em { font-style: normal; color: var(--ta-text-primary); }\n        [data-status] { display: inline-flex; align-items: baseline; gap: var(--ta-space-2); font-family: var(--ta-font-mono); font-size: var(--ta-text-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ta-text-secondary); box-shadow: inset 0 -1px 0 var(--ta-border-strong); padding-bottom: 2px; }\n        [data-status][data-state=\"live\"] { color: var(--ta-text-primary); box-shadow: inset 0 -1px 0 var(--ta-text-primary); }\n        [data-people-status] { margin: var(--ta-space-6) 0 0; font-size: var(--ta-text-md); color: var(--ta-text-secondary); }\n        @media (max-width: 30rem) { [data-people-lead] { font-size: var(--ta-text-xl); } [data-people-lines] p { font-size: var(--ta-text-md); } }",
+  "The people",
+  "A tutor here has a place, not a profile.",
+  "There is no roster on this page. A tutor does not get a profile page and a video call; a tutor gets an environment, and shapes it.",
+  "accent, atmosphere, motif, motion character, density",
+  "The environment is the workspace. You meet your tutor inside it.",
+  "Next · not built yet",
+  "— the tutor's side of the environment.",
+  "[data-practice-lead] { margin: var(--ta-space-3) 0 0; font-size: var(--ta-text-lg); line-height: 1.5; color: var(--ta-text-secondary); max-width: var(--ta-measure); }\n        [data-thread] { list-style: none; margin: var(--ta-space-8) 0 0; padding: 0 0 0 var(--ta-space-6); position: relative; max-width: 44rem; }\n        [data-thread]::before { content: \"\"; position: absolute; left: 0; top: 0.6em; bottom: 0.6em; width: 1px; background: var(--ta-border-strong); }\n        [data-beat] { position: relative; margin: 0; }\n        [data-beat] + [data-beat] { margin-top: var(--ta-space-8); }\n        [data-beat]:nth-child(even) { padding-left: clamp(0px, 10vw, 6rem); }\n        [data-beat]::before { content: \"\"; position: absolute; left: calc(-1 * var(--ta-space-6) - 3px); top: 0.55em; width: 7px; height: 7px; border-radius: 50%; background: var(--ta-surface-base); border: 1px solid var(--ta-text-primary); }\n        [data-beat-label] { font-family: var(--ta-font-display); font-weight: 500; font-size: var(--ta-text-xl); color: var(--ta-text-primary); margin: 0; }\n        [data-beat-text] { margin: var(--ta-space-2) 0 0; font-size: var(--ta-text-lg); line-height: 1.5; color: var(--ta-text-secondary); max-width: 46ch; }\n        [data-beat-status] { margin: var(--ta-space-2) 0 0; }\n        [data-status] { display: inline-flex; align-items: baseline; gap: var(--ta-space-2); font-family: var(--ta-font-mono); font-size: var(--ta-text-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ta-text-secondary); box-shadow: inset 0 -1px 0 var(--ta-border-strong); padding-bottom: 2px; }\n        [data-status][data-state=\"live\"] { color: var(--ta-text-primary); box-shadow: inset 0 -1px 0 var(--ta-text-primary); }\n        [data-consolidated] { margin: var(--ta-space-12) 0 0; padding-top: var(--ta-space-6); border-top: 1px solid var(--ta-border-subtle); max-width: var(--ta-measure); }\n        [data-consolidated] p { margin: 0; font-size: var(--ta-text-md); line-height: 1.55; color: var(--ta-text-primary); }\n        [data-consolidated] p + p { margin-top: var(--ta-space-2); color: var(--ta-text-secondary); }\n        [data-outro] { margin: var(--ta-space-6) 0 0; font-family: var(--ta-font-display); font-size: var(--ta-text-lg); color: var(--ta-text-muted); }\n        @media (max-width: 30rem) { [data-beat]:nth-child(even) { padding-left: 0; } [data-beat-text] { font-size: var(--ta-text-md); } }",
+  "The practice",
+  "One session, start to finish.",
+  "Everything below happens inside an environment you have already seen.",
+  "1 of 4",
+  "You attend",
+  "The class happens live, in the same room you entered from this page, with the tutor and whoever else is in it.",
+  "Next · not built yet",
+  "2 of 4",
+  "You revisit",
+  "Afterwards the class is still there, as a recording, with the notes beside it. Miss one and it waits for you.",
+  "Next · not built yet",
+  "3 of 4",
+  "You work",
+  "You do the work in the same place: the assignments, the notes from class, and help when you are stuck — from the tutor, or from the assistant.",
+  "Next · not built yet",
+  "4 of 4",
+  "You see yourself move",
+  "Your work leaves a record. You and your tutor read the same one, so you can both see where you have moved.",
+  "In foundation",
+  "Live today: six environments and the switch between them.",
+  "Next, in this order: live classes, recordings and notes, assignments, tests and the assistant, your record of progress.",
+  "What we will hold ourselves to comes next.",
+  "[data-promise-lead] { margin: var(--ta-space-3) 0 0; font-family: var(--ta-font-display); font-weight: 400; font-size: var(--ta-text-2xl); line-height: 1.35; color: var(--ta-text-primary); max-width: 32ch; }\n        [data-markers] { list-style: none; margin: var(--ta-space-8) 0 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; position: relative; }\n        [data-markers]::before { content: \"\"; position: absolute; left: 4px; right: 4px; top: 4px; height: 1px; background: var(--ta-border-strong); }\n        [data-marker] { position: relative; padding: var(--ta-space-4) var(--ta-space-3) 0 0; min-width: 0; }\n        [data-marker]::before { content: \"\"; position: absolute; left: 0; top: 0; width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--ta-text-primary); background: var(--ta-surface-base); box-sizing: border-box; }\n        [data-marker][data-state=\"done\"]::before { background: var(--ta-text-primary); }\n        [data-marker-label] { margin: 0; font-size: var(--ta-text-sm); line-height: 1.35; color: var(--ta-text-primary); font-weight: 500; }\n        [data-marker-state] { margin: var(--ta-space-1) 0 0; font-family: var(--ta-font-mono); font-size: var(--ta-text-2xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ta-text-secondary); }\n        [data-marker][data-state=\"ahead\"] [data-marker-label] { font-weight: 400; }\n        [data-mastery] { margin: var(--ta-space-8) 0 0; padding-top: var(--ta-space-6); border-top: 1px solid var(--ta-border-subtle); max-width: var(--ta-measure); }\n        [data-mastery] p { margin: 0; font-size: var(--ta-text-lg); line-height: 1.5; color: var(--ta-text-primary); }\n        [data-mastery-status] { margin: var(--ta-space-3) 0 0 !important; font-size: var(--ta-text-md) !important; color: var(--ta-text-secondary) !important; }\n        [data-status] { display: inline-flex; align-items: baseline; font-family: var(--ta-font-mono); font-size: var(--ta-text-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ta-text-secondary); box-shadow: inset 0 -1px 0 var(--ta-border-strong); padding-bottom: 2px; }\n        [data-status][data-state=\"live\"] { color: var(--ta-text-primary); box-shadow: inset 0 -1px 0 var(--ta-text-primary); }\n        [data-closing] { margin: var(--ta-space-6) 0 0; font-family: var(--ta-font-display); font-size: var(--ta-text-lg); color: var(--ta-text-muted); }\n        /* Reflow: below 48rem (and therefore at 400% zoom on any desktop) the row becomes a vertical sequence on one hairline. */\n        @media (max-width: 48rem) {\n          [data-markers] { grid-template-columns: 1fr; gap: var(--ta-space-3); padding-left: var(--ta-space-6); }\n          [data-markers]::before { left: 4px; right: auto; top: 4px; bottom: 4px; width: 1px; height: auto; }\n          [data-marker] { padding: 0; }\n          [data-marker]::before { left: calc(-1 * var(--ta-space-6)); top: 0.35em; }\n          [data-marker-label] { font-size: var(--ta-text-md); }\n          [data-promise-lead] { font-size: var(--ta-text-xl); }\n        }",
+  "The promise",
+  "What happens to you.",
+  "Six scenes have described a system. This one is about you.",
+  "See the system",
+  "done, on this page",
+  "See the doors",
+  "done, on this page",
+  "Watch the crossing",
+  "done, on this page",
+  "Learn in the room",
+  "ahead",
+  "Work with a tutor",
+  "ahead",
+  "Watch your record grow",
+  "ahead",
+  "Master the subject",
+  "ahead",
+  "Mastery here is a place that remembers where you were. Your classes, recordings and work are kept against the same environment, and your progress is read there — at the point of work, not on a separate dashboard.",
+  "In foundation",
+  "— the record.",
+  "What is left on this page is the door you already saw.",
+  "[data-return] { padding: var(--ta-space-8) 0; max-width: 40rem; }\n        [data-return-lead] { margin: var(--ta-space-4) 0 0; font-size: var(--ta-text-lg); line-height: 1.5; color: var(--ta-text-secondary); }\n        [data-return-open] { margin: var(--ta-space-2) 0 0; font-size: var(--ta-text-md); color: var(--ta-text-secondary); }\n        [data-return-cta] { margin: var(--ta-space-6) 0 0; display: flex; flex-wrap: wrap; gap: var(--ta-space-3); }\n        [data-return-cta] a { min-height: 48px; min-width: 48px; }\n        [data-return-closing] { margin: var(--ta-space-8) 0 0; padding-top: var(--ta-space-4); border-top: 1px solid var(--ta-border-subtle); font-family: var(--ta-font-display); font-size: var(--ta-text-lg); color: var(--ta-text-muted); }\n        @media (max-width: 30rem) { [data-return-cta] a { width: 100%; justify-content: center; } }",
+  "The return",
+  "Every subject is a place you can enter.",
+  "You have now seen what that means: the system, the doors, the crossing, and what is not built yet. The choice is where it was.",
+  "One of the six is open today.",
+  "Enter a world",
+  "The page ends here. The environment does not."
+ ],
+ "loginBlurbs": [
+  "Student portal",
+  "Your subjects, and what to open next.",
+  "Tutor portal",
+  "The students placed with you, by subject.",
+  "Admin portal",
+  "Architecture only. No account can open it."
+ ],
+ "pass": true,
+ "failed": []
+}

@@ -28,6 +28,7 @@ function whereLabel(next: string): string {
   const m = next.match(/^\/subjects\/([a-z-]+)/);
   const s = m ? getSubject(m[1]) : null;
   if (s) return s.name;
-  if (next.startsWith("/student/account")) return "your account";
+  if (next.startsWith("/student/account") || next.startsWith("/tutor/account")) return "your account";
+  if (next.startsWith("/tutor")) return "your students"; // 6.2 (P6-R5): the tutor's return path opens their students, not "your subjects"
   return "your subjects";
 }

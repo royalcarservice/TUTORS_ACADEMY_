@@ -28,16 +28,16 @@ export const PORTAL_META: Record<
   student: {
     label: "Student portal",
     home: ROUTES.student,
-    blurb: "Classes, assignments, tests and progress.",
+    blurb: "Your subjects, and what to open next.",
   },
   tutor: {
     label: "Tutor portal",
     home: ROUTES.tutor,
-    blurb: "Teach, schedule, assess and get paid.",
+    blurb: "The students placed with you, by subject.",
   },
   admin: {
     label: "Admin portal",
     home: ROUTES.admin,
-    blurb: "Operations, people, content and billing.",
+    blurb: "Architecture only. No account can open it.",
   },
 };

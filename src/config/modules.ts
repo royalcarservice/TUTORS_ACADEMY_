@@ -49,7 +49,7 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
   {
     id: "student-portal",
     name: "Student portal",
-    summary: "The student's home for learning: schedule, work and progress.",
+    summary: "The student's space: the subjects chosen, entered and returned to.",
     /* 5.5 (P5-R4 Addendum 2): corrected from "planned". The student SPACE
        exists in production — sign-in, the /student shell, the next-action
        engine, enrolment and entry. Schedule, work and progress do NOT. The
@@ -64,7 +64,7 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
   {
     id: "tutor-portal",
     name: "Tutor portal",
-    summary: "Teaching workspace: sessions, rosters, grading and earnings.",
+    summary: "The tutor's space: the students placed with you, by subject.",
     status: "planned",
     surfaces: ["tutor"],
     routePrefix: "/tutor",
@@ -73,20 +73,21 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
     id: "tutor-relationship",
     name: "Tutor relationship",
     summary: "One tutor, one student, one subject — explicit, revocable, never inferred.",
-    /* 6.1 (P6-R1/R2): the MODEL exists in production — `public.relationships`
-       and the four tutor read policies gated by it (migration 0002). No surface
-       reads it yet: the tutor portal is still a placeholder and the student's
-       `tutor-presence` slot stays gated on `tutor-portal`. "in-progress" is the
-       honest value: built below the surface, nothing to open. It becomes "live"
-       only when a surface that resolves depends on it (6.2+). */
-    status: "in-progress",
+    /* 6.1 (P6-R1/R2): the MODEL — `public.relationships` and the four tutor
+       read policies gated by it (migration 0002). 6.2: a surface that resolves
+       now depends on it — /tutor renders a tutor's relationship rows (display
+       name · subject) through the relationship-scoped reader. "live" per the
+       registry's own rule: shipped and reachable now (by tutor accounts; the
+       production role path still does not exist, 6.1 Part 6). The student's
+       `tutor-presence` slot stays gated on `tutor-portal`, unchanged. */
+    status: "live",
     surfaces: ["tutor"],
     routePrefix: null,
   },
   {
     id: "admin-portal",
     name: "Admin portal",
-    summary: "Back office for operations, users, content and finance.",
+    summary: "Architecture only: a route and a guard. No admin account exists.",
     status: "planned",
     surfaces: ["admin"],
     routePrefix: "/admin",

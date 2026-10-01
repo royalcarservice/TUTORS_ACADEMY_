@@ -64,6 +64,8 @@ Legend for "how verified": **H** = harness gate (`audit/shell.cjs`, `audit/envir
 | 21 | Sign-in / create-account service failure | `/login`, `/register` | *"Sign-in could not be completed just now. Nothing was changed; signing in again is safe."* / *"The account could not be created just now. Nothing was saved; sending the form again is safe."* Driver message never shown; class logged. | nothing changed; repeating is safe | T16 (no internals), D |
 | 22 | Sign-out | POST `/auth/signout` | 303 → `/login` (relative Location). No message: the login page IS the state. | nothing | T18 |
 | 23 | Arrived at `/login` from a protected page with no session ever | proxy 307 without `reason` | *"Signing in opens Mathematics."* (or "your subjects") — where, not why; we do not know why. | where sign-in goes | T18, D |
+| 24 | The tutor shell's read failing (6.2) | `/tutor` — the relationships or profiles read throws `DataReadError` | the honest page **"Your students could not be read just now."** inside the tutor layout (`src/app/(portal)/tutor/error.tsx`, `STATE_COPY.tutorFailed`) — never state A from a failed read | only "nothing was recorded; opening again only reads" | tutor.cjs (read path), same boundary pattern as row 4 |
+| 25 | Arrived at `/login` from `/tutor` or `/tutor/account` | proxy 307 without `reason` | *"Signing in opens your students."* / *"… your account."* — the tutor's return path, named truthfully (6.2, P6-R5) | where sign-in goes | identity-matrix.cjs landed cell |
 
 ## The copy — candidates, and the choice
 

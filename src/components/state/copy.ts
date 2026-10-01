@@ -26,6 +26,13 @@ export const STATE_COPY = {
     sentence: "Nothing was recorded. Opening the page again only reads — it is safe to do.",
     action: { label: "Open your subjects again", href: "/student" },
   },
+  /** /tutor segment failed (6.2) — the same shape and rule as studentFailed: a failed read is never state A. */
+  tutorFailed: {
+    eyebrow: "Not shown",
+    heading: "Your students could not be read just now.",
+    sentence: "Nothing was recorded. Opening the page again only reads — it is safe to do.",
+    action: { label: "Open your students again", href: "/tutor" },
+  },
   /** environment page failed */
   environmentFailed: {
     eyebrow: "Not shown",

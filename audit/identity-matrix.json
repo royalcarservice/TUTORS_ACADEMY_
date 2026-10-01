@@ -1,0 +1,1789 @@
+{
+ "generatedAt": "2026-10-01T18:26:12.188Z",
+ "base": "http://localhost:3100",
+ "classes": [
+  "visitor",
+  "expired",
+  "studentA",
+  "studentB",
+  "tutorT",
+  "tutorU"
+ ],
+ "identitySet": {
+  "visitor": "no cookies",
+  "expired": "student A's cookies with the token replaced (present, invalid)",
+  "studentA": "student-c (fixture) — related to tutor T in physics",
+  "studentB": "student-b (fixture) — related to nobody",
+  "tutorT": "tutor-a (fixture) — related to student A in physics only",
+  "tutorU": "tutor-u (fixture) — related to nobody",
+  "admin": "ABSENCE — see R.admin"
+ },
+ "admin": {
+  "profilesWithAdminRole": "0",
+  "usersWithAdminMetadata": "0",
+  "note": "no admin account exists; /admin is reachable by nobody. Any count above other than 0 is a FAIL."
+ },
+ "routes": {
+  "/": {
+   "kind": "page",
+   "pattern": "/",
+   "visitor": {
+    "status": 200,
+    "landed": "/",
+    "render": "page"
+   },
+   "expired": {
+    "status": 200,
+    "landed": "/",
+    "render": "page"
+   },
+   "studentA": {
+    "status": 200,
+    "landed": "/",
+    "render": "page"
+   },
+   "studentB": {
+    "status": 200,
+    "landed": "/",
+    "render": "page"
+   },
+   "tutorT": {
+    "status": 200,
+    "landed": "/",
+    "render": "page"
+   },
+   "tutorU": {
+    "status": 200,
+    "landed": "/",
+    "render": "page"
+   }
+  },
+  "/admin": {
+   "kind": "page",
+   "pattern": "/admin",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/admin",
+    "render": "login:?next=/admin"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/admin",
+    "render": "login:?next=/admin"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 307,
+    "landed": "/tutor",
+    "render": "tutor-shell:B-relationships-no-events"
+   },
+   "tutorU": {
+    "status": 307,
+    "landed": "/tutor",
+    "render": "tutor-shell:A-no-relationships"
+   }
+  },
+  "/auth/callback": {
+   "kind": "handler",
+   "pattern": "/auth/callback",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?error=confirmation",
+    "render": "login:?error=confirmation"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?error=confirmation",
+    "render": "login:?error=confirmation"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/login?error=confirmation",
+    "render": "login:?error=confirmation"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/login?error=confirmation",
+    "render": "login:?error=confirmation"
+   },
+   "tutorT": {
+    "status": 307,
+    "landed": "/login?error=confirmation",
+    "render": "login:?error=confirmation"
+   },
+   "tutorU": {
+    "status": 307,
+    "landed": "/login?error=confirmation",
+    "render": "login:?error=confirmation"
+   }
+  },
+  "/auth/signout": {
+   "kind": "handler",
+   "pattern": "/auth/signout",
+   "visitor": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "expired": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
+  "/dev/ambient": {
+   "kind": "page",
+   "pattern": "/dev/ambient",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/ambient",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/ambient",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/ambient",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/ambient",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/ambient",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/ambient",
+    "render": "not-found"
+   }
+  },
+  "/dev/brand": {
+   "kind": "page",
+   "pattern": "/dev/brand",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/brand",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/brand",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/brand",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/brand",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/brand",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/brand",
+    "render": "not-found"
+   }
+  },
+  "/dev/environment-workspace": {
+   "kind": "page",
+   "pattern": "/dev/environment-workspace",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/environment-workspace",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/environment-workspace",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/environment-workspace",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/environment-workspace",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/environment-workspace",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/environment-workspace",
+    "render": "not-found"
+   }
+  },
+  "/dev/environment-workspace/frame": {
+   "kind": "page",
+   "pattern": "/dev/environment-workspace/frame",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/environment-workspace/frame",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/environment-workspace/frame",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/environment-workspace/frame",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/environment-workspace/frame",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/environment-workspace/frame",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/environment-workspace/frame",
+    "render": "not-found"
+   }
+  },
+  "/dev/global-throw": {
+   "kind": "page",
+   "pattern": "/dev/global-throw",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/global-throw",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/global-throw",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/global-throw",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/global-throw",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/global-throw",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/global-throw",
+    "render": "not-found"
+   }
+  },
+  "/dev/marks": {
+   "kind": "page",
+   "pattern": "/dev/marks",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/marks",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/marks",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/marks",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/marks",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/marks",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/marks",
+    "render": "not-found"
+   }
+  },
+  "/dev/motifs": {
+   "kind": "page",
+   "pattern": "/dev/motifs",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/motifs",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/motifs",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/motifs",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/motifs",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/motifs",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/motifs",
+    "render": "not-found"
+   }
+  },
+  "/dev/motion": {
+   "kind": "page",
+   "pattern": "/dev/motion",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/motion",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/motion",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/motion",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/motion",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/motion",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/motion",
+    "render": "not-found"
+   }
+  },
+  "/dev/nav": {
+   "kind": "page",
+   "pattern": "/dev/nav",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/nav",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/nav",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/nav",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/nav",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/nav",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/nav",
+    "render": "not-found"
+   }
+  },
+  "/dev/next-action": {
+   "kind": "page",
+   "pattern": "/dev/next-action",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/next-action",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/next-action",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/next-action",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/next-action",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/next-action",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/next-action",
+    "render": "not-found"
+   }
+  },
+  "/dev/next-action/frame": {
+   "kind": "page",
+   "pattern": "/dev/next-action/frame",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/next-action/frame",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/next-action/frame",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/next-action/frame",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/next-action/frame",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/next-action/frame",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/next-action/frame",
+    "render": "not-found"
+   }
+  },
+  "/dev/page": {
+   "kind": "page",
+   "pattern": "/dev/page",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/page",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/page",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/page",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/page",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/page",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/page",
+    "render": "not-found"
+   }
+  },
+  "/dev/primitives": {
+   "kind": "page",
+   "pattern": "/dev/primitives",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/primitives",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/primitives",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/primitives",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/primitives",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/primitives",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/primitives",
+    "render": "not-found"
+   }
+  },
+  "/dev/progress-language": {
+   "kind": "page",
+   "pattern": "/dev/progress-language",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/progress-language",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/progress-language",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/progress-language",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/progress-language",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/progress-language",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/progress-language",
+    "render": "not-found"
+   }
+  },
+  "/dev/progress-language/frame": {
+   "kind": "page",
+   "pattern": "/dev/progress-language/frame",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/progress-language/frame",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/progress-language/frame",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/progress-language/frame",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/progress-language/frame",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/progress-language/frame",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/progress-language/frame",
+    "render": "not-found"
+   }
+  },
+  "/dev/scene-choice": {
+   "kind": "page",
+   "pattern": "/dev/scene-choice",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/scene-choice",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/scene-choice",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/scene-choice",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/scene-choice",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/scene-choice",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/scene-choice",
+    "render": "not-found"
+   }
+  },
+  "/dev/scene-enter": {
+   "kind": "page",
+   "pattern": "/dev/scene-enter",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/scene-enter",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/scene-enter",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/scene-enter",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/scene-enter",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/scene-enter",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/scene-enter",
+    "render": "not-found"
+   }
+  },
+  "/dev/scene-promise": {
+   "kind": "page",
+   "pattern": "/dev/scene-promise",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/scene-promise",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/scene-promise",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/scene-promise",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/scene-promise",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/scene-promise",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/scene-promise",
+    "render": "not-found"
+   }
+  },
+  "/dev/scene-return": {
+   "kind": "page",
+   "pattern": "/dev/scene-return",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/scene-return",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/scene-return",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/scene-return",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/scene-return",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/scene-return",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/scene-return",
+    "render": "not-found"
+   }
+  },
+  "/dev/scenes": {
+   "kind": "page",
+   "pattern": "/dev/scenes",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/scenes",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/scenes",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/scenes",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/scenes",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/scenes",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/scenes",
+    "render": "not-found"
+   }
+  },
+  "/dev/scenes-practice": {
+   "kind": "page",
+   "pattern": "/dev/scenes-practice",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/scenes-practice",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/scenes-practice",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/scenes-practice",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/scenes-practice",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/scenes-practice",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/scenes-practice",
+    "render": "not-found"
+   }
+  },
+  "/dev/spatial": {
+   "kind": "page",
+   "pattern": "/dev/spatial",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/spatial",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/spatial",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/spatial",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/spatial",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/spatial",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/spatial",
+    "render": "not-found"
+   }
+  },
+  "/dev/spine": {
+   "kind": "page",
+   "pattern": "/dev/spine",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/spine",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/spine",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/spine",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/spine",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/spine",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/spine",
+    "render": "not-found"
+   }
+  },
+  "/dev/student-gate": {
+   "kind": "page",
+   "pattern": "/dev/student-gate",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/student-gate",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/student-gate",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/student-gate",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/student-gate",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/student-gate",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/student-gate",
+    "render": "not-found"
+   }
+  },
+  "/dev/student-shell": {
+   "kind": "page",
+   "pattern": "/dev/student-shell",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/student-shell",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/student-shell",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/student-shell",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/student-shell",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/student-shell",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/student-shell",
+    "render": "not-found"
+   }
+  },
+  "/dev/student-shell/frame": {
+   "kind": "page",
+   "pattern": "/dev/student-shell/frame",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/student-shell/frame",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/student-shell/frame",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/student-shell/frame",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/student-shell/frame",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/student-shell/frame",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/student-shell/frame",
+    "render": "not-found"
+   }
+  },
+  "/dev/student-states": {
+   "kind": "page",
+   "pattern": "/dev/student-states",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/student-states",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/student-states",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/student-states",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/student-states",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/student-states",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/student-states",
+    "render": "not-found"
+   }
+  },
+  "/dev/student-states/frame": {
+   "kind": "page",
+   "pattern": "/dev/student-states/frame",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/student-states/frame",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/student-states/frame",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/student-states/frame",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/student-states/frame",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/student-states/frame",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/student-states/frame",
+    "render": "not-found"
+   }
+  },
+  "/dev/student-states/throw": {
+   "kind": "page",
+   "pattern": "/dev/student-states/throw",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/student-states/throw",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/student-states/throw",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/student-states/throw",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/student-states/throw",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/student-states/throw",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/student-states/throw",
+    "render": "not-found"
+   }
+  },
+  "/dev/subjects": {
+   "kind": "page",
+   "pattern": "/dev/subjects",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/subjects",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/subjects",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/subjects",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/subjects",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/subjects",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/subjects",
+    "render": "not-found"
+   }
+  },
+  "/dev/switch": {
+   "kind": "page",
+   "pattern": "/dev/switch",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/switch",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/switch",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/switch",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/switch",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/switch",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/switch",
+    "render": "not-found"
+   }
+  },
+  "/dev/tokens": {
+   "kind": "page",
+   "pattern": "/dev/tokens",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/tokens",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/tokens",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/tokens",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/tokens",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/tokens",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/tokens",
+    "render": "not-found"
+   }
+  },
+  "/dev/tutor-architecture": {
+   "kind": "page",
+   "pattern": "/dev/tutor-architecture",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/tutor-architecture",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/tutor-architecture",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/tutor-architecture",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/tutor-architecture",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/tutor-architecture",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/tutor-architecture",
+    "render": "not-found"
+   }
+  },
+  "/dev/tutor-shell": {
+   "kind": "page",
+   "pattern": "/dev/tutor-shell",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/tutor-shell",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/tutor-shell",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/tutor-shell",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/tutor-shell",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/tutor-shell",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/tutor-shell",
+    "render": "not-found"
+   }
+  },
+  "/dev/tutor-shell/frame": {
+   "kind": "page",
+   "pattern": "/dev/tutor-shell/frame",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/tutor-shell/frame",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/tutor-shell/frame",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/tutor-shell/frame",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/tutor-shell/frame",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/tutor-shell/frame",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/tutor-shell/frame",
+    "render": "not-found"
+   }
+  },
+  "/dev/type": {
+   "kind": "page",
+   "pattern": "/dev/type",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/type",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/type",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/type",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/type",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/type",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/type",
+    "render": "not-found"
+   }
+  },
+  "/login": {
+   "kind": "page",
+   "pattern": "/login",
+   "visitor": {
+    "status": 200,
+    "landed": "/login",
+    "render": "login"
+   },
+   "expired": {
+    "status": 200,
+    "landed": "/login",
+    "render": "login"
+   },
+   "studentA": {
+    "status": 200,
+    "landed": "/login",
+    "render": "login"
+   },
+   "studentB": {
+    "status": 200,
+    "landed": "/login",
+    "render": "login"
+   },
+   "tutorT": {
+    "status": 200,
+    "landed": "/login",
+    "render": "login"
+   },
+   "tutorU": {
+    "status": 200,
+    "landed": "/login",
+    "render": "login"
+   }
+  },
+  "/register": {
+   "kind": "page",
+   "pattern": "/register",
+   "visitor": {
+    "status": 200,
+    "landed": "/register",
+    "render": "register"
+   },
+   "expired": {
+    "status": 200,
+    "landed": "/register",
+    "render": "register"
+   },
+   "studentA": {
+    "status": 200,
+    "landed": "/register",
+    "render": "register"
+   },
+   "studentB": {
+    "status": 200,
+    "landed": "/register",
+    "render": "register"
+   },
+   "tutorT": {
+    "status": 200,
+    "landed": "/register",
+    "render": "register"
+   },
+   "tutorU": {
+    "status": 200,
+    "landed": "/register",
+    "render": "register"
+   }
+  },
+  "/student": {
+   "kind": "page",
+   "pattern": "/student",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/student",
+    "render": "login:?next=/student"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/student",
+    "render": "login:?next=/student"
+   },
+   "studentA": {
+    "status": 200,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 200,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 307,
+    "landed": "/tutor",
+    "render": "tutor-shell:B-relationships-no-events"
+   },
+   "tutorU": {
+    "status": 307,
+    "landed": "/tutor",
+    "render": "tutor-shell:A-no-relationships"
+   }
+  },
+  "/student/account": {
+   "kind": "page",
+   "pattern": "/student/account",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/student/account",
+    "render": "login:?next=/student/account"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/student/account",
+    "render": "login:?next=/student/account"
+   },
+   "studentA": {
+    "status": 200,
+    "landed": "/student/account",
+    "render": "page"
+   },
+   "studentB": {
+    "status": 200,
+    "landed": "/student/account",
+    "render": "page"
+   },
+   "tutorT": {
+    "status": 307,
+    "landed": "/tutor",
+    "render": "tutor-shell:B-relationships-no-events"
+   },
+   "tutorU": {
+    "status": 307,
+    "landed": "/tutor",
+    "render": "tutor-shell:A-no-relationships"
+   }
+  },
+  "/subjects": {
+   "kind": "page",
+   "pattern": "/subjects",
+   "visitor": {
+    "status": 200,
+    "landed": "/subjects",
+    "render": "page"
+   },
+   "expired": {
+    "status": 200,
+    "landed": "/subjects",
+    "render": "page"
+   },
+   "studentA": {
+    "status": 200,
+    "landed": "/subjects",
+    "render": "page"
+   },
+   "studentB": {
+    "status": 200,
+    "landed": "/subjects",
+    "render": "page"
+   },
+   "tutorT": {
+    "status": 200,
+    "landed": "/subjects",
+    "render": "page"
+   },
+   "tutorU": {
+    "status": 200,
+    "landed": "/subjects",
+    "render": "page"
+   }
+  },
+  "/subjects/mathematics": {
+   "kind": "page",
+   "pattern": "/subjects/[subject]",
+   "visitor": {
+    "status": 200,
+    "landed": "/subjects/mathematics",
+    "render": "page"
+   },
+   "expired": {
+    "status": 200,
+    "landed": "/subjects/mathematics",
+    "render": "page"
+   },
+   "studentA": {
+    "status": 200,
+    "landed": "/subjects/mathematics",
+    "render": "page"
+   },
+   "studentB": {
+    "status": 200,
+    "landed": "/subjects/mathematics",
+    "render": "page"
+   },
+   "tutorT": {
+    "status": 200,
+    "landed": "/subjects/mathematics",
+    "render": "page"
+   },
+   "tutorU": {
+    "status": 200,
+    "landed": "/subjects/mathematics",
+    "render": "page"
+   }
+  },
+  "/subjects/mathematics/enter": {
+   "kind": "handler",
+   "pattern": "/subjects/[subject]/enter",
+   "visitor": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "expired": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
+  "/subjects/physics": {
+   "kind": "page",
+   "pattern": "/subjects/[subject]",
+   "visitor": {
+    "status": 404,
+    "landed": "/subjects/physics",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/subjects/physics",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 200,
+    "landed": "/subjects/physics",
+    "render": "page"
+   },
+   "studentB": {
+    "status": 200,
+    "landed": "/subjects/physics",
+    "render": "page"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/subjects/physics",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/subjects/physics",
+    "render": "not-found"
+   }
+  },
+  "/subjects/physics/enter": {
+   "kind": "handler",
+   "pattern": "/subjects/[subject]/enter",
+   "visitor": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "expired": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
+  "/tutor": {
+   "kind": "page",
+   "pattern": "/tutor",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor",
+    "render": "login:?next=/tutor"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor",
+    "render": "login:?next=/tutor"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 200,
+    "landed": "/tutor",
+    "render": "tutor-shell:B-relationships-no-events"
+   },
+   "tutorU": {
+    "status": 200,
+    "landed": "/tutor",
+    "render": "tutor-shell:A-no-relationships"
+   }
+  },
+  "/tutor/account": {
+   "kind": "page",
+   "pattern": "/tutor/account",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/account",
+    "render": "login:?next=/tutor/account"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/account",
+    "render": "login:?next=/tutor/account"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 200,
+    "landed": "/tutor/account",
+    "render": "page"
+   },
+   "tutorU": {
+    "status": 200,
+    "landed": "/tutor/account",
+    "render": "page"
+   }
+  }
+ },
+ "relationships": "tutor-a@test.tutorsacademy.invalid -> student-c@test.tutorsacademy.invalid : physics (active)",
+ "gates": {
+  "admin-absence": {
+   "pass": true,
+   "detail": "{\"profilesWithAdminRole\":\"0\",\"usersWithAdminMetadata\":\"0\",\"note\":\"no admin account exists; /admin is reachable by nobody. Any count above other than 0 is a FAIL.\"}"
+  },
+  "regression: tutor T denied student A's draft door": {
+   "pass": true,
+   "detail": "{\"status\":404,\"landed\":\"/subjects/physics\",\"render\":\"not-found\"}"
+  },
+  "tutor U (unrelated) sees state A, tutor T sees state B": {
+   "pass": true,
+   "detail": "[{\"status\":200,\"landed\":\"/tutor\",\"render\":\"tutor-shell:A-no-relationships\"},{\"status\":200,\"landed\":\"/tutor\",\"render\":\"tutor-shell:B-relationships-no-events\"}]"
+  },
+  "students never reach /tutor; tutors never reach /student": {
+   "pass": true,
+   "detail": ""
+  },
+  "visitor and expired land on /login for every portal route": {
+   "pass": true,
+   "detail": ""
+  },
+  "/dev/* is 404 for every class": {
+   "pass": true,
+   "detail": ""
+  }
+ }
+}

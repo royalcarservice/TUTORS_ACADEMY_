@@ -16,18 +16,17 @@ export function NotBuiltYet({
 }: {
   /** e.g. "Student dashboard" */
   scope: string;
-  /** Registry entries that will land on this surface. */
+  /** Registry entries declared for this surface (status read from the registry; nothing here is marked built). */
   modules: readonly PlatformModule[];
-  /** Extra sentence about what happens next. */
+  /** One true sentence about this surface today — never a promise about a later build (P6-R5). */
   note: string;
 }) {
   return (
     <div className="flex flex-col gap-5">
       <Alert variant="info" title={`${scope} is not built yet`}>
         <p>
-          This is the foundation task, so only the shell, routing and design
-          system exist here. No demo data is shown because no service is
-          connected. {note}
+          Nothing behind this route is built. No demo data is shown because
+          none exists. {note}
         </p>
       </Alert>
 
@@ -35,7 +34,7 @@ export function NotBuiltYet({
         <div className="border-b border-border px-5 py-4 sm:px-6">
           <h2 className="flex items-center gap-2 text-sm font-semibold text-foreground">
             <Hammer className="size-4 text-brand-600" aria-hidden />
-            Scheduled for this surface
+            Declared for this surface
           </h2>
         </div>
 

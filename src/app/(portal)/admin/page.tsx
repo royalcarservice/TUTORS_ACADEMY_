@@ -11,7 +11,7 @@ export default function AdminOverviewPage() {
       <NotBuiltYet
         scope="Admin dashboard"
         modules={getPlannedModules("admin")}
-        note="The dashboard is deliberately left out of this task; the next build drops it into this exact shell."
+        note="No admin account exists: the route and its guard are the whole of this portal today."
       />
     </>
   );

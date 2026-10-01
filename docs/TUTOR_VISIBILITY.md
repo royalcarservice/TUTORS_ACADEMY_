@@ -112,3 +112,54 @@ row must say who created it (`created_by`) — one column, inside the relationsh
 
 - **E-13** → identity is `CHECK`ed in the DB (`is_subject_id`, used by three tables); status stays TS; no policy references it. The "draft enrolment via REST" hole is **not** closed by a policy — a policy for it would need status, which is wrong by ruling. It stays a door-side rule (`mayEnrol`) and remains open at that layer.
 - **E-14** → `count(profiles) = 4` replaced by manifest-derived invariants (fixture table + test-domain predicate). The same mistake was caught once more while extending the test (`count(relationships) = 2` on the project DB, which holds its own row) and scoped to the fixture tutor.
+
+## 9. The tutor shell (6.2) — what the policy looks like when rendered
+
+One page, appended; nothing above is restated. The shell is `/tutor` (`src/app/(portal)/tutor`),
+rendered by `src/components/tutor/tutor-shell.tsx` from `src/lib/tutor/data.ts` — **the only
+reader**. The reader names two tables (`relationships` where `tutor_id = me AND state = 'active'`;
+`profiles.display_name` for the students those rows name) and takes no argument: there is no
+parameter through which a caller could ask for another student, another subject, or an ordering
+by anything a student did. Reach is still §2's policies; the reader only states "mine" explicitly,
+as every student read does since DEC-014.
+
+**What renders, by state**
+
+| state | who has it today | dominant surface (the one `h1`) | below it |
+|---|---|---|---|
+| A · no active relationship | `tutor-u` (fixture) | *"No student is placed with you."* + why: placing is the academy's act, not this page's; teaching surfaces are not built | nothing — no groups, no region, no count, no control |
+| B · relationships, no events | `tutor-a` (fixture; student-c · physics) | *"Nothing to do here."* + the same why | one section per subject (config order), one row per relationship: **display name · subject · nothing else**; rows are not links (no relationship surface exists until 6.3) |
+| C · relationships + events | nobody (no events table, 5.6) | fixture on `/dev/tutor-shell` only, labelled | — |
+
+A tutor has no next act (§7 of the 6.1 report: no P6 provider ships), so in every state the
+surface is a **statement**, never a control (P6-R4). The harness asserts: zero `a`/`button`/`form`
+inside the shell, zero `[disabled]`, zero numerals, zero slot DOM.
+
+**Order** is fixed and non-evaluative — subjects in the 3.1 config order, rows by display name
+(`localeCompare`, base sensitivity), ties by opaque id. Never by start date, never by activity.
+The sort is one function (`orderRows`) and is shown with a shuffled fixture on `/dev/tutor-shell`.
+
+**P6-R3 made structural.** `TutorContext` is `{ state, groups: SubjectGroup[] }` — subjects
+containing rows. There is no top-level array of students, no per-row field but `studentId`
+and `displayName`, and the shell has no `enrolments`/`environmentStates` prop. Two attacks
+through the shell's own code path fail to compile (`audit/attacks/*.ts`, errors in
+`audit/attacks/tsc-output.txt`): asking the reader for a named student (TS2554), and placing a
+related student under a subject the reader did not emit (TS2353 ×2).
+
+**Rides along, unchanged (§4):** the related tutor can still read `profiles.role`,
+`is_test_account` and timestamps row-grained; the shell renders none of them.
+
+**Third scope of the one slot registry** (`TUTOR_SLOTS` in `src/config/student-slots.ts`): the
+same capabilities seen from the tutor's side, each gated on a `live` module AND real data for
+this tutor through the reader. All absent; nothing renders. There is no "attention",
+"progress" or "activity" region in this scope and none may be added.
+
+**Reader classes** are now a harness dimension (`audit/identity-matrix.cjs`, pin
+`audit/identity-matrix.json`): visitor · expired · student A (related) · student B (unrelated)
+· tutor T (related to A in one subject) · tutor U (unrelated) · admin recorded as an absence
+(`count(role='admin') = 0`, asserted). Named regression row: **tutor T denied student A's draft
+door** → `/subjects/physics` · tutorT · 404. Coverage gate: every `page.tsx`/`route.ts` under
+`src/app` must have a pinned row; proven by `--drop-row=/tutor/account` → FAIL.
+
+The production role path still does not exist: tutor accounts are created only by
+`scripts/test-account.mjs` (service role, `*@test.*.invalid`).

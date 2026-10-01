@@ -1,0 +1,3 @@
+../../../tmp/att/tutor-shell-attack-1.ts(7,22): error TS2554: Expected 0 arguments, but got 1.
+../../../tmp/att/tutor-shell-attack-2.ts(11,155): error TS2353: Object literal may only specify known properties, and 'enrolments' does not exist in type 'TutorShellProps'.
+../../../tmp/att/tutor-shell-attack-2.ts(14,43): error TS2353: Object literal may only specify known properties, and 'subjectId' does not exist in type 'RelationshipRow'.
