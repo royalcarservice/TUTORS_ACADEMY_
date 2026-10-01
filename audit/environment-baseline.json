@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-01T08:56:23.784Z",
+ "generatedAt": "2026-10-01T17:07:16.434Z",
  "reference": "390x844 mobile",
  "states": {
   "visitor-ready": {
@@ -11,8 +11,14 @@
     "Mathematics"
    ],
    "h1Count": 1,
-   "primaryCount": 0,
-   "primaryAction": null,
+   "primaryCount": 1,
+   "primaryAction": {
+    "tag": "A",
+    "text": "Sign in",
+    "form": null,
+    "href": "/login?next=%2Fsubjects%2Fmathematics",
+    "accessibleName": "Sign in"
+   },
    "threshold": false,
    "studentRegions": [],
    "arc": null,
@@ -20,14 +26,70 @@
    "draftBanner": false,
    "draftLabel": false,
    "honestLabels": 3,
-   "text": "Mathematics The Lattice — structure you can stand on. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STAT",
+   "text": "Mathematics The Lattice — structure you can stand on. Sign in NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYS",
    "subjectRoot": "mathematics",
-   "htmlHash": "2e2e49a0c24c797d",
-   "rscHash": "65172cda1e8f4aa7",
-   "htmlBytes": 41844,
+   "htmlHash": "8b71c06b2cfd6fcf",
+   "rscHash": "daabb2db8c819271",
+   "htmlBytes": 42468,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
-   "htmlHasBeginForm": false
+   "htmlHasBeginForm": false,
+   "primaryAboveFold": {
+    "320x568": {
+     "viewport": "320x568",
+     "primaryActionBottom": 386,
+     "visible": true
+    },
+    "360x640": {
+     "viewport": "360x640",
+     "primaryActionBottom": 362,
+     "visible": true
+    },
+    "390x844": {
+     "viewport": "390x844",
+     "primaryActionBottom": 362,
+     "visible": true
+    },
+    "1280x800": {
+     "viewport": "1280x800",
+     "primaryActionBottom": 382,
+     "visible": true
+    },
+    "zoom200": {
+     "viewport": "640x400",
+     "primaryActionBottom": 370,
+     "visible": true
+    },
+    "textSpacing390": {
+     "viewport": "390x844",
+     "primaryActionBottom": 388,
+     "visible": true
+    }
+   },
+   "noJs": {
+    "title": "Mathematics · Subjects",
+    "h1": [
+     "Mathematics"
+    ],
+    "h1Count": 1,
+    "primaryCount": 1,
+    "primaryAction": {
+     "tag": "A",
+     "text": "Sign in",
+     "form": null,
+     "href": "/login?next=%2Fsubjects%2Fmathematics",
+     "accessibleName": "Sign in"
+    },
+    "threshold": false,
+    "studentRegions": [],
+    "arc": null,
+    "backToSpace": [],
+    "draftBanner": false,
+    "draftLabel": false,
+    "honestLabels": 3,
+    "text": "Mathematics The Lattice — structure you can stand on. Sign in NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYS",
+    "subjectRoot": "mathematics"
+   }
   },
   "visitor-draft": {
    "account": null,
@@ -56,8 +118,8 @@
    "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects",
    "subjectRoot": null,
    "htmlHash": "8c2618771284e56e",
-   "rscHash": "d549fcf4cdbe50da",
-   "htmlBytes": 13249,
+   "rscHash": "cbcb513b90a42f74",
+   "htmlBytes": 13360,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false,
@@ -142,9 +204,9 @@
    "honestLabels": 3,
    "text": "Mathematics The Lattice — structure you can stand on. Begin Mathematics NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays ",
    "subjectRoot": "mathematics",
-   "htmlHash": "923239d89759fb20",
-   "rscHash": "4e50b51749662fdf",
-   "htmlBytes": 43821,
+   "htmlHash": "a8c037a1cc14fa46",
+   "rscHash": "e023e0477df9a1b5",
+   "htmlBytes": 43806,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": true,
    "htmlHasBeginForm": true,
@@ -166,7 +228,7 @@
     },
     "1280x800": {
      "viewport": "1280x800",
-     "primaryActionBottom": 382,
+     "primaryActionBottom": 386,
      "visible": true
     },
     "zoom200": {
@@ -238,8 +300,8 @@
    "text": "NOT HERE There is no page at this address. The six subject environments are listed on the subjects page. See the subjects",
    "subjectRoot": null,
    "htmlHash": "1a06ca90e0072d37",
-   "rscHash": "86ee071e023185f9",
-   "htmlBytes": 16543,
+   "rscHash": "2b6d978c259096a6",
+   "htmlBytes": 17267,
    "htmlHasStudentRegion": false,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false,
@@ -370,9 +432,9 @@
    "honestLabels": 3,
    "text": "Draft subject — still in foundation. Open here ahead of its public listing. Physics The Field — forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7",
    "subjectRoot": "physics",
-   "htmlHash": "8a37bfc0afa89033",
-   "rscHash": "d59b840d13e46f36",
-   "htmlBytes": 58572,
+   "htmlHash": "137e83bcedebcde1",
+   "rscHash": "dc5a836a9023e9f5",
+   "htmlBytes": 58931,
    "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -455,9 +517,9 @@
    "honestLabels": 3,
    "text": "Mathematics The Lattice — structure you can stand on. NAVIGATION POSITION Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT As",
    "subjectRoot": "mathematics",
-   "htmlHash": "b210eee95acc2f58",
-   "rscHash": "7283c6df725d7256",
-   "htmlBytes": 57375,
+   "htmlHash": "46e3fc17b756ad02",
+   "rscHash": "70d257ad57f34912",
+   "htmlBytes": 57360,
    "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -540,9 +602,9 @@
    "honestLabels": 3,
    "text": "Draft subject — still in foundation. Open here ahead of its public listing. Physics The Field — forces you can feel. NAVIGATION POSITION Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7",
    "subjectRoot": "physics",
-   "htmlHash": "3cbb5b48dcd84ebc",
-   "rscHash": "8d5a8279308c7340",
-   "htmlBytes": 58759,
+   "htmlHash": "517a0f25c8a7ae9e",
+   "rscHash": "1a0198f7ace39723",
+   "htmlBytes": 58752,
    "htmlHasStudentRegion": true,
    "htmlHasThreshold": false,
    "htmlHasBeginForm": false
@@ -551,7 +613,7 @@
  "gates": {
   "no write on GET (rows before == after across every state)": {
    "pass": true,
-   "detail": "9/3/2026-10-01 08:55:48.839+00 → 9/3/2026-10-01 08:55:48.839+00"
+   "detail": "9/3/2026-10-01 17:07:02.977+00 → 9/3/2026-10-01 17:07:02.977+00"
   },
   "write: GET and prefetch write nothing": {
    "pass": true,
@@ -559,7 +621,7 @@
   },
   "write: POST → 303 → 200, one enrolment + one state row, position NULL": {
    "pass": true,
-   "detail": "{\"post\":[\"POST /subjects/mathematics/enter → 303\",\"GET /subjects/mathematics → 200\"],\"landed\":\"/subjects/mathematics\",\"rows\":\"enrolments=1 env_state=1 entry_count=1\",\"row\":\"mathematics | active | enrolled 2026-10-01 08:56:58.6188+00 | last_entered 2026-10-01 08:56:58.779+00 | position NULL\"}"
+   "detail": "{\"post\":[\"POST /subjects/mathematics/enter → 303\",\"GET /subjects/mathematics → 200\"],\"landed\":\"/subjects/mathematics\",\"rows\":\"enrolments=1 env_state=1 entry_count=1\",\"row\":\"mathematics | active | enrolled 2026-10-01 17:07:56.734812+00 | last_entered 2026-10-01 17:07:56.89+00 | position NULL\"}"
   },
   "write: idempotent — second submit, still one enrolment, no error": {
    "pass": true,
@@ -627,15 +689,15 @@
   },
   "one primary per view (≤1 in main)": {
    "pass": true,
-   "detail": "{\"visitor-ready\":0,\"visitor-draft\":1,\"nonenrolled-ready\":1,\"nonenrolled-draft\":1,\"enrolled-draft-entered\":0,\"enrolled-ready-no-state\":0,\"enrolled-draft-no-state\":0}"
+   "detail": "{\"visitor-ready\":1,\"visitor-draft\":1,\"nonenrolled-ready\":1,\"nonenrolled-draft\":1,\"enrolled-draft-entered\":0,\"enrolled-ready-no-state\":0,\"enrolled-draft-no-state\":0}"
   },
   "PRIMARY ACTION ABOVE THE FOLD — 320x568, 360x640, 390x844, 1280x800, 200% zoom, 1.4.12 text spacing; document height not asserted": {
    "pass": true,
-   "detail": "{\"visitor-draft\":{\"320x568\":368,\"360x640\":370,\"390x844\":371,\"1280x800\":322,\"zoom200\":357,\"textSpacing390\":477},\"nonenrolled-ready\":{\"320x568\":386,\"360x640\":362,\"390x844\":362,\"1280x800\":382,\"zoom200\":370,\"textSpacing390\":388},\"nonenrolled-draft\":{\"320x568\":368,\"360x640\":370,\"390x844\":371,\"1280x800\":322,\"zoom200\":357,\"textSpacing390\":477}}"
+   "detail": "{\"visitor-ready\":{\"320x568\":386,\"360x640\":362,\"390x844\":362,\"1280x800\":382,\"zoom200\":370,\"textSpacing390\":388},\"visitor-draft\":{\"320x568\":368,\"360x640\":370,\"390x844\":371,\"1280x800\":322,\"zoom200\":357,\"textSpacing390\":477},\"nonenrolled-ready\":{\"320x568\":386,\"360x640\":362,\"390x844\":362,\"1280x800\":386,\"zoom200\":370,\"textSpacing390\":388},\"nonenrolled-draft\":{\"320x568\":368,\"360x640\":370,\"390x844\":371,\"1280x800\":322,\"zoom200\":357,\"textSpacing390\":477}}"
   },
   "no-JS: primary action present and is a form or a link in plain HTML": {
    "pass": true,
-   "detail": "{\"nonenrolled-ready\":{\"tag\":\"BUTTON\",\"text\":\"Begin Mathematics\",\"form\":{\"method\":\"post\",\"action\":\"/subjects/mathematics/enter\"},\"href\":null,\"accessibleName\":\"Begin Mathematics\"}}"
+   "detail": "{\"visitor-ready\":{\"tag\":\"A\",\"text\":\"Sign in\",\"form\":null,\"href\":\"/login?next=%2Fsubjects%2Fmathematics\",\"accessibleName\":\"Sign in\"},\"nonenrolled-ready\":{\"tag\":\"BUTTON\",\"text\":\"Begin Mathematics\",\"form\":{\"method\":\"post\",\"action\":\"/subjects/mathematics/enter\"},\"href\":null,\"accessibleName\":\"Begin Mathematics\"}}"
   },
   "no-JS: 404 pages — KNOWN FRAMEWORK DEFECT (next#99287): not-found is client-rendered; recorded, not accepted": {
    "pass": true,
@@ -643,8 +705,8 @@
   }
  },
  "notes": {
-  "dbCountsBeforeGets": "9/3/2026-10-01 08:55:48.839+00",
-  "dbCountsAfterGets": "9/3/2026-10-01 08:55:48.839+00"
+  "dbCountsBeforeGets": "9/3/2026-10-01 17:07:02.977+00",
+  "dbCountsAfterGets": "9/3/2026-10-01 17:07:02.977+00"
  },
  "write": {
   "rowsStart": "enrolments=0 env_state=0 entry_count=-",
@@ -664,7 +726,7 @@
   ],
   "landed": "/subjects/mathematics",
   "rowsAfterPost": "enrolments=1 env_state=1 entry_count=1",
-  "row": "mathematics | active | enrolled 2026-10-01 08:56:58.6188+00 | last_entered 2026-10-01 08:56:58.779+00 | position NULL",
+  "row": "mathematics | active | enrolled 2026-10-01 17:07:56.734812+00 | last_entered 2026-10-01 17:07:56.89+00 | position NULL",
   "thresholdAfter": false,
   "doubleSubmit": {
    "status": 200,

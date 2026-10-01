@@ -32,15 +32,21 @@ export { DataReadError };
 
 /**
  * Everything the student shell needs, for the CURRENT user only. Both reads
- * go through the anon-key client, so RLS bounds them to auth.uid() — this
- * function cannot read another student even if asked to.
+ * go through the anon-key client, so RLS bounds them — and, since 6.1, the
+ * query SAYS "mine" (`student_id = user.id`) instead of relying on RLS to mean
+ * it: a related tutor's policy now admits other rows through the same client,
+ * and "my enrolments" must not silently become "every enrolment I may read".
+ * RLS stays the boundary (it still refuses anyone else's rows); the predicate
+ * states the question. (Post-6.1 defect, found by the E-23 check.)
  */
 export async function getStudentContext(): Promise<StudentContext | null> {
   const supabase = await createClient();
   if (!supabase) return null;
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return null;
   const [{ data: enr, error: enrErr }, { data: env, error: envErr }] = await Promise.all([
-    supabase.from("enrolments").select("subject_id, status, enrolled_at").order("enrolled_at"),
-    supabase.from("environment_state").select("subject_id, first_entered_at, last_entered_at, entry_count, position"),
+    supabase.from("enrolments").select("subject_id, status, enrolled_at").eq("student_id", user.id).order("enrolled_at"),
+    supabase.from("environment_state").select("subject_id, first_entered_at, last_entered_at, entry_count, position").eq("student_id", user.id),
   ]);
   /* 5.7 (P5-R8.1/9): a failed read is NOT an empty read. Rendering state A
      ("no enrolments") from a database error would be a claim we cannot make;
@@ -86,7 +92,8 @@ export async function getEnrolledSubjectIds(): Promise<Set<string>> {
   if (!supabase) return new Set();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Set();
-  const { data, error } = await supabase.from("enrolments").select("subject_id").eq("status", "active");
+  // 6.1: "mine" stated, not assumed (a related tutor may read a student's enrolment row through this client).
+  const { data, error } = await supabase.from("enrolments").select("subject_id").eq("student_id", user.id).eq("status", "active");
   // 5.7: a failed read must not become "not enrolled" — that would 404 a student's own draft environment or offer Begin to someone already enrolled.
   if (error) throw new DataReadError("enrolments", error);
   return new Set((data ?? []).map((r) => r.subject_id as string));
@@ -103,7 +110,10 @@ export async function getEnrolledSubjectIds(): Promise<Set<string>> {
 export async function getEnvironmentFacts(subjectId: SubjectId, enrolled: boolean): Promise<EnvironmentFacts> {
   const supabase = await createClient();
   if (!supabase) return { subjectId, hasAccount: false, enrolled, firstEnteredAt: null };
-  const { data, error } = await supabase.from("environment_state").select("first_entered_at").eq("subject_id", subjectId).maybeSingle();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { subjectId, hasAccount: false, enrolled, firstEnteredAt: null };
+  // 6.1: "mine" stated — a related tutor may read another row for this subject through this client.
+  const { data, error } = await supabase.from("environment_state").select("first_entered_at").eq("student_id", user.id).eq("subject_id", subjectId).maybeSingle();
   // 5.7: a failed read is not "never entered". The caller (a SUPPLEMENTAL region) isolates this throw: silence + log.
   if (error) throw new DataReadError("environment_state", error);
   return { subjectId, hasAccount: true, enrolled, firstEnteredAt: data?.first_entered_at ?? null };

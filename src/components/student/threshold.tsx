@@ -30,3 +30,27 @@ export function Threshold({ subjectId, subjectName, failed = false }: { subjectI
     </form>
   );
 }
+
+/* THE VISITOR'S DOOR (E-23 fix, after 6.1 · before 6.2)
+ *
+ * Rendered in the SAME header position for exactly ONE other reader class: a
+ * signed-out visitor at an open environment. Until now <main> offered nothing;
+ * the only way in was header → menu → Sign in (3 taps where the homepage's
+ * "Enter Mathematics" promised 1). The action is the existing one — the
+ * header's own Sign in link, same destination (`/login?next=<this
+ * environment>`), so after signing in the visitor lands back here at the
+ * threshold and meets "Begin". No new verb, no "sign in to enter" sentence:
+ * the heading and tagline already say where this is; the action says how in.
+ * It is the view's one primary; the header's Sign in is chrome, not <main>.
+ * A plain <a>, not next/link: the environment route carries no client JS
+ * (5.5), and a Link here moved 12 KB of chunks onto /student as well.
+ */
+export function VisitorDoor({ subjectId }: { subjectId: string }) {
+  return (
+    <div data-visitor-door style={{ marginTop: "var(--ta-space-6)" }}>
+      <a href={`/login?next=${encodeURIComponent(`/subjects/${subjectId}`)}`} className="ta-btn" data-variant="primary" data-size="lg" data-primary-action style={{ minWidth: "12rem" }}>
+        Sign in
+      </a>
+    </div>
+  );
+}

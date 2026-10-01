@@ -182,7 +182,7 @@ and each belongs to a state. Verbatim, as rendered (390, production, 2026-10-01)
 |---|---|---|---|
 | `/` Scene 0 / Scene 8 | stranger | **Enter a world** (→ `#for-students`) | you may go in; the page points at the doors |
 | `/` Scene 3 (The choice) | stranger | **Enter →** on the one open door; **Enter Mathematics** in Scene 4 | this door is open |
-| `/subjects/mathematics` | visitor | *(none in `<main>`)* — header → **Sign in** | the door is open but the room is a student's; identity first (see `docs/EXCEPTIONS.md` E-23) |
+| `/subjects/mathematics` | visitor | **Sign in** (→ `/login?next=/subjects/mathematics`; after signing in, back here at **Begin**) | the door is open but the room is a student's; identity first. (E-23 closed after 6.1: the same action the header carries, now in `<main>`, one tap — no fourth verb, no "sign in to enter" sentence) |
 | `/subjects/mathematics` | signed-in, not enrolled | **Begin Mathematics** (POST `/subjects/mathematics/enter`) | the first, recorded crossing |
 | `/student` | enrolled | **Open Physics** (POST `/subjects/physics/enter`) | return to a room you already have |
 | `/student` | no enrolment | **See the six subjects** (→ `/subjects`) | choosing is where this begins |

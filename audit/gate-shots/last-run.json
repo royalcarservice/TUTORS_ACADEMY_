@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-01T09:33:01.300Z",
+ "generatedAt": "2026-10-01T17:36:12.090Z",
  "reference": "390x844 · dark · 8 pm profile (400 ms RTT / 1.6 Mbps) · 4× CPU · cold cache",
  "profile": {
   "eightPm": {
@@ -60,7 +60,7 @@
     {
      "step": "1 land on / as a stranger",
      "url": "/",
-     "wall": 2761,
+     "wall": 2772,
      "h1": [
       "Every subject is a place you can enter."
      ],
@@ -71,17 +71,17 @@
      "foldWords": 28,
      "foldText": "Tutors Academy Sign in Every subject is a place you can enter. Each subject is its own environment. Choose one and step inside. Enter a world Understand it",
      "hscroll": false,
-     "ttfb": 16,
-     "fcp": 1420,
-     "lcp": 1420,
-     "load": 2343,
+     "ttfb": 18,
+     "fcp": 1396,
+     "lcp": 1396,
+     "load": 2346,
      "claimsProgress": true,
      "shot": "journey-01.png"
     },
     {
      "step": "2 the door list (/subjects)",
      "url": "/subjects",
-     "wall": 1299,
+     "wall": 1281,
      "h1": [
       "Subjects"
      ],
@@ -92,38 +92,45 @@
      "foldWords": 90,
      "foldText": "Subjects Create account Sign in Temporary scaffold Subjects Each subject is a place, not a page of content. This list is a scaffold so the environments are reachable; the six doors on the homepage are the chooser, and this list is not. Draft subjects are not linkable in production. Mathematics Physics · in foundation — not yet available Chemistry · in foundation — not yet available Biology · in fo",
      "hscroll": false,
-     "ttfb": 16,
-     "fcp": 624,
-     "lcp": 624,
-     "load": 956,
+     "ttfb": 11,
+     "fcp": 640,
+     "lcp": 640,
+     "load": 948,
      "claimsProgress": false,
      "shot": "journey-02.png"
     },
     {
      "step": "3 the open door → environment as visitor",
      "url": "/subjects/mathematics",
-     "wall": 1356,
+     "wall": 1383,
      "h1": [
       "Mathematics"
      ],
      "h1InFold": true,
-     "primary": [],
-     "primariesVisible": 0,
-     "actionsInMain": 1,
-     "foldWords": 106,
-     "foldText": "Subjects Create account Sign in Mathematics The Lattice — structure you can stand on. Navigation position Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, comp",
+     "primary": [
+      {
+       "text": "Sign in",
+       "href": "/login?next=%2Fsubjects%2Fmathematics",
+       "inFold": true,
+       "bottom": 362
+      }
+     ],
+     "primariesVisible": 1,
+     "actionsInMain": 2,
+     "foldWords": 87,
+     "foldText": "Subjects Create account Sign in Mathematics The Lattice — structure you can stand on. Sign in Navigation position Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only ca",
      "hscroll": false,
      "ttfb": 16,
-     "fcp": 556,
-     "lcp": 556,
-     "load": 950,
+     "fcp": 560,
+     "lcp": 560,
+     "load": 927,
      "claimsProgress": false,
      "shot": "journey-03.png"
     },
     {
-     "step": "4 Sign in from the environment (on a phone: behind the menu trigger — nothing in <main> offers a way in)",
+     "step": "4 Sign in from the environment (E-23: the door in <main> when it exists; else the phone menu — recorded either way)",
      "url": "/login?next=%2Fsubjects%2Fmathematics",
-     "wall": 1977,
+     "wall": 1460,
      "h1": [
       "Sign in"
      ],
@@ -131,7 +138,7 @@
      "primary": [
       {
        "text": "Sign in",
-       "href": "javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')",
+       "href": null,
        "inFold": true,
        "bottom": 687
       }
@@ -141,22 +148,24 @@
      "foldWords": 56,
      "foldText": "Back Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account",
      "hscroll": false,
-     "ttfb": 16,
-     "fcp": 556,
-     "lcp": 556,
-     "load": 950,
+     "ttfb": 18,
+     "fcp": 548,
+     "lcp": 548,
+     "load": 933,
      "claimsProgress": false,
      "visibleActionsInMainBefore": [
+      "Sign in→/login?next=%2Fsubjects%2Fmathematics",
       "Mathematics→/subjects/mathematics"
      ],
-     "viaMenu": true,
+     "viaMenu": false,
+     "tapsFromEnvironment": 1,
      "context": "Signing in opens Mathematics.",
      "shot": "journey-04.png"
     },
     {
      "step": "5 sign in → back to the environment (threshold)",
      "url": "/subjects/mathematics",
-     "wall": 1813,
+     "wall": 1761,
      "h1": [
       "Mathematics"
      ],
@@ -174,12 +183,12 @@
      "foldWords": 88,
      "foldText": "Overview Subjects Student E Sign out Mathematics The Lattice — structure you can stand on. Begin Mathematics Navigation position Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. It holds no substrate and no c",
      "hscroll": false,
-     "ttfb": 16,
-     "fcp": 556,
-     "lcp": 556,
-     "load": 950,
+     "ttfb": 18,
+     "fcp": 548,
+     "lcp": 548,
+     "load": 933,
      "claimsProgress": false,
-     "submitToArrive": 999,
+     "submitToArrive": 1041,
      "inFlight": [
       "[\"Signing in…\",true]"
      ],
@@ -188,7 +197,7 @@
     {
      "step": "6 Begin Mathematics (the one write)",
      "url": "/subjects/mathematics",
-     "wall": 2254,
+     "wall": 2261,
      "h1": [
       "Mathematics"
      ],
@@ -199,12 +208,12 @@
      "foldWords": 107,
      "foldText": "Overview Subjects Student E Sign out Mathematics The Lattice — structure you can stand on. Navigation position Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm,",
      "hscroll": false,
-     "ttfb": 1633,
+     "ttfb": 1618,
      "fcp": 1792,
      "lcp": 1792,
-     "load": 1821,
+     "load": 1815,
      "claimsProgress": false,
-     "clickToArrive": 1876,
+     "clickToArrive": 1861,
      "arc": "discover:done choose:done enter:done learn:ahead interact:ahead progress:ahead master:ahead",
      "regionHeadings": [
       "Inside this room",
@@ -218,7 +227,7 @@
     {
      "step": "7 back to the shell (/student)",
      "url": "/student",
-     "wall": 1329,
+     "wall": 1350,
      "h1": [
       "Mathematics — The Lattice"
      ],
@@ -236,17 +245,17 @@
      "foldWords": 29,
      "foldText": "Overview Subjects Account Student E Sign out Last opened today Mathematics — The Lattice You were last here today. Open Mathematics Your subjects Mathematics The Lattice Last opened today",
      "hscroll": false,
-     "ttfb": 421,
-     "fcp": 528,
-     "lcp": 528,
-     "load": 976,
+     "ttfb": 428,
+     "fcp": 576,
+     "lcp": 576,
+     "load": 1003,
      "claimsProgress": false,
      "shot": "journey-07.png"
     },
     {
      "step": "8 the account page",
      "url": "/student/account",
-     "wall": 899,
+     "wall": 866,
      "h1": [
       "Student E"
      ],
@@ -264,23 +273,23 @@
      "foldWords": 34,
      "foldText": "Overview Subjects Account Student E Sign out Account Student E This is a test account. It may be deleted while the academy is being built. Name Student E Email student-e@test.tutorsacademy.invalid Role student Sign out",
      "hscroll": false,
-     "ttfb": 372,
-     "fcp": 528,
-     "lcp": 528,
-     "load": 549,
+     "ttfb": 373,
+     "fcp": 476,
+     "lcp": 476,
+     "load": 518,
      "claimsProgress": false,
      "shot": "journey-08.png"
     }
    ],
-   "encodedKB": 479,
-   "requests": 146
+   "encodedKB": 493,
+   "requests": 162
   },
   "secondVisit": {
    "steps": [
     {
      "step": "1 return: sign in (cold cache, next day)",
      "url": "/student",
-     "wall": 4338,
+     "wall": 4144,
      "h1": [
       "Physics — The Field"
      ],
@@ -298,18 +307,18 @@
      "foldWords": 41,
      "foldText": "Overview Subjects Account Student C Sign out Last opened yesterday Physics — The Field Environment in draft You were last here yesterday. Open Physics Your subjects Physics The Field Last opened yesterday Environment in draft Mathematics The Lattice Not opened yet",
      "hscroll": false,
-     "ttfb": 31,
-     "fcp": 1264,
-     "lcp": 1264,
-     "load": 2169,
+     "ttfb": 14,
+     "fcp": 1260,
+     "lcp": 1260,
+     "load": 2155,
      "claimsProgress": false,
-     "submitToArrive": 1228,
+     "submitToArrive": 1189,
      "shot": "return-01.png"
     },
     {
      "step": "2 the environment it points at (GET — this account never POSTs)",
      "url": "/subjects/physics",
-     "wall": 1652,
+     "wall": 1644,
      "h1": [
       "Physics"
      ],
@@ -320,10 +329,10 @@
      "foldWords": 95,
      "foldText": "Overview Subjects Student C Sign out Draft subject — still in foundation. Open here ahead of its public listing. Physics The Field — forces you can feel. Navigation position Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. I",
      "hscroll": false,
-     "ttfb": 515,
-     "fcp": 724,
-     "lcp": 724,
-     "load": 1221,
+     "ttfb": 621,
+     "fcp": 748,
+     "lcp": 800,
+     "load": 1207,
      "claimsProgress": false,
      "primaryForm": {
       "action": "/subjects/physics/enter",
@@ -337,7 +346,7 @@
     {
      "step": "3 the other subject (not entered)",
      "url": "/subjects/mathematics",
-     "wall": 1249,
+     "wall": 1231,
      "h1": [
       "Mathematics"
      ],
@@ -348,17 +357,17 @@
      "foldWords": 104,
      "foldText": "Overview Subjects Student C Sign out Mathematics The Lattice — structure you can stand on. Navigation position Mathematics Physics Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation Room · compact density · vector only Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space f",
      "hscroll": false,
-     "ttfb": 638,
-     "fcp": 820,
-     "lcp": 820,
-     "load": 888,
+     "ttfb": 614,
+     "fcp": 792,
+     "lcp": 792,
+     "load": 834,
      "claimsProgress": false,
      "shot": "return-03.png"
     },
     {
      "step": "4 the shell again",
      "url": "/student",
-     "wall": 920,
+     "wall": 1110,
      "h1": [
       "Physics — The Field"
      ],
@@ -376,16 +385,16 @@
      "foldWords": 41,
      "foldText": "Overview Subjects Account Student C Sign out Last opened yesterday Physics — The Field Environment in draft You were last here yesterday. Open Physics Your subjects Physics The Field Last opened yesterday Environment in draft Mathematics The Lattice Not opened yet",
      "hscroll": false,
-     "ttfb": 362,
-     "fcp": 544,
-     "lcp": 544,
-     "load": 569,
+     "ttfb": 507,
+     "fcp": null,
+     "lcp": 756,
+     "load": 742,
      "claimsProgress": false,
      "shot": "return-04.png"
     }
    ],
-   "encodedKB": 422,
-   "requests": 97
+   "encodedKB": 437,
+   "requests": 101
   }
  },
  "lcp": {
@@ -995,8 +1004,8 @@
   }
  },
  "pin": {
-  "firstVisitEncodedKB": 479,
-  "secondVisitEncodedKB": 422,
+  "firstVisitEncodedKB": 493,
+  "secondVisitEncodedKB": 437,
   "policy": "pin-and-drift ±5 % (D-08 / P5-R3): a ceiling is never asserted; drift beyond the band is a finding that needs a declared reason"
  },
  "matrix": {
@@ -1407,9 +1416,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 29,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 27,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1418,9 +1427,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 44,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 39,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1429,9 +1438,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 106,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 87,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1440,9 +1449,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 152,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 115,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1451,9 +1460,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 106,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 87,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1462,9 +1471,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 106,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 87,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1473,9 +1482,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 106,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 87,
     "animations": 0,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1484,9 +1493,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 106,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 87,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1495,9 +1504,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 27,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 18,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1506,9 +1515,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 85,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 49,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1517,9 +1526,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 106,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 87,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1528,9 +1537,9 @@
     "verdict": "PASS",
     "h1": 1,
     "hscroll": false,
-    "primaries": 0,
-    "primaryInFold": null,
-    "foldWords": 106,
+    "primaries": 1,
+    "primaryInFold": true,
+    "foldWords": 87,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -1631,7 +1640,7 @@
     "hscroll": false,
     "primaries": 1,
     "primaryInFold": true,
-    "foldWords": 87,
+    "foldWords": 79,
     "animations": null,
     "clipped": false,
     "url": "/subjects/mathematics"
@@ -2881,9 +2890,7 @@
  },
  "sectionsRun": [
   "A",
-  "B",
   "C",
-  "D",
   "E"
  ],
  "pass": true

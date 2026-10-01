@@ -4,12 +4,13 @@ import { notFound } from "next/navigation";
 import { SubjectShell } from "@/components/shell/subject-shell";
 import type { ShellNavEntry } from "@/components/shell/subject-nav";
 import { EnvironmentRegions, liveModuleIds, resolveEnvironmentSlots } from "@/components/student/environment-regions";
-import { Threshold } from "@/components/student/threshold";
+import { Threshold, VisitorDoor } from "@/components/student/threshold";
 import { getIdentity } from "@/lib/auth/session";
 import { isolateAsync } from "@/lib/state/isolate";
 import { getEnrolledSubjectIds, getEnvironmentFacts } from "@/lib/student/data";
 import { mayEnrol } from "@/lib/student/enrol";
 import type { SubjectId } from "@/lib/student/contract";
+import { isOpen } from "@/lib/subjects/door";
 import { getSubject, SUBJECTS } from "@/lib/subjects/subjects";
 
 /* /subjects/[subject] — THE SUBJECT ENVIRONMENT (Phase 3 · Step 6 · Part 1)
@@ -34,7 +35,10 @@ import { getSubject, SUBJECTS } from "@/lib/subjects/subjects";
  *     THRESHOLD control (a form POST to /subjects/[id]/enter);
  *   · signed-in student, enrolled → their own regions (registry- and data-
  *     gated; all absent today) — access is unconditional, draft included;
- *   · anyone else → exactly the certified 3.6 composition.
+ *   · signed-out visitor at an open door → the VISITOR DOOR (E-23 fix): the
+ *     existing Sign in action, in <main>, back to this environment after;
+ *   · anyone else (a signed-in non-student) → exactly the certified 3.6
+ *     composition.
  * Rendering this page WRITES NOTHING in any state. Entry is the POST.
  */
 
@@ -72,6 +76,11 @@ export default async function SubjectEnvironmentPage({ params, searchParams }: P
 
   const isEnrolled = enrolled.has(s.id);
   const showThreshold = !!identity && !isEnrolled && mayEnrol(identity, s.id);
+  /* E-23: a visitor at an OPEN door gets a way in from <main>. Same door
+     predicate as `mayEnrol` (P5-R4: one predicate) — in production a draft
+     door has already 404'd for a visitor; in development it renders with the
+     banner and no door, exactly as for a signed-in student. */
+  const showVisitorDoor = !identity && isOpen(s);
   /* 5.6: the student's own regions read FACTS (enrolment, entry) and EVENTS.
      Events are `[]` today — progress_record does not exist (5.1 amendment
      pending); nothing is inferred in its place. */
@@ -117,7 +126,7 @@ export default async function SubjectEnvironmentPage({ params, searchParams }: P
       }}
       draft={s.status === "draft"}
       entries={entries}
-      threshold={showThreshold ? <Threshold subjectId={s.id} subjectName={s.name} failed={entryFailed} /> : undefined}
+      threshold={showThreshold ? <Threshold subjectId={s.id} subjectName={s.name} failed={entryFailed} /> : showVisitorDoor ? <VisitorDoor subjectId={s.id} /> : undefined}
       regions={studentSlots.length > 0 ? <EnvironmentRegions slots={studentSlots} /> : undefined}
     />
   );

@@ -50,7 +50,7 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
   const supabase = await createClient();
   if (!supabase) return new NextResponse("Auth not configured", { status: 503 });
 
-  const { data: existing, error: readError } = await supabase.from("enrolments").select("subject_id, status").eq("subject_id", s.id).maybeSingle();
+  const { data: existing, error: readError } = await supabase.from("enrolments").select("subject_id, status").eq("student_id", identity.id).eq("subject_id", s.id).maybeSingle(); // 6.1: "mine" stated — a tutor (mayEnrol false) could otherwise read a related row here
   /* P5-R9: a failed read is not "not enrolled". Deciding from it would 404 an
      enrolled student's own draft environment or re-upsert an enrolment that
      exists. No row was written — 303 back; the GET reads the truth. */
