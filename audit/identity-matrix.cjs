@@ -17,7 +17,10 @@
  *             DB fact, not as a row of requests.
  *
  * ROUTES are DERIVED from src/app (page.tsx + route.ts), so a new route with
- * no pinned row fails --check. Dynamic [subject] is instantiated for the one
+ * no pinned row fails --check. Dynamic [subject]/[relationship] (6.3) is
+ * instantiated five ways from the live fixture: tutor T's active relationship
+ * (student-c, physics) · an ENDED one · a random uuid · the active one under
+ * the WRONG subject · a user id in the slot. Dynamic [subject] is instantiated for the one
  * ready subject and one draft subject. Route handlers are requested with GET
  * (no state-changing POST is issued by this harness).
  *
@@ -51,6 +54,17 @@ function sql(q) {
   } catch { return null; }
 }
 
+/* the 6.3 fixture, read once from the DB (ids are stable test rows) */
+let _rf;
+function relationshipFixture() {
+  if (_rf) return _rf;
+  const q = (w) => sql(`select r.id from public.relationships r join auth.users t on t.id=r.tutor_id join auth.users s on s.id=r.student_id where t.email='tutor-a@test.tutorsacademy.invalid' and ${w} limit 1`) || "00000000-0000-4000-8000-000000000000";
+  const active = q("s.email='student-c@test.tutorsacademy.invalid' and r.subject_id='physics' and r.state='active'");
+  const ended = q("r.subject_id='physics' and r.state='ended'");
+  const userId = sql("select id from auth.users where email='student-c@test.tutorsacademy.invalid'") || "00000000-0000-4000-8000-000000000001";
+  return (_rf = { "active (tutor T ↔ student A, physics)": { subject: "physics", id: active }, "ended (physics)": { subject: "physics", id: ended }, "nonexistent (fixed uuid)": { subject: "physics", id: "7d1f2a4e-9c3b-4e8a-b2d6-5f0a1c9e8b7d" }, "wrong subject (the active one under /mathematics)": { subject: "mathematics", id: active }, "a user id in the slot": { subject: "physics", id: userId } });
+}
+
 /* ── routes from the filesystem ───────────────────────────────────────── */
 function appRoutes() {
   const out = [];
@@ -60,7 +74,10 @@ function appRoutes() {
       else if (ent.name === "page.tsx" || ent.name === "route.ts") {
         const kind = ent.name === "route.ts" ? "handler" : "page";
         const url = "/" + segs.join("/");
-        if (url.includes("[subject]")) { out.push({ url: url.replace("[subject]", "mathematics"), kind, pattern: url }); out.push({ url: url.replace("[subject]", "physics"), kind, pattern: url }); }
+        if (url.includes("[relationship]")) {
+          const f = relationshipFixture();
+          for (const [tag, u] of Object.entries(f)) out.push({ url: url.replace("[subject]", u.subject).replace("[relationship]", u.id), kind, pattern: url + " · " + tag });
+        } else if (url.includes("[subject]")) { out.push({ url: url.replace("[subject]", "mathematics"), kind, pattern: url }); out.push({ url: url.replace("[subject]", "physics"), kind, pattern: url }); }
         else out.push({ url: url === "/" ? "/" : url.replace(/\/$/, ""), kind, pattern: url });
       }
     }
@@ -72,6 +89,7 @@ function appRoutes() {
 /* ── render fingerprint: what the body IS, not how it looks ───────────── */
 function renderOf(html, status, finalUrl) {
   const u = new URL(finalUrl);
+  if (/data-relationship-surface/.test(html)) return "relationship-surface";
   if (/data-tutor-shell/.test(html)) return "tutor-shell:" + (html.match(/data-state="([^"]+)"/) || [])[1];
   if (/data-student-shell/.test(html)) return "student-shell:" + (html.match(/data-state="([^"]+)"/) || [])[1];
   if (/data-subject-shell|data-environment/.test(html)) return "environment";

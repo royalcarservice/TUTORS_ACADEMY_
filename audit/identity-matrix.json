@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-01T18:26:12.188Z",
+ "generatedAt": "2026-10-02T15:14:52.127Z",
  "base": "http://localhost:3100",
  "classes": [
   "visitor",
@@ -1757,9 +1757,179 @@
     "landed": "/tutor/account",
     "render": "page"
    }
+  },
+  "/tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/[relationship] · wrong subject (the active one under /mathematics)",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+    "render": "login:?next=/tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+    "render": "login:?next=/tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+    "render": "not-found"
+   }
+  },
+  "/tutor/physics/01a23485-4b8f-4291-b934-620992235db0": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/[relationship] · a user id in the slot",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/01a23485-4b8f-4291-b934-620992235db0",
+    "render": "login:?next=/tutor/physics/01a23485-4b8f-4291-b934-620992235db0"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/01a23485-4b8f-4291-b934-620992235db0",
+    "render": "login:?next=/tutor/physics/01a23485-4b8f-4291-b934-620992235db0"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/tutor/physics/01a23485-4b8f-4291-b934-620992235db0",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/physics/01a23485-4b8f-4291-b934-620992235db0",
+    "render": "not-found"
+   }
+  },
+  "/tutor/physics/7d1f2a4e-9c3b-4e8a-b2d6-5f0a1c9e8b7d": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/[relationship] · nonexistent (fixed uuid)",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/7d1f2a4e-9c3b-4e8a-b2d6-5f0a1c9e8b7d",
+    "render": "login:?next=/tutor/physics/7d1f2a4e-9c3b-4e8a-b2d6-5f0a1c9e8b7d"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/7d1f2a4e-9c3b-4e8a-b2d6-5f0a1c9e8b7d",
+    "render": "login:?next=/tutor/physics/7d1f2a4e-9c3b-4e8a-b2d6-5f0a1c9e8b7d"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/tutor/physics/7d1f2a4e-9c3b-4e8a-b2d6-5f0a1c9e8b7d",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/physics/7d1f2a4e-9c3b-4e8a-b2d6-5f0a1c9e8b7d",
+    "render": "not-found"
+   }
+  },
+  "/tutor/physics/947cc414-feef-4025-86e2-657e514e385b": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/[relationship] · ended (physics)",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/947cc414-feef-4025-86e2-657e514e385b",
+    "render": "login:?next=/tutor/physics/947cc414-feef-4025-86e2-657e514e385b"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/947cc414-feef-4025-86e2-657e514e385b",
+    "render": "login:?next=/tutor/physics/947cc414-feef-4025-86e2-657e514e385b"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/tutor/physics/947cc414-feef-4025-86e2-657e514e385b",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/physics/947cc414-feef-4025-86e2-657e514e385b",
+    "render": "not-found"
+   }
+  },
+  "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/[relationship] · active (tutor T ↔ student A, physics)",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+    "render": "login:?next=/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+    "render": "login:?next=/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 200,
+    "landed": "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+    "render": "relationship-surface"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+    "render": "not-found"
+   }
   }
  },
- "relationships": "tutor-a@test.tutorsacademy.invalid -> student-c@test.tutorsacademy.invalid : physics (active)",
+ "relationships": "tutor-a@test.tutorsacademy.invalid -> student-c@test.tutorsacademy.invalid : physics (active); tutor-a@test.tutorsacademy.invalid -> student-a@test.tutorsacademy.invalid : physics (active); tutor-a@test.tutorsacademy.invalid -> student-d@test.tutorsacademy.invalid : physics (ended); tutor-a@test.tutorsacademy.invalid -> student-d@test.tutorsacademy.invalid : physics (active); tutor-a@test.tutorsacademy.invalid -> student-c@test.tutorsacademy.invalid : mathematics (ended); tutor-a@test.tutorsacademy.invalid -> student-f@test.tutorsacademy.invalid : physics (ended)",
  "gates": {
   "admin-absence": {
    "pass": true,

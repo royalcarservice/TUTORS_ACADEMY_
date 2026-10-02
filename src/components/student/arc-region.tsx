@@ -35,13 +35,15 @@ export const ARC_COPY = {
 
 const MONO: React.CSSProperties = { fontFamily: "var(--ta-font-mono)", fontSize: "var(--ta-text-2xs)", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--ta-text-muted)", margin: 0 };
 
-export function ArcRegion({ position, subjectName }: { position: ArcPosition; subjectName: string }) {
+/* 6.3: `label` is additive — the tutor's surface names the list without "you"
+ * ("Where the learning is in Physics"); the student default is byte-unchanged. */
+export function ArcRegion({ position, subjectName, label }: { position: ArcPosition; subjectName: string; label?: string }) {
   return (
     <div data-arc data-subject-arc={position.subjectId}>
       {/* The region contract supplies the heading ("Your record"); the environment's h1 already names the
           subject. No second eyebrow — two stacked mono lines read as a dashboard header. `subjectName`
           is kept in the aria-label so a reader landing on the list mid-page knows which environment. */}
-      <ul data-arc-steps aria-label={`${ARC_COPY.eyebrow} in ${subjectName}`} style={{ listStyle: "none", margin: "var(--ta-space-2) 0 0", padding: 0, display: "grid", gap: "var(--ta-space-2)", maxWidth: "var(--ta-measure)" }}>
+      <ul data-arc-steps aria-label={label ?? `${ARC_COPY.eyebrow} in ${subjectName}`} style={{ listStyle: "none", margin: "var(--ta-space-2) 0 0", padding: 0, display: "grid", gap: "var(--ta-space-2)", maxWidth: "var(--ta-measure)" }}>
         {position.steps.map((s) => (
           <li key={s.id} data-arc-step={s.id} data-state={s.state} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "var(--ta-space-4)", borderBottom: "1px solid var(--ta-border-subtle)", paddingBottom: "var(--ta-space-2)" }}>
             <span data-arc-label style={{ fontSize: "var(--ta-text-md)", color: "var(--ta-text-primary)" }}>{s.label}</span>

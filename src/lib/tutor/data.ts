@@ -36,6 +36,10 @@ export interface RelationshipRow {
   /** Opaque; used as the React key and the tie-break. Never rendered. */
   studentId: string;
   displayName: string;
+  /** 6.3: the relationship's own id — the address of its surface
+   *  (/tutor/[subject]/[relationship]). An address of an ARRANGEMENT, never
+   *  of a person: the URL cannot name a student. Never rendered as text. */
+  relationshipId: string;
 }
 
 export interface SubjectGroup {
@@ -61,10 +65,10 @@ export function orderRows(rows: readonly RelationshipRow[]): RelationshipRow[] {
 }
 
 /** Pure: raw relationship facts → the subject-grouped shape. Used by the reader and by the dev fixtures (the only way to build a context). */
-export function groupBySubject(rels: ReadonlyArray<{ studentId: string; subjectId: string }>, names: ReadonlyMap<string, string>): TutorContext {
+export function groupBySubject(rels: ReadonlyArray<{ studentId: string; subjectId: string; relationshipId: string }>, names: ReadonlyMap<string, string>): TutorContext {
   const groups: SubjectGroup[] = [];
   for (const s of SUBJECTS) {
-    const rows = rels.filter((r) => r.subjectId === s.id).map((r) => ({ studentId: r.studentId, displayName: names.get(r.studentId) ?? "" }));
+    const rows = rels.filter((r) => r.subjectId === s.id).map((r) => ({ studentId: r.studentId, displayName: names.get(r.studentId) ?? "", relationshipId: r.relationshipId }));
     if (rows.length > 0) groups.push({ subjectId: s.id as SubjectId, rows: orderRows(rows) });
   }
   const subjects = groups.map((g) => g.subjectId);
@@ -87,7 +91,7 @@ export async function getTutorContext(): Promise<TutorContext | null> {
 
   const { data: rels, error: relErr } = await supabase
     .from("relationships")
-    .select("student_id, subject_id")
+    .select("id, student_id, subject_id")
     .eq("tutor_id", user.id)
     .eq("state", "active");
   if (relErr) throw new DataReadError("relationships", relErr);
@@ -99,5 +103,5 @@ export async function getTutorContext(): Promise<TutorContext | null> {
     if (profErr) throw new DataReadError("profiles", profErr);
     for (const p of profiles ?? []) names.set(p.id as string, (p.display_name as string) ?? "");
   }
-  return groupBySubject((rels ?? []).map((r) => ({ studentId: r.student_id as string, subjectId: r.subject_id as string })), names);
+  return groupBySubject((rels ?? []).map((r) => ({ studentId: r.student_id as string, subjectId: r.subject_id as string, relationshipId: r.id as string })), names);
 }

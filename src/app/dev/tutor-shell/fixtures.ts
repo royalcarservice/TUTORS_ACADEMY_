@@ -25,7 +25,7 @@ const SHUFFLED = [
 export function fixtureContext(state: "A" | "B" | "C", subjectCount: 1 | 2 | 4 = 2): TutorContext {
   if (state === "A") return groupBySubject([], new Map());
   const keep = (["physics", "mathematics", "chemistry", "english"] as const).slice(0, subjectCount);
-  const rels = SHUFFLED.filter((r) => (keep as readonly string[]).includes(r.subjectId));
+  const rels = SHUFFLED.filter((r) => (keep as readonly string[]).includes(r.subjectId)).map((r) => ({ ...r, relationshipId: `fixture-${r.studentId}` })); // fixture ids: the dev frame's row links resolve to nothing on purpose (404), as labelled
   const ctx = groupBySubject(rels, new Map(rels.map((r) => [r.studentId, r.name])));
   if (state === "C") {
     /* C is UNREACHABLE in production today: no events table exists (5.6). The

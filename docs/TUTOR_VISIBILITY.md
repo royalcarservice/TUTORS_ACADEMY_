@@ -163,3 +163,45 @@ door** → `/subjects/physics` · tutorT · 404. Coverage gate: every `page.tsx`
 
 The production role path still does not exist: tutor accounts are created only by
 `scripts/test-account.mjs` (service role, `*@test.*.invalid`).
+
+## 6.3 — The relationship's surface (`/tutor/[subject]/[relationship]`)
+
+**What it renders, from the record, and nothing else:** the student's display name (the one h1);
+the subject's environment identity (mark · name · environment name · "Environment in draft" when
+the config says so); the arc — the same seven steps as Scene 7 and the student's own region,
+computed by the same `arcPosition` from the same three facts (account exists · active enrolment ·
+`first_entered_at` present) with no events (none exist); the empty-record boundary sentence
+(`ARC_COPY.boundary`, one constant); one sentence on what a tutor does here (nothing — a constant);
+one link back to the shell. Reader: `getRelationshipView({ subjectId, relationshipId })` — one
+query on `relationships` (`tutor_id = auth.uid()` by RLS, `id`, `subject_id`, `state = 'active'`),
+then `profiles.display_name`, `enrolments` (active), `environment_state.first_entered_at` ONLY.
+
+**Recency is refused (P6-R2 amendment).** The arc renders a *position*, never a *when*: the tutor
+sees that the student has entered the room, not when, not how often, not how long ago. The reason
+is the ruling's: position is a state of the learning; recency is a measure of the person, and a
+measure invites judgement before any teaching exists. `first_entered_at` is read as present/absent
+and the value is never rendered, never put in aria, never in metadata. `entry_count`,
+`last_entered_at`, `profiles.role/is_test_account/timestamps` ride along with the row (RLS cannot
+hide a column) and are never selected (`relationship-attack-5.ts` pins `lastEnteredAt` out of the
+view type). Harness: `Test 13` greps the surface, title, meta description and aria labels for
+last/active/since/days/ago/seen/visited/opened/date/week/hours/minutes/yesterday/today.
+
+**The absence rule (P6-R9).** Never-related · ended · nonexistent → one status (404), one document,
+one code path: the reader returns `null` for every reason, and `null` has exactly one exit,
+`notFound()`. The same holds for a user id in the slot, garbage, the right id under the wrong
+subject, an unknown subject, and the same URL opened by an unrelated tutor. Proven per run by
+`audit/relationship.cjs` (canonical-document hash; raw bytes differ only by the echoed params and
+the React Flight stream order, shown by the same URL fetched four times). A probe therefore learns
+nothing: there is no "this exists but not for you".
+
+**Where the tutor's own arrangements (including ended ones) will live later:** nowhere in this
+step. The shell lists active relationships only; an ended relationship vanishes from the row list
+and its URL becomes indistinguishable from a nonexistent one. When the academy needs a tutor to see
+their own history of placements, that is a surface over `relationships` filtered by `tutor_id`
+and `state`, on the tutor's side (an "arrangements" view in the shell's scope, P7+ at the earliest),
+and it must come with its own ruling — because showing a tutor "you used to teach X" is a fact
+about the tutor's arrangements that also names a student who is no longer theirs.
+
+**Observation:** no access-log row is written for a tutor read (owner ruling pending; reported).
+The surface sends no beacon and includes no analytics (`Test 22`).
+

@@ -1,0 +1,72 @@
+
+route                     visitor                       expired                       studentA                      studentB                      tutorT                        tutorU                        
+/                         200 page                      200 page                      200 page                      200 page                      200 page                      200 page                      
+/admin                    307 login:?next=/admin        307 login:?next=/admin        307 student-shell:C-enrolled- 307 student-shell:B-enrolled- 307 tutor-shell:B-relationshi 307 tutor-shell:A-no-relation 
+/auth/callback            307 login:?error=confirmation 307 login:?error=confirmation 307 login:?error=confirmation 307 login:?error=confirmation 307 login:?error=confirmation 307 login:?error=confirmation 
+/auth/signout             405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        
+/dev/ambient              404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/brand                404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/environment-workspace404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/environment-workspace/frame404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/global-throw         404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/marks                404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/motifs               404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/motion               404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/nav                  404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/next-action          404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/next-action/frame    404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/page                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/primitives           404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/progress-language    404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/progress-language/frame404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/scene-choice         404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/scene-enter          404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/scene-promise        404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/scene-return         404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/scenes               404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/scenes-practice      404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/spatial              404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/spine                404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/student-gate         404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/student-shell        404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/student-shell/frame  404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/student-states       404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/student-states/frame 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/student-states/throw 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/subjects             404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/switch               404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/tokens               404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/tutor-architecture   404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/tutor-shell          404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/tutor-shell/frame    404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/dev/type                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 404 not-found                 
+/login                    200 login                     200 login                     200 login                     200 login                     200 login                     200 login                     
+/register                 200 register                  200 register                  200 register                  200 register                  200 register                  200 register                  
+/student                  307 login:?next=/student      307 login:?next=/student      200 student-shell:C-enrolled- 200 student-shell:B-enrolled- 307 tutor-shell:B-relationshi 307 tutor-shell:A-no-relation 
+/student/account          307 login:?next=/student/acco 307 login:?next=/student/acco 200 page                      200 page                      307 tutor-shell:B-relationshi 307 tutor-shell:A-no-relation 
+/subjects                 200 page                      200 page                      200 page                      200 page                      200 page                      200 page                      
+/subjects/mathematics     200 page                      200 page                      200 page                      200 page                      200 page                      200 page                      
+/subjects/mathematics/enter405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        
+/subjects/physics         404 not-found                 404 not-found                 200 page                      200 page                      404 not-found                 404 not-found                 
+/subjects/physics/enter   405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        405 method-not-allowed        
+/tutor                    307 login:?next=/tutor        307 login:?next=/tutor        307 student-shell:C-enrolled- 307 student-shell:B-enrolled- 200 tutor-shell:B-relationshi 200 tutor-shell:A-no-relation 
+/tutor/account            307 login:?next=/tutor/accoun 307 login:?next=/tutor/accoun 307 student-shell:C-enrolled- 307 student-shell:B-enrolled- 200 page                      200 page                      
+/tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6307 login:?next=/tutor/mathem 307 login:?next=/tutor/mathem 307 student-shell:C-enrolled- 307 student-shell:B-enrolled- 404 not-found                 404 not-found                 
+/tutor/physics/01a23485-4b8f-4291-b934-620992235db0307 login:?next=/tutor/physic 307 login:?next=/tutor/physic 307 student-shell:C-enrolled- 307 student-shell:B-enrolled- 404 not-found                 404 not-found                 
+/tutor/physics/7d1f2a4e-9c3b-4e8a-b2d6-5f0a1c9e8b7d307 login:?next=/tutor/physic 307 login:?next=/tutor/physic 307 student-shell:C-enrolled- 307 student-shell:B-enrolled- 404 not-found                 404 not-found                 
+/tutor/physics/947cc414-feef-4025-86e2-657e514e385b307 login:?next=/tutor/physic 307 login:?next=/tutor/physic 307 student-shell:C-enrolled- 307 student-shell:B-enrolled- 404 not-found                 404 not-found                 
+/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6307 login:?next=/tutor/physic 307 login:?next=/tutor/physic 307 student-shell:C-enrolled- 307 student-shell:B-enrolled- 200 relationship-surface      404 not-found                 
+
+admin: {"profilesWithAdminRole":"0","usersWithAdminMetadata":"0","note":"no admin account exists; /admin is reachable by nobody. Any count above other than 0 is a FAIL."}
+
+GATES:
+PASS  admin-absence
+PASS  regression: tutor T denied student A's draft door
+PASS  tutor U (unrelated) sees state A, tutor T sees state B
+PASS  students never reach /tutor; tutors never reach /student
+PASS  visitor and expired land on /login for every portal route
+PASS  /dev/* is 404 for every class
+FAIL  coverage: every app route has a pinned row  — missing rows: /tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6, /tutor/physics/01a23485-4b8f-4291-b934-620992235db0, /tutor/physics/7d1f2a4e-9c3b-4e8a-b2d6-5f0a1c9e8b7d, /tutor/physics/947cc414-feef-4025-86e2-657e514e385b, /tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6
+PASS  coverage: no pinned row for a route that no longer exists
+PASS  no cell changed vs pin
+exit=1

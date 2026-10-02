@@ -1,3 +1,26 @@
-../../../tmp/att/tutor-shell-attack-1.ts(7,22): error TS2554: Expected 0 arguments, but got 1.
-../../../tmp/att/tutor-shell-attack-2.ts(11,155): error TS2353: Object literal may only specify known properties, and 'enrolments' does not exist in type 'TutorShellProps'.
-../../../tmp/att/tutor-shell-attack-2.ts(14,43): error TS2353: Object literal may only specify known properties, and 'subjectId' does not exist in type 'RelationshipRow'.
+relationship-attack-3.ts
+  expected: TS2353
+  got:      TS2353
+  ../../..relationship-attack-3.ts(7,71): error TS2353: Object literal may only specify known properties, and 'studentId' does not exist in type 'RelationshipAddress'.
+
+relationship-attack-4.ts
+  expected: TS2322, TS2345
+  got:      TS2322, TS2345
+  ../../..relationship-attack-4.ts(7,26): error TS2345: Argument of type '{ relationshipId: string; }' is not assignable to parameter of type 'RelationshipAddress'.
+  ../../..relationship-attack-4.ts(9,28): error TS2322: Type '"all"' is not assignable to type 'SubjectId'.
+
+relationship-attack-5.ts
+  expected: TS2353
+  got:      TS2353
+  ../../..relationship-attack-5.ts(7,18): error TS2353: Object literal may only specify known properties, and 'lastEnteredAt' does not exist in type 'RelationshipView'.
+
+tutor-shell-attack-1.ts
+  expected: TS2554
+  got:      TS2554
+  ../../..tutor-shell-attack-1.ts(7,22): error TS2554: Expected 0 arguments, but got 1.
+
+tutor-shell-attack-2.ts
+  expected: TS2353
+  got:      TS2353, TS2353
+  ../../..tutor-shell-attack-2.ts(11,155): error TS2353: Object literal may only specify known properties, and 'enrolments' does not exist in type 'TutorShellProps'.
+  ../../..tutor-shell-attack-2.ts(14,43): error TS2353: Object literal may only specify known properties, and 'subjectId' does not exist in type 'RelationshipRow'.

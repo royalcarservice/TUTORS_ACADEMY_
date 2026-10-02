@@ -8,7 +8,7 @@ export const siteConfig = {
   shortName: "TA",
   tagline: "Live tutoring, built for real learning outcomes.",
   description:
-    "Tutors Academy is a single learning platform for students, tutors and administrators — live classrooms, recorded lessons, assignments, assessments and an AI learning assistant in one place.",
+    "A tutoring academy built one subject environment at a time: six subjects, each with its own room, and a tutor who has a place in it.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   locale: "en_IN",
 } as const;

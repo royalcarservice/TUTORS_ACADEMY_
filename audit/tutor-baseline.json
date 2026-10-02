@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-01T19:04:07.207Z",
+ "generatedAt": "2026-10-02T15:18:44.565Z",
  "reference": "390x844 mobile",
  "states": {
   "A": {
@@ -29,8 +29,8 @@
     "numerals": []
    },
    "fold": {
-    "primaryBottom": 358,
-    "h1Bottom": 218,
+    "primaryBottom": 395,
+    "h1Bottom": 255,
     "firstGroupHeadingBottom": null,
     "firstRowBottom": null,
     "viewport": 844
@@ -86,7 +86,7 @@
     }
    ],
    "network": {
-    "scriptBytes": 588002,
+    "scriptBytes": 587825,
     "scriptFiles": 13
    },
    "sweeps": {
@@ -112,7 +112,11 @@
     "Physics",
     "The Field",
     "Environment in draft",
+    "Student A",
+    "Physics",
     "Student C",
+    "Physics",
+    "Student D",
     "Physics"
    ],
    "dom": {
@@ -121,7 +125,7 @@
     "h1Text": "Nothing to do here.",
     "primaryControls": 0,
     "primaryActions": 0,
-    "shellLinks": 0,
+    "shellLinks": 3,
     "shellButtons": 0,
     "shellForms": 0,
     "disabled": 0,
@@ -133,9 +137,25 @@
     "slots": 0,
     "rows": [
      {
+      "text": "Student APhysics",
+      "spans": 2,
+      "links": 1,
+      "href": "/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422",
+      "name": "Student A — Physics"
+     },
+     {
       "text": "Student CPhysics",
       "spans": 2,
-      "links": 0
+      "links": 1,
+      "href": "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+      "name": "Student C — Physics"
+     },
+     {
+      "text": "Student DPhysics",
+      "spans": 2,
+      "links": 1,
+      "href": "/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320",
+      "name": "Student D — Physics"
      }
     ],
     "imgs": 0,
@@ -146,8 +166,8 @@
    "fold": {
     "primaryBottom": 358,
     "h1Bottom": 218,
-    "firstGroupHeadingBottom": 452,
-    "firstRowBottom": 516,
+    "firstGroupHeadingBottom": 468,
+    "firstRowBottom": 532,
     "viewport": 844
    },
    "targets": [
@@ -201,7 +221,7 @@
     }
    ],
    "network": {
-    "scriptBytes": 588002,
+    "scriptBytes": 587825,
     "scriptFiles": 13
    },
    "sweeps": {
@@ -236,9 +256,9 @@
    "pass": true,
    "detail": "[0,0,0]"
   },
-  "A: no links, buttons or forms inside the shell (nothing a tutor does here changes anything)": {
+  "A: the only links inside the shell are the rows themselves (one per row, /tutor/{subject}/{relationship}); no buttons or forms": {
    "pass": true,
-   "detail": "[0,0,0]"
+   "detail": "[0,[],0,0]"
   },
   "A: no region DOM, no slot": {
    "pass": true,
@@ -254,7 +274,7 @@
   },
   "A: primary surface complete above the 390 fold": {
    "pass": true,
-   "detail": "{\"primaryBottom\":358,\"h1Bottom\":218,\"firstGroupHeadingBottom\":null,\"firstRowBottom\":null,\"viewport\":844}"
+   "detail": "{\"primaryBottom\":395,\"h1Bottom\":255,\"firstGroupHeadingBottom\":null,\"firstRowBottom\":null,\"viewport\":844}"
   },
   "A: every chrome target ≥44×44": {
    "pass": true,
@@ -266,7 +286,7 @@
   },
   "A: script bytes within 2 KB of the student shell, same method (no client JS added)": {
    "pass": true,
-   "detail": "588002 (13 files) vs /student 588004 (13 files)"
+   "detail": "587825 (13 files) vs /student 587827 (13 files)"
   },
   "A: no subject groups, no rows": {
    "pass": true,
@@ -296,9 +316,9 @@
    "pass": true,
    "detail": "[0,0,0]"
   },
-  "B: no links, buttons or forms inside the shell (nothing a tutor does here changes anything)": {
+  "B: the only links inside the shell are the rows themselves (one per row, /tutor/{subject}/{relationship}); no buttons or forms": {
    "pass": true,
-   "detail": "[0,0,0]"
+   "detail": "[3,[\"/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422\",\"/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6\",\"/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320\"],0,0]"
   },
   "B: no region DOM, no slot": {
    "pass": true,
@@ -314,7 +334,7 @@
   },
   "B: primary surface complete above the 390 fold": {
    "pass": true,
-   "detail": "{\"primaryBottom\":358,\"h1Bottom\":218,\"firstGroupHeadingBottom\":452,\"firstRowBottom\":516,\"viewport\":844}"
+   "detail": "{\"primaryBottom\":358,\"h1Bottom\":218,\"firstGroupHeadingBottom\":468,\"firstRowBottom\":532,\"viewport\":844}"
   },
   "B: every chrome target ≥44×44": {
    "pass": true,
@@ -326,19 +346,19 @@
   },
   "B: script bytes within 2 KB of the student shell, same method (no client JS added)": {
    "pass": true,
-   "detail": "588002 (13 files) vs /student 588004 (13 files)"
+   "detail": "587825 (13 files) vs /student 587827 (13 files)"
   },
-  "B: subject groups present, rows are name · subject · nothing else, rows are not links": {
+  "B: subject groups present, rows are name · subject · nothing else, each row one link named 'name — subject'": {
    "pass": true,
-   "detail": "[{\"text\":\"Student CPhysics\",\"spans\":2,\"links\":0}]"
+   "detail": "[{\"text\":\"Student APhysics\",\"spans\":2,\"links\":1,\"href\":\"/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422\",\"name\":\"Student A — Physics\"},{\"text\":\"Student CPhysics\",\"spans\":2,\"links\":1,\"href\":\"/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6\",\"name\":\"Student C — Physics\"},{\"text\":\"Student DPhysics\",\"spans\":2,\"links\":1,\"href\":\"/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320\",\"name\":\"Student D — Physics\"}]"
   },
   "B: DOM rows equal the DB relationship rows (name · subject), in the fixed order": {
    "pass": true,
-   "detail": "{\"dbRows\":[\"Student C · physics\"],\"domRows\":[\"Student CPhysics\"]}"
+   "detail": "{\"dbRows\":[\"Student A · physics\",\"Student C · physics\",\"Student D · physics\"],\"domRows\":[\"Student APhysics\",\"Student CPhysics\",\"Student DPhysics\"]}"
   },
   "B: first subject group heading above the 390 fold": {
    "pass": true,
-   "detail": "{\"primaryBottom\":358,\"h1Bottom\":218,\"firstGroupHeadingBottom\":452,\"firstRowBottom\":516,\"viewport\":844}"
+   "detail": "{\"primaryBottom\":358,\"h1Bottom\":218,\"firstGroupHeadingBottom\":468,\"firstRowBottom\":532,\"viewport\":844}"
   },
   "B: hierarchy — h1 is the dominant text (ratio ≥ 1.6 over a row)": {
    "pass": true,
@@ -350,7 +370,7 @@
   },
   "B: identical shell text without JavaScript": {
    "pass": true,
-   "detail": "9 vs 9"
+   "detail": "13 vs 13"
   },
   "B: axe clean": {
    "pass": true,
@@ -387,9 +407,9 @@
    "money": []
   }
  },
- "fixture": "Student C · physics",
+ "fixture": "Student A · physics; Student C · physics; Student D · physics",
  "studentScript": {
-  "scriptBytes": 588004,
+  "scriptBytes": 587827,
   "scriptFiles": 13
  },
  "homepageStrings": [

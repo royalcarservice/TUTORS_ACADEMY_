@@ -6,7 +6,7 @@
  *   B  tutor-a  related to student-c in physics (one row)
  * Measures: one dominant surface (one h1, no control in it, no primary
  * action anywhere), fold at 390, hierarchy ratio, targets ≥44, row =
- * name · subject · nothing else, rows are not links, no region DOM, no
+ * name · subject · nothing else, each row ONE link to its relationship (6.3), no region DOM, no
  * numerals/counts, the never-contains sweep (5.3 + P6-R3 + money), no-JS
  * parity, script bytes vs the student shell, axe, both themes, grayscale.
  * Also Test 28: the stale-string sweep across public + portal routes.   */
@@ -75,6 +75,7 @@ const gotoShell = async (p) => { await p.goto(P + "/tutor", { waitUntil: "load" 
     await p.goto(P + "/login?next=%2Fstudent", { waitUntil: "load" });
     await p.type("input[name=email]", process.env.TEST_A || "student-a@test.tutorsacademy.invalid"); await p.type("input[name=password]", PASS);
     await Promise.all([p.waitForNavigation({ waitUntil: "load" }), p.click("button[type=submit]")]);
+    await p.setCacheEnabled(false); /* same method everywhere: count bytes the server sends, never the memory cache (6.3: a cached-chunk artefact made one B run read 62 KB low) */
     const scripts = []; p.on("response", (r) => { if (r.request().resourceType() === "script") r.buffer().then((b) => scripts.push(b.length)).catch(() => {}); });
     await p.goto(P + "/student", { waitUntil: "load" }); await sleep(550);
     await ctx.close();
@@ -84,6 +85,7 @@ const gotoShell = async (p) => { await p.goto(P + "/tutor", { waitUntil: "load" 
   for (const state of ["A", "B"]) {
     const S = (R.states[state] = {});
     const { ctx, p } = await login(browser, state);
+    await p.setCacheEnabled(false); /* same method everywhere: count bytes the server sends, never the memory cache (6.3: a cached-chunk artefact made one B run read 62 KB low) */
     const scripts = []; p.on("response", (r) => { if (r.request().resourceType() === "script") r.buffer().then((b) => scripts.push(b.length)).catch(() => {}); });
     await gotoShell(p);
     const html = await p.content();
@@ -92,7 +94,7 @@ const gotoShell = async (p) => { await p.goto(P + "/tutor", { waitUntil: "load" 
     S.dom = await p.evaluate(() => {
       const shell = document.querySelector("[data-tutor-shell]");
       const q = (s) => shell.querySelectorAll(s).length;
-      const rows = Array.from(shell.querySelectorAll("[data-relationship-row]")).map((li) => ({ text: li.textContent.trim(), spans: li.children.length, links: li.querySelectorAll("a,button").length }));
+      const rows = Array.from(shell.querySelectorAll("[data-relationship-row]")).map((li) => { const a = li.querySelector("a"); return { text: li.textContent.trim(), spans: (a || li).children.length, links: li.querySelectorAll("a,button").length, href: a?.getAttribute("href"), name: a?.getAttribute("aria-label") }; });
       const h1 = shell.querySelector("h1");
       const row = shell.querySelector("[data-relationship-row] span");
       const fs_ = (el) => el ? parseFloat(getComputedStyle(el).fontSize) : null;
@@ -120,7 +122,8 @@ const gotoShell = async (p) => { await p.goto(P + "/tutor", { waitUntil: "load" 
     gate(`${state}: one h1`, S.dom.h1Count === 1, String(S.dom.h1Count));
     gate(`${state}: expected state`, S.dom.state === (state === "A" ? "A-no-relationships" : "B-relationships-no-events"), S.dom.state);
     gate(`${state}: no control in the primary surface, no primary action, no disabled control (P6-R4)`, S.dom.primaryControls === 0 && S.dom.primaryActions === 0 && S.dom.disabled === 0, JSON.stringify([S.dom.primaryControls, S.dom.primaryActions, S.dom.disabled]));
-    gate(`${state}: no links, buttons or forms inside the shell (nothing a tutor does here changes anything)`, S.dom.shellLinks === 0 && S.dom.shellButtons === 0 && S.dom.shellForms === 0, JSON.stringify([S.dom.shellLinks, S.dom.shellButtons, S.dom.shellForms]));
+    /* 6.3: the row is the ONE link (Test 18 of 6.2 closed). Links inside the shell == rows, each row exactly one link with a subject-scoped relationship href, nothing else. */
+    gate(`${state}: the only links inside the shell are the rows themselves (one per row, /tutor/{subject}/{relationship}); no buttons or forms`, S.dom.shellLinks === S.dom.rows.length && S.dom.rows.every((r) => r.links === 1 && /^\/tutor\/[a-z]+\/[0-9a-f-]{36}$/.test(r.href)) && S.dom.shellButtons === 0 && S.dom.shellForms === 0, JSON.stringify([S.dom.shellLinks, S.dom.rows.map((r) => r.href), S.dom.shellButtons, S.dom.shellForms]));
     gate(`${state}: no region DOM, no slot`, S.dom.slotRegions === 0 && S.dom.slots === 0, "");
     gate(`${state}: no numerals in the shell (no counts)`, S.dom.numerals.length === 0, JSON.stringify(S.dom.numerals));
     gate(`${state}: never-contains sweep clean`, !S.sweeps.dashboard.length && !S.sweeps.skeleton.length && !S.sweeps.p6r3.length && !S.sweeps.money.length && !S.sweeps.stale.length, JSON.stringify(S.sweeps));
@@ -130,7 +133,7 @@ const gotoShell = async (p) => { await p.goto(P + "/tutor", { waitUntil: "load" 
     gate(`${state}: script bytes within 2 KB of the student shell, same method (no client JS added)`, Math.abs(S.network.scriptBytes - R.studentScript.scriptBytes) <= 2048, `${S.network.scriptBytes} (${S.network.scriptFiles} files) vs /student ${R.studentScript.scriptBytes} (${R.studentScript.scriptFiles} files)`);
     if (state === "A") gate("A: no subject groups, no rows", S.dom.subjectGroups === 0 && S.dom.rows.length === 0, "");
     if (state === "B") {
-      gate("B: subject groups present, rows are name · subject · nothing else, rows are not links", S.dom.subjectGroups === 1 && S.dom.rows.length > 0 && S.dom.rows.every((r) => r.spans === 2 && r.links === 0), JSON.stringify(S.dom.rows));
+      gate("B: subject groups present, rows are name · subject · nothing else, each row one link named 'name — subject'", S.dom.subjectGroups === 1 && S.dom.rows.length > 0 && S.dom.rows.every((r) => r.spans === 2 && r.links === 1 && r.name === r.text.replace(/(\S)([A-Z][a-z]+)$/, "$1 — $2")), JSON.stringify(S.dom.rows));
       const dbRows = (R.fixture || "").split("; ").filter(Boolean);
       const domRows = S.dom.rows.map((r) => r.text);
       gate("B: DOM rows equal the DB relationship rows (name · subject), in the fixed order", dbRows.length === domRows.length && dbRows.every((d, i) => domRows[i].replace(/\s+/g, " ") === d.replace(" · ", "").replace(/\s+/g, " ") || domRows[i] === d.split(" · ")[0] + (d.split(" · ")[1][0].toUpperCase() + d.split(" · ")[1].slice(1))), JSON.stringify({ dbRows, domRows }));

@@ -1,9 +1,12 @@
 /**
  * PLATFORM MODULE REGISTRY
  * --------------------------------------------------------------------------
- * The product roadmap expressed as data. Every domain the platform will grow
- * into is declared here once; navigation, the marketing "platform" section and
- * the portal shells all read from it.
+ * Answers two questions and no other: IS THIS BUILT? and WHAT DOES THIS
+ * SURFACE DEPEND ON? (P6-R8). It is not a roadmap and not a wish list: an
+ * entry exists only when a phase (P1–P10) delivers it. `tests` and
+ * `payments` were removed in 6.3 for that reason — no phase delivers them;
+ * the phase that does adds the entry. Navigation and the portal shells read
+ * from it.
  *
  * Adding a feature later is therefore an additive change:
  *   1. flip `status` here,
@@ -116,22 +119,6 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
     id: "assignments",
     name: "Assignments",
     summary: "Homework set by tutors, submitted and reviewed by students.",
-    status: "planned",
-    surfaces: ["student", "tutor", "admin"],
-    routePrefix: null,
-  },
-  {
-    id: "tests",
-    name: "Tests & assessments",
-    summary: "Timed exams, auto-grading and detailed performance analytics.",
-    status: "planned",
-    surfaces: ["student", "tutor", "admin"],
-    routePrefix: null,
-  },
-  {
-    id: "payments",
-    name: "Payments",
-    summary: "Plans, checkout, invoices, refunds and tutor payouts.",
     status: "planned",
     surfaces: ["student", "tutor", "admin"],
     routePrefix: null,

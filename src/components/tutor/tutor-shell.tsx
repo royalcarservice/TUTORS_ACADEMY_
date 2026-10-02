@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { SubjectMark } from "@/components/brand/subject-mark";
 import type { ShellSubjectInfo } from "@/components/student/student-shell";
 import { TUTOR_REGIONS, type TutorRegion } from "@/config/student-slots";
@@ -21,10 +23,13 @@ import type { ResolvedTutorSlot } from "./slots";
 
    SUBJECT GROUPS. The subject is the top-level unit; relationships sit inside
    it (locked decision 1). A row is display name · subject — nothing else
-   (locked decision 2). Rows are NOT links: no relationship surface exists
-   yet (6.3), and a link named with a student that lands on a generic page
-   would be a dead destination in disguise (5.3: nothing is named that does
-   not resolve). Order is the reader's fixed, non-evaluative order.
+   (locked decision 2). 6.3: a row is ONE link to the relationship's own
+   surface (/tutor/[subject]/[relationship]) — named for assistive
+   technology with the student and the subject; the row's weight is the
+   row's weight (5.3 equal-weight rule), never a second primary. Before 6.3
+   the row was a plain <li> with no cursor, hover or focus (no false
+   affordance; 6.2's baseline DOM has links:0). Order is the reader's fixed,
+   non-evaluative order.
 
    REGIONS. The third scope of the one slot registry; every region renders
    nothing until a slot resolves to real data for THIS tutor. No counts.
@@ -128,13 +133,15 @@ export function TutorShell({ state, groups, subjects, slots }: TutorShellProps) 
                   </h3>
                   <ul style={{ listStyle: "none", margin: "var(--ta-space-3) 0 0", padding: 0, borderTop: "1px solid var(--ta-border-subtle)" }}>
                     {g.rows.map((r) => (
-                      <li
-                        key={r.studentId}
-                        data-relationship-row
-                        style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", columnGap: "var(--ta-space-3)", minHeight: "var(--ta-target-primary)", padding: "var(--ta-space-3) var(--ta-space-2)", borderBottom: "1px solid var(--ta-border-subtle)", color: "var(--ta-text-primary)" }}
-                      >
-                        <span style={{ fontSize: "var(--ta-text-base)", fontWeight: 500 }}>{r.displayName}</span>
-                        <span style={{ fontSize: "var(--ta-text-sm)", color: "var(--ta-text-secondary)" }}>{name}</span>
+                      <li key={r.studentId} data-relationship-row style={{ borderBottom: "1px solid var(--ta-border-subtle)" }}>
+                        <Link
+                          href={`/tutor/${g.subjectId}/${r.relationshipId}`}
+                          aria-label={`${r.displayName} — ${name}`}
+                          style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", columnGap: "var(--ta-space-3)", minHeight: "var(--ta-target-primary)", padding: "var(--ta-space-3) var(--ta-space-2)", color: "var(--ta-text-primary)", textDecoration: "none", borderRadius: "var(--ta-radius-2)" }}
+                        >
+                          <span style={{ fontSize: "var(--ta-text-base)", fontWeight: 500 }}>{r.displayName}</span>
+                          <span style={{ fontSize: "var(--ta-text-sm)", color: "var(--ta-text-secondary)" }}>{name}</span>
+                        </Link>
                       </li>
                     ))}
                   </ul>

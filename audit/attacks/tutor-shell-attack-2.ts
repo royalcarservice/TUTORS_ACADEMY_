@@ -1,7 +1,7 @@
 /* ATTACK 2 (6.2 locked decision 3): render a RELATED student's OTHER subject
  * (one with no relationship) through the shell. Must NOT compile: a row
  * cannot be placed in a group whose subject the reader did not emit, and the
- * shell has no prop for enrolments at all. */
+ * shell has no prop for enrolments at all. EXPECT TS2353 */
 import { TutorShell } from "@/components/tutor/tutor-shell";
 import { shellSubjectInfo } from "@/lib/student/subject-info";
 

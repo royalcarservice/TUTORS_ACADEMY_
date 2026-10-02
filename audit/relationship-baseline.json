@@ -1,0 +1,947 @@
+{
+ "generatedAt": "2026-10-02T15:09:40.658Z",
+ "reference": "390x844 mobile",
+ "gates": {
+  "fixture: ≥3 active relationships in one subject for tutor T, ≥1 ended": {
+   "pass": true,
+   "detail": "{\"active\":[\"student-a physics d853fdd1-a949-4ed0-ba77-72f19e119422\",\"student-c physics 97b22c6d-673d-4d6c-9f61-241a7d0151e6\",\"student-d physics 7a2de5ee-a207-4225-9326-0600c2c32320\"],\"ended\":\"student-d physics 947cc414-feef-4025-86e2-657e514e385b\",\"endedOther\":\"student-c mathematics 0104334b-4e5a-4c3a-ad20-0ac7d482a4e1\",\"studentBId\":\"819a8c3b-5822-4221-9d6e-508b3eedba4d\",\"studentBEmail\":\"student-b@test.tutorsacademy.invalid\"}"
+  },
+  "Test 16: every row is ONE link named with student and subject, ≥44 px, no underline, same type as before (16px/500)": {
+   "pass": true,
+   "detail": "[{\"href\":\"/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422\",\"name\":\"Student A — Physics\",\"cursor\":\"pointer\",\"textDecoration\":\"none\",\"color\":\"rgb(11, 14, 18)\",\"nameFont\":\"16px/500\",\"h\":50,\"rowLinks\":1},{\"href\":\"/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6\",\"name\":\"Student C — Physics\",\"cursor\":\"pointer\",\"textDecoration\":\"none\",\"color\":\"rgb(11, 14, 18)\",\"nameFont\":\"16px/500\",\"h\":50,\"rowLinks\":1},{\"href\":\"/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320\",\"name\":\"Student D — Physics\",\"cursor\":\"pointer\",\"textDecoration\":\"none\",\"color\":\"rgb(11, 14, 18)\",\"nameFont\":\"16px/500\",\"h\":50,\"rowLinks\":1}]"
+  },
+  "shell: the row links are exactly the active relationships (none ended, none of another tutor's)": {
+   "pass": true,
+   "detail": "{\"hrefs\":[\"/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422\",\"/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6\",\"/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320\"],\"active\":[\"/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422\",\"/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6\",\"/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320\"]}"
+  },
+  "Test 5: the row resolves to the surface for the related tutor (200)": {
+   "pass": true,
+   "detail": "200"
+  },
+  "Test 17: one h1 = the display name; the arc is the largest element by area; the h1 the largest type": {
+   "pass": true,
+   "detail": "{\"h1\":\"Student C\",\"areas\":{\"room\":49360,\"h1\":9225,\"arc\":133433,\"arcList\":99233,\"statement\":21546},\"fontPx\":{\"h1\":28.68,\"arcLabel\":16,\"statement\":14}}"
+  },
+  "Test 18: no action — controls in main = one link back (no button, form, input, disabled)": {
+   "pass": true,
+   "detail": "{\"links\":1,\"buttons\":0,\"forms\":0,\"inputs\":0,\"disabled\":0,\"linkHrefs\":[\"/tutor\"]}"
+  },
+  "reading order: header(who+which) → arc region → tutor statement → back; record region absent": {
+   "pass": true,
+   "detail": "[\"div\",\"header\",\"section[arc-region]\",\"arc\",\"boundary\",\"tutor-statement\",\"p\",\"back\"]"
+  },
+  "Test 24: record region renders NO DOM and no empty container": {
+   "pass": true,
+   "detail": "{\"regions\":0,\"emptyContainers\":0}"
+  },
+  "Test 19: not a profile / dashboard — no img, table, tabs, details, progress, canvas, <time>, numerals; no profile words": {
+   "pass": true,
+   "detail": "{\"dom\":{\"imgs\":0,\"svgs\":2,\"tables\":0,\"tabs\":0,\"details\":0,\"progress\":0,\"canvas\":0,\"time\":0,\"numerals\":[]},\"words\":[]}"
+  },
+  "Test 13: no recency — surface text, title, metadata, aria labels": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "Test 14: no zero / none / not started / never for an empty record": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "Test 20: no export — print/download/export/share/csv/copy in HTML (incl. styles) ": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "Test 22: no observation — analytics/beacon/telemetry in HTML": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "Test 10: PII floor — no email, no uuid, no 'test', no role, no timestamp in the surface HTML (display name only)": {
+   "pass": true,
+   "detail": "{\"email\":false,\"uuidInMain\":false,\"uuidAnywhere\":false}"
+  },
+  "Test 21: no second student — no other related student's name on the page, no link to another surface": {
+   "pass": true,
+   "detail": "[\"/tutor\"]"
+  },
+  "subject rule / banned words: no sentence with the student as grammatical subject, no apology": {
+   "pass": true,
+   "detail": "[\"Student C\",\"PhysicsThe FieldEnvironment in draft\",\"Where the learning is\",\"See the system — done\",\"See the doors — done\",\"Watch the crossing — done\",\"Learn in the room — ahead\",\"Work with a tutor — ahead\",\"Watch your record grow — ahead\",\"Master the subject — ahead\",\"Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.\",\"This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.\",\"Back to the students placed with you\",\"Back to the students placed with you\"]"
+  },
+  "fold at 390: h1, subject identity, arc heading and first arc step inside 844; no h-scroll": {
+   "pass": true,
+   "detail": "{\"h1\":148,\"subjectIdentity\":212,\"arcHeading\":286,\"firstArcStep\":329,\"lastArcStep\":584,\"boundary\":684,\"tutorStatement\":779,\"back\":859,\"viewport\":844,\"hscroll\":false}"
+  },
+  "targets ≥44×44": {
+   "pass": true,
+   "detail": "[[\"Tutors Academy home\",44,44],[\"Switch to dark theme\",44,44],[\"Open menu\",44,44],[\"Overview\",342,53],[\"Subjects\",342,53],[\"Account\",342,53],[\"Tutor A\",74,48],[\"Sign out\",80,48],[\"Back to the students placed wi\",234,48]]"
+  },
+  "Test 11: the empty-record statement and the tutor statement are byte-identical across all students (while their arc positions differ)": {
+   "pass": true,
+   "detail": "{\"shas\":[\"98e5b644d3d2009cb278d1234de58868\"],\"positions\":2,\"students\":[\"student-c\",\"student-a\",\"student-d\"]}"
+  },
+  "Test 15: the arc's three consumers read one definition at runtime (seven ids+labels, same order): Scene 7 · student region · tutor surface": {
+   "pass": true,
+   "detail": "{\"definition\":[\"discover:See the system\",\"choose:See the doors\",\"enter:Watch the crossing\",\"learn:Learn in the room\",\"interact:Work with a tutor\",\"progress:Watch your record grow\",\"master:Master the subject\"],\"scene7\":[\"discover:See the system\",\"choose:See the doors\",\"enter:Watch the crossing\",\"learn:Learn in the room\",\"interact:Work with a tutor\",\"progress:Watch your record grow\",\"master:Master the subject\"],\"tutorSurface\":[\"discover:See the system\",\"choose:See the doors\",\"enter:Watch the crossing\",\"learn:Learn in the room\",\"interact:Work with a tutor\",\"progress:Watch your record grow\",\"master:Master the subject\"],\"studentRegion\":[\"discover:See the system\",\"choose:See the doors\",\"enter:Watch the crossing\",\"learn:Learn in the room\",\"interact:Work with a tutor\",\"progress:Watch your record grow\",\"master:Master the subject\"],\"studentRegionStates\":[\"done\",\"done\",\"done\",\"ahead\",\"ahead\",\"ahead\",\"ahead\"],\"studentBoundary\":\"Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.\"}"
+  },
+  "student-c's own arc states == the tutor's view of student-c (same facts, same function)": {
+   "pass": true,
+   "detail": "[[\"done\",\"done\",\"done\",\"ahead\",\"ahead\",\"ahead\",\"ahead\"],[\"discover:See the system:done\",\"choose:See the doors:done\",\"enter:Watch the crossing:done\",\"learn:Learn in the room:ahead\",\"interact:Work with a tutor:ahead\",\"progress:Watch your record grow:ahead\",\"master:Master the subject:ahead\"]]"
+  },
+  "Test 7/8/9: never-related · ended · nonexistent · probes · cross-subject · unknown subject → ONE status (404) and ONE body (canonical bytes identical: echoed params tokenised, flight stream order-normalised)": {
+   "pass": true,
+   "detail": "{\"never-related (student B's would-be id slot: another tutor's / nobody's relationship — student B has none, so a fresh uuid in B's place)\":[404,\"9323089fc745fa88\",17291],\"ended (student-d physics, ended)\":[404,\"9323089fc745fa88\",17291],\"nonexistent (random uuid)\":[404,\"9323089fc745fa88\",17291],\"probe: student B's user id in the slot\":[404,\"9323089fc745fa88\",17291],\"probe: related student-c's user id in the slot\":[404,\"9323089fc745fa88\",17291],\"probe: garbage\":[404,\"9323089fc745fa88\",17239],\"cross-subject: student-c's physics relationship under /history\":[404,\"9323089fc745fa88\",17291],\"cross-subject: student-c's physics relationship under /mathematics\":[404,\"9323089fc745fa88\",17299],\"ended other subject (student-c mathematics, ended)\":[404,\"9323089fc745fa88\",17299],\"unknown subject segment\":[404,\"9323089fc745fa88\",17283]}"
+  },
+  "same url ×4: raw bytes vary (stream race) while the canonical form is one value — the raw variation is not a signal": {
+   "pass": true,
+   "detail": "{\"url\":\"nonexistent, 4 fetches\",\"rawShas\":[\"c4179669461804b9\",\"d7f81bb3a1448444\"],\"canonicalShas\":[\"9323089fc745fa88\"]}"
+  },
+  "tutor U (unrelated) at tutor T's relationship URL → the same 404 document as tutor T's nonexistent case (viewer's own nav name tokenised)": {
+   "pass": true,
+   "detail": "{\"url\":\"/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6\",\"status\":404,\"bytes\":17291,\"sha\":\"2d0eaf2e3c1e6a57\",\"tutorTNonexistentSha\":\"2d0eaf2e3c1e6a57\",\"note\":\"the only difference before scrubbing the viewer's own account name in the nav\"}"
+  },
+  "no horizontal scroll at 320/360/390 both themes": {
+   "pass": true,
+   "detail": ""
+  },
+  "1.4.12 text spacing: no h-scroll, nothing clipped": {
+   "pass": true,
+   "detail": "{\"hscroll\":false,\"clipped\":0}"
+  },
+  "400% zoom equivalent (320 wide): no h-scroll": {
+   "pass": true,
+   "detail": ""
+  },
+  "keyboard: the back link is reachable by Tab; nothing in the arc takes focus": {
+   "pass": true,
+   "detail": "[\"Skip to content\",\"Tutors Academy home\",\"Switch to dark theme\",\"Open menu\",\"Back to the students placed wi\",\"(function(){try{var s=localSto\",\"Skip to content\",\"Tutors Academy home\",\"Switch to dark theme\",\"Open menu\",\"Back to the students placed wi\",\"(function(){try{var s=localSto\"]"
+  },
+  "axe clean both themes, contrast measured": {
+   "pass": true,
+   "detail": "{\"dark\":{\"violations\":[],\"contrastChecked\":11,\"worst\":16.26},\"light\":{\"violations\":[],\"contrastChecked\":11,\"worst\":15.7}}"
+  },
+  "no-JS complete: identical main text without JavaScript": {
+   "pass": true,
+   "detail": "14 vs 14"
+  },
+  "perf: LCP median < 4 s on the emulated profile (n=5), no canvas/WebGL": {
+   "pass": true,
+   "detail": "{\"profile\":\"CDP emulation: 4× CPU, 150 ms RTT, 1.6 Mbps down; 1 warm-up discarded\",\"samples\":[{\"lcp\":856,\"ttfb\":731,\"requests\":27},{\"lcp\":864,\"ttfb\":746,\"requests\":27},{\"lcp\":852,\"ttfb\":740,\"requests\":27},{\"lcp\":880,\"ttfb\":748,\"requests\":27},{\"lcp\":832,\"ttfb\":733,\"requests\":27}],\"lcpMs\":[832,852,856,864,880],\"ttfbMs\":[731,733,740,746,748],\"requests\":27,\"scriptBytes\":587825,\"scriptFiles\":13}"
+  },
+  "payload: surface script bytes ≤ the tutor shell + 2 KB (no client JS added)": {
+   "pass": true,
+   "detail": "587825 (13 files) vs shell 588002 (13 files)"
+  }
+ },
+ "fixture": {
+  "active": [
+   "student-a physics d853fdd1-a949-4ed0-ba77-72f19e119422",
+   "student-c physics 97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+   "student-d physics 7a2de5ee-a207-4225-9326-0600c2c32320"
+  ],
+  "ended": "student-d physics 947cc414-feef-4025-86e2-657e514e385b",
+  "endedOther": "student-c mathematics 0104334b-4e5a-4c3a-ad20-0ac7d482a4e1",
+  "studentBId": "819a8c3b-5822-4221-9d6e-508b3eedba4d",
+  "studentBEmail": "student-b@test.tutorsacademy.invalid"
+ },
+ "students": {
+  "student-c": {
+   "url": "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+   "h1": 1,
+   "h1Text": "Student C",
+   "headings": [
+    "H1:Student C",
+    "H2:Where the learning is"
+   ],
+   "order": [
+    "div",
+    "header",
+    "section[arc-region]",
+    "arc",
+    "boundary",
+    "tutor-statement",
+    "p",
+    "back"
+   ],
+   "controls": {
+    "links": 1,
+    "buttons": 0,
+    "forms": 0,
+    "inputs": 0,
+    "disabled": 0,
+    "linkHrefs": [
+     "/tutor"
+    ]
+   },
+   "arc": [
+    "discover:See the system:done",
+    "choose:See the doors:done",
+    "enter:Watch the crossing:done",
+    "learn:Learn in the room:ahead",
+    "interact:Work with a tutor:ahead",
+    "progress:Watch your record grow:ahead",
+    "master:Master the subject:ahead"
+   ],
+   "arcLabel": "Where the learning is in Physics",
+   "boundary": "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+   "tutorStatement": "This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.",
+   "sentences": [
+    "Student C",
+    "PhysicsThe FieldEnvironment in draft",
+    "Where the learning is",
+    "See the system — done",
+    "See the doors — done",
+    "Watch the crossing — done",
+    "Learn in the room — ahead",
+    "Work with a tutor — ahead",
+    "Watch your record grow — ahead",
+    "Master the subject — ahead",
+    "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+    "This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.",
+    "Back to the students placed with you",
+    "Back to the students placed with you"
+   ],
+   "record": {
+    "regions": 0,
+    "emptyContainers": 0
+   },
+   "dom": {
+    "imgs": 0,
+    "svgs": 2,
+    "tables": 0,
+    "tabs": 0,
+    "details": 0,
+    "progress": 0,
+    "canvas": 0,
+    "time": 0,
+    "numerals": []
+   },
+   "areas": {
+    "room": 49360,
+    "h1": 9225,
+    "arc": 133433,
+    "arcList": 99233,
+    "statement": 21546
+   },
+   "fold": {
+    "h1": 148,
+    "subjectIdentity": 212,
+    "arcHeading": 286,
+    "firstArcStep": 329,
+    "lastArcStep": 584,
+    "boundary": 684,
+    "tutorStatement": 779,
+    "back": 859,
+    "viewport": 844,
+    "hscroll": false
+   },
+   "targets": [
+    [
+     "Tutors Academy home",
+     44,
+     44
+    ],
+    [
+     "Switch to dark theme",
+     44,
+     44
+    ],
+    [
+     "Open menu",
+     44,
+     44
+    ],
+    [
+     "Overview",
+     342,
+     53
+    ],
+    [
+     "Subjects",
+     342,
+     53
+    ],
+    [
+     "Account",
+     342,
+     53
+    ],
+    [
+     "Tutor A",
+     74,
+     48
+    ],
+    [
+     "Sign out",
+     80,
+     48
+    ],
+    [
+     "Back to the students placed wi",
+     234,
+     48
+    ]
+   ],
+   "fontPx": {
+    "h1": 28.68,
+    "arcLabel": 16,
+    "statement": 14
+   },
+   "title": "Student C · Physics",
+   "metaDesc": "The students placed with you, by subject."
+  },
+  "student-a": {
+   "url": "/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422",
+   "h1": 1,
+   "h1Text": "Student A",
+   "headings": [
+    "H1:Student A",
+    "H2:Where the learning is"
+   ],
+   "order": [
+    "div",
+    "header",
+    "section[arc-region]",
+    "arc",
+    "boundary",
+    "tutor-statement",
+    "p",
+    "back"
+   ],
+   "controls": {
+    "links": 1,
+    "buttons": 0,
+    "forms": 0,
+    "inputs": 0,
+    "disabled": 0,
+    "linkHrefs": [
+     "/tutor"
+    ]
+   },
+   "arc": [
+    "discover:See the system:done",
+    "choose:See the doors:ahead",
+    "enter:Watch the crossing:ahead",
+    "learn:Learn in the room:ahead",
+    "interact:Work with a tutor:ahead",
+    "progress:Watch your record grow:ahead",
+    "master:Master the subject:ahead"
+   ],
+   "arcLabel": "Where the learning is in Physics",
+   "boundary": "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+   "tutorStatement": "This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.",
+   "sentences": [
+    "Student A",
+    "PhysicsThe FieldEnvironment in draft",
+    "Where the learning is",
+    "See the system — done",
+    "See the doors — ahead",
+    "Watch the crossing — ahead",
+    "Learn in the room — ahead",
+    "Work with a tutor — ahead",
+    "Watch your record grow — ahead",
+    "Master the subject — ahead",
+    "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+    "This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.",
+    "Back to the students placed with you",
+    "Back to the students placed with you"
+   ],
+   "record": {
+    "regions": 0,
+    "emptyContainers": 0
+   },
+   "dom": {
+    "imgs": 0,
+    "svgs": 2,
+    "tables": 0,
+    "tabs": 0,
+    "details": 0,
+    "progress": 0,
+    "canvas": 0,
+    "time": 0,
+    "numerals": []
+   },
+   "areas": {
+    "room": 49360,
+    "h1": 9225,
+    "arc": 133433,
+    "arcList": 99233,
+    "statement": 21546
+   },
+   "fold": {
+    "h1": 148,
+    "subjectIdentity": 212,
+    "arcHeading": 286,
+    "firstArcStep": 329,
+    "lastArcStep": 584,
+    "boundary": 684,
+    "tutorStatement": 779,
+    "back": 859,
+    "viewport": 844,
+    "hscroll": false
+   },
+   "targets": [
+    [
+     "Tutors Academy home",
+     44,
+     44
+    ],
+    [
+     "Toggle theme",
+     44,
+     44
+    ],
+    [
+     "Open menu",
+     44,
+     44
+    ],
+    [
+     "Overview",
+     342,
+     53
+    ],
+    [
+     "Subjects",
+     342,
+     53
+    ],
+    [
+     "Account",
+     342,
+     53
+    ],
+    [
+     "Tutor A",
+     74,
+     48
+    ],
+    [
+     "Sign out",
+     80,
+     48
+    ],
+    [
+     "Back to the students placed wi",
+     234,
+     48
+    ]
+   ],
+   "fontPx": {
+    "h1": 28.68,
+    "arcLabel": 16,
+    "statement": 14
+   },
+   "title": "Student A · Physics",
+   "metaDesc": "The students placed with you, by subject."
+  },
+  "student-d": {
+   "url": "/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320",
+   "h1": 1,
+   "h1Text": "Student D",
+   "headings": [
+    "H1:Student D",
+    "H2:Where the learning is"
+   ],
+   "order": [
+    "div",
+    "header",
+    "section[arc-region]",
+    "arc",
+    "boundary",
+    "tutor-statement",
+    "p",
+    "back"
+   ],
+   "controls": {
+    "links": 1,
+    "buttons": 0,
+    "forms": 0,
+    "inputs": 0,
+    "disabled": 0,
+    "linkHrefs": [
+     "/tutor"
+    ]
+   },
+   "arc": [
+    "discover:See the system:done",
+    "choose:See the doors:done",
+    "enter:Watch the crossing:done",
+    "learn:Learn in the room:ahead",
+    "interact:Work with a tutor:ahead",
+    "progress:Watch your record grow:ahead",
+    "master:Master the subject:ahead"
+   ],
+   "arcLabel": "Where the learning is in Physics",
+   "boundary": "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+   "tutorStatement": "This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.",
+   "sentences": [
+    "Student D",
+    "PhysicsThe FieldEnvironment in draft",
+    "Where the learning is",
+    "See the system — done",
+    "See the doors — done",
+    "Watch the crossing — done",
+    "Learn in the room — ahead",
+    "Work with a tutor — ahead",
+    "Watch your record grow — ahead",
+    "Master the subject — ahead",
+    "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+    "This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.",
+    "Back to the students placed with you",
+    "Back to the students placed with you"
+   ],
+   "record": {
+    "regions": 0,
+    "emptyContainers": 0
+   },
+   "dom": {
+    "imgs": 0,
+    "svgs": 2,
+    "tables": 0,
+    "tabs": 0,
+    "details": 0,
+    "progress": 0,
+    "canvas": 0,
+    "time": 0,
+    "numerals": []
+   },
+   "areas": {
+    "room": 49360,
+    "h1": 9225,
+    "arc": 133433,
+    "arcList": 99233,
+    "statement": 21546
+   },
+   "fold": {
+    "h1": 148,
+    "subjectIdentity": 212,
+    "arcHeading": 286,
+    "firstArcStep": 329,
+    "lastArcStep": 584,
+    "boundary": 684,
+    "tutorStatement": 779,
+    "back": 859,
+    "viewport": 844,
+    "hscroll": false
+   },
+   "targets": [
+    [
+     "Tutors Academy home",
+     44,
+     44
+    ],
+    [
+     "Toggle theme",
+     44,
+     44
+    ],
+    [
+     "Open menu",
+     44,
+     44
+    ],
+    [
+     "Overview",
+     342,
+     53
+    ],
+    [
+     "Subjects",
+     342,
+     53
+    ],
+    [
+     "Account",
+     342,
+     53
+    ],
+    [
+     "Tutor A",
+     74,
+     48
+    ],
+    [
+     "Sign out",
+     80,
+     48
+    ],
+    [
+     "Back to the students placed wi",
+     234,
+     48
+    ]
+   ],
+   "fontPx": {
+    "h1": 28.68,
+    "arcLabel": 16,
+    "statement": 14
+   },
+   "title": "Student D · Physics",
+   "metaDesc": "The students placed with you, by subject."
+  }
+ },
+ "cases": {
+  "never-related (student B's would-be id slot: another tutor's / nobody's relationship — student B has none, so a fresh uuid in B's place)": {
+   "rawSha": "60d2c434a68cacd6",
+   "url": "/tutor/physics/5e2b62d6-7352-4c06-814d-450c29ff8407",
+   "status": 404,
+   "bytes": 17291,
+   "sha": "9323089fc745fa88",
+   "text": "Your students · Tutors Academy (self.__next_f=self.__next_f||[]).push([0]) self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[80848,[\\\"/_next/static/chunks/1-cz"
+  },
+  "ended (student-d physics, ended)": {
+   "rawSha": "cb7e3ca21c6dfeab",
+   "url": "/tutor/physics/947cc414-feef-4025-86e2-657e514e385b",
+   "status": 404,
+   "bytes": 17291,
+   "sha": "9323089fc745fa88",
+   "text": "Your students · Tutors Academy (self.__next_f=self.__next_f||[]).push([0]) self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[80848,[\\\"/_next/static/chunks/1-cz"
+  },
+  "nonexistent (random uuid)": {
+   "rawSha": "c4179669461804b9",
+   "url": "/tutor/physics/784c1fcc-f948-4055-88f3-832126507fd5",
+   "status": 404,
+   "bytes": 17291,
+   "sha": "9323089fc745fa88",
+   "text": "Your students · Tutors Academy (self.__next_f=self.__next_f||[]).push([0]) self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[80848,[\\\"/_next/static/chunks/1-cz"
+  },
+  "probe: student B's user id in the slot": {
+   "rawSha": "8bf9c006d32f4b3c",
+   "url": "/tutor/physics/819a8c3b-5822-4221-9d6e-508b3eedba4d",
+   "status": 404,
+   "bytes": 17291,
+   "sha": "9323089fc745fa88",
+   "text": "Your students · Tutors Academy (self.__next_f=self.__next_f||[]).push([0]) self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[80848,[\\\"/_next/static/chunks/1-cz"
+  },
+  "probe: related student-c's user id in the slot": {
+   "rawSha": "da023e4b1985e9dc",
+   "url": "/tutor/physics/01a23485-4b8f-4291-b934-620992235db0",
+   "status": 404,
+   "bytes": 17291,
+   "sha": "9323089fc745fa88",
+   "text": "Your students · Tutors Academy (self.__next_f=self.__next_f||[]).push([0]) self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[80848,[\\\"/_next/static/chunks/1-cz"
+  },
+  "probe: garbage": {
+   "rawSha": "34077c9a9c5c4c29",
+   "url": "/tutor/physics/not-a-uuid",
+   "status": 404,
+   "bytes": 17239,
+   "sha": "9323089fc745fa88",
+   "text": "Your students · Tutors Academy (self.__next_f=self.__next_f||[]).push([0]) self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[80848,[\\\"/_next/static/chunks/1-cz"
+  },
+  "cross-subject: student-c's physics relationship under /history": {
+   "rawSha": "838cdf9b6490bc7d",
+   "url": "/tutor/history/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+   "status": 404,
+   "bytes": 17291,
+   "sha": "9323089fc745fa88",
+   "text": "Your students · Tutors Academy (self.__next_f=self.__next_f||[]).push([0]) self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[80848,[\\\"/_next/static/chunks/1-cz"
+  },
+  "cross-subject: student-c's physics relationship under /mathematics": {
+   "rawSha": "ebcfb9bf42762ea4",
+   "url": "/tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+   "status": 404,
+   "bytes": 17299,
+   "sha": "9323089fc745fa88",
+   "text": "Your students · Tutors Academy (self.__next_f=self.__next_f||[]).push([0]) self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[80848,[\\\"/_next/static/chunks/1-cz"
+  },
+  "ended other subject (student-c mathematics, ended)": {
+   "rawSha": "286c75e1cb7d5912",
+   "url": "/tutor/mathematics/0104334b-4e5a-4c3a-ad20-0ac7d482a4e1",
+   "status": 404,
+   "bytes": 17299,
+   "sha": "9323089fc745fa88",
+   "text": "Your students · Tutors Academy (self.__next_f=self.__next_f||[]).push([0]) self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[80848,[\\\"/_next/static/chunks/1-cz"
+  },
+  "unknown subject segment": {
+   "rawSha": "942df76a99036ff6",
+   "url": "/tutor/all/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+   "status": 404,
+   "bytes": 17283,
+   "sha": "9323089fc745fa88",
+   "text": "Your students · Tutors Academy (self.__next_f=self.__next_f||[]).push([0]) self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[80848,[\\\"/_next/static/chunks/1-cz"
+  },
+  "tutor U opens tutor T's relationship": {
+   "url": "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+   "status": 404,
+   "bytes": 17291,
+   "sha": "2d0eaf2e3c1e6a57",
+   "tutorTNonexistentSha": "2d0eaf2e3c1e6a57",
+   "note": "the only difference before scrubbing the viewer's own account name in the nav"
+  }
+ },
+ "shellRows": [
+  {
+   "outer": "<li data-relationship-row=\"true\" ><a aria-label=\"Student A — Physics\"  href=\"/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422\"><span >Student A</span><span >Physics</span></a></li>",
+   "href": "/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422",
+   "name": "Student A — Physics",
+   "cursor": "pointer",
+   "textDecoration": "none",
+   "color": "rgb(11, 14, 18)",
+   "nameFont": "16px/500",
+   "h": 50,
+   "rowLinks": 1
+  },
+  {
+   "outer": "<li data-relationship-row=\"true\" ><a aria-label=\"Student C — Physics\"  href=\"/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6\"><span >Student C</span><span >Physics</span></a></li>",
+   "href": "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+   "name": "Student C — Physics",
+   "cursor": "pointer",
+   "textDecoration": "none",
+   "color": "rgb(11, 14, 18)",
+   "nameFont": "16px/500",
+   "h": 50,
+   "rowLinks": 1
+  },
+  {
+   "outer": "<li data-relationship-row=\"true\" ><a aria-label=\"Student D — Physics\"  href=\"/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320\"><span >Student D</span><span >Physics</span></a></li>",
+   "href": "/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320",
+   "name": "Student D — Physics",
+   "cursor": "pointer",
+   "textDecoration": "none",
+   "color": "rgb(11, 14, 18)",
+   "nameFont": "16px/500",
+   "h": 50,
+   "rowLinks": 1
+  }
+ ],
+ "network": {
+  "scriptBytes": 587825,
+  "scriptFiles": 13
+ },
+ "statements": {
+  "student-c": {
+   "boundary": "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+   "boundarySha": "98e5b644d3d2009c",
+   "tutorStatement": "This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.",
+   "tutorSha": "b278d1234de58868",
+   "arc": [
+    "discover:See the system:done",
+    "choose:See the doors:done",
+    "enter:Watch the crossing:done",
+    "learn:Learn in the room:ahead",
+    "interact:Work with a tutor:ahead",
+    "progress:Watch your record grow:ahead",
+    "master:Master the subject:ahead"
+   ]
+  },
+  "student-a": {
+   "boundary": "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+   "boundarySha": "98e5b644d3d2009c",
+   "tutorStatement": "This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.",
+   "tutorSha": "b278d1234de58868",
+   "arc": [
+    "discover:See the system:done",
+    "choose:See the doors:ahead",
+    "enter:Watch the crossing:ahead",
+    "learn:Learn in the room:ahead",
+    "interact:Work with a tutor:ahead",
+    "progress:Watch your record grow:ahead",
+    "master:Master the subject:ahead"
+   ]
+  },
+  "student-d": {
+   "boundary": "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist.",
+   "boundarySha": "98e5b644d3d2009c",
+   "tutorStatement": "This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.",
+   "tutorSha": "b278d1234de58868",
+   "arc": [
+    "discover:See the system:done",
+    "choose:See the doors:done",
+    "enter:Watch the crossing:done",
+    "learn:Learn in the room:ahead",
+    "interact:Work with a tutor:ahead",
+    "progress:Watch your record grow:ahead",
+    "master:Master the subject:ahead"
+   ]
+  }
+ },
+ "arcConsumers": {
+  "definition": [
+   "discover:See the system",
+   "choose:See the doors",
+   "enter:Watch the crossing",
+   "learn:Learn in the room",
+   "interact:Work with a tutor",
+   "progress:Watch your record grow",
+   "master:Master the subject"
+  ],
+  "scene7": [
+   "discover:See the system",
+   "choose:See the doors",
+   "enter:Watch the crossing",
+   "learn:Learn in the room",
+   "interact:Work with a tutor",
+   "progress:Watch your record grow",
+   "master:Master the subject"
+  ],
+  "tutorSurface": [
+   "discover:See the system",
+   "choose:See the doors",
+   "enter:Watch the crossing",
+   "learn:Learn in the room",
+   "interact:Work with a tutor",
+   "progress:Watch your record grow",
+   "master:Master the subject"
+  ],
+  "studentRegion": [
+   "discover:See the system",
+   "choose:See the doors",
+   "enter:Watch the crossing",
+   "learn:Learn in the room",
+   "interact:Work with a tutor",
+   "progress:Watch your record grow",
+   "master:Master the subject"
+  ],
+  "studentRegionStates": [
+   "done",
+   "done",
+   "done",
+   "ahead",
+   "ahead",
+   "ahead",
+   "ahead"
+  ],
+  "studentBoundary": "Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist."
+ },
+ "rawDiff": {
+  "between": [
+   "ended (student-d physics, ended)",
+   "nonexistent (random uuid)"
+  ],
+  "lengths": [
+   17281,
+   17281
+  ],
+  "differingSegments": [
+   {
+    "at": 3024,
+    "a": "947",
+    "b": "784"
+   },
+   {
+    "at": 3028,
+    "a": "c414",
+    "b": "1fcc"
+   },
+   {
+    "at": 3034,
+    "a": "eef",
+    "b": "948"
+   },
+   {
+    "at": 3040,
+    "a": "2",
+    "b": "5"
+   },
+   {
+    "at": 3044,
+    "a": "6e2",
+    "b": "8f3"
+   },
+   {
+    "at": 3048,
+    "a": "657e514e385b",
+    "b": "832126507fd5"
+   }
+  ]
+ },
+ "scrubbedShared": "9323089fc745fa88",
+ "sameUrlRuns": {
+  "url": "nonexistent, 4 fetches",
+  "rawShas": [
+   "c4179669461804b9",
+   "d7f81bb3a1448444"
+  ],
+  "canonicalShas": [
+   "9323089fc745fa88"
+  ]
+ },
+ "hscroll-dark-390": false,
+ "hscroll-dark-360": false,
+ "hscroll-dark-320": false,
+ "hscroll-light-390": false,
+ "hscroll-light-360": false,
+ "hscroll-light-320": false,
+ "textSpacing": {
+  "hscroll": false,
+  "clipped": 0
+ },
+ "zoom400": {
+  "hscroll": false
+ },
+ "tabOrder": [
+  "Skip to content",
+  "Tutors Academy home",
+  "Switch to dark theme",
+  "Open menu",
+  "Back to the students placed wi",
+  "(function(){try{var s=localSto",
+  "Skip to content",
+  "Tutors Academy home",
+  "Switch to dark theme",
+  "Open menu",
+  "Back to the students placed wi",
+  "(function(){try{var s=localSto"
+ ],
+ "axe": {
+  "dark": {
+   "violations": [],
+   "contrastChecked": 11,
+   "worst": 16.26
+  },
+  "light": {
+   "violations": [],
+   "contrastChecked": 11,
+   "worst": 15.7
+  }
+ },
+ "perf": {
+  "profile": "CDP emulation: 4× CPU, 150 ms RTT, 1.6 Mbps down; 1 warm-up discarded",
+  "samples": [
+   {
+    "lcp": 856,
+    "ttfb": 731,
+    "requests": 27
+   },
+   {
+    "lcp": 864,
+    "ttfb": 746,
+    "requests": 27
+   },
+   {
+    "lcp": 852,
+    "ttfb": 740,
+    "requests": 27
+   },
+   {
+    "lcp": 880,
+    "ttfb": 748,
+    "requests": 27
+   },
+   {
+    "lcp": 832,
+    "ttfb": 733,
+    "requests": 27
+   }
+  ],
+  "lcpMs": [
+   832,
+   852,
+   856,
+   864,
+   880
+  ],
+  "ttfbMs": [
+   731,
+   733,
+   740,
+   746,
+   748
+  ],
+  "requests": 27,
+  "scriptBytes": 587825,
+  "scriptFiles": 13
+ },
+ "pass": true,
+ "failed": []
+}

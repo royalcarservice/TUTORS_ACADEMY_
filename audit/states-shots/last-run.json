@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-30T02:17:21.746Z",
+ "generatedAt": "2026-10-02T15:37:37.874Z",
  "reference": "390x844 mobile",
  "corrections": [
   {
@@ -117,7 +117,7 @@
   },
   "T4 log line: class + route + ids, no student content": {
    "pass": true,
-   "detail": "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:02.919Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"EntryWriteFailed\",\"what\":\"entry stamp failed after enrolment commit\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
+   "detail": "{\"level\":\"error\",\"at\":\"2026-10-02T15:38:21.023Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"EntryWriteFailed\",\"what\":\"entry stamp failed after enrolment commit\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
   },
   "T7b known write failure: 303 ?entry=failed → threshold + ONE sentence beside Begin, no row, no internals, no red, no icon": {
    "pass": true,
@@ -125,7 +125,7 @@
   },
   "T7b log line for the refused write": {
    "pass": true,
-   "detail": "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:09.463Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"enrolment upsert failed — no row written\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
+   "detail": "{\"level\":\"error\",\"at\":\"2026-10-02T15:38:27.558Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"enrolment upsert failed — no row written\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
   },
   "T7b after a successful retry: environment opens, sentence gone, one row": {
    "pass": true,
@@ -153,7 +153,7 @@
   },
   "T8 log line for the failed read: class, scope, no content": {
    "pass": true,
-   "detail": "[\"{\\\"level\\\":\\\"error\\\",\\\"at\\\":\\\"2026-09-30T02:18:47.687Z\\\",\\\"scope\\\":\\\"read:enrolments\\\",\\\"errorClass\\\":\\\"PostgrestError(42501)\\\",\\\"what\\\":\\\"read failed — the caller decides: page failure (primary) or silence (region)\\\",\\\"ids\\\":{}}\",\"⨯ Error [DataReadError]: read failed: enrolments\"]"
+   "detail": "[\"{\\\"level\\\":\\\"error\\\",\\\"at\\\":\\\"2026-10-02T15:39:03.245Z\\\",\\\"scope\\\":\\\"read:enrolments\\\",\\\"errorClass\\\":\\\"PostgrestError(42501)\\\",\\\"what\\\":\\\"read failed — the caller decides: page failure (primary) or silence (region)\\\",\\\"ids\\\":{}}\",\"⨯ Error [DataReadError]: read failed: enrolments\"]"
   },
   "T8 no-JS on a failed page: recorded (framework renders error boundaries client-side)": {
    "pass": true,
@@ -173,7 +173,7 @@
   },
   "P5-R9 log: the refused decisions are logged with class + scope, never content": {
    "pass": true,
-   "detail": "[\"{\\\"level\\\":\\\"error\\\",\\\"at\\\":\\\"2026-09-30T02:18:53.393Z\\\",\\\"scope\\\":\\\"read:enrolments\\\",\\\"errorClass\\\":\\\"PostgrestError(42501)\\\",\\\"what\\\":\\\"read failed — the caller decides: page failure (primary) or silence (region)\\\",\\\"ids\\\":{}}\",\"{\\\"level\\\":\\\"error\\\",\\\"at\\\":\\\"2026-09-30T02:18:53.640Z\\\",\\\"scope\\\":\\\"read:enrolments\\\",\\\"errorClass\\\":\\\"PostgrestError(42501)\\\",\\\"what\\\":\\\"read failed — the caller decides: page failure (primary) or silence (region)\\\",\\\"ids\\\":{}}\"]"
+   "detail": "[\"{\\\"level\\\":\\\"error\\\",\\\"at\\\":\\\"2026-10-02T15:39:08.591Z\\\",\\\"scope\\\":\\\"route:/subjects/[subject]/enter\\\",\\\"errorClass\\\":\\\"PostgrestError(42501)\\\",\\\"what\\\":\\\"enrolment read failed before deciding — no row written\\\",\\\"ids\\\":{\\\"subject\\\":\\\"physics\\\",\\\"identity\\\":\\\"d83ecd96-e261-45c5-8051-ba457a3f18ec\\\"}}\",\"{\\\"level\\\":\\\"error\\\",\\\"at\\\":\\\"2026-10-02T15:39:09.014Z\\\",\\\"scope\\\":\\\"read:enrolments\\\",\\\"errorClass\\\":\\\"PostgrestError(42501)\\\",\\\"what\\\":\\\"read failed — the caller decides: page failure (primary) or silence (region)\\\",\\\"ids\\\":{}}\"]"
   },
   "T7 region failure: page 200, NOTHING in the broken region's DOM, healthy twin renders the arc": {
    "pass": true,
@@ -181,7 +181,7 @@
   },
   "T7 region failure log line: scope region:progress, TypeError, subject id, no content": {
    "pass": true,
-   "detail": "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:56.368Z\",\"scope\":\"region:progress\",\"errorClass\":\"TypeError\",\"what\":\"isolated failure — rendered nothing\",\"ids\":{\"subject\":\"mathematics\"}}"
+   "detail": "{\"level\":\"error\",\"at\":\"2026-10-02T15:39:11.454Z\",\"scope\":\"region:progress\",\"errorClass\":\"TypeError\",\"what\":\"isolated failure — rendered nothing\",\"ids\":{\"subject\":\"mathematics\"}}"
   },
   "T15 dev forced throw → the real root boundary: 500, one h1, one action, the chosen sentence": {
    "pass": true,
@@ -189,7 +189,7 @@
   },
   "T2 inventory: ≥19 rows rendered from docs/STATE_LANGUAGE.md; every specimen has a claim beneath": {
    "pass": true,
-   "detail": "{\"rows\":23,\"specimens\":12,\"claims\":12}"
+   "detail": "{\"rows\":26,\"specimens\":12,\"claims\":12}"
   },
   "T29 production: /dev/student-states, its frame, its throw route and /dev/global-throw are 404": {
    "pass": true,
@@ -217,7 +217,7 @@
   },
   "T22 JS payload pinned: /subjects/mathematics ≤ 16 scripts, ≤ 632 KB decoded (before 5.7: 14 / 610); /student ≤ 13 scripts, ≤ 578 KB (before: 11 / 556)": {
    "pass": true,
-   "detail": "{\"env\":{\"status\":200,\"ttfb\":15,\"requests\":32,\"scripts\":16,\"scriptEncodedKB\":199,\"scriptDecodedKB\":629,\"wall\":787},\"student\":{\"status\":200,\"ttfb\":472,\"requests\":42,\"scripts\":13,\"scriptEncodedKB\":179,\"scriptDecodedKB\":574,\"wall\":1505}}"
+   "detail": "{\"env\":{\"status\":200,\"ttfb\":16,\"requests\":32,\"scripts\":16,\"scriptEncodedKB\":199,\"scriptDecodedKB\":629,\"wall\":755},\"student\":{\"status\":200,\"ttfb\":466,\"requests\":43,\"scripts\":13,\"scriptEncodedKB\":179,\"scriptDecodedKB\":574,\"wall\":1480}}"
   }
  },
  "tests": {
@@ -457,7 +457,7 @@
      "contrast": {
       "violations": 0,
       "preexisting51": [],
-      "passes": 15
+      "passes": 14
      }
     }
    },
@@ -482,9 +482,9 @@
      "contrast": {
       "violations": 0,
       "preexisting51": [],
-      "passes": 15
+      "passes": 14
      },
-     "text": "Skip to content TUTORS ACADEMY Back Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+     "text": "Skip to content Back Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
     },
     "light-1280": {
      "h1": 1,
@@ -503,7 +503,7 @@
       "preexisting51": [],
       "passes": 15
      },
-     "text": "Skip to content TUTORS ACADEMY Back to website Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account TUTORS ACADEMY Live tutoring, built for real learning outcomes. One account gives you access to every surface of the platform. Student portal Classes, assignments, tests and progress. Tutor portal Teach, schedule, assess and get paid. Admin portal Operations, people, content and billing. © 2026 Tutors Academy"
+     "text": "Skip to content TUTORS ACADEMY Back to website Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account TUTORS ACADEMY Live tutoring, built for real learning outcomes. One account gives you access to every surface of the platform. Student portal Your subjects, and what to open next. Tutor portal The students placed with you, by subject. Admin portal Architecture only. No account can open it. © 2026 Tutors Academy"
     },
     "dark-390": {
      "h1": 1,
@@ -520,9 +520,9 @@
      "contrast": {
       "violations": 0,
       "preexisting51": [],
-      "passes": 15
+      "passes": 14
      },
-     "text": "Skip to content TUTORS ACADEMY Back Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
+     "text": "Skip to content Back Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account"
     },
     "dark-1280": {
      "h1": 1,
@@ -541,7 +541,7 @@
       "preexisting51": [],
       "passes": 15
      },
-     "text": "Skip to content TUTORS ACADEMY Back to website Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account TUTORS ACADEMY Live tutoring, built for real learning outcomes. One account gives you access to every surface of the platform. Student portal Classes, assignments, tests and progress. Tutor portal Teach, schedule, assess and get paid. Admin portal Operations, people, content and billing. © 2026 Tutors Academy"
+     "text": "Skip to content TUTORS ACADEMY Back to website Sign in Use your Tutors Academy account to reach your portal. Signing in opens Mathematics. Test accounts only Phase 5 sign-in is for test accounts. Real student onboarding waits on the privacy, terms and data-protection work. Email address Password Keep me signed in on this device Sign in New to Tutors Academy? Create an account TUTORS ACADEMY Live tutoring, built for real learning outcomes. One account gives you access to every surface of the platform. Student portal Your subjects, and what to open next. Tutor portal The students placed with you, by subject. Admin portal Architecture only. No account can open it. © 2026 Tutors Academy"
     }
    },
    "entry-failed-live": {
@@ -1998,7 +1998,7 @@
     "progress:ahead",
     "master:ahead"
    ],
-   "logLine": "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:02.919Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"EntryWriteFailed\",\"what\":\"entry stamp failed after enrolment commit\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
+   "logLine": "{\"level\":\"error\",\"at\":\"2026-10-02T15:38:21.023Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"EntryWriteFailed\",\"what\":\"entry stamp failed after enrolment commit\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
   },
   "entryFailed": {
    "url": "/subjects/mathematics?entry=failed",
@@ -2036,7 +2036,7 @@
     "outline": true
    },
    "text": "Mathematics The Lattice — structure you can stand on. Begin Mathematics Beginning did not go through, and nothing was recorded — beginning again is safe. NAVIGATION POSITION Mathematics Physics · in foundation Chemistry · in foundation Biology · in foundation English · in foundation History · in foundation ROOM · COMPACT DENSITY · VECTOR ONLY Inside this room The room is the working surface of this environment. It holds no substrate and no canvas — only calm, compact space for the features that arrive in later phases. Nothing here is loading; nothing here is built yet. SYSTEM STATE · NOT BUILT Live classes Live classes will appear here — Phase 7. Until then this room stays quiet. SYSTEM STATE · NOT BUILT Assignments, tests & progress Your work and progress will appear here when the student portal ships (in progress in the module registry — the student shell exists; assignments, tests and progress do not yet). SYSTEM STATE · NOT BUILT Recorded classes & notes Recordings and lesson notes will appear here with the recorded-classes module (planned).",
-   "logLine": "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:09.463Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"enrolment upsert failed — no row written\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
+   "logLine": "{\"level\":\"error\",\"at\":\"2026-10-02T15:38:27.558Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"enrolment upsert failed — no row written\",\"ids\":{\"subject\":\"mathematics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}"
   },
   "forcedPageFailure": {
    "shell": {
@@ -2096,7 +2096,7 @@
    },
    "logLines": [
     "⨯ Error [DataReadError]: read failed: enrolments",
-    "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:47.687Z\",\"scope\":\"read:enrolments\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"read failed — the caller decides: page failure (primary) or silence (region)\",\"ids\":{}}",
+    "{\"level\":\"error\",\"at\":\"2026-10-02T15:39:03.245Z\",\"scope\":\"read:enrolments\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"read failed — the caller decides: page failure (primary) or silence (region)\",\"ids\":{}}",
     "⨯ Error [DataReadError]: read failed: enrolments"
    ]
   },
@@ -2126,10 +2126,10 @@
    },
    "rowsAfter": "2/1",
    "logLines": [
-    "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:52.779Z\",\"scope\":\"read:enrolments\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"read failed — the caller decides: page failure (primary) or silence (region)\",\"ids\":{}}",
-    "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:53.342Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"enrolment read failed before deciding — no row written\",\"ids\":{\"subject\":\"physics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}",
-    "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:53.393Z\",\"scope\":\"read:enrolments\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"read failed — the caller decides: page failure (primary) or silence (region)\",\"ids\":{}}",
-    "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:53.640Z\",\"scope\":\"read:enrolments\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"read failed — the caller decides: page failure (primary) or silence (region)\",\"ids\":{}}"
+    "{\"level\":\"error\",\"at\":\"2026-10-02T15:39:08.054Z\",\"scope\":\"read:enrolments\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"read failed — the caller decides: page failure (primary) or silence (region)\",\"ids\":{}}",
+    "{\"level\":\"error\",\"at\":\"2026-10-02T15:39:08.494Z\",\"scope\":\"read:enrolments\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"read failed — the caller decides: page failure (primary) or silence (region)\",\"ids\":{}}",
+    "{\"level\":\"error\",\"at\":\"2026-10-02T15:39:08.591Z\",\"scope\":\"route:/subjects/[subject]/enter\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"enrolment read failed before deciding — no row written\",\"ids\":{\"subject\":\"physics\",\"identity\":\"d83ecd96-e261-45c5-8051-ba457a3f18ec\"}}",
+    "{\"level\":\"error\",\"at\":\"2026-10-02T15:39:09.014Z\",\"scope\":\"read:enrolments\",\"errorClass\":\"PostgrestError(42501)\",\"what\":\"read failed — the caller decides: page failure (primary) or silence (region)\",\"ids\":{}}"
    ]
   },
   "regionFailure": {
@@ -2140,7 +2140,7 @@
     "healthy": 1,
     "healthyHasArc": true
    },
-   "logLine": "{\"level\":\"error\",\"at\":\"2026-09-30T02:18:56.368Z\",\"scope\":\"region:progress\",\"errorClass\":\"TypeError\",\"what\":\"isolated failure — rendered nothing\",\"ids\":{\"subject\":\"mathematics\"}}"
+   "logLine": "{\"level\":\"error\",\"at\":\"2026-10-02T15:39:11.454Z\",\"scope\":\"region:progress\",\"errorClass\":\"TypeError\",\"what\":\"isolated failure — rendered nothing\",\"ids\":{\"subject\":\"mathematics\"}}"
   },
   "devThrow": {
    "status": 500,
@@ -2167,7 +2167,7 @@
   },
   "inventoryPage": {
    "status": 200,
-   "rows": 23,
+   "rows": 26,
    "specimens": 12,
    "claims": 12
   },
@@ -2254,7 +2254,7 @@
     "contrast": {
      "violations": 0,
      "preexisting51": [],
-     "passes": 15
+     "passes": 14
     },
     "redish": 0,
     "icons": 0,
@@ -2271,7 +2271,7 @@
     "contrast": {
      "violations": 0,
      "preexisting51": [],
-     "passes": 15
+     "passes": 14
     },
     "redish": 0,
     "icons": 0,
@@ -2305,7 +2305,7 @@
     "contrast": {
      "violations": 0,
      "preexisting51": [],
-     "passes": 15
+     "passes": 14
     },
     "redish": 0,
     "icons": 0,
@@ -3387,30 +3387,30 @@
   "payload": {
    "/": {
     "status": 200,
-    "ttfb": 11,
+    "ttfb": 9,
     "requests": 25,
     "scripts": 13,
     "scriptEncodedKB": 180,
     "scriptDecodedKB": 578,
-    "wall": 786
+    "wall": 792
    },
    "/subjects": {
     "status": 200,
-    "ttfb": 17,
+    "ttfb": 10,
     "requests": 30,
     "scripts": 15,
     "scriptEncodedKB": 189,
     "scriptDecodedKB": 602,
-    "wall": 718
+    "wall": 713
    },
    "/subjects/mathematics": {
     "status": 200,
-    "ttfb": 15,
+    "ttfb": 16,
     "requests": 32,
     "scripts": 16,
     "scriptEncodedKB": 199,
     "scriptDecodedKB": 629,
-    "wall": 787
+    "wall": 755
    },
    "/login": {
     "status": 200,
@@ -3419,70 +3419,70 @@
     "scripts": 14,
     "scriptEncodedKB": 186,
     "scriptDecodedKB": 595,
-    "wall": 718
+    "wall": 749
    },
    "/subjects/nonsense": {
     "status": 404,
-    "ttfb": 18,
-    "requests": 23,
-    "scripts": 14,
-    "scriptEncodedKB": 183,
-    "scriptDecodedKB": 584,
-    "wall": 787
+    "ttfb": 15,
+    "requests": 22,
+    "scripts": 13,
+    "scriptEncodedKB": 179,
+    "scriptDecodedKB": 575,
+    "wall": 747
    },
    "student:/student": {
     "status": 200,
-    "ttfb": 472,
-    "requests": 42,
+    "ttfb": 466,
+    "requests": 43,
     "scripts": 13,
     "scriptEncodedKB": 179,
     "scriptDecodedKB": 574,
-    "wall": 1505
+    "wall": 1480
    },
    "student:/subjects/mathematics": {
     "status": 200,
-    "ttfb": 664,
-    "requests": 35,
-    "scripts": 16,
-    "scriptEncodedKB": 199,
-    "scriptDecodedKB": 629,
-    "wall": 2005
+    "ttfb": 695,
+    "requests": 29,
+    "scripts": 14,
+    "scriptEncodedKB": 190,
+    "scriptDecodedKB": 602,
+    "wall": 1708
    }
   },
   "envTiming": {
    "ttfbRuns": [
-    647,
-    637,
-    703,
-    666,
-    674,
-    671,
-    632
+    851,
+    751,
+    657,
+    696,
+    618,
+    676,
+    629
    ],
    "ttfbUsed": [
-    637,
-    703,
-    666,
-    674,
-    671,
-    632
+    751,
+    657,
+    696,
+    618,
+    676,
+    629
    ],
    "lcpRunsMs": [
-    732,
-    748,
     752,
-    720,
-    712,
-    740,
-    688
+    716,
+    724,
+    692,
+    708,
+    704,
+    680
    ],
    "lcpUsed": [
-    748,
-    752,
-    720,
-    712,
-    740,
-    688
+    716,
+    724,
+    692,
+    708,
+    704,
+    680
    ],
    "note": "warm-up discarded; unthrottled sandbox, variance noted not gated (D-08)"
   }

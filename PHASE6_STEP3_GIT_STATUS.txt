@@ -1,0 +1,124 @@
+ M audit/attacks/tsc-output.txt
+ M audit/attacks/tutor-shell-attack-1.ts
+ M audit/attacks/tutor-shell-attack-2.ts
+ M audit/environment-baseline.json
+ M audit/environment-shots/enrolled-draft-entered-390.png
+ M audit/environment-shots/enrolled-draft-no-state-390.png
+ M audit/environment-shots/enrolled-ready-no-state-390.png
+ M audit/environment-shots/enrolled-ready-no-state.html
+ M audit/environment-shots/nonenrolled-draft-390.png
+ M audit/environment-shots/nonenrolled-ready-1280x800.png
+ M audit/environment-shots/nonenrolled-ready-320x568.png
+ M audit/environment-shots/nonenrolled-ready-390.png
+ M audit/environment-shots/nonenrolled-ready.html
+ M audit/environment-shots/visitor-draft-390.png
+ M audit/environment-shots/visitor-draft.html
+ M audit/environment-shots/visitor-ready-390.png
+ M audit/environment-shots/visitor-ready.html
+ M audit/environment-shots/write-1-shell-A.png
+ M audit/environment-shots/write-2-threshold.png
+ M audit/environment-shots/write-3-entered.png
+ M audit/environment-shots/write-4-shell-C.png
+ M audit/gate-shots/journey-01.png
+ M audit/gate-shots/last-run.json
+ M audit/identity-matrix.cjs
+ M audit/identity-matrix.json
+ M audit/lighthouse-shell.json
+ M audit/shell-shots/A-grayscale-390.png
+ M audit/shell-shots/A-light-1280.png
+ M audit/shell-shots/A-light-390.png
+ M audit/shell-shots/A-textspacing-390.png
+ M audit/shell-shots/A-zoom320.png
+ M audit/shell-shots/A-zoom640.png
+ M audit/shell-shots/B-grayscale-390.png
+ M audit/shell-shots/B-light-1280.png
+ M audit/shell-shots/B-light-390.png
+ M audit/shell-shots/B-textspacing-390.png
+ M audit/shell-shots/B-zoom320.png
+ M audit/shell-shots/B-zoom640.png
+ M audit/shell-shots/C-grayscale-390.png
+ M audit/shell-shots/C-light-1280.png
+ M audit/shell-shots/C-light-390.png
+ M audit/shell-shots/C-textspacing-390.png
+ M audit/shell-shots/C-zoom320.png
+ M audit/shell-shots/C-zoom640.png
+ M audit/shell-shots/signed-out-390.png
+ M audit/shell-shots/slots-all-390.png
+ M audit/shell-shots/slots-none-390.png
+ M audit/shell-shots/slots-some-390.png
+ M audit/states-shots/entry-failed-dark-1280.png
+ M audit/states-shots/entry-failed-dark-390.png
+ M audit/states-shots/entry-failed-light-1280.png
+ M audit/states-shots/entry-failed-light-390.png
+ M audit/states-shots/entry-failed-live-dark-1280.png
+ M audit/states-shots/entry-failed-live-light-1280.png
+ M audit/states-shots/environment-failed-dark-1280.png
+ M audit/states-shots/environment-failed-dark-390.png
+ M audit/states-shots/environment-failed-light-1280.png
+ M audit/states-shots/environment-failed-light-390.png
+ M audit/states-shots/environment-failed-live-dark-1280.png
+ M audit/states-shots/environment-failed-live-light-1280.png
+ M audit/states-shots/global-error-dark-390.png
+ M audit/states-shots/global-error-light-390.png
+ M audit/states-shots/in-flight-dark-390.png
+ M audit/states-shots/in-flight-light-390.png
+ M audit/states-shots/last-run.json
+ M audit/states-shots/login-continue-dark-390.png
+ M audit/states-shots/login-continue-light-390.png
+ M audit/states-shots/login-continue-live-dark-1280.png
+ M audit/states-shots/login-continue-live-dark-390.png
+ M audit/states-shots/login-continue-live-light-1280.png
+ M audit/states-shots/login-continue-live-light-390.png
+ M audit/states-shots/login-ended-dark-390.png
+ M audit/states-shots/login-ended-light-390.png
+ M audit/states-shots/login-refused-dark-390.png
+ M audit/states-shots/login-refused-light-390.png
+ M audit/states-shots/login-refused-live-light-390.png
+ M audit/states-shots/login-unavailable-dark-390.png
+ M audit/states-shots/login-unavailable-light-390.png
+ M audit/states-shots/page-failed-dark-390.png
+ M audit/states-shots/page-failed-light-1280.png
+ M audit/states-shots/page-failed-light-390.png
+ M audit/states-shots/region-failing-dark-1280.png
+ M audit/states-shots/region-failing-dark-390.png
+ M audit/states-shots/region-failing-light-390.png
+ M audit/states-shots/student-failed-dark-1280.png
+ M audit/states-shots/student-failed-dark-390.png
+ M audit/states-shots/student-failed-light-1280.png
+ M audit/states-shots/student-failed-light-390.png
+ M audit/tutor-baseline.json
+ M audit/tutor-shots/A-dark-390-gray.png
+ M audit/tutor-shots/A-dark-390.png
+ M audit/tutor-shots/A-light-390.png
+ M audit/tutor-shots/B-dark-1280.png
+ M audit/tutor-shots/B-dark-390-gray.png
+ M audit/tutor-shots/B-dark-390.png
+ M audit/tutor-shots/B-light-1280.png
+ M audit/tutor-shots/B-light-390.png
+ M audit/tutor-visibility.json
+ M audit/tutor.cjs
+ M docs/DECISIONS.md
+ M docs/EXCEPTIONS.md
+ M docs/PHASE_TRACKER.md
+ M docs/TUTOR_VISIBILITY.md
+ M scripts/test-tutor-visibility.mjs
+ M src/app/dev/tutor-shell/fixtures.ts
+ M src/components/student/arc-region.tsx
+ M src/components/tutor/tutor-shell.tsx
+ M src/config/modules.ts
+ M src/config/site.ts
+ M src/lib/tutor/data.ts
+?? PHASE6_STEP3_GIT_STATUS.txt
+?? PHASE6_STEP3_RELATIONSHIP_SURFACE_REPORT.md
+?? audit/attacks.cjs
+?? audit/attacks/relationship-attack-3.ts
+?? audit/attacks/relationship-attack-4.ts
+?? audit/attacks/relationship-attack-5.ts
+?? audit/relationship-baseline.json
+?? audit/relationship-shots/
+?? audit/relationship.cjs
+?? src/app/(portal)/tutor/[subject]/
+?? src/app/dev/relationship-surface/
+?? src/components/tutor/record.tsx
+?? src/components/tutor/relationship-surface.tsx
+?? src/lib/tutor/relationship.ts

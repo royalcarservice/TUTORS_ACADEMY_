@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-10-01T19:05:59.232Z",
+  "ranAt": "2026-10-02T15:35:21.589Z",
   "path": "anon key + test-account JWT → PostgREST → RLS",
   "passed": 17,
   "total": 17,
@@ -11,7 +11,8 @@
     },
     {
       "ok": true,
-      "label": "student can see who is related to her (one active, physics)"
+      "label": "student can see who is related to her: exactly her own rows (incl. physics active)",
+      "detail": "rows=2"
     },
     {
       "ok": true,
@@ -23,12 +24,13 @@
     },
     {
       "ok": true,
-      "label": "tutor sees exactly the one relationship (student-c · physics · active)"
+      "label": "tutor sees exactly their own relationship rows (truth set), incl. student-c · physics · active",
+      "detail": "rows=6"
     },
     {
       "ok": true,
-      "label": "P6-R2 tutor sees the related student's PHYSICS enrolment and nothing else",
-      "detail": "rows=1"
+      "label": "P6-R2 tutor sees exactly the enrolment rows that ACTIVE relationships name (incl. student-c physics) and nothing else",
+      "detail": "rows=2 expected=2"
     },
     {
       "ok": true,
@@ -41,13 +43,13 @@
     },
     {
       "ok": true,
-      "label": "tutor's environment_state rows = the student's own PHYSICS row, no more, no less",
-      "detail": "tutor rows=1, student physics state=true"
+      "label": "tutor's environment_state rows = exactly the rows ACTIVE relationships name (student-c's physics row iff it exists), no more, no less",
+      "detail": "tutor rows=2, expected=2, student physics state=true"
     },
     {
       "ok": true,
-      "label": "tutor reads exactly one other profile: the related student's display name",
-      "detail": "display_name=\"Student C\""
+      "label": "tutor reads exactly the ACTIVELY related students' profiles (display name), no ended, no others",
+      "detail": "others=3 expected=3"
     },
     {
       "ok": true,
@@ -76,7 +78,7 @@
     {
       "ok": true,
       "label": "count() over enrolments is the policy's row count, not the table's",
-      "detail": "count=1"
+      "detail": "count=2 expected=2"
     },
     {
       "ok": true,
