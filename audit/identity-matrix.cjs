@@ -77,7 +77,7 @@ function appRoutes() {
         if (url.includes("[relationship]")) {
           const f = relationshipFixture();
           for (const [tag, u] of Object.entries(f)) out.push({ url: url.replace("[subject]", u.subject).replace("[relationship]", u.id), kind, pattern: url + " · " + tag });
-        } else if (url.includes("[subject]")) { out.push({ url: url.replace("[subject]", "mathematics"), kind, pattern: url }); out.push({ url: url.replace("[subject]", "physics"), kind, pattern: url }); }
+        } else if (url.includes("[subject]")) { /* 6.5 · P6-R19: every subject — the one ready one and EVERY draft one (tutor × draft-environment cell per subject) */ for (const sid of ["mathematics", "physics", "chemistry", "biology", "english", "history"]) out.push({ url: url.replace("[subject]", sid), kind, pattern: url }); }
         else out.push({ url: url === "/" ? "/" : url.replace(/\/$/, ""), kind, pattern: url });
       }
     }
@@ -93,7 +93,8 @@ function renderOf(html, status, finalUrl) {
   if (/data-relationship-surface/.test(html)) return "relationship-surface";
   if (/data-tutor-shell/.test(html)) return "tutor-shell:" + (html.match(/data-state="([^"]+)"/) || [])[1];
   if (/data-student-shell/.test(html)) return "student-shell:" + (html.match(/data-state="([^"]+)"/) || [])[1];
-  if (/data-subject-shell|data-environment/.test(html)) return "environment";
+  /* the environment: what the composition HOLDS for this reader — student regions · threshold/door · the shaping link (6.5) */
+  if (/data-shell-root/.test(html)) return "environment" + (/data-student-region/.test(html) ? ":student-regions" : "") + (/data-threshold|data-visitor-door/.test(html) ? ":door" : "") + (/data-shape-link/.test(html) ? ":shape-link" : "");
   if (/__next_error__/.test(html) || status === 404) return "not-found";
   if (/input\[name=email\]|name="email"/.test(html) && /\/login/.test(u.pathname)) return "login" + (u.search ? ":" + decodeURIComponent(u.search) : "");
   if (/name="email"/.test(html) && /\/register/.test(u.pathname)) return "register";
@@ -192,7 +193,14 @@ async function withClass(browser, cls) {
   const gate = (n, ok, d) => { R.gates = R.gates || {}; R.gates[n] = { pass: !!ok, detail: d }; if (!ok) fail.push(`${n}: ${d}`); };
   gate("admin-absence", R.admin.profilesWithAdminRole === "0" && R.admin.usersWithAdminMetadata === "0", JSON.stringify(R.admin));
   const draft = R.routes["/subjects/physics"];
-  gate("regression: tutor T denied student A's draft door", draft && draft.tutorT.status === 404 && draft.tutorT.render === "not-found", JSON.stringify(draft && draft.tutorT));
+  /* 6.2's row "tutor T denied student A's draft door" REWRITTEN by P6-R19 (6.5), not deleted: a tutor with an active
+     relationship in a draft subject is admitted to its IDENTITY (the visitor's rendering) and denied every STUDENT REGION
+     of it; a draft flag is readiness, not secrecy. Evidence in DECISIONS (DEC-018). */
+  gate("P6-R19: tutor T is admitted to the draft environment's identity (physics: 200, shaping link) and denied every student region of it (no region, no door)", draft && draft.tutorT.status === 200 && draft.tutorT.render === "environment:shape-link", JSON.stringify(draft && draft.tutorT));
+  const DRAFTS = ["physics", "chemistry", "biology", "english", "history"];
+  gate("P6-R19: visitor, expired, tutor U (no placement) still 404 on every draft environment", DRAFTS.every((d) => ["visitor", "expired", "tutorU"].every((c) => R.routes["/subjects/" + d][c].status === 404)), JSON.stringify(DRAFTS.map((d) => [d, R.routes["/subjects/" + d].tutorU.status])));
+  gate("P6-R19: tutor T 404s on every draft subject they are NOT placed in (chemistry, biology, english, history)", DRAFTS.filter((d) => d !== "physics").every((d) => R.routes["/subjects/" + d].tutorT.status === 404), JSON.stringify(DRAFTS.map((d) => [d, R.routes["/subjects/" + d].tutorT.status])));
+  gate("P6-R19/P6-R17: no student ever sees the shaping link; no tutor ever sees a student region", Object.entries(R.routes).filter(([u]) => /^\/subjects\/[a-z]+$/.test(u)).every(([, row]) => !/shape-link/.test(row.studentA.render + row.studentB.render) && !/student-regions/.test(row.tutorT.render + row.tutorU.render)), "");
   gate("tutor U (unrelated) sees state A, tutor T sees state B", R.routes["/tutor"].tutorU.render === "tutor-shell:A-no-relationships" && R.routes["/tutor"].tutorT.render === "tutor-shell:B-relationships-no-events", JSON.stringify([R.routes["/tutor"].tutorU, R.routes["/tutor"].tutorT]));
   gate("students never reach /tutor; tutors never reach /student", ["studentA", "studentB"].every((c) => R.routes["/tutor"][c].landed.startsWith("/student")) && ["tutorT", "tutorU"].every((c) => R.routes["/student"][c].landed.startsWith("/tutor")), "");
   gate("visitor and expired land on /login for every portal route", ["/student", "/student/account", "/tutor", "/tutor/account", "/admin"].every((u) => ["visitor", "expired"].every((c) => /^\/login\?next=/.test(R.routes[u][c].landed))), "");

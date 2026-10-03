@@ -116,7 +116,7 @@ export default function EnvironmentLeversSpecimen() {
               ["unauthored never lands", "unauthored values ('very-dense', a hex) never land: 303 back, row unchanged"],
               ["GET/HEAD/prefetch write nothing", "GET / HEAD / prefetch on the handler: 405, nothing written"],
               ["revert is real", "revert: POST intent=revert → 303 → row deleted → surface reads 'This environment is as authored.' and the revert form is gone"],
-              ["shared note", "shared note: a row shaped by another tutor reads 'Last shaped by another tutor placed in this subject.' (no name, no date)"],
+              ["shared note", "shared note: a row shaped by another tutor reads 'Last shaped by another tutor.' (no name, no date)"],
               ["no placement ≡ nonexistent", "route: no placement ≡ nonexistent subject — same 404 status and identical canonical document (6.3's form: echoed subject param tokenised, flight rows sorted) (tutor T)"],
               ["no student-facing notice", "no student-facing notice: no shaping/changelog string on /student, /subjects, the physics room, the mathematics room"],
               ["axe both themes", "axe clean both themes, contrast measured"],

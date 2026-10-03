@@ -232,7 +232,7 @@ the policy that would let the surface *count* the other tutors placed in a subje
 `docs/proposed/environment_shared_note.sql` for the narrow read a future ruling could grant.
 
 **Who shaped it last.** The state line reads one of three constants: *This environment is as
-authored.* · *Last shaped by you.* · *Last shaped by another tutor placed in this subject.* No
+authored.* · *Last shaped by you.* · *Last shaped by another tutor.* No
 name, no date. `shaped_by`/`updated_at` record the tutor's own action on design configuration and
 nothing about any student; the environment never renders them.
 
@@ -262,3 +262,22 @@ record (`src/lib/environment/settings.ts`, header comment).
 subject; otherwise one `notFound()`, the same canonical document as an unknown subject. There is no
 link to it from the 6.2 shell yet (the shell's composition is not this step's to touch); it is
 reached by URL. Reported as an open item.
+
+### 6.5 amendments (P6-R17 · P6-R19 · Item 5)
+
+**The way in.** One quiet link — *Shape the {Subject} environment* — on each subject group in the tutor
+shell and, for a reader holding an active relationship in that subject, on the environment page's
+header. Never on a relationship's surface (that would read as "shape it for this student"). Weight
+below a row; never a primary. Rendered only where the write permission exists.
+
+**The door (P6-R19).** A reader with an active relationship in a subject may view that subject's
+environment page, draft or not, rendered as the visitor's rendering: identity, structure, honest
+labels. No student region, no threshold, no student data — those stay gated on role=student +
+enrolment. The relationships read is the tutor's own rows under the 6.1 policy: NO NEW POLICY. The
+6.2 gate row "tutor T denied student A's draft door" now reads "tutor T is admitted to the draft
+environment's identity, and denied every student region of it" (DEC-018).
+
+**The note (Item 5).** The blast sentence is structural and unchanged. The state line for a row
+another tutor shaped reads *Last shaped by another tutor.* — the fact the row carries, not a claim
+that a co-tutor is currently placed. Co-teacher awareness remains an open user question with a
+policy attached; `docs/proposed/environment_shared_note.sql` stays a proposal.

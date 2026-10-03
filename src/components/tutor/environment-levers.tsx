@@ -43,7 +43,8 @@ export const LEVERS_COPY = {
   heading: (subject: string) => `The ${subject} environment`,
   asAuthored: "This environment is as authored.",
   shapedByYou: "Last shaped by you.",
-  shapedByOther: "Last shaped by another tutor placed in this subject.",
+  /* Item 5 (P6-R12 follow-up): a fact the row itself carries (shaped_by ≠ viewer) — not a claim that a co-tutor currently exists or is placed. */
+  shapedByOther: "Last shaped by another tutor.",
   /* P6-R12 · THE BLAST RADIUS, in plain words, immediately before Save. */
   blastRadius: (subject: string) => `Saving changes the ${subject} environment for everyone in ${subject} — every student, including students you do not teach, and any other tutor placed in ${subject}. There is one ${subject} room.`,
   /* The silence is a decision: nobody is told the room was rearranged (P6-R10). Stated here so the surface says what it does not do. */

@@ -65,6 +65,7 @@ export function SubjectShell({
   entries,
   threshold,
   regions,
+  shaping,
   levers,
 }: {
   subject: ShellSubject;
@@ -79,6 +80,10 @@ export function SubjectShell({
                    honest labels (which stay the single honest statement). */
   threshold?: React.ReactNode;
   regions?: React.ReactNode;
+  /* 6.5 · P6-R17 contextual entry: a quiet link to the levers, header position
+     after the tagline/threshold, rendered ONLY for a reader who may write
+     (an active relationship in this subject). Absent → byte-identical. */
+  shaping?: React.ReactNode;
   /* 6.4 · THE LEVERS, as the page resolved them (authored default or the
      subject's settings row). ADDITIVE and optional: when absent the markup is
      byte-identical to the certified 3.6 composition. When present, two data
@@ -150,6 +155,7 @@ export function SubjectShell({
               {subject.tagline}
             </p>
             {threshold}
+            {shaping}
           </header>
 
           {/* navigation position */}

@@ -1,0 +1,206 @@
+
+> tutors-academy@0.1.0 prebuild
+> node scripts/validate-subjects.mjs
+
+
+■ mathematics [ready] PASS
+  ✓ schema: enums+id closed-set valid
+  ✓ contrast-ink: a1 text 7.96/7.47 (≥4.5), a2 graphic 9.44 (≥3)
+  ✓ contrast-ivory: a1 text 6.01/5.81 (≥4.5), a2 graphic 4.32 (≥3)
+  ✓ sep-ink: ΔE brass 99.0, signal 77.9 (≥20)
+  ✓ sep-ivory: ΔE brass 110.2, signal 89.7 (≥20)
+  ✓ ring-ink: ring-on-surface 12.20 (halo isolates) · ring-on-accent 1.53 info
+  ✓ ring-ivory: ring-on-surface 4.83 (halo isolates) · ring-on-accent 1.24 info
+
+■ physics [draft] PASS
+  ✓ schema: enums+id closed-set valid
+  ✓ contrast-ink: a1 text 8.70/8.16 (≥4.5), a2 graphic 6.12 (≥3)
+  ✓ contrast-ivory: a1 text 4.92/4.75 (≥4.5), a2 graphic 3.71 (≥3)
+  ✓ sep-ink: ΔE brass 34.6, signal 90.5 (≥20)
+  ✓ sep-ivory: ΔE brass 45.4, signal 97.9 (≥20)
+  ✓ ring-ink: ring-on-surface 12.20 (halo isolates) · ring-on-accent 1.40 info
+  ✓ ring-ivory: ring-on-surface 4.83 (halo isolates) · ring-on-accent 1.02 info
+
+■ chemistry [draft] PASS
+  ✓ schema: enums+id closed-set valid
+  ✓ contrast-ink: a1 text 8.45/7.93 (≥4.5), a2 graphic 5.97 (≥3)
+  ✓ contrast-ivory: a1 text 4.75/4.59 (≥4.5), a2 graphic 3.61 (≥3)
+  ✓ sep-ink: ΔE brass 100.7, signal 93.4 (≥20)
+  ✓ sep-ivory: ΔE brass 139.5, signal 128.9 (≥20)
+  ✓ ring-ink: ring-on-surface 12.20 (halo isolates) · ring-on-accent 1.44 info
+  ✓ ring-ivory: ring-on-surface 4.83 (halo isolates) · ring-on-accent 1.02 info
+
+■ biology [draft] PASS
+  ✓ schema: enums+id closed-set valid
+  ✓ contrast-ink: a1 text 12.74/11.95 (≥4.5), a2 graphic 8.75 (≥3)
+  ✓ contrast-ivory: a1 text 4.76/4.60 (≥4.5), a2 graphic 3.48 (≥3)
+  ✓ sep-ink: ΔE brass 60.2, signal 25.7 (≥20)
+  ✓ sep-ivory: ΔE brass 53.0, signal 31.3 (≥20)
+  ✓ ring-ink: ring-on-surface 12.20 (halo isolates) · ring-on-accent 1.04 info
+  ✓ ring-ivory: ring-on-surface 4.83 (halo isolates) · ring-on-accent 1.01 info
+
+■ english [draft] PASS
+  ✓ schema: enums+id closed-set valid
+  ✓ contrast-ink: a1 text 8.94/8.39 (≥4.5), a2 graphic 6.28 (≥3)
+  ✓ contrast-ivory: a1 text 5.97/5.77 (≥4.5), a2 graphic 4.65 (≥3)
+  ✓ sep-ink: ΔE brass 56.6, signal 87.6 (≥20)
+  ✓ sep-ivory: ΔE brass 61.7, signal 98.8 (≥20)
+  ✓ ring-ink: ring-on-surface 12.20 (halo isolates) · ring-on-accent 1.36 info
+  ✓ ring-ivory: ring-on-surface 4.83 (halo isolates) · ring-on-accent 1.24 info
+
+■ history [draft] PASS
+  ✓ schema: enums+id closed-set valid
+  ✓ contrast-ink: a1 text 11.68/10.96 (≥4.5), a2 graphic 8.06 (≥3)
+  ✓ contrast-ivory: a1 text 5.09/4.92 (≥4.5), a2 graphic 3.66 (≥3)
+  ✓ sep-ink: ΔE brass 73.1, signal 27.9 (≥20)
+  ✓ sep-ivory: ΔE brass 70.0, signal 27.2 (≥20)
+  ✓ ring-ink: ring-on-surface 12.20 (halo isolates) · ring-on-accent 1.04 info
+  ✓ ring-ivory: ring-on-surface 4.83 (halo isolates) · ring-on-accent 1.05 info
+
+■ mutual distinctness (ΔE ink / ivory, ≥15)
+  ✓ mathematics×physics: 90.9 / 118.7
+  ✓ mathematics×chemistry: 21.3 / 41.3
+  ✓ mathematics×biology: 97.1 / 119.3
+  ✓ mathematics×english: 63.4 / 93.4
+  ✓ mathematics×history: 52.5 / 63.2
+  ✓ physics×chemistry: 85.3 / 136.9
+  ✓ physics×biology: 86.3 / 97.4
+  ✓ physics×english: 31.7 / 33.0
+  ✓ physics×history: 82.9 / 101.2
+  ✓ chemistry×biology: 109.5 / 157.4
+  ✓ chemistry×english: 54.5 / 106.4
+  ✓ chemistry×history: 67.8 / 103.1
+  ✓ biology×english: 91.7 / 108.2
+  ✓ biology×history: 46.5 / 58.2
+  ✓ english×history: 71.2 / 93.0
+
+■ 6.4 lever combinations: 108 (18 per subject) FAIL
+  ✗ mathematics · sparse · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: sparse: 50 commands (≤400), 4 nodes (≤12), 19 features
+      ✓ budget-edge: sparse: 36 commands (≤400), 4 nodes (≤12), 13 features
+      ✓ room-rule: Room renders sparse for sparse
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ mathematics · balanced · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: balanced: 86 commands (≤400), 4 nodes (≤12), 33 features
+      ✓ budget-edge: sparse: 36 commands (≤400), 4 nodes (≤12), 13 features
+      ✓ room-rule: Room renders sparse for balanced
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ mathematics · dense · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: dense: 122 commands (≤400), 4 nodes (≤12), 48 features
+      ✓ budget-edge: balanced: 50 commands (≤400), 4 nodes (≤12), 19 features
+      ✓ room-rule: Room renders balanced for dense
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ physics · sparse · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: sparse: 24 commands (≤400), 4 nodes (≤12), 5 features
+      ✓ budget-edge: sparse: 19 commands (≤400), 4 nodes (≤12), 4 features
+      ✓ room-rule: Room renders sparse for sparse
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ physics · balanced · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: balanced: 39 commands (≤400), 4 nodes (≤12), 8 features
+      ✓ budget-edge: sparse: 19 commands (≤400), 4 nodes (≤12), 4 features
+      ✓ room-rule: Room renders sparse for balanced
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ physics · dense · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: dense: 54 commands (≤400), 4 nodes (≤12), 11 features
+      ✓ budget-edge: balanced: 24 commands (≤400), 4 nodes (≤12), 5 features
+      ✓ room-rule: Room renders balanced for dense
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ chemistry · sparse · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: sparse: 34 commands (≤400), 4 nodes (≤12), 12 features
+      ✓ budget-edge: sparse: 28 commands (≤400), 4 nodes (≤12), 10 features
+      ✓ room-rule: Room renders sparse for sparse
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ chemistry · balanced · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: balanced: 58 commands (≤400), 4 nodes (≤12), 20 features
+      ✓ budget-edge: sparse: 28 commands (≤400), 4 nodes (≤12), 10 features
+      ✓ room-rule: Room renders sparse for balanced
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ chemistry · dense · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: dense: 82 commands (≤400), 4 nodes (≤12), 28 features
+      ✓ budget-edge: balanced: 34 commands (≤400), 4 nodes (≤12), 12 features
+      ✓ room-rule: Room renders balanced for dense
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ biology · sparse · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: sparse: 26 commands (≤400), 4 nodes (≤12), 8 features
+      ✓ budget-edge: sparse: 20 commands (≤400), 4 nodes (≤12), 6 features
+      ✓ room-rule: Room renders sparse for sparse
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ biology · balanced · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: balanced: 42 commands (≤400), 4 nodes (≤12), 13 features
+      ✓ budget-edge: sparse: 20 commands (≤400), 4 nodes (≤12), 6 features
+      ✓ room-rule: Room renders sparse for balanced
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ biology · dense · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: dense: 58 commands (≤400), 4 nodes (≤12), 18 features
+      ✓ budget-edge: balanced: 26 commands (≤400), 4 nodes (≤12), 8 features
+      ✓ room-rule: Room renders balanced for dense
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ english · sparse · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: sparse: 34 commands (≤400), 3 nodes (≤12), 17 features
+      ✓ budget-edge: sparse: 16 commands (≤400), 3 nodes (≤12), 8 features
+      ✓ room-rule: Room renders sparse for sparse
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ english · balanced · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: balanced: 74 commands (≤400), 3 nodes (≤12), 37 features
+      ✓ budget-edge: sparse: 16 commands (≤400), 3 nodes (≤12), 8 features
+      ✓ room-rule: Room renders sparse for balanced
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ english · dense · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: dense: 126 commands (≤400), 3 nodes (≤12), 63 features
+      ✓ budget-edge: balanced: 22 commands (≤400), 3 nodes (≤12), 11 features
+      ✓ room-rule: Room renders balanced for dense
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ history · sparse · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: sparse: 80 commands (≤400), 5 nodes (≤12), 13 features
+      ✓ budget-edge: sparse: 80 commands (≤400), 5 nodes (≤12), 13 features
+      ✓ room-rule: Room renders sparse for sparse
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ history · balanced · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: balanced: 134 commands (≤400), 5 nodes (≤12), 23 features
+      ✓ budget-edge: sparse: 80 commands (≤400), 5 nodes (≤12), 13 features
+      ✓ room-rule: Room renders sparse for balanced
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+  ✗ history · dense · energetic
+      ✓ identity: contrast · ΔE · ring unchanged by the levers
+      ✓ budget-substrate: dense: 241 commands (≤400), 5 nodes (≤12), 38 features
+      ✓ budget-edge: balanced: 126 commands (≤400), 5 nodes (≤12), 19 features
+      ✓ room-rule: Room renders balanced for dense
+      ✗ motion-caps: cycle 30s · camera 0.9 · parallax 0.3 · wobble 0.05
+      ✓ reduced-motion-parity: prefers-reduced-motion → ambient completely off
+
+✗ VALIDATION FAILED
+npm run build exit=1

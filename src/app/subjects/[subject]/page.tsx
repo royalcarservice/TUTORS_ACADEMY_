@@ -13,6 +13,8 @@ import { mayEnrol } from "@/lib/student/enrol";
 import type { SubjectId } from "@/lib/student/contract";
 import { isOpen } from "@/lib/subjects/door";
 import { getSubject, SUBJECTS } from "@/lib/subjects/subjects";
+import { ShapeLink } from "@/components/tutor/shape-link";
+import { getTutorSubjectIds } from "@/lib/tutor/data";
 
 /* /subjects/[subject] — THE SUBJECT ENVIRONMENT (Phase 3 · Step 6 · Part 1)
  *
@@ -41,6 +43,17 @@ import { getSubject, SUBJECTS } from "@/lib/subjects/subjects";
  *   · anyone else (a signed-in non-student) → exactly the certified 3.6
  *     composition.
  * Rendering this page WRITES NOTHING in any state. Entry is the POST.
+ *
+ * 6.5 (P6-R19 — A TUTOR MAY STAND IN THE ROOM THEY SHAPE): a reader holding
+ * an ACTIVE RELATIONSHIP in the subject is admitted to a draft environment
+ * too, rendered as the visitor's rendering — identity, structure, honest
+ * labels; NO student region, NO threshold, NO student data (those are gated
+ * on role=student + enrolment below and are untouched). A draft flag is a
+ * readiness flag, not a secrecy flag; the relationship is a door of its own
+ * (P5-R4's logic extended from enrolment to relationship). No new policy:
+ * the relationships read is the tutor's own rows under 6.1. P6-R17: the same
+ * reader decides the one quiet link to the levers (`shaping`), rendered only
+ * where the write permission exists.
  */
 
 interface Params {
@@ -53,11 +66,17 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const s = getSubject(subject);
   const prod = process.env.NODE_ENV === "production";
   if (!s) return {};
-  if (s.status === "draft" && prod && !(await getEnrolledSubjectIds()).has(s.id)) return {};
+  if (s.status === "draft" && prod && !(await getEnrolledSubjectIds()).has(s.id) && !(await relatedSubjectIds()).has(s.id as SubjectId)) return {};
   return {
     title: s.name,
     description: `${s.name} — ${s.tagline} A quiet subject environment: identity, structure and a room for work. Classes, assignments and progress arrive in later phases.`,
   };
+}
+
+/* P6-R19: the tutor's own active subjects, read only when the identity is a tutor (visitors and students: no query). */
+async function relatedSubjectIds(identity?: Awaited<ReturnType<typeof getIdentity>>): Promise<Set<SubjectId>> {
+  const id = identity === undefined ? await getIdentity() : identity;
+  return id?.role === "tutor" ? getTutorSubjectIds() : new Set<SubjectId>();
 }
 
 export default async function SubjectEnvironmentPage({ params, searchParams }: Params) {
@@ -75,9 +94,10 @@ export default async function SubjectEnvironmentPage({ params, searchParams }: P
      every reader class). Absence = the authored default; a failed read =
      the authored default + one log line (src/lib/environment/settings.ts). */
   const [identity, settings] = await Promise.all([getIdentity(), getEnvironmentSettings(s.id as SubjectId)]);
-  const enrolled = identity ? await getEnrolledSubjectIds() : new Set<string>();
-  /* DRAFT GUARD AT THE ROUTE (production) — enrolled students are admitted (5.3). */
-  if (s.status === "draft" && prod && !enrolled.has(s.id)) notFound();
+  const [enrolled, related] = await Promise.all([identity ? getEnrolledSubjectIds() : new Set<string>(), relatedSubjectIds(identity)]);
+  const isRelated = related.has(s.id as SubjectId);
+  /* DRAFT GUARD AT THE ROUTE (production) — enrolled students are admitted (5.3); a tutor with an active relationship in the subject is admitted (6.5, P6-R19). */
+  if (s.status === "draft" && prod && !enrolled.has(s.id) && !isRelated) notFound();
 
   const isEnrolled = enrolled.has(s.id);
   const showThreshold = !!identity && !isEnrolled && mayEnrol(identity, s.id);
@@ -108,7 +128,7 @@ export default async function SubjectEnvironmentPage({ params, searchParams }: P
     id: x.id,
     name: x.name,
     href: `/subjects/${x.id}`,
-    available: !(x.status === "draft" && prod) || enrolled.has(x.id),
+    available: !(x.status === "draft" && prod) || enrolled.has(x.id) || related.has(x.id as SubjectId),
     draft: x.status === "draft",
   }));
 
@@ -134,6 +154,7 @@ export default async function SubjectEnvironmentPage({ params, searchParams }: P
       entries={entries}
       threshold={showThreshold ? <Threshold subjectId={s.id} subjectName={s.name} failed={entryFailed} /> : showVisitorDoor ? <VisitorDoor subjectId={s.id} /> : undefined}
       regions={studentSlots.length > 0 ? <EnvironmentRegions slots={studentSlots} /> : undefined}
+      shaping={isRelated ? <p style={{ margin: "var(--ta-space-4) 0 0" }}><ShapeLink subjectId={s.id} subjectName={s.name} /></p> : undefined}
     />
   );
 }

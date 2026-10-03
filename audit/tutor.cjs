@@ -105,6 +105,9 @@ const gotoShell = async (p) => { await p.goto(P + "/tutor", { waitUntil: "load" 
         subjectGroups: q("[data-subject-groups]"), subjects: Array.from(shell.querySelectorAll("[data-subject]")).map((e) => e.getAttribute("data-subject")), slotRegions: q("[data-slot-region]"), slots: q("[data-slot]"),
         rows, imgs: q("img, svg:not([aria-hidden])"), hierarchyRatio: row ? +(fs_(h1) / fs_(row)).toFixed(2) : null, h1Px: fs_(h1),
         numerals: (shell.textContent.match(/\d+/g) || []),
+        /* 6.5 · P6-R17: the way in to the levers — one quiet link per subject group, weight ≤ a row's, never a primary */
+        shapeLinks: Array.from(shell.querySelectorAll("[data-shape-link]")).map((a) => ({ href: a.getAttribute("href"), text: a.textContent.trim(), fs: fs_(a), fw: +getComputedStyle(a).fontWeight, h: Math.round(a.getBoundingClientRect().height), primary: a.hasAttribute("data-primary-action") || !!a.closest("[data-primary-surface]"), inRow: !!a.closest("[data-relationship-row]") })),
+        rowFs: fs_(row), rowFw: row ? +getComputedStyle(row).fontWeight : null,
       };
     });
     const sub = await p.evaluate(() => sessionStorage.length + localStorage.length);
@@ -123,7 +126,9 @@ const gotoShell = async (p) => { await p.goto(P + "/tutor", { waitUntil: "load" 
     gate(`${state}: expected state`, S.dom.state === (state === "A" ? "A-no-relationships" : "B-relationships-no-events"), S.dom.state);
     gate(`${state}: no control in the primary surface, no primary action, no disabled control (P6-R4)`, S.dom.primaryControls === 0 && S.dom.primaryActions === 0 && S.dom.disabled === 0, JSON.stringify([S.dom.primaryControls, S.dom.primaryActions, S.dom.disabled]));
     /* 6.3: the row is the ONE link (Test 18 of 6.2 closed). Links inside the shell == rows, each row exactly one link with a subject-scoped relationship href, nothing else. */
-    gate(`${state}: the only links inside the shell are the rows themselves (one per row, /tutor/{subject}/{relationship}); no buttons or forms`, S.dom.shellLinks === S.dom.rows.length && S.dom.rows.every((r) => r.links === 1 && /^\/tutor\/[a-z]+\/[0-9a-f-]{36}$/.test(r.href)) && S.dom.shellButtons === 0 && S.dom.shellForms === 0, JSON.stringify([S.dom.shellLinks, S.dom.rows.map((r) => r.href), S.dom.shellButtons, S.dom.shellForms]));
+    /* 6.2's gate, EXTENDED by 6.5 (P6-R17, declared): the links inside the shell are the rows plus ONE shaping link per subject group — nothing else; still no buttons or forms. */
+    gate(`${state}: the only links inside the shell are the rows (one per row, /tutor/{subject}/{relationship}) plus one shaping link per subject group (P6-R17); no buttons or forms`, S.dom.shellLinks === S.dom.rows.length + S.dom.shapeLinks.length && S.dom.rows.every((r) => r.links === 1 && /^\/tutor\/[a-z]+\/[0-9a-f-]{36}$/.test(r.href)) && S.dom.shellButtons === 0 && S.dom.shellForms === 0, JSON.stringify([S.dom.shellLinks, S.dom.rows.map((r) => r.href), S.dom.shapeLinks.map((l) => l.href), S.dom.shellButtons, S.dom.shellForms]));
+    gate(`${state}: shaping links — exactly one per subject group, to /tutor/{subject}/environment, outside the rows, not a primary, weight ≤ a row's (font-size and weight), target ≥ 44`, S.dom.shapeLinks.length === (state === "A" ? 0 : S.dom.subjects.length) && S.dom.shapeLinks.every((l) => /^\/tutor\/[a-z]+\/environment$/.test(l.href) && !l.primary && !l.inRow && l.fs <= S.dom.rowFs && l.fw <= S.dom.rowFw && l.h >= 44), JSON.stringify({ links: S.dom.shapeLinks, rowFs: S.dom.rowFs, rowFw: S.dom.rowFw }));
     gate(`${state}: no region DOM, no slot`, S.dom.slotRegions === 0 && S.dom.slots === 0, "");
     gate(`${state}: no numerals in the shell (no counts)`, S.dom.numerals.length === 0, JSON.stringify(S.dom.numerals));
     gate(`${state}: never-contains sweep clean`, !S.sweeps.dashboard.length && !S.sweeps.skeleton.length && !S.sweeps.p6r3.length && !S.sweeps.money.length && !S.sweeps.stale.length, JSON.stringify(S.sweeps));

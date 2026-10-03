@@ -105,3 +105,23 @@ export async function getTutorContext(): Promise<TutorContext | null> {
   }
   return groupBySubject((rels ?? []).map((r) => ({ studentId: r.student_id as string, subjectId: r.subject_id as string, relationshipId: r.id as string })), names);
 }
+
+/* ── 6.5 · P6-R19: THE RELATIONSHIP AS A DOOR ─────────────────────────────
+   The subjects in which the signed-in tutor holds an ACTIVE relationship —
+   nothing else: no student id, no name, no row. Read through the same
+   session client and the same 6.1 policy as getTutorContext (a tutor sees
+   only their own rows), projected to subject ids. Argument-free, like every
+   reader here: there is no parameter through which a caller could ask about
+   another tutor or another subject. Used by the environment route to admit a
+   tutor to a draft room they shape (P6-R19) and to show the shaping link
+   only where the write permission exists (P6-R17). A visitor or a student
+   gets an empty set without a query. */
+export async function getTutorSubjectIds(): Promise<Set<SubjectId>> {
+  const supabase = await createClient();
+  if (!supabase) return new Set();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return new Set();
+  const { data, error } = await supabase.from("relationships").select("subject_id").eq("tutor_id", user.id).eq("state", "active");
+  if (error) throw new DataReadError("relationships", error);
+  return new Set((data ?? []).map((r) => r.subject_id as SubjectId));
+}

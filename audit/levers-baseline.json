@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-03T07:39:59.458Z",
+ "generatedAt": "2026-10-03T09:27:56.962Z",
  "reference": "390x844 mobile",
  "gates": {
   "surface: tutor T resolves /tutor/physics/environment (200), as authored": {
@@ -34,6 +34,10 @@
    "pass": true,
    "detail": "{\"seeRoom\":\"/subjects/physics\",\"back\":\"/tutor\"}"
   },
+  "P6-R19: 'Open the Physics room' resolves for tutor T (draft subject: 200), no student region, no door, with the contextual shaping link": {
+   "pass": true,
+   "detail": "{\"status\":200,\"studentRegion\":false,\"door\":false,\"shapeLink\":true}"
+  },
   "forms POST to the subject-scoped handler": {
    "pass": true,
    "detail": "[{\"action\":\"/tutor/physics/environment/shape\",\"method\":\"post\",\"intent\":\"save\"}]"
@@ -48,11 +52,11 @@
   },
   "route: no placement ≡ nonexistent subject — same 404 status and identical canonical document (6.3's form: echoed subject param tokenised, flight rows sorted) (tutor T)": {
    "pass": true,
-   "detail": "{\"tutor T · mathematics (no placement)\":{\"status\":404,\"sha\":\"5a61df90d2e773c3\",\"rawSha\":\"4c37750f7235dadc\",\"bytes\":17224},\"tutor T · nonexistent subject\":{\"status\":404,\"sha\":\"5a61df90d2e773c3\",\"rawSha\":\"ec34c2b5705fc4f4\",\"bytes\":17216},\"tutor U · physics (no placement)\":{\"status\":404,\"sha\":\"9f52ac37930919f8\",\"rawSha\":\"4eefd6aa31178ac9\",\"bytes\":17216}}"
+   "detail": "{\"tutor T · mathematics (no placement)\":{\"status\":404,\"sha\":\"b27bd94c1685d043\",\"rawSha\":\"198dea5b312ce370\",\"bytes\":17224},\"tutor T · nonexistent subject\":{\"status\":404,\"sha\":\"b27bd94c1685d043\",\"rawSha\":\"9e144e7df7884733\",\"bytes\":17216},\"tutor U · physics (no placement)\":{\"status\":404,\"sha\":\"a8a01266b2b40930\",\"rawSha\":\"8d525af478f4df25\",\"bytes\":17216}}"
   },
   "route: tutor U (unrelated) at /tutor/physics/environment → 404": {
    "pass": true,
-   "detail": "{\"status\":404,\"sha\":\"9f52ac37930919f8\",\"rawSha\":\"4eefd6aa31178ac9\",\"bytes\":17216}"
+   "detail": "{\"status\":404,\"sha\":\"a8a01266b2b40930\",\"rawSha\":\"8d525af478f4df25\",\"bytes\":17216}"
   },
   "write (JS off): real form submit → 303 → back on the surface; row = dense/energetic shaped by T; surface shows 'Last shaped by you.' and the values": {
    "pass": true,
@@ -74,13 +78,13 @@
    "pass": true,
    "detail": "{\"revert\":true,\"revertText\":\"Revert to the authored environment\",\"primary\":1,\"state\":\"Last shaped by you.\"}"
   },
-  "shared note: a row shaped by another tutor reads 'Last shaped by another tutor placed in this subject.' (no name, no date)": {
+  "shared note: a row shaped by another tutor reads 'Last shaped by another tutor.' (no name, no date)": {
    "pass": true,
-   "detail": "Last shaped by another tutor placed in this subject."
+   "detail": "Last shaped by another tutor."
   },
   "five reader classes (visitor · student A · student B · tutor T · tutor U) see a byte-identical environment: same shell-root lever attrs + identical motif markup": {
    "pass": true,
-   "detail": "{\"visitor\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"c78184dffae92491\",\"scripts\":null},\"studentA\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"5170708fab7c0bcf\",\"scripts\":null},\"studentB\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"93dfaba99b402a16\",\"scripts\":null},\"tutorT\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"819def2c703ab4ef\",\"scripts\":null},\"tutorU\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"819def2c703ab4ef\",\"scripts\":null}}"
+   "detail": "{\"visitor\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"b9183194c250895a\",\"scripts\":null},\"studentA\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"1bc3a4382303372e\",\"scripts\":null},\"studentB\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"d850fa751de8c08c\",\"scripts\":null},\"tutorT\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"9e57714c26802846\",\"scripts\":null},\"tutorU\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"c68210680450dfdd\",\"scripts\":null}}"
   },
   "absence = authored default: with no row the motifs are byte-identical to a row holding the authored values; only data-levers-source differs (authored vs shaped)": {
    "pass": true,
@@ -252,7 +256,13 @@
     "w": 234,
     "h": 48
    }
-  ]
+  ],
+  "room": {
+   "status": 200,
+   "studentRegion": false,
+   "door": false,
+   "shapeLink": true
+  }
  },
  "write": {
   "noJs": {
@@ -291,7 +301,7 @@
    "primary": 1,
    "state": "Last shaped by you."
   },
-  "sharedNote": "Last shaped by another tutor placed in this subject.",
+  "sharedNote": "Last shaped by another tutor.",
   "revert": {
    "postStatus": 303,
    "landed": "/tutor/physics/environment",
@@ -306,7 +316,7 @@
    "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics",
    "motifCount": 2,
    "envSha": "e58e35e9f5106ffd",
-   "docSha": "c78184dffae92491",
+   "docSha": "b9183194c250895a",
    "scripts": null
   },
   "studentA": {
@@ -314,7 +324,7 @@
    "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics",
    "motifCount": 2,
    "envSha": "e58e35e9f5106ffd",
-   "docSha": "5170708fab7c0bcf",
+   "docSha": "1bc3a4382303372e",
    "scripts": null
   },
   "studentB": {
@@ -322,7 +332,7 @@
    "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics",
    "motifCount": 2,
    "envSha": "e58e35e9f5106ffd",
-   "docSha": "93dfaba99b402a16",
+   "docSha": "d850fa751de8c08c",
    "scripts": null
   },
   "tutorT": {
@@ -330,7 +340,7 @@
    "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics",
    "motifCount": 2,
    "envSha": "e58e35e9f5106ffd",
-   "docSha": "819def2c703ab4ef",
+   "docSha": "9e57714c26802846",
    "scripts": null
   },
   "tutorU": {
@@ -338,7 +348,7 @@
    "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics",
    "motifCount": 2,
    "envSha": "e58e35e9f5106ffd",
-   "docSha": "819def2c703ab4ef",
+   "docSha": "c68210680450dfdd",
    "scripts": null
   }
  },
@@ -363,20 +373,20 @@
  "route": {
   "tutor T · mathematics (no placement)": {
    "status": 404,
-   "sha": "5a61df90d2e773c3",
-   "rawSha": "4c37750f7235dadc",
+   "sha": "b27bd94c1685d043",
+   "rawSha": "198dea5b312ce370",
    "bytes": 17224
   },
   "tutor T · nonexistent subject": {
    "status": 404,
-   "sha": "5a61df90d2e773c3",
-   "rawSha": "ec34c2b5705fc4f4",
+   "sha": "b27bd94c1685d043",
+   "rawSha": "9e144e7df7884733",
    "bytes": 17216
   },
   "tutor U · physics (no placement)": {
    "status": 404,
-   "sha": "9f52ac37930919f8",
-   "rawSha": "4eefd6aa31178ac9",
+   "sha": "a8a01266b2b40930",
+   "rawSha": "8d525af478f4df25",
    "bytes": 17216
   }
  },

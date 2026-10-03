@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-02T15:18:44.565Z",
+ "generatedAt": "2026-10-03T09:14:58.494Z",
  "reference": "390x844 mobile",
  "states": {
   "A": {
@@ -26,7 +26,10 @@
     "imgs": 0,
     "hierarchyRatio": null,
     "h1Px": 35.8,
-    "numerals": []
+    "numerals": [],
+    "shapeLinks": [],
+    "rowFs": null,
+    "rowFw": null
    },
    "fold": {
     "primaryBottom": 395,
@@ -117,7 +120,8 @@
     "Student C",
     "Physics",
     "Student D",
-    "Physics"
+    "Physics",
+    "Shape the Physics environment"
    ],
    "dom": {
     "state": "B-relationships-no-events",
@@ -125,7 +129,7 @@
     "h1Text": "Nothing to do here.",
     "primaryControls": 0,
     "primaryActions": 0,
-    "shellLinks": 3,
+    "shellLinks": 4,
     "shellButtons": 0,
     "shellForms": 0,
     "disabled": 0,
@@ -161,7 +165,20 @@
     "imgs": 0,
     "hierarchyRatio": 2.24,
     "h1Px": 35.8,
-    "numerals": []
+    "numerals": [],
+    "shapeLinks": [
+     {
+      "href": "/tutor/physics/environment",
+      "text": "Shape the Physics environment",
+      "fs": 14,
+      "fw": 400,
+      "h": 48,
+      "primary": false,
+      "inRow": false
+     }
+    ],
+    "rowFs": 16,
+    "rowFw": 500
    },
    "fold": {
     "primaryBottom": 358,
@@ -256,9 +273,13 @@
    "pass": true,
    "detail": "[0,0,0]"
   },
-  "A: the only links inside the shell are the rows themselves (one per row, /tutor/{subject}/{relationship}); no buttons or forms": {
+  "A: the only links inside the shell are the rows (one per row, /tutor/{subject}/{relationship}) plus one shaping link per subject group (P6-R17); no buttons or forms": {
    "pass": true,
-   "detail": "[0,[],0,0]"
+   "detail": "[0,[],[],0,0]"
+  },
+  "A: shaping links — exactly one per subject group, to /tutor/{subject}/environment, outside the rows, not a primary, weight ≤ a row's (font-size and weight), target ≥ 44": {
+   "pass": true,
+   "detail": "{\"links\":[],\"rowFs\":null,\"rowFw\":null}"
   },
   "A: no region DOM, no slot": {
    "pass": true,
@@ -316,9 +337,13 @@
    "pass": true,
    "detail": "[0,0,0]"
   },
-  "B: the only links inside the shell are the rows themselves (one per row, /tutor/{subject}/{relationship}); no buttons or forms": {
+  "B: the only links inside the shell are the rows (one per row, /tutor/{subject}/{relationship}) plus one shaping link per subject group (P6-R17); no buttons or forms": {
    "pass": true,
-   "detail": "[3,[\"/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422\",\"/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6\",\"/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320\"],0,0]"
+   "detail": "[4,[\"/tutor/physics/d853fdd1-a949-4ed0-ba77-72f19e119422\",\"/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6\",\"/tutor/physics/7a2de5ee-a207-4225-9326-0600c2c32320\"],[\"/tutor/physics/environment\"],0,0]"
+  },
+  "B: shaping links — exactly one per subject group, to /tutor/{subject}/environment, outside the rows, not a primary, weight ≤ a row's (font-size and weight), target ≥ 44": {
+   "pass": true,
+   "detail": "{\"links\":[{\"href\":\"/tutor/physics/environment\",\"text\":\"Shape the Physics environment\",\"fs\":14,\"fw\":400,\"h\":48,\"primary\":false,\"inRow\":false}],\"rowFs\":16,\"rowFw\":500}"
   },
   "B: no region DOM, no slot": {
    "pass": true,
@@ -370,7 +395,7 @@
   },
   "B: identical shell text without JavaScript": {
    "pass": true,
-   "detail": "13 vs 13"
+   "detail": "14 vs 14"
   },
   "B: axe clean": {
    "pass": true,
@@ -564,5 +589,12 @@
   "Architecture only. No account can open it."
  ],
  "pass": true,
- "failed": []
+ "failed": [],
+ "repinReasons": [
+  {
+   "when": "2026-10-03 · 6.5",
+   "what": "state B strings: + one link per subject group — \"Shape the Physics environment\" → /tutor/physics/environment",
+   "why": "P6-R17 declared exception: a live surface with no door is a defect. Composition unchanged (same regions, same rows), hierarchy ratio 2.24 unchanged, fold (358/218/468/532) unchanged; the link is text-sm/400 vs a row's text-base/500 and is not a primary (gate added)."
+  }
+ ]
 }

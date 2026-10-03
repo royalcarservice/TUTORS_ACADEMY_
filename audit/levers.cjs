@@ -116,6 +116,9 @@ const envFingerprint = (p) => p.evaluate(() => {
     gate("no free input: no text/number/color/file/range input, no textarea, no title tooltips", S.freeInputs.length === 0 && S.titles === 0, JSON.stringify(S.freeInputs));
     gate("blast-radius sentence verbatim, a visible <p> inside the save form, BEFORE the save control, named by aria-describedby", S.blast.text === BLAST && S.blast.inForm && S.blast.beforeSave && S.blast.visible && S.blast.tagName === "P" && /blast-radius/.test(S.blast.describesSave || ""), JSON.stringify(S.blast));
     gate("the way out: link to the Physics room (the only renderer) + back to the shell; no preview (no img/canvas in main)", S.seeRoom === "/subjects/physics" && S.back === "/tutor" && S.imgs === 0 && S.canvas === 0, JSON.stringify({ seeRoom: S.seeRoom, back: S.back }));
+    /* 6.5 · P6-R19: the room link is live for the tutor who shapes it — a draft subject included — and shows the visitor's rendering (no student region, no door) plus the contextual way back to the levers (P6-R17) */
+    { const rr = await raw(p, "/subjects/physics"); R.surface.room = { status: rr.status, studentRegion: /data-student-region/.test(rr.html), door: /data-threshold|data-visitor-door/.test(rr.html), shapeLink: /data-shape-link/.test(rr.html) }; await p.goto(P + SURFACE, { waitUntil: "load" }); }
+    gate("P6-R19: 'Open the Physics room' resolves for tutor T (draft subject: 200), no student region, no door, with the contextual shaping link", R.surface.room.status === 200 && !R.surface.room.studentRegion && !R.surface.room.door && R.surface.room.shapeLink, JSON.stringify(R.surface.room));
     gate("forms POST to the subject-scoped handler", S.forms.every((f) => f.method === "post" && f.action === SHAPE), JSON.stringify(S.forms));
     gate("targets ≥ 44 px tall (links, buttons, selects)", S.targets.every((t) => t.h >= 44), JSON.stringify(S.targets.filter((t) => t.h < 44)));
     gate("no student is named on the shaping surface", !/Student [A-F]\b/.test(S.text), "");
@@ -165,7 +168,7 @@ const envFingerprint = (p) => p.evaluate(() => {
     sql(`update public.environment_settings set shaped_by='${uid(ACC.tutorU)}' where subject_id='physics'`);
     await p.goto(P + SURFACE, { waitUntil: "load" });
     R.write.sharedNote = await p.evaluate(() => document.querySelector("[data-shaped-state]")?.textContent.trim());
-    gate("shared note: a row shaped by another tutor reads 'Last shaped by another tutor placed in this subject.' (no name, no date)", R.write.sharedNote === "Last shaped by another tutor placed in this subject.", R.write.sharedNote);
+    gate("shared note: a row shaped by another tutor reads 'Last shaped by another tutor.' (no name, no date)", R.write.sharedNote === "Last shaped by another tutor.", R.write.sharedNote);
     await p.screenshot({ path: path.join(OUT, "surface-shaped-by-other-390.png"), fullPage: true });
     sql(`update public.environment_settings set shaped_by='${T_ID}' where subject_id='physics'`);
     await nj.close();

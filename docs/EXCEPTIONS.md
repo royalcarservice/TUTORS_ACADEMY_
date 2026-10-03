@@ -48,3 +48,7 @@ silent.
 ### 6.4 note (no new exception)
 
 The shaping surface `/tutor/[subject]/environment` has no entry point from the 6.2 shell (the shell's composition is not 6.4's to edit); it is reached by URL. This is a reported gap, not a declared exception: nothing a student or tutor can meet says something false, and the owner decides where the way in lives (shell row? subject group heading? a tutor-nav item?). Count unchanged: **22 open.**
+
+### 6.5 note — declared harness exceptions, no new product exception
+
+`audit/tutor-baseline.json` re-pinned: state B gains one link per subject group (P6-R17; composition, ratio, fold unchanged — `repinReasons`). `audit/environment-baseline.json`: visitor-ready DOM hash change declared (6.4's shell-root attributes; proven the only change) and the P6-R20 declared cost recorded. The 6.4 "no way in" gap is CLOSED by P6-R17. Count unchanged: **22 open.**

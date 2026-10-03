@@ -10,7 +10,7 @@ export const OTHER = "other-tutor-token";
 export const SPECIMENS = {
   authored: { label: "as authored (no row)", levers: null, shapedBy: null },
   mine: { label: "shaped by the viewer", levers: { density: "dense", motionChar: "energetic" } as EnvironmentLevers, shapedBy: VIEWER },
-  other: { label: "shaped by another tutor placed in the subject", levers: { density: "sparse", motionChar: "precise" } as EnvironmentLevers, shapedBy: OTHER },
+  other: { label: "shaped by another tutor", levers: { density: "sparse", motionChar: "precise" } as EnvironmentLevers, shapedBy: OTHER },
 } as const;
 export type SpecimenKey = keyof typeof SPECIMENS;
 

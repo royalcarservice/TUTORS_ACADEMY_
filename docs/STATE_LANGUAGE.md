@@ -203,6 +203,6 @@ The shaping surface introduces no student-facing state and no new scope. Its own
 | --- | --- | --- |
 | no row | `This environment is as authored.` | a complete value — the authored default (not an absence in P5-R6's sense) |
 | row, `shaped_by` = viewer | `Last shaped by you.` | the tutor's own action on design config |
-| row, `shaped_by` ≠ viewer | `Last shaped by another tutor placed in this subject.` | the same fact about another tutor — no name, no date |
+| row, `shaped_by` ≠ viewer | `Last shaped by another tutor.` | the same fact about another tutor — no name, no date |
 
 A save that did not land adds one sentence (`That did not save. The environment is unchanged — the values shown are the ones in force.`) in the 5.7 register: a state, not a verdict; no "try again", no "contact". The room itself never says any of this: toward students the shaping is silent by decision (P6-R10).

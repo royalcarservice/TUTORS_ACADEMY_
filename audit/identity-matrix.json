@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-03T07:41:18.209Z",
+ "generatedAt": "2026-10-03T09:15:28.843Z",
  "base": "http://localhost:3100",
  "classes": [
   "visitor",
@@ -1690,38 +1690,310 @@
     "render": "page"
    }
   },
+  "/subjects/biology": {
+   "kind": "page",
+   "pattern": "/subjects/[subject]",
+   "visitor": {
+    "status": 404,
+    "landed": "/subjects/biology",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/subjects/biology",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/subjects/biology",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/subjects/biology",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/subjects/biology",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/subjects/biology",
+    "render": "not-found"
+   }
+  },
+  "/subjects/biology/enter": {
+   "kind": "handler",
+   "pattern": "/subjects/[subject]/enter",
+   "visitor": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "expired": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
+  "/subjects/chemistry": {
+   "kind": "page",
+   "pattern": "/subjects/[subject]",
+   "visitor": {
+    "status": 404,
+    "landed": "/subjects/chemistry",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/subjects/chemistry",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/subjects/chemistry",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/subjects/chemistry",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/subjects/chemistry",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/subjects/chemistry",
+    "render": "not-found"
+   }
+  },
+  "/subjects/chemistry/enter": {
+   "kind": "handler",
+   "pattern": "/subjects/[subject]/enter",
+   "visitor": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "expired": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
+  "/subjects/english": {
+   "kind": "page",
+   "pattern": "/subjects/[subject]",
+   "visitor": {
+    "status": 404,
+    "landed": "/subjects/english",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/subjects/english",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/subjects/english",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/subjects/english",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/subjects/english",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/subjects/english",
+    "render": "not-found"
+   }
+  },
+  "/subjects/english/enter": {
+   "kind": "handler",
+   "pattern": "/subjects/[subject]/enter",
+   "visitor": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "expired": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
+  "/subjects/history": {
+   "kind": "page",
+   "pattern": "/subjects/[subject]",
+   "visitor": {
+    "status": 404,
+    "landed": "/subjects/history",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/subjects/history",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/subjects/history",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/subjects/history",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/subjects/history",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/subjects/history",
+    "render": "not-found"
+   }
+  },
+  "/subjects/history/enter": {
+   "kind": "handler",
+   "pattern": "/subjects/[subject]/enter",
+   "visitor": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "expired": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
   "/subjects/mathematics": {
    "kind": "page",
    "pattern": "/subjects/[subject]",
    "visitor": {
     "status": 200,
     "landed": "/subjects/mathematics",
-    "render": "page"
+    "render": "environment:door"
    },
    "expired": {
     "status": 200,
     "landed": "/subjects/mathematics",
-    "render": "page"
+    "render": "environment:door"
    },
    "studentA": {
     "status": 200,
     "landed": "/subjects/mathematics",
-    "render": "page"
+    "render": "environment:student-regions"
    },
    "studentB": {
     "status": 200,
     "landed": "/subjects/mathematics",
-    "render": "page"
+    "render": "environment:student-regions"
    },
    "tutorT": {
     "status": 200,
     "landed": "/subjects/mathematics",
-    "render": "page"
+    "render": "environment"
    },
    "tutorU": {
     "status": 200,
     "landed": "/subjects/mathematics",
-    "render": "page"
+    "render": "environment"
    }
   },
   "/subjects/mathematics/enter": {
@@ -1774,17 +2046,17 @@
    "studentA": {
     "status": 200,
     "landed": "/subjects/physics",
-    "render": "page"
+    "render": "environment:student-regions"
    },
    "studentB": {
     "status": 200,
     "landed": "/subjects/physics",
-    "render": "page"
+    "render": "environment:student-regions"
    },
    "tutorT": {
-    "status": 404,
+    "status": 200,
     "landed": "/subjects/physics",
-    "render": "not-found"
+    "render": "environment:shape-link"
    },
    "tutorU": {
     "status": 404,
@@ -1892,6 +2164,278 @@
     "status": 200,
     "landed": "/tutor/account",
     "render": "page"
+   }
+  },
+  "/tutor/biology/environment": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/environment",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/biology/environment",
+    "render": "login:?next=/tutor/biology/environment"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/biology/environment",
+    "render": "login:?next=/tutor/biology/environment"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/tutor/biology/environment",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/biology/environment",
+    "render": "not-found"
+   }
+  },
+  "/tutor/biology/environment/shape": {
+   "kind": "handler",
+   "pattern": "/tutor/[subject]/environment/shape",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/biology/environment/shape",
+    "render": "login:?next=/tutor/biology/environment/shape"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/biology/environment/shape",
+    "render": "login:?next=/tutor/biology/environment/shape"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
+  "/tutor/chemistry/environment": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/environment",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/chemistry/environment",
+    "render": "login:?next=/tutor/chemistry/environment"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/chemistry/environment",
+    "render": "login:?next=/tutor/chemistry/environment"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/tutor/chemistry/environment",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/chemistry/environment",
+    "render": "not-found"
+   }
+  },
+  "/tutor/chemistry/environment/shape": {
+   "kind": "handler",
+   "pattern": "/tutor/[subject]/environment/shape",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/chemistry/environment/shape",
+    "render": "login:?next=/tutor/chemistry/environment/shape"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/chemistry/environment/shape",
+    "render": "login:?next=/tutor/chemistry/environment/shape"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
+  "/tutor/english/environment": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/environment",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/english/environment",
+    "render": "login:?next=/tutor/english/environment"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/english/environment",
+    "render": "login:?next=/tutor/english/environment"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/tutor/english/environment",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/english/environment",
+    "render": "not-found"
+   }
+  },
+  "/tutor/english/environment/shape": {
+   "kind": "handler",
+   "pattern": "/tutor/[subject]/environment/shape",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/english/environment/shape",
+    "render": "login:?next=/tutor/english/environment/shape"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/english/environment/shape",
+    "render": "login:?next=/tutor/english/environment/shape"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
+  "/tutor/history/environment": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/environment",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/history/environment",
+    "render": "login:?next=/tutor/history/environment"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/history/environment",
+    "render": "login:?next=/tutor/history/environment"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/tutor/history/environment",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/history/environment",
+    "render": "not-found"
+   }
+  },
+  "/tutor/history/environment/shape": {
+   "kind": "handler",
+   "pattern": "/tutor/[subject]/environment/shape",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/history/environment/shape",
+    "render": "login:?next=/tutor/history/environment/shape"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/history/environment/shape",
+    "render": "login:?next=/tutor/history/environment/shape"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
    }
   },
   "/tutor/mathematics/97b22c6d-673d-4d6c-9f61-241a7d0151e6": {
@@ -2311,9 +2855,21 @@
    "pass": true,
    "detail": "{\"profilesWithAdminRole\":\"0\",\"usersWithAdminMetadata\":\"0\",\"note\":\"no admin account exists; /admin is reachable by nobody. Any count above other than 0 is a FAIL.\"}"
   },
-  "regression: tutor T denied student A's draft door": {
+  "P6-R19: tutor T is admitted to the draft environment's identity (physics: 200, shaping link) and denied every student region of it (no region, no door)": {
    "pass": true,
-   "detail": "{\"status\":404,\"landed\":\"/subjects/physics\",\"render\":\"not-found\"}"
+   "detail": "{\"status\":200,\"landed\":\"/subjects/physics\",\"render\":\"environment:shape-link\"}"
+  },
+  "P6-R19: visitor, expired, tutor U (no placement) still 404 on every draft environment": {
+   "pass": true,
+   "detail": "[[\"physics\",404],[\"chemistry\",404],[\"biology\",404],[\"english\",404],[\"history\",404]]"
+  },
+  "P6-R19: tutor T 404s on every draft subject they are NOT placed in (chemistry, biology, english, history)": {
+   "pass": true,
+   "detail": "[[\"physics\",200],[\"chemistry\",404],[\"biology\",404],[\"english\",404],[\"history\",404]]"
+  },
+  "P6-R19/P6-R17: no student ever sees the shaping link; no tutor ever sees a student region": {
+   "pass": true,
+   "detail": ""
   },
   "tutor U (unrelated) sees state A, tutor T sees state B": {
    "pass": true,
