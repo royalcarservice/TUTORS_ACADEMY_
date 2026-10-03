@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-02T15:14:52.127Z",
+ "generatedAt": "2026-10-03T07:41:18.209Z",
  "base": "http://localhost:3100",
  "classes": [
   "visitor",
@@ -225,6 +225,74 @@
    "tutorU": {
     "status": 404,
     "landed": "/dev/brand",
+    "render": "not-found"
+   }
+  },
+  "/dev/environment-levers": {
+   "kind": "page",
+   "pattern": "/dev/environment-levers",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/environment-levers",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/environment-levers",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/environment-levers",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/environment-levers",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/environment-levers",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/environment-levers",
+    "render": "not-found"
+   }
+  },
+  "/dev/environment-levers/frame": {
+   "kind": "page",
+   "pattern": "/dev/environment-levers/frame",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/environment-levers/frame",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/environment-levers/frame",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/environment-levers/frame",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/environment-levers/frame",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/environment-levers/frame",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/environment-levers/frame",
     "render": "not-found"
    }
   },
@@ -667,6 +735,74 @@
    "tutorU": {
     "status": 404,
     "landed": "/dev/progress-language/frame",
+    "render": "not-found"
+   }
+  },
+  "/dev/relationship-surface": {
+   "kind": "page",
+   "pattern": "/dev/relationship-surface",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/relationship-surface",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/relationship-surface",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/relationship-surface",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/relationship-surface",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/relationship-surface",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/relationship-surface",
+    "render": "not-found"
+   }
+  },
+  "/dev/relationship-surface/frame": {
+   "kind": "page",
+   "pattern": "/dev/relationship-surface/frame",
+   "visitor": {
+    "status": 404,
+    "landed": "/dev/relationship-surface/frame",
+    "render": "not-found"
+   },
+   "expired": {
+    "status": 404,
+    "landed": "/dev/relationship-surface/frame",
+    "render": "not-found"
+   },
+   "studentA": {
+    "status": 404,
+    "landed": "/dev/relationship-surface/frame",
+    "render": "not-found"
+   },
+   "studentB": {
+    "status": 404,
+    "landed": "/dev/relationship-surface/frame",
+    "render": "not-found"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/dev/relationship-surface/frame",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/dev/relationship-surface/frame",
     "render": "not-found"
    }
   },
@@ -1792,6 +1928,74 @@
     "render": "not-found"
    }
   },
+  "/tutor/mathematics/environment": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/environment",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/mathematics/environment",
+    "render": "login:?next=/tutor/mathematics/environment"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/mathematics/environment",
+    "render": "login:?next=/tutor/mathematics/environment"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/tutor/mathematics/environment",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/mathematics/environment",
+    "render": "not-found"
+   }
+  },
+  "/tutor/mathematics/environment/shape": {
+   "kind": "handler",
+   "pattern": "/tutor/[subject]/environment/shape",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/mathematics/environment/shape",
+    "render": "login:?next=/tutor/mathematics/environment/shape"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/mathematics/environment/shape",
+    "render": "login:?next=/tutor/mathematics/environment/shape"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
+  },
   "/tutor/physics/01a23485-4b8f-4291-b934-620992235db0": {
    "kind": "page",
    "pattern": "/tutor/[subject]/[relationship] · a user id in the slot",
@@ -1823,6 +2027,40 @@
    "tutorU": {
     "status": 404,
     "landed": "/tutor/physics/01a23485-4b8f-4291-b934-620992235db0",
+    "render": "not-found"
+   }
+  },
+  "/tutor/physics/1304306c-12ef-479d-89f8-db557d0698b4": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/[relationship] · ended (physics)",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/1304306c-12ef-479d-89f8-db557d0698b4",
+    "render": "login:?next=/tutor/physics/1304306c-12ef-479d-89f8-db557d0698b4"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/1304306c-12ef-479d-89f8-db557d0698b4",
+    "render": "login:?next=/tutor/physics/1304306c-12ef-479d-89f8-db557d0698b4"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 404,
+    "landed": "/tutor/physics/1304306c-12ef-479d-89f8-db557d0698b4",
+    "render": "not-found"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/physics/1304306c-12ef-479d-89f8-db557d0698b4",
     "render": "not-found"
    }
   },
@@ -1860,40 +2098,6 @@
     "render": "not-found"
    }
   },
-  "/tutor/physics/947cc414-feef-4025-86e2-657e514e385b": {
-   "kind": "page",
-   "pattern": "/tutor/[subject]/[relationship] · ended (physics)",
-   "visitor": {
-    "status": 307,
-    "landed": "/login?next=/tutor/physics/947cc414-feef-4025-86e2-657e514e385b",
-    "render": "login:?next=/tutor/physics/947cc414-feef-4025-86e2-657e514e385b"
-   },
-   "expired": {
-    "status": 307,
-    "landed": "/login?next=/tutor/physics/947cc414-feef-4025-86e2-657e514e385b",
-    "render": "login:?next=/tutor/physics/947cc414-feef-4025-86e2-657e514e385b"
-   },
-   "studentA": {
-    "status": 307,
-    "landed": "/student",
-    "render": "student-shell:C-enrolled-active"
-   },
-   "studentB": {
-    "status": 307,
-    "landed": "/student",
-    "render": "student-shell:B-enrolled-never-entered"
-   },
-   "tutorT": {
-    "status": 404,
-    "landed": "/tutor/physics/947cc414-feef-4025-86e2-657e514e385b",
-    "render": "not-found"
-   },
-   "tutorU": {
-    "status": 404,
-    "landed": "/tutor/physics/947cc414-feef-4025-86e2-657e514e385b",
-    "render": "not-found"
-   }
-  },
   "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6": {
    "kind": "page",
    "pattern": "/tutor/[subject]/[relationship] · active (tutor T ↔ student A, physics)",
@@ -1927,9 +2131,181 @@
     "landed": "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
     "render": "not-found"
    }
+  },
+  "/tutor/physics/environment": {
+   "kind": "page",
+   "pattern": "/tutor/[subject]/environment",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/environment",
+    "render": "login:?next=/tutor/physics/environment"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/environment",
+    "render": "login:?next=/tutor/physics/environment"
+   },
+   "studentA": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:C-enrolled-active"
+   },
+   "studentB": {
+    "status": 307,
+    "landed": "/student",
+    "render": "student-shell:B-enrolled-never-entered"
+   },
+   "tutorT": {
+    "status": 200,
+    "landed": "/tutor/physics/environment",
+    "render": "environment-levers:authored"
+   },
+   "tutorU": {
+    "status": 404,
+    "landed": "/tutor/physics/environment",
+    "render": "not-found"
+   }
+  },
+  "/tutor/physics/environment/shape": {
+   "kind": "handler",
+   "pattern": "/tutor/[subject]/environment/shape",
+   "visitor": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/environment/shape",
+    "render": "login:?next=/tutor/physics/environment/shape"
+   },
+   "expired": {
+    "status": 307,
+    "landed": "/login?next=/tutor/physics/environment/shape",
+    "render": "login:?next=/tutor/physics/environment/shape"
+   },
+   "studentA": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "studentB": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorT": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   },
+   "tutorU": {
+    "status": 405,
+    "landed": "/",
+    "render": "method-not-allowed"
+   }
   }
  },
  "relationships": "tutor-a@test.tutorsacademy.invalid -> student-c@test.tutorsacademy.invalid : physics (active); tutor-a@test.tutorsacademy.invalid -> student-a@test.tutorsacademy.invalid : physics (active); tutor-a@test.tutorsacademy.invalid -> student-d@test.tutorsacademy.invalid : physics (ended); tutor-a@test.tutorsacademy.invalid -> student-d@test.tutorsacademy.invalid : physics (active); tutor-a@test.tutorsacademy.invalid -> student-c@test.tutorsacademy.invalid : mathematics (ended); tutor-a@test.tutorsacademy.invalid -> student-f@test.tutorsacademy.invalid : physics (ended)",
+ "writes": {
+  "POST /tutor/physics/environment/shape": {
+   "kind": "write",
+   "pattern": "POST /tutor/[subject]/environment/shape",
+   "visitor": {
+    "status": "303",
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "expired": {
+    "status": "303",
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "studentA": {
+    "status": 404,
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "studentB": {
+    "status": 404,
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "tutorT": {
+    "status": "303",
+    "rowBefore": "none",
+    "rowAfter": "dense/energetic"
+   },
+   "tutorU": {
+    "status": 404,
+    "rowBefore": "none",
+    "rowAfter": "none"
+   }
+  },
+  "POST /tutor/mathematics/environment/shape": {
+   "kind": "write",
+   "pattern": "POST /tutor/[subject]/environment/shape",
+   "visitor": {
+    "status": "303",
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "expired": {
+    "status": "303",
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "studentA": {
+    "status": 404,
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "studentB": {
+    "status": 404,
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "tutorT": {
+    "status": 404,
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "tutorU": {
+    "status": 404,
+    "rowBefore": "none",
+    "rowAfter": "none"
+   }
+  },
+  "POST /tutor/physics/environment/shape · unauthored value": {
+   "kind": "write",
+   "pattern": "POST /tutor/[subject]/environment/shape",
+   "visitor": {
+    "status": "303",
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "expired": {
+    "status": "303",
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "studentA": {
+    "status": 404,
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "studentB": {
+    "status": 404,
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "tutorT": {
+    "status": "303",
+    "rowBefore": "none",
+    "rowAfter": "none"
+   },
+   "tutorU": {
+    "status": 404,
+    "rowBefore": "none",
+    "rowAfter": "none"
+   }
+  }
+ },
  "gates": {
   "admin-absence": {
    "pass": true,
@@ -1948,6 +2324,26 @@
    "detail": ""
   },
   "visitor and expired land on /login for every portal route": {
+   "pass": true,
+   "detail": ""
+  },
+  "6.4 write: only the placed tutor (T, physics) writes a row": {
+   "pass": true,
+   "detail": "{\"kind\":\"write\",\"pattern\":\"POST /tutor/[subject]/environment/shape\",\"visitor\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"expired\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"studentA\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"studentB\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"tutorT\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"dense/energetic\"},\"tutorU\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"}}"
+  },
+  "6.4 write: visitor, expired, student A, student B, tutor U never write (physics)": {
+   "pass": true,
+   "detail": "{\"kind\":\"write\",\"pattern\":\"POST /tutor/[subject]/environment/shape\",\"visitor\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"expired\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"studentA\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"studentB\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"tutorT\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"dense/energetic\"},\"tutorU\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"}}"
+  },
+  "6.4 write: nobody writes mathematics (no tutor placed there)": {
+   "pass": true,
+   "detail": "{\"kind\":\"write\",\"pattern\":\"POST /tutor/[subject]/environment/shape\",\"visitor\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"expired\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"studentA\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"studentB\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"tutorT\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"tutorU\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"}}"
+  },
+  "6.4 write: an unauthored value is never stored, even by tutor T": {
+   "pass": true,
+   "detail": "{\"kind\":\"write\",\"pattern\":\"POST /tutor/[subject]/environment/shape\",\"visitor\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"expired\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"studentA\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"studentB\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"tutorT\":{\"status\":\"303\",\"rowBefore\":\"none\",\"rowAfter\":\"none\"},\"tutorU\":{\"status\":404,\"rowBefore\":\"none\",\"rowAfter\":\"none\"}}"
+  },
+  "6.4 write: no row left behind": {
    "pass": true,
    "detail": ""
   },

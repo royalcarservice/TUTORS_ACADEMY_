@@ -88,6 +88,21 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
     routePrefix: null,
   },
   {
+    id: "tutor-environment",
+    name: "Environment shaping",
+    summary: "A tutor shapes one subject's environment — density and motion character, from the authored sets — for everyone in it.",
+    /* 6.4 (P6-R10/R11/R12): `public.environment_settings` (migration 0003,
+       one row per subject at most, CHECK-constrained values, no student
+       column) and the shaping surface /tutor/[subject]/environment, which
+       resolves only for a tutor with an active placement in that subject.
+       "live" per the registry's rule: shipped and reachable now. The
+       environment reads it on every render (absence = authored default).
+       No entry point from the 6.2 shell yet — reached by URL (reported). */
+    status: "live",
+    surfaces: ["tutor"],
+    routePrefix: null,
+  },
+  {
     id: "admin-portal",
     name: "Admin portal",
     summary: "Architecture only: a route and a guard. No admin account exists.",

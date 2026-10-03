@@ -1,3 +1,16 @@
+levers-attack-6.ts
+  expected: TS2353, TS2353
+  got:      TS2353, TS2353
+  ../../..levers-attack-6.ts(15,55): error TS2353: Object literal may only specify known properties, and 'studentId' does not exist in type 'ShapeAddress'.
+  ../../..levers-attack-6.ts(18,70): error TS2353: Object literal may only specify known properties, and 'accent' does not exist in type 'EnvironmentLevers'.
+
+levers-attack-7.ts
+  expected: TS2345, TS2353, TS2554
+  got:      TS2345, TS2353, TS2554
+  ../../..levers-attack-7.ts(14,29): error TS2345: Argument of type '{ id: string; subjectId: "physics"; }' is not assignable to parameter of type 'SubjectId'.
+  ../../..levers-attack-7.ts(17,40): error TS2554: Expected 1 arguments, but got 2.
+  ../../..levers-attack-7.ts(21,70): error TS2353: Object literal may only specify known properties, and 'studentId' does not exist in type '{ density: "sparse" | "balanced" | "dense"; motionChar: "precise" | "energetic" | "reactive" | "growing" | "editorial" | "sequential"; source: "authored" | "shaped"; }'.
+
 relationship-attack-3.ts
   expected: TS2353
   got:      TS2353

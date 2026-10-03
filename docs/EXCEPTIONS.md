@@ -44,3 +44,7 @@ silent.
 - The three verbs **Enter → Begin → Open** are one sequence by state, documented in `docs/STATE_LANGUAGE.md` (5.8 addendum); not a drift.
 - "Environment in draft" on student-b/c/d's Physics is a true label (Physics is `draft` in `src/config/subjects/`); the student is admitted because enrolled access is unconditional (P5-R4).
 - The homepage's "1 of 4 … 4 of 4" in Scene 6 (The practice) is sequence numbering of four described steps, each labelled "Next · not built yet" or "In foundation" — not a progress figure. The gate's J3 excludes `/` for that reason and says so.
+
+### 6.4 note (no new exception)
+
+The shaping surface `/tutor/[subject]/environment` has no entry point from the 6.2 shell (the shell's composition is not 6.4's to edit); it is reached by URL. This is a reported gap, not a declared exception: nothing a student or tutor can meet says something false, and the owner decides where the way in lives (shell row? subject group heading? a tutor-nav item?). Count unchanged: **22 open.**

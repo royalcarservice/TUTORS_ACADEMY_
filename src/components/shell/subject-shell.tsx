@@ -2,6 +2,7 @@ import { AmbientStage } from "@/components/ambient/ambient-stage";
 import { SubjectMark } from "@/components/brand/subject-mark";
 import { Room } from "@/components/motif/stage";
 import { SHELL_REGIONS } from "@/config/shell-regions";
+import type { MotionChar } from "@/lib/subjects/subjects";
 
 import { REGION_SLOTS } from "./slots";
 import { SubjectNav, type ShellNavEntry } from "./subject-nav";
@@ -64,6 +65,7 @@ export function SubjectShell({
   entries,
   threshold,
   regions,
+  levers,
 }: {
   subject: ShellSubject;
   ambient: ShellAmbientSubject;
@@ -77,9 +79,16 @@ export function SubjectShell({
                    honest labels (which stay the single honest statement). */
   threshold?: React.ReactNode;
   regions?: React.ReactNode;
+  /* 6.4 · THE LEVERS, as the page resolved them (authored default or the
+     subject's settings row). ADDITIVE and optional: when absent the markup is
+     byte-identical to the certified 3.6 composition. When present, two data
+     attributes name the effective values so a harness can fingerprint the
+     furniture; `source` says whether a row shaped it. Nothing here is
+     per-reader: the page passes the same object for everyone (P6-R10). */
+  levers?: { density: ShellSubject["density"]; motionChar: MotionChar; source: "authored" | "shaped" };
 }) {
   return (
-    <div data-subject={subject.id} data-spatial="stage" data-shell-root>
+    <div data-subject={subject.id} data-spatial="stage" data-shell-root data-density={levers?.density} data-motion-char={levers?.motionChar} data-levers-source={levers?.source}>
       {/* 5 + 4: Stage layer — SVG substrate first, ambient lens lazy on top. */}
       <AmbientStage subject={ambient} scope="stage">
         <div

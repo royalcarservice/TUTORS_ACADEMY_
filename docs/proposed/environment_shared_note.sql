@@ -1,0 +1,25 @@
+-- PROPOSED, NOT APPLIED (6.4). The shaping surface says "any other tutor placed
+-- in {Subject}" unconditionally because a tutor may read only their own rows in
+-- public.relationships; whether ANOTHER tutor is placed in the subject is not
+-- readable under the 6.1 policies, and 6.4 adds no policy.
+--
+-- If the owner rules that a tutor may know "I am not alone in this subject"
+-- (a fact about the subject's staffing, not about any student), the narrowest
+-- grant is a security-definer function that returns a boolean and never a
+-- row, name, or count:
+--
+-- create or replace function public.subject_has_other_tutor(p_subject text)
+-- returns boolean language sql security definer set search_path = public as $$
+--   select exists (
+--     select 1 from public.relationships r
+--     where r.subject_id = p_subject and r.state = 'active' and r.tutor_id <> auth.uid()
+--   ) and exists (
+--     select 1 from public.relationships r
+--     where r.subject_id = p_subject and r.state = 'active' and r.tutor_id = auth.uid()
+--   );
+-- $$;
+-- revoke all on function public.subject_has_other_tutor(text) from public;
+-- grant execute on function public.subject_has_other_tutor(text) to authenticated;
+--
+-- The surface would then choose between two constants (shared / not shared);
+-- the blast-radius sentence stays unconditional either way.

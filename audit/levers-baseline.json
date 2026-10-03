@@ -1,0 +1,444 @@
+{
+ "generatedAt": "2026-10-03T07:39:59.458Z",
+ "reference": "390x844 mobile",
+ "gates": {
+  "surface: tutor T resolves /tutor/physics/environment (200), as authored": {
+   "pass": true,
+   "detail": "200 authored"
+  },
+  "one h1": {
+   "pass": true,
+   "detail": "[\"The Physics environment\"]"
+  },
+  "one primary action; one save form + no revert form when as authored": {
+   "pass": true,
+   "detail": "{\"primary\":1,\"forms\":[{\"action\":\"/tutor/physics/environment/shape\",\"method\":\"post\",\"intent\":\"save\"}]}"
+  },
+  "levers are exactly the authored sets (density 3, motion character 6), nothing else": {
+   "pass": true,
+   "detail": "[{\"name\":\"density\",\"options\":[\"sparse\",\"balanced\",\"dense\"],\"labels\":[\"Sparse\",\"Balanced\",\"Dense\"],\"current\":\"balanced\"},{\"name\":\"motionChar\",\"options\":[\"precise\",\"energetic\",\"reactive\",\"growing\",\"editorial\",\"sequential\"],\"labels\":[\"Precise\",\"Energetic\",\"Reactive\",\"Growing\",\"Editorial\",\"Sequential\"],\"current\":\"energetic\"}]"
+  },
+  "no identity value is selectable (option values/labels free of accent/mark/frame/type/grammar/spacing/colour/hex)": {
+   "pass": true,
+   "detail": "[[\"Sparse\",\"Balanced\",\"Dense\"],[\"Precise\",\"Energetic\",\"Reactive\",\"Growing\",\"Editorial\",\"Sequential\"]]"
+  },
+  "no free input: no text/number/color/file/range input, no textarea, no title tooltips": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "blast-radius sentence verbatim, a visible <p> inside the save form, BEFORE the save control, named by aria-describedby": {
+   "pass": true,
+   "detail": "{\"text\":\"Saving changes the Physics environment for everyone in Physics — every student, including students you do not teach, and any other tutor placed in Physics. There is one Physics room.\",\"inForm\":true,\"beforeSave\":true,\"isAttrOnly\":false,\"tagName\":\"P\",\"visible\":true,\"describesSave\":\"blast-radius\"}"
+  },
+  "the way out: link to the Physics room (the only renderer) + back to the shell; no preview (no img/canvas in main)": {
+   "pass": true,
+   "detail": "{\"seeRoom\":\"/subjects/physics\",\"back\":\"/tutor\"}"
+  },
+  "forms POST to the subject-scoped handler": {
+   "pass": true,
+   "detail": "[{\"action\":\"/tutor/physics/environment/shape\",\"method\":\"post\",\"intent\":\"save\"}]"
+  },
+  "targets ≥ 44 px tall (links, buttons, selects)": {
+   "pass": true,
+   "detail": "[]"
+  },
+  "no student is named on the shaping surface": {
+   "pass": true,
+   "detail": ""
+  },
+  "route: no placement ≡ nonexistent subject — same 404 status and identical canonical document (6.3's form: echoed subject param tokenised, flight rows sorted) (tutor T)": {
+   "pass": true,
+   "detail": "{\"tutor T · mathematics (no placement)\":{\"status\":404,\"sha\":\"5a61df90d2e773c3\",\"rawSha\":\"4c37750f7235dadc\",\"bytes\":17224},\"tutor T · nonexistent subject\":{\"status\":404,\"sha\":\"5a61df90d2e773c3\",\"rawSha\":\"ec34c2b5705fc4f4\",\"bytes\":17216},\"tutor U · physics (no placement)\":{\"status\":404,\"sha\":\"9f52ac37930919f8\",\"rawSha\":\"4eefd6aa31178ac9\",\"bytes\":17216}}"
+  },
+  "route: tutor U (unrelated) at /tutor/physics/environment → 404": {
+   "pass": true,
+   "detail": "{\"status\":404,\"sha\":\"9f52ac37930919f8\",\"rawSha\":\"4eefd6aa31178ac9\",\"bytes\":17216}"
+  },
+  "write (JS off): real form submit → 303 → back on the surface; row = dense/energetic shaped by T; surface shows 'Last shaped by you.' and the values": {
+   "pass": true,
+   "detail": "{\"postStatus\":303,\"landed\":\"/tutor/physics/environment\",\"row\":\"dense/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b\",\"shaped\":\"row\",\"state\":\"Last shaped by you.\",\"selected\":[\"dense\",\"energetic\"]}"
+  },
+  "idempotent: saving the same values again → still one row, same values": {
+   "pass": true,
+   "detail": "{\"rows\":\"1\",\"row\":\"dense/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b\",\"updatedChanged\":true}"
+  },
+  "unauthored values ('very-dense', a hex) never land: 303 back, row unchanged": {
+   "pass": true,
+   "detail": "[{\"status\":303,\"row\":\"dense/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b\"},{\"status\":303,\"row\":\"dense/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b\"}]"
+  },
+  "GET / HEAD on the handler: 405; an RSC prefetch request never writes; row unchanged": {
+   "pass": true,
+   "detail": "{\"status\":405,\"head\":405,\"prefetch\":\"0/opaqueredirect\",\"row\":\"dense/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b\"}"
+  },
+  "shaped: revert form present (secondary), still one primary": {
+   "pass": true,
+   "detail": "{\"revert\":true,\"revertText\":\"Revert to the authored environment\",\"primary\":1,\"state\":\"Last shaped by you.\"}"
+  },
+  "shared note: a row shaped by another tutor reads 'Last shaped by another tutor placed in this subject.' (no name, no date)": {
+   "pass": true,
+   "detail": "Last shaped by another tutor placed in this subject."
+  },
+  "five reader classes (visitor · student A · student B · tutor T · tutor U) see a byte-identical environment: same shell-root lever attrs + identical motif markup": {
+   "pass": true,
+   "detail": "{\"visitor\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"c78184dffae92491\",\"scripts\":null},\"studentA\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"5170708fab7c0bcf\",\"scripts\":null},\"studentB\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"93dfaba99b402a16\",\"scripts\":null},\"tutorT\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"819def2c703ab4ef\",\"scripts\":null},\"tutorU\":{\"status\":200,\"attrs\":\"data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifCount\":2,\"envSha\":\"e58e35e9f5106ffd\",\"docSha\":\"819def2c703ab4ef\",\"scripts\":null}}"
+  },
+  "absence = authored default: with no row the motifs are byte-identical to a row holding the authored values; only data-levers-source differs (authored vs shaped)": {
+   "pass": true,
+   "detail": "{\"authored\":{\"density\":\"sparse\",\"motionChar\":\"precise\"},\"noRow\":{\"attrs\":\"data-density=sparse data-levers-source=authored data-motion-char=precise data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifSha\":\"f3070210f3098d2e\"},\"rowAtAuthored\":{\"attrs\":\"data-density=sparse data-levers-source=shaped data-motion-char=precise data-shell-root=true data-spatial=stage data-subject=mathematics\",\"motifSha\":\"f3070210f3098d2e\"}}"
+  },
+  "no student-facing notice: no shaping/changelog string on /student, /subjects, the physics room, the mathematics room": {
+   "pass": true,
+   "detail": "{\"/student\":[],\"/subjects/physics\":[],\"/subjects/mathematics\":[],\"/subjects\":[]}"
+  },
+  "revert: POST intent=revert → 303 → row deleted → surface reads 'This environment is as authored.' and the revert form is gone": {
+   "pass": true,
+   "detail": "{\"postStatus\":303,\"landed\":\"/tutor/physics/environment\",\"row\":\"none\",\"shaped\":\"authored\",\"state\":\"This environment is as authored.\"}"
+  },
+  "no horizontal scroll at 320/360/390 both themes": {
+   "pass": true,
+   "detail": ""
+  },
+  "1.4.12 text spacing: no h-scroll, nothing clipped": {
+   "pass": true,
+   "detail": "{\"hscroll\":false,\"clipped\":0}"
+  },
+  "400% zoom equivalent (320 wide): no h-scroll": {
+   "pass": true,
+   "detail": ""
+  },
+  "keyboard: density → motion character → save → room link → back, in reading order": {
+   "pass": true,
+   "detail": "[\"Skip to content\",\"Tutors Academy home\",\"Switch to dark theme\",\"Open menu\",\"density\",\"motionChar\",\"Save for everyone in this subj\",\"Open the Physics room\",\"Back to the students placed wi\",\"(function(){try{var s=localSto\",\"Skip to content\",\"Tutors Academy home\",\"Switch to dark theme\",\"Open menu\"]"
+  },
+  "axe clean both themes, contrast measured": {
+   "pass": true,
+   "detail": "{\"dark\":{\"violations\":[],\"contrastChecked\":11},\"light\":{\"violations\":[],\"contrastChecked\":11}}"
+  },
+  "no-JS complete: identical main text without JavaScript": {
+   "pass": true,
+   "detail": "25 vs 25"
+  },
+  "payload: surface script bytes ≤ the tutor shell + 2 KB (no client JS added)": {
+   "pass": true,
+   "detail": "587825 (13) vs shell 587825"
+  },
+  "no row left behind (physics, mathematics)": {
+   "pass": true,
+   "detail": ""
+  }
+ },
+ "surface": {
+  "status": 200,
+  "bytes": 42120,
+  "h1": [
+   "The Physics environment"
+  ],
+  "primary": 1,
+  "buttons": [
+   "Save for everyone in this subject"
+  ],
+  "forms": [
+   {
+    "action": "/tutor/physics/environment/shape",
+    "method": "post",
+    "intent": "save"
+   }
+  ],
+  "selects": [
+   {
+    "name": "density",
+    "options": [
+     "sparse",
+     "balanced",
+     "dense"
+    ],
+    "labels": [
+     "Sparse",
+     "Balanced",
+     "Dense"
+    ],
+    "current": "balanced"
+   },
+   {
+    "name": "motionChar",
+    "options": [
+     "precise",
+     "energetic",
+     "reactive",
+     "growing",
+     "editorial",
+     "sequential"
+    ],
+    "labels": [
+     "Precise",
+     "Energetic",
+     "Reactive",
+     "Growing",
+     "Editorial",
+     "Sequential"
+    ],
+    "current": "energetic"
+   }
+  ],
+  "freeInputs": [],
+  "blast": {
+   "text": "Saving changes the Physics environment for everyone in Physics — every student, including students you do not teach, and any other tutor placed in Physics. There is one Physics room.",
+   "inForm": true,
+   "beforeSave": true,
+   "isAttrOnly": false,
+   "tagName": "P",
+   "visible": true,
+   "describesSave": "blast-radius"
+  },
+  "shaped": "authored",
+  "state": "This environment is as authored.",
+  "revertPresent": false,
+  "seeRoom": "/subjects/physics",
+  "back": "/tutor",
+  "sentences": [
+   "Shape the environment",
+   "The Physics environment",
+   "PhysicsThe Field",
+   "This environment is as authored.",
+   "The two levers",
+   "Density",
+   "Sparse",
+   "Balanced",
+   "Dense",
+   "Authored: Balanced.",
+   "Motion character",
+   "Precise",
+   "Energetic",
+   "Reactive",
+   "Growing",
+   "Editorial",
+   "Sequential",
+   "Authored: Energetic.",
+   "Accent, mark, type, motion grammar and the brand frame are the subject's identity and are not adjustable. Atmosphere and motif have one authored value each and are not presented as controls.",
+   "Saving changes the Physics environment for everyone in Physics — every student, including students you do not teach, and any other tutor placed in Physics. There is one Physics room.",
+   "Nothing announces the change. Students are not told their room was rearranged; the subject simply looks as you set it.",
+   "Save for everyone in this subject",
+   "Open the Physics roomBack to the students placed with you",
+   "Open the Physics room",
+   "Back to the students placed with you"
+  ],
+  "text": "SHAPE THE ENVIRONMENT\n\nThe Physics environment\n\nPhysics\nThe Field\n\nThis environment is as authored.\n\nTHE TWO LEVERS\nDensity\nSparse\nBalanced\nDense\n\nAuthored: Balanced.\n\nMotion character\nPrecise\nEnergetic\nReactive\nGrowing\nEditorial\nSequential\n\nAuthored: Energetic.\n\nAccent, mark, type, motion grammar and the brand frame are the subject's identity and are not adjustable. Atmosphere and motif have one authored value each and are not presented as controls.\n\nSaving changes the Physics environment for everyone in Physics — every student, including students you do not teach, and any other tutor placed in Physics. There is one Physics room.\n\nNothing announces the change. Students are not told their room was rearranged; the subject simply looks as you set it.\n\nSave for everyone in this subject\n\nOpen the Physics room\nBack to the students placed with you",
+  "titles": 0,
+  "imgs": 0,
+  "canvas": 0,
+  "targets": [
+   {
+    "t": "SparseBalancedDense",
+    "w": 342,
+    "h": 44
+   },
+   {
+    "t": "PreciseEnergeticReactiveGrowin",
+    "w": 342,
+    "h": 44
+   },
+   {
+    "t": "Save for everyone in this subj",
+    "w": 288,
+    "h": 48
+   },
+   {
+    "t": "Open the Physics room",
+    "w": 149,
+    "h": 48
+   },
+   {
+    "t": "Back to the students placed wi",
+    "w": 234,
+    "h": 48
+   }
+  ]
+ },
+ "write": {
+  "noJs": {
+   "postStatus": 303,
+   "landed": "/tutor/physics/environment",
+   "row": "dense/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b",
+   "shaped": "row",
+   "state": "Last shaped by you.",
+   "selected": [
+    "dense",
+    "energetic"
+   ]
+  },
+  "again": {
+   "rows": "1",
+   "row": "dense/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b",
+   "updatedChanged": true
+  },
+  "unauthored": {
+   "status": 303,
+   "row": "dense/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b"
+  },
+  "hex": {
+   "status": 303,
+   "row": "dense/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b"
+  },
+  "get": {
+   "status": 405,
+   "head": 405,
+   "prefetch": "0/opaqueredirect",
+   "row": "dense/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b"
+  },
+  "shapedSurface": {
+   "revert": true,
+   "revertText": "Revert to the authored environment",
+   "primary": 1,
+   "state": "Last shaped by you."
+  },
+  "sharedNote": "Last shaped by another tutor placed in this subject.",
+  "revert": {
+   "postStatus": 303,
+   "landed": "/tutor/physics/environment",
+   "row": "none",
+   "shaped": "authored",
+   "state": "This environment is as authored."
+  }
+ },
+ "classes": {
+  "visitor": {
+   "status": 200,
+   "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics",
+   "motifCount": 2,
+   "envSha": "e58e35e9f5106ffd",
+   "docSha": "c78184dffae92491",
+   "scripts": null
+  },
+  "studentA": {
+   "status": 200,
+   "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics",
+   "motifCount": 2,
+   "envSha": "e58e35e9f5106ffd",
+   "docSha": "5170708fab7c0bcf",
+   "scripts": null
+  },
+  "studentB": {
+   "status": 200,
+   "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics",
+   "motifCount": 2,
+   "envSha": "e58e35e9f5106ffd",
+   "docSha": "93dfaba99b402a16",
+   "scripts": null
+  },
+  "tutorT": {
+   "status": 200,
+   "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics",
+   "motifCount": 2,
+   "envSha": "e58e35e9f5106ffd",
+   "docSha": "819def2c703ab4ef",
+   "scripts": null
+  },
+  "tutorU": {
+   "status": 200,
+   "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=mathematics",
+   "motifCount": 2,
+   "envSha": "e58e35e9f5106ffd",
+   "docSha": "819def2c703ab4ef",
+   "scripts": null
+  }
+ },
+ "absence": {
+  "authored": {
+   "density": "sparse",
+   "motionChar": "precise"
+  },
+  "noRow": {
+   "attrs": "data-density=sparse data-levers-source=authored data-motion-char=precise data-shell-root=true data-spatial=stage data-subject=mathematics",
+   "motifSha": "f3070210f3098d2e"
+  },
+  "rowAtAuthored": {
+   "attrs": "data-density=sparse data-levers-source=shaped data-motion-char=precise data-shell-root=true data-spatial=stage data-subject=mathematics",
+   "motifSha": "f3070210f3098d2e"
+  }
+ },
+ "fixture": {
+  "tutorT": "c0c08c6d-9624-4161-91ce-5cc728bf1b2b",
+  "placements": "mathematics:ended,physics:active,physics:active,physics:active,physics:ended,physics:ended"
+ },
+ "route": {
+  "tutor T · mathematics (no placement)": {
+   "status": 404,
+   "sha": "5a61df90d2e773c3",
+   "rawSha": "4c37750f7235dadc",
+   "bytes": 17224
+  },
+  "tutor T · nonexistent subject": {
+   "status": 404,
+   "sha": "5a61df90d2e773c3",
+   "rawSha": "ec34c2b5705fc4f4",
+   "bytes": 17216
+  },
+  "tutor U · physics (no placement)": {
+   "status": 404,
+   "sha": "9f52ac37930919f8",
+   "rawSha": "4eefd6aa31178ac9",
+   "bytes": 17216
+  }
+ },
+ "studentStrings": {
+  "/student": [],
+  "/subjects/physics": [],
+  "/subjects/mathematics": [],
+  "/subjects": []
+ },
+ "environmentScripts": {
+  "files": 14,
+  "bytes": 616584,
+  "fingerprint": {
+   "attrs": "data-density=dense data-levers-source=shaped data-motion-char=energetic data-shell-root=true data-spatial=stage data-subject=physics",
+   "motifCount": 2,
+   "motifs": "<div data-motif=\"field\" data-motif-role=\"substrate\" data-motif-density=\"dense\" aria-hidden=\"true\" style=\"position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0\"><svg viewBox=\"0 0 1000 600\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\" style=\"display:block\"><defs><mask id=\"ta-motif-4f3681f1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1000\" height=\"600\"><rect x=\"0\" y=\"0\" width=\"1000\" height=\"600\" fill=\"#fff\"></rect><rect x=\"50\" y=\"60\" width=\"660\" height=\"480\" fill=\"#000\"></rect></mask></defs><g opacity=\"0.16\" mask=\"url(#ta-motif-4f3681f1)\"><path d=\"M0 120.73 C37.5 128.04 175 162.91 250 169.47 C325 176.03 425 166.83 500 164.49 C575 162.15 675 157.29 750 153.87 C825 150.44 962.5 143.51 1000 141.68M0 172.33 C37.5 179.64 175 214.51 250 221.07 C325 227.63 425 218.43 500 216.09 C575 213.75 675 208.89 750 205.47 C825 202.04 962.5 195.11 1000 193.28M0 275.53 C37.5 282.84 175 317.71 250 324.27 C325 330.83 425 321.63 500 319.29 C575 316.95 675 312.09 750 308.67 C825 305.24 962.5 298.31 1000 296.48M0 430.33 C37.5 437.64 175 472.51 250 479.07 C325 485.63 425 476.43 500 474.09 C575 471.75 675 466.89 750 463.47 C825 460.04 962.5 453.11 1000 451.28M0 481.93 C37.5 489.24 175 524.11 250 530.67 C325 537.23 425 528.03 500 525.69 C575 523.35 675 518.49 750 515.07 C825 511.64 962.5 504.71 1000 502.88\" fill=\"none\" stroke=\"var(--ta-accent-2)\" stroke-width=\"4.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"0.9\"></path><path d=\"M0 69.13 C37.5 76.44 175 111.31 250 117.87 C325 124.43 425 115.23 500 112.89 C575 110.55 675 105.69 750 102.27 C825 98.84 962.5 91.91 1000 90.08M0 223.93 C37.5 231.24 175 266.11 250 272.67 C325 279.23 425 270.03 500 267.69 C575 265.35 675 260.49 750 257.07 C825 253.64 962.5 246.71 1000 244.88M0 378.73 C37.5 386.04 175 420.91 250 427.47 C325 434.03 425 424.83 500 422.49 C575 420.15 675 415.29 750 411.87 C825 408.44 962.5 401.51 1000 399.68M0 533.53 C37.5 540.84 175 575.71 250 582.27 C325 588.83 425 579.63 500 577.29 C575 574.95 675 570.09 750 566.67 C825 563.24 962.5 556.31 1000 554.48\" fill=\"none\" stroke=\"var(--ta-accent-1)\" stroke-width=\"6.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"1\"></path><path d=\"M71.18 282.25a8.82 8.82 0 1 0 17.64 0a8.82 8.82 0 1 0 -17.64 0Z\" fill=\"var(--ta-accent-1)\" stroke=\"none\" opacity=\"0.6\"></path><path d=\"M0 327.13 C37.5 329.78 175 342.99 250 344.8 C325 346.6 425 340.88 500 339.16 C575 337.44 675 334.83 750 333.34 C825 331.85 962.5 329.84 1000 329.22\" fill=\"none\" stroke=\"var(--ta-accent-1)\" stroke-width=\"9.45\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"1\"></path></g></svg></div>\n<div data-motif=\"field\" data-motif-role=\"edge\" data-motif-density=\"balanced\" aria-hidden=\"true\" style=\"position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0\"><svg viewBox=\"0 0 360 600\" width=\"100%\" height=\"100%\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\" style=\"display:block\"><defs><linearGradient id=\"ta-motif-10358e9e-fade\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\"><stop offset=\"0\" stop-color=\"#fff\" stop-opacity=\"0\"></stop><stop offset=\"0.55\" stop-color=\"#fff\" stop-opacity=\"0.7\"></stop><stop offset=\"1\" stop-color=\"#fff\" stop-opacity=\"1\"></stop></linearGradient><mask id=\"ta-motif-10358e9e\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"360\" height=\"600\"><rect x=\"0\" y=\"0\" width=\"360\" height=\"600\" fill=\"url(#ta-motif-10358e9e-fade)\"></rect><rect x=\"18\" y=\"60\" width=\"237.6\" height=\"480\" fill=\"#000\"></rect></mask></defs><g opacity=\"0.2\" mask=\"url(#ta-motif-10358e9e)\"><path d=\"M0 259.5 C13.5 266.62 63 303.52 90 306.98 C117 310.44 153 289.69 180 282.56 C207 275.43 243 265.58 270 259.45 C297 253.31 346.5 244.33 360 241.67\" fill=\"none\" stroke=\"var(--ta-accent-2)\" stroke-width=\"2.52\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"0.9\"></path><path d=\"M0 130.5 C13.5 137.62 63 174.52 90 177.98 C117 181.44 153 160.69 180 153.56 C207 146.43 243 136.58 270 130.45 C297 124.31 346.5 115.33 360 112.67M0 517.5 C13.5 524.62 63 561.52 90 564.98 C117 568.44 153 547.69 180 540.56 C207 533.43 243 523.58 270 517.45 C297 511.31 346.5 502.33 360 499.67\" fill=\"none\" stroke=\"var(--ta-accent-1)\" stroke-width=\"3.78\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"1\"></path><path d=\"M23.51 296.73a5.29 5.29 0 1 0 10.58 0a5.29 5.29 0 1 0 -10.58 0Z\" fill=\"var(--ta-accent-1)\" stroke=\"none\" opacity=\"0.6\"></path><path d=\"M0 388.5 C13.5 391.08 63 404.76 90 405.71 C117 406.66 153 397.42 180 394.84 C207 392.26 243 389.71 270 388.49 C297 387.27 346.5 386.98 360 386.72\" fill=\"none\" stroke=\"var(--ta-accent-1)\" stroke-width=\"5.67\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"1\"></path></g></svg></div>",
+   "ambient": "stage"
+  }
+ },
+ "hscroll-dark-390": false,
+ "hscroll-dark-360": false,
+ "hscroll-dark-320": false,
+ "hscroll-light-390": false,
+ "hscroll-light-360": false,
+ "hscroll-light-320": false,
+ "textSpacing": {
+  "hscroll": false,
+  "clipped": 0
+ },
+ "zoom400": {
+  "hscroll": false
+ },
+ "tabOrder": [
+  "Skip to content",
+  "Tutors Academy home",
+  "Switch to dark theme",
+  "Open menu",
+  "density",
+  "motionChar",
+  "Save for everyone in this subj",
+  "Open the Physics room",
+  "Back to the students placed wi",
+  "(function(){try{var s=localSto",
+  "Skip to content",
+  "Tutors Academy home",
+  "Switch to dark theme",
+  "Open menu"
+ ],
+ "axe": {
+  "dark": {
+   "violations": [],
+   "contrastChecked": 11
+  },
+  "light": {
+   "violations": [],
+   "contrastChecked": 11
+  }
+ },
+ "network": {
+  "scriptFiles": 13,
+  "scriptBytes": 587825
+ },
+ "pass": true,
+ "failed": []
+}

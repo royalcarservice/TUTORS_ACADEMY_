@@ -1,0 +1,4328 @@
+{
+ "generatedAt": "2026-10-03T07:34:37.887Z",
+ "count": 108,
+ "perSubject": 18,
+ "pass": true,
+ "reports": [
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 86 commands (≤400), 4 nodes (≤12), 33 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 86 commands (≤400), 4 nodes (≤12), 33 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 86 commands (≤400), 4 nodes (≤12), 33 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 86 commands (≤400), 4 nodes (≤12), 33 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 86 commands (≤400), 4 nodes (≤12), 33 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 86 commands (≤400), 4 nodes (≤12), 33 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 36 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 122 commands (≤400), 4 nodes (≤12), 48 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 122 commands (≤400), 4 nodes (≤12), 48 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 122 commands (≤400), 4 nodes (≤12), 48 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 122 commands (≤400), 4 nodes (≤12), 48 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 122 commands (≤400), 4 nodes (≤12), 48 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "mathematics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 122 commands (≤400), 4 nodes (≤12), 48 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 50 commands (≤400), 4 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 39 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 39 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 39 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 39 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 39 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 39 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 19 commands (≤400), 4 nodes (≤12), 4 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 54 commands (≤400), 4 nodes (≤12), 11 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 54 commands (≤400), 4 nodes (≤12), 11 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 54 commands (≤400), 4 nodes (≤12), 11 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 54 commands (≤400), 4 nodes (≤12), 11 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 54 commands (≤400), 4 nodes (≤12), 11 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "physics",
+   "levers": {
+    "density": "dense",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 54 commands (≤400), 4 nodes (≤12), 11 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 24 commands (≤400), 4 nodes (≤12), 5 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 58 commands (≤400), 4 nodes (≤12), 20 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 58 commands (≤400), 4 nodes (≤12), 20 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 58 commands (≤400), 4 nodes (≤12), 20 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 58 commands (≤400), 4 nodes (≤12), 20 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 58 commands (≤400), 4 nodes (≤12), 20 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 58 commands (≤400), 4 nodes (≤12), 20 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 28 commands (≤400), 4 nodes (≤12), 10 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "dense",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 82 commands (≤400), 4 nodes (≤12), 28 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "dense",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 82 commands (≤400), 4 nodes (≤12), 28 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "dense",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 82 commands (≤400), 4 nodes (≤12), 28 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "dense",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 82 commands (≤400), 4 nodes (≤12), 28 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "dense",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 82 commands (≤400), 4 nodes (≤12), 28 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "chemistry",
+   "levers": {
+    "density": "dense",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 82 commands (≤400), 4 nodes (≤12), 28 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 34 commands (≤400), 4 nodes (≤12), 12 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 42 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 42 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 42 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 42 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 42 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 42 commands (≤400), 4 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 20 commands (≤400), 4 nodes (≤12), 6 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "dense",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 58 commands (≤400), 4 nodes (≤12), 18 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "dense",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 58 commands (≤400), 4 nodes (≤12), 18 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "dense",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 58 commands (≤400), 4 nodes (≤12), 18 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "dense",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 58 commands (≤400), 4 nodes (≤12), 18 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "dense",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 58 commands (≤400), 4 nodes (≤12), 18 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "biology",
+   "levers": {
+    "density": "dense",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 58 commands (≤400), 4 nodes (≤12), 18 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 26 commands (≤400), 4 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 3 nodes (≤12), 17 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 3 nodes (≤12), 17 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 3 nodes (≤12), 17 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 3 nodes (≤12), 17 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 3 nodes (≤12), 17 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 34 commands (≤400), 3 nodes (≤12), 17 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 74 commands (≤400), 3 nodes (≤12), 37 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 74 commands (≤400), 3 nodes (≤12), 37 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 74 commands (≤400), 3 nodes (≤12), 37 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 74 commands (≤400), 3 nodes (≤12), 37 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 74 commands (≤400), 3 nodes (≤12), 37 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 74 commands (≤400), 3 nodes (≤12), 37 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 16 commands (≤400), 3 nodes (≤12), 8 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "dense",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 126 commands (≤400), 3 nodes (≤12), 63 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 22 commands (≤400), 3 nodes (≤12), 11 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "dense",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 126 commands (≤400), 3 nodes (≤12), 63 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 22 commands (≤400), 3 nodes (≤12), 11 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "dense",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 126 commands (≤400), 3 nodes (≤12), 63 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 22 commands (≤400), 3 nodes (≤12), 11 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "dense",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 126 commands (≤400), 3 nodes (≤12), 63 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 22 commands (≤400), 3 nodes (≤12), 11 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "dense",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 126 commands (≤400), 3 nodes (≤12), 63 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 22 commands (≤400), 3 nodes (≤12), 11 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "english",
+   "levers": {
+    "density": "dense",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 126 commands (≤400), 3 nodes (≤12), 63 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 22 commands (≤400), 3 nodes (≤12), 11 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "sparse",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for sparse"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 134 commands (≤400), 5 nodes (≤12), 23 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 134 commands (≤400), 5 nodes (≤12), 23 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 134 commands (≤400), 5 nodes (≤12), 23 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 134 commands (≤400), 5 nodes (≤12), 23 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 134 commands (≤400), 5 nodes (≤12), 23 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "balanced",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "balanced: 134 commands (≤400), 5 nodes (≤12), 23 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "sparse: 80 commands (≤400), 5 nodes (≤12), 13 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders sparse for balanced"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "dense",
+    "motionChar": "precise"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 241 commands (≤400), 5 nodes (≤12), 38 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 126 commands (≤400), 5 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 48s · camera 0.35 · parallax 0.22 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "dense",
+    "motionChar": "energetic"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 241 commands (≤400), 5 nodes (≤12), 38 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 126 commands (≤400), 5 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 30s · camera 0.5 · parallax 0.3 · wobble 0.05"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "dense",
+    "motionChar": "reactive"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 241 commands (≤400), 5 nodes (≤12), 38 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 126 commands (≤400), 5 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 36s · camera 0.42 · parallax 0.26 · wobble 0.03"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "dense",
+    "motionChar": "growing"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 241 commands (≤400), 5 nodes (≤12), 38 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 126 commands (≤400), 5 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 40s · camera 0.4 · parallax 0.25 · wobble 0.04"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "dense",
+    "motionChar": "editorial"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 241 commands (≤400), 5 nodes (≤12), 38 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 126 commands (≤400), 5 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 52s · camera 0.3 · parallax 0.18 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  },
+  {
+   "subject": "history",
+   "levers": {
+    "density": "dense",
+    "motionChar": "sequential"
+   },
+   "pass": true,
+   "checks": [
+    {
+     "name": "identity",
+     "pass": true,
+     "detail": "contrast · ΔE · ring unchanged by the levers"
+    },
+    {
+     "name": "budget-substrate",
+     "pass": true,
+     "detail": "dense: 241 commands (≤400), 5 nodes (≤12), 38 features"
+    },
+    {
+     "name": "budget-edge",
+     "pass": true,
+     "detail": "balanced: 126 commands (≤400), 5 nodes (≤12), 19 features"
+    },
+    {
+     "name": "room-rule",
+     "pass": true,
+     "detail": "Room renders balanced for dense"
+    },
+    {
+     "name": "motion-caps",
+     "pass": true,
+     "detail": "cycle 46s · camera 0.34 · parallax 0.2 · wobble 0"
+    },
+    {
+     "name": "reduced-motion-parity",
+     "pass": true,
+     "detail": "prefers-reduced-motion → ambient completely off"
+    }
+   ]
+  }
+ ]
+}

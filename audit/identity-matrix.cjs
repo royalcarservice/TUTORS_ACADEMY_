@@ -58,7 +58,7 @@ function sql(q) {
 let _rf;
 function relationshipFixture() {
   if (_rf) return _rf;
-  const q = (w) => sql(`select r.id from public.relationships r join auth.users t on t.id=r.tutor_id join auth.users s on s.id=r.student_id where t.email='tutor-a@test.tutorsacademy.invalid' and ${w} limit 1`) || "00000000-0000-4000-8000-000000000000";
+  const q = (w) => sql(`select r.id from public.relationships r join auth.users t on t.id=r.tutor_id join auth.users s on s.id=r.student_id where t.email='tutor-a@test.tutorsacademy.invalid' and ${w} order by r.id limit 1`) || "00000000-0000-4000-8000-000000000000";
   const active = q("s.email='student-c@test.tutorsacademy.invalid' and r.subject_id='physics' and r.state='active'");
   const ended = q("r.subject_id='physics' and r.state='ended'");
   const userId = sql("select id from auth.users where email='student-c@test.tutorsacademy.invalid'") || "00000000-0000-4000-8000-000000000001";
@@ -89,6 +89,7 @@ function appRoutes() {
 /* ── render fingerprint: what the body IS, not how it looks ───────────── */
 function renderOf(html, status, finalUrl) {
   const u = new URL(finalUrl);
+  if (/data-environment-levers/.test(html)) return "environment-levers:" + (html.match(/data-shaped="([^"]+)"/) || [])[1];
   if (/data-relationship-surface/.test(html)) return "relationship-surface";
   if (/data-tutor-shell/.test(html)) return "tutor-shell:" + (html.match(/data-state="([^"]+)"/) || [])[1];
   if (/data-student-shell/.test(html)) return "student-shell:" + (html.match(/data-state="([^"]+)"/) || [])[1];
@@ -141,8 +142,38 @@ async function withClass(browser, cls) {
   /* the relationship fixture, stated */
   R.relationships = sql("select string_agg(t.email||' -> '||s.email||' : '||r.subject_id||' ('||r.state||')', '; ' order by t.email) from public.relationships r join auth.users t on t.id=r.tutor_id join auth.users s on s.id=r.student_id");
 
+  /* ── 6.4 THE WRITE, per class (P6-R6: the write is a matrix row too) ──
+     A real form POST from the browser context (cookies attached) to the
+     shaping handler, for a subject tutor T is placed in (physics) and one
+     nobody is (mathematics). Recorded: the status and whether a row EXISTS
+     afterwards — the DB is the truth, not the response. Each probe starts
+     and ends with no row (owner cleanup through DATABASE_URL). */
+  const WRITES = [
+    { url: "/tutor/physics/environment/shape", body: "intent=save&density=dense&motionChar=energetic", subject: "physics" },
+    { url: "/tutor/mathematics/environment/shape", body: "intent=save&density=dense&motionChar=energetic", subject: "mathematics" },
+    { url: "/tutor/physics/environment/shape", body: "intent=save&density=very-dense&motionChar=energetic", subject: "physics", tag: " · unauthored value" },
+  ];
+  R.writes = {};
+  const rowOf = (subject) => sql(`select coalesce((select density||'/'||motion_char from public.environment_settings where subject_id='${subject}'), 'none')`);
+  const clearRow = (subject) => sql(`delete from public.environment_settings where subject_id='${subject}'`);
+
   for (const cls of CLASSES) {
     const { ctx, p } = await withClass(browser, cls);
+    /* writes first, from a same-origin page so cookies ride along */
+    await p.goto(P + "/subjects", { waitUntil: "load" }).catch(() => {});
+    for (const wr of WRITES) {
+      clearRow(wr.subject);
+      const before = rowOf(wr.subject);
+      const res = await p.evaluate(async (u, b) => {
+        try { const r = await fetch(u, { method: "POST", body: b, headers: { "content-type": "application/x-www-form-urlencoded" }, redirect: "manual", credentials: "include" }); return { status: r.status, type: r.type }; }
+        catch (e) { return { status: "ERR", type: String(e).slice(0, 60) }; }
+      }, P + wr.url, wr.body).catch((e) => ({ status: "ERR", type: String(e).slice(0, 60) }));
+      const after = rowOf(wr.subject);
+      clearRow(wr.subject);
+      const key = "POST " + wr.url + (wr.tag || "");
+      /* fetch with redirect:manual reports an opaque 0 for a 303; the row is the truth */
+      (R.writes[key] ||= { kind: "write", pattern: "POST /tutor/[subject]/environment/shape" })[cls] = { status: res.type === "opaqueredirect" ? "303" : res.status, rowBefore: before, rowAfter: after };
+    }
     for (const r of routes) {
       const res = await p.goto(P + r.url, { waitUntil: "load" }).catch((e) => ({ error: String(e) }));
       if (res.error) { (R.routes[r.url] ||= { kind: r.kind, pattern: r.pattern })[cls] = { status: "ERR", landed: res.error.slice(0, 80) }; continue; }
@@ -165,6 +196,14 @@ async function withClass(browser, cls) {
   gate("tutor U (unrelated) sees state A, tutor T sees state B", R.routes["/tutor"].tutorU.render === "tutor-shell:A-no-relationships" && R.routes["/tutor"].tutorT.render === "tutor-shell:B-relationships-no-events", JSON.stringify([R.routes["/tutor"].tutorU, R.routes["/tutor"].tutorT]));
   gate("students never reach /tutor; tutors never reach /student", ["studentA", "studentB"].every((c) => R.routes["/tutor"][c].landed.startsWith("/student")) && ["tutorT", "tutorU"].every((c) => R.routes["/student"][c].landed.startsWith("/tutor")), "");
   gate("visitor and expired land on /login for every portal route", ["/student", "/student/account", "/tutor", "/tutor/account", "/admin"].every((u) => ["visitor", "expired"].every((c) => /^\/login\?next=/.test(R.routes[u][c].landed))), "");
+  const W = R.writes;
+  const wrote = (k, c) => W[k] && W[k][c] && W[k][c].rowAfter !== "none";
+  const kP = "POST /tutor/physics/environment/shape", kM = "POST /tutor/mathematics/environment/shape", kU = kP + " · unauthored value";
+  gate("6.4 write: only the placed tutor (T, physics) writes a row", wrote(kP, "tutorT") && W[kP].tutorT.rowAfter === "dense/energetic", JSON.stringify(W[kP]));
+  gate("6.4 write: visitor, expired, student A, student B, tutor U never write (physics)", ["visitor", "expired", "studentA", "studentB", "tutorU"].every((c) => !wrote(kP, c)), JSON.stringify(W[kP]));
+  gate("6.4 write: nobody writes mathematics (no tutor placed there)", CLASSES.every((c) => !wrote(kM, c)), JSON.stringify(W[kM]));
+  gate("6.4 write: an unauthored value is never stored, even by tutor T", CLASSES.every((c) => !wrote(kU, c)), JSON.stringify(W[kU]));
+  gate("6.4 write: no row left behind", CLASSES.every(() => rowOf("physics") === "none" && rowOf("mathematics") === "none"), "");
   gate("/dev/* is 404 for every class", Object.entries(R.routes).filter(([u]) => u.startsWith("/dev")).every(([, row]) => CLASSES.every((c) => row[c].status === 404)), "");
 
   if (mode === "write") {
@@ -186,12 +225,19 @@ async function withClass(browser, cls) {
       if (a.status !== b.status || a.landed !== b.landed || a.render !== b.render) diffs.push({ route: u, class: c, was: b, now: a });
     }
     gate("no cell changed vs pin", diffs.length === 0, JSON.stringify(diffs).slice(0, 1500));
+    const wmissing = Object.keys(R.writes).filter((k) => !(B.writes || {})[k]);
+    gate("coverage: every write probe has a pinned row", wmissing.length === 0, "missing: " + wmissing.join(", "));
+    const wdiffs = [];
+    for (const k of Object.keys(R.writes)) for (const c of CLASSES) { const a = R.writes[k][c], b = B.writes && B.writes[k] && B.writes[k][c]; if (b && (a.status !== b.status || a.rowAfter !== b.rowAfter)) wdiffs.push({ write: k, class: c, was: b, now: a }); }
+    gate("no write cell changed vs pin", wdiffs.length === 0, JSON.stringify(wdiffs).slice(0, 1500));
   }
   R.pass = fail.length === 0; R.failed = fail;
   /* console table */
   const w = 26;
   console.log("\n" + "route".padEnd(w) + CLASSES.map((c) => c.padEnd(30)).join(""));
   for (const [u, row] of Object.entries(R.routes)) console.log(u.padEnd(w) + CLASSES.map((c) => `${row[c].status} ${row[c].render || ""}`.slice(0, 29).padEnd(30)).join(""));
+  console.log("\n" + "write".padEnd(w + 30) + CLASSES.map((c) => c.padEnd(22)).join(""));
+  for (const [u, row] of Object.entries(R.writes)) console.log(u.padEnd(w + 30) + CLASSES.map((c) => `${row[c].status} → ${row[c].rowAfter}`.padEnd(22)).join(""));
   console.log("\nadmin:", JSON.stringify(R.admin));
   console.log("\nGATES:\n" + Object.entries(R.gates).map(([k, v]) => `${v.pass ? "PASS" : "FAIL"}  ${k}${v.pass ? "" : "  — " + String(v.detail).slice(0, 400)}`).join("\n"));
   process.exit(R.pass ? 0 : 1);

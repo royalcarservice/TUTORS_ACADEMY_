@@ -1,6 +1,12 @@
 /* Subject validator (Phase 3 · Step 1 · Part 3). Pure — runs in node (build
    gate) and in the /dev/subjects switchboard (live report). Fails loudly. */
 
+import { MOTION_CHAR_PARAMS } from "../ambient/contract";
+import { decideAmbient } from "../ambient/eligibility";
+import { combinationsFor, type EnvironmentLevers } from "../environment/levers";
+import { MAX_COMMANDS, MAX_DOM_NODES, reduceDensity } from "../motif/budgets";
+import { generateMotif } from "../motif/grammar";
+import { groupElements } from "../motif/path";
 import { ATMOSPHERES, DENSITIES, MOTIFS, MOTION_CHARS, STATUSES, SUBJECTS, type SubjectConfig } from "./subjects";
 
 /* ── colour math ── */
@@ -95,10 +101,60 @@ export function mutualMatrix(): { pair: string; dInk: number; dIvory: number; pa
   return out;
 }
 
+/* ── 6.4 · THE COMBINATION PASS (P6-R11) ──────────────────────────────────
+   A tutor may choose density × motion character per subject (3 × 6 = 18
+   reachable combinations per subject, 108 in all). Contrast, ΔE and the
+   focus ring are properties of the ACCENT, which no lever touches — they are
+   validated once per subject above and hold for every combination by
+   construction (the identity checks are repeated in the loop so a future
+   lever that did touch colour could not slip past). The properties that DO
+   vary with a combination are checked here, per combination:
+     budget      the motif generated at that density, for the Stage (substrate)
+                 and for the Room (edge, one step calmer), stays within
+                 MAX_COMMANDS / MAX_DOM_NODES — a dense motif may not blow
+                 the 3.3 budgets on any role;
+     room rule   the Room never renders above "balanced" (reduceDensity);
+     motion      the motion character has authored parameters within the
+                 motion-safety caps (cycle ≥ 30 s, camera ≤ 0.5, parallax ≤ 0.3)
+                 — tens of seconds, never seconds;
+     parity      with prefers-reduced-motion the ambient is OFF for this
+                 character (decideAmbient) — reduced-motion parity does not
+                 depend on the choice.
+   Any failing combination fails validateAll(), and so the build gate. */
+export interface CombinationReport { subject: string; levers: EnvironmentLevers; pass: boolean; checks: CheckResult[] }
+
+export function validateCombination(s: SubjectConfig, levers: EnvironmentLevers): CombinationReport {
+  const checks: CheckResult[] = [];
+  const add = (name: string, pass: boolean, detail: string) => checks.push({ name, pass, detail });
+  // identity holds regardless of the combination (no lever touches colour): re-assert, do not assume
+  const idRep = validateSubject({ ...s, density: levers.density, motionChar: levers.motionChar });
+  add("identity", idRep.pass, idRep.pass ? "contrast · ΔE · ring unchanged by the levers" : "identity check FAILED under this combination");
+  // budgets at this density, both roles the environment renders
+  for (const role of ["substrate", "edge"] as const) {
+    const density = role === "edge" ? reduceDensity(levers.density) : levers.density;
+    const data = generateMotif({ subject: s.id, kind: s.motif, role, density, purpose: role === "edge" ? "room" : "ambient" });
+    const g = groupElements(data.elements, data.stroke);
+    add(`budget-${role}`, g.commands <= MAX_COMMANDS && g.domNodes <= MAX_DOM_NODES, `${density}: ${g.commands} commands (≤${MAX_COMMANDS}), ${g.domNodes} nodes (≤${MAX_DOM_NODES}), ${data.features} features`);
+  }
+  add("room-rule", reduceDensity(levers.density) !== "dense", `Room renders ${reduceDensity(levers.density)} for ${levers.density}`);
+  const mc = MOTION_CHAR_PARAMS[levers.motionChar];
+  add("motion-caps", !!mc && mc.cycleSeconds >= 30 && mc.maxCameraMove <= 0.5 && mc.maxParallax <= 0.3, mc ? `cycle ${mc.cycleSeconds}s · camera ${mc.maxCameraMove} · parallax ${mc.maxParallax} · wobble ${mc.wobble}` : "NO AUTHORED PARAMETERS");
+  const rm = decideAmbient({ reducedMotion: true, smallScreen: false, webgl: true, cores: 8, deviceMemory: 8, lowPower: false, battery: "n/a" }, null);
+  add("reduced-motion-parity", rm.on === false, rm.reasons.join("; "));
+  return { subject: s.id, levers, pass: checks.every((c) => c.pass), checks };
+}
+
+export function validateCombinations(): { count: number; perSubject: number; pass: boolean; reports: CombinationReport[] } {
+  const reports: CombinationReport[] = [];
+  for (const s of SUBJECTS) for (const levers of combinationsFor(s.id as never)) reports.push(validateCombination(s, levers));
+  return { count: reports.length, perSubject: reports.length / SUBJECTS.length, pass: reports.every((r) => r.pass), reports };
+}
+
 export function validateAll() {
   const subjects = SUBJECTS.map(validateSubject);
   const matrix = mutualMatrix();
   const mutualPass = matrix.every((m) => m.pass);
-  const pass = subjects.every((s) => s.pass) && mutualPass;
-  return { pass, subjects, matrix };
+  const combinations = validateCombinations(); // 6.4: every reachable lever combination, per subject
+  const pass = subjects.every((s) => s.pass) && mutualPass && combinations.pass;
+  return { pass, subjects, matrix, combinations };
 }

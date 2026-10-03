@@ -194,3 +194,15 @@ and each belongs to a state. Verbatim, as rendered (390, production, 2026-10-01)
 **Open** is the shell's (every time after). They never appear together on one surface, and no surface uses a
 fourth verb for the same act. The sequence is deliberate and is now written down so a later surface does not
 introduce "Start", "Go to" or "Continue" for any of these three states.
+
+## 6.4 addendum — the shaping surface's three states (tutor-facing, subject-scoped)
+
+The shaping surface introduces no student-facing state and no new scope. Its own state line is one of three constants about the **subject's design configuration**, never about a person:
+
+| state | sentence (verbatim) | what it is |
+| --- | --- | --- |
+| no row | `This environment is as authored.` | a complete value — the authored default (not an absence in P5-R6's sense) |
+| row, `shaped_by` = viewer | `Last shaped by you.` | the tutor's own action on design config |
+| row, `shaped_by` ≠ viewer | `Last shaped by another tutor placed in this subject.` | the same fact about another tutor — no name, no date |
+
+A save that did not land adds one sentence (`That did not save. The environment is unchanged — the values shown are the ones in force.`) in the 5.7 register: a state, not a verdict; no "try again", no "contact". The room itself never says any of this: toward students the shaping is silent by decision (P6-R10).

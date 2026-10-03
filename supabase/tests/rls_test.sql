@@ -258,6 +258,116 @@ set local role authenticated;
 select set_config('request.jwt.claims', '{"sub":"11111111-1111-1111-1111-111111111111","role":"authenticated"}', true);
 select pg_temp.ok((select entry_count from public.environment_state where subject_id = 'physics') = 1, 'B''s update touched 0 of A''s rows');
 
+
+-- ════════════════════════════════════════════════════════════════════════════
+-- 6.4 · environment_settings — ONE room per subject; levers chosen, never authored
+-- Fixture at this point: T's relationships were ENDED above (revocation test); U relates to nobody.
+-- The service role places T with A again (physics, ACTIVE) so the positive case exists.
+-- ════════════════════════════════════════════════════════════════════════════
+reset role;
+set local role service_role;
+insert into public.relationships (tutor_id, student_id, subject_id) values
+  ('33333333-3333-3333-3333-333333333333', '11111111-1111-1111-1111-111111111111', 'physics');
+reset role;
+-- structural: no student / relationship / tutor-scoped key can exist on the table (P6-R10)
+select pg_temp.ok((select count(*) from information_schema.columns where table_schema = 'public' and table_name = 'environment_settings'
+  and (column_name like '%student%' or column_name like '%relationship%' or column_name like '%tutor%' or column_name like '%profile%' or column_name like '%status%')) = 0,
+  'P6-R10 environment_settings has no student / relationship / tutor / status column');
+select pg_temp.ok((select string_agg(column_name, ',' order by ordinal_position) from information_schema.columns where table_schema = 'public' and table_name = 'environment_settings')
+  = 'subject_id,density,motion_char,shaped_by,updated_at', 'environment_settings columns are exactly subject_id,density,motion_char,shaped_by,updated_at');
+select pg_temp.ok((select count(*) from pg_constraint where conrelid = 'public.environment_settings'::regclass and contype = 'p') = 1
+  and (select array_to_string(array(select a.attname from pg_index i join pg_attribute a on a.attrelid = i.indrelid and a.attnum = any(i.indkey) where i.indrelid = 'public.environment_settings'::regclass and i.indisprimary), ','))
+  = 'subject_id', 'P6-R12 primary key is subject_id alone: two rows for one subject are impossible');
+
+-- a signed-out visitor READS (public design config) and cannot write
+set local role anon;
+select pg_temp.ok((select count(*) from public.environment_settings) >= 0, 'anon can SELECT environment_settings (public design config, deliberate)');
+do $$ begin
+  insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('physics', 'dense', 'precise', '33333333-3333-3333-3333-333333333333');
+  raise exception 'RLS ASSERTION FAILED: anon wrote environment_settings';
+exception when insufficient_privilege then raise notice 'ok — anon cannot write environment_settings (%)', sqlerrm; end $$;
+update t set n = n + 1;
+
+-- a STUDENT (A, enrolled and related) cannot shape the room
+reset role; set local role authenticated;
+select set_config('request.jwt.claims', '{"sub":"11111111-1111-1111-1111-111111111111","role":"authenticated"}', true);
+do $$ begin
+  insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('physics', 'dense', 'precise', auth.uid());
+  raise exception 'RLS ASSERTION FAILED: student wrote environment_settings';
+exception when insufficient_privilege then raise notice 'ok — a student cannot shape the environment (%)', sqlerrm; end $$;
+update t set n = n + 1;
+
+-- an UNRELATED tutor (U) cannot shape any room
+select set_config('request.jwt.claims', '{"sub":"55555555-5555-5555-5555-555555555555","role":"authenticated"}', true);
+do $$ begin
+  insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('physics', 'dense', 'precise', auth.uid());
+  raise exception 'RLS ASSERTION FAILED: unrelated tutor wrote environment_settings';
+exception when insufficient_privilege then raise notice 'ok — an unrelated tutor cannot shape the environment (%)', sqlerrm; end $$;
+update t set n = n + 1;
+
+-- the RELATED tutor (T): physics yes; a subject they have NO relationship in (chemistry) no; not as someone else
+select set_config('request.jwt.claims', '{"sub":"33333333-3333-3333-3333-333333333333","role":"authenticated"}', true);
+do $$ begin
+  insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('chemistry', 'dense', 'precise', auth.uid());
+  raise exception 'RLS ASSERTION FAILED: tutor shaped a subject they do not relate in';
+exception when insufficient_privilege then raise notice 'ok — a tutor cannot shape a subject they have no relationship in (%)', sqlerrm; end $$;
+update t set n = n + 1;
+do $$ begin
+  insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('physics', 'dense', 'precise', '55555555-5555-5555-5555-555555555555');
+  raise exception 'RLS ASSERTION FAILED: tutor recorded another tutor as shaped_by';
+exception when insufficient_privilege then raise notice 'ok — shaped_by must be the writer (%)', sqlerrm; end $$;
+update t set n = n + 1;
+-- P6-R11: a value that is not authored is IMPOSSIBLE TO STORE (CHECK), even for a permitted writer
+do $$ begin
+  insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('physics', 'very-dense', 'precise', auth.uid());
+  raise exception 'RLS ASSERTION FAILED: unauthored density stored';
+exception when check_violation then raise notice 'ok — unauthored density cannot be stored (%)', sqlerrm; end $$;
+update t set n = n + 1;
+do $$ begin
+  insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('physics', 'dense', '#ff0000', auth.uid());
+  raise exception 'RLS ASSERTION FAILED: unauthored motion character stored';
+exception when check_violation then raise notice 'ok — unauthored motion character cannot be stored (%)', sqlerrm; end $$;
+update t set n = n + 1;
+-- the permitted write, idempotent at the model: a second row for physics is impossible; upsert is the one shape
+insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('physics', 'dense', 'precise', auth.uid());
+select pg_temp.ok((select density from public.environment_settings where subject_id = 'physics') = 'dense', 'related tutor T shaped physics (dense · precise)');
+do $$ begin
+  insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('physics', 'sparse', 'precise', auth.uid());
+  raise exception 'RLS ASSERTION FAILED: second settings row for one subject';
+exception when unique_violation then raise notice 'ok — P6-R12 one settings row per subject (%)', sqlerrm; end $$;
+update t set n = n + 1;
+insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('physics', 'sparse', 'editorial', auth.uid())
+  on conflict (subject_id) do update set density = excluded.density, motion_char = excluded.motion_char, shaped_by = excluded.shaped_by, updated_at = now();
+select pg_temp.ok((select count(*) from public.environment_settings where subject_id = 'physics') = 1 and (select motion_char from public.environment_settings where subject_id = 'physics') = 'editorial',
+  'upsert = one row, updated (the 5.5 shape)');
+
+-- ENDED is not related: T's relationship with B is ended; a tutor whose ONLY relationship in a subject is ended cannot shape it.
+-- (T still has A active in physics, so test the predicate on U after service role gives U an ENDED row in chemistry.)
+reset role; set local role service_role;
+insert into public.relationships (tutor_id, student_id, subject_id, state, started_at, ended_at) values
+  ('55555555-5555-5555-5555-555555555555', '22222222-2222-2222-2222-222222222222', 'chemistry', 'ended', now() - interval '30 days', now() - interval '1 day');
+reset role; set local role authenticated;
+select set_config('request.jwt.claims', '{"sub":"55555555-5555-5555-5555-555555555555","role":"authenticated"}', true);
+do $$ begin
+  insert into public.environment_settings (subject_id, density, motion_char, shaped_by) values ('chemistry', 'dense', 'precise', auth.uid());
+  raise exception 'RLS ASSERTION FAILED: tutor with only an ENDED relationship shaped the room';
+exception when insufficient_privilege then raise notice 'ok — an ended relationship confers nothing (%)', sqlerrm; end $$;
+update t set n = n + 1;
+-- U cannot update or delete T's physics row either (0 rows touched)
+update public.environment_settings set density = 'sparse' where subject_id = 'physics';
+select pg_temp.ok((select density from public.environment_settings where subject_id = 'physics') = 'sparse' and (select shaped_by from public.environment_settings where subject_id = 'physics') = '33333333-3333-3333-3333-333333333333', 'unrelated tutor''s UPDATE touched 0 rows');
+delete from public.environment_settings where subject_id = 'physics';
+select pg_temp.ok((select count(*) from public.environment_settings where subject_id = 'physics') = 1, 'unrelated tutor''s DELETE touched 0 rows');
+-- student A reads the room (same bytes as anyone) but cannot delete it
+select set_config('request.jwt.claims', '{"sub":"11111111-1111-1111-1111-111111111111","role":"authenticated"}', true);
+select pg_temp.ok((select density from public.environment_settings where subject_id = 'physics') = 'sparse', 'student reads the subject''s settings (public design config)');
+delete from public.environment_settings where subject_id = 'physics';
+select pg_temp.ok((select count(*) from public.environment_settings where subject_id = 'physics') = 1, 'student''s DELETE touched 0 rows');
+-- REVERT: the related tutor deletes the row → absence = authored default
+select set_config('request.jwt.claims', '{"sub":"33333333-3333-3333-3333-333333333333","role":"authenticated"}', true);
+delete from public.environment_settings where subject_id = 'physics';
+select pg_temp.ok((select count(*) from public.environment_settings where subject_id = 'physics') = 0, 'P6-R12 revert: related tutor deleted the row (absence = authored default)');
+
 reset role;
 do $$ declare c int; begin select n into c from t; raise notice 'RLS: all % assertions passed', c; end $$;
 rollback;  -- the test leaves no data behind

@@ -6,6 +6,7 @@ import type { ShellNavEntry } from "@/components/shell/subject-nav";
 import { EnvironmentRegions, liveModuleIds, resolveEnvironmentSlots } from "@/components/student/environment-regions";
 import { Threshold, VisitorDoor } from "@/components/student/threshold";
 import { getIdentity } from "@/lib/auth/session";
+import { getEnvironmentSettings } from "@/lib/environment/settings";
 import { isolateAsync } from "@/lib/state/isolate";
 import { getEnrolledSubjectIds, getEnvironmentFacts } from "@/lib/student/data";
 import { mayEnrol } from "@/lib/student/enrol";
@@ -68,8 +69,12 @@ export default async function SubjectEnvironmentPage({ params, searchParams }: P
   if (!s) notFound();
 
   const prod = process.env.NODE_ENV === "production";
-  /* Identity + enrolments, read once (RLS-bounded; a null identity is a visitor). */
-  const identity = await getIdentity();
+  /* Identity + enrolments, read once (RLS-bounded; a null identity is a visitor).
+     6.4: THE ROOM'S LEVERS are read IN PARALLEL with the identity — one anon
+     round trip that does not know who is asking (P6-R10: the same bytes for
+     every reader class). Absence = the authored default; a failed read =
+     the authored default + one log line (src/lib/environment/settings.ts). */
+  const [identity, settings] = await Promise.all([getIdentity(), getEnvironmentSettings(s.id as SubjectId)]);
   const enrolled = identity ? await getEnrolledSubjectIds() : new Set<string>();
   /* DRAFT GUARD AT THE ROUTE (production) — enrolled students are admitted (5.3). */
   if (s.status === "draft" && prod && !enrolled.has(s.id)) notFound();
@@ -114,16 +119,17 @@ export default async function SubjectEnvironmentPage({ params, searchParams }: P
         name: s.name,
         tagline: s.tagline,
         motif: s.motif,
-        density: s.density,
+        density: settings.levers.density,
       }}
       ambient={{
         id: s.id,
         name: s.name,
         motif: s.motif,
-        density: s.density,
-        motionChar: s.motionChar,
+        density: settings.levers.density,
+        motionChar: settings.levers.motionChar,
         accent: s.accent1,
       }}
+      levers={{ density: settings.levers.density, motionChar: settings.levers.motionChar, source: settings.source === "row" ? "shaped" : "authored" }}
       draft={s.status === "draft"}
       entries={entries}
       threshold={showThreshold ? <Threshold subjectId={s.id} subjectName={s.name} failed={entryFailed} /> : showVisitorDoor ? <VisitorDoor subjectId={s.id} /> : undefined}

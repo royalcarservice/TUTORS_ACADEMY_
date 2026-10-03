@@ -205,3 +205,60 @@ about the tutor's arrangements that also names a student who is no longer theirs
 **Observation:** no access-log row is written for a tutor read (owner ruling pending; reported).
 The surface sends no beacon and includes no analytics (`Test 22`).
 
+
+## 6.4 — The levers (`/tutor/[subject]/environment`) — the first writing tutor surface
+
+**What a tutor may change.** Two levers, each a closed authored set, each applying to the whole
+subject: **density** (sparse · balanced · dense — every motif renderer reads it; the Room reduces one
+step) and **motion character** (precise · energetic · reactive · growing · editorial · sequential —
+the ambient lens reads it; it is off under `prefers-reduced-motion` and on small screens regardless
+of the choice). The table is `public.environment_settings` (migration 0003): primary key
+`subject_id` (so at most one row per subject), `density` and `motion_char` CHECK-constrained to the
+authored lists (an unauthored value is a `check_violation`, not a row), `shaped_by`, `updated_at`.
+
+**What a tutor may never change.** The subject's identity: accent triad, mark, brand frame, type,
+motion grammar, spacing — none is a column, none is a control, and `validate.ts` re-asserts the
+identity checks (contrast · ΔE · focus ring) for every combination so a lever cannot move them.
+Atmosphere (declared, read by no renderer) and motif (one kind per subject) have one value each and
+are not presented. There is no free text, no hex, no number, no upload.
+
+**Blast radius.** A lever applies to everyone in the subject — every student, including students
+the tutor does not teach, and any other tutor placed in the subject. The surface says so in plain
+words, in the form, before the save control: *"Saving changes the Physics environment for everyone
+in Physics — every student, including students you do not teach, and any other tutor placed in
+Physics. There is one Physics room."* (`LEVERS_COPY.blastRadius`). The sentence is unconditional:
+the policy that would let the surface *count* the other tutors placed in a subject does not exist
+(a tutor may read only their own relationships), and this step adds no policy; see
+`docs/proposed/environment_shared_note.sql` for the narrow read a future ruling could grant.
+
+**Who shaped it last.** The state line reads one of three constants: *This environment is as
+authored.* · *Last shaped by you.* · *Last shaped by another tutor placed in this subject.* No
+name, no date. `shaped_by`/`updated_at` record the tutor's own action on design configuration and
+nothing about any student; the environment never renders them.
+
+**Revert.** Deleting the row is the revert, always a real action when a row exists (the authored
+default is validated at build; putting it back is safe by construction). When the room is as
+authored there is nothing to put back and no revert control is rendered (a control that changes
+nothing is a false affordance, P6-R4).
+
+**Silence toward students (a decision, P6-R10).** No notice, no changelog, no history, no "shaped
+by" on any student-facing surface. The subject simply looks as it is set. The shaping surface states
+this (`LEVERS_COPY.noNotice`).
+
+**Who may write (the SQL).** `environment_settings_select_all` — `anon, authenticated`: `true` (public,
+like the subject). `environment_settings_insert_related_tutor` / `_update_related_tutor` — `authenticated`, `exists (select 1
+from relationships r where r.tutor_id = auth.uid() and r.subject_id = environment_settings.subject_id
+and r.state = 'active')` (WITH CHECK on insert; USING + WITH CHECK on update). No delete policy was
+needed beyond the same predicate: `environment_settings_delete_related_tutor` uses it. Students, unrelated tutors,
+tutors whose placement in the subject has ended, and visitors are denied (`rls_test.sql` 6.4 block:
+20 assertions, 76 total). The route checks placement server-side as defence in depth; RLS decides.
+
+**Absence (distinct from P5-R6).** No row means *as authored* — a complete value, not a missing one.
+A failed read also renders the authored default, but is logged and marked
+`source: "authored-after-failed-read"`, never silently equal to "as authored" in the system's own
+record (`src/lib/environment/settings.ts`, header comment).
+
+**Reach.** `/tutor/[subject]/environment` resolves only for a tutor with an active placement in that
+subject; otherwise one `notFound()`, the same canonical document as an unknown subject. There is no
+link to it from the 6.2 shell yet (the shell's composition is not this step's to touch); it is
+reached by URL. Reported as an open item.
