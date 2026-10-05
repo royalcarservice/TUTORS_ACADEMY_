@@ -1,0 +1,365 @@
+{
+  "generatedAt": "2026-10-03T18:16:59.506Z",
+  "base": "http://localhost:3100",
+  "gates": {
+    "account-three-things": {
+      "pass": true,
+      "detail": {
+        "dts": [
+          "Name",
+          "Email",
+          "Role"
+        ],
+        "buttons": [
+          "Sign out"
+        ],
+        "forms": [
+          "/auth/signout"
+        ],
+        "inputs": 0,
+        "selects": 0,
+        "linksInMain": 0
+      }
+    },
+    "account-matches-student": {
+      "pass": true,
+      "detail": {
+        "tutorHash": "a49699247fabaad8",
+        "studentHash": "a49699247fabaad8",
+        "note": "structure-identical after identity + role normalisation"
+      }
+    },
+    "never-contains": {
+      "pass": true,
+      "detail": {
+        "hits": []
+      }
+    },
+    "account-no-role-affordance": {
+      "pass": true,
+      "detail": {
+        "roleHits": [],
+        "note": "the Role row is a <dd> fact: no input, select, link or second form on the account surface"
+      }
+    },
+    "pii-floor": {
+      "pass": true,
+      "detail": {
+        "leaks": [],
+        "note": "the account surface is excluded: it shows the tutor THEIR OWN email (P6-R14)"
+      }
+    },
+    "write-failed-known": {
+      "pass": true,
+      "detail": {
+        "landed": "/tutor/physics/environment?shape=failed",
+        "sentence": "That did not save. The environment is unchanged — the values shown are the ones in force.",
+        "rowAfter": "ABSENT",
+        "describedby": "blast-radius shape-failed"
+      }
+    },
+    "write-unknown-outcome": {
+      "pass": true,
+      "detail": {
+        "aborted": true,
+        "navigationError": null,
+        "oursAfterCut": "nothing of ours (browser error page)",
+        "rowAfter": "ABSENT",
+        "settledGetStatus": 200,
+        "settledGetShowsFailedSentence": false,
+        "settledState": "This environment is as authored."
+      }
+    },
+    "write-session-ended": {
+      "pass": true,
+      "detail": {
+        "landed": "/login?next=%2Ftutor%2Fphysics%2Fenvironment&reason=ended",
+        "next": "/tutor/physics/environment",
+        "reason": true,
+        "sentence": "That session ended. Signing in again goes back to the Physics environment.",
+        "rowAfter": "ABSENT",
+        "afterSignIn": {
+          "landed": "/tutor/physics/environment",
+          "status": 200,
+          "state": "This environment is as authored."
+        }
+      }
+    },
+    "write-concurrent": {
+      "pass": true,
+      "detail": {
+        "rowAtLoad": "ABSENT",
+        "rowChangedUnderneath": "sparse/precise/3aebe896-4a00-4fbd-8a6c-281c778e7c22",
+        "landed": "/tutor/physics/environment",
+        "rowAfterSubmit": "dense/editorial/c0c08c6d-9624-4161-91ce-5cc728bf1b2b",
+        "surfaceState": "Last shaped by you.",
+        "anySentenceAboutTheOtherWrite": false,
+        "verdict": "LAST-WRITE-WINS, SILENT — the other tutor's change was overwritten and nothing on the surface says so",
+        "note": "this gate RECORDS; it does not pass/fail — the verdict is a design decision for the user (6.5 test 8)"
+      }
+    },
+    "no-js-saves": {
+      "pass": true,
+      "detail": {
+        "loaded": 200,
+        "scriptsOnPage": 10,
+        "landed": "/tutor/physics/environment",
+        "rowAfter": "balanced/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b"
+      }
+    },
+    "role-crossing": {
+      "pass": true,
+      "detail": {
+        "rows": [
+          "student → /tutor: 307 200 lands /student alarm=0",
+          "student → /tutor/account: 307 200 lands /student alarm=0",
+          "student → /tutor/physics/environment: 307 200 lands /student alarm=0",
+          "student → /tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6: 307 200 lands /student alarm=0",
+          "tutor → /student: 307 200 lands /tutor alarm=0",
+          "tutor → /student/account: 307 200 lands /tutor alarm=0"
+        ]
+      }
+    },
+    "shaping-read-failed": {
+      "pass": true,
+      "detail": {
+        "codeGate": true,
+        "frame": {
+          "status": 200,
+          "hasForm": false,
+          "honest": true,
+          "text": "Not shown This environment's settings could not be read just now. Nothing was changed. The room still looks as it was set; opening this page again only reads — it is safe to do. Open it again"
+        }
+      }
+    },
+    "route-count": {
+      "pass": true,
+      "detail": {
+        "count": 58,
+        "tutorRoutes": [
+          "(portal)/tutor/[subject]/[relationship]/page.tsx",
+          "(portal)/tutor/[subject]/environment/page.tsx",
+          "(portal)/tutor/[subject]/environment/shape/route.ts",
+          "(portal)/tutor/account/page.tsx",
+          "(portal)/tutor/page.tsx"
+        ]
+      }
+    },
+    "student-account-hash": {
+      "pass": true,
+      "detail": {
+        "hash": "a49699247fabaad8"
+      }
+    }
+  },
+  "evidence": {
+    "routeCount": 58,
+    "tutorRoutes": [
+      "(portal)/tutor/[subject]/[relationship]/page.tsx",
+      "(portal)/tutor/[subject]/environment/page.tsx",
+      "(portal)/tutor/[subject]/environment/shape/route.ts",
+      "(portal)/tutor/account/page.tsx",
+      "(portal)/tutor/page.tsx"
+    ],
+    "devRoutes": 42,
+    "tutorAccount": {
+      "status": 200,
+      "text": "Account Tutor A This is a test account. It may be deleted while the academy is being built. Name Tutor A Email tutor-a@test.tutorsacademy.invalid Role tutor Sign out",
+      "dom": "<main id=\"main\" style=\"flex:1\"><div class=\"ta-container ta-container--content\" style=\"padding-block:var(--ta-space-6) var(--ta-space-16)\"><div data-density=\"compact\" style=\"display:flex;flex-direction:column;gap:var(--ta-space-6)\"><div><p style=\"font-family:var(--ta-font-mono);font-size:var(--ta-text-2xs);letter-spacing:0.08em;text-transform:uppercase;color:var(--ta-text-muted);margin:0\">Account</p><h1 style=\"margin:var(--ta-space-2) 0 0;font-family:var(--ta-font-display);font-size:var(--ta-display-sm);font-weight:500;color:var(--ta-text-primary)\">Tutor A</h1><p style=\"margin:var(--ta-space-3) 0 0;font-size:var(--ta-text-sm);color:var(--ta-text-secondary)\">This is a test account. It may be deleted while the academy is being built.</p></div><dl style=\"margin:0;display:grid;grid-template-columns:max-content 1fr;column-gap:var(--ta-space-6);row-gap:var(--ta-space-3);font-size:var(--ta-text-base)\"><div style=\"display:contents\"><dt style=\"font-family:var(--ta-font-mono);font-size:var(--ta-text-2xs);letter-spacing:0.08em;text-transform:uppercase;color:var(--ta-text-muted);margin:0;align-self:baseline\">Name</dt><dd style=\"margin:0;color:var(--ta-text-primary);overflow-wrap:anywhere\">Tutor A</dd></div><div style=\"display:contents\"><dt style=\"font-family:var(--ta-font-mono);font-size:var(--ta-text-2xs);letter-spacing:0.08em;text-transform:uppercase;color:var(--ta-text-muted);margin:0;align-self:baseline\">Email</dt><dd style=\"margin:0;color:var(--ta-text-primary);overflow-wrap:anywhere\">tutor-a@test.tutorsacademy.invalid</dd></div><div style=\"display:contents\"><dt style=\"font-family:var(--ta-font-mono);font-size:var(--ta-text-2xs);letter-spacing:0.08em;text-transform:uppercase;color:var(--ta-text-muted);margin:0;align-self:baseline\">Role</dt><dd style=\"margin:0;color:var(--ta-text-primary);overflow-wrap:anywhere\">tutor</dd></div></dl><form action=\"/auth/signout\" method=\"post\"><button type=\"submit\" class=\"ta-btn\" data-variant=\"secondary\" data-size=\"md\">Sign out</button></form></div><!--$--><!--/$--></div></main>",
+      "hash": "a49699247fabaad8",
+      "dts": [
+        "Name",
+        "Email",
+        "Role"
+      ],
+      "buttons": [
+        "Sign out"
+      ],
+      "forms": [
+        "/auth/signout"
+      ],
+      "inputs": 0,
+      "selects": 0,
+      "links": []
+    },
+    "studentAccount": {
+      "status": 200,
+      "text": "Account Student C This is a test account. It may be deleted while the academy is being built. Name Student C Email student-c@test.tutorsacademy.invalid Role student Sign out",
+      "dom": "<main id=\"main\" style=\"flex:1\"><div class=\"ta-container ta-container--content\" style=\"padding-block:var(--ta-space-6) var(--ta-space-16)\"><div data-density=\"compact\" style=\"display:flex;flex-direction:column;gap:var(--ta-space-6)\"><div><p style=\"font-family:var(--ta-font-mono);font-size:var(--ta-text-2xs);letter-spacing:0.08em;text-transform:uppercase;color:var(--ta-text-muted);margin:0\">Account</p><h1 style=\"margin:var(--ta-space-2) 0 0;font-family:var(--ta-font-display);font-size:var(--ta-display-sm);font-weight:500;color:var(--ta-text-primary)\">Student C</h1><p style=\"margin:var(--ta-space-3) 0 0;font-size:var(--ta-text-sm);color:var(--ta-text-secondary)\">This is a test account. It may be deleted while the academy is being built.</p></div><dl style=\"margin:0;display:grid;grid-template-columns:max-content 1fr;column-gap:var(--ta-space-6);row-gap:var(--ta-space-3);font-size:var(--ta-text-base)\"><div style=\"display:contents\"><dt style=\"font-family:var(--ta-font-mono);font-size:var(--ta-text-2xs);letter-spacing:0.08em;text-transform:uppercase;color:var(--ta-text-muted);margin:0;align-self:baseline\">Name</dt><dd style=\"margin:0;color:var(--ta-text-primary);overflow-wrap:anywhere\">Student C</dd></div><div style=\"display:contents\"><dt style=\"font-family:var(--ta-font-mono);font-size:var(--ta-text-2xs);letter-spacing:0.08em;text-transform:uppercase;color:var(--ta-text-muted);margin:0;align-self:baseline\">Email</dt><dd style=\"margin:0;color:var(--ta-text-primary);overflow-wrap:anywhere\">student-c@test.tutorsacademy.invalid</dd></div><div style=\"display:contents\"><dt style=\"font-family:var(--ta-font-mono);font-size:var(--ta-text-2xs);letter-spacing:0.08em;text-transform:uppercase;color:var(--ta-text-muted);margin:0;align-self:baseline\">Role</dt><dd style=\"margin:0;color:var(--ta-text-primary);overflow-wrap:anywhere\">student</dd></div></dl><form action=\"/auth/signout\" method=\"post\"><button type=\"submit\" class=\"ta-btn\" data-variant=\"secondary\" data-size=\"md\">Sign out</button></form></div><!--$--><!--/$--></div></main>",
+      "hash": "a49699247fabaad8",
+      "dts": [
+        "Name",
+        "Email",
+        "Role"
+      ]
+    },
+    "surfaces": {
+      "/tutor": {
+        "status": 200,
+        "text": "Now Nothing to do here. The students placed with you are listed below, by subject. Placing is done by the academy, not from this page. Teaching surfaces are not built. Students placed with you Physics The Field Environment in draft Student A Physics Student C Physics Student D Physics Shape the Physics environment",
+        "bytes": 36317,
+        "scripts": 11
+      },
+      "/tutor/account": {
+        "status": 200,
+        "text": "Account Tutor A This is a test account. It may be deleted while the academy is being built. Name Tutor A Email tutor-a@test.tutorsacademy.invalid Role tutor Sign out",
+        "bytes": 29467,
+        "scripts": 11
+      },
+      "/tutor/physics/environment": {
+        "status": 200,
+        "text": "Shape the environment The Physics environment Physics The Field This environment is as authored. The two levers Density Sparse Balanced Dense Authored: Balanced. Motion character Precise Energetic Reactive Growing Editorial Sequential Authored: Energetic. Accent, mark, type, motion grammar and the brand frame are the subject's identity and are not adjustable. Atmosphere and motif have one authored value each and are not presented as controls. Saving changes the Physics environment for everyone in Physics — every student, including students you do not teach, and any other tutor placed in Physics. There is one Physics room. Nothing announces the change. Students are not told their room was rearranged; the subject simply looks as you set it. Save for everyone in this subject Open the Physics room Back to the students placed with you",
+        "bytes": 42305,
+        "scripts": 11
+      },
+      "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6": {
+        "status": 200,
+        "text": "Student C Physics The Field Environment in draft Where the learning is See the system — done See the doors — done Watch the crossing — done Learn in the room — ahead Work with a tutor — ahead Watch your record grow — ahead Master the subject — ahead Nothing is recorded here yet. Nothing in this environment records anything so far — classes, recordings and work arrive in later phases, and the record starts when they exist. This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built. Back to the students placed with you",
+        "bytes": 48703,
+        "scripts": 11
+      },
+      "/tutor/physics/environment?shape=failed": {
+        "status": 200,
+        "text": "Shape the environment The Physics environment Physics The Field This environment is as authored. The two levers Density Sparse Balanced Dense Authored: Balanced. Motion character Precise Energetic Reactive Growing Editorial Sequential Authored: Energetic. Accent, mark, type, motion grammar and the brand frame are the subject's identity and are not adjustable. Atmosphere and motif have one authored value each and are not presented as controls. Saving changes the Physics environment for everyone in Physics — every student, including students you do not teach, and any other tutor placed in Physics. There is one Physics room. Nothing announces the change. Students are not told their room was rearranged; the subject simply looks as you set it. That did not save. The environment is unchanged — the values shown are the ones in force. Save for everyone in this subject Open the Physics room Back to the students placed with you",
+        "bytes": 42990,
+        "scripts": 11
+      }
+    },
+    "neverContains": [],
+    "write": {
+      "rowBefore": "ABSENT",
+      "failed": {
+        "landed": "/tutor/physics/environment?shape=failed",
+        "sentence": "That did not save. The environment is unchanged — the values shown are the ones in force.",
+        "rowAfter": "ABSENT",
+        "describedby": "blast-radius shape-failed"
+      },
+      "unknown": {
+        "aborted": true,
+        "navigationError": null,
+        "oursAfterCut": "nothing of ours (browser error page)",
+        "rowAfter": "ABSENT",
+        "settledGetStatus": 200,
+        "settledGetShowsFailedSentence": false,
+        "settledState": "This environment is as authored."
+      },
+      "sessionEnded": {
+        "landed": "/login?next=%2Ftutor%2Fphysics%2Fenvironment&reason=ended",
+        "next": "/tutor/physics/environment",
+        "reason": true,
+        "sentence": "That session ended. Signing in again goes back to the Physics environment.",
+        "rowAfter": "ABSENT",
+        "afterSignIn": {
+          "landed": "/tutor/physics/environment",
+          "status": 200,
+          "state": "This environment is as authored."
+        }
+      },
+      "concurrent": {
+        "rowAtLoad": "ABSENT",
+        "rowChangedUnderneath": "sparse/precise/3aebe896-4a00-4fbd-8a6c-281c778e7c22",
+        "landed": "/tutor/physics/environment",
+        "rowAfterSubmit": "dense/editorial/c0c08c6d-9624-4161-91ce-5cc728bf1b2b",
+        "surfaceState": "Last shaped by you.",
+        "anySentenceAboutTheOtherWrite": false,
+        "verdict": "LAST-WRITE-WINS, SILENT — the other tutor's change was overwritten and nothing on the surface says so"
+      },
+      "rowRestored": "ABSENT"
+    },
+    "noJs": {
+      "loaded": 200,
+      "scriptsOnPage": 10,
+      "landed": "/tutor/physics/environment",
+      "rowAfter": "balanced/energetic/c0c08c6d-9624-4161-91ce-5cc728bf1b2b"
+    },
+    "roleCrossing": [
+      {
+        "who": "student",
+        "url": "/tutor",
+        "status": 200,
+        "chain": [
+          {
+            "url": "/tutor",
+            "status": 307
+          }
+        ],
+        "landed": "/student",
+        "alarm": []
+      },
+      {
+        "who": "student",
+        "url": "/tutor/account",
+        "status": 200,
+        "chain": [
+          {
+            "url": "/tutor/account",
+            "status": 307
+          }
+        ],
+        "landed": "/student",
+        "alarm": []
+      },
+      {
+        "who": "student",
+        "url": "/tutor/physics/environment",
+        "status": 200,
+        "chain": [
+          {
+            "url": "/tutor/physics/environment",
+            "status": 307
+          }
+        ],
+        "landed": "/student",
+        "alarm": []
+      },
+      {
+        "who": "student",
+        "url": "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+        "status": 200,
+        "chain": [
+          {
+            "url": "/tutor/physics/97b22c6d-673d-4d6c-9f61-241a7d0151e6",
+            "status": 307
+          }
+        ],
+        "landed": "/student",
+        "alarm": []
+      },
+      {
+        "who": "tutor",
+        "url": "/student",
+        "status": 200,
+        "chain": [
+          {
+            "url": "/student",
+            "status": 307
+          }
+        ],
+        "landed": "/tutor",
+        "alarm": []
+      },
+      {
+        "who": "tutor",
+        "url": "/student/account",
+        "status": 200,
+        "chain": [
+          {
+            "url": "/student/account",
+            "status": 307
+          }
+        ],
+        "landed": "/tutor",
+        "alarm": []
+      }
+    ],
+    "shapingReadFailed": {
+      "codeGate": true,
+      "frame": {
+        "status": 200,
+        "hasForm": false,
+        "honest": true,
+        "text": "Not shown This environment's settings could not be read just now. Nothing was changed. The room still looks as it was set; opening this page again only reads — it is safe to do. Open it again"
+      }
+    }
+  }
+}

@@ -3,8 +3,10 @@ import { NextResponse } from "next/server";
 import { getIdentity } from "@/lib/auth/session";
 import { isDensity, isMotionChar } from "@/lib/environment/levers";
 import { revertEnvironment, shapeEnvironment } from "@/lib/environment/shape";
+import { isolateAsync } from "@/lib/state/isolate";
 import { logFailure } from "@/lib/state/log";
 import type { SubjectId } from "@/lib/student/contract";
+import { ROUTES } from "@/config/routes";
 import { getSubject } from "@/lib/subjects/subjects";
 import { createClient } from "@/lib/supabase/server";
 import { getTutorContext } from "@/lib/tutor/data";
@@ -40,8 +42,16 @@ export async function POST(req: Request, { params }: { params: Params }) {
   if (!s) return nothing();
   const back = `/tutor/${s.id}/environment`;
 
-  const identity = await getIdentity();
-  if (!identity || identity.role !== "tutor") return nothing();
+  /* 6.5 · P5-R9 + P6-R15. An identity READ FAILURE is not "no session": nothing
+     was written, so 303 back to the settling GET; the page decides (the honest
+     page, or the values in force). NO SESSION (the proxy normally catches this
+     first — defence in depth) → sign in, with the SETTLING GET as the return
+     path, never this URL: a GET here is 405. */
+  const identityRead = await isolateAsync("route:/tutor/[subject]/environment/shape", () => getIdentity(), { subject: s.id });
+  if (!identityRead.ok) return seeOther(`${back}?shape=failed`);
+  const identity = identityRead.value;
+  if (!identity) return seeOther(`${ROUTES.login}?next=${encodeURIComponent(back)}`);
+  if (identity.role !== "tutor") return nothing();
   const ctx = await getTutorContext();
   if (!ctx || !ctx.groups.some((g) => g.subjectId === s.id)) return nothing();
 

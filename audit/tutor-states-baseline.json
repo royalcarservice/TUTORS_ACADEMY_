@@ -1,0 +1,8 @@
+{
+  "pinnedAt": "2026-10-03T18:16:11.830Z",
+  "reason": "6.5 initial pin: 14 gates; route count 58 (56 + /dev/tutor-states + its frame; 0 production routes added); student account structure hash a49699247fabaad8 (unchanged by 6.5)",
+  "pinned": {
+    "route-count": 58,
+    "student-account-hash": "a49699247fabaad8"
+  }
+}

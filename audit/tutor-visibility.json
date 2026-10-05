@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-10-02T15:35:21.589Z",
+  "ranAt": "2026-10-03T09:56:41.807Z",
   "path": "anon key + test-account JWT → PostgREST → RLS",
   "passed": 17,
   "total": 17,

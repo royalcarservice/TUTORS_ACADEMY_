@@ -206,3 +206,46 @@ The shaping surface introduces no student-facing state and no new scope. Its own
 | row, `shaped_by` ≠ viewer | `Last shaped by another tutor.` | the same fact about another tutor — no name, no date |
 
 A save that did not land adds one sentence (`That did not save. The environment is unchanged — the values shown are the ones in force.`) in the 5.7 register: a state, not a verdict; no "try again", no "contact". The room itself never says any of this: toward students the shaping is silent by decision (P6-R10).
+
+## 6.5 addendum — the tutor's states as a set (P6-R14 · P6-R15 · P6-R16)
+
+The tutor's three surfaces (shell · relationship · shaping) and the account surface were read together
+against the inventory above. Rows that do not apply to a tutor: 4 (state A/B/C is a student's shell), 7/9/17
+(the enrolment write), 12–13 as a student (the tutor's 404s are P6-R9's one document). The rows below are the
+fourteen the 6.5 brief asked for; `src/app/dev/tutor-states/states.ts` holds the same table and `/dev/tutor-states`
+renders it. Evidence: `audit/tutor-states.cjs` → `audit/tutor-states.json`.
+
+| # | State | Surface | What renders | What it claims | Verified |
+| --- | --- | --- | --- | --- | --- |
+| T1 | a read fails on the shell | `/tutor` | row 24's honest page in the tutor layout | nothing was recorded | yes (tutor.cjs) |
+| T2 | a read fails on the relationship's surface | `/tutor/[subject]/[relationship]` | the reader throws → the same boundary, the same page; never 404 | nothing was recorded | yes (relationship.cjs) |
+| T3 | **a read fails on the shaping surface** | `/tutor/[subject]/environment` | **the honest page — never the form.** `This environment's settings could not be read just now.` / `Nothing was changed. The room still looks as it was set; opening this page again only reads — it is safe to do.` / `Open it again` → the same GET | nothing was changed; a re-read is safe | code gate + dev frame (the trigger not forced in prod — declared) |
+| T4 | a region fails | the relationship's record region | nothing; one log line | nothing | yes |
+| T5 | the write is in flight | the shaping POST | nothing of ours (plain form POST; no client JS) | this is being attempted | yes |
+| T6 | the write failed, known | `?shape=failed` | one sentence beside Save; row untouched | the values shown are in force | yes |
+| T7 | the write's outcome is unknown | POST cut mid-flight | nothing of ours; the settling GET shows the truth | nothing | yes |
+| T8 | the session ended mid-save | POST with expired cookies | `/login?next=/tutor/[subject]/environment&reason=ended` — **the settling GET, not the write URL**; `That session ended. Signing in again goes back to the Physics environment.`; sign-in lands on the shaping surface | the session ended; where sign-in goes | yes |
+| T9 | a co-tutor changed the values between load and submit | the shaping POST | **last-write-wins, silent** — recorded, STOPPED AND REPORTED (design decision) | — | recorded |
+| T10 | a relationship ends while the page is open | the next request | 404, P6-R9's one document; nothing the tutor could have caused | there is no page here | yes (identity matrix) |
+| T11 | no settings row | the shaping surface | the authored values; `This environment is as authored.`; no Revert | a complete value | yes |
+| T12 | 500 / 404 on each route | all three | the tutor boundary's honest page / the global 404 (framework defect #99287 declared) | nothing was recorded / there is no page | yes |
+| T13 | no-JS and reduced motion | all three | every state complete; the form saves with JS off | nothing | yes |
+| T14 | the role's failure case | a student on `/tutor/*`; a tutor on `/student/*` | 307 to the person's own portal; no sentence | nothing | yes |
+
+**The shaping surface's read-failure rule (T3), stated once.** `getEnvironmentSettings` answers a failed read
+with the authored default and `source: "authored-after-failed-read"`. For the ROOM that is right: the design has
+a value without the database, and a broken room would punish every student for a transient fault. For the
+SHAPING SURFACE it is wrong, because the surface is a form: pre-filled with defaults that may not be the values
+in force, one Save would silently replace another tutor's shaping while the state line said "as authored". So the
+page checks `source` and renders the honest page (`STATE_COPY.shapingUnread`) — the only place in the product
+where "fall back to the authored default" is refused. Log line: `{scope:"page:/tutor/[subject]/environment",
+errorClass:"SettingsUnread"}` in addition to the reader's own `region:environment-settings` line.
+
+**P6-R15 — every write has a GET that settles it.** `src/lib/state/settle.ts` names them: `/subjects/[s]/enter` →
+`/subjects/[s]`; `/tutor/[s]/environment/shape` → `/tutor/[s]/environment`; `/auth/signout` → `/login`. The proxy
+uses it: a protected WRITE that meets the boundary without a session gets `next=<settling GET>`, never the write
+URL (which answers a GET with 405 — the dead end 6.5 found and fixed). A write not in that table does not ship.
+
+**Where relationship management will live (P6-R14).** Not the account surface (three things only). The tutor
+shell is the named future home: active relationships are already its rows; ended ones become a quieter group
+there when the consent ruling exists. See `docs/TUTOR_DISTANCE.md` row 5.

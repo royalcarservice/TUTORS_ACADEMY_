@@ -281,3 +281,24 @@ environment's identity, and denied every student region of it" (DEC-018).
 another tutor shaped reads *Last shaped by another tutor.* — the fact the row carries, not a claim
 that a co-tutor is currently placed. Co-teacher awareness remains an open user question with a
 policy attached; `docs/proposed/environment_shared_note.sql` stays a proposal.
+
+## 6.5 — The tutor's states, the account surface, the honest distance (P6-R14 · P6-R15 · P6-R16)
+
+**The account surface (P6-R14).** `/tutor/account` shows the reader their own display name and email, their
+role as a fact (`Role · tutor` — a `<dd>`, not a control), and Sign out. Nothing else: no settings, no
+preferences, no roadmap. It was already this since 6.2 (the same file as the student's, role swapped); 6.5
+read it against the ruling and confirmed it — the student's is the precedent and the two are structure-identical
+(harness gate `account-matches-student`). No role is selectable, requestable or acquirable from any tutor
+surface. Where a tutor's own arrangements (active · ended relationships) will live: the shell, not this page —
+`docs/TUTOR_DISTANCE.md` row 5; requires the consent ruling; not built.
+
+**The write's four cases (P6-R15), observed.** Failed/known: `303 ?shape=failed`, one sentence, row untouched.
+Unknown: the browser's own failure, nothing of ours, the GET shows the truth. Session ended mid-save: the proxy
+now sends `next=/tutor/[subject]/environment` (the settling GET) with `reason=ended`; signing in lands on the
+values in force. **Concurrent co-tutor change: last-write-wins and SILENT** — reported, not built around.
+
+**The shaping surface's read failure.** The honest page, never a form pre-filled with defaults
+(`docs/STATE_LANGUAGE.md`, 6.5 addendum, T3).
+
+**The distance (P6-R16).** `docs/TUTOR_DISTANCE.md` — every unbuilt capability, where its sentence is, what
+delivers it. No place was added for a missing capability; `/tutor/[subject]` deliberately does not exist.

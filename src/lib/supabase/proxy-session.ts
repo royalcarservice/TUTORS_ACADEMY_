@@ -1,5 +1,6 @@
 import { errorClassOf, logFailure } from "@/lib/state/log";
 import { isIdentityReadFailure } from "@/lib/state/read-error";
+import { returnPathFor } from "@/lib/state/settle";
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
@@ -57,11 +58,14 @@ export async function updateSession(request: NextRequest) {
        or signed out elsewhere); no auth cookies at all = never signed in. The
        login page turns `reason=ended` into one plain sentence; `next` still
        carries where they were, so signing in returns them there (a GET —
-       never a replay of a write). */
+       never a replay of a write). 6.5 (P6-R15): when the request that met the
+       boundary was itself a WRITE (a form POST after the session ended),
+       `next` is the write's SETTLING GET, not the write's URL — the write URL
+       answers a GET with 405, a dead end after signing in. */
     const hadSession = request.cookies.getAll().some((c) => c.name.startsWith("sb-") && c.name.includes("-auth-token"));
     const url = request.nextUrl.clone();
     url.pathname = ROUTES.login;
-    url.search = `?next=${encodeURIComponent(pathname)}${hadSession ? "&reason=ended" : ""}`;
+    url.search = `?next=${encodeURIComponent(returnPathFor(pathname, request.method))}${hadSession ? "&reason=ended" : ""}`;
     return NextResponse.redirect(url);
   }
   return response;

@@ -1,0 +1,28 @@
+{"startedAt":"2026-10-03T09:55:27Z","steps":[
+{"name":"1 toolchain: node 22 present (install if not)","seconds":0.0,"exit":0,"tail":"v22.12.0\n"}
+,
+{"name":"2 chrome system libs + psql (apt)","seconds":1.5,"exit":0,"tail":"/usr/bin/psql\n"}
+,
+{"name":"3 npm ci (project deps)","seconds":10.2,"exit":0,"tail":"297\n"}
+,
+{"name":"4 harness deps (puppeteer, axe, lighthouse \u2014 not in package.json)","seconds":7.4,"exit":0,"tail":"chrome@154.0.8037.57 /home/user/.cache/puppeteer/chrome/linux-154.0.8037.57/chrome-linux64/chrome\n"}
+,
+{"name":"5 npm run build (prebuild validator + next build)","seconds":9.6,"exit":0,"tail":"\u2713 Compiled successfully in 2.2s\n  Generating static pages using 1 worker (0/31) ...\n  Generating static pages using 1 worker (7/31) \r\n"}
+,
+{"name":"6 migrations applied? (tables + policies on the live DB)","seconds":0.8,"exit":0,"tail":"enrolments:4 environment_settings:4 environment_state:4 profiles:3 relationships:2\n5 of 5 tables\n"}
+,
+{"name":"7 test accounts present? (fixture, is_test_account, no real identity)","seconds":0.7,"exit":0,"tail":"8|0|6|0\n"}
+,
+{"name":"8 prod server up (:3100)","seconds":2.2,"exit":0,"tail":"200\n"}
+,
+{"name":"9 dev server up (:3000, /dev/* routes)","seconds":6.8,"exit":0,"tail":"200\n"}
+,
+{"name":"10 subjects: validate + sql check + import guard","seconds":2.4,"exit":0,"tail":"\u2717 GUARD /home/user/tutors-academy/src/components/shell/subject-shell.tsx: direct subject/scene-config import (consume props or context)\n\n\u2717 subject-import guard: 1 violation(s)\n"}
+,
+{"name":"11 RLS (76 assertions, live DB, transaction)","seconds":27.4,"exit":0,"tail":"psql:supabase/tests/rls_test.sql:372: NOTICE:  RLS: all 76 assertions passed\n"}
+,
+{"name":"12 visibility (real path: tutor JWT through PostgREST)","seconds":4.4,"exit":0,"tail":"ok   \u2014 count() over enrolments is the policy's row count, not the table's  (count=2 expected=2)\nok   \u2014 anon reads nothing from relationships  (permission denied for table relationships)\ntutor visibility: 17/17 passed \u2192 audit/tutor-visibility.json\n"}
+,
+{"name":"13 progress + next-action (pure)","seconds":0.1,"exit":0,"tail":"Node.js v22.12.0\nNode.js v22.12.0\n"}
+,
+{"name":"14 attacks (7 files, exact TS codes)","seconds":17.5,"exit":0,"tail":"7 attack files \u00b7 0 failure(s) \u00b7 written audit/attacks/tsc-output.txt\n"}

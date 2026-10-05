@@ -40,6 +40,16 @@ export const STATE_COPY = {
     sentence: "Nothing was recorded. Opening it again only reads — it is safe to do.",
     action: { label: "Open it again", href: "" },
   },
+  /** 6.5 (P6-R15 / the states as a set, row 3): the SHAPING surface's settings read failed. The environment
+   *  may render the authored default (design has a value without the database); the shaping surface may NOT
+   *  pre-fill a form with it — a form showing defaults that are not the values in force invites an accidental
+   *  revert. So: the honest page, in the tutor layout, whose one action is the same GET. */
+  shapingUnread: {
+    eyebrow: "Not shown",
+    heading: "This environment's settings could not be read just now.",
+    sentence: "Nothing was changed. The room still looks as it was set; opening this page again only reads — it is safe to do.",
+    action: { label: "Open it again", href: "" }, // href = the shaping surface's own path (filled by the page)
+  },
   /** ACTION scope: the entry POST returned a known failure (no enrolment written) — rendered beside the Begin control */
   entryFailed: "Beginning did not go through, and nothing was recorded — beginning again is safe.",
   /** login page, when a session ended during a visit (auth cookies present but no longer valid) */
