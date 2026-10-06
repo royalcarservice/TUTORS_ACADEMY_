@@ -1,6 +1,6 @@
 # PHASE 6 · STEP 6 — THE TUTOR GATE
 
-**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ **W4 ✅ (this report)** — W5 onward pending.
+**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ **W5 ✅ (this report)** — W6 onward pending.
 Branch `arena/e6e6e569-tutors-academy`. Every command under `timeout -k 5 N`; servers killed by port (`ss -ltnp`) in the same invocation.
 
 **Preconditions confirmed:** 6.5 reported (`PHASE6_STEP5_REPORT.md`, commit `0c79f3d`); its Part 0 rulings P6-R17–P6-R20 landed (DEC-018); P6-R21 delivered as the owner ruling that closed 6.5 §10 / `docs/TUTOR_DISTANCE.md` row 8 (DEC-018 addendum, `ebcbe87`); typography self-hosted so `npm run build` runs here (DEC-019). Nothing known-broken outstanding.
@@ -74,6 +74,60 @@ Capabilities from `docs/TUTOR_DISTANCE.md` (its capability table, 6.2/6.3/6.4/P6
 
 - A5's "You meet your tutor inside it" — gap named by the practice beats' labels; closes when live-classroom ships (Phase 7+).
 - A14's tagline — surfaced for ruling above; not rewritten inside the gate.
+
+---
+
+## Part W5 — THE SECOND LEDGER, WHOLE
+
+**Session note (honesty first):** between W4 and W5 the sandbox was re-provisioned — the branch was re-cloned from origin at `a893f5b`, and the three unpushed commits were lost from the object database. The **working tree survived intact** (byte-verified against the committed content: W4 copy, P6-R21 code, fonts, DEC-018/019/020, both reports all present). History was re-laid from it at its original boundaries and **pushed to origin** so it cannot be lost again: `f3db035` (6.5 report) → `b4ba8cc` (P6-R21 + self-hosted typography) → `77e1efb` (W4 promise ledger). Content identical to the lost `0c79f3d` / `ebcbe87` / `d0f9deb`; hashes changed.
+
+**Method.** Full inventory of every tutor capability built in Phase 6, read from source (`src/components/tutor/*`, `src/lib/tutor/*`, `src/lib/environment/*`, the tutor routes, `docs/TUTOR_VISIBILITY.md` §1–3, `docs/TUTOR_DISTANCE.md`), then the counterpart question for each: *what would a student reasonably conclude if this were described to them plainly?* Followed by a vocabulary sweep of every tutor-facing string for surveillance/management language.
+
+**Inventory note (template vs reality):** the window brief listed shaping levers as "density, motion, contrast, ring". The codebase has **exactly two** — `LeverId = "density" | "motionChar"` (`src/lib/environment/levers.ts`; the other three of 3.1's five levers are identity/inert by P6-R11/P6-R13). "contrast" and "ring" exist nowhere in this repository; the ledger is built from what exists.
+
+### Step 1 — capabilities, as verified from source
+
+| # | Capability | Surface / reader | What it actually reads or writes |
+|---|---|---|---|
+| C1 | See the students placed with them, by subject | `/tutor` via `src/lib/tutor/data.ts` | `relationships WHERE tutor_id = me AND state = 'active'` + display names; **two tables, no arguments** — no parameter exists to ask about another student, subject, or ordering |
+| C2 | Open one relationship and read where the learning is | `/tutor/[subject]/[relationship]` via `src/lib/tutor/relationship.ts` | display_name · enrolment status · `first_entered_at` — nothing else. **Never** `last_entered_at` or `entry_count`: "Position is a state of the learning; recency is a measure of the person." |
+| C3 | Shape one subject's environment; revert | `/tutor/[subject]/environment` → POST `…/shape` | Two closed authored selects (density ×3, motion character ×6); freshness-token write (P6-R21); revert = DELETE, tokenless |
+| C4 | Stand in the room they shape | `/subjects/[subject]` (P6-R19) | Admitted to the draft environment's **identity only**; every student region denied |
+| C5 | See who they are signed in as, and sign out | `/tutor/account` | name · email · role · sign out; test-account sentence. Nothing about any student |
+| C6 | Visibility bounds (the negative capability) | RLS (`is_related_tutor(student_id, subject_id)`), `docs/TUTOR_VISIBILITY.md` §2 | No contact/auth/account state · no behavioural data · no aggregates/lists/comparisons/"needs attention" · no export; ended relationship grants nothing; never-related / ended / malformed = one null path (P6-R9) |
+
+### Step 2 — the ledger
+
+| What the tutor can do | What the student would think if they knew | Assessment |
+|---|---|---|
+| See a list of the students placed with them, grouped by subject — a name and a subject per row, in fixed alphabetical order | *"They can see that I'm placed with them in this subject — just that. The list can't sort me by anything I did."* | **Reads well** — order is `localeCompare` by name; the type cannot express an evaluative field; no counts |
+| Read where the learning is: my arc in this subject, as stage words | *"They can see where I am in Physics so our next conversation makes sense. It's the same arc I see — a stage in words, never a score."* | **Reads well** — one arc definition (`src/config/arc.ts`), third consumer; no CTA, no interaction on it |
+| Adjust the environment's density and motion character — for everyone in the subject | *"They tuned the room — how full it feels, how it moves — so working in it is easier. It's the same room for all of us, and it can be put back."* | **Reads well** — subject-wide by construction; per-student anything is unrepresentable (attack 6/7); revert exists |
+| Save is refused if the room moved between load and submit (P6-R21) | *"If two tutors share my subject, neither can silently overwrite the other — the second save is refused and told to reload."* | **Reads well** — the refusal names the fact, never a person |
+| Know a co-tutor shaped the room: *"Last shaped by another tutor."* | *"They know someone else set the room — no name, no date, no roster of who else teaches me."* | **Reads well** — minimal, structural |
+| Stand in the same room I enter (draft included) | *"They can stand in the room. But my regions, my threshold, my record are not visible to them there — they see what any visitor sees."* | **Reads well** — identity matrix: identity admitted, every student region denied |
+| See my other subjects, my activity outside this one, my email, my sign-ins | *Blocked by RLS & schema: the predicate is per-row `(student_id, subject_id)`; `auth.*` has no tutor policy at all; the readers can name only the admitted tables.* | **Reads well — dignified boundary.** The sentence this product should be able to publish: *"My tutor can see my work in this subject, and nothing else about my life."* |
+| Time-spent tracking, idle detection, entry counts, timing patterns, device data | *Absent by design. The one date a reader may read (`first_entered_at`) renders only as the arc's "entered" step — never as a date; `entry_count` rides along over REST but no surface renders it (declared, VISIBILITY §2).* | **Reads well — no surveillance metrics exist** |
+| Compare students, rank them, see a "needs attention" list, export anything | *Absent by ruling (P6-R3: not a management console). The slot registry's refusal is written into the config: there is no "attention", "progress" or "activity" region, and none may be added. RLS makes a `count()` return the policy's rows (tested: 1, not the table's).* | **Reads well** |
+| Act on me: set work, hold a session, write feedback, end the relationship | *They cannot — and every surface says so plainly: "Teaching surfaces are not built." / "This page reads the record and changes nothing." No disabled control pretends otherwise.* | **Reads well** — absence is stated at the point of absence (P6-R4) |
+| Know the relationship existed after it ends | *The row is retained so each side can know it ended — but an ended row grants nothing; the tutor sees nothing further of me.* | **Reads well** — DPDP transparency without lingering access |
+| Shape silently: students are not told the room changed | *"The room can change without me knowing it changed, or whose hand did it."* | **READS BOTH WAYS — the finding** (below) |
+
+### Step 3 — vocabulary sweep & copy check
+
+Swept every tutor-facing string (`src/components/tutor/*`, `src/app/(portal)/tutor/**`, `src/lib/tutor/*`, `src/lib/environment/*`, the shape route, the tutor error copy) against the surveillance/management vocabulary: *inspect · monitor · track · activity · attend · deficiency · performance · attention · flag · alert · compliance · engage · idle · time spent · last seen/active · streak · usage · metric · analytic · dashboard · score · rank · leaderboard · compare · overdue · missed · warn · risk · intervention · escalate · history.*
+
+**Result: zero hits in rendered copy.** The only matches are code comments recording *refusals* ("there is no 'attention', 'progress' or 'activity' region … and none may be added"). Every label in use is academic/relational: *Overview · Your students · The students placed with you · Where the learning is · Shape the {Subject} environment · The two levers · Put the environment back as authored · Open the {Subject} room · Back to the students placed with you.* Read failures stay factual (*"Your students could not be read just now… Opening the page again only reads — it is safe to do."*; *"That did not save. The environment is unchanged — the values shown are the ones in force."*) — no alarm words, no blame.
+
+**Bounded copy fixes applied: none — none were needed.** The sweep found no tutor-surface copy that creates anxiety or implies surveillance, so the window's fix condition did not fire. The one finding below is a *student-side* question, and this gate may not invent student surfaces — it is a recommendation, as the gate rules require.
+
+### The finding (carried from W4, now evidenced from the tutor side)
+
+**Silent shaping.** Capability C3's declared silence (`LEVERS_COPY.noNotice`: *"Nothing announces the change. Students are not told their room was rearranged; the subject simply looks as you set it."*; TUTOR_DISTANCE row 9: "silence toward students is a decision"). From the tutor's chair the sentence is dignified — the surface says what it does *not* do. From the student's chair the plain description reads: *the room you study in can change, and nothing will tell you.* This remains the ledger's only both-ways row. **Recommendation with evidence (unchanged from W4):** Phase 7 candidate — a one-line attribution inside the room if the owner rules for it. The decision stands as declared until ruled.
+
+### W5 verdict
+
+**12 rows: 11 read well, 1 reads both ways (declared decision, recommendation recorded). No CRITICAL FINDING — no row reads as surveillance, micromanagement, ranking, or exposure; the boundaries that prevent those are structural (types, RLS, rulings), not just copy. Zero tutor-surface copy corrections required.**
 
 ---
 
