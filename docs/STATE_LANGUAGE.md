@@ -205,7 +205,7 @@ The shaping surface introduces no student-facing state and no new scope. Its own
 | row, `shaped_by` = viewer | `Last shaped by you.` | the tutor's own action on design config |
 | row, `shaped_by` ≠ viewer | `Last shaped by another tutor.` | the same fact about another tutor — no name, no date |
 
-A save that did not land adds one sentence (`That did not save. The environment is unchanged — the values shown are the ones in force.`) in the 5.7 register: a state, not a verdict; no "try again", no "contact". The room itself never says any of this: toward students the shaping is silent by decision (P6-R10).
+A save that did not land adds one sentence (`That did not save. The environment is unchanged — the values shown are the ones in force.`) in the 5.7 register: a state, not a verdict; no "try again", no "contact". A save that was REFUSED because the room moved (P6-R21, 2026-10-06) adds its own single sentence in the same register: `The room settings were updated in another session. Reload to review the current state before applying changes.` — a 409 document, the fact named, nobody blamed, and the action it names (reload) is the settling GET itself. The room itself never says any of this: toward students the shaping is silent by decision (P6-R10).
 
 ## 6.5 addendum — the tutor's states as a set (P6-R14 · P6-R15 · P6-R16)
 
@@ -225,7 +225,7 @@ renders it. Evidence: `audit/tutor-states.cjs` → `audit/tutor-states.json`.
 | T6 | the write failed, known | `?shape=failed` | one sentence beside Save; row untouched | the values shown are in force | yes |
 | T7 | the write's outcome is unknown | POST cut mid-flight | nothing of ours; the settling GET shows the truth | nothing | yes |
 | T8 | the session ended mid-save | POST with expired cookies | `/login?next=/tutor/[subject]/environment&reason=ended` — **the settling GET, not the write URL**; `That session ended. Signing in again goes back to the Physics environment.`; sign-in lands on the shaping surface | the session ended; where sign-in goes | yes |
-| T9 | a co-tutor changed the values between load and submit | the shaping POST | **last-write-wins, silent** — recorded, STOPPED AND REPORTED (design decision) | — | recorded |
+| T9 | a co-tutor changed the values between load and submit | the shaping POST | **the save is REFUSED** (P6-R21, 2026-10-06): one 409 document — *Not saved* · *"The room settings were updated in another session. Reload to review the current state before applying changes."* · one action back to the settling GET. Nothing written; the newer row stands. Names the fact, never the person | the room moved; the save did not land | yes (code + gate re-pinned to assert the refusal; harness re-run pending) |
 | T10 | a relationship ends while the page is open | the next request | 404, P6-R9's one document; nothing the tutor could have caused | there is no page here | yes (identity matrix) |
 | T11 | no settings row | the shaping surface | the authored values; `This environment is as authored.`; no Revert | a complete value | yes |
 | T12 | 500 / 404 on each route | all three | the tutor boundary's honest page / the global 404 (framework defect #99287 declared) | nothing was recorded / there is no page | yes |

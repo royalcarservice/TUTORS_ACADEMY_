@@ -149,10 +149,14 @@ async function withClass(browser, cls) {
      nobody is (mathematics). Recorded: the status and whether a row EXISTS
      afterwards — the DB is the truth, not the response. Each probe starts
      and ends with no row (owner cleanup through DATABASE_URL). */
+  /* P6-R21: every write probe carries the FRESHNESS TOKEN the state actually
+     has at probe time — `version=` (empty) is correct here because each probe
+     clears its row first: absence is the true loaded state. The probes test
+     AUTHORIZATION, so they must not trip the staleness refusal on the way. */
   const WRITES = [
-    { url: "/tutor/physics/environment/shape", body: "intent=save&density=dense&motionChar=energetic", subject: "physics" },
-    { url: "/tutor/mathematics/environment/shape", body: "intent=save&density=dense&motionChar=energetic", subject: "mathematics" },
-    { url: "/tutor/physics/environment/shape", body: "intent=save&density=very-dense&motionChar=energetic", subject: "physics", tag: " · unauthored value" },
+    { url: "/tutor/physics/environment/shape", body: "intent=save&density=dense&motionChar=energetic&version=", subject: "physics" },
+    { url: "/tutor/mathematics/environment/shape", body: "intent=save&density=dense&motionChar=energetic&version=", subject: "mathematics" },
+    { url: "/tutor/physics/environment/shape", body: "intent=save&density=very-dense&motionChar=energetic&version=", subject: "physics", tag: " · unauthored value" },
   ];
   R.writes = {};
   const rowOf = (subject) => sql(`select coalesce((select density||'/'||motion_char from public.environment_settings where subject_id='${subject}'), 'none')`);

@@ -98,6 +98,12 @@ export function EnvironmentLeversSurface({ view, subject, viewerId, failed }: { 
       <form method="post" action={action} data-shape-form aria-labelledby="levers-heading" style={{ display: "flex", flexDirection: "column", gap: "var(--ta-space-6)" }}>
         <h2 id="levers-heading" style={{ ...MONO, margin: 0 }}>The two levers</h2>
         <input type="hidden" name="intent" value="save" />
+        {/* P6-R21 — the FRESHNESS TOKEN: the row's updated_at as read ("" when
+            no row existed). Never rendered as a date, never a control: the
+            write proves it is saving over the state the surface saw, and a
+            room that moved in between refuses the save (409, ruling's
+            sentence). Levers exempt from the hidden-input sweep by selector. */}
+        <input type="hidden" name="version" value={view.version ?? ""} />
         {LEVER_IDS.map((l) => <LeverSelect key={l} lever={l} current={view.levers[l]} authored={view.authored[l]} />)}
         <p data-inert-note style={{ margin: 0, fontSize: "var(--ta-text-xs)", lineHeight: 1.5, color: "var(--ta-text-muted)", maxWidth: "var(--ta-measure)" }}>{LEVERS_COPY.inert}</p>
         <p data-blast-radius id="blast-radius" style={{ margin: 0, fontSize: "var(--ta-text-base)", lineHeight: 1.5, color: "var(--ta-text-primary)", maxWidth: "var(--ta-measure)" }}>

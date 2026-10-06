@@ -1279,14 +1279,23 @@ tutor-assigned enrolment arrives (P6/P7).
       (`e58e35e9f5106ffd` ×5)** · absence = authored default · attacks 6–7-8 fail with declared TS codes ·
       matrix re-pinned (3 write probes per class) · levers 32/32 · homepage unchanged.
       Rulings P6-R10/11/12 built; **P6-R13: 6.1's per-tutor recommendation superseded, not built.**
-- [~] Step 5 — The tutor's states, the account surface, and the honest distance
-      -> `phase-6-step-05-tutor-states-account.md` <- **RUN THIS NEXT**
+- [x] Step 5 — The tutor's states, the account surface, and the honest distance
+      -> `phase-6-step-05-tutor-states-account.md` — **REPORTED: `PHASE6_STEP5_REPORT.md` (2026-10-06).**
+      **Report written AFTER the workspace re-import** (single squashed commit `a893f5b`), assembled from
+      the recorded on-disk evidence — the 2026-10-03 harness run (`audit/tutor-states.json`, 14 gates),
+      its baseline, `docs/TUTOR_DISTANCE.md`, DEC-018 and the 6.5 addenda — plus a fresh static
+      re-verification pass. Browser/DB-dependent tests are carried from the recorded run, not re-executed
+      (no Chrome, no Supabase credentials in the current environment — the report §11 lists every gap).
+      **The §10 owner ruling is RESOLVED (2026-10-06): P6-R21 REFUSE_STALE_WRITE** — the silent
+      concurrent overwrite is refused by a conditional write; DEC-018 addendum, `docs/TUTOR_DISTANCE.md`
+      row 8, STATE_LANGUAGE T9 and the `write-concurrent` gate updated to assert the refusal.
       **Prompt in the workspace since the P6-R17–R20 patch; its chat delivery did NOT arrive — read it
       from disk, not from the message.** Carries **P6-R13** and P6-R17 to P6-R20 in Part 0. **The arc line
       "states with real content" was stale and is CORRECTED — there is no content until P7.** P6-R14 (the
       account surface is identity and exit) · P6-R15 (every write has a GET that settles it) · P6-R16 (the
-      distance is named where the capability would be). **Its precondition is 6.3 AND 6.4 reported** — it
-      must quote 6.3's report state, which has never been surfaced. **Report run order: seven small windows - `phase-6-step-05-report-chunks.md`. 6.5's CODE is built; its REPORT is what is owed.**
+      distance is named where the capability would be). **Its precondition is 6.3 AND 6.4 reported** — both
+      reports exist on disk (`PHASE6_STEP3_RELATIONSHIP_SURFACE_REPORT.md`, `PHASE6_STEP4_LEVERS_REPORT.md`)
+      and are quoted in the 6.5 report §1. **Report run order: seven small windows - `phase-6-step-05-report-chunks.md`.**
 - [ ] Step 6 — The tutor experience validation gate -> `phase-6-step-06-tutor-gate.md`
       **WRITTEN, AND GATED BEHIND 6.5.** *Do not run it until 6.5 has reported:* its precondition is
       "6.5 REPORTED", and it reads `docs/TUTOR_DISTANCE.md` and the account surface as evidence.

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 
 import { siteConfig } from "@/config/site";
 
@@ -9,31 +9,35 @@ import "./globals.css";
 
 /*
  * TYPE — the brand frame (Phase 2 · Step 2).
- *   text    Instrument Sans  (variable wght) — all UI/body. Preloaded.
- *   display Fraunces         (variable)      — editorial headlines. NOT preloaded.
- *   mono    JetBrains Mono   (variable)      — code/equations/tabular data. NOT preloaded.
- * Self-hosted by next/font (no CDN). next/font emits metric-matched fallbacks
- * (size-adjust / ascent-override …) so the swap is shift-free.
+ *   text    Instrument Sans  (variable wght) — all UI/body.
+ *   display Fraunces         (variable opsz+wght) — editorial headlines.
+ *   mono    JetBrains Mono   (variable wght) — code/equations/tabular data.
+ *
+ * SELF-HOSTED FROM COMMITTED FILES (ruling of 2026-10-06): the three latin
+ * variable woff2s live in ./fonts and are served by this app — the build
+ * makes NO request to fonts.googleapis.com (the sandbox/deploy egress cannot
+ * be a build dependency). Variable fonts via next/font/local: same CSS
+ * variable names and display modes as the original next/font/google wiring,
+ * and next/font still emits metric-matched fallbacks (size-adjust /
+ * ascent-override …) so the swap is shift-free. Font files: Fontsource
+ * latin subsets (Fraunces "full" axis set, wght-normal for the other two).
  */
-const textFace = Instrument_Sans({
-  subsets: ["latin"],
+const textFace = localFont({
+  src: "./fonts/instrument-sans-latin.woff2",
   variable: "--font-instrument-sans",
   display: "swap",
-  preload: true,
 });
 
-const displayFace = Fraunces({
-  subsets: ["latin"],
+const displayFace = localFont({
+  src: "./fonts/fraunces-latin.woff2",
   variable: "--font-fraunces",
   display: "optional",
-  preload: false,
 });
 
-const monoFace = JetBrains_Mono({
-  subsets: ["latin"],
+const monoFace = localFont({
+  src: "./fonts/jetbrains-mono-latin.woff2",
   variable: "--font-jetbrains-mono",
   display: "optional",
-  preload: false,
 });
 
 export const metadata: Metadata = {

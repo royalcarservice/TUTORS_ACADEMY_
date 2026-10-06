@@ -17,5 +17,7 @@ export type SpecimenKey = keyof typeof SPECIMENS;
 export function specimenView(key: SpecimenKey): EnvironmentSettingsView {
   const s = SPECIMENS[key];
   const authored = authoredLevers("physics");
-  return { subjectId: "physics", authored, levers: s.levers ?? authored, shaped: s.levers !== null, shapedBy: s.shapedBy, source: s.levers ? "row" : "authored" };
+  /* `version` is P6-R21's freshness token: a fixed fixture instant for rows,
+     null when the specimen is unshaped. A fixture, like every id here. */
+  return { subjectId: "physics", authored, levers: s.levers ?? authored, shaped: s.levers !== null, shapedBy: s.shapedBy, source: s.levers ? "row" : "authored", version: s.levers ? "2026-01-01T00:00:00.000000+00:00" : null };
 }
