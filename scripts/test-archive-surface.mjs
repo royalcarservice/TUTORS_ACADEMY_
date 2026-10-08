@@ -73,11 +73,15 @@ t("card — BANNED vocabulary absent: VOD, Replay File, Recording Upload", () =>
   const src = strip(rawFile(CARD)) + strip(rawFile(SHELF)) + strip(rawFile(PAGE));
   assert.doesNotMatch(src, /\bVOD\b|Replay File|Recording Upload/i);
 });
-t("card — server component; the board's preview is subtle and accent-framed; playback is honest", () => {
+t("card — server component; the board's preview is subtle and accent-framed; playback is WIRED", () => {
   const src = rawFile(CARD);
   assert.doesNotMatch(src, /^"use client"/m);
   assert.match(src, /border: "1px solid var\(--ta-accent-1\)"/, "the preview wears the subject's accent");
-  assert.match(src, /Playback opens with the recordings wiring\./, "chamber audio states the debt, calmly");
+  /* Declared pin evolution (DEC-031): Step 2's debt sentence — "Playback
+     opens with the recordings wiring." — is DISCHARGED by Step 3, which
+     wires the viewer. The pin moves from the sentence to the wiring. */
+  assert.match(src, /<ArtifactOpener/, "every card carries the one quiet opener");
+  assert.doesNotMatch(src, /Playback opens with the recordings wiring/, "the debt sentence stands no longer");
   assert.match(src, /data-artifact-type=\{artifact\.type\}/);
 });
 t("card — zero commercial clutter anywhere in the archive's surfaces", () => {

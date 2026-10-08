@@ -42,6 +42,7 @@ import { createServiceClient } from "@/lib/supabase/service";
 import {
   ARTIFACT_BUCKET,
   SIGNED_URL_SECONDS,
+  signedWindowFor,
   toArtifact,
   wantsPreview,
   type ArtifactRecord,
@@ -172,7 +173,9 @@ export async function fetchArtifactDetails(artifactId: string): Promise<Artifact
   const record = data ? toArtifact(data) : null;
   if (!record) return null; // invisible or unknown — deliberately the same answer
 
-  const access = await signArtifactAccess(record.storagePath);
+  /* The window follows the kind (DEC-031): records are consumed at once;
+     chamber audio earns the longer listening window. */
+  const access = await signArtifactAccess(record.storagePath, signedWindowFor(record.type));
   return { ...record, access };
 }
 
@@ -184,13 +187,13 @@ export async function fetchArtifactDetails(artifactId: string): Promise<Artifact
  * `unsigned`: the metadata still stands, the bytes wait for a credentialed
  * environment.
  */
-async function signArtifactAccess(storagePath: string): Promise<ArtifactAccess> {
+async function signArtifactAccess(storagePath: string, seconds: number = SIGNED_URL_SECONDS): Promise<ArtifactAccess> {
   const admin = createServiceClient();
   if (!admin) return { mode: "unsigned" };
   try {
-    const { data, error } = await admin.storage.from(ARTIFACT_BUCKET).createSignedUrl(storagePath, SIGNED_URL_SECONDS);
+    const { data, error } = await admin.storage.from(ARTIFACT_BUCKET).createSignedUrl(storagePath, seconds);
     if (error || !data?.signedUrl) return { mode: "unsigned" };
-    return { mode: "signed", url: data.signedUrl, expiresInSeconds: SIGNED_URL_SECONDS };
+    return { mode: "signed", url: data.signedUrl, expiresInSeconds: seconds };
   } catch {
     return { mode: "unsigned" }; // a signing failure is an absence, never an alarm
   }

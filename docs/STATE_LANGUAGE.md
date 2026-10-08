@@ -332,7 +332,7 @@ constant each, so the shelf cannot drift.
 | state | sentence (verbatim) | what it claims |
 | --- | --- | --- |
 | no concluded sessions yet | `No archived sessions in {Subject} yet. Artifacts are preserved here after learning sessions conclude.` | the shelf is honestly empty; preservation begins at conclusion |
-| chamber audio, playback unwired | `Playback opens with the recordings wiring.` | the audio is held; the player is a declared debt (DEC-030) |
+| chamber audio, playback unwired | ~~`Playback opens with the recordings wiring.`~~ — DISCHARGED by DEC-031 (Step 3 wired the player); the row stands as history | the audio was held; the debt is paid |
 | a notation row with no readable text | `The notation for this session is held in the archive.` | the fact exists; its words are not yet readable |
 
 The shelf reads most-recent-first, and each session names its date, its
@@ -342,3 +342,31 @@ view count, no duration badge, no "watch next", no share icon: the
 zero-engagement rule (DEC-029) shapes the surface exactly as it shapes the
 schema. The doors that lead here are quiet links in the ShapeLink's own
 grammar — never a primary, never beside a student.
+
+## 8.2 addendum — the archive's review language (Phase 8 · Step 3, DEC-031)
+
+The artifact viewer is a scholarly review mode: one artifact stands alone in
+a dark graphite drawer above the shelf, framed by the subject's own tokens.
+Its register is the shelf's — a fact named calmly, one sentence per state,
+never an exclamation mark, never a counter, never a second thing to look at.
+
+| state | sentence (verbatim) | what it claims |
+| --- | --- | --- |
+| the drawer is fetching | `The archive is fetching this artifact.` | the bytes are being signed and read, at the moment of inspection |
+| no service key stands | `This artifact stands in the archive; its bytes open in a credentialed environment.` | the fact exists; the signed URL is an environment's gift, not a fabrication |
+| the read fails | `This artifact could not be opened. The archive has not lost it.` | a failure of access, never a loss of record |
+| the board record is malformed | `The board record could not be read back.` | one bad entry refuses the whole record — a partial board would be a fabrication |
+| a notation carries no text | `The notation for this session is held in the archive.` | carried from 8.1, unchanged |
+
+The board record returns stroke by stroke in Playback, or stands whole in
+Board — the two modes are real buttons with pressed state, and the opening
+state is always the static board: motion begins only when the reader asks,
+which is how the reduced-motion contract is honored by default rather than
+by special case. Pan and zoom are keys and buttons first — arrow keys pan,
+plus and minus zoom, zero resets — and the drag is the enhancement, never
+the only route. The chamber audio plays at 1.0, 1.25 or 1.5, never faster,
+never pitched; there is no up-next, nothing recommended, nothing to share —
+the recording belongs to the session's participants, reached by a signed URL
+that opens only when a reader reaches for it. Leaving is seamless: Escape,
+the backdrop or the Close button returns the reader to the shelf, and focus
+goes back to the handle that opened the drawer.

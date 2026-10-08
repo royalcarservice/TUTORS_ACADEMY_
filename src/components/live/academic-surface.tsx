@@ -46,16 +46,11 @@ import {
   type SurfacePoint,
   type SurfaceTool,
 } from "@/lib/livekit/surface-sync";
+import { drawStroke, readStrokePalette } from "@/lib/livekit/stroke-render";
 
 const INK_WIDTH: Record<InkWidth, number> = { fine: 2, medium: 3.5 };
 const ERASER_RADIUS = 0.02;        // normalized — scales with the surface
 const MIN_STEP = 0.0025;           // normalized sampling threshold (speed shaping)
-
-const COLOR_TOKEN: Record<StrokeColorId, string> = {
-  ivory: "--ta-ivory-200",
-  slate: "--ta-slate-300",
-  accent: "--ta-accent-1",
-};
 
 interface ActiveStroke {
   tool: SurfaceTool;
@@ -64,34 +59,6 @@ interface ActiveStroke {
   points: SurfacePoint[];
   pressureSum: number;
   pressureCount: number;
-}
-
-/** Quadratic-midpoint smoothing — the fluid line, drawn from normalized points. */
-function drawStroke(ctx: CanvasRenderingContext2D, points: readonly SurfacePoint[], w: number, h: number, width: number, color: string) {
-  if (points.length === 0) return;
-  ctx.strokeStyle = color;
-  ctx.lineWidth = width;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
-  ctx.beginPath();
-  const px = (p: SurfacePoint) => ({ x: p.x * w, y: p.y * h });
-  if (points.length === 1) {
-    const p = px(points[0]);
-    ctx.fillStyle = color;
-    ctx.arc(p.x, p.y, width / 2, 0, Math.PI * 2);
-    ctx.fill();
-    return;
-  }
-  const first = px(points[0]);
-  ctx.moveTo(first.x, first.y);
-  for (let i = 1; i < points.length - 1; i++) {
-    const cur = px(points[i]);
-    const next = px(points[i + 1]);
-    ctx.quadraticCurveTo(cur.x, cur.y, (cur.x + next.x) / 2, (cur.y + next.y) / 2);
-  }
-  const last = px(points[points.length - 1]);
-  ctx.lineTo(last.x, last.y);
-  ctx.stroke();
 }
 
 export function AcademicSurface({
@@ -142,15 +109,7 @@ export function AcademicSurface({
   /* ── the subject resolves its own colours (tokens, not hex, in packets) ── */
   const resolvePalette = useCallback((): Record<StrokeColorId, string> => {
     if (paletteRef.current) return paletteRef.current;
-    const el = boxRef.current;
-    if (!el || typeof getComputedStyle !== "function") return { ivory: "#efebe3", slate: "#9aa4b0", accent: "#efebe3" };
-    const cs = getComputedStyle(el);
-    const read = (token: string, fallback: string) => cs.getPropertyValue(token).trim() || fallback;
-    paletteRef.current = {
-      ivory: read(COLOR_TOKEN.ivory, "#efebe3"),
-      slate: read(COLOR_TOKEN.slate, "#9aa4b0"),
-      accent: read(COLOR_TOKEN.accent, read(COLOR_TOKEN.ivory, "#efebe3")),
-    };
+    paletteRef.current = readStrokePalette(boxRef.current);
     return paletteRef.current;
   }, []);
   useEffect(() => {

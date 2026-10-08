@@ -1451,6 +1451,34 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       the recordings-notes region's visitor HTML changes (baseline re-pins owed, P6-R17 precedent);
       `recorded-classes` stays `planned` (E-26). DEC-030 records it; the playback island and the
       artifact writer stand owed.
+- [x] Step 3 — Artifact viewer & vector whiteboard replay engine -> PHASE 8 BRIEF (2026-10-08) — **BUILT.**
+      The scholarly review mode. Every artifact card carries ONE quiet opener island; it lifts the
+      artifact into `artifact-viewer.tsx` — a real dialog (modal, backdrop-blurred graphite drawer)
+      whose header names date · kind · session title and wears the subject mark. Escape, the
+      backdrop or Close departs; focus enters the drawer on open and returns to the handle on
+      close — seamless both ways. Board records replay through `canvas-replay.tsx`: the Phase 7
+      StrokePacket vocabulary VERBATIM on the subject's own motif, devicePixelRatio-crisp, two
+      modes by pressed buttons — BOARD (whole record at once; pan by arrow keys, zoom by +/− /
+      Reset buttons — keyboard first, drag the enhancement) and PLAYBACK (strokes return in
+      recorded order along one scrubber; rAF only while playing). The fluid line and token
+      palette moved to ONE renderer (`stroke-render.ts`) that live surface and replay both
+      consume — no second stroke vocabulary; the record reads back through surface-sync's own
+      validatePacket + applyPacket, one bad entry refusing the whole. The opening state is always
+      the static board: motion starts only when asked — the reduced-motion contract honored by
+      default. Chamber audio plays in `media-player.tsx`: native HTML5, no library — play/pause,
+      MM:SS scrubber, the three speeds (1.0 · 1.25 · 1.5, never pitched), volume/mute; no
+      autoplay, no up-next, nothing recommended, nothing to share. Bytes arrive ONLY by signed
+      URL minted at open time through one `"use server"` action over the standing
+      fetchArtifactDetails (RLS first, then the signature); the window follows the kind —
+      records 60 s, chamber audio MEDIA_URL_SECONDS = 900. Declared: Step 2's owed-playback
+      sentence discharged; the academic-surface quadraticCurveTo pin relocated to the renderer.
+      Verified: archive-viewer 22/22 (new) · archive-logic 26/26 · archive-surface 16/16 ·
+      academic-surface 20/20 · next-action 34 · progress 16 · validate-subjects ALL VALID ·
+      check-subject-sql PASS · tsc clean · build exit 0 (33 pages) · smoke: rehearsal 200 (math +
+      physics) · archive visitor 307 · bogus 404 · gate-7 privacy PASS (282 files, zero island
+      hits) · ledger 8/8. The engine is proven in `/dev/archive-rehearsal` (404 in production) —
+      the sandbox holds no artifacts; the writer that gives the shelf real objects stands owed.
+      DEC-031 records it; STATE_LANGUAGE 8.2 speaks it.
 **Phase 9 — AI Learning Layer**
 **Phase 10 — Polish + Performance**
 

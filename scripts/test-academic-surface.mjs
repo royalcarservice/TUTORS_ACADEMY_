@@ -143,7 +143,12 @@ t("surface — client island, high-DPI, no library, no transport", () => {
   assert.match(raw, /"use client"/);
   const src = strip(raw);
   assert.match(src, /devicePixelRatio/);
-  assert.match(src, /quadraticCurveTo/, "fluid stroke rendering");
+  /* Declared pin update (DEC-031): the fluid renderer moved to the shared
+     stroke-render module so the live surface and the archive replay draw
+     from ONE implementation — the quadratic smoothing is pinned there, and
+     the surface is pinned to import it (never a second vocabulary). */
+  assert.match(src, /from "@\/lib\/livekit\/stroke-render"/, "the surface draws through the shared renderer");
+  assert.match(strip(rawFile("src/lib/livekit/stroke-render.ts")), /quadraticCurveTo/, "fluid stroke rendering lives in the shared renderer");
   assert.match(src, /e\.pressure/, "pen pressure, where a device reports it");
   assert.doesNotMatch(src, /from "(?!react|@\/)/, "imports only react and the repo's own modules");
   assert.doesNotMatch(src, /fetch\(|WebSocket|RTCPeerConnection|livekit-client|axios/i);

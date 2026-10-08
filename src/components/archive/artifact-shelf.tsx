@@ -1,3 +1,6 @@
+import type { MotifKind } from "@/lib/motif/types";
+import type { Density } from "@/lib/subjects/subjects";
+
 import type { ArchiveSession } from "@/lib/archive/data";
 
 import { ArtifactCard } from "./artifact-card";
@@ -35,7 +38,19 @@ function sessionDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 }
 
-export function ArtifactShelf({ subjectName, sessions }: { subjectName: string; sessions: readonly ArchiveSession[] }) {
+export function ArtifactShelf({
+  subjectId,
+  subjectName,
+  motif,
+  density,
+  sessions,
+}: {
+  subjectId: string;
+  subjectName: string;
+  motif: MotifKind;
+  density: Density;
+  sessions: readonly ArchiveSession[];
+}) {
   if (sessions.length === 0) {
     /* The dignified academic notice — one calm sentence, no empty box art. */
     return (
@@ -63,7 +78,15 @@ export function ArtifactShelf({ subjectName, sessions }: { subjectName: string; 
               <ul aria-label={`Artifacts preserved from ${s.title}`} style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: "var(--ta-space-4)", gridTemplateColumns: "repeat(auto-fill, minmax(min(16rem, 100%), 1fr))" }}>
                 {s.artifacts.map((a) => (
                   <li key={a.id}>
-                    <ArtifactCard artifact={a} subjectName={subjectName} />
+                    <ArtifactCard
+                      artifact={a}
+                      subjectId={subjectId}
+                      subjectName={subjectName}
+                      motif={motif}
+                      density={density}
+                      sessionTitle={s.title}
+                      dateLabel={sessionDate(s.scheduledAt)}
+                    />
                   </li>
                 ))}
               </ul>

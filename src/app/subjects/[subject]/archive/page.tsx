@@ -19,11 +19,12 @@ import { getTutorSubjectIds } from "@/lib/tutor/data";
  * The asynchronous study archive: what a session leaves behind once it has
  * concluded — the board as it stood, the tutor's notation, the chamber's
  * audio — read like a library shelf, never like a feed. Server-rendered
- * complete with NO client JavaScript: identity, the archive's facts and the
- * shelf all arrive in the HTML. The media viewer island mounts only when a
- * recording exists to play and a wiring step is ruled (DEC-030) — nothing
- * here pretends to stream, and nothing counts a viewing: ZERO ENGAGEMENT
- * METRICS BY CONSTRUCTION (DEC-029).
+ * complete: identity, the archive's facts and the shelf all arrive in the
+ * HTML. Each card carries ONE quiet opener island (DEC-031); the viewer —
+ * vector board replay, notation, or the restrained media player — mounts
+ * only when a reader reaches for an artifact, and its bytes are signed only
+ * then. Nothing here pretends to stream, and nothing counts a viewing: ZERO
+ * ENGAGEMENT METRICS BY CONSTRUCTION (DEC-029).
  *
  * WHO MAY STAND HERE — decided server-side, one fact at a time (the live
  * chamber's gate, carried over unchanged, DEC-026):
@@ -126,7 +127,7 @@ export default async function SubjectArchivePage({ params }: Params) {
           the subject's tokens, academic type — an archive, not a feed. */}
       <div style={{ marginTop: "var(--ta-space-8)" }}>
         <Room subject={s.id} motif={s.motif} density={settings.levers.density} role="edge" purpose="archive" style={{ padding: "clamp(1.25rem, 1rem + 2vw, 2.5rem)" }}>
-          <ArtifactShelf subjectName={s.name} sessions={archive.sessions} />
+          <ArtifactShelf subjectId={s.id} subjectName={s.name} motif={s.motif} density={settings.levers.density} sessions={archive.sessions} />
         </Room>
       </div>
 

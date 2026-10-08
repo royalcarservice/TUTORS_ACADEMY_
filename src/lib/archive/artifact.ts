@@ -35,6 +35,17 @@ export const ARTIFACT_BUCKET = "session-artifacts";
 /** Signed-URL window, seconds — narrow by design; the reader consumes at once. */
 export const SIGNED_URL_SECONDS = 60;
 
+/** THE PLAYBACK WINDOW (DEC-031): chamber audio must last the listening —
+ *  the board's 60-second consume-at-once window is too narrow for a reader
+ *  who pauses, returns, listens again. Fifteen minutes, signed at the moment
+ *  the reader actually reaches for the artifact, never earlier. */
+export const MEDIA_URL_SECONDS = 900;
+
+/** The window a kind earns: records are consumed at once; listening takes time. */
+export function signedWindowFor(type: ArtifactType): number {
+  return type === "session_recording" ? MEDIA_URL_SECONDS : SIGNED_URL_SECONDS;
+}
+
 /** Vocabulary the archive must never carry — swept by the gate's tests. */
 export const BANNED_ENGAGEMENT_WORDS = [
   "view_count",

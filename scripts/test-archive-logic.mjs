@@ -178,6 +178,72 @@ t("seam — signing is narrow, service-only, and degrades to unsigned", () => {
   assert.match(data, /if \(!user\) return null;[\s\S]*?maybeSingle/, "invisible and unknown stay the same null");
 });
 
+/* ── 8 · the playback window (DEC-031) ────────────────────────────────────── */
+t("window — the kinds earn their windows: records at once, audio for the listening", () => {
+  assert.equal(A.MEDIA_URL_SECONDS, 900, "fifteen minutes of listening");
+  assert.equal(A.signedWindowFor("canvas_snapshot"), A.SIGNED_URL_SECONDS);
+  assert.equal(A.signedWindowFor("pedagogical_notes"), A.SIGNED_URL_SECONDS);
+  assert.equal(A.signedWindowFor("session_recording"), A.MEDIA_URL_SECONDS);
+  assert.equal(A.MEDIA_URL_SECONDS <= 1800, true, "even listening stays bounded");
+});
+t("window — the data layer signs with the kind's window, at open time only", () => {
+  const data = rawFile("src/lib/archive/data.ts");
+  assert.match(data, /signedWindowFor\(record\.type\)/, "fetchArtifactDetails follows the kind");
+  const action = rawFile("src/app/subjects/[subject]/archive/actions.ts");
+  assert.match(action, /^"use server"/m, "the opening seam is a server action");
+  assert.match(action, /fetchArtifactDetails\(artifactId\)/, "signing happens ONLY when the reader reaches");
+  assert.match(action, /if \(!details\) return \{ ok: false \};/, "invisible and unknown stay the same answer");
+});
+
+/* ── 9 · the replay's pure mathematics (DEC-031) ──────────────────────────── */
+const R = await import("@/lib/archive/replay");
+const { clamp01, totalPoints, replayFrame, formatTime, PLAYBACK_SPEEDS } = R;
+t("replay — the speed set is the brief's restrained three, no chipmunk beyond", () => {
+  assert.deepEqual([...PLAYBACK_SPEEDS], [1, 1.25, 1.5]);
+});
+t("replay — clamp01 never lets the scrubber run past either end", () => {
+  assert.equal(clamp01(-0.4), 0);
+  assert.equal(clamp01(0), 0);
+  assert.equal(clamp01(0.5), 0.5);
+  assert.equal(clamp01(1), 1);
+  assert.equal(clamp01(7), 1);
+  assert.equal(clamp01(Number.NaN), 0, "NaN lands on zero — never a guess");
+});
+t("replay — formatTime speaks MM:SS, honestly past the hour, calmly for the broken", () => {
+  assert.equal(formatTime(0), "0:00");
+  assert.equal(formatTime(59), "0:59");
+  assert.equal(formatTime(60), "1:00");
+  assert.equal(formatTime(61.9), "1:01", "the clock never rounds up");
+  assert.equal(formatTime(74 * 60 + 3), "74:03", "a long session reads past 59 minutes");
+  assert.equal(formatTime(-3), "0:00");
+  assert.equal(formatTime(Number.NaN), "0:00");
+});
+t("replay — the frame at each position is deterministic and honest at the ends", () => {
+  /* Dyadic progress values only — they are exact in binary, so the budget
+     math below can never be ambushed by floating point. */
+  const A1 = [{ x: 0, y: 0 }, { x: 0.5, y: 0.5 }, { x: 1, y: 1 }];
+  const B1 = [{ x: 0.2, y: 0.2 }];
+  const strokes = [A1, B1];
+  assert.equal(totalPoints(strokes), 4);
+  assert.deepEqual(replayFrame(strokes, 0), [], "zero progress stands nothing");
+  assert.deepEqual(replayFrame(strokes, 1), strokes, "full progress stands the whole board");
+  assert.deepEqual(replayFrame(strokes, 2.5), strokes, "past the end is the end");
+  /* 0.75 · 4 = 3 points → the first stroke stands in full. */
+  assert.deepEqual(replayFrame(strokes, 0.75), [A1]);
+  /* 0.5 · 4 = 2 points → the first stroke stands mid-construction. */
+  assert.deepEqual(replayFrame(strokes, 0.5), [A1.slice(0, 2)], "the current stroke is truncated, never invented");
+  /* A five-point record: 0.8 · 5 = 4 points → whole first stroke + one point of the second. */
+  const C1 = [{ x: 0, y: 0 }, { x: 0.4, y: 0.4 }, { x: 0.8, y: 0.8 }];
+  const D1 = [{ x: 0.1, y: 0.9 }, { x: 0.9, y: 0.1 }];
+  const mid = replayFrame([C1, D1], 0.8);
+  assert.deepEqual(mid, [C1, D1.slice(0, 1)]);
+});
+t("replay — same strokes, same position, same frame: the math never improvises", () => {
+  const strokes = [[{ x: 0.1, y: 0.1 }, { x: 0.9, y: 0.9 }], [{ x: 0.3, y: 0.7 }]];
+  assert.deepEqual(replayFrame(strokes, 0.5), replayFrame(strokes, 0.5));
+  assert.deepEqual(replayFrame([], 0.5), [], "an empty record stays empty at any position");
+});
+
 /* ── verdict ──────────────────────────────────────────────────────────────── */
 console.log(`\n${n - failed}/${n} archive-logic tests passed`);
 process.exit(failed === 0 ? 0 : 1);

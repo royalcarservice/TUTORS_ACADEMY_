@@ -78,8 +78,31 @@ whole pass. These rules are the fix, not ceremony.*
    recordings-notes region's visitor HTML changes — environment/tutor baseline re-pins owed
    (P6-R17 precedent). Verified: archive-surface 16/16 (new) · full battery green · both gate-7
    audits PASS (273 files) · tsc · build 0 · smoke (visitor 307 · bogus 404 · environment 200).
-   **Next:** the archive's WRITER (service role: board snapshots at conclusion, the notation, the
-   chamber audio) and the media playback island — in the brief's order.
+   **Step 3 done (2026-10-08, DEC-031):** the ARTIFACT VIEWER & VECTOR WHITEBOARD REPLAY ENGINE —
+   the scholarly review mode. Each card carries ONE quiet opener island; it lifts the artifact
+   into a real dialog (date · kind · session title · subject mark; Escape/backdrop/Close depart;
+   focus enters on open, returns to the handle on close). Board records replay through
+   `canvas-replay.tsx` on the subject's own motif — the Phase 7 StrokePacket vocabulary verbatim,
+   two modes by pressed buttons: BOARD (whole record; pan by arrow keys, zoom by +/−/Reset
+   buttons — keyboard first) and PLAYBACK (recorded order along one scrubber; rAF only while
+   playing). The fluid line + token palette live ONCE in `stroke-render.ts`, which the live
+   surface and the replay both consume; records read back through surface-sync's own
+   validatePacket + applyPacket (one bad entry refuses the whole). The static board is the
+   opening state for every reader — reduced motion honored by default. Chamber audio plays in a
+   native HTML5 player: play/pause, MM:SS scrubber, 1.0 · 1.25 · 1.5 (never pitched),
+   volume/mute; no autoplay, no up-next, nothing recommended, nothing to share. Bytes arrive
+   only by signed URL minted at open time through one `"use server"` action over the standing
+   fetchArtifactDetails; the window follows the kind (records 60 s · audio 900 s). Declared:
+   Step 2's owed-playback sentence discharged · the quadraticCurveTo pin relocated to the
+   renderer. Verified: archive-viewer 22/22 (new) · archive-logic 26/26 · archive-surface 16/16 ·
+   academic-surface 20/20 · next-action 34 · progress 16 · validate-subjects · check-subject-sql ·
+   tsc · build 0 (33 pages) · smoke (rehearsal 200 math+physics · visitor 307 · bogus 404) ·
+   gate-7 privacy PASS (282 files, zero island hits) · ledger 8/8. Proven in
+   `/dev/archive-rehearsal` (404 in production) — the sandbox holds no artifacts; STATE_LANGUAGE
+   8.2 speaks the viewer's sentences.
+   **Next:** the archive's WRITER (service role: the board snapshot at conclusion, the notation,
+   the chamber audio) — the shelf has its reader; it still owes its objects — then a
+   populated-shelf + signed-playback verification in the credentialed environment.
 2. **PHASE 7 IS CERTIFIED (2026-10-08).** The Live Classroom Gate (W1–W5) ran to verdict —
    `PHASE7_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase7-*.json`
    (privacy · ledger · performance). Five windows, five passes: cold start & static health ·
