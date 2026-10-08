@@ -1342,6 +1342,21 @@ tutor-assigned enrolment arrives (P6/P7).
       toggle. Verified: academic-surface 20/20 · battery green · build clean · smoke (307 / 404-draft /
       preserved). DEC-025 records it, with the owed rulings: the session bus, clear-permission,
       keyboard stroke input, late-packet ordering.
+- [x] Milestones 1–5 — Autonomous runner: sessions table, chamber machine, live chamber -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      Migration 0007 `cohort_sessions` (the session-of-record; students read by enrolment, tutors
+      read and open by relationship — as themselves; lifecycle stays service-role) plus the symmetric
+      profile read that lets the tile say "Dr. Vance (Tutor)". DEC-009's referent question settled in
+      shape: `progress_record.ref_id` names a session row (FK deferred — the column is polymorphic).
+      The pure chamber state machine (STANDBY→ACTIVE→SETTLING→CONCLUDED, 15-minute settling window)
+      and the SELECT-only classroom data layer. `/live` pivots its session facts to `cohort_sessions`
+      and opens on ACTIVE-or-SETTLING; the `live-chamber.tsx` shell carries the status bar (mark ·
+      title · state word) around the tested room composition, with the brief's superseded standby
+      sentence. `participant-dock.tsx` docks the tiles; `chamber-controls.tsx` and
+      `classroom/use-surface-sync.ts` are bridge re-exports — one implementation, two names.
+      Verified: classroom 22/22 (new) · cohort-live 27/27 · live-participant 23/23 · academic-surface
+      20/20 · next-action 34/34 · progress 16/16 · progress-record 18/18 · subjects 108/108 ·
+      check-subject-sql · build clean · smoke (307 / 404 / 200). DEC-026 records it, including the
+      declared pin updates (standby wording, gate shape, composition moved into the shell).
 
 - [x] Step 1 — Progress record schema & cohort architecture -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
       `progress_record` applied (migration 0004, the DEC-009 shape: interim-neutral referent, tutor

@@ -43,24 +43,26 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## IMMEDIATE ORDER
 
-1. **PHASE 7 IS UNDER WAY.** Step 1 done: `progress_record` applied (DEC-022). Step 2 done
-   (2026-10-08, DEC-023): the first reader's policies (0006) · `/subjects/[subject]/live` staged
-   surface (server components, zero client JS, the brief's standby sentence) · the `class` provider
-   registered per the extension doc's P7 row (silent until `live-classroom` reads "live") · LiveKit
-   readiness on env NAMES only, no dependency yet · module flipped to in-progress. Step 3 done
-   (2026-10-08, DEC-024): the participant interface — tile, controls, media state — built against the
-   participant's OWN devices (opt-in, zero capture on load, zero timers, zero persistence). Step 4
-   done (2026-10-08, DEC-025): the shared academic surface — canvas, disciplined palette, the
-   subject's OWN motif as substrate, one serializable stroke protocol over the in-memory bus (local
-   mode fully functional; the session data channel is the seam). The whole room rehearses at
-   `/dev/live-stage`; STATE_LANGUAGE carries the 7.3 media-state addendum. **Next:** the WIRING step
-   that makes the room real — the sessions table (settles DEC-009's referent question and unlocks
-   Tier 1 by ruling a session END), LiveKit credentials + `livekit-server-sdk`, the signed webhook
-   that writes `session-attended` rows through the service role, the session bus the surface is
-   waiting for, and the clear-permission ruling. Reconnaissance: `docs/proposed/livekit_recon.md`.
-   P6-R15's settling-GET rule binds every new write. **Kinds stay inadmissible until the module is
-   live** — the scaffolding alone changes nothing on the arc.
-2. **Credentialed environment first, when available:** apply migrations 0004/0005/0006, then run the
+1. **PHASE 7 IS UNDER WAY.** Steps 1–4 done (DEC-022…DEC-025): `progress_record` applied · the
+   first reader's policies (0006) + staged `/live` surface + silent `class` provider · the
+   participant interface (opt-in local media) · the shared academic surface (canvas, motif
+   substrate, one stroke protocol over the in-memory bus). **MILESTONES 1–4 OF THE AUTONOMOUS
+   RUNNER done (2026-10-08, DEC-026):** migration 0007 creates `cohort_sessions` (the
+   session-of-record; settles DEC-009's referent question in shape — `ref_id` names a session row;
+   FK deferred because the column is polymorphic); the pure chamber state machine
+   (STANDBY→ACTIVE→SETTLING→CONCLUDED, 15-minute settling window) + the classroom SELECT-only data
+   layer; `/live` pivots its session facts to `cohort_sessions` and opens on ACTIVE-or-SETTLING;
+   the `live-chamber.tsx` client shell (status bar + the tested RoomLayout composition) with the
+   brief's superseded standby sentence; `participant-dock.tsx` + `chamber-controls.tsx` +
+   `classroom/use-surface-sync.ts` (the last two are bridge re-exports — one implementation, two
+   names). The whole room still rehearses at `/dev/live-stage`. **Next:** the WIRING step that
+   makes the room real — LiveKit credentials + `livekit-server-sdk`, the signed webhook that
+   writes `session-attended` rows through the service role (referent = `cohort_sessions`), the
+   session bus the surface is waiting for, the session END ruling (unlocks Tier 1), and the
+   clear-permission ruling. Reconnaissance: `docs/proposed/livekit_recon.md`. P6-R15's settling-GET
+   rule binds every new write. **Kinds stay inadmissible until the module is live** — the
+   scaffolding alone changes nothing on the arc.
+2. **Credentialed environment first, when available:** apply migrations 0004/0005/0006/0007, then run the
    Phase 6 debt list (`PHASE6_STEP6_REPORT.md` — the handover document): harness re-runs, DEC-020
    baseline re-pin, the matrix `--write` re-pin (W7 — the filesystem scan now includes
    `/subjects/[subject]/live`), the signed-in journey re-walk.
