@@ -100,9 +100,34 @@ whole pass. These rules are the fix, not ceremony.*
    gate-7 privacy PASS (282 files, zero island hits) · ledger 8/8. Proven in
    `/dev/archive-rehearsal` (404 in production) — the sandbox holds no artifacts; STATE_LANGUAGE
    8.2 speaks the viewer's sentences.
+   **Step 4 done (2026-10-08, DEC-032):** MILESTONE SYNTHESIS & RECORD CONSOLIDATION — the
+   chronology that joins what happened to what it left behind. `src/lib/progress/synthesis.ts`
+   (pure, node-tested, outside the 5.6 barrel by the record.ts precedent) composes the record: a
+   progress fact (`progress_record`, migration 0004 — the brief's "progress_records", reconciled
+   to the ruled singular) evidences an arc step by STEP_EVIDENCE's own rule, and the artifacts
+   preserved from that fact's session substantiate the entry — the join is `ref_id = session_id`,
+   both tables' session truth, no new column or table. `fetchSubjectMilestonesWithArtifacts
+   (subjectId, studentId)` (in progress/data.ts) makes three RLS-bounded reads, each spelling the
+   subject it means and whose record is meant; the second argument is the record's subject, never
+   the viewer's identity; RLS decides, a mismatch yields the honest empty (zero leakage).
+   `milestone-synthesis.tsx` renders the scholarly timeline — mark, date, session title, the
+   tutor's notation, each artifact a "Substantiated by …" link to its card in the archive
+   (`#artifact-<id>` anchors added). The register, scoped by ruling: "milestone" admitted in the
+   CHRONOLOGICAL sense only; the reward register banned and swept. Embeddings: the student shell's
+   written-map `achievements` slot renders "Your Milestone Record in {Subject}" per active
+   enrolment; the tutor relationship surface's record region (6.3's fill point) renders
+   "Milestones co-certified", reading by the relationship's new `studentId` join key, declared
+   never-displayed (P6-R2 governs display, swept). Empty means absent — no box, no zero.
+   `live-classroom` is in-progress, so both production surfaces stand honestly absent; the
+   rehearsal proves both registers on specimen facts. Verified: milestone-synthesis 21/21 (new) ·
+   progress 16 · progress-record 18 · archive-logic 26 · archive-surface 16 · archive-viewer 22 ·
+   next-action 34 · validate-subjects · check-subject-sql · tsc · build 0 · smoke (rehearsal 200
+   both registers · /student 307 · bogus 404) · gate-7 privacy PASS (284 files) · ledger 8/8.
+   STATE_LANGUAGE 8.3 speaks it.
    **Next:** the archive's WRITER (service role: the board snapshot at conclusion, the notation,
-   the chamber audio) — the shelf has its reader; it still owes its objects — then a
-   populated-shelf + signed-playback verification in the credentialed environment.
+   the chamber audio) — the shelf has its reader and its chronology; it still owes its objects —
+   then live-classroom's `live` flip (the carrier wiring, DEC-023/028), and a populated-shelf +
+   signed-playback + populated-chronology verification in the credentialed environment.
 2. **PHASE 7 IS CERTIFIED (2026-10-08).** The Live Classroom Gate (W1–W5) ran to verdict —
    `PHASE7_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase7-*.json`
    (privacy · ledger · performance). Five windows, five passes: cold start & static health ·

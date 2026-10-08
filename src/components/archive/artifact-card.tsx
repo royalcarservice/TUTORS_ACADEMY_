@@ -79,7 +79,7 @@ export function ArtifactCard({
 }) {
   const word = wordOf(artifact);
   return (
-    <article data-artifact-card data-artifact-type={artifact.type} style={{ border: "1px solid var(--ta-border-subtle)", borderLeft: "2px solid var(--ta-accent-1)", borderRadius: "var(--ta-radius-2)", background: "var(--ta-surface-base)", padding: "var(--ta-space-4)", display: "flex", flexDirection: "column", gap: "var(--ta-space-3)" }}>
+    <article id={`artifact-${artifact.id}`} data-artifact-card data-artifact-type={artifact.type} style={{ border: "1px solid var(--ta-border-subtle)", borderLeft: "2px solid var(--ta-accent-1)", borderRadius: "var(--ta-radius-2)", background: "var(--ta-surface-base)", padding: "var(--ta-space-4)", display: "flex", flexDirection: "column", gap: "var(--ta-space-3)" }}>
       <p style={MONO}>{word}</p>
 
       {artifact.type === "canvas_snapshot" &&

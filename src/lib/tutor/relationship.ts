@@ -42,6 +42,10 @@ export interface RelationshipAddress {
 export interface RelationshipView {
   subjectId: SubjectId;
   displayName: string;
+  /** The relationship's student key (DEC-032) — a JOIN KEY for the record
+      region's read, never a displayed fact: P6-R2 still governs everything
+      the surface shows. Nothing renders it; the synthesis queries by it. */
+  studentId: string;
   /** The arc: the same seven steps as Scene 7 and the student's region, computed by the same function. */
   position: ArcPosition;
 }
@@ -84,5 +88,5 @@ export async function getRelationshipView(address: RelationshipAddress): Promise
   if (envErr) throw new DataReadError("environment_state", envErr);
 
   const facts: EnvironmentFacts = { subjectId: address.subjectId, hasAccount: true, enrolled: !!enr, firstEnteredAt: (env?.first_entered_at as string | null) ?? null };
-  return { subjectId: address.subjectId, displayName: (profile?.display_name as string) ?? "", position: positionFor(facts) };
+  return { subjectId: address.subjectId, displayName: (profile?.display_name as string) ?? "", studentId, position: positionFor(facts) };
 }

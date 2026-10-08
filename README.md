@@ -1479,6 +1479,36 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       hits) · ledger 8/8. The engine is proven in `/dev/archive-rehearsal` (404 in production) —
       the sandbox holds no artifacts; the writer that gives the shelf real objects stands owed.
       DEC-031 records it; STATE_LANGUAGE 8.2 speaks it.
+- [x] Step 4 — Milestone synthesis & record consolidation -> PHASE 8 BRIEF (2026-10-08) — **BUILT.**
+      The chronology that joins what happened to what it left behind. `src/lib/progress/synthesis.ts`
+      (pure, node-tested, outside the 5.6 barrel by the record.ts precedent) composes the record:
+      a progress fact (`progress_record`, migration 0004) evidences an arc step by STEP_EVIDENCE's
+      own rule, and the artifacts preserved from that fact's session substantiate the entry — the
+      join is `ref_id = session_id`, both tables' session truth, no new column or table. The reader
+      `fetchSubjectMilestonesWithArtifacts(subjectId, studentId)` makes three RLS-bounded reads
+      (facts · session titles · artifacts), every one spelling the subject it means and whose record
+      is meant; the second argument is the record's subject, never the viewer's identity; RLS decides,
+      a mismatch yields the honest empty (zero leakage, zero enumeration). `milestone-synthesis.tsx`
+      renders it as a scholarly timeline — subject mark, date, session title, the tutor's notation,
+      each artifact a "Substantiated by …" link to its card in the subject archive (the cards gain
+      `#artifact-<id>` anchors). THE REGISTER, scoped by ruling (DEC-032): "milestone" is admitted
+      in the CHRONOLOGICAL sense only — a named stage, evidenced, pointing at real rows; the reward
+      register stays banned and is swept (no badge, XP, level, unlock, streak, points, trophy,
+      percent, bar, rank, congratulations). Embeddings: the student shell's written-map
+      `achievements` slot — the fill point the map itself demanded — renders "Your Milestone Record
+      in {Subject}" per active enrolment; the tutor relationship surface's record region (6.3's
+      declared fill point) renders "Milestones co-certified", reading by the relationship's new
+      `studentId` join key, declared never-displayed (P6-R2 governs what the surface shows, swept).
+      Empty means absent — no box, no heading, no zero. `live-classroom` is in-progress in the
+      registry, so both production surfaces stand honestly absent today; the rehearsal proves the
+      engine in both registers on specimen facts (`/dev/archive-rehearsal`). Verified:
+      milestone-synthesis 21/21 (new) · progress 16 · progress-record 18 · archive-logic 26 ·
+      archive-surface 16 · archive-viewer 22 · next-action 34 · validate-subjects ALL VALID ·
+      check-subject-sql PASS · tsc clean · build exit 0 · smoke: rehearsal 200 (both registers) ·
+      /student 307 (door) · bogus archive 404 · gate-7 privacy PASS (284 files, zero island hits) ·
+      ledger 8/8. test-tutor-visibility is the credentialed live-RLS harness (baseline
+      audit/tutor-visibility.json) — owed, unchanged. DEC-032 records it; STATE_LANGUAGE 8.3 speaks
+      it. The artifact writer and live-classroom's `live` flip stand owed.
 **Phase 9 — AI Learning Layer**
 **Phase 10 — Polish + Performance**
 

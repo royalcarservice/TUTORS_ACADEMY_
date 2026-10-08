@@ -5,8 +5,11 @@ import { notFound } from "next/navigation";
 import { ArtifactOpener } from "@/components/archive/artifact-opener";
 import { CanvasReplay } from "@/components/archive/canvas-replay";
 import { MediaPlayer } from "@/components/archive/media-player";
+import { MilestoneSynthesis } from "@/components/archive/milestone-synthesis";
 import { getEnvironmentSettings } from "@/lib/environment/settings";
 import type { SubjectId } from "@/lib/student/contract";
+import type { ProgressEvent } from "@/lib/progress/events";
+import { composeMilestoneRecord, type SessionFact } from "@/lib/progress/synthesis";
 import { getSubject, SUBJECTS } from "@/lib/subjects/subjects";
 import type { StrokePacket } from "@/lib/livekit/surface-sync";
 
@@ -87,6 +90,38 @@ function rehearsalToneUri(seconds = 4, hz = 220): string {
     data.writeInt16LE(sample, 44 + i * 2);
   }
   return `data:audio/wav;base64,${data.toString("base64")}`;
+}
+
+/* ── THE SPECIMEN RECORD — two attended sessions with what they left
+      behind, composed through the PRODUCTION pure function. The rehearsal
+      declares live-classroom live so the registry gate can be seen working;
+      production reads the registry itself (it is in-progress today, so the
+      real surfaces stand honestly absent until the module is live). ────── */
+function specimenRecord(subjectId: SubjectId) {
+  const events: ProgressEvent[] = [
+    { id: "spec-event-1", subjectId, kind: "session-attended", at: "2026-09-24T10:00:00.000Z", refId: "spec-session-1" },
+    { id: "spec-event-2", subjectId, kind: "session-attended", at: "2026-10-01T10:00:00.000Z", refId: "spec-session-2" },
+  ];
+  const sessions: SessionFact[] = [
+    {
+      sessionId: "spec-session-1",
+      title: "The parabola — axes, curve and chord",
+      artifacts: [
+        { id: "spec-artifact-board-1", type: "canvas_snapshot", metadata: {}, createdAt: "2026-09-24T11:00:00.000Z" },
+        { id: "spec-artifact-notes-1", type: "pedagogical_notes", metadata: { summary: "We took the curve apart and put it back together: the axis facts first, then the shape the function makes between them." }, createdAt: "2026-09-24T11:05:00.000Z" },
+      ],
+    },
+    {
+      sessionId: "spec-session-2",
+      title: "The tangent question",
+      artifacts: [
+        { id: "spec-artifact-board-2", type: "canvas_snapshot", metadata: {}, createdAt: "2026-10-01T11:00:00.000Z" },
+        { id: "spec-artifact-audio-2", type: "session_recording", metadata: {}, createdAt: "2026-10-01T11:10:00.000Z" },
+      ],
+    },
+  ];
+  /* ["live-classroom"] is declared for the rehearsal — see the note above. */
+  return composeMilestoneRecord(events, subjectId, ["live-classroom"], sessions);
 }
 
 interface Params {
@@ -194,6 +229,28 @@ export default async function DevArchiveRehearsalPage({ searchParams }: Params) 
               subject={subject}
               rehearsal={{ mediaUrl: toneUri }}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* THE MILESTONE SYNTHESIS — the chronology composed from specimen
+          facts through the production pure function, in both registers. */}
+      <section aria-label="Milestone synthesis rehearsal" data-subject={s.id} style={{ marginTop: "var(--ta-space-12)" }}>
+        <h2 style={{ fontFamily: "var(--ta-font-display)", fontSize: "var(--ta-text-xl)", fontWeight: 500, margin: "0 0 var(--ta-space-2)" }}>
+          The milestone synthesis — the record substantiated
+        </h2>
+        <p style={{ color: "var(--ta-text-secondary)", maxWidth: "48em", margin: "0 0 var(--ta-space-6)" }}>
+          Two specimen sessions, each with what it left behind, composed by the same pure function production
+          uses. The student&apos;s register and the tutor&apos;s register stand side by side. The rehearsal declares
+          the classroom module live so the registry gate can be seen; production reads the registry itself and
+          stands honestly absent until the module is live.
+        </p>
+        <div style={{ display: "grid", gap: "var(--ta-space-6)" }}>
+          <div style={{ background: "var(--ta-surface-sunken)", borderRadius: "var(--ta-radius-2)", padding: "var(--ta-space-8)" }}>
+            <MilestoneSynthesis subjectId={s.id} subjectName={s.name} entries={specimenRecord(s.id as SubjectId)} viewer="student" />
+          </div>
+          <div style={{ background: "var(--ta-surface-sunken)", borderRadius: "var(--ta-radius-2)", padding: "var(--ta-space-8)" }}>
+            <MilestoneSynthesis subjectId={s.id} subjectName={s.name} entries={specimenRecord(s.id as SubjectId)} viewer="tutor" />
           </div>
         </div>
       </section>

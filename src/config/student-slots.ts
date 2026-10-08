@@ -93,8 +93,9 @@ export interface StudentSlotDef {
   position: StudentSlotPosition;
   /** What real data it needs before it may render anything. */
   needs: string;
-  /** What renders today. Always the same answer. */
-  today: "nothing (absent)";
+  /** What renders today. Every entry answers "nothing (absent)" — except
+      where an owner ruling has filled the slot (DEC-032: achievements). */
+  today: string;
   /** Composition note: fit, or a restructuring risk reported now. */
   fit: string;
 }
@@ -129,9 +130,9 @@ export const STUDENT_SLOTS: readonly StudentSlotDef[] = [
   { id: "progress", name: "Progress", phase: "5.6 / Phase 9", region: "reflection", position: "region",
     needs: "a measured progress language (5.6) with real observations — never a bar over nothing", today: "nothing (absent)",
     fit: "Fits as PROSE (5.6 decides the language). A metric grid does not fit and will not be admitted." },
-  { id: "achievements", name: "Achievements", phase: "Phase 9", region: "reflection", position: "region",
-    needs: "an owner decision that milestones exist as text records", today: "nothing (absent)",
-    fit: "DOES NOT FIT AS BADGES/POINTS/STREAKS — those are on the never-contains list. If Phase 9 wants milestones, they render as dated sentences in Progress, or the decision is revisited then." },
+  { id: "achievements", name: "Achievements", phase: "Phase 8 · Step 4 — the owner's milestone-as-record ruling (DEC-032)", region: "reflection", position: "region",
+    needs: "an owner decision that milestones exist as text records", today: "the milestone chronology per enrolled subject — dated, evidenced, substantiated by the sessions' artifacts; nothing when nothing is recorded",
+    fit: "FILLED AS TEXT RECORDS, never badges/points/streaks — the reward register stays on the never-contains list. The chronology renders as dated sentences with artifact links (the DEC-032 composition); if a later phase wants more, the decision is revisited then." },
   { id: "ai-assistance", name: "AI assistance", phase: "Phase 9", region: "tools", position: "region",
     needs: "a real assistant scoped to the student's own material", today: "nothing (absent)",
     fit: "Fits as ONE quiet entry row (a link to its own surface). A floating chat widget over the shell does NOT fit and will not be admitted." },

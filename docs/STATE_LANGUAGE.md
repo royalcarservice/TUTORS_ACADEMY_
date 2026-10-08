@@ -370,3 +370,27 @@ the recording belongs to the session's participants, reached by a signed URL
 that opens only when a reader reaches for it. Leaving is seamless: Escape,
 the backdrop or the Close button returns the reader to the shelf, and focus
 goes back to the handle that opened the drawer.
+
+## 8.3 addendum — the chronology's language (Phase 8 · Step 4, DEC-032)
+
+The milestone synthesis speaks the archive's register, chronologically: what
+a student reached, in the order it happened, each entry substantiated by
+what that very session left behind. The owner's Step 4 ruling admits the
+word "milestone" in the CHRONOLOGICAL sense only — a named stage of the
+arc, evidenced by real facts, pointing at real rows. The reward register
+remains refused, everywhere: no badge, no XP, no level, no unlock, no
+congratulations — a milestone is a date with evidence, never a prize.
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `Conceptual Arc` | the chronology's eyebrow | the timeline follows the arc's own steps |
+| `Your Milestone Record in {Subject}` | the student's heading | one subject's chronology, owned by the reader |
+| `Milestones co-certified` | the tutor's heading | the tutor sees only the relationship they stand in |
+| `Milestone Reached` | each dated entry | a fact happened; the stage it evidences is named |
+| `Substantiated by {Board Record · Session Notation · Chamber Audio}` | each artifact line | the entry points at the preserved object itself |
+
+The chronology renders nothing that is not a fact: no numeral that is not a
+date, no count, no ratio, no bar, no ring. Empty means ABSENT — the slot
+renders no DOM, the record region renders none; "nothing is recorded" is
+never spoken as "0". The links go to the subject archive, where the record
+stands; the chronology is the index, the archive is the shelf.
