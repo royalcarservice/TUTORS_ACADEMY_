@@ -1,6 +1,6 @@
 # PHASE 6 · STEP 6 — THE TUTOR GATE
 
-**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ **W6 ✅ (this report)** — W7 onward pending.
+**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ W6 ✅ **W7 ✅ (this report)** — W8 onward pending.
 Branch `arena/e6e6e569-tutors-academy`. Every command under `timeout -k 5 N`; servers killed by port (`ss -ltnp`) in the same invocation.
 
 **Preconditions confirmed:** 6.5 reported (`PHASE6_STEP5_REPORT.md`, commit `0c79f3d`); its Part 0 rulings P6-R17–P6-R20 landed (DEC-018); P6-R21 delivered as the owner ruling that closed 6.5 §10 / `docs/TUTOR_DISTANCE.md` row 8 (DEC-018 addendum, `ebcbe87`); typography self-hosted so `npm run build` runs here (DEC-019). Nothing known-broken outstanding.
@@ -198,9 +198,78 @@ Hunted deliberately — vocabulary-swept (`must · should · need to · failed �
 
 ---
 
+## Part W7 — THE IDENTITY MATRIX AS A SET
+
+**Method.** Read-only audit of `audit/identity-matrix.json` (generated 2026-10-03T09:15Z on the credentialed project: 80 pinned route rows × 6 reader classes + write probes) against the route set derived from the current filesystem, plus the source of every guard the matrix observes. One verification script was added as gate evidence — `audit/proofs/w7-coverage-check.cjs` (runs the harness's PURE derivation without Chrome/DB; the only substitution declared inside it: the relationship fixture ids are read from the pinned rows because no database is reachable here). No application code touched.
+
+### Step 1 — route inventory × reader classes
+
+**The app route set** (16 files under `src/app`, dev pages excluded from production reach but included in the walk): `/` · `/login` · `/register` · `/subjects` · `/subjects/[subject]` · `POST /subjects/[subject]/enter` · `/student` · `/student/account` · `/tutor` · `/tutor/account` · `/tutor/[subject]/[relationship]` · `/tutor/[subject]/environment` · `POST /tutor/[subject]/environment/shape` · `/admin` · `/auth/callback` · `POST /auth/signout` — expanded: `[subject]` across the six locked ids, `[relationship]` across the five fixture probes (active · ended · nonexistent · wrong-subject · user-id-in-the-slot). The walk derives **82 concrete URLs**; the pinned matrix holds **80 rows** (the two-row difference is this window's finding — Step 4).
+
+**Class correspondence** (the brief's five archetypes ↔ the matrix's six fixture identities):
+
+| brief class | matrix class | fixture |
+|---|---|---|
+| ANON | `visitor` | no cookies |
+| — (session hygiene, not in the brief's five) | `expired` | student A's cookies with the token replaced — present, invalid |
+| STUDENT_OWN | `studentA` | student-c — enrolled, active, related to tutor T in physics |
+| STUDENT_OTHER | `studentB` | student-b — enrolled, never entered; on any subject without enrolment this class is the "without enrolment" reader |
+| TUTOR_RELATED | `tutorT` | tutor-a — active relationship with student A in physics ONLY |
+| TUTOR_UNRELATED | `tutorU` | tutor-u — related to nobody |
+
+(The brief's boundary routes `/not-found` · `/error` are not matrix rows — they are the 5.7/5.8 states harness's territory: `audit/states-baseline.json`, 38 gates. The matrix observes them through its `not-found` render fingerprint.)
+
+**Canonical outcomes, as pinned (every cell verified by the credentialed run):** `/` `/login` `/register` `/subjects` → 200 for all six classes · `/student` → 307→login (anon/expired), student shell states (students), **307→their own shell** (tutors — a tutor is never inside the student space) · `/tutor` `/tutor/account` → 307→login (anon/expired), 307→/student (students), 200 (tutors) · `/admin` → 307→login for everyone signed out, 307→own shell for every signed-in role (the portal is not built — the redirect is honest, E-26) · `/subjects/mathematics` (ready) → `environment:door` (visitor) / `environment:student-regions` (enrolled students) / `environment` (tutors) · `/subjects/physics` (draft) → **404 visitor · 404 tutorU · 200 student-regions (enrolled) · 200 `environment:shape-link` (tutorT)** · `/subjects/chemistry…history` → 404 for all six (no fixture placement or enrolment) · `GET` on both `…/enter` and `…/shape` → 405 for all classes · `POST /tutor/physics/environment/shape` → visitor/expired 303 row-untouched · studentA 404 · tutorU 404 · tutorT the write path (303 / `?shape=failed` / 409 on staleness — the `writes` block) · every `/dev/*` route → 404 for all six classes.
+
+### Step 2 — fork detection (reading the matrix as a product)
+
+**One URL renders different fingerprints for different readers — is `/subjects/[subject]` two disjoint applications? No. It is deliberate progressive disclosure, and the code says so in so many words** (P5-R5, in the route's header): *"ONE ENVIRONMENT, ROLE-SCOPED REGIONS: this is the same place for everyone. What differs by identity is decided HERE, server-side."* The evidence:
+
+- **One renderer.** Every class lands in the same `SubjectShell` composition; the variants are additive slots — `threshold` (gated on `role=student` + `mayEnrol`), `regions` (gated on `role=student` + enrolment), `shaping` (gated on an active relationship). Removing what a class lacks always yields what the lesser class sees — the definition of disclosure, not a fork.
+- **One data model.** The identity (mark, motif, density, tagline, the room's levers) is read by an ANON settings query that does not know who is asking — P6-R10: **byte-identical identity for every reader class**; the visitor and the placed tutor see the same room. No reader class gets a different subject.
+- **One draft guard, uniform** (`draft && prod && !enrolled && !isRelated → notFound()`), with exactly two adjudicated exceptions — enrolment (5.3) and relationship (P6-R19) — each a stronger-relationship rule, not a carve-out.
+- **Everything else in the matrix is single-behaviour per URL**: portal routes role-redirect, handlers method-gate, `/` family renders one page. **No URL in the set acts as two disjoint applications.**
+
+### Step 3 — P6-R19 policy revision audit
+
+**The ruling as written** (README, the P6-R19 block): *"a reader with an active relationship in a subject may view that subject's environment page, draft or not, rendered as the visitor's rendering — identity, structure and honest labels only. No student regions, no student data, no change to P6-R2. A draft flag is a readiness flag, not a secrecy flag… This REVISES 6.2's gate row — 'tutor T denied student A's draft door' becomes 'tutor T is admitted to the draft environment's identity, and denied every student region of it' — rewritten, never silently edited."*
+
+**Verified in both halves:**
+- **Route guard** (`src/app/subjects/[subject]/page.tsx`): `relatedSubjectIds()` issues the relationships read **only when the identity is a tutor** (visitors and students: empty set, no query); the draft guard admits `isRelated`; the `shaping` prop renders the quiet levers link only where the write permission exists (P6-R17). Student regions/threshold stay gated on `role=student` — structurally unreachable for a tutor.
+- **Matrix rows**: tutorT × `/subjects/physics` = **200 `environment:shape-link`** (admitted, visitor rendering + the one link) · visitor/tutorU × `/subjects/physics` = 404 · tutorT × every other draft subject = 404 (placement-scoped, not role-scoped) · tutorT × `/tutor/physics/environment` = 200 `environment-levers:authored`; tutorU = 404. The revised gate row is recorded in DEC-018 and the 6.5 report.
+
+**Verdict: the revised policy is accurately reflected in the guards and in the matrix — the admission, its scope (placement, not role), and its denials (every student region) all hold.**
+
+### Step 4 — the coverage gate, proven
+
+**Mechanism (audit/identity-matrix.cjs):** `appRoutes()` derives the route set **from the filesystem** (walk of `src/app`, group-route folding, `[subject]` × 6, `[relationship]` × 5 fixture probes). Check mode asserts both directions — *"every app route has a pinned row"* and *"no pinned row for a route that no longer exists"* — plus write-probe coverage, and ships `--drop-row=<route>` as its built-in proof that an unmapped route fails the gate.
+
+**Executed here:** `node audit/proofs/w7-coverage-check.cjs` (committed evidence; pure derivation, no Chrome/DB):
+
+```
+── AS-IS: 82 app routes derived from src/app, 80 pinned rows ──
+FAIL  coverage: every app route has a pinned row  -> missing rows: /dev/tutor-states, /dev/tutor-states/frame
+PASS  coverage: no pinned row for a route that no longer exists
+PASS  coverage: every write probe has a pinned row
+PASS  class completeness: every pinned row defines all 6 reader classes
+
+(drop simulation) deleted pinned row for /subjects/physics
+── DROPPED: 82 app routes, 79 pinned rows ──
+FAIL  coverage: …  -> missing rows: /dev/tutor-states, /dev/tutor-states/frame, /subjects/physics
+PASS  drop simulation: the gate DETECTS the unmapped route
+```
+
+**Reading the result — the gate works, and it caught real drift.** The drop simulation proves detection: remove one pinned row, the gate names it. And the AS-IS run is not clean: **`/dev/tutor-states` and `/dev/tutor-states/frame` have no pinned rows** — they were added in 6.5, after the matrix's 2026-10-03 generation. Assessment: **coverage drift, not a product defect.** Both are dev-only inventory pages that 404 for all six classes in production (the same mechanism as the 40 pinned `/dev/*` rows; their page header states it), so the missing outcomes are deterministic and boring — but the gate's rule is absolute, and a live `--write` run today would correctly fail until they are pinned. Zero stale rows: nothing was removed or renamed since the matrix was cut, and all 80 rows × 6 classes are complete. **Fix owed to the credentialed environment: the harness's `--write` re-run pins the two rows; no application change is required or made.**
+
+### W7 verdict
+
+**80 pinned rows × 6 classes stand, with one coverage drift named and bounded.** The route set is closed and unchanged since the matrix was cut (zero stale rows); `/subjects/[subject]` is progressive disclosure by construction, not a fork; P6-R19 is accurately enforced in code and matrix alike; the coverage gate demonstrably fails on an unmapped route — proven both by the built-in drop simulation and by the genuine two-row drift it caught this window. The owed credentialed run gains one task: pin the two 6.5 dev pages.
+
+---
+
 ## Owed to a credentialed environment (cumulative through W6)
 
-Live migration apply + live zero-real-identity count · browser/DB harness re-runs (page/journey/gate/tutor/levers/identity-matrix/states/environment/relationship) · homepage baseline re-pin (W4 — DEC-020 is the reason) · a live signed-in re-walk of the tutor journey with a placed-tutor session, timed and screenshotted (W6) · the two static-guard rulings.
+Live migration apply + live zero-real-identity count · browser/DB harness re-runs (page/journey/gate/tutor/levers/identity-matrix/states/environment/relationship) · homepage baseline re-pin (W4 — DEC-020 is the reason) · a live signed-in re-walk of the tutor journey with a placed-tutor session, timed and screenshotted (W6) · the identity-matrix `--write` re-run to pin `/dev/tutor-states{,/frame}` (W7 drift) · the two static-guard rulings.
 
 ## STOP
 
