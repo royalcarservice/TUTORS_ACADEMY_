@@ -62,6 +62,10 @@ const SECURITY_HEADERS = [
 ];
 
 const nextConfig: NextConfig = {
+  // Arena live preview (DEC-041): the preview proxy reaches this server with
+  // an *.e2b.app Host header — accept it explicitly so the preview never
+  // meets a host refusal.
+  allowedDevOrigins: ["*.e2b.app"],
   async headers() {
     return [
       {
