@@ -133,14 +133,19 @@ t("page pivot — /live reads cohort_sessions through the classroom data layer",
   assert.doesNotMatch(src, /getCohortSessions|sessionForSubject/, "the cohorts reader no longer feeds this surface");
 });
 t("live-chamber — client shell: status bar facts, room composition, no surveillance", () => {
+  /* Declared pin update (DEC-028): Step 6 binds the session channel — the
+     banner word rides the channel (the server word stays the seed), the
+     island reports its own audio facts upward, and the surface draws on the
+     session's shared bus. The facts pinned before (mark · title · word ·
+     aria-live · the two panes · no media/timers in the shell) all stand. */
   const src = rawFile("src/components/live/live-chamber.tsx");
   assert.match(src, /^"use client"/, "the shell is the client island");
   assert.match(src, /<SubjectMark subject=\{subject\.id\}/, "the subject's own mark");
   assert.match(src, /\{sessionTitle\}/, "the session's title");
-  assert.match(src, /\{stateWord\}/, "the state machine's word");
+  assert.match(src, /\{live \? session\.stageWord : stateWord\}/, "the word rides the channel; the server word is the seed");
   assert.match(src, /aria-live="polite"/, "state changes announce politely");
-  assert.match(src, /chamber=\{<RoomParticipant subjectId=\{subject\.id\} displayName=\{displayName\} role=\{viewer\} \/\>\}/);
-  assert.match(src, /surface=\{<AcademicSurface subjectId=\{subject\.id\} motif=\{subject\.motif\} density=\{density\} \/\>\}/);
+  assert.match(src, /chamber=\{\s*<RoomParticipant\s+subjectId=\{subject\.id\}\s+displayName=\{displayName\}\s+role=\{viewer\}\s+onPresence=\{live \? session\.updateLocalPresence : undefined\}\s+\/>\s*\}/);
+  assert.match(src, /surface=\{\s*<AcademicSurface\s+subjectId=\{subject\.id\}\s+motif=\{subject\.motif\}\s+density=\{density\}\s+bus=\{live \? session\.bus : undefined\}\s+\/>\s*\}/);
   assert.doesNotMatch(strip(src), /setTimeout|setInterval|navigator\.mediaDevices|getUserMedia/, "the shell owns no media, no timers");
 });
 t("standby copy — the Milestone-2 sentences, verbatim, both forms", () => {

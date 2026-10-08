@@ -59,12 +59,20 @@ export function RoomParticipant({
   displayName,
   role,
   rehearsal = false,
+  onPresence,
 }: {
   subjectId: string;
   displayName: string;
   role: "student" | "tutor";
   /** The rehearsal surface names itself; the production room does not need to. */
   rehearsal?: boolean;
+  /**
+   * THE ROOM CHANNEL'S PRESENCE TAP (Step 6) — the island reports its OWN
+   * audio facts (its mic saying it speaks, its camera open) whenever they
+   * change, so the session can carry them as presence. Absent, the island
+   * stands alone, exactly as before (DEC-024).
+   */
+  onPresence?: (p: { isSpeaking: boolean; hasVideo: boolean }) => void;
 }) {
   const router = useRouter();
   const [flags, setFlags] = useState<MediaFlags>(initialMediaFlags);
@@ -233,6 +241,19 @@ export function RoomParticipant({
       shareRef.current = null;
     };
   }, []);
+
+  /* ── ROOM CHANNEL PRESENCE (Step 6) — the island reports its OWN audio
+        facts whenever they change, so the session can carry them as a
+        PRESENCE_UPDATE. The callback is kept in a ref: a new identity from
+        the parent must not re-run the effect or re-announce unchanged facts. */
+  const onPresenceRef = useRef(onPresence);
+  onPresenceRef.current = onPresence;
+  useEffect(() => {
+    onPresenceRef.current?.({
+      isSpeaking: speaking && flags.mic,
+      hasVideo: flags.camera && localStream !== null,
+    });
+  }, [speaking, flags.mic, flags.camera, localStream]);
 
   const visibleStream = shareStream ?? (flags.camera ? localStream : null);
 

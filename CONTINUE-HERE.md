@@ -63,12 +63,25 @@ whole pass. These rules are the fix, not ceremony.*
    (SETTLING/CONCLUDED show the settlement); conclusion unmounts the room, so nothing of the
    session lingers on the device. Notes about a student are NOT kept (P5-R6) and the surface says
    so; `milestoneKey` validates against STEP_EVIDENCE and is stored nowhere (the arc derives its
-   position from facts). The write is in the P6-R15 settling table. The whole room still rehearses
-   at `/dev/live-stage` (all four settlement variants previewed). **Next:** the WIRING step that
-   makes the room real — LiveKit credentials + `livekit-server-sdk`, the signed webhook that
-   writes `session-attended` rows through the service role (referent = `cohort_sessions`), the
-   session bus the surface is waiting for, the session END ruling (unlocks Tier 1; the conclusion
-   instant — `cohort_sessions.updated_at` — is the candidate end), and the clear-permission ruling.
+   position from facts). The write is in the P6-R15 settling table. **STEP 6 done (2026-10-08,
+   DEC-028):** the session channel — one closed vocabulary (`PRESENCE_UPDATE` · `CANVAS_STROKE` ·
+   `STAGE_STATE` over one envelope; the stroke IS the adjudicated SurfacePacket, the stage words
+   round-trip with the chamber machine), isolation STRUCTURAL (room = `subject:session`, wrong-room
+   signals refused at the door), the 16 KB byte budget rejects with a named defect, the memory
+   transport delivers synchronously to the whole room including the sender, and `chooseTransport`
+   names the LiveKit seam (DEC-023 — no carrier dependency). The hook seeds presence with the local
+   participant alone, the island reports speaking/video facts through an OPTIONAL tap, the tutor
+   alone holds the lifecycle word, cleanup unsubscribes completely — zero telemetry vocabulary,
+   swept. The chamber binds it all: the banner word rides the channel (server word seeds — zero
+   hydration drift), the presence line names who the room knows, the surface draws on the session's
+   OPTIONAL bus, and a concluded signal closes the workspace calmly. The whole room rehearses at
+   `/dev/live-stage` — settlement variants AND the signaling rehearsal (presence · shared strokes ·
+   conclude/reopen, no credentials). **Next:** the WIRING step that makes the room real — LiveKit
+   credentials + `livekit-server-sdk`, the signed webhook that writes `session-attended` rows
+   through the service role (referent = `cohort_sessions`), the carrier the channel seam is waiting
+   for (the memory bus turns into the room the day it lands), the session END ruling (unlocks
+   Tier 1; the conclusion instant — `cohort_sessions.updated_at` — is the candidate end), and the
+   clear-permission ruling.
    Reconnaissance: `docs/proposed/livekit_recon.md`. **Kinds stay inadmissible until the module is
    live** — the scaffolding alone changes nothing on the arc.
 2. **Credentialed environment first, when available:** apply migrations 0004/0005/0006/0007, then run the

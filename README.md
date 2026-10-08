@@ -1370,6 +1370,24 @@ tutor-assigned enrolment arrives (P6/P7).
       write is registered in the P6-R15 settling table; every outcome 303s to the settling GET.
       Verified: settlement 26/26 (new) · full battery green · build clean · smoke + GET-settle 405.
       DEC-027 records it, with the owed owner ruling on whether notes ever gain an adjudicated home.
+- [x] Step 6 — Real-time data channels & acoustic sync engine -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      The session channel: one closed vocabulary — `PRESENCE_UPDATE` · `CANVAS_STROKE` · `STAGE_STATE`
+      over one envelope; the stroke IS the adjudicated SurfacePacket (DEC-025), never a second opinion;
+      the stage words round-trip with the chamber machine. Isolation is STRUCTURAL: every room is named
+      `subject:session` and a wrong-room signal is refused at the door before any listener hears it
+      (pinned). The 16 KB budget rejects with a named defect, measured in bytes. The memory transport
+      delivers synchronously to the whole room including the sender; `chooseTransport` names the LiveKit
+      seam per DEC-023 — no carrier dependency. The hook (`use-classroom-session`) seeds presence with
+      the local participant alone, reports speaking/video facts upward through the island's OPTIONAL tap,
+      gives the tutor alone the lifecycle word, and unsubscribes completely — zero telemetry vocabulary
+      (no focus, keys, visibility, idle, gaze; swept). The chamber binds it: the banner word rides the
+      channel (server word is the seed — zero hydration drift), a presence line names who the room knows,
+      the surface draws on the session's OPTIONAL bus (local default preserved), and a concluded signal
+      closes the workspace calmly — Step 5's confidentiality mirrored client-side. `/dev/live-stage`
+      rehearses the whole channel: presence, shared strokes, conclude/reopen, no credentials. Verified:
+      signaling 26/26 (new) · classroom 22/22 · academic-surface 20/20 (pins updated, declared) ·
+      cohort-live · live-participant · settlement · next-action · progress suites green · build clean ·
+      smoke (307 / 404 / 200 / GET-settle 405). DEC-028 records it; the carrier wiring stands owed.
 
 - [x] Step 1 — Progress record schema & cohort architecture -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
       `progress_record` applied (migration 0004, the DEC-009 shape: interim-neutral referent, tutor

@@ -291,3 +291,27 @@ tutor's alone and stands apart from the four-control cluster: lifecycle is
 not a media control. Confidentiality at conclusion: the room unmounts — the
 canvas state and every media track are discarded; nothing of the session
 lingers on the device.
+
+## 7.6 addendum — the session channel's presence (Phase 7 · Step 6, DEC-028)
+
+The room's status bar gains a presence line once the session channel stands —
+who the channel knows, named calmly. Same register as every row above: a fact
+announced, never a score, never a verdict about a person. No attention
+metering, no speaking-rank, no engagement number — presence is binary and
+plain.
+
+| state | who | sentence (verbatim) | what it claims |
+| --- | --- | --- | --- |
+| the channel knows the tutor | anyone in the room | `Tutor present` | the tutor's presence fact has arrived on the channel |
+| the channel knows a student | anyone in the room | `Student present` | the student's presence fact has arrived on the channel |
+| the channel knows no one | anyone in the room | `The room is empty` | no presence facts stand — nothing is invented |
+| the lifecycle word | anyone in the room | the chamber state word (`Standby` · `In session` · `Settling` · `Concluded`) | unchanged — the word rides the channel now, but the vocabulary is the state machine's own (7.2) |
+
+Speaking and video travel as presence FACTS (`isSpeaking`, `hasVideo`), never
+as rankings or durations; an unchanged fact never travels. The rehearsal
+lifecycle actions ("Rehearsal — conclude the session" · "Rehearsal — reopen
+the session") are the tutor's alone and are clearly named as rehearsal —
+dev-only copy that never appears on the production surface. Conclusion by
+signal speaks the same closing sentence as settlement's 7.5 (`The session in
+{Subject} has concluded.`) and unmounts the workspace: confidentiality rides
+the channel exactly as it rides the settle route.

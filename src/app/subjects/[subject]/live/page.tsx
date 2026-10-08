@@ -10,6 +10,7 @@ import { MODULE_STATUS_LABEL, PLATFORM_MODULES } from "@/config/modules";
 import { getIdentity } from "@/lib/auth/session";
 import { getSessionAttendanceCount, getSessions } from "@/lib/classroom/data";
 import { CHAMBER_STATE_WORD, chamberState, sessionOfRecord, showsSettlement } from "@/lib/classroom/state-machine";
+import { stageStateOf } from "@/lib/classroom/types";
 import { getEnvironmentSettings } from "@/lib/environment/settings";
 import { liveKitReadiness, LIVEKIT_ENV_KEYS } from "@/lib/livekit/config";
 import { liveCapabilities, scheduledPhrase } from "@/lib/next-action";
@@ -185,6 +186,12 @@ export default async function LiveSessionPage({ params, searchParams }: Params) 
           density={settings.levers.density}
           sessionTitle={session.title}
           stateWord={CHAMBER_STATE_WORD[chamber]}
+          /* THE SESSION CHANNEL (Step 6) — the shell stands in the room's
+             communication layer: the server-named stage seeds the banner
+             (zero hydration drift), readiness is a fact the seam reads. */
+          sessionId={session.id}
+          stage={stageStateOf(chamber)}
+          configured={readiness.configured}
           viewer={viewer}
           displayName={identity.displayName}
           /* THE CONCLUSION ACTION — the tutor's alone (Step 5). A plain form

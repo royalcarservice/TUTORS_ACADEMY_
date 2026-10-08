@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AcademicSurface } from "@/components/live/academic-surface";
+import { LiveChamber } from "@/components/live/live-chamber";
 import { RoomLayout } from "@/components/live/room-layout";
 import { RoomParticipant } from "@/components/live/room-participant";
 import { SessionSettlement } from "@/components/live/session-settlement";
@@ -42,6 +43,28 @@ async function RehearsalRoom({ subjectId, motif, displayName, role }: { subjectI
   );
 }
 
+/* THE SIGNALING REHEARSAL (Phase 7 · Step 6, DEC-028) — the full chamber
+   shell standing in a SPECIMEN session channel: presence names the
+   participant, the surface draws on the session's shared bus, and the
+   tutor may conclude (and reopen) the session locally — the whole
+   lifecycle, exercisable with no transport and no credentials. */
+async function RehearsalChamber({ subject, displayName, role }: { subject: { id: string; name: string; motif: import("@/lib/subjects/subjects").Motif }; displayName: string; role: "student" | "tutor" }) {
+  const settings = await getEnvironmentSettings(subject.id as SubjectId);
+  return (
+    <LiveChamber
+      subject={subject}
+      density={settings.levers.density}
+      sessionTitle="Morning session"
+      stateWord="In session"
+      viewer={role}
+      displayName={displayName}
+      sessionId="00000000-0000-0000-0000-000000000000"
+      stage="active"
+      rehearsal
+    />
+  );
+}
+
 interface Params {
   searchParams: Promise<{ subject?: string }>;
 }
@@ -76,6 +99,23 @@ export default async function DevLiveStagePage({ searchParams }: Params) {
       <div data-subject={s.id} style={{ background: "var(--ta-surface-sunken)", borderRadius: "var(--ta-radius-2)", padding: "var(--ta-space-8)" }}>
         <RehearsalRoom subjectId={s.id} motif={s.motif} displayName={identity?.displayName ?? "Rehearsal"} role={identity?.role === "tutor" ? "tutor" : "student"} />
       </div>
+
+      {/* THE SESSION CHANNEL, rehearsed (Phase 7 · Step 6, DEC-028): the
+          full chamber shell in a specimen session — presence, the shared
+          canvas bus, and the tutor's local conclude/reopen lifecycle. */}
+      <section aria-label="Session channel rehearsal" style={{ marginTop: "var(--ta-space-12)" }} data-subject={s.id}>
+        <h2 style={{ fontFamily: "var(--ta-font-display)", fontSize: "var(--ta-text-xl)", fontWeight: 500, margin: "0 0 var(--ta-space-2)" }}>
+          The session channel — presence, strokes, lifecycle
+        </h2>
+        <p style={{ color: "var(--ta-text-secondary)", maxWidth: "48em", margin: "0 0 var(--ta-space-6)" }}>
+          The chamber standing in a specimen session. Presence names who the channel knows; the surface
+          draws on the session&apos;s shared bus; a tutor may conclude the session and watch the room close
+          calmly — then reopen it. No transport, no credentials, nothing leaves this device.
+        </p>
+        <div style={{ background: "var(--ta-surface-sunken)", borderRadius: "var(--ta-radius-2)", padding: "var(--ta-space-8)" }}>
+          <RehearsalChamber subject={{ id: s.id, name: s.name, motif: s.motif }} displayName={identity?.displayName ?? "Rehearsal"} role={identity?.role === "tutor" ? "tutor" : "student"} />
+        </div>
+      </section>
 
       {/* THE SETTLEMENT SURFACE, rehearsed (Phase 7 · Step 5, DEC-027): the
           three variants the production /live page decides between, rendered

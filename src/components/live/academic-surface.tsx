@@ -42,6 +42,7 @@ import {
   newPacketId,
   useSurfaceSync,
   type StrokeColorId,
+  type SurfaceBus,
   type SurfacePoint,
   type SurfaceTool,
 } from "@/lib/livekit/surface-sync";
@@ -97,14 +98,22 @@ export function AcademicSurface({
   subjectId,
   motif,
   density,
+  bus,
 }: {
   subjectId: string;
   /** The subject's authored motif — the substrate's identity. */
   motif: MotifKind;
   /** The room's effective density lever (authored or shaped, 6.4). */
   density: Density;
+  /**
+   * THE ROOM'S CANVAS CHANNEL (Step 6) — the session's shared bus, handed
+   * down by the chamber when a session stands. Absent, the surface keeps
+   * its own private memory bus: LOCAL WORKING MODE, fully functional,
+   * unchanged (DEC-025).
+   */
+  bus?: SurfaceBus;
 }) {
-  const { state, act } = useSurfaceSync();
+  const { state, act } = useSurfaceSync(bus);
   const [tool, setTool] = useState<SurfaceTool>("ink");
   const [inkWidth, setInkWidth] = useState<InkWidth>("fine");
   const [color, setColor] = useState<StrokeColorId>("ivory");

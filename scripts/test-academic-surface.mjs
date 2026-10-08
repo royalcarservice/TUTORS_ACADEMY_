@@ -160,8 +160,13 @@ t("surface — strokes are normalized; packets carry no pixel truth", () => {
   assert.match(src, /Math\.min\(1, Math\.max\(0, \(e\.clientX - rect\.left\) \/ rect\.width\)\)/);
 });
 t("surface — sync is optimistic: act applies locally, the bus carries the packet", () => {
+  /* Declared pin update (DEC-028): Step 6 threads an OPTIONAL session bus
+     through useSurfaceSync(bus). Absent, the hook keeps its private memory
+     bus, so rehearsal/local behaviour is unchanged; present, strokes ride the
+     room's shared channel. The optimistic invariants below are untouched. */
   const src = strip(rawFile("src/components/live/academic-surface.tsx"));
-  assert.match(src, /useSurfaceSync\(\)/);
+  assert.match(src, /useSurfaceSync\(bus\)/, "the bus is threaded through");
+  assert.match(src, /bus\?: SurfaceBus;/, "the bus stays OPTIONAL (local default preserved)");
   assert.match(src, /act\(\{[\s\S]*?type: "stroke"/);
   assert.match(src, /act\(\{ type: "clear"/);
   assert.match(src, /type: "remove"/);
@@ -181,11 +186,13 @@ t("integration — the production room composes chamber + surface inside the gat
   /* Declared pin update (DEC-026): Milestone 2 wraps the room composition in
      the LiveChamber shell; the exact RoomLayout/AcademicSurface props are
      pinned against live-chamber.tsx in test-classroom. The gate shape is
-     unchanged: the surface mounts ONLY when the room is open. */
+     unchanged: the surface mounts ONLY when the room is open.
+     Declared pin update (DEC-028): Step 6 adds the OPTIONAL session bus to
+     the surface composition; the subject/motif/density facts are unchanged. */
   const src = rawFile("src/app/subjects/[subject]/live/page.tsx");
   assert.match(src, /roomOpen && session \? \(\s*<LiveChamber/);
   const shell = rawFile("src/components/live/live-chamber.tsx");
-  assert.match(shell, /surface=\{<AcademicSurface subjectId=\{subject\.id\} motif=\{subject\.motif\} density=\{density\} \/\>/, "surface props pinned in the chamber shell");
+  assert.match(shell, /surface=\{\s*<AcademicSurface\s+subjectId=\{subject\.id\}\s+motif=\{subject\.motif\}\s+density=\{density\}\s+bus=\{live \? session\.bus : undefined\}\s*\/>\s*\}/, "surface props pinned in the chamber shell");
 });
 t("integration — the rehearsal composes the same room, named as rehearsal", () => {
   const src = rawFile("src/app/dev/live-stage/page.tsx");
