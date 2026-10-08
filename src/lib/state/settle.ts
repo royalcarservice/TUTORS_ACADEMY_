@@ -9,6 +9,7 @@
  *   write (POST)                              settling GET
  *   /subjects/[subject]/enter                 /subjects/[subject]      (5.5; not behind the proxy's boundary)
  *   /tutor/[subject]/environment/shape        /tutor/[subject]/environment (6.4)
+ *   /subjects/[subject]/live/settle           /subjects/[subject]/live (7.5 — the settlement surface re-reads the truth)
  *   /auth/signout                             /login                   (the login page IS the state)
  *
  * Used by the proxy: when a protected write arrives without a session, the
@@ -18,6 +19,7 @@
 const WRITES: ReadonlyArray<{ pattern: RegExp; settlesAt: (m: RegExpMatchArray) => string }> = [
   { pattern: /^\/subjects\/([a-z-]+)\/enter$/, settlesAt: (m) => `/subjects/${m[1]}` },
   { pattern: /^\/tutor\/([a-z-]+)\/environment\/shape$/, settlesAt: (m) => `/tutor/${m[1]}/environment` },
+  { pattern: /^\/subjects\/([a-z-]+)\/live\/settle$/, settlesAt: (m) => `/subjects/${m[1]}/live` },
   { pattern: /^\/auth\/signout$/, settlesAt: () => "/login" },
 ];
 

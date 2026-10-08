@@ -116,6 +116,31 @@ export async function getSessions(subjectId: string): Promise<ClassroomSession[]
 }
 
 /**
+ * How many attendance facts stand for ONE session — the settlement
+ * surface's decision fact (Step 5): a tutor's chamber that already carries
+ * rows for the session shows the confirmation, never the form again. Reads
+ * progress_record through the standing tutor predicate (migration 0004:
+ * a related tutor reads the subject's rows); a student's own rows are
+ * theirs by the own-rows policy. Zero is a true count here, not a failure —
+ * a failed read still THROWS DataReadError (5.7), so "none recorded yet"
+ * and "the read failed" are never the same value.
+ */
+export async function getSessionAttendanceCount(subjectId: string, sessionId: string): Promise<number> {
+  const supabase = await createClient();
+  if (!supabase) return 0;
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return 0;
+  const { count, error } = await supabase
+    .from("progress_record")
+    .select("id", { count: "exact", head: true })
+    .eq("subject_id", subjectId)          // subject isolation spelled in the query
+    .eq("kind", "session-attended")
+    .eq("ref_id", sessionId);
+  if (error) throw new DataReadError("progress_record", error);
+  return count ?? 0;
+}
+
+/**
  * The participants the boundary lets the chamber see in ONE subject.
  * Reads active enrolments, then attaches display names from profiles where
  * the boundary allows (a student sees their own name; a tutor sees the

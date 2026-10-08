@@ -16,6 +16,14 @@
 //   CONCLUDED — the window has passed. The session's facts remain (they are
 //               facts); the chamber no longer holds a door open for it.
 //
+// RETENTION (Step 5): the room composition retains its working state only
+// while the chamber is ACTIVE or SETTLING (retainsRoom) — the settling
+// window is exactly the time in-flight strokes and audio buffers get to
+// land and depart calmly. Outside those states the room unmounts and every
+// trace of the session leaves the device (the conclusion confidentiality
+// rule). The settlement surface (showsSettlement) speaks for SETTLING and
+// CONCLUDED; STANDBY and ACTIVE never settle.
+//
 // The SETTLING window is measured from the instant the session became
 // concluded (cohort_sessions.updated_at — maintained by the 0001 touch
 // trigger), because an academy that says "the session ended" and then
@@ -90,6 +98,32 @@ export const CHAMBER_STATE_WORD: Record<ChamberState, string> = {
   SETTLING: "Settling",
   CONCLUDED: "Concluded",
 };
+
+/**
+ * Whether the room composition RETAINS its working state — the participant's
+ * media, the surface's strokes. Only ACTIVE (the session is standing) and
+ * SETTLING (the concluded session keeps the door open for its window) retain:
+ * in-flight strokes land and the audio context stays warm long enough to
+ * depart calmly. Any other state unmounts the room entirely — the canvas
+ * state and every media track are discarded, which is the confidentiality
+ * rule of session conclusion (Step 5): nothing of the session lingers on the
+ * device once the chamber no longer holds it. The surface and the island
+ * hold NO device storage by construction (DEC-024/DEC-025), so discarding is
+ * a complete clearing.
+ */
+export function retainsRoom(chamber: ChamberState): boolean {
+  return chamber === "ACTIVE" || chamber === "SETTLING";
+}
+
+/**
+ * Whether the settlement surface speaks — the dignified post-session summary
+ * (Step 5). It stands while the concluded session is settling and after:
+ * SETTLING or CONCLUDED. STANDBY has nothing to settle (no session was
+ * named); ACTIVE is the session itself, not its aftermath.
+ */
+export function showsSettlement(chamber: ChamberState): boolean {
+  return chamber === "SETTLING" || chamber === "CONCLUDED";
+}
 
 /**
  * Picks the session the chamber stands for, given what the data layer read.

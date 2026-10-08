@@ -269,3 +269,25 @@ render requests nothing — capture exists only inside a click handler the
 participant chose, and departure (Leave Chamber) stops every track. Zero
 timers, zero persistence, zero attendance signal: the speaking glow is a
 transient boolean on the participant's own opted-in microphone.
+
+## 7.5 addendum — the session's aftermath (Phase 7 · Step 5, DEC-027)
+
+The settlement surface speaks once a session is concluded — SETTLING (its
+window) and CONCLUDED alike. Same register as every row above: a fact named
+calmly, never a verdict about a person; no stars, no survey, no feedback
+modal, no evaluative drop-down; one primary action per view.
+
+| state | who | sentence (verbatim) | what it claims |
+| --- | --- | --- | --- |
+| session concluded, record written | student | `The session in {Subject} has concluded. Your record in {Subject} has been updated.` | the session ended and the student's own record carries the attendance fact |
+| session concluded, record pending | student | `The session in {Subject} has concluded.` | the session ended; nothing is claimed about the record, because none is written yet |
+| session concluded, nothing recorded | tutor | `The session in {Subject} has concluded. Confirm to record attendance for the enrolled students.` + `The record holds one fact — attendance — and evidences the Learn and Progress steps of the arc, in the arc's own vocabulary.` + `Notes about the student are not kept: the record holds facts, never summaries.` | the tutor's one remaining act; the refusal of notes is stated, not hidden (P5-R6) |
+| session concluded, recorded | tutor | `Attendance is recorded for the students enrolled in {Subject}.` | the facts stand; the way back is the placements |
+| a settlement the route refused | either | `The session could not be settled. Its current state stands.` | the attempt failed and nothing changed — the surface re-read shows the truth |
+
+Departure actions: the student returns to the student workspace; the tutor to
+the placements. The conclude action itself ("Conclude the session") is the
+tutor's alone and stands apart from the four-control cluster: lifecycle is
+not a media control. Confidentiality at conclusion: the room unmounts — the
+canvas state and every media track are discarded; nothing of the session
+lingers on the device.

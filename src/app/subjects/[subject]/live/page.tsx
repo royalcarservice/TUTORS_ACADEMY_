@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
+import { Button } from "@/components/ui";
 import { LiveStage } from "@/components/live/live-stage";
 import { LiveChamber } from "@/components/live/live-chamber";
+import { SessionSettlement } from "@/components/live/session-settlement";
 import { ROUTES } from "@/config/routes";
 import { MODULE_STATUS_LABEL, PLATFORM_MODULES } from "@/config/modules";
 import { getIdentity } from "@/lib/auth/session";
-import { getSessions } from "@/lib/classroom/data";
-import { CHAMBER_STATE_WORD, chamberState, sessionOfRecord } from "@/lib/classroom/state-machine";
+import { getSessionAttendanceCount, getSessions } from "@/lib/classroom/data";
+import { CHAMBER_STATE_WORD, chamberState, sessionOfRecord, showsSettlement } from "@/lib/classroom/state-machine";
 import { getEnvironmentSettings } from "@/lib/environment/settings";
 import { liveKitReadiness, LIVEKIT_ENV_KEYS } from "@/lib/livekit/config";
 import { liveCapabilities, scheduledPhrase } from "@/lib/next-action";
@@ -55,6 +57,7 @@ import { getTutorSubjectIds } from "@/lib/tutor/data";
 
 interface Params {
   params: Promise<{ subject: string }>;
+  searchParams: Promise<{ settle?: string }>;
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
@@ -64,8 +67,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return { title: `${s.name} — live` };
 }
 
-export default async function LiveSessionPage({ params }: Params) {
+export default async function LiveSessionPage({ params, searchParams }: Params) {
   const { subject } = await params;
+  const { settle } = await searchParams;
   const s = getSubject(subject);
 
   /* UNKNOWN OR INVALID SUBJECT → the framework 404, same as the environment. */
@@ -108,11 +112,27 @@ export default async function LiveSessionPage({ params }: Params) {
   /* DEC-022 — the verb is chosen by the RECORD. The student's own events are
      read (RLS: own rows only, migration 0004) and isolated; the tutor has no
      record of their own here, so the verb stays "attend". Silent record →
-     "attend": the first session is always attended. */
+     "attend": the first session is always attended. The same read also names
+     whether THIS session is already on the student's record — the settlement
+     sentence's one fact (Step 5). */
   let verb: "attend" | "resume" = "attend";
+  let studentRecorded = false;
   if (viewer === "student") {
     const eventsRead = await isolateAsync("live:progress", () => getOwnProgressEvents(s.id), { subject: s.id });
-    if (eventsRead.ok) verb = attendanceState(eventsRead.value, s.id as SubjectId, liveCapabilities()).verb;
+    if (eventsRead.ok) {
+      verb = attendanceState(eventsRead.value, s.id as SubjectId, liveCapabilities()).verb;
+      studentRecorded = session !== null && eventsRead.value.some((e) => e.kind === "session-attended" && e.refId === session.id);
+    }
+  }
+
+  /* THE TUTOR'S SETTLEMENT FACT — do attendance rows already stand for this
+     session? It decides the form versus the confirmation (Step 5). Isolated:
+     a failed read renders the FORM (the honest path that can complete the
+     settlement), never a false confirmation. */
+  let tutorRecorded = false;
+  if (viewer === "tutor" && session && session.state === "concluded") {
+    const countRead = await isolateAsync("live:settlement", () => getSessionAttendanceCount(s.id, session.id), { subject: s.id });
+    tutorRecorded = countRead.ok && countRead.value > 0;
   }
 
   /* LiveKit readiness — env NAMES only, values never rendered or logged. */
@@ -126,16 +146,27 @@ export default async function LiveSessionPage({ params }: Params) {
   const module = PLATFORM_MODULES.find((m) => m.id === "live-classroom");
   const moduleStatusLabel = module ? MODULE_STATUS_LABEL[module.status] : "Planned";
 
-  /* THE ROOM IS OPEN when the facts say the chamber is standing: the module
-     is live in the registry, the credentials are staged, and the state
-     machine names ACTIVE (the tutor has opened the session) — or SETTLING,
-     while a concluded session keeps the door open for its settling window
-     (DEC-026). Standby and Concluded keep the stage: nothing about the
-     participant interface renders ahead of the room it belongs to (DEC-023).
-     When open, the LiveChamber shell takes the reserved grid — the
-     participant's OWN media and the shared academic surface, opt-in and
-     local-first, nothing invented (DEC-024, DEC-025). */
-  const roomOpen = module?.status === "live" && readiness.configured && (chamber === "ACTIVE" || chamber === "SETTLING");
+  /* THE ROOM IS OPEN while the facts say the chamber is standing: the
+     module is live in the registry, the credentials are staged, and the
+     state machine names ACTIVE — the tutor has opened the session and it
+     has not been concluded (Step 5 supersedes DEC-026's SETTLING admittance:
+     a concluded session shows the SETTLEMENT surface, never the open room —
+     nothing of the session lingers once it is over). Standby keeps the
+     stage: nothing about the participant interface renders ahead of the room
+     it belongs to (DEC-023). When open, the LiveChamber shell takes the
+     reserved grid — the participant's OWN media and the shared academic
+     surface, opt-in and local-first, nothing invented (DEC-024, DEC-025). */
+  const moduleLive = module?.status === "live" && readiness.configured;
+  const roomOpen = moduleLive && chamber === "ACTIVE";
+
+  /* A settlement attempt the route refused comes back as ?settle=failed and
+     renders ONE calm sentence — the honest-page posture, no banner, no red. */
+  const settleFailed = settle === "failed";
+
+  /* THE SETTLEMENT SURFACE (Step 5) speaks once the session is concluded —
+     SETTLING (its window) and CONCLUDED alike: the student's calm closing
+     sentence, the tutor's academic record form or confirmation. */
+  const settling = moduleLive && session !== null && showsSettlement(chamber);
 
   return (
     <LiveStage
@@ -156,8 +187,30 @@ export default async function LiveSessionPage({ params }: Params) {
           stateWord={CHAMBER_STATE_WORD[chamber]}
           viewer={viewer}
           displayName={identity.displayName}
+          /* THE CONCLUSION ACTION — the tutor's alone (Step 5). A plain form
+             POST to the settle route; the 303 back IS the settling GET. It
+             stands apart from the four-control cluster, which keeps its
+             discipline (DEC-024): lifecycle is not a media control. */
+          conclude={viewer === "tutor" ? (
+            <form action={`/subjects/${s.id}/live/settle`} method="post" data-conclude-session>
+              <input type="hidden" name="sessionId" value={session.id} />
+              <Button type="submit" variant="secondary">
+                Conclude the session
+              </Button>
+            </form>
+          ) : undefined}
         />
       ) : undefined}
+      settlement={settling && session ? (
+        <SessionSettlement
+          subject={{ id: s.id, name: s.name }}
+          sessionTitle={session.title}
+          sessionId={session.id}
+          viewer={viewer}
+          recorded={viewer === "student" ? studentRecorded : tutorRecorded}
+        />
+      ) : undefined}
+      notice={settleFailed ? "The session could not be settled. Its current state stands." : undefined}
     />
   );
 }

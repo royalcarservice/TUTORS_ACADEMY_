@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { AcademicSurface } from "@/components/live/academic-surface";
 import { RoomLayout } from "@/components/live/room-layout";
 import { RoomParticipant } from "@/components/live/room-participant";
+import { SessionSettlement } from "@/components/live/session-settlement";
 import { getEnvironmentSettings } from "@/lib/environment/settings";
 import { getIdentity } from "@/lib/auth/session";
 import { isolateAsync } from "@/lib/state/isolate";
@@ -75,6 +76,27 @@ export default async function DevLiveStagePage({ searchParams }: Params) {
       <div data-subject={s.id} style={{ background: "var(--ta-surface-sunken)", borderRadius: "var(--ta-radius-2)", padding: "var(--ta-space-8)" }}>
         <RehearsalRoom subjectId={s.id} motif={s.motif} displayName={identity?.displayName ?? "Rehearsal"} role={identity?.role === "tutor" ? "tutor" : "student"} />
       </div>
+
+      {/* THE SETTLEMENT SURFACE, rehearsed (Phase 7 · Step 5, DEC-027): the
+          three variants the production /live page decides between, rendered
+          with specimen facts so the closing language can be read. Nothing
+          here writes: the specimen session id names no row. */}
+      <section aria-label="Settlement previews" style={{ marginTop: "var(--ta-space-12)" }} data-subject={s.id}>
+        <h2 style={{ fontFamily: "var(--ta-font-display)", fontSize: "var(--ta-text-xl)", fontWeight: 500, margin: "0 0 var(--ta-space-2)" }}>
+          Session settlement — the three variants
+        </h2>
+        <p style={{ color: "var(--ta-text-secondary)", maxWidth: "48em", margin: "0 0 var(--ta-space-6)" }}>
+          The dignified post-session surface: the student&apos;s closing sentence (record written · record
+          pending) and the tutor&apos;s academic record form. No stars, no survey, no evaluative
+          drop-down — the record holds facts, never summaries.
+        </p>
+        <div style={{ display: "grid", gap: "var(--ta-space-6)" }}>
+          <SessionSettlement subject={{ id: s.id, name: s.name }} sessionTitle="Morning session" sessionId="00000000-0000-0000-0000-000000000000" viewer="student" recorded />
+          <SessionSettlement subject={{ id: s.id, name: s.name }} sessionTitle="Morning session" sessionId="00000000-0000-0000-0000-000000000000" viewer="student" recorded={false} />
+          <SessionSettlement subject={{ id: s.id, name: s.name }} sessionTitle="Morning session" sessionId="00000000-0000-0000-0000-000000000000" viewer="tutor" recorded={false} />
+          <SessionSettlement subject={{ id: s.id, name: s.name }} sessionTitle="Morning session" sessionId="00000000-0000-0000-0000-000000000000" viewer="tutor" recorded />
+        </div>
+      </section>
 
       <p style={{ marginTop: "var(--ta-space-6)" }}>
         <Link href={`/subjects/${s.id}/live`} style={{ color: "var(--ta-accent-1)" }}>

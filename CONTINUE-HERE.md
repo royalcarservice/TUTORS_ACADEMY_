@@ -55,13 +55,22 @@ whole pass. These rules are the fix, not ceremony.*
    the `live-chamber.tsx` client shell (status bar + the tested RoomLayout composition) with the
    brief's superseded standby sentence; `participant-dock.tsx` + `chamber-controls.tsx` +
    `classroom/use-surface-sync.ts` (the last two are bridge re-exports — one implementation, two
-   names). The whole room still rehearses at `/dev/live-stage`. **Next:** the WIRING step that
+   names). **STEP 5 done (2026-10-08, DEC-027):** the lifecycle closes — the settle route
+   (`/live/settle`, POST-only, service-role writes, standing by RLS) concludes a session with ONE
+   atomic guarded UPDATE and then records one `session-attended` fact per enrolled student
+   (ref_id = the session row, idempotent); the dignified `session-settlement.tsx` renders the
+   student's closing sentence and the tutor's confirm/confirmation; the open room narrows to ACTIVE
+   (SETTLING/CONCLUDED show the settlement); conclusion unmounts the room, so nothing of the
+   session lingers on the device. Notes about a student are NOT kept (P5-R6) and the surface says
+   so; `milestoneKey` validates against STEP_EVIDENCE and is stored nowhere (the arc derives its
+   position from facts). The write is in the P6-R15 settling table. The whole room still rehearses
+   at `/dev/live-stage` (all four settlement variants previewed). **Next:** the WIRING step that
    makes the room real — LiveKit credentials + `livekit-server-sdk`, the signed webhook that
    writes `session-attended` rows through the service role (referent = `cohort_sessions`), the
-   session bus the surface is waiting for, the session END ruling (unlocks Tier 1), and the
-   clear-permission ruling. Reconnaissance: `docs/proposed/livekit_recon.md`. P6-R15's settling-GET
-   rule binds every new write. **Kinds stay inadmissible until the module is live** — the
-   scaffolding alone changes nothing on the arc.
+   session bus the surface is waiting for, the session END ruling (unlocks Tier 1; the conclusion
+   instant — `cohort_sessions.updated_at` — is the candidate end), and the clear-permission ruling.
+   Reconnaissance: `docs/proposed/livekit_recon.md`. **Kinds stay inadmissible until the module is
+   live** — the scaffolding alone changes nothing on the arc.
 2. **Credentialed environment first, when available:** apply migrations 0004/0005/0006/0007, then run the
    Phase 6 debt list (`PHASE6_STEP6_REPORT.md` — the handover document): harness re-runs, DEC-020
    baseline re-pin, the matrix `--write` re-pin (W7 — the filesystem scan now includes
@@ -69,8 +78,10 @@ whole pass. These rules are the fix, not ceremony.*
 3. **Rulings owed to the owner:** the two static guards (gate W1) · the tagline question (W4) · the
    co-teacher grant question (DEC-018 Item 5) · the tile-grid composition ruling for when remote
    participants become facts (DEC-024) · the surface's owed rulings: session bus, clear-permission,
-   keyboard stroke input, late-packet ordering (DEC-025). DEC-018 Item 4's cohort condition is now
-   MET — cohort-scoped levers are arguable, but only by ruling, never by schema side effect.
+   keyboard stroke input, late-packet ordering (DEC-025) · whether `academicNotes` ever gains an
+   adjudicated home (DEC-027 — today's answer is the refusal; a schema ruling either way). DEC-018
+   Item 4's cohort condition is now MET — cohort-scoped levers are arguable, but only by ruling,
+   never by schema side effect.
    **Manual walk owed:** the whole room rehearsal (`/dev/live-stage`) in a real browser — media,
    drawing feel, substrate legibility — the sandbox has none.
 

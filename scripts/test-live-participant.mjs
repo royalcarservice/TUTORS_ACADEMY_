@@ -139,13 +139,13 @@ t("motion — the glow's only transition obeys the reduced-motion contract", () 
 
 /* ── 6 · the integration gates ────────────────────────────────────────────── */
 t("/live — the island renders ONLY when the room is truly open", () => {
-  /* Declared pin update (DEC-026): Milestone 2 pivots the gate to the state
-     machine's words — the room opens on ACTIVE and stays through SETTLING —
-     and the room composition now lives inside the LiveChamber shell
-     (chamber={<RoomParticipant… is pinned against live-chamber.tsx in
-     test-classroom). The gate's THREE-FACT shape is unchanged. */
+  /* Declared pin update (DEC-026, then DEC-027): Milestone 2 pivoted the gate
+     to the state machine's words; Step 5 then narrowed the OPEN room to
+     ACTIVE alone — a concluded session shows the SETTLEMENT surface, never
+     the open room. The gate's three-fact shape (module live · credentials ·
+     chamber) is unchanged. */
   const src = rawFile("src/app/subjects/[subject]/live/page.tsx");
-  assert.match(src, /roomOpen = module\?\.status === "live" && readiness\.configured && \(chamber === "ACTIVE" \|\| chamber === "SETTLING"\)/);
+  assert.match(src, /const roomOpen = moduleLive && chamber === "ACTIVE"/);
   assert.match(src, /participant=\{roomOpen && session \? \(/);
   assert.match(src, /<LiveChamber/);
   assert.doesNotMatch(src, /"use client"|'use client'/, "the page stays a server component");
@@ -156,7 +156,9 @@ t("stage — the reserved grid and standby stand while the room is closed", () =
   assert.match(src, /data-live-grid/);
   assert.match(src, /The chamber is staged\. Live connection will initiate once your tutor opens the session\./);
   assert.match(src, /\{participant \? \(/);
-  assert.match(src, /\{!participant && \(!readiness\.configured \? \(/);
+  /* Declared pin update (DEC-027): the status block now also stands down
+     while the settlement surface speaks. */
+  assert.match(src, /\{!participant && !settlement && \(!readiness\.configured \? \(/);
 });
 t("rehearsal route — production-gated, subject-scoped, names itself", () => {
   const src = rawFile("src/app/dev/live-stage/page.tsx");

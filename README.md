@@ -1357,6 +1357,19 @@ tutor-assigned enrolment arrives (P6/P7).
       20/20 · next-action 34/34 · progress 16/16 · progress-record 18/18 · subjects 108/108 ·
       check-subject-sql · build clean · smoke (307 / 404 / 200). DEC-026 records it, including the
       declared pin updates (standby wording, gate shape, composition moved into the shell).
+- [x] Step 5 — Session settlement & progress capture -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      The lifecycle closes: the tutor concludes the session (ONE atomic guarded UPDATE — ACTIVE →
+      CONCLUDED, service role, standing decided by RLS on the read), confirms on the settlement
+      surface, and the record is written — one session-attended fact per enrolled student, ref_id =
+      the session row (the DEC-026 referent), idempotent by the unique. The settlement component is
+      dignified: the brief's closing sentence verbatim, one departure action per view, no stars, no
+      survey, no evaluative drop-down — notes about a student are not kept and the surface says so
+      (P5-R6; milestoneKey validated against STEP_EVIDENCE and stored nowhere: the arc derives its
+      position from facts). The open room narrows to ACTIVE; SETTLING and CONCLUDED show the
+      settlement; conclusion unmounts the room — nothing of the session lingers on the device. The
+      write is registered in the P6-R15 settling table; every outcome 303s to the settling GET.
+      Verified: settlement 26/26 (new) · full battery green · build clean · smoke + GET-settle 405.
+      DEC-027 records it, with the owed owner ruling on whether notes ever gain an adjudicated home.
 
 - [x] Step 1 — Progress record schema & cohort architecture -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
       `progress_record` applied (migration 0004, the DEC-009 shape: interim-neutral referent, tutor

@@ -77,6 +77,8 @@ export function LiveStage({
   scheduled,
   viewer,
   participant,
+  settlement,
+  notice,
 }: {
   subject: LiveStageSubject;
   density: Density;
@@ -93,11 +95,20 @@ export function LiveStage({
   viewer: "student" | "tutor";
   /**
    * THE ROOM, OPEN — the participant island (7.3), passed by the page ONLY
-   * when the room is truly open (module live, credentials staged, a session
-   * named). While absent, the reserved grid and the standby state stand:
-   * the stage says exactly what is missing and nothing else.
+   * when the room is truly open (module live, credentials staged, the
+   * chamber ACTIVE). While absent, the reserved grid and the standby state
+   * stand: the stage says exactly what is missing and nothing else.
    */
   participant?: React.ReactNode;
+  /**
+   * THE SETTLEMENT SURFACE (Step 5) — the dignified post-session summary,
+   * passed by the page once the session is concluded (SETTLING window or
+   * CONCLUDED). It takes the place the room held: a session that is over is
+   * settled, not re-opened.
+   */
+  settlement?: React.ReactNode;
+  /** One calm sentence beside the stage — a refused settlement attempt. */
+  notice?: string;
 }) {
   const environmentName = subject.tagline.split(" — ")[0].trim();
   const sentence = verb === "resume" ? `Resume the ${subject.name} session` : `Attend the ${subject.name} session`;
@@ -126,13 +137,28 @@ export function LiveStage({
                 color: "var(--ta-text-primary)",
               }}
             >
-              {session ? sentence : `${subject.name} — live`}
+              {/* The attend/resume sentence names a session still to stand;
+                  once the settlement surface speaks, the session is over and
+                  the title returns to the environment's own. */}
+              {session && !settlement ? sentence : `${subject.name} — live`}
             </h1>
             <p style={{ margin: "var(--ta-space-2) 0 0", color: "var(--ta-text-secondary)" }}>{environmentName}</p>
           </header>
 
+          {notice && (
+            <p data-live-notice aria-live="polite" style={{ margin: "var(--ta-space-4) 0 0", color: "var(--ta-text-secondary)", fontSize: "var(--ta-text-sm)", maxWidth: "36em" }}>
+              {notice}
+            </p>
+          )}
+
           <div style={{ marginTop: "var(--ta-space-8)" }}>
-            {session && (
+            {/* THE SETTLEMENT SURFACE (Step 5) replaces the session card once
+                the session is concluded: the aftermath of a session is not a
+                second card beside it. */}
+            {settlement ? (
+              settlement
+            ) : (
+            session && (
               <section
                 data-live-session
                 data-session-state={session.state}
@@ -189,11 +215,14 @@ export function LiveStage({
                   </>
                 )}
               </section>
+            )
             )}
 
-            {/* The status block stands only while the room is NOT open: once
-                the participant island is mounted, the room speaks for itself. */}
-            {!participant && (!readiness.configured ? (
+            {/* The status block stands only while the room is NOT open and
+                nothing is being settled: once the participant island is
+                mounted or the settlement surface speaks, the room speaks for
+                itself. */}
+            {!participant && !settlement && (!readiness.configured ? (
               <section data-live-standby aria-label="Room status" style={{ marginTop: session ? "var(--ta-space-6)" : 0 }}>
                 <p style={MONO_LABEL}>Live classroom — {moduleStatusLabel}</p>
                 <p style={{ margin: "var(--ta-space-3) 0 0", fontSize: "var(--ta-text-lg)", maxWidth: "36em", color: "var(--ta-text-primary)" }}>

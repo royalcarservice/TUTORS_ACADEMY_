@@ -40,6 +40,7 @@ export function LiveChamber({
   stateWord,
   viewer,
   displayName,
+  conclude,
 }: {
   /** The subject the chamber belongs to — id, name and authored motif. */
   subject: { id: string; name: string; motif: MotifKind };
@@ -53,6 +54,13 @@ export function LiveChamber({
   viewer: "student" | "tutor";
   /** The participant's own displayed name, for their own tile. */
   displayName: string;
+  /**
+   * THE CONCLUSION ACTION (Step 5) — the tutor's settle form, passed by the
+   * page only while the session stands ACTIVE. It renders apart from the
+   * four-control cluster: lifecycle is not a media control. Absent for the
+   * student and once the session has concluded.
+   */
+  conclude?: React.ReactNode;
 }) {
   return (
     <div data-live-chamber aria-label={`${subject.name} live chamber`}>
@@ -87,6 +95,16 @@ export function LiveChamber({
           {stateWord}
         </p>
       </header>
+
+      {/* THE CONCLUSION ACTION — the tutor's, when the page supplies it
+          (Step 5). It stands below the bar, right-aligned and apart from
+          the media cluster: closing the chamber is a lifecycle act, not a
+          device control. */}
+      {conclude && (
+        <div data-live-chamber-conclude style={{ display: "flex", justifyContent: "flex-end", marginTop: "var(--ta-space-3)" }}>
+          {conclude}
+        </div>
+      )}
 
       {/* THE WORKSPACE — the tested responsive composition, unchanged. */}
       <div style={{ marginTop: "var(--ta-space-4)" }}>
