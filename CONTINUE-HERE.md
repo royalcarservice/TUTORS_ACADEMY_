@@ -77,6 +77,38 @@ whole pass. These rules are the fix, not ceremony.*
    exists yet) · the confirmation-link delivery channel (no email provider stands) · live
    apply of 0011 with 0004–0010 · the standing contact route, published the day real
    onboarding opens. Real onboarding stays CLOSED — test accounts only.
+   **Step 2 done (2026-10-08, DEC-038): PRODUCTION ONBOARDING & AGE-GATED
+   AUTHENTICATION.** The framework gains its teeth: registration is age-gated under the
+   DPDP Act 2023 — the SERVER computes the age from the date of birth (the browser's
+   opinion is UX only); an adult consents plainly (two unticked boxes linking the Step 1
+   documents) and is provisioned real (consent writes + the `is_test_account` flip, with
+   rollback if the writes fail — no half-open doors); a minor lands pending_guardian and
+   cannot be enrolled until a guardian's token-verified consent stands — enforced by a
+   BEFORE INSERT trigger in migration 0012, not by the UI. The age boundary is pinned:
+   the 18th birthday itself is the first adult day; a 29 February birth clamps to
+   28 February in common years (the Postgres convention, mirrored exactly by the pure
+   logic in `src/lib/auth/onboarding.ts`, proven by test). The verification ledger
+   (`guardian_verifications`) stores only token digests, is service-role-only, and
+   expires links after 7 days; the handler `/auth/verify-guardian` redeems once and
+   lands the guardian on the brief's sentence verbatim. Tutors meet the invitation
+   gate — self-service refused with dignity (form and action alike); the
+   credential-review flow stands owed, and the gate says so rather than collecting
+   credentials it cannot review. `/register/guardian` wires the Step 1 GuardianGate
+   into the real flow (the gate gained an action prop; the rehearsal default is
+   untouched). Test accounts keep their path — `scripts/test-account.mjs` untouched;
+   the test-era alert and test_ack checkbox retired (declared). Verified:
+   test-onboarding-logic 33/33 (new) · the brief's suite green · full Phase 5–9
+   battery green · guards at declared baselines · gate7 privacy audit PASS over 310
+   files (rebaselined) · build clean, 41 pages · smoke: DoB gate live, guardian page
+   doors to login, verify handler honest, server killed by port. STATE_LANGUAGE 10.2
+   pins the sentences.
+   **Owed, declared:** the confirmation-link DELIVERY channel (still no email provider)
+   · live apply of 0012 with 0004–0011 · the tutor invitation/credential-review
+   surface · guardian-consent withdrawal machinery · the credentialed round-trip walks
+   (a real adult signup; a minor → guardian verification; the trigger's refusal
+   observed live). rls_test.sql's "every account is flagged test" premise documents
+   the pre-onboarding era — against a project DB holding real signups it fails BY
+   DESIGN; declared, not weakened.
 2. **PHASE 9 IS CERTIFIED (2026-10-08).** The Socratic Engine Gate (W1–W5) ran to verdict —
    `PHASE9_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase9-*.json`;
    DEC-036 records the gate; STATE_LANGUAGE 9.4 records the close. Step 1 done (2026-10-08, DEC-033): the SOCRATIC ASSISTANCE ENGINE &

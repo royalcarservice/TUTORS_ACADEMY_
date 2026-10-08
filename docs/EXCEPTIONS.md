@@ -115,3 +115,18 @@ gate's wiring into real onboarding and the confirmation-link delivery
 channel stand OWED and declared in the closure record — they belong to the
 day real onboarding opens, which stays closed (test accounts only). No new
 exception opened by this step. Count: **18 open.**
+
+### Phase 10 · Step 2 note — onboarding stands, count unchanged (2026-10-08)
+
+Step 2 wired the framework into real registration: the age gate, the
+pending_guardian dormancy (enforced by a database trigger), the guardian
+verification ledger and token handler, and the tutor invitation gate
+(DEC-038). **No new exception opened.** What the step OWES is recorded in
+DEC-038, not here, because each owed item is a delivery step, not a
+silence the product hides: the confirmation-link delivery channel (the
+gate says so at the moment of consent) · live apply of 0012 with
+0004–0011 · the tutor invitation/credential-review surface · the
+credentialed round-trip walks. One premise-shift declared: rls_test.sql's
+"every account is flagged test" assertion documents the pre-onboarding
+era; against a project DB holding real signups it will fail BY DESIGN —
+declared, never weakened. Count unchanged: **18 open.**

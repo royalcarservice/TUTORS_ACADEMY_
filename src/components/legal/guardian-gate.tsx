@@ -34,9 +34,24 @@ import { FieldHint, Label } from "@/components/ui/label";
 import { GUARDIAN_EMAIL_MAX, LEGAL_COPY } from "@/lib/legal/consent";
 import { recordLegalConsent, type LegalConsentResult } from "@/lib/legal/data";
 
-export function GuardianGate() {
-  const [state, action, pending] = useActionState<LegalConsentResult, FormData>(
-    recordLegalConsent,
+/** The act's shape — the Step 1 default (record the consent directly) or
+ *  the onboarding act (issue the guardian verification link, DEC-038). */
+export type GuardianGateAction = (
+  prev: LegalConsentResult,
+  formData: FormData,
+) => Promise<LegalConsentResult>;
+
+export function GuardianGate({
+  action = recordLegalConsent,
+  submitLabel = "Send confirmation link",
+  pendingLabel = "Recording…",
+}: {
+  action?: GuardianGateAction;
+  submitLabel?: string;
+  pendingLabel?: string;
+}) {
+  const [state, formAction, pending] = useActionState<LegalConsentResult, FormData>(
+    action,
     { error: null },
   );
 
@@ -83,7 +98,7 @@ export function GuardianGate() {
         </p>
       </header>
 
-      <form action={action} style={{ display: "flex", flexDirection: "column", gap: "var(--ta-space-3)" }}>
+      <form action={formAction} style={{ display: "flex", flexDirection: "column", gap: "var(--ta-space-3)" }}>
         <input type="hidden" name="consent_type" value="guardian_consent_v1" />
 
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--ta-space-2)" }}>
@@ -103,7 +118,7 @@ export function GuardianGate() {
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--ta-space-3)", alignItems: "center" }}>
           <Button type="submit" size="md" loading={pending} disabled={pending}>
-            {pending ? "Recording…" : "Send confirmation link"}
+            {pending ? pendingLabel : submitLabel}
           </Button>
         </div>
 

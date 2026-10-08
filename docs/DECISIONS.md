@@ -241,3 +241,84 @@ cookie banner because there is nothing to consent to; the privacy notice says so
 
 **Rule 18:** no identities created; every verification ran offline. The credentialed
 harnesses stand owed with their committed baselines, unchanged.
+
+
+---
+
+### DEC-038 — Phase 10 · Step 2: production onboarding & age-gated authentication (2026-10-08)
+
+**The ruling:** the legal framework gains its teeth. Registration is age-gated under the DPDP
+Act 2023: the server computes the age from the date of birth, an adult consents plainly and is
+provisioned real, a minor lands `pending_guardian` and cannot be enrolled until a guardian's
+token-verified consent stands — enforced by a database trigger, not by the UI. Tutors meet the
+invitation gate. Verified: test-onboarding-logic 33/33 (new) · the brief's full suite green
+(validate-subjects · check-subject-sql · next-action 34 · progress 16 · legal-logic 23) · full
+Phase 5–9 battery green (188 tests) · guards at declared baselines · gate7 privacy audit PASS
+over 310 files (rebaselined 304 → 310) · build clean, 41 pages · smoke: register carries the
+DoB gate, the guardian page doors to login, the verify handler answers honestly, server killed
+by port.
+
+**The brief's reconciliations (all declared):**
+- **Numbered 0012** — the brief's number stands (0011 was Step 1).
+- **`date_of_birth` and `guardian_verified`** land on profiles exactly as briefed: DoB
+  nullable (legacy and test accounts carry none — `scripts/test-account.mjs` and every
+  fixture keep working, and the trigger treats absence as no age condition);
+  `guardian_verified` NOT NULL DEFAULT false.
+- **The age boundary is structural:** the enrolment trigger refuses a minor's insert while
+  `date_of_birth + interval '18 years' > current_date` and the flag is false. The exact 18th
+  birthday is the first adult day (equality, not greater); a 29 February birth clamps to
+  28 February in common years — the Postgres interval convention, mirrored exactly by the
+  pure logic and pinned by test, so form, action and trigger can never disagree.
+- **`is_test_account` flips false ONLY through the verified path** — the column's default
+  stays true; the service-role write that lands with consent performs the flip (at signup for
+  a consenting adult; at guardian verification for a minor). The brief's requirement, met by
+  code.
+- **`pending_guardian` is a state, not a column:** a profile whose DoB indicates a minor and
+  whose `guardian_verified` is false. The minor's account exists but is DORMANT — the
+  trigger blocks enrolment, no teaching data is processed; that is the DPDP posture.
+- **The confirmation sentence** stands verbatim — "Consent has been confirmed. The
+  student's academy access is now active." — with the brief's `{Subject}` placeholder
+  omitted: no enrolment exists at verification time; the chambers OPEN with the consent, and
+  the copy says exactly that.
+- **`src/app/register/`** — the route stands where it has since Phase 5 (`(auth)/register`);
+  the brief's path names the page, the lineage keeps the group.
+
+**The tutor invitation gate:** self-service tutor registration is refused with dignity — the
+form shows the gate, and the action refuses the role server-side (defence in depth). WHY the
+gate refuses rather than collects credentials: no review surface exists for them, and
+collecting what the platform cannot look at is a false feature. The invitation and
+credential-review flow stand OWED to the environment that hires tutors; the copy says so.
+Test tutors keep their path (`ROLE=tutor scripts/test-account.mjs`, service role) — untouched.
+
+**The verification mechanics (migration 0012 + `src/lib/auth/guardian-verification.ts`):**
+one pending link per student — issuing again REPLACES the standing one; the ledger stores
+only the token's SHA-256 digest (the raw token exists in the link and nowhere else); the
+7-day expiry is judged strictly; redemption is guarded by `verified_at IS NULL` so a
+double-click cannot double-record, and performs the three service-role writes (ledger marks
+verified · legal_consents gains guardian_consent_v1 · profile flips guardian_verified and
+is_test_account). The raw token never reaches the browser — the gate's outcome sentence says
+the delivery channel is owed rather than showing a link a student could click themselves.
+
+**The service client's first consumers (declared):** `createServiceClient()` — previously
+unused ("none exist yet") — now performs the consent writes, the ledger, the flips and the
+rollback. Its posture is unchanged: server-only, env-guarded, never student-facing reads.
+
+**No half-open doors:** the adult path checks the service credentials BEFORE creating the
+account; a consent-write failure deletes the just-created auth user (rollback) and speaks the
+closed failure sentence. A minor's path writes nothing but the account.
+
+**Retired by this step (declared):** the register form's test-era "Test accounts only" alert
+and the `test_ack` checkbox — real onboarding stands, so the form no longer claims every
+account is a test account. The register-form header comment records the retirement.
+
+**Owed, declared:** the confirmation-link DELIVERY channel (no email provider stands — the
+gate says so at the moment of consent, as in Step 1) · live apply of migration 0012 joins
+0004–0011 in the credentialed environment · the tutor invitation/credential-review surface ·
+the withdrawal mechanism for guardian consent (the framework page describes it as owed since
+Step 1) · rls_test.sql's line-50 premise ("every account is flagged test") documents the
+pre-onboarding era; against a project DB that holds real signups it will fail BY DESIGN —
+declared, not weakened; the `--local` throwaway run stays green.
+
+**Rule 18:** no identities created; every verification ran offline. The sandbox holds no
+credentials, so the credentialed walks (a real adult signup round-trip, a minor→guardian
+verification round-trip, the trigger's refusal observed live) stand owed with this record.

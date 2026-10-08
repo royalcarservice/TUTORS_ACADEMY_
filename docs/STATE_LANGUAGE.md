@@ -551,3 +551,33 @@ delivery channel · live apply of migration 0011 with 0004–0010 · the
 standing contact route, published the day real onboarding opens. Real
 onboarding stays closed — the framework stands so the door can open
 honestly, not so it opens today.
+
+
+## 10.2 addendum — the onboarding's language (Phase 10 · Step 2, DEC-038)
+
+The age gate speaks the way the legal framework does: plainly, once,
+without urgency. The sentences below are pinned by
+`scripts/test-onboarding-logic.mjs` (33 checks); the surfaces render them
+verbatim.
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `Consent has been confirmed. The student's academy access is now active.` | the verification's confirmation page | the brief's sentence, verbatim — the subject placeholder omitted, because no enrolment exists at verification time |
+| `Tutor accounts are opened by invitation. Self-service registration for tutors is not open in this deployment.` | the tutor invitation gate, and the action's refusal | the gate's complete answer — a refusal is a sentence, not a dead end |
+| `Your account is created. Confirm your email and sign in — the guardian consent gate stands next, and enrolment waits for your guardian's confirmation.` | the minor's signup outcome | the pending_guardian state, stated once |
+| `You are under 18. A guardian will be asked to confirm consent before you can enrol in subject chambers.` | the form, when the entered birth date is under 18 | the gate announced before the act, never after |
+| `The verification link stands recorded. The delivery channel is not wired in this deployment, so the link is not shown here — it will be emailed to the guardian when the channel opens.` | the guardian gate's recorded outcome | the honest delivery debt — and the security posture: the token never reaches the student's browser |
+| `That could not be recorded. Nothing was changed; repeating is safe.` | the closed failure | claims only what is known |
+
+The age boundary is language too: "under 18" is computed server-side from
+the date of birth, and its edges are pinned in words — the 18th birthday
+is the FIRST adult day; a 29 February birth observes its majority on
+28 February in common years (the Postgres convention, mirrored by the
+pure logic). Form, action and trigger can never disagree, because all
+three read the same pure module.
+
+Two test-era words are retired from the register surface: the "Test
+accounts only" alert and the test-account acknowledgement checkbox — real
+onboarding stands, so the form no longer claims every account is a test
+account. Test accounts keep their own path (`scripts/test-account.mjs`),
+untouched and unnamed in the form.

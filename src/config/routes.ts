@@ -14,6 +14,9 @@ export const ROUTES = {
   legalTerms: "/legal/terms",
   legalPrivacy: "/legal/privacy",
   legalGuardianConsent: "/legal/guardian-consent",
+  /** The onboarding continuation (Phase 10 · Step 2, DEC-038). */
+  registerGuardian: "/register/guardian",
+  verifyGuardian: "/auth/verify-guardian",
 } as const;
 
 export type AppRoute = (typeof ROUTES)[keyof typeof ROUTES];

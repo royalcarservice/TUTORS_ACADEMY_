@@ -1699,6 +1699,42 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       smoke: routes 200, rehearsal 404, footer links live, server killed
       by port. DEC-037 records the step; STATE_LANGUAGE 10.1 pins the
       legal sentences; the register drops to 18 open.
+- [x] Step 2 — Production onboarding & age-gated authentication -> PHASE 10 BRIEF (2026-10-08) — **BUILT.**
+      The legal framework gains its teeth. Migration 0012 adds
+      `profiles.date_of_birth` (nullable — fixtures and test accounts
+      carry none, and the gate treats absence as no age condition) and
+      `profiles.guardian_verified`, extends the signup trigger to carry
+      the birth date safely, creates `guardian_verifications` (the
+      verification ledger — token SHA-256 digests only, service-role-only,
+      zero policies), and puts the age boundary IN THE DATABASE: a
+      BEFORE INSERT trigger on enrolments refuses a minor whose guardian
+      consent is unverified (`dob + interval '18 years' > current_date` —
+      the 18th birthday itself is the first adult day; 29 February clamps
+      to 28 February in common years, the Postgres convention mirrored
+      exactly by the pure logic and pinned by test). Registration is
+      age-gated: the server computes the age; an adult consents plainly
+      (two unticked boxes linking the Step 1 documents, never
+      pre-checked) and is provisioned real (consent writes + the
+      `is_test_account` flip, with rollback if the writes fail — no
+      half-open doors); a minor lands pending_guardian — the account
+      exists, enrolment waits, and the guardian gate stands at
+      `/register/guardian`. The token handler `/auth/verify-guardian`
+      hashes immediately, redeems once (guarded by `verified_at IS
+      NULL`), performs the three service-role writes, and lands the
+      guardian on one calm sentence: "Consent has been confirmed. The
+      student's academy access is now active." Tutors meet the
+      invitation gate — self-service refused with dignity, form and
+      action alike; the credential-review flow stands owed (collecting
+      credentials the platform cannot review would be a false feature).
+      `scripts/test-account.mjs` untouched; the test-era alert and
+      test_ack checkbox retired (declared). Verified:
+      test-onboarding-logic 33/33 (new) · validate-subjects ALL VALID ·
+      check-subject-sql PASS · next-action 34 · progress 16 ·
+      legal-logic 23 · full Phase 5–9 battery green · guards at declared
+      baselines · gate7 privacy audit PASS over 310 files (rebaselined)
+      · build clean, 41 pages · smoke: DoB gate live, guardian page
+      doors to login, verify handler honest, server killed by port.
+      DEC-038 records the step; STATE_LANGUAGE 10.2 pins the sentences.
 
 ## Brand direction (locked in Phase 2.1)
 

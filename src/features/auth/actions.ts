@@ -1,5 +1,6 @@
 "use server";
 
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { ROUTES } from "@/config/routes";
@@ -7,15 +8,24 @@ import { STATE_COPY } from "@/components/state/copy";
 import { logFailure } from "@/lib/state/log";
 import { AUTH_NOT_CONFIGURED_MESSAGE } from "@/lib/supabase/env";
 import { createClient } from "@/lib/supabase/server";
+import { createServiceClient } from "@/lib/supabase/service";
+import { consentAddressSource, hashConsentSource, isGuardianEmail, LEGAL_COPY } from "@/lib/legal/consent";
+import { issueGuardianVerification } from "@/lib/auth/guardian-verification";
+import { judgeOnboardingInput, ONBOARDING_COPY } from "@/lib/auth/onboarding";
 
 export interface AuthResult {
   error: string | null;
   notice?: string | null;
 }
 
-/* Phase 5: SIGNUP IS FOR TEST ACCOUNTS ONLY (P5-R1 Part 7). The legal
-   blockers (privacy, terms, contact, DPDP) are the owner's to resolve; no
-   real student is onboarded in Phase 5. The mechanism is built, not opened. */
+/* Phase 10 · Step 2 (DEC-038): SIGNUP IS AGE-GATED. The student path
+   computes the age server-side from the date of birth; an adult consents
+   to terms_v1 + privacy_v1 and is provisioned real (is_test_account flips
+   false); a minor lands pending_guardian — the guardian gate stands at
+   /register/guardian and enrolment waits (migration 0012's trigger
+   enforces the dormancy). The tutor path meets the invitation gate: a
+   calm refusal, no self-service. Test accounts keep their own path
+   (scripts/test-account.mjs, service role) — untouched. */
 
 function safeNext(next: FormDataEntryValue | null): string {
   const n = typeof next === "string" ? next : "";
@@ -54,16 +64,104 @@ export async function signIn(_prev: AuthResult, formData: FormData): Promise<Aut
 export async function signUp(_prev: AuthResult, formData: FormData): Promise<AuthResult> {
   const supabase = await createClient();
   if (!supabase) return { error: AUTH_NOT_CONFIGURED_MESSAGE };
+
+  // The tutor invitation gate (DEC-038): tutors are opened by invitation;
+  // self-service registration is refused here as visibly as in the form.
+  if (formData.get("role") === "tutor") return { error: ONBOARDING_COPY.tutorGateRefusal };
+
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
   const name = String(formData.get("name") ?? "").trim().slice(0, 80);
-  const role = formData.get("role") === "tutor" ? "tutor" : "student"; // admin is never self-serve
-  if (!email || password.length < 8) return { error: "Enter an email and a password of at least 8 characters." };
-  const { data, error } = await supabase.auth.signUp({ email, password, options: { data: { role, display_name: name } } });
+  const dobIso = String(formData.get("date_of_birth") ?? "").trim();
+  const judgement = judgeOnboardingInput(
+    {
+      name,
+      email,
+      password,
+      dobIso,
+      termsAccepted: formData.get("terms_v1") === "on",
+      privacyAccepted: formData.get("privacy_v1") === "on",
+      isEmailShape: isGuardianEmail,
+    },
+    new Date(), // the server's clock decides the age, never the browser's
+  );
+  if (!judgement.ok) return { error: judgement.sentence };
+
+  // No half-open doors: the consent writes need the service credentials, so
+  // their absence refuses the whole act before anything is created.
+  const service = createServiceClient();
+  if (!service) return { error: ONBOARDING_COPY.onboardingUnavailable };
+
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: { data: { role: "student", display_name: name, date_of_birth: dobIso } },
+  });
   if (error) return { error: signUpSentence(error) };
-  if (data.session) redirect(role === "tutor" ? ROUTES.tutor : ROUTES.student);
+  const userId = data.user?.id;
+  if (!userId) return { error: ONBOARDING_COPY.recordFailed };
+
+  if (judgement.path === "adult") {
+    // The verified onboarding path: consent recorded, account provisioned
+    // real. Any failure rolls the account back — nothing lands half-done.
+    const headerStore = await headers();
+    const ipHash = hashConsentSource(
+      consentAddressSource(headerStore.get("x-forwarded-for"), headerStore.get("x-real-ip")),
+    );
+    const writes = [
+      await service.from("legal_consents").insert({ user_id: userId, consent_type: "terms_v1", ip_hash: ipHash }),
+      await service.from("legal_consents").insert({ user_id: userId, consent_type: "privacy_v1", ip_hash: ipHash }),
+      await service.from("profiles").update({ is_test_account: false }).eq("id", userId),
+    ];
+    if (writes.some((w) => w.error)) {
+      await service.auth.admin.deleteUser(userId); // the rollback: the act never half-happens
+      logFailure({
+        scope: "action:signUp",
+        errorClass: String(writes.find((w) => w.error)?.error?.code ?? "ConsentWriteError"),
+        what: "consent record refused; account rolled back",
+      });
+      return { error: ONBOARDING_COPY.recordFailed };
+    }
+  }
+  // judgement.path === "minor": the account exists pending_guardian; the
+  // guardian gate at /register/guardian stands next. Nothing else is
+  // written — enrolment is trigger-blocked until verification.
+
+  if (data.session) redirect(ROUTES.student);
   // Email confirmation is on: no session until the link is followed (/auth/callback).
-  return { error: null, notice: "Check your email for a confirmation link. Until you follow it, no session exists." };
+  return {
+    error: null,
+    notice: judgement.path === "minor"
+      ? ONBOARDING_COPY.minorNextStep
+      : "Check your email for a confirmation link. Until you follow it, no session exists.",
+  };
+}
+
+/** The guardian gate's act (Phase 10 · Step 2): a signed-in pending student
+ *  names their guardian; the verification link is issued (one pending link
+ *  per student — issuing again replaces the standing one). The raw token
+ *  never reaches the browser: delivery is owed to the email channel, and
+ *  the outcome sentence says so honestly. */
+export async function startGuardianVerification(_prev: AuthResult, formData: FormData): Promise<AuthResult> {
+  const supabase = await createClient();
+  if (!supabase) return { error: AUTH_NOT_CONFIGURED_MESSAGE };
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: LEGAL_COPY.signInRequired };
+
+  const guardianEmail = String(formData.get("guardian_email") ?? "").trim();
+  if (!isGuardianEmail(guardianEmail)) return { error: LEGAL_COPY.invalidEmail };
+
+  const service = createServiceClient();
+  if (!service) return { error: ONBOARDING_COPY.onboardingUnavailable };
+
+  const issued = await issueGuardianVerification(service, user.id, guardianEmail);
+  if (!issued.ok) {
+    logFailure({ scope: "action:startGuardianVerification", errorClass: "LedgerWriteError", what: "verification row refused" });
+    return { error: ONBOARDING_COPY.recordFailed };
+  }
+  // `issued.token` is deliberately dropped here — it exists in the link's
+  // destination (the delivery channel) and nowhere else.
+  return { error: null, notice: ONBOARDING_COPY.verificationRecorded };
 }
 
 export async function signOut(): Promise<void> {
