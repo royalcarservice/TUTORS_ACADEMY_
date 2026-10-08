@@ -63,5 +63,18 @@ the same discipline as `docs/proposed/progress_record.sql`: noted, not applied.
 2. Webhook idempotency: LiveKit may retry deliveries; the placeholder uniqueness
    `(student_id, subject_id, kind, at)` is not a dedupe key — the session table
    will want one (e.g. unique (session_id, student_id, kind)).
-3. Presence honesty: does a join count as attendance at the join instant, or only
-   after a minimum stay? The fact's `at` should mean what we say it means.
+3. Presence honesty: ANSWERED by the Phase 7 · Step 2 brief (DEC-023) — zero
+   surveillance: no dwell-time tracking, no timers, no involuntary pings.
+   Attendance is the webhook's participant_joined fact and nothing more; the
+   fact's `at` means the join instant, never an inference.
+
+## What Step 2 (DEC-023) already built against this recon
+
+- Migration 0006: the first reader's policies on cohorts/cohort_tutors
+  (enrolment boundary for students, assignment for tutors, zero writes).
+- `/subjects/[subject]/live`: the staged surface — server components, zero
+  client JS, the standby sentence, the reserved tile grid on the subject's
+  substrate. The connection island mounts here in the wiring step.
+- `src/lib/livekit/config.ts`: readiness on env NAMES only. The wiring step
+  adds `livekit-server-sdk` (server-only), reads this module first, and brings
+  `livekit-client` only onto the live-room surface.

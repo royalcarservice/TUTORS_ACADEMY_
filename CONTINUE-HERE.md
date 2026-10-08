@@ -43,18 +43,21 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## IMMEDIATE ORDER
 
-1. **PHASE 7 IS UNDER WAY.** Step 1 done (2026-10-08): `progress_record` applied (migration 0004,
-   DEC-022) · cohort model drafted (migration 0005, zero policies by design) · pure record helpers +
-   18/18 tests · full battery green, build clean. **Next:** the live-classroom capability that owns
-   the `session-attended` referent — its sessions table decides the referent ruling (DEC-009's open
-   question), its surface writes the first cohorts RLS policies, and P6-R15's settling-GET rule binds
-   every new write. Reconnaissance for that capability is already recorded:
-   `docs/proposed/livekit_recon.md` (server-SDK facts, the cohort-session ↔ room mapping, webhook
-   writer for `session-attended`, and the three questions owed to the next brief). **Kinds stay
-   inadmissible until the module is live** — the table alone changes nothing on the arc.
-2. **Credentialed environment first, when available:** apply migrations 0004/0005, then run the Phase 6
-   debt list (`PHASE6_STEP6_REPORT.md` — the handover document): harness re-runs, DEC-020 baseline
-   re-pin, the matrix `--write` re-pin (W7), the signed-in journey re-walk.
+1. **PHASE 7 IS UNDER WAY.** Step 1 done: `progress_record` applied (DEC-022). Step 2 done
+   (2026-10-08, DEC-023): the first reader's policies (0006) · `/subjects/[subject]/live` staged
+   surface (server components, zero client JS, the brief's standby sentence) · the `class` provider
+   registered per the extension doc's P7 row (silent until `live-classroom` reads "live") · LiveKit
+   readiness on env NAMES only, no dependency yet · module flipped to in-progress. **Next:** the
+   WIRING step that makes the room real — the sessions table (settles DEC-009's referent question and
+   unlocks Tier 1 by ruling a session END), LiveKit credentials + `livekit-server-sdk`, the signed
+   webhook that writes `session-attended` rows through the service role, and the one client island for
+   media. Reconnaissance: `docs/proposed/livekit_recon.md`. P6-R15's settling-GET rule binds every
+   new write. **Kinds stay inadmissible until the module is live** — the scaffolding alone changes
+   nothing on the arc.
+2. **Credentialed environment first, when available:** apply migrations 0004/0005/0006, then run the
+   Phase 6 debt list (`PHASE6_STEP6_REPORT.md` — the handover document): harness re-runs, DEC-020
+   baseline re-pin, the matrix `--write` re-pin (W7 — the filesystem scan now includes
+   `/subjects/[subject]/live`), the signed-in journey re-walk.
 3. **Rulings owed to the owner:** the two static guards (gate W1) · the tagline question (W4) · the
    co-teacher grant question (DEC-018 Item 5). DEC-018 Item 4's cohort condition is now MET —
    cohort-scoped levers are arguable, but only by ruling, never by schema side effect.

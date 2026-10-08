@@ -1308,6 +1308,17 @@ tutor-assigned enrolment arrives (P6/P7).
       phase-close questions answered · verdict: **PHASE 6 IS COMPLETE.** The owed credentialed
       re-runs and two static-guard rulings are declared in the report's debt list.
 **Phase 7 — Live Classes**
+- [x] Step 2 — Cohort surfaces & real-time room integration -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      The first reader's policies (migration 0006: enrolment boundary for students, assignment for
+      tutors, zero writes, zero surveillance) · `/subjects/[subject]/live` staged surface (server
+      component, zero client JS: the subject's graphite/substrate atmosphere, the brief's standby
+      sentence verbatim, a reserved tile grid empty by honesty) · the `class` provider registered in
+      the next-action engine per the extension doc's P7 row (Tier 2 only — no session end, no Tier 1;
+      silent until the module is live) with DEC-022's attend-vs-resume sentence · LiveKit readiness on
+      env NAMES only, no dependency, no speculative wiring · `live-classroom` flipped to in-progress.
+      Verified: cohort-live 27/27 · next-action 34/34 (one pin refined, reason declared) · progress
+      16/16 · progress-record 18/18 · subjects 108/108 · build clean · HTTP smoke (307 login door,
+      themed 404, preserved environment). DEC-023 records it all.
 
 - [x] Step 1 — Progress record schema & cohort architecture -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
       `progress_record` applied (migration 0004, the DEC-009 shape: interim-neutral referent, tutor

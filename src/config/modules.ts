@@ -118,7 +118,16 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
     id: "live-classroom",
     name: "Live classroom",
     summary: "Real-time video sessions with a shared whiteboard and chat.",
-    status: "planned",
+    /* 7.2 (DEC-023): corrected from "planned" by the same rule as student-portal
+       (P5-R4 Addendum 2). The prerequisite is DONE (progress_record, migration
+       0004) and the module's first scaffolding is shipped: the cohort model
+       (0005/0006), the cohort data reader, the attend-versus-resume sentence in
+       the next-action engine (gated — emits nothing until this entry reads
+       "live"), and the staged live surface /subjects/[subject]/live. Sessions,
+       credentials and connection do NOT exist; "in-progress" is the honest
+       value the registry can express. The provider gate still requires "live",
+       so nothing new is emitted. */
+    status: "in-progress",
     surfaces: ["student", "tutor"],
     routePrefix: null,
   },
