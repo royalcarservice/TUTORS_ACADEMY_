@@ -32,6 +32,13 @@ import type { SubjectId } from "@/lib/student/contract";
 export const MAX_INQUIRY_CHARS = 500;
 export const MAX_GUIDANCE_CHARS = 500;
 
+/** THE COMPOSER'S LIMIT (Phase 9 · Step 2, DEC-034) — the lens's input
+ *  enforces the stricter three hundred at the point of composition
+ *  (conciseness is the discipline); the contract's 500 remains the OUTER
+ *  boundary the schema mirrors, so a writer that bypasses the composer
+ *  still lands inside the DB's check. */
+export const COMPOSER_CHAR_LIMIT = 300;
+
 /** The exchange's closed four classes — the DB's CHECK mirrors this union
  *  (migration 0009) and the test suite pins the two against each other. */
 export const SOCRATIC_PROMPT_TYPES = [

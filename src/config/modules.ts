@@ -150,7 +150,11 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
   {
     id: "ai-assistant",
     name: "AI learning assistant",
-    summary: "Context-aware tutor aid for doubt solving and revision.",
+    /* DEC-034: the summary names what EXISTS — the deterministic Socratic
+       engine (scaffolding, never answers). The status stays `planned` until
+       a provider-backed capability lands; the lens renders facts-gated in
+       the environment meanwhile (the DEC-008 precedent, student-slots). */
+    summary: "Bounded Socratic reflection and milestone-aware study guidance — conceptual scaffolding and disciplined questions, never solutions.",
     status: "planned",
     surfaces: ["student", "tutor"],
     routePrefix: null,

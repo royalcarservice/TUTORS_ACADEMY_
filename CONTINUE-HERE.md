@@ -61,8 +61,31 @@ whole pass. These rules are the fix, not ceremony.*
    re-stated never. Verified: test-socratic-logic 30/30 (new) · validate-subjects ALL VALID
    · check-subject-sql PASS · next-action 34 · progress 16 · tsc clean · build exit 0
    (33 pages). STATE_LANGUAGE 9.1 pins the engine's sentences. Live apply of 0009 is owed
-   with 0004–0008. **Next:** the persistence seam (the student's own INSERT, RLS first) and
-   the surface where guidance is spoken.
+   with 0004–0008.
+   **Step 2 done (2026-10-08, DEC-034): THE SOCRATIC LENS & REFLECTION SURFACE.** The lens is
+   embedded — an architectural region on the subject's substrate (mark · "Pedagogical
+   Reflection · {Subject}" · the honest capabilities statement · the exchange log · the
+   composer), NOT a chatbot widget: no avatar, no bubble, no typing indicator, no greeting,
+   zero animation — swept by test. The seam DEC-033 owed is built: `src/lib/socratic/data.ts`
+   reads the student's OWN recent exchanges (RLS the only boundary); one `"use server"`
+   action resolves through the pure engine, enriches citations with the record's own word
+   and date, and persists ONE row per exchange through the student's own INSERT. The
+   composer: milestone select · one field capped at 300 (the contract's 500 stays the outer
+   bound the DB mirrors) · "Reflect" · calm closed-vocabulary failures (STATE_LANGUAGE 9.2).
+   Cards: "Guiding Question" · "Conceptual Hint" · "Proof Reference" badges; citations link
+   into the subject archive in its own words. Wiring: the slot map's pre-declared
+   `ai-assistance` entry moves to gate "facts" (the DEC-008 precedent, declared);
+   `ai-assistant` STAYS `planned` in the registry (summary rewritten honestly) — no
+   homepage drift. With 0004–0009 unapplied the lens stands honestly absent in production
+   today: wired, dormant, waking with the live apply. `/dev/socratic-rehearsal` proves it
+   on specimen data (404 in production). Verified: test-socratic-surface 19/19 (new) ·
+   test-socratic-logic 31/31 · validate-subjects ALL VALID · check-subject-sql PASS ·
+   next-action 34 · progress 16 · guard at its declared baseline · tsc clean · build exit 0
+   (34 pages) · smoke: rehearsal 404 · mathematics 200 (zero socratic markup in a visitor's
+   HTML) · server killed by port.
+   **Next:** live apply of 0004–0009 in the credentialed environment and the populated-lens
+   walk (a real exchange round-trip through the student's own INSERT); the provider-backed
+   capability ruling, when the owner is ready, decides the registry flip.
 2. **PHASE 8 IS CERTIFIED (2026-10-08).** The Archive Gate (W1–W5) ran to verdict —
    `PHASE8_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase8-*.json`.
    Step 1 done (2026-10-08, DEC-029): the archive's foundation —

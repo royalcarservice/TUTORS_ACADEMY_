@@ -43,6 +43,11 @@ t("contract — the brevity limits are 500 and 500, exactly as briefed", () => {
   assert.equal(MAX_GUIDANCE_CHARS, 500);
 });
 
+t("contract — the composer's stricter 300 sits below the 500 the schema mirrors (DEC-034)", () => {
+  assert.equal(CONTRACT.COMPOSER_CHAR_LIMIT, 300);
+  assert.ok(CONTRACT.COMPOSER_CHAR_LIMIT < MAX_INQUIRY_CHARS);
+});
+
 t("contract — the prompt-type union is the closed four", () => {
   assert.deepEqual([...SOCRATIC_PROMPT_TYPES], ["conceptual_hint", "socratic_question", "proof_reference", "reflection_summary"]);
 });

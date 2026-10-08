@@ -1565,6 +1565,43 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       tsc clean · build exit 0 (33 pages — no route added). DEC-033 records
       it; STATE_LANGUAGE 9.1 pins the engine's sentences. The persistence
       seam and the speaking surface stand owed to later steps.
+- [x] Step 2 — The Socratic lens & reflection surface -> PHASE 9 BRIEF (2026-10-08) — **BUILT.**
+      The lens, embedded. An integrated ARCHITECTURAL region on the
+      subject's substrate — bordered, the subject mark beside
+      "Pedagogical Reflection · {Subject}", one honest capabilities
+      statement ("It does not replace your tutor or solve exercises
+      directly") — NOT a floating chatbot widget: no avatar, no bubble,
+      no typing indicator, no greeting, zero animation (all swept by
+      test). The seam DEC-033 owed is built: `src/lib/socratic/data.ts`
+      reads the student's OWN recent exchanges (RLS the only boundary,
+      0009) and assembles the lens's data; `src/lib/socratic/actions.ts`
+      is one `"use server"` action — resolve through the pure engine,
+      enrich any citation with the record's own word and date, persist
+      ONE row per exchange through the student's own INSERT. The
+      composer is the one client island: a milestone select, one field
+      capped at 300 characters (the contract's 500 stays the outer
+      bound the DB mirrors) with a quiet counter, the placeholder
+      "Formulate a question about {concept}...", ONE action — Reflect —
+      and failures as one calm sentence from a closed vocabulary
+      (STATE_LANGUAGE 9.2). Each guidance renders as a structured card:
+      the badge ("Guiding Question" · "Conceptual Hint" · "Proof
+      Reference"), the body in the reading face, and a citation as one
+      compact link — "Review {Board Record · Session Notation · Chamber
+      Audio} from session on {date}" — into the subject archive. The
+      wiring: the slot map's pre-declared `ai-assistance` entry moves
+      to gate "facts" (the DEC-008 precedent, declared) — the engine is
+      self-contained, so the lens renders from enrolment; `ai-assistant`
+      STAYS `planned` in the registry until a provider-backed capability
+      lands (summary rewritten honestly). With 0004–0009 unapplied, the
+      exchange read fails and the lens stands honestly absent in
+      production today — wired, dormant, waking with the live apply.
+      `/dev/socratic-rehearsal` proves it on specimen data (404 in
+      production). Verified: test-socratic-surface 19/19 (new) ·
+      test-socratic-logic 31/31 · validate-subjects ALL VALID ·
+      check-subject-sql PASS · next-action 34 · progress 16 · guard at
+      its declared baseline · tsc clean · build exit 0 (34 pages) ·
+      smoke: rehearsal 404 · mathematics 200 (zero socratic markup in a
+      visitor's HTML) · server killed by port. DEC-034 records it.
 **Phase 10 — Polish + Performance**
 
 ## Brand direction (locked in Phase 2.1)

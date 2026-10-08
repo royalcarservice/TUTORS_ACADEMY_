@@ -421,3 +421,41 @@ disciplined question serves reflection better than a lengthy essay. No
 surface speaks these sentences yet — the engine is schema and pure logic;
 the day a surface renders them, it renders them exactly as pinned in
 `scripts/test-socratic-logic.mjs`.
+
+
+## 9.2 addendum — the Socratic lens's language (Phase 9 · Step 2, DEC-034)
+
+The lens speaks the engine's register on the subject's substrate: an
+architectural region — bordered, marked, titled — never a chatbot widget.
+No avatar, no bubble, no typing indicator, no greeting, no exclamation.
+The region names what it does and what it refuses, in one sentence.
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `Pedagogical Reflection · {Subject}` | the lens's title, beside the subject mark | one region, one subject, one reader |
+| `This lens provides conceptual scaffolding and references based on your active milestones. It does not replace your tutor or solve exercises directly.` | the capabilities statement | the engine's boundary, stated once |
+| `No reflections are recorded here yet. Ask about the stage you are working on; the lens keeps the guidance it returns.` | the empty log | absence, named; the composer still works |
+| `Formulate a question about {concept}...` | the composer's placeholder | the inquiry names its milestone |
+| `Reflect` | the composer's ONE action | the verb of the region |
+
+The card's badges are the closed three — `Guiding Question`, `Conceptual
+Hint`, `Proof Reference`; a citation stands in one compact sentence:
+`Review {Board Record · Session Notation · Chamber Audio} from session on
+{date}`, in the archive's own word, linking to the record's anchor in the
+subject archive.
+
+The composer's failures speak the closed vocabulary, calmly:
+
+| state | the sentence (verbatim) |
+| --- | --- |
+| empty inquiry | `Write the question first; the lens reflects on what you ask.` |
+| past the 300-character composer limit | `A shorter question serves reflection best. The limit is three hundred characters.` |
+| the seam could not record | `The reflection could not be recorded. The lens stays as it was; try again when you are ready.` |
+
+Brevity is structural: the composer enforces three hundred characters at
+the point of composition; the contract's five hundred remains the outer
+bound the schema mirrors. Cheerful conversational filler ("Hey there",
+"How can I help you today", "Certainly", "Great question") is banned and
+swept; the engine's 9.1 postures govern every guidance body the card
+renders. Zero animation in the region: the lens is architecture, not
+theatre.
