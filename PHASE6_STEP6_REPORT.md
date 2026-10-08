@@ -1,6 +1,6 @@
 # PHASE 6 · STEP 6 — THE TUTOR GATE
 
-**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ **W5 ✅ (this report)** — W6 onward pending.
+**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ **W6 ✅ (this report)** — W7 onward pending.
 Branch `arena/e6e6e569-tutors-academy`. Every command under `timeout -k 5 N`; servers killed by port (`ss -ltnp`) in the same invocation.
 
 **Preconditions confirmed:** 6.5 reported (`PHASE6_STEP5_REPORT.md`, commit `0c79f3d`); its Part 0 rulings P6-R17–P6-R20 landed (DEC-018); P6-R21 delivered as the owner ruling that closed 6.5 §10 / `docs/TUTOR_DISTANCE.md` row 8 (DEC-018 addendum, `ebcbe87`); typography self-hosted so `npm run build` runs here (DEC-019). Nothing known-broken outstanding.
@@ -131,9 +131,76 @@ Swept every tutor-facing string (`src/components/tutor/*`, `src/app/(portal)/tut
 
 ---
 
-## Owed to a credentialed environment (unchanged from W3, plus this window's)
+## Part W6 — THE TUTOR'S JOURNEY, READ WHOLE
 
-Live migration apply + live zero-real-identity count · browser/DB harness re-runs (page/journey/gate/tutor/levers/identity-matrix/states/environment/relationship) · homepage baseline re-pin (this window — DEC-020) · the two static-guard rulings.
+**Environment note (declared up front).** `.env.local` is absent in this sandbox, so **no signed-in session can be created here**. The journey therefore has two evidentiary classes, labelled on every row: **LIVE** — measured this window against the production build (`npm ci` 384 packages after the re-provision · `npm run build` exit 0, validator first · `next start` on port 3000, torn down by port in the same invocation each time) — covering the signed-out path and the visitor-rendered room; and **RECORDED** — the credentialed-project baselines (`audit/identity-matrix.json` 2026-10-03, 80 routes × 6 identity classes + write probes; `audit/tutor-baseline.json` 38 gates; `audit/relationship-baseline.json` 32 gates / 11 cases; `audit/tutor-states.json` 14 gates) plus the 6.2–6.5 step reports. The W4/W5 windows touched homepage copy and docs only — no tutor surface changed since those baselines, so they remain current.
+
+### Step 1 — the timed walk & status trace
+
+**The six steps of the journey, signed-out (LIVE, measured this window):**
+
+| # | Step | Observed | Status | Where it sends you | Latency |
+|---|---|---|---|---|---|
+| 1 | `/tutor` (the shell) | first hit cold, warm after | **307** | `/login?next=%2Ftutor` | 0.107 s → 0.007 s |
+| 2 | `/tutor/physics/<uuid>` (a relationship) | the URL names an arrangement, never a person | **307** | `/login?next=…` preserved exactly | 0.007 s |
+| 3 | `/tutor/physics/environment` (shaping) | | **307** | `/login?next=…` | 0.008 s |
+| 4 | `/subjects/physics` (the room itself) | physics is **draft** (the authored set: 1 ready subject — mathematics — and 5 draft). A visitor gets the canonical 404; the PLACED tutor gets 200 (RECORDED: identity matrix, tutor T × physics) | **404** visitor / **200** placed tutor | — | 0.197 s |
+| 4′ | `/subjects/mathematics` (the ready room — what standing in a room renders) | identity only: "Mathematics — The Lattice — structure you can stand on." | **200** | — | 0.261 s |
+| 5 | `POST /tutor/physics/environment/shape` (unauthed) | the proxy's auth redirect fires BEFORE route handling — an unauthored write can never reach the write path | **307** | `/login?next=…environment` | 0.010 s |
+| 5′ | `GET /tutor/physics/environment/shape` (POST-only route) | same layering while signed out; the observable GET-only 405 without a session is `/subjects/<subject>/enter` (W3) | **307** unauthed | — | 0.007 s |
+| 6 | `/tutor/account` | | **307** | `/login?next=…` | 0.004 s |
+| — | `/login?next=%2Ftutor` (where every step lands) | the honest arrival: one form, the destination preserved as a hidden GET input — never replayed as a write (5.7) | **200** | — | 0.054 s |
+
+**Signed-in (RECORDED, credentialed project):** the same walk as tutor T — `/tutor` 200 (statement-first shell) · `/tutor/physics/<rel>` 200 for the one active relationship, **404 · same bytes** for never-related / ended / malformed ids (P6-R9: the surface cannot confirm or deny that a person exists) · `/tutor/physics/environment` 200 with the two-lever form · `/subjects/physics` 200 — admitted to the draft room's identity, every student region denied (P6-R19) · `POST …/shape` 303 on success / `?shape=failed` on unauthored values / **409 + the ruling's sentence** on a stale write (P6-R21); visitor/expired probes recorded at 303 with the row untouched. Every step is 200 at the end of 6.5 for a placed tutor; the one 404 such a tutor meets is a subject they are not placed in, and it says *"There is no page at this address."*
+
+**3-second / 10-second takeaway (signed-out):** at 3 s — a login page that guesses nothing about the visitor; at 10 s — the preserved `next` parameter makes plain that signing in returns them exactly where they were headed. No content leaks ahead of identity; the 307 carries no hint of what the page holds.
+
+### Step 2 — dead-end inventory (honesty at the point of stopping)
+
+Swept every tutor surface for the four capability classes the journey names. **None exists as a control anywhere** — there is nothing to disable, grey out, or spin:
+
+| Where a tutor would stop | What is actually there | Honest at the point of stopping? |
+|---|---|---|
+| Direct messaging / chat | No component, no route, no nav item. The shell's statement: *"The students placed with you are listed below, by subject. Placing is done by the academy, not from this page. **Teaching surfaces are not built.**"* | ✅ sentence, not a dead button |
+| Assignment dispatch / grading | Nothing. The relationship surface: *"This page reads the record and changes nothing. Nothing here is done by a tutor yet: **teaching surfaces are not built.**"* | ✅ sentence at the point of absence |
+| Live class launch / video room | Nothing; the nav holds three real destinations, all 200 — *"No disabled or 'coming soon' items; nothing named that the registry does not declare built"* (`config/tutor-nav.ts`) | ✅ nothing to click, nothing pretending |
+| Student removal / relationship termination | No control by ruling (P6-R9); an ended row is 404 · same bytes; a tutor with no placements gets *"No student is placed with you."* + the academy-does-placing reason | ✅ the absence is stated |
+
+`grep disabled` across all tutor surfaces: **zero controls** (the only match is the comment *"No invented CTA, no disabled control, no apology"*). No spinner, skeleton, or loader exists on any tutor route (5.7's refusals apply segment-wide).
+
+### Step 3 — the second visit
+
+**"Nothing changed" — confirmed as the product's true and dignified answer.** Evidence: no events table exists, so shell state C is unreachable (`data.ts`: *"C is unreachable today: no events table exists"*); the tutor slot registry is **empty by construction** (`slots.tsx`: *"Today the registry is EMPTY on purpose"*); and no notification, streak, badge, unread count, "since your last visit", or welcome-back string exists anywhere in the tutor segment (swept — the only matches are a read-failure class name `SettingsUnread` and the student-space `StatusBadge`, which the tutor layout does not import). The shell renders the **same two sentences on every visit**; the relationship surface the same arc; and the arc cannot move without an admissible event (5.6: none admissible today). The only legitimate difference a second visit can show is the shaping surface's own record of the tutor's action — *"Last shaped by you."* — which is theirs. **No invented urgency, no artificial streaks, no unearned notifications: verified absent, not merely unused.**
+
+### Step 4 — the three-second skim ("what now?")
+
+| Surface | The 3-second answer | P6-R4 held? |
+|---|---|---|
+| `/tutor` | h1 **is** the answer: *"Nothing to do here."* (or *"No student is placed with you."*) with the WHY in the next line of the same frame | ✅ — the statement precedes everything; no hunting |
+| `/tutor/[subject]/[relationship]` | Name · subject · where the learning is — then *"This page reads the record and changes nothing."* Read, then one link back | ✅ |
+| `/tutor/[subject]/environment` | The honest answer here is NOT "nothing": shaping is live. 3-second read: which room · its current state · the two levers · the blast-radius sentence before the one primary | ✅ — the act it offers is real (the write works, refuses honestly), never a pose |
+
+Two surfaces that say "nothing right now, and here is why"; one that offers exactly one real act. That is the shape P6-R4 designed, and it held across all three.
+
+### Step 5 — the adversarial read (monitored · blamed · given a duty not agreed)
+
+Hunted deliberately — vocabulary-swept (`must · should · need to · failed · forgot · responsib · overdue · remind · missed · late · absent · inactive · obligation · check in`) plus a line-by-line read of every tutor string:
+
+- **Responsibility for a student's absence?** No. No tutor surface reads or renders login recency, entry counts, or timing — the relationship reader's column list *is* the enforcement (`select("first_entered_at")` only, and even that renders as the arc's stage word, never a date, never "hasn't visited"). There is no sentence anywhere that could attach a student's silence to the tutor.
+- **The platform monitoring the tutor?** The only record of the tutor on any surface is their own — *"Last shaped by you."* / *"Last shaped by another tutor."* (a fact on a design-config row; no name, no date rendered). The row's timestamp exists in code only as P6-R21's freshness token and is **never rendered as a date**. No tutor activity log, no "last active", no responsiveness metric exists in the codebase. The conflict refusal names the fact, never the person.
+- **Duties never contracted?** None imposed. *"Teaching surfaces are not built"* reads as a **release** from duty, not an assignment of one. The blast-radius sentence checked: deliberately weighty (*"…including students you do not teach…"*) — informed consent before a shared-room write (P6-R12), pressure applied to the *save*, never to the person. Two near-misses examined and cleared: *"Nothing to do here."* could read curt — it is immediately followed by its reason in the same frame (6.2's copy audit chose it over apology-flavoured alternatives); and no failure path carries alarm words (*"That did not save. The environment is unchanged…"*, *"Your students could not be read just now…"*).
+
+**Adversarial verdict: no moment found where a tutor would feel monitored, blamed, or conscripted.**
+
+### W6 verdict
+
+**The journey is dignified end to end on every leg this window can run, and recorded-green on the credentialed leg.** Signed-out: one uniform 307-to-login across every tutor route, destination preserved, nothing leaked. Signed-in (recorded): statement-first shell, one-address-one-relationship pages, a live act offered exactly once, honesty sentences at every stopping point, and nothing that changes between visits except the tutor's own deed. **Zero defects found; zero copy changes made — this window changed nothing.** Owed to the credentialed environment: a live re-walk with a placed-tutor session (timing the signed-in leg, screenshotting the first visit), alongside the owed harness re-runs.
+
+---
+
+## Owed to a credentialed environment (cumulative through W6)
+
+Live migration apply + live zero-real-identity count · browser/DB harness re-runs (page/journey/gate/tutor/levers/identity-matrix/states/environment/relationship) · homepage baseline re-pin (W4 — DEC-020 is the reason) · a live signed-in re-walk of the tutor journey with a placed-tutor session, timed and screenshotted (W6) · the two static-guard rulings.
 
 ## STOP
 
