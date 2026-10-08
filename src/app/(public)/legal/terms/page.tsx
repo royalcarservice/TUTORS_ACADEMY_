@@ -11,16 +11,18 @@ export const metadata: Metadata = {
 /* TERMS OF ACADEMY PRACTICE — Phase 10 · Step 1 (DEC-037, resolves E-07).
    Written to be read: clear, honest, calm. Every sentence claims only what
    the product does today (Phase 9, migrations 0001–0011); what is owed is
-   named as owed. Version terms_v1 — the consent audit (migration 0011)
-   records acceptance of exactly this version; a revision is a new version
-   and a new consent, never a silent change. */
+   named as owed. Version terms_v2 (Track 3, DEC-044): the commerce
+   revision — tuition becomes a threshold outside the chambers. The consent
+   audit (migration 0011, extended 0011-in-place) records acceptance of the
+   version offered at signup; v1 rows remain readable history. A revision
+   is a new version and a new consent, never a silent change. */
 
 export default function TermsPage() {
   return (
     <LegalPage
       eyebrow="Legal"
       title="Terms of Academy Practice"
-      version="Version terms_v1 · effective 8 October 2026"
+      version="Version terms_v2 · effective 8 October 2026"
     >
       <LegalSection title="1 · What this academy is">
         <LegalP>
@@ -48,7 +50,7 @@ export default function TermsPage() {
           site pretends otherwise.
         </LegalP>
         <LegalP>
-          Accepting these terms is recorded in the consent audit as version terms_v1: who
+          Accepting these terms is recorded in the consent audit as version terms_v2: who
           accepted, when, and a one-way hash of the connecting address. The record belongs to the
           account it was made for, and only that account can read it.
         </LegalP>
@@ -69,11 +71,13 @@ export default function TermsPage() {
 
       <LegalSection title="4 · No commercial lock-in">
         <LegalP>
-          The academy does not sell access in-product: there are no plans, no checkout, no
-          invoices and no payments anywhere on this site. Enrolment in a subject is a choice the
-          student makes, and withdrawal is one quiet act — the enrolment is marked withdrawn and
-          the door closes without penalty. Records held by the academy fall away with the
-          account: deleting an account deletes its rows across every table, by construction.
+          Tuition is a threshold, not a leash: one payment per term per subject, settled at the
+          checkout door, and nothing inside a subject chamber ever asks for payment again — no
+          plans, no upgrades, no selling in-product. Enrolment in a subject is a choice the
+          student makes, and withdrawal is one quiet act — the enrolment is marked withdrawn,
+          the door closes without penalty, and the term's tuition is refunded pro-rata to the
+          day of leaving. Records held by the academy fall away with the account: deleting an
+          account deletes its rows across every table, by construction.
           Nothing here is designed to be difficult to leave.
         </LegalP>
       </LegalSection>

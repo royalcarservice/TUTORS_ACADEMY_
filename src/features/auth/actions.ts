@@ -20,7 +20,7 @@ export interface AuthResult {
 
 /* Phase 10 · Step 2 (DEC-038): SIGNUP IS AGE-GATED. The student path
    computes the age server-side from the date of birth; an adult consents
-   to terms_v1 + privacy_v1 and is provisioned real (is_test_account flips
+   to terms_v2 + privacy_v2 and is provisioned real (is_test_account flips
    false); a minor lands pending_guardian — the guardian gate stands at
    /register/guardian and enrolment waits (migration 0012's trigger
    enforces the dormancy). The tutor path meets the invitation gate: a
@@ -79,8 +79,8 @@ export async function signUp(_prev: AuthResult, formData: FormData): Promise<Aut
       email,
       password,
       dobIso,
-      termsAccepted: formData.get("terms_v1") === "on",
-      privacyAccepted: formData.get("privacy_v1") === "on",
+      termsAccepted: formData.get("terms_v2") === "on",
+      privacyAccepted: formData.get("privacy_v2") === "on",
       isEmailShape: isGuardianEmail,
     },
     new Date(), // the server's clock decides the age, never the browser's
@@ -109,8 +109,8 @@ export async function signUp(_prev: AuthResult, formData: FormData): Promise<Aut
       consentAddressSource(headerStore.get("x-forwarded-for"), headerStore.get("x-real-ip")),
     );
     const writes = [
-      await service.from("legal_consents").insert({ user_id: userId, consent_type: "terms_v1", ip_hash: ipHash }),
-      await service.from("legal_consents").insert({ user_id: userId, consent_type: "privacy_v1", ip_hash: ipHash }),
+      await service.from("legal_consents").insert({ user_id: userId, consent_type: "terms_v2", ip_hash: ipHash }),
+      await service.from("legal_consents").insert({ user_id: userId, consent_type: "privacy_v2", ip_hash: ipHash }),
       await service.from("profiles").update({ is_test_account: false }).eq("id", userId),
     ];
     if (writes.some((w) => w.error)) {

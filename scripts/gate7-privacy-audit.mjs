@@ -92,6 +92,8 @@ const ALLOWLIST = {
     "credentialing state pills (Verified/Pending) via the shared Badge primitive — administrative chrome, never a student-facing live surface",
   "src/components/admin/subject-levers.tsx":
     "current lever-value pill via the shared Badge primitive — administrative chrome, never a student-facing live surface",
+  "src/app/(portal)/admin/billing/page.tsx":
+    "invoice state pills (settled/pending/refunded) via the shared Badge primitive — administrative audit chrome, never a student-facing live surface",
   "src/components/admin/tutor-applications.tsx":
     "application state pill (Pending approval) via the shared Badge primitive — administrative chrome, never a student-facing live surface",
   "src/components/switch/subject-switch.tsx":

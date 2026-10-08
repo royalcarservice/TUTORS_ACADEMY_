@@ -13,6 +13,7 @@ const TABS = [
   { href: "/admin/placements", label: "Placements" },
   { href: "/admin/tutors", label: "Tutor Roster" },
   { href: "/admin/subjects", label: "Subject Rooms" },
+  { href: "/admin/billing", label: "Billing" },
 ] as const;
 
 export function AdminSubnav() {

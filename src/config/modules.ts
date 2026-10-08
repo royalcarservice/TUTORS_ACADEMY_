@@ -139,6 +139,26 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
     routePrefix: "/admin/subjects",
   },
   {
+    id: "admin-billing",
+    name: "Billing",
+    summary: "The invoice ledger for platform audit; tutors have no read path.",
+    status: "live",
+    surfaces: ["admin"],
+    routePrefix: "/admin/billing",
+  },
+  {
+    /* Unfinished Work · Track 3 (DEC-044): the financial threshold. One
+       flat term tuition; checkout and webhook settlement; chambers stay
+       free of commerce (P6-R8). The 6.3 removal is reversed by the phase
+       that delivers it — this is that phase. */
+    id: "tuition-payments",
+    name: "Tuition & payments",
+    summary: "One flat term tuition per chamber; settlement provisions enrolment.",
+    status: "live",
+    surfaces: ["public", "student", "admin"],
+    routePrefix: "/tuition",
+  },
+  {
     /* PHASE 7 PREREQUISITE (5.6 close-out): before this module records anything,
        create public.progress_record from docs/proposed/progress_record.sql —
        Phase 7's FIRST task. The open referent question in that file must be

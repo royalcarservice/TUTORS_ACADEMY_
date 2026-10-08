@@ -8,7 +8,9 @@
    network, the clock beyond defaults, or the database.
 
    THE POSTURES THIS MODULE PINS
-   · The consent union is CLOSED: terms_v1 · privacy_v1 · guardian_consent_v1.
+   · The consent union is CLOSED: terms_v1 · privacy_v1 · guardian_consent_v1
+     · terms_v2 · privacy_v2 (Track 3, DEC-044): the commerce revision — v1 rows
+       remain readable history; new acceptances record the v2 versions.
      A future terms revision is a NEW type (terms_v2), never a mutation.
    · guardian_email belongs to ONE consent type. Required there, forbidden
      elsewhere — the column means one thing (migration 0011 CHECKs it too).
@@ -24,7 +26,7 @@
 import { createHash } from "node:crypto";
 
 /** The closed consent union (migration 0011 mirrors this CHECK verbatim). */
-export const CONSENT_TYPES = ["terms_v1", "privacy_v1", "guardian_consent_v1"] as const;
+export const CONSENT_TYPES = ["terms_v1", "privacy_v1", "guardian_consent_v1", "terms_v2", "privacy_v2"] as const;
 export type ConsentType = (typeof CONSENT_TYPES)[number];
 
 /** The type-guard the actions and the suite share. */

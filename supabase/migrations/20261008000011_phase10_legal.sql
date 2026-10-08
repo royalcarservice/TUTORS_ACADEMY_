@@ -36,7 +36,7 @@
 create table public.legal_consents (
   id             uuid primary key default gen_random_uuid(),
   user_id        uuid not null references public.profiles (id) on delete cascade,
-  consent_type   text not null check (consent_type in ('terms_v1', 'privacy_v1', 'guardian_consent_v1')),
+  consent_type   text not null check (consent_type in ('terms_v1', 'privacy_v1', 'guardian_consent_v1', 'terms_v2', 'privacy_v2')),
   guardian_email text check (char_length(guardian_email) <= 254),
   consented_at   timestamptz not null default now(),
   ip_hash        text not null check (char_length(ip_hash) = 64),

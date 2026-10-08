@@ -499,6 +499,38 @@ gamification, and the strict pass keeps the live surfaces clean.
 
 ---
 
+## DEC-044 — Tuition & the Payment Gateway (Unfinished Work · Track 3, 2026-10-08)
+
+**The problem:** the platform had no financial threshold, and the terms
+pinned the opposite ("no checkout, no invoices, no payments anywhere on
+this site"). Commerce arriving meant the legal surface had to move WITH
+the feature, by its own versioning rule.
+
+**The ruling:** one flat term tuition per chamber — no tiers, no anchors,
+no countdown. The threshold lives at /tuition and /checkout/[subject];
+chambers stay free of commerce (P6-R8). Settlement (webhook in live mode,
+simulated in demonstration mode) flips the invoice to settled, provisions
+the enrolment, and places the student only when EXACTLY ONE tutor is
+active in the subject — more candidates means the decision belongs to the
+admin console. Tutors have no read path on invoices: who paid never
+colours the pedagogy (migration 0014, default-deny).
+
+**The legal revision:** terms_v2 + privacy_v2. Clause 4 becomes "commerce
+is a threshold, not a leash" while keeping its pinned title and leaving
+sentence; the privacy notice names Stripe as processor when configured.
+The consent union extends (0011 edited in place — NO production database
+has applied these migrations; the launch checklist carries them all as
+unapplied owner debt); new signups record v2, v1 rows stay readable
+history. A re-consent flow for EXISTING v1 accounts stands owed — named
+here, not pretended.
+
+**Stripe posture:** the browser meets Stripe only as a top-level navigation
+to its hosted page — the CSP never carries a third-party script. Keys
+(STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET) are names only; unconfigured
+endpoints answer with one calm sentence and change nothing.
+
+---
+
 ## DEC-043 — Real Onboarding & the Tutor Application Door (Unfinished Work · Track 2, 2026-10-08)
 
 **The problem:** student self-serve registration existed but the schema held

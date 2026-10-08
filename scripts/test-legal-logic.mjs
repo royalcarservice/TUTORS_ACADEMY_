@@ -32,16 +32,16 @@ const DATA_SRC = "src/lib/legal/data.ts";
 
 /* ── 1 · the consent union is closed ─────────────────────────────────────── */
 t("the consent union is exactly the closed three", () => {
-  assert.deepEqual([...CONSENT_TYPES], ["terms_v1", "privacy_v1", "guardian_consent_v1"]);
+  assert.deepEqual([...CONSENT_TYPES], ["terms_v1", "privacy_v1", "guardian_consent_v1", "terms_v2", "privacy_v2"]);
 });
 t("the type guard admits only the union", () => {
   for (const c of CONSENT_TYPES) assert.ok(isConsentType(c), `${c} refused`);
-  for (const bad of ["terms_v2", "guardian_consent_v2", "answer", "", "TERMS_V1"]) {
+  for (const bad of ["terms_v3", "guardian_consent_v2", "answer", "", "TERMS_V1"]) {
     assert.ok(!isConsentType(bad), `${bad} admitted`);
   }
 });
 t("validateConsentInput refuses anything outside the union — calmly", () => {
-  for (const bad of ["terms_v2", "marketing_v1", ""]) {
+  for (const bad of ["terms_v3", "marketing_v1", ""]) {
     const v = validateConsentInput(bad, null);
     assert.equal(v.ok, false, `${bad} admitted`);
     assert.equal(v.sentence, LEGAL_COPY.recordFailed);

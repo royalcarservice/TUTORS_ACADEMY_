@@ -19,6 +19,11 @@ export const ROUTES = {
   /** The onboarding continuation (Phase 10 · Step 2, DEC-038). */
   registerGuardian: "/register/guardian",
   verifyGuardian: "/auth/verify-guardian",
+  /** The financial threshold (Unfinished Work · Track 3, DEC-044). */
+  tuition: "/tuition",
+  checkout: "/checkout",
+  checkoutSuccess: "/checkout/success",
+  adminBilling: "/admin/billing",
 } as const;
 
 export type AppRoute = (typeof ROUTES)[keyof typeof ROUTES];

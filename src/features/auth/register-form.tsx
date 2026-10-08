@@ -173,7 +173,7 @@ export function RegisterForm({ configured }: { configured: boolean }) {
               <fieldset className="flex flex-col gap-3">
                 <legend className="sr-only">Consent</legend>
                 <label className="flex cursor-pointer items-start gap-2.5">
-                  <Checkbox name="terms_v1" required className="mt-0.5" />
+                  <Checkbox name="terms_v2" required className="mt-0.5" />
                   <span className="text-sm leading-relaxed text-foreground-muted">
                     I have read and accept the{" "}
                     <Link href={ROUTES.legalTerms} className="font-semibold text-brand-600 hover:text-brand-900">
@@ -183,7 +183,7 @@ export function RegisterForm({ configured }: { configured: boolean }) {
                   </span>
                 </label>
                 <label className="flex cursor-pointer items-start gap-2.5">
-                  <Checkbox name="privacy_v1" required className="mt-0.5" />
+                  <Checkbox name="privacy_v2" required className="mt-0.5" />
                   <span className="text-sm leading-relaxed text-foreground-muted">
                     I have read and accept the{" "}
                     <Link href={ROUTES.legalPrivacy} className="font-semibold text-brand-600 hover:text-brand-900">

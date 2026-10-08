@@ -22,7 +22,7 @@ export default function PrivacyPage() {
     <LegalPage
       eyebrow="Legal"
       title="Privacy & Data Protection Notice"
-      version="Version privacy_v1 · effective 8 October 2026"
+      version="Version privacy_v2 · effective 8 October 2026"
     >
       <LegalSection title="1 · The short version">
         <LegalP>
@@ -47,6 +47,13 @@ export default function PrivacyPage() {
             "Consents: which version of these documents you accepted, when, your guardian's email address if you are a minor, and a one-way hash of the connecting address at the instant of consent.",
           ]}
         />
+        <LegalP>
+          Payment, when tuition is settled (version privacy_v2, Track 3): the provider — Stripe,
+          in deployments where it is configured — receives the billing contact and the payment
+          itself on its own hosted page. The academy keeps only the invoice: the subject, the
+          amount, the settlement state and the provider's truncated reference. No card number
+          ever touches the academy, and no payment record is ever shown to a tutor.
+        </LegalP>
       </LegalSection>
 
       <LegalSection title="3 · What is never collected">
