@@ -6,7 +6,8 @@
      1. bearer-shaped JWTs (Supabase anon/service keys are JWTs),
      2. cloud key shapes (AWS access keys),
      3. private key blocks,
-     4. credentialed connection strings (postgres://user:pass@…),
+     4. connection strings with embedded credentials (a postgres URL
+        carrying a password between the scheme and the host),
      5. secret-looking literal assignments,
      6. real email addresses (allowlist: RFC-2606 reserved TLDs, fixture
         domains and declared placeholders — reasons below, not waivers),
@@ -39,6 +40,8 @@ const EMAIL_FILE_ALLOWLIST = {
   // quotes the P5-R2 verification where a real-looking address was REFUSED
   // by test-account.mjs's domain guard; the address is the refusal's example
   "PHASE5_R2_CORRECTION_REPORT.md": "someone@gmail.com",
+  // this file's own allowlist must name the address it allows (self-clean)
+  "scripts/audit-secrets.mjs": "someone@gmail.com",
 };
 
 const detectors = [

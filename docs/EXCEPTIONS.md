@@ -141,3 +141,17 @@ frame-ancestors 'none' refuses iframe embedding by design · nonce-based
 CSP tightening · the LiveKit connect-src addition · the shared-store
 limiter for multi-instance deployments · the timing-parity walk. Count
 unchanged: **18 open.**
+
+### Phase 10 gate note — the capstone ran clean, count unchanged (2026-10-08)
+
+The Final Platform Gate (W1–W5, DEC-040) ran to verdict with ZERO
+remediation: 308 tests green across all ten phases, both static guards at
+their declared baselines, the zero-leak sweep clean (one self-clean fix to
+the sweep's own documentation, declared in the window), five windows, five
+passes. **No new exception opened.** What the gate OWES is the launch
+checklist itself — recorded in `PHASE10_FINAL_GATE_REPORT.md`, not here,
+because each item is a credentialed or browsered act, not a silence the
+product hides: the live apply of 0001–0012 · the three environment
+variables · the email delivery channel · the credentialed walks · the
+browsered baseline re-pins · the owner rulings. Count unchanged:
+**18 open.**

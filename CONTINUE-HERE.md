@@ -1,4 +1,4 @@
-# CONTINUE HERE — read this file first, then `prompts/README.md`
+# CONTINUE HERE — read this file first (the prompt tracker closed into this file, `docs/DECISIONS.md` and the four gate reports — DEC-040)
 
 *Written at the handover. **The repository's own documents are the source of truth for what was built** —
 this file tells you where the work stands and how to run it, not what the code does.*
@@ -131,6 +131,27 @@ whole pass. These rules are the fix, not ceremony.*
    limiter for multi-instance deployments · the timing-parity walk · the
    credentialed round-trips (carried). DECLARED COST: frame-ancestors 'none'
    refuses any iframe embedding — previews open at their own URL.
+   **The FINAL PLATFORM GATE ran to verdict (2026-10-08, DEC-040): PHASE 10 CERTIFIED,
+   the platform READY FOR PRODUCTION.** Five windows, five passes, ZERO product
+   remediation: W1 the master battery (308 tests green across all ten phases · guards at
+   declared baselines · zero-leak sweep clean over 535 files, one self-clean fix to the
+   sweep's own docs declared · build 41 pages) · W2 legal & compliance (new
+   gate10-compliance-audit 14/14 + gate7 re-run PASS over 311 files —
+   `audit/phase10-compliance.json`) · W3 security MEASURED LIVE (new gate10-security-audit
+   8/8 — headers live, CSP exact, budgets held at limit+1, harness killed its own server
+   by port — `audit/phase10-security.json`) · W4 the persona walk (all four personas live
+   at their honest boundaries; 390px pinned by construction; the browsered visual walk
+   owed, declared) · W5 the verdict (`PHASE10_FINAL_GATE_REPORT.md` — the whole-platform
+   integrity table, the tracker's closure, the launch certificate). STATE_LANGUAGE 10.4
+   records the close.
+   **THE LAUNCH CHECKLIST (owner, in order):** apply migrations 0001–0012 in the
+   production project · set the three environment variables (names in `docs/`, values
+   never committed) · wire the confirmation-link delivery channel · run the credentialed
+   walks (RLS harnesses, adult signup round-trip, minor→guardian verification round-trip,
+   the trigger's refusal observed live, timing parity) · re-pin the browsered baselines
+   (390px walks, relationship 6.3, environment/tutor, relationship.cjs) · rule the open
+   owner questions (tagline, the two static guards, LiveKit wiring, shared-store limiter).
+   The platform waits now for credentials, not code.
 2. **PHASE 9 IS CERTIFIED (2026-10-08).** The Socratic Engine Gate (W1–W5) ran to verdict —
    `PHASE9_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase9-*.json`;
    DEC-036 records the gate; STATE_LANGUAGE 9.4 records the close. Step 1 done (2026-10-08, DEC-033): the SOCRATIC ASSISTANCE ENGINE &
@@ -397,6 +418,9 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## STANDING
 
-`prompts/README.md` — the prompt log: phase tracker, per-step rules, and **the rulings index (P5-R1…R10,
-P6-R1…R20)**. The repo's own `docs/` carry the decisions, exceptions, visibility, distance and language
-documents. **Do not violate any DO-NOT-CHANGE list**, and do not build Admin.
+**The prompt tracker is CLOSED (DEC-040):** the briefs lived in the chat workspace; `prompts/README.md`
+was never committed. The tracker's substance stands in three committed places — this file's IMMEDIATE
+ORDER (where every phase stands) · `docs/DECISIONS.md` (every ruling, DEC-001…040, including the rulings
+index P5-R1…R10, P6-R1…R20) · the four gate reports (every verdict). The repo's own `docs/` carry the
+decisions, exceptions, visibility, distance and language documents. **Do not violate any DO-NOT-CHANGE
+list**, and do not build Admin.

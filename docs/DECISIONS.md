@@ -393,3 +393,56 @@ credentialed round-trips (carried from Step 2).
 
 **Rule 18:** the sweep asserts zero real identities in the tree; the gate's fixtures remain
 the only named people, on reserved domains. No identities created by this step.
+
+
+---
+
+### DEC-040 — The Phase 10 Final Platform Gate: five windows, five passes; platform READY FOR PRODUCTION (2026-10-08, the gate record)
+
+**The ruling:** the capstone gate closed on a certifying run with ZERO remediation of product
+code — the only fix the windows surfaced was the zero-leak sweep's own documentation quoting
+its quarry (rendered self-clean at the source; the sweep stayed strict). The platform is
+CERTIFIED and marked READY FOR PRODUCTION, with the lineage's honesty: ready means every
+committed claim is proven; the six-item launch checklist (migrations apply · credentials ·
+email channel · credentialed walks · browsered re-pins · owner rulings) stands between the
+build and real students, and each item is stated in the open. The windows and their committed
+verdicts:
+
+- **W1 — master battery:** 308 tests green across all ten phases (next-action 34 · progress
+  16 · socratic 31+19+15 · archive 26+16+22 · progress-record 18 · academic-surface 20 ·
+  milestone-synthesis 21 · legal 23 · onboarding 33 · security 14); both static guards at
+  their declared baselines (subject-import 4 declared FPs; breakpoints 3 declared drifts);
+  validate-subjects ALL VALID; the zero-leak sweep clean over 535 tracked text files; build
+  clean, 41 pages.
+- **W2 — legal & compliance (NEW BASELINE `audit/phase10-compliance.json`, 14/14):** the
+  DPDP sentence verbatim in three places; server-side age; the minor halt complete
+  (pending_guardian + trigger-blocked enrolment + guardian-deferred consent); the token flow
+  whole; the one-way consent audit; the never-collected list complete and public; zero
+  cookie banner stated as fact; zero tracker vocabulary in the tree; the terms' clauses
+  pinned; E-07 CLOSED, register 18 open. Beside it, gate7-privacy-audit PASS over 311 files.
+- **W3 — security, MEASURED LIVE (NEW BASELINE `audit/phase10-security.json`, 8/8):** the
+  six headers live on real responses; the CSP exact, no unsafe-eval; /login 5/15min,
+  /register 3/hour, verify-guardian 10/hour — each held at limit+1 with the calm sentence;
+  the sweep and the static suite re-ran inside the harness; the harness booted its own
+  server on port 3126 and killed it strictly by port (`serverKilledByPort: true` recorded).
+- **W4 — the persona walk:** all four personas measured live at their honest boundaries —
+  visitor (8 routes 200, the visitor door present), student/tutor/admin unsigned (307 to the
+  login door with `next` preserved), guardian (honest `unavailable` without credentials; the
+  confirmed page 200). The 390px posture pinned by construction (viewport meta measured in
+  the live HTML; 44px touch floor; reading measures). The browsered visual walk stands owed
+  (declared).
+- **W5 — this record:** the whole-platform integrity table, the prompt tracker's closure,
+  the launch certificate, the nine questions.
+
+**The prompt tracker, closed:** `prompts/README.md` was never committed — the briefs lived
+in the chat workspace. The tracker's substance stands committed in three places:
+CONTINUE-HERE's IMMEDIATE ORDER · DEC-001…040 · the four gate reports. The stale
+`prompts/README.md` references in CONTINUE-HERE are corrected by this close-out (declared).
+
+**Rule 18:** the gate created zero identities — every window ran offline; the zero-leak
+sweep asserts no real identity anywhere in the tree; the credentialed harnesses stand owed
+with their committed baselines.
+
+**The lineage:** DEC-037 the legal framework (E-07 closed) · DEC-038 the age gate · DEC-039
+the security edge · DEC-040 the certificate. States 10.1–10.3 record the steps; 10.4 records
+this close. Phase 11 awaits its brief.

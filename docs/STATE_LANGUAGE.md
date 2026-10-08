@@ -602,3 +602,33 @@ variant exists. The zero-leak sweep asserts what silence looks like in
 the tree: no secrets, no real addresses, no tracked env files — 532
 files scanned, zero unexplained findings, the allowlist RFC-based and
 hand-read, never a waiver.
+
+
+## 10.4 addendum — the certificate's language (Phase 10 · Gate, DEC-040)
+
+The gate's language is the platform's language, held still one last time.
+Five windows ran; every verdict is committed under `audit/phase10-*.json`,
+and the full record stands in `PHASE10_FINAL_GATE_REPORT.md`. What the
+certificate adds to the register:
+
+- **Ready means proven.** 308 tests green, five gates passed, the edge
+  defenses measured live, zero leaks, zero surveillance, zero real
+  identities in the tree. It does NOT mean the sandbox proved what only
+  credentials can prove — the launch checklist names that boundary in the
+  open.
+- **The calm refusals held to the end.** The 429 sentence, the sign-in's
+  vague refusal, the guardian gate's honest delivery debt, the
+  verification handler's `unavailable` — each states what is known and
+  nothing more. The platform never guesses aloud.
+- **The honest absence is the platform's native tongue.** Every dormant
+  surface — the lens awaiting 0009, the archive awaiting its writer, the
+  gate awaiting its email channel — says so. Nothing asserts a fact the
+  record does not hold.
+- **Nothing owed is hidden.** Eighteen exceptions stand stated in the
+  register; the launch checklist states the six steps that stand between
+  the build and real students; the credentialed walks and the browsered
+  baselines stand with their committed baselines.
+
+The lineage closes its tenth phase: DEC-001…DEC-040 record the rulings,
+the four gate reports record the verdicts, and the platform waits now for
+credentials, not code.

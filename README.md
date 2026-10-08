@@ -1663,7 +1663,7 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       debt list stands: live apply 0004–0010, the populated lens and oversight walks, baseline
       re-pins (relationship 6.3 owed), the credentialed harness re-runs, the browsered 390px
       walk. DEC-036 records the gate; STATE_LANGUAGE 9.4 records the close.
-**Phase 10 — Polish + Performance**
+**Phase 10 — Polish + Performance** — **CERTIFIED at the Final Platform Gate (2026-10-08, W1–W5; `PHASE10_FINAL_GATE_REPORT.md`). READY FOR PRODUCTION.**
 - [x] Step 1 — Legal framework & guardian consent gates -> PHASE 10 BRIEF (2026-10-08) — **BUILT. E-07 CLOSED.**
       The legal framework stands on three public routes: `/legal/terms`
       (Terms of Academy Practice — the pedagogical relationship, the
@@ -1766,6 +1766,37 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       every route, 429 at exactly limit+1 (login, register, guardian),
       server killed by port. DEC-039 records the step; STATE_LANGUAGE
       10.3 pins the 429 sentence.
+- [x] Gate — The Phase 10 Final Platform Gate & Launch Certification (W1–W5) -> PHASE 10 GATE SPEC (2026-10-08) — **CERTIFIED · READY FOR PRODUCTION.**
+      The capstone ran to verdict with ZERO product remediation. W1 the
+      master battery (308 tests green across all ten phases · both static
+      guards exactly at declared baselines · validate-subjects ALL VALID ·
+      the zero-leak sweep clean over 535 tracked files — one self-clean
+      fix to the sweep's own documentation, declared · build clean, 41
+      pages) · W2 the legal & compliance certification (new
+      gate10-compliance-audit 14/14 — DPDP sentence verbatim in three
+      places; server-side age; the minor halt complete; the token flow
+      whole; the one-way consent audit; the never-collected list public;
+      zero cookie banner stated as fact; zero tracker vocabulary; the
+      terms' clauses pinned; E-07 CLOSED, register 18 open — plus the
+      gate7 app-wide re-run PASS over 311 files) · W3 security MEASURED
+      LIVE (new gate10-security-audit 8/8 — six headers live on real
+      responses; CSP exact, no unsafe-eval; login 5/15min, register
+      3/hour, verify-guardian 10/hour each held at limit+1 with the calm
+      sentence; the harness booted its own production server and killed it
+      strictly by port) · W4 the persona walk (all four personas measured
+      live at their honest boundaries — visitor 8 routes 200 with the
+      visitor door; student/tutor/admin unsigned 307 with `next`
+      preserved; guardian honest `unavailable` without credentials; the
+      390px posture pinned by construction, viewport meta measured in the
+      live HTML — the browsered visual walk stands owed, declared) · W5
+      the verdict (whole-platform integrity table across all ten phases;
+      the prompt tracker closed — its substance stands in CONTINUE-HERE,
+      DEC-001…040 and the four gate reports; the launch certificate with
+      the six-item owner checklist). Baselines committed:
+      `audit/phase10-compliance.json` · `audit/phase10-security.json`.
+      Full record: `PHASE10_FINAL_GATE_REPORT.md`. DEC-040 records the
+      gate; STATE_LANGUAGE 10.4 records the close. The platform waits now
+      for credentials, not code.
 
 ## Brand direction (locked in Phase 2.1)
 
