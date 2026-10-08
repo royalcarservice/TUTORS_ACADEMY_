@@ -1,0 +1,91 @@
+{
+  "gate": "PHASE 8 · W4 — The Mobile & Performance Pass",
+  "date": "2026-10-08",
+  "mobile": {
+    "shelfGrid": "repeat(auto-fill, minmax(min(16rem,100%),1fr)) — one column below ~560px",
+    "drawer": "min(60rem,100%) + overflow:auto",
+    "controls": "flex-wrap rows; var(--ta-target-primary) targets",
+    "fixedWidths": "none above 16rem; the drawer's 60rem is a max via min()",
+    "board": "16/10 aspect box; canvas inset:0; strokes normalized 0..1"
+  },
+  "replay": {
+    "clock": "rAF gated on playing; cancelled in cleanup",
+    "timers": "none in any island",
+    "dpi": "devicePixelRatio-aware, capped at 3",
+    "frame": "pure replayFrame; static opening state"
+  },
+  "payload": {
+    "scripts": 5,
+    "rawKB": 538.4,
+    "gzipKB": 165.2
+  },
+  "serverComponents": {
+    "page": "src/app/subjects/[subject]/archive/page.tsx",
+    "shelf": "src/components/archive/artifact-shelf.tsx",
+    "card": "src/components/archive/artifact-card.tsx",
+    "chronology": "src/components/archive/milestone-synthesis.tsx"
+  },
+  "findings": [
+    "canvas-replay reads the stroke palette from getComputedStyle once per drawn frame (the live surface caches it); one computed style read on one element beside the stroke drawing itself — consolidation owed with the first measured frame budget in a browsered environment.",
+    "390px visual proof is owed to a browsered environment (the Phase 6/7 precedent): construction pins stand in."
+  ],
+  "verdict": "PASS",
+  "checks": "11/11",
+  "results": [
+    {
+      "id": "M1",
+      "claim": "the card grid collapses to ONE column on a phone (min track 16rem, fluid 1fr)",
+      "verdict": "PASS"
+    },
+    {
+      "id": "M2",
+      "claim": "the viewer drawer is fluid: min(60rem, 100%), padded, scrollable",
+      "verdict": "PASS"
+    },
+    {
+      "id": "M3",
+      "claim": "every control row wraps; every control meets the touch target",
+      "verdict": "PASS"
+    },
+    {
+      "id": "M4",
+      "claim": "no fixed width wider than a phone stands in any archive island",
+      "verdict": "PASS"
+    },
+    {
+      "id": "M5",
+      "claim": "the board is fluid geometry: aspect-ratio box, absolute canvas, no pixel constants",
+      "verdict": "PASS"
+    },
+    {
+      "id": "P1",
+      "claim": "requestAnimationFrame runs ONLY while playing, and stops when playback stops",
+      "verdict": "PASS"
+    },
+    {
+      "id": "P2",
+      "claim": "zero timers in every island: nothing ticks at rest",
+      "verdict": "PASS"
+    },
+    {
+      "id": "P3",
+      "claim": "high-DPI by the device's own ratio, capped; one ResizeObserver, disconnected",
+      "verdict": "PASS"
+    },
+    {
+      "id": "P4",
+      "claim": "the frame is the pure module's word — deterministic, never improvised",
+      "verdict": "PASS"
+    },
+    {
+      "id": "B1",
+      "claim": "the archive islands' client JS, measured from the prerendered rehearsal",
+      "verdict": "PASS"
+    },
+    {
+      "id": "B2",
+      "claim": "the shelf itself ships NO client JS: page, shelf, card, chronology are server components",
+      "verdict": "PASS"
+    }
+  ]
+}

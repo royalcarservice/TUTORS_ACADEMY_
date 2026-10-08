@@ -43,7 +43,9 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## IMMEDIATE ORDER
 
-1. **PHASE 8 IS UNDER WAY.** Step 1 done (2026-10-08, DEC-029): the archive's foundation —
+1. **PHASE 8 IS CERTIFIED (2026-10-08).** The Archive Gate (W1–W5) ran to verdict —
+   `PHASE8_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase8-*.json`.
+   Step 1 done (2026-10-08, DEC-029): Step 1 done (2026-10-08, DEC-029): the archive's foundation —
    migration 0008 creates `session_artifacts` (board snapshot · pedagogical notes · recording, a
    closed three; one row belongs STRICTLY to one session of one subject — a composite foreign key
    into `cohort_sessions(subject_id, id)` makes crossing the boundary unrepresentable;
@@ -124,6 +126,26 @@ whole pass. These rules are the fix, not ceremony.*
    next-action 34 · validate-subjects · check-subject-sql · tsc · build 0 · smoke (rehearsal 200
    both registers · /student 307 · bogus 404) · gate-7 privacy PASS (284 files) · ledger 8/8.
    STATE_LANGUAGE 8.3 speaks it.
+   **Step 5 done (2026-10-08): THE PHASE 8 ARCHIVE GATE (W1–W5).** Verification only. W1 cold
+   start & static health — one Phase 8 regression caught and REMEDIATED inside the window
+   (four type-only Density imports moved to the motif grammar's own types; two runtime
+   getSubject component calls replaced by the route-seam and the shell display seam — the
+   subject-import guard restored to its exact 4 declared false-positives); validators at
+   declared baselines; full battery green incl. milestone-synthesis 21/21; build clean. W2
+   privacy & isolation — gate7-privacy-audit PASS (284 files); new gate8-archive-audit 16/16
+   (RLS enabled+forced; reads by enrolment or relationship; writes by the opening tutor
+   alone; one PRIVATE bucket; composite FK makes cross-subject artifacts unrepresentable;
+   invisible = unknown = same null; zero engagement columns). W3 pedagogical truth & language
+   — new gate8-language-audit 11/11 (banned archive vocabulary, commercial register and
+   autoplay absent; zero engagement & zero gamified progress with declared allowances;
+   required vocabulary verbatim; no exclamation, no emoji); gate7-ledger 8/8. W4 mobile &
+   performance — new gate8-perf-audit 11/11 (one column at 390 by construction; fluid drawer
+   and board; replay clock disciplined, zero timers at rest; payload MEASURED from the build:
+   5 scripts · 538.4 KB raw · 165.2 KB gzip — the same five shared chunks the chamber loads).
+   W5 phase close — no new product exception (the archive speaks only where real rows stand
+   and the writer is unwired, so every reachable state is a pinned honest absence); count
+   19 open unchanged; nine phase-close questions answered. Rule 18 held: zero identities
+   created anywhere in the gate.
    **Next:** the archive's WRITER (service role: the board snapshot at conclusion, the notation,
    the chamber audio) — the shelf has its reader and its chronology; it still owes its objects —
    then live-classroom's `live` flip (the carrier wiring, DEC-023/028), and a populated-shelf +

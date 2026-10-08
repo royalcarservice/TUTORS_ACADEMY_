@@ -1,5 +1,4 @@
-import type { MotifKind } from "@/lib/motif/types";
-import type { Density } from "@/lib/subjects/subjects";
+import type { Density, MotifKind } from "@/lib/motif/types";
 
 import type { ArchiveSession } from "@/lib/archive/data";
 

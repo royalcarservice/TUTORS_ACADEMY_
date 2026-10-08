@@ -1411,7 +1411,7 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       165.2 KB gzip) · W5 phase close (exceptions consolidated — 19 open, count corrected and
       declared; nine phase-close questions answered). Baselines committed: `audit/phase7-*.json`.
       Full record: `PHASE7_GATE_REPORT.md`. The debt list stands: wiring, rulings, the manual walk.
-**Phase 8 — Recordings**
+**Phase 8 — Recordings** — **CERTIFIED at the Archive Gate (2026-10-08, W1–W5; `PHASE8_GATE_REPORT.md`).**
 - [x] Step 1 — Session archive schema & storage policies -> PHASE 8 BRIEF (2026-10-08) — **BUILT.**
       The archive's foundation, schema-first: migration 0008 creates `session_artifacts` — one row
       = one artifact (board snapshot · pedagogical notes · recording, a closed three) belonging
@@ -1509,6 +1509,25 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       ledger 8/8. test-tutor-visibility is the credentialed live-RLS harness (baseline
       audit/tutor-visibility.json) — owed, unchanged. DEC-032 records it; STATE_LANGUAGE 8.3 speaks
       it. The artifact writer and live-classroom's `live` flip stand owed.
+- [x] Gate — The Phase 8 Archive Gate (W1–W5) -> PHASE 8 GATE SPEC (2026-10-08) — **CERTIFIED.**
+      Verification only — five windows: W1 cold start & static health (validators at declared
+      baselines after one remediated Phase 8 subject-import regression — guard restored to the
+      exact 4 declared false-positives; full logic battery green incl. milestone-synthesis 21/21;
+      build clean, 33 pages) · W2 privacy & isolation (gate7-privacy-audit PASS, 284 files; new
+      gate8-archive-audit 16/16 — RLS enabled+forced, reads by enrolment or relationship, writes
+      by the opening tutor alone, one PRIVATE bucket, composite FK makes cross-subject
+      unrepresentable, invisible = unknown = same null, zero engagement columns) · W3
+      pedagogical truth & language (new gate8-language-audit 11/11 — banned archive vocabulary,
+      commercial register and autoplay absent; zero engagement & zero gamified progress with
+      declared allowances; required vocabulary verbatim; gate7-ledger 8/8) · W4 mobile &
+      performance (new gate8-perf-audit 11/11 — one column at 390 by construction, fluid drawer
+      and board; replay clock disciplined, zero timers at rest; payload MEASURED from the build:
+      5 scripts · 538.4 KB raw · 165.2 KB gzip, shared chunks identical to the chamber) · W5
+      phase close (no new exceptions — the archive speaks only where real rows stand and the
+      writer is unwired, so every reachable state is a pinned honest absence; count 19 open
+      unchanged; nine phase-close questions answered). Baselines committed: `audit/phase8-*.json`.
+      Full record: `PHASE8_GATE_REPORT.md`. The debt list stands: the writer, the credentialed
+      walks, baseline re-pins, the manual browsered pass.
 **Phase 9 — AI Learning Layer**
 **Phase 10 — Polish + Performance**
 

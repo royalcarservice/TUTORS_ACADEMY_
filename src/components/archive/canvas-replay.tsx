@@ -29,8 +29,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Motif } from "@/components/motif/motif";
 import { replayFrame } from "@/lib/archive/replay";
 import { drawStroke, readStrokePalette, STROKE_COLOR_FALLBACK } from "@/lib/livekit/stroke-render";
-import type { MotifKind } from "@/lib/motif/types";
-import type { Density } from "@/lib/subjects/subjects";
+import type { Density, MotifKind } from "@/lib/motif/types";
 import type { StrokePacket, SurfacePoint } from "@/lib/livekit/surface-sync";
 
 /** The replay's clock: how many recorded points stand per second. */

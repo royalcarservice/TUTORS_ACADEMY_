@@ -64,3 +64,18 @@ work; Phase 7 built the classroom instead, so the rows are struck and re-assigne
 quietly counted as done. **Count correction, declared:** the count line is stale (written at the
 Phase 5 close). Recounted from the table at the 7-gate: 26 opened, 7 closed (E-01 · E-11 · E-14 ·
 E-15 · E-23 · E-25 · E-26) → **19 open.**
+
+### Phase 8 gate note — no new product exception (2026-10-08)
+
+Phase 8 built the archive's schema, shelf, viewer and milestone synthesis (Steps 1–4,
+DEC-029…DEC-032). **No new product exception opened, for one structural reason:** the archive can
+never be met half-finished. It speaks only where real rows stand, and the ONLY capability that can
+write them — the service-role artifact writer (board snapshot at conclusion, notation, chamber
+audio) — is unwired. Every reachable state today is therefore an honest, pinned absence: the empty
+shelf sentence · the opener that mounts nothing without a row · the synthesis dormant under the
+registry gate (`live-classroom` stays `in-progress`; `recorded-classes` stays `planned`) · the
+viewer that states unsigned/unavailable in one calm sentence. Nothing Phase 8 built asserts a fact
+the record does not hold, and no surface says something false about the archive's contents. The
+W1–W5 gate (PHASE8_GATE_REPORT.md) verified this with committed baselines
+(`audit/phase8-archive.json` · `audit/phase8-language.json` · `audit/phase8-performance.json`).
+Count unchanged: **19 open.**

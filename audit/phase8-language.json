@@ -1,0 +1,64 @@
+{
+  "gate": "PHASE 8 · W3 — The Pedagogical Truth & Language Audit",
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "checks": "11/11",
+  "surfaces": 15,
+  "results": [
+    {
+      "id": "L1",
+      "claim": "VOD · Replay File · Recording Upload appear nowhere in the archive's code or copy",
+      "verdict": "PASS"
+    },
+    {
+      "id": "L2",
+      "claim": "no recommendation, trending, subscription, sharing or up-next machinery",
+      "verdict": "PASS"
+    },
+    {
+      "id": "L3",
+      "claim": "no autoplay anywhere; the media element waits for the listener",
+      "verdict": "PASS"
+    },
+    {
+      "id": "L4",
+      "claim": "the shelf's register: no duration badge, no thumbnail feed, no counts",
+      "verdict": "PASS"
+    },
+    {
+      "id": "L5",
+      "claim": "zero engagement vocabulary across every archive surface",
+      "verdict": "PASS"
+    },
+    {
+      "id": "L6",
+      "claim": "the reward register is banned wherever a milestone is spoken",
+      "verdict": "PASS"
+    },
+    {
+      "id": "L7",
+      "claim": "a milestone entry carries no figure: the synthesis output stays a record",
+      "verdict": "PASS"
+    },
+    {
+      "id": "L8",
+      "claim": "the archive's own words stand in the seam and on the card",
+      "verdict": "PASS"
+    },
+    {
+      "id": "L9",
+      "claim": "the chronology's register stands verbatim (DEC-032)",
+      "verdict": "PASS"
+    },
+    {
+      "id": "L10",
+      "claim": "the viewer's calm sentences stand verbatim (DEC-031)",
+      "verdict": "PASS"
+    },
+    {
+      "id": "L11",
+      "claim": "no exclamation marks in any quoted copy; no emoji anywhere",
+      "verdict": "PASS"
+    }
+  ]
+}

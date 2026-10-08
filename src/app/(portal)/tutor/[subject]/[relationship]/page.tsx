@@ -42,6 +42,6 @@ export default async function RelationshipPage({ params }: { params: Params }) {
   if (!r) notFound();
   const info = shellSubjectInfo()[r.view.subjectId];
   if (!info) notFound();
-  const record = await resolveRecord(r.view);
+  const record = await resolveRecord(r.view, undefined, r.subject.name);
   return <RelationshipSurface view={r.view} subject={info} record={record} />;
 }

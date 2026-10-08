@@ -1,7 +1,6 @@
 import { MilestoneSynthesis } from "@/components/archive/milestone-synthesis";
 import { fetchSubjectMilestonesWithArtifacts } from "@/lib/progress/data";
 import { isolateAsync } from "@/lib/state/isolate";
-import { getSubject } from "@/lib/subjects/subjects";
 import type { RelationshipView } from "@/lib/tutor/relationship";
 
 /* THE RECORD REGION (6.3 · Part 5) — the 5.5 region contract, tutor's side.
@@ -23,23 +22,24 @@ import type { RelationshipView } from "@/lib/tutor/relationship";
  *
  * `load` is injectable ONLY so the dev page can show the failure behaviour;
  * the route passes nothing and gets the production loader. */
-export type RecordLoader = (view: RelationshipView) => Promise<React.ReactNode | null>;
+/** The loader receives the subject's display name from the route — the
+ *  component never reads the subject config itself (the 3.1 guard). */
+export type RecordLoader = (view: RelationshipView, subjectName: string) => Promise<React.ReactNode | null>;
 
-export const loadRecord: RecordLoader = async (view) => {
+export const loadRecord: RecordLoader = async (view, subjectName) => {
   const entries = await fetchSubjectMilestonesWithArtifacts(view.subjectId, view.studentId);
   if (entries.length === 0) return null; // the honest absence — nothing renders
-  const subject = getSubject(view.subjectId);
   return (
     <MilestoneSynthesis
       subjectId={view.subjectId}
-      subjectName={subject ? subject.name : view.subjectId}
+      subjectName={subjectName}
       entries={entries}
       viewer="tutor"
     />
   );
 };
 
-export async function resolveRecord(view: RelationshipView, load: RecordLoader = loadRecord): Promise<React.ReactNode | null> {
-  const r = await isolateAsync("region:relationship-record", () => load(view), { subject: view.subjectId });
+export async function resolveRecord(view: RelationshipView, load: RecordLoader = loadRecord, subjectName: string = view.subjectId): Promise<React.ReactNode | null> {
+  const r = await isolateAsync("region:relationship-record", () => load(view, subjectName), { subject: view.subjectId });
   return r.ok ? (r.value ?? null) : null;
 }

@@ -25,8 +25,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { SubjectMark } from "@/components/brand/subject-mark";
-import type { MotifKind } from "@/lib/motif/types";
-import type { Density } from "@/lib/subjects/subjects";
+import type { Density, MotifKind } from "@/lib/motif/types";
 import type { ArtifactType } from "@/lib/archive/artifact";
 
 import { CanvasReplay } from "./canvas-replay";

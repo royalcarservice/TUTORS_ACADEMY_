@@ -6,8 +6,8 @@ import type { StudentSlotRegion } from "@/config/student-slots";
 import type { StudentContext } from "@/lib/student/data";
 import { fetchSubjectMilestonesWithArtifacts } from "@/lib/progress/data";
 import type { MilestoneEntry } from "@/lib/progress/synthesis";
+import { shellSubjectInfo } from "@/lib/student/subject-info";
 import { createClient } from "@/lib/supabase/server";
-import { getSubject } from "@/lib/subjects/subjects";
 
 /* STUDENT SHELL — SLOT REGISTRY = THE EXTENSION CONTRACT (Phase 5 · Step 3)
  *
@@ -59,12 +59,13 @@ const achievementsSlot: StudentSlotComponent = {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
     const active = ctx.enrolments.filter((e) => e.status === "active");
+    const names = shellSubjectInfo(); // the shell's own display seam (the 3.1 guard)
     const out: SubjectMilestoneRecord[] = [];
     for (const e of active) {
       const entries = await fetchSubjectMilestonesWithArtifacts(e.subjectId, user.id);
       if (entries.length === 0) continue; // absent, never "0"
-      const subject = getSubject(e.subjectId);
-      out.push({ subjectId: e.subjectId, subjectName: subject ? subject.name : e.subjectId, entries });
+      const info = names[e.subjectId];
+      out.push({ subjectId: e.subjectId, subjectName: info ? info.name : e.subjectId, entries });
     }
     return out.length > 0 ? out : null;
   },

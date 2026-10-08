@@ -1,0 +1,88 @@
+{
+  "gate": "PHASE 8 · W2 — The Archive Privacy & Isolation Audit",
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "checks": "16/16",
+  "results": [
+    {
+      "id": "A1",
+      "claim": "session_artifacts: RLS enabled AND forced",
+      "verdict": "PASS"
+    },
+    {
+      "id": "A2",
+      "claim": "session_artifacts: reads admit ONLY enrolled student + related tutor; no anon",
+      "verdict": "PASS"
+    },
+    {
+      "id": "A3",
+      "claim": "session_artifacts: writes belong to the session's OPENING tutor alone; no update/delete",
+      "verdict": "PASS"
+    },
+    {
+      "id": "B1",
+      "claim": "one PRIVATE bucket; anon admitted by no storage policy",
+      "verdict": "PASS"
+    },
+    {
+      "id": "B2",
+      "claim": "the object policy defers to the standing predicates, subject read from the path",
+      "verdict": "PASS"
+    },
+    {
+      "id": "C1",
+      "claim": "an artifact belongs STRICTLY to one session of one subject (composite FK)",
+      "verdict": "PASS"
+    },
+    {
+      "id": "C2",
+      "claim": "the path convention is built once and traversal is refused",
+      "verdict": "PASS"
+    },
+    {
+      "id": "C3",
+      "claim": "progress_record: RLS forced; own-read + related-tutor read; no anon; no client writes",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D1",
+      "claim": "the shelf reads through the cookie session only; the subject is spelled",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D2",
+      "claim": "signing happens ONLY after the row proved visible, through the service client",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D3",
+      "claim": "invisible and unknown are the SAME null — zero identity leakage",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D4",
+      "claim": "signed windows are named and bounded; the kind earns its window",
+      "verdict": "PASS"
+    },
+    {
+      "id": "D5",
+      "claim": "the synthesis reader spells whose record and which subject on EVERY read",
+      "verdict": "PASS"
+    },
+    {
+      "id": "E1",
+      "claim": "the archive route doors visitors before any data; unknown subjects enumerate nothing",
+      "verdict": "PASS"
+    },
+    {
+      "id": "E2",
+      "claim": "the viewer fetches ONLY signed URLs; an unsigned artifact is a calm sentence",
+      "verdict": "PASS"
+    },
+    {
+      "id": "E3",
+      "claim": "zero engagement vocabulary in schema and layer — no counter can exist",
+      "verdict": "PASS"
+    }
+  ]
+}
