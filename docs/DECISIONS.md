@@ -496,3 +496,26 @@ a room honestly has (density, motion character), with their reach stated.
 The sweep's gamification family flags the shared Badge primitive on the
 admin chrome; four allowlist entries record why status pills are not
 gamification, and the strict pass keeps the live surfaces clean.
+
+---
+
+## DEC-043 — Real Onboarding & the Tutor Application Door (Unfinished Work · Track 2, 2026-10-08)
+
+**The problem:** student self-serve registration existed but the schema held
+no credentialing state, and the tutor door refused outright — credentials
+the platform could not review were never collected (the house rule).
+
+**The ruling:** migration 0013 adds `profiles.approval_status`
+(approved / pending_approval / rejected, default approved so every legacy
+and test row stands unchanged). The application door at /tutor/apply is
+public in every deployment (proxy carve-out; an applicant has no account
+yet): it signs the applicant up as a tutor and marks the account
+pending_approval via the service role; the administrator's Approve at
+/admin/tutors moves it to approved. RLS parity is asserted, not added:
+the standing policies key on role and ownership and never branch on
+is_test_account, so real users hold exactly the test personas' isolation.
+The age gate, guardian gate and verification handler from Phase 10 stand
+untouched — date of birth still decides server-side, minors still wait on
+guardian consent, and the consent writes still roll the account back on
+any failure. Demonstration mode records applications in the fixture ledger
+under the console's banner; nothing pretends.

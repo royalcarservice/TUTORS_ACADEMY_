@@ -7,7 +7,9 @@ import { LEVER_OPTIONS, type EnvironmentLevers } from "@/lib/environment/levers"
 import { DataReadError } from "@/lib/state/read-error";
 import { roomNameOf, SUBJECTS } from "@/lib/subjects/subjects";
 import { isAuthConfigured } from "@/lib/supabase/env";
+import { createClient } from "@/lib/supabase/server";
 import { createServiceClient } from "@/lib/supabase/service";
+import { ONBOARDING_COPY } from "@/lib/auth/onboarding";
 
 /* ════════════════════════════════════════════════════════════════════════
    THE ADMIN OPERATIONS READER (Unfinished Work · Track 1)
@@ -72,6 +74,16 @@ export interface TutorRow {
   activeRelationships: number;
 }
 
+export interface TutorApplication {
+  id: string;
+  name: string;
+  email: string;
+  background: string;
+  subjects: string[];
+  status: "pending_approval" | "approved" | "rejected";
+  submittedAt: string;
+}
+
 export interface SubjectRoomRow {
   subjectId: string;
   name: string;
@@ -94,6 +106,7 @@ interface Ledger {
   tutors: { id: string; name: string; status: "verified" | "pending" }[];
   placements: PlacementRow[];
   approvals: { tutorId: string; subjectId: string; state: "approved" | "pending" }[];
+  applications: TutorApplication[];
   rooms: Record<string, { density: EnvironmentLevers["density"]; motionChar: EnvironmentLevers["motionChar"] }>;
 }
 
@@ -161,6 +174,17 @@ const ledger: Ledger = {
     { tutorId: "b0000000-0000-4000-8000-000000000202", subjectId: "english", state: "approved" },
     { tutorId: "b0000000-0000-4000-8000-000000000203", subjectId: "history", state: "pending" },
     { tutorId: "b0000000-0000-4000-8000-000000000203", subjectId: "biology", state: "pending" },
+  ],
+  applications: [
+    {
+      id: "d0000000-0000-4000-8000-000000000401",
+      name: "Specimen Applicant One",
+      email: "applicant.one@specimen.example",
+      background: "Twelve years across undergraduate chemistry; examination board experience.",
+      subjects: ["Chemistry", "Biology"],
+      status: "pending_approval",
+      submittedAt: "2026-10-01",
+    },
   ],
   rooms: {
     mathematics: { density: "balanced", motionChar: "precise" },
@@ -438,6 +462,103 @@ export async function approveTutorSubject(_prev: ActionResult | null, formData: 
 
   // Credentialing writes ship with the credentialed track; honesty over theatre.
   return { ok: false, note: "Credentialing writes are not wired to a live database yet. Nothing was changed." };
+}
+
+/* ── tutor applications (Track 2) ───────────────────────────────────────── */
+
+export async function fetchTutorApplications(): Promise<TutorApplication[]> {
+  if (!isAuthConfigured()) {
+    return ledger.applications.filter((a) => a.status === "pending_approval");
+  }
+  const supabase = createServiceClient();
+  if (!supabase) throw new DataReadError("admin.applications", new Error("service client unavailable"));
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("id, display_name, created_at")
+    .eq("role", "tutor")
+    .eq("approval_status", "pending_approval")
+    .order("created_at");
+  if (error) throw new DataReadError("profiles", error);
+  return (data ?? []).map((p) => ({
+    id: p.id as string,
+    name: (p.display_name as string) || "",
+    email: "",
+    background: "",
+    subjects: [],
+    status: "pending_approval" as const,
+    submittedAt: String(p.created_at ?? "").slice(0, 10),
+  }));
+}
+
+/** Track 2 — the application door's act. LIVE: signs the applicant up as a
+ *  tutor and marks the account pending_approval (service role). DEMO: the
+ *  application joins the demonstration ledger an administrator reviews. */
+export async function submitTutorApplication(_prev: ActionResult | null, formData: FormData): Promise<ActionResult> {
+  const name = String(formData.get("name") ?? "").trim().slice(0, 80);
+  const email = String(formData.get("email") ?? "").trim();
+  const background = String(formData.get("background") ?? "").trim().slice(0, 600);
+  const subjects = formData.getAll("subjects").map(String);
+  if (!name || !email) return { ok: false, note: "A name and an email are required for review. Nothing was submitted." };
+  if (subjects.length === 0) return { ok: false, note: ONBOARDING_COPY.tutorApplySubjectsRequired };
+
+  if (!isAuthConfigured()) {
+    ledger.applications.unshift({
+      id: `d0000000-0000-4000-8000-${String(Date.now()).slice(-12)}`,
+      name,
+      email,
+      background,
+      subjects: subjects.map(subjectNameOf),
+      status: "pending_approval",
+      submittedAt: new Date().toISOString().slice(0, 10),
+    });
+    refresh();
+    return { ok: true, note: ONBOARDING_COPY.tutorApplyDemonstration };
+  }
+
+  const supabase = await createClient();
+  const service = createServiceClient();
+  if (!supabase || !service) return { ok: false, note: ONBOARDING_COPY.onboardingUnavailable };
+  const password = String(formData.get("password") ?? "");
+  if (password.length < 8) return { ok: false, note: "Use at least 8 characters for the password. Nothing was submitted." };
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: { data: { role: "tutor", display_name: name } },
+  });
+  if (error) return { ok: false, note: "The application could not be recorded. Nothing was submitted." };
+  const userId = data.user?.id;
+  if (!userId) return { ok: false, note: ONBOARDING_COPY.recordFailed };
+  const { error: flagErr } = await service
+    .from("profiles")
+    .update({ approval_status: "pending_approval", is_test_account: false })
+    .eq("id", userId);
+  if (flagErr) return { ok: false, note: ONBOARDING_COPY.recordFailed };
+  refresh();
+  return { ok: true, note: ONBOARDING_COPY.tutorApplySubmitted };
+}
+
+/** The administrator's decision on an application. */
+export async function approveTutorApplication(_prev: ActionResult | null, formData: FormData): Promise<ActionResult> {
+  const blocked = await requireAdminInLiveMode();
+  if (blocked) return blocked;
+  const id = String(formData.get("applicationId") ?? "");
+  if (!id) return { ok: false, note: "No application was named. Nothing was changed." };
+
+  if (!isAuthConfigured()) {
+    const entry = ledger.applications.find((a) => a.id === id);
+    if (!entry) return { ok: false, note: "That application is not in the ledger. Nothing was changed." };
+    entry.status = "approved";
+    ledger.tutors.push({ id: `b0000000-0000-4000-8000-${String(Date.now()).slice(-12)}`, name: entry.name, status: "verified" });
+    refresh();
+    return { ok: true, note: `${entry.name} is approved. Their account now stands verified in the roster.` };
+  }
+
+  const supabase = createServiceClient();
+  if (!supabase) return { ok: false, note: "The service client is unavailable in this deployment. Nothing was changed." };
+  const { error } = await supabase.from("profiles").update({ approval_status: "approved" }).eq("id", id);
+  if (error) return { ok: false, note: "The database refused the decision. Nothing was changed." };
+  refresh();
+  return { ok: true, note: "The application is approved." };
 }
 
 export async function updateSubjectLevers(_prev: ActionResult | null, formData: FormData): Promise<ActionResult> {

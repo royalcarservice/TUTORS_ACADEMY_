@@ -92,6 +92,8 @@ const ALLOWLIST = {
     "credentialing state pills (Verified/Pending) via the shared Badge primitive — administrative chrome, never a student-facing live surface",
   "src/components/admin/subject-levers.tsx":
     "current lever-value pill via the shared Badge primitive — administrative chrome, never a student-facing live surface",
+  "src/components/admin/tutor-applications.tsx":
+    "application state pill (Pending approval) via the shared Badge primitive — administrative chrome, never a student-facing live surface",
   "src/components/switch/subject-switch.tsx":
     "completes the subject-switch morph if the tab hides mid-flight, so the room never lands half-morphed; no tracking",
   "src/app/dev/motion/preview.tsx":

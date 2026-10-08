@@ -53,6 +53,11 @@ export async function updateSession(request: NextRequest) {
   }
 
   if (isProtectedPath(pathname) && !userId) {
+    /* Track 2 (DEC-043): the tutor application door stands open to signed-out
+       visitors in every deployment — an applicant has no account yet. */
+    if (pathname === ROUTES.tutorApply) {
+      return response;
+    }
     /* Unfinished Work · Track 1 (DEC-042): with NO credentials configured,
        the admin prefix passes to its layout, which renders the fixture
        ledger under an explicit demonstration banner — the operations

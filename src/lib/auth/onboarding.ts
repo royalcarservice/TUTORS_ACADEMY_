@@ -34,6 +34,15 @@ export const ONBOARDING_COPY = {
     "Tutor accounts are opened by invitation. Self-service registration for tutors is not open in this deployment.",
   tutorGateOwed:
     "The invitation and credential-review flow stands owed to the environment that hires tutors; until then this gate says so rather than collecting credentials it cannot review.",
+  /** Track 2: the credential-review door now stands at /tutor/apply. */
+  tutorApplyDoor:
+    "Applications for review are open. A prospective tutor submits their academic background and subjects; an administrator decides each application before any subject opens.",
+  tutorApplySubjectsRequired:
+    "Name at least one subject you would teach — the review needs somewhere to look.",
+  tutorApplySubmitted:
+    "The application stands recorded for administrator review. Nothing opens until it is approved.",
+  tutorApplyDemonstration:
+    "This deployment holds no database, so the application is recorded in the demonstration ledger an administrator can review at the operations console, and in no production store.",
   /** The date-of-birth refusals. */
   missingDob: "Enter your date of birth — the academy must know whether a guardian's consent is needed.",
   futureDob: "That date of birth is in the future — enter the date you were born.",

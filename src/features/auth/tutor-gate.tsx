@@ -13,6 +13,9 @@
    depth, so the refusal holds even for a hand-built form.
    ════════════════════════════════════════════════════════════════════════ */
 
+import Link from "next/link";
+
+import { ROUTES } from "@/config/routes";
 import { ONBOARDING_COPY } from "@/lib/auth/onboarding";
 
 export function TutorGate() {
@@ -45,6 +48,17 @@ export function TutorGate() {
       </p>
       <p style={{ margin: 0, fontSize: "var(--ta-text-sm)", lineHeight: 1.7, color: "var(--ta-text-muted)" }}>
         {ONBOARDING_COPY.tutorGateOwed}
+      </p>
+      {/* Track 2: the credential-review door. Registration stays closed;
+          review stands open. */}
+      <p style={{ margin: 0, fontSize: "var(--ta-text-sm)", lineHeight: 1.7, color: "var(--ta-text-secondary)" }}>
+        {ONBOARDING_COPY.tutorApplyDoor}{" "}
+        <Link
+          href={ROUTES.tutorApply}
+          style={{ color: "var(--ta-text-primary)", textDecoration: "underline", textUnderlineOffset: 3 }}
+        >
+          Apply for review
+        </Link>
       </p>
     </section>
   );
