@@ -315,3 +315,30 @@ dev-only copy that never appears on the production surface. Conclusion by
 signal speaks the same closing sentence as settlement's 7.5 (`The session in
 {Subject} has concluded.`) and unmounts the workspace: confidentiality rides
 the channel exactly as it rides the settle route.
+
+## 8.1 addendum — the archive's shelf language (Phase 8 · Step 2, DEC-030)
+
+The subject archive speaks like a library, never like a feed. Same register
+as every row above: a fact named calmly, nothing counted, nothing ranked,
+nothing recommended. The three artifacts take the archive's own words — one
+constant each, so the shelf cannot drift.
+
+| artifact | the archive's word | banned instead |
+| --- | --- | --- |
+| the session's whiteboard, preserved | `Board Record` | "thumbnail", "snapshot preview grid" |
+| the tutor's pedagogical notes | `Session Notation` | "summary card", "lesson recap video" |
+| the session's audio, kept whole | `Chamber Audio` | "VOD", "Replay File", "Recording Upload" |
+
+| state | sentence (verbatim) | what it claims |
+| --- | --- | --- |
+| no concluded sessions yet | `No archived sessions in {Subject} yet. Artifacts are preserved here after learning sessions conclude.` | the shelf is honestly empty; preservation begins at conclusion |
+| chamber audio, playback unwired | `Playback opens with the recordings wiring.` | the audio is held; the player is a declared debt (DEC-030) |
+| a notation row with no readable text | `The notation for this session is held in the archive.` | the fact exists; its words are not yet readable |
+
+The shelf reads most-recent-first, and each session names its date, its
+title, and — only when the boundary allows it — the tutor who opened it.
+What the boundary withholds stays silent rather than guessed. There is no
+view count, no duration badge, no "watch next", no share icon: the
+zero-engagement rule (DEC-029) shapes the surface exactly as it shapes the
+schema. The doors that lead here are quiet links in the ShapeLink's own
+grammar — never a primary, never beside a student.

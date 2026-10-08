@@ -1431,6 +1431,26 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       column exists; the banned vocabulary is swept). Verified: archive-logic 19/19 (new) · full
       battery green · both gate-7 audits still PASS · tsc clean · build exit 0. Live apply owed to
       the credentialed environment; no surface ships and `recorded-classes` stays `planned`.
+- [x] Step 2 — The subject archive surface & artifact shelf -> PHASE 8 BRIEF (2026-10-08) — **BUILT.**
+      The archive reads like a library, never a feed. `/subjects/[subject]/archive` carries the
+      live chamber's gate unchanged (unknown subject 404 · no identity → login door with `next` ·
+      enrolment/relationship decide · everyone else the SAME 404 — no enumeration) and renders
+      server-complete with zero client JS; the archive read is PRIMARY — a failed read fails the
+      page honestly. `artifact-shelf.tsx`: an ordered shelf, most recent session first (date ·
+      title · the tutor only when the boundary allows), the brief's empty sentence verbatim.
+      `artifact-card.tsx`: the three kinds in the archive's own words — Board Record · Session
+      Notation · Chamber Audio ("VOD" · "Replay File" · "Recording Upload" banned and swept); the
+      board's preview is a short signed URL when the service key stands, chamber audio states its
+      owed playback calmly — no counts, badges, thumbnails or share icons anywhere. Doors: the
+      `recordings-notes` shell region filled through the documented fill point (the slot contract's
+      one declared growth — the shell hands a slot its subject) and one quiet `ArchiveLink` per
+      tutor subject group in the ShapeLink's grammar; the relationship surface stays untouched
+      (P6-R10 distance). No second layout.tsx (DEC-026's ruling carries). Verified: archive-surface
+      16/16 (new) · full battery green · both gate-7 audits PASS (273 files scanned) · tsc clean ·
+      build exit 0 · smoke: visitor 307 login door · bogus 404 · environment preserved. Declared:
+      the recordings-notes region's visitor HTML changes (baseline re-pins owed, P6-R17 precedent);
+      `recorded-classes` stays `planned` (E-26). DEC-030 records it; the playback island and the
+      artifact writer stand owed.
 **Phase 9 — AI Learning Layer**
 **Phase 10 — Polish + Performance**
 

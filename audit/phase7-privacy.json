@@ -1,7 +1,7 @@
 {
   "gate": "PHASE 7 · W2 — Privacy & Surveillance Audit",
   "date": "2026-10-08",
-  "scanned_files": 269,
+  "scanned_files": 273,
   "verdict": "PASS",
   "broad_pass": {
     "families": [

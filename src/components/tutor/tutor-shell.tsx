@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { SubjectMark } from "@/components/brand/subject-mark";
+import { ArchiveLink } from "@/components/tutor/archive-link";
 import { ShapeLink } from "@/components/tutor/shape-link";
 import type { ShellSubjectInfo } from "@/components/student/student-shell";
 import { TUTOR_REGIONS, type TutorRegion } from "@/config/student-slots";
@@ -146,9 +147,11 @@ export function TutorShell({ state, groups, subjects, slots }: TutorShellProps) 
                       </li>
                     ))}
                   </ul>
-                  {/* 6.5 · P6-R17: the way in to the levers — one quiet link per subject group, below the rows' weight, never a primary. */}
-                  <p style={{ margin: "var(--ta-space-1) 0 0", paddingInline: "var(--ta-space-2)" }}>
+                  {/* 6.5 · P6-R17: the way in to the levers — one quiet link per subject group, below the rows' weight, never a primary.
+                      8.2 · DEC-030: the way in to the ARCHIVE joins it — same grammar, same weight, still never a primary. */}
+                  <p style={{ margin: "var(--ta-space-1) 0 0", paddingInline: "var(--ta-space-2)", display: "flex", flexWrap: "wrap", columnGap: "var(--ta-space-6)" }}>
                     <ShapeLink subjectId={g.subjectId} subjectName={name} />
+                    <ArchiveLink subjectId={g.subjectId} subjectName={name} />
                   </p>
                 </section>
               );

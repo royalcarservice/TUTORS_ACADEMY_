@@ -62,9 +62,24 @@ whole pass. These rules are the fix, not ceremony.*
    the `is_subject_id` CHECK (E-13) · `is_related_tutor(auth.uid(), …)` cannot stand as written
    (DEC-026 verbatim) — the tutor READS by relationship, WRITES only into sessions they opened.
    **No surface ships with Step 1 and `recorded-classes` stays `planned`** (E-26 posture). Live
-   apply of 0008 joins 0004–0007 in the credentialed environment. **Next:** the archive's writer
-   (service role: board snapshots, notes, recordings) and the archive surface the student and
-   tutor read — in the brief's order.
+   apply of 0008 joins 0004–0007 in the credentialed environment.
+   **Step 2 done (2026-10-08, DEC-030):** the archive SURFACE — `/subjects/[subject]/archive`
+   carries the live chamber's gate unchanged (visitor → login door with `next`; enrolment /
+   relationship decide; everyone else the SAME 404 an unknown subject gets — no enumeration) and
+   renders server-complete with zero client JS; the archive read is PRIMARY (a failed read fails
+   the page honestly). The shelf reads like a library (ordered, most recent first; date · title ·
+   the tutor only when the boundary allows; the brief's empty sentence verbatim) and the card
+   speaks the archive's own words — Board Record · Session Notation · Chamber Audio ("VOD" ·
+   "Replay File" · "Recording Upload" banned and swept); the board's preview is a short signed
+   URL when the service key stands, chamber audio states its owed playback calmly. Doors: the
+   `recordings-notes` shell region filled through the documented fill point (the slot contract's
+   one declared growth — the shell hands a slot its subject) and one quiet `ArchiveLink` per
+   tutor subject group; the relationship surface stays untouched (P6-R10). Declared: the
+   recordings-notes region's visitor HTML changes — environment/tutor baseline re-pins owed
+   (P6-R17 precedent). Verified: archive-surface 16/16 (new) · full battery green · both gate-7
+   audits PASS (273 files) · tsc · build 0 · smoke (visitor 307 · bogus 404 · environment 200).
+   **Next:** the archive's WRITER (service role: board snapshots at conclusion, the notation, the
+   chamber audio) and the media playback island — in the brief's order.
 2. **PHASE 7 IS CERTIFIED (2026-10-08).** The Live Classroom Gate (W1–W5) ran to verdict —
    `PHASE7_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase7-*.json`
    (privacy · ledger · performance). Five windows, five passes: cold start & static health ·

@@ -43,17 +43,26 @@ import {
   ARTIFACT_BUCKET,
   SIGNED_URL_SECONDS,
   toArtifact,
+  wantsPreview,
   type ArtifactRecord,
 } from "./artifact";
+
+/** An artifact as the shelf presents it — a board record may carry a
+ *  short-lived preview URL; every other kind carries none. */
+export interface ArchiveArtifact extends ArtifactRecord {
+  previewUrl: string | null;
+}
 
 /** A concluded session as the archive presents it. */
 export interface ArchiveSession {
   id: string;
   title: string;
+  /** The tutor who opened the session — null when the boundary withholds it. */
+  tutorName: string | null;
   scheduledAt: string;
   /** The instant the session concluded — the archive's own ordering fact. */
   concludedAt: string;
-  artifacts: ArtifactRecord[];
+  artifacts: ArchiveArtifact[];
 }
 
 /** One subject's archive: concluded sessions, newest first. */
@@ -88,7 +97,7 @@ export async function fetchSubjectArchive(subjectId: string): Promise<SubjectArc
 
   const { data: sessions, error } = await supabase
     .from("cohort_sessions")
-    .select("id, title, scheduled_at, updated_at")
+    .select("id, title, scheduled_at, updated_at, tutor:profiles!cohort_sessions_tutor_id_fkey(display_name)")
     .eq("subject_id", subjectId)          // subject isolation spelled in the query
     .eq("state", "concluded")             // the archive's own word: the room is over
     .order("scheduled_at", { ascending: false })
@@ -106,25 +115,39 @@ export async function fetchSubjectArchive(subjectId: string): Promise<SubjectArc
     .order("created_at", { ascending: true });
   if (artifactError) throw new DataReadError("session_artifacts", artifactError);
 
-  const bySession = new Map<string, ArtifactRecord[]>();
+  const bySession = new Map<string, ArchiveArtifact[]>();
   for (const row of artifacts ?? []) {
     const record = toArtifact(row);
     if (!record) continue; // unknown kind: dropped, never guessed
+    // Board records get a short-lived preview (best effort — without the
+    // service key the card simply stands without a picture); nothing else
+    // is previewable, and nothing is ever counted or ranked.
+    const previewUrl = wantsPreview(record.type) ? await previewFor(record.storagePath) : null;
     const list = bySession.get(record.sessionId) ?? [];
-    list.push(record);
+    list.push({ ...record, previewUrl });
     bySession.set(record.sessionId, list);
   }
 
   return {
     subjectId,
-    sessions: rows.map((s) => ({
-      id: s.id,
-      title: s.title,
-      scheduledAt: s.scheduled_at,
-      concludedAt: s.updated_at,
-      artifacts: bySession.get(s.id) ?? [],
-    })),
+    sessions: rows.map((s) => {
+      const tutor = Array.isArray(s.tutor) ? s.tutor[0] : s.tutor;
+      return {
+        id: s.id,
+        title: s.title,
+        tutorName: (tutor?.display_name as string | undefined) ?? null,
+        scheduledAt: s.scheduled_at,
+        concludedAt: s.updated_at,
+        artifacts: bySession.get(s.id) ?? [],
+      };
+    }),
   };
+}
+
+/** Best-effort preview signing for ONE object: absent, never an error. */
+async function previewFor(storagePath: string): Promise<string | null> {
+  const access = await signArtifactAccess(storagePath);
+  return access.mode === "signed" ? access.url : null;
 }
 
 /**

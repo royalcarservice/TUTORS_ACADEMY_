@@ -64,6 +64,19 @@ export function isArtifactType(value: string): value is ArtifactType {
   return (ARTIFACT_TYPES as readonly string[]).includes(value);
 }
 
+/** The archive's own words for the three kinds (DEC-030, STATE_LANGUAGE 8.1).
+ *  "VOD", "Replay File" and "Recording Upload" are banned vocabulary. */
+export const ARTIFACT_WORD: Record<ArtifactType, string> = {
+  canvas_snapshot: "Board Record",
+  pedagogical_notes: "Session Notation",
+  session_recording: "Chamber Audio",
+};
+
+/** Board records are the only kind with a visual preview worth signing. */
+export function wantsPreview(type: ArtifactType): boolean {
+  return type === "canvas_snapshot";
+}
+
 /** One storage path, built once so the convention cannot drift. */
 export function artifactStoragePath(subjectId: string, sessionId: string, artifactId: string): string {
   return `${subjectId}/${sessionId}/${artifactId}`;
