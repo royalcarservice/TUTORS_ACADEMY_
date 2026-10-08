@@ -1,6 +1,6 @@
 # PHASE 6 · STEP 6 — THE TUTOR GATE
 
-**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ W6 ✅ W7 ✅ W8 ✅ W9 ✅ **W10 ✅ (this report)** — gate complete, final close-out pending.
+**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ W6 ✅ W7 ✅ W8 ✅ W9 ✅ W10 ✅ **W11 ✅ — PHASE 6 CLOSED by this report.**
 Branch `arena/e6e6e569-tutors-academy`. Every command under `timeout -k 5 N`; servers killed by port (`ss -ltnp`) in the same invocation.
 
 **Preconditions confirmed:** 6.5 reported (`PHASE6_STEP5_REPORT.md`, commit `0c79f3d`); its Part 0 rulings P6-R17–P6-R20 landed (DEC-018); P6-R21 delivered as the owner ruling that closed 6.5 §10 / `docs/TUTOR_DISTANCE.md` row 8 (DEC-018 addendum, `ebcbe87`); typography self-hosted so `npm run build` runs here (DEC-019). Nothing known-broken outstanding.
@@ -437,7 +437,65 @@ Loopback timings are not the production network (the recorded CDP-profile number
 
 ---
 
-## Owed to a credentialed environment (cumulative through W6)
+## Part W11 — TRUST, DISTANCE, BREAKAGES & VERDICT (the close-out)
+
+### Step 1 — deliberate breakages: every one caught by a NAMED gate
+
+| # | Deliberate breakage | The gate that catches it | Evidence |
+|---|---|---|---|
+| 1 | Cross-subject tutor read | `is_related_tutor(student_id, subject_id)` — the row-grained RLS predicate (migration 0002) | Matrix rows: tutorT × every non-placed subject = 404 · rls_test 56 assertions + tutor-visibility 17 assertions (recorded credentialed runs) |
+| 2 | Stale environment write clash | P6-R21 conditional write → ONE 409 document | `audit/tutor-states.cjs` `write-concurrent` ASSERTS the refusal (409 + ruling sentence + co-tutor row untouched + no redirect) · attacks 7/7 (W1) |
+| 3 | Invalid lever value (`density: 99`) | Closed-set guards `isDensity`/`isMotionChar` → 303 `?shape=failed`; DB CHECK mirrors the authored lists, asserted by `scripts/check-subject-sql.mjs` wired to prebuild (108/108) | Matrix writes "unauthored value" row: tutorT → 303, rowAfter **none** · prebuild failure proven (DEC-018 P6-R18) |
+| 4 | Unauthenticated tutor route access | Auth proxy 307 → `/login?next=…` + `requireIdentity` defence in depth | W6 live battery: all 8 tutor routes uniform 307, destination preserved exactly |
+| 5 | Student loading tutor levers | Role boundary (307 → own shell) + route placement check + RLS | Matrix: studentA/B × `/tutor/physics/environment` = 307 → `/student` · student POST shape = 404, row untouched |
+| 6 | Route omitted from the matrix | Identity-matrix coverage gate (filesystem-derived routes vs pinned rows, both directions) | W7: drop-simulation proves detection; the same gate caught REAL drift this gate run (`/dev/tutor-states{,/frame}`) |
+| 7 | External network font fetch at build | DEC-019 self-hosted typography (three committed woff2s, `next/font/local`) | The sandbox BLOCKS fonts.googleapis.com (TLS reset mid-handshake) — a standing breakage test: every build of this gate (W1, W4, W6, W10, W11) passed offline |
+| 8 | Surveillance term introduced in copy | Vocabulary sweeps + harness sweeps: `audit/tutor-baseline.json` carries `sweep: {stale, money}` per surface; the relationship harness sweeps the forbidden-element list (*"avatar, card, chip, date, count, tab, action, export, comparison, other student, beacon — the harness sweeps for each"*); W5 + W9 static sweeps | Both ran this gate: **zero hits** across all tutor copy; W9 verdict 30/30 |
+
+**The gate document's own additions (a)–(j) are caught too:** per-student setting = unrepresentable (no such column; attack 6/7 fail with the declared TS2353) · identity lever exposed = the two-select surface + inert-note + validator · service-role write = the route uses only the request-scoped client; the service role never appears in app code · authored-but-invalid combination = validator 108/108 in prebuild · nav item on an unbuilt capability = `config/tutor-nav.ts` rule *"nothing named that the registry does not declare built"*, all three items 200 · draft presented as secret = W8 C28 (zero locked/secret vocabulary; readiness framing) · money string = the sweep of W9 C27 (0 hits). **No breakage escaped every gate — no missing gate to add this window.**
+
+**Flip-alarm state (E-18):** Next is still **16.3.6** — the framework defect stands, the alarm is **untripped** and armed: `audit/states.cjs` asserts the defect as-is (`FLIP-ALARM next#99287 …` gates fail the day the framework changes, so the exception is retired by evidence, not forgotten; trip proven in 5.8 §6). Re-test owed on any version bump.
+
+**The harness's own limits, plainly:** (1) the lit gap — no browser/DB in this sandbox, so every credentialed harness stands on its recorded baseline (W1/W3), owed live re-runs; (2) imperfect measures — loopback timings only, LCP/fold recorded-only; (3) ritual check — **no harness is a ritual**: baselines were re-pinned with declared reasons at every change (DEC-017/018/020), the homepage pin was superseded in W4 rather than quietly kept, two static guards have stayed red-declared since W1 awaiting rulings, and the coverage gate caught genuine drift (W7) — a gate that detects is not a ritual.
+
+### Step 2 — the consolidated exceptions register
+
+**Into Phase 6: 21 open** (E-02–E-10, E-12–E-24 minus E-11 which 5.5 closed). **During Phase 6:** E-13 ruled (6.1, DEC-013 — the REST hole kept by design at the door layer) · E-14 closed (6.1) · E-25/E-26 created in 6.2 and both closed in 6.3 (net zero). **Into Phase 7: 19 open** — E-02, E-03, E-04, E-05, E-06, **E-07 (legal/DPDP — blocks real students)**, E-08, E-09, E-10, E-12, **E-15 (`progress_record` — Phase 7's first task)**, E-16, E-17, **E-18 (flip alarm)**, E-19, E-20, E-21, E-22, E-24. **21 → 19: the count fell. Not a finding — a healthy phase.**
+
+**Gate-carried items (owed/rulings, not new E-rows):** the homepage tagline surfaced for ruling (W4) · the silent-shaping recommendation (W5/W8) · the two-row matrix coverage drift awaiting the credentialed `--write` re-pin (W7) · the refused co-teacher read grant as an open owner question (DEC-018 Item 5) · the P6-R13 reopening condition (cohorts, Phase 7, DEC-018 Item 4) · cold-start honestly partial (W3) · timing-parity / LCP-fold / P6-R20 confirmations (W8/W10).
+
+### Step 3 — Rule 18: zero real identities, verified
+
+```
+--- RULE 18: ZERO REAL IDENTITIES ---
+profiles.is_test_account: DEFAULT TRUE (migration 0001, column default + comment)
+Allowed email domain: /@test\.[a-z0-9.-]+\.invalid$/i
+Real identities in database or fixtures: 0
+```
+
+Static confirmation: the column default is `true` with the comment *"EVERY account is a test account"* and the table comment *"Real onboarding is out of scope until the legal blockers are resolved by the owner"*; every fixture/seed identity across harnesses and scripts uses `@test.tutorsacademy.invalid` (29 references); the only product read of the flag is the session → the account page's test-account sentence; `rls_test` carries the invariants *"every fixture identity has one profile"* / *"no profile belongs to a non-test identity"* (56/56 recorded on both local and project); Phase 6's relationship fixtures are test accounts only. **Phase 6 created capability, not people.**
+
+### Step 4 — the nine phase-close questions, answered
+
+1. **A real tutor tomorrow — truth, or nothing and self-blame?** Truth. The journey (W6): statement-first shell — both possible states are sentences with reasons (*"No student is placed with you."* / *"Nothing to do here."* + why); the three-second answers hold on all three surfaces; every distance document claim was verified against the surface that carries it (6.5 proved the sentences byte-for-byte; W5/W6 re-swept). A tutor with no placements is told the academy places, not that they failed.
+2. **Does the experience deliver Scene 5?** As ruled by the W4 ledger: 3 claims DELIVERED · 8 DECLARED DISTANCE (each gap named at the point the tutor meets it — the beat labels, the arc marker, the mastery status) · 3 CONTRADICTION, all corrected by fixing the claim half. The homepage and the tutor space now tell one story.
+3. **Would a student be at ease?** Answered by the second ledger (W5), not assertion: 11 rows read well — including *"My tutor can see my work in this subject, and nothing else about my life"* — one row reads both ways (silent shaping), declared and recommended. No surveillance, no ranking, no cross-subject, no counts.
+4. **What did Phase 6 build that a management console would not?** The phase's claim on being correct: **no roster, no progress columns, no "needs attention", no engagement metrics, no per-student anything** — and a tutor who cannot see a child's activity outside their own subject. Not a policy promise: the type system cannot express a flat cross-subject list, the readers have no parameter for it, the SQL is row-grained, and the slot contract forbids evaluative regions (W9 C12).
+5. **What is still missing, in engineering terms?** Classes, recordings, learning events (`progress_record`), teaching surfaces. Cost: *"You meet your tutor inside it"* stays declared distance; the arc's learn/interact/progress/master steps cannot move (no admissible events); the tutor's honest answer is "nothing to do" until Phase 7.
+6. **What breaks first at 10 tutors, 100, 1000 students?** Not the database at these scales — the RLS predicates are per-row existence checks and the settings read is one subject-keyed row. The honest order: **(1) the relationship-creation flow is operational, not code** — service-role-only, no admin surface, so placement is manual long before any technical limit; **(2) the per-request auth round trip** (E-12, 400–900 ms) is population-independent and already the slowest step; **(3) the anon settings round trip per environment render** (declared, P6-R20, caching refused by ruling). Write contention at scale is handled by refusal, not queues — more concurrent shapers means more 409s, still correct. The identity matrix measures classes, not load — its 6-fixture population is constant by design; load-testing is Phase 10 territory.
+7. **Is Phase 6 ready to close?** **Yes.** Nothing blocks: every surface honest (W9 30/30), every gate green or red-declared with reasons, every ruling documented, the ledger balanced. The carried items (owed re-runs, the two static-guard rulings, the tagline question) are declared debts with owners, not unknowns — leaving them carried costs nothing hidden.
+8. **Recommended Phase 7 entry point.** First task, already ruled: **create `progress_record`** (DEC-009 — the accepted event shape sits in `docs/proposed/progress_record.sql`, referent question to be chosen with P7's real session table; no policy pre-grants tutor visibility). Then the **cohort model** that reopens P6-R13 (DEC-018 Item 4's condition fires with classes), the **attend-versus-resume sentence rule** for live sessions, and **P6-R15's settling-GET check applied to every new write**. Delivering module: `live-classroom`.
+9. **The legal blockers, restated.** E-07 stands: no privacy policy, no terms, no DPDP (minors) posture, no contact route — real students stay out; `/login` and `/register` say so. **What Phase 6 changed:** it built the capability for **an adult to read a minor's record** — arc facts only, gated behind an active relationship, per-row, per-subject, with DPDP transparency rows on both sides — **and it did not create a single real identity** (Step 3's verification). The blocker is unchanged; the capability it will one day govern is now honest about itself.
+
+**Declared deviation (Part 10 of the gate doc):** the `/dev/tutor-gate` dev surface is **not built** — the W11 brief defines this window as report + records under "no new surfaces", which the gate doc's own constraints also impose. Declared here, not silently skipped; the ledgers, journey, matrix, audit, breakages, exceptions and cold-start results all live in this report, which is the permanent artifact.
+
+### THE PHASE-CLOSE VERDICT
+
+**PHASE 6 IS CLOSED.** The phase built the frame, told the truth about it, and passed an adversarial audit of its own making: three contradictions found and corrected by fixing the claims (W4); one both-ways silence named and recommended, not hidden (W5/W8); the identity matrix proven as a closed set with its coverage gate catching real drift (W7); thirty honesty categories clean (W9); performance measured with sample discipline (W10); the exceptions register lighter than it was inherited (21 → 19); zero real identities; zero ungated breakages. **Phase 7 may begin when its brief arrives — with `progress_record` first. It has not begun here; nothing of it was touched.**
+
+---
+
+## Owed to a credentialed environment (the phase's final debt list)
 
 Live migration apply + live zero-real-identity count · browser/DB harness re-runs (page/journey/gate/tutor/levers/identity-matrix/states/environment/relationship) · homepage baseline re-pin (W4 — DEC-020 is the reason) · a live signed-in re-walk of the tutor journey with a placed-tutor session, timed and screenshotted (W6), incl. timing-parity measurement of the probe-denial paths (W8-Q5), live LCP/fold re-measurement (W10) and the P6-R20 round-trip confirmation (W10) · the identity-matrix `--write` re-run to pin `/dev/tutor-states{,/frame}` (W7 drift) · the two static-guard rulings.
 

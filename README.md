@@ -1259,15 +1259,17 @@ tutor-assigned enrolment arrives (P6/P7).
 
 **Phase 6 — Tutor Experience** *(the first role that reads another person's data)*
 
-- [ ] Step 1 — The tutor architecture -> `phase-6-step-01-tutor-architecture.md`
+- [x] Step 1 — The tutor architecture -> `phase-6-step-01-tutor-architecture.md` — **BUILT & REPORTED**
+      (`PHASE6_STEP1_TUTOR_ARCHITECTURE_REPORT.md`).
       **BUILDS NO INTERFACE.** Relationship model · the visibility ruling · the portal architecture ·
       the role path · the levers as a model question. Rulings P6-R1, P6-R2, P6-R3.
 - [x] Step 2 — The tutor shell -> `phase-6-step-02-tutor-shell.md` — **BUILT, commit `15da5a5`.**
       P6-R4 (no next act → state it) · P6-R5 (stale strings are defects) · P6-R6 (the identity axis is
       standing). Shell 57/57 · environment 23/23 · states 45/45 · gate 11/11 · RLS 56/56 · visibility
       17/17 · tutor 36/36 · identity-matrix 51 routes x 6 classes with the coverage gate proven.
-- [~] Step 3 — The relationship's surface -> `phase-6-step-03-relationship-surface.md`
-      THE GAZE. One student, one subject. **Prompt issued; quote its report state in 6.5.**
+- [x] Step 3 — The relationship's surface -> `phase-6-step-03-relationship-surface.md` — **BUILT &
+      REPORTED** (`PHASE6_STEP3_RELATIONSHIP_SURFACE_REPORT.md`, quoted in 6.5 §1).
+      THE GAZE. One student, one subject.
       P6-R2 amended (position, never recency) · P6-R9 (an absent relationship is indistinguishable from
       a student who does not exist) · P6-R7 (attacks are gates) · P6-R8 (an entry names a phase).
 - [x] Step 4 — The levers -> `phase-6-step-04-the-levers.md` — **BUILT, commit `8b85d58`.**
@@ -1296,12 +1298,15 @@ tutor-assigned enrolment arrives (P6/P7).
       distance is named where the capability would be). **Its precondition is 6.3 AND 6.4 reported** — both
       reports exist on disk (`PHASE6_STEP3_RELATIONSHIP_SURFACE_REPORT.md`, `PHASE6_STEP4_LEVERS_REPORT.md`)
       and are quoted in the 6.5 report §1. **Report run order: seven small windows - `phase-6-step-05-report-chunks.md`.**
-- [ ] Step 6 — The tutor experience validation gate -> `phase-6-step-06-tutor-gate.md`
-      **WRITTEN, AND GATED BEHIND 6.5.** *Do not run it until 6.5 has reported:* its precondition is
-      "6.5 REPORTED", and it reads `docs/TUTOR_DISTANCE.md` and the account surface as evidence.
-      **Verification, not construction.** The promise ledger for Scene 5 · **the second ledger: what a
-      student would think if they knew** · the identity matrix read as a set · the inside/outside pass ·
-      the honesty audit at 30 categories · the cold-start pass · nine phase-close questions. **Cold-start is measured in chunks across windows, and may close honestly partial.** **Run order: ELEVEN small windows - `phase-6-step-06-gate-chunks.md`.**
+- [x] Step 6 — The tutor experience validation gate -> `phase-6-step-06-tutor-gate.md`
+      — **CLOSED (2026-10-08), full record: `PHASE6_STEP6_REPORT.md` (W1–W11, branch
+      `arena/e6e6e569-tutors-academy`).** Verification, not construction — three homepage
+      contradictions found and corrected by fixing the CLAIM half (DEC-020) · the second ledger:
+      11 rows read well, 1 reads both ways (silent shaping, declared + recommended) · the identity
+      matrix proven as a closed set, its coverage gate catching real drift (2 dev rows owed a pin) ·
+      honesty audit 30/30 clean · exceptions register 21 → 19 · zero real identities · nine
+      phase-close questions answered · verdict: **PHASE 6 IS COMPLETE.** The owed credentialed
+      re-runs and two static-guard rulings are declared in the report's debt list.
 **Phase 7 — Live Classes**
 **Phase 8 — Recordings**
 **Phase 9 — AI Learning Layer**

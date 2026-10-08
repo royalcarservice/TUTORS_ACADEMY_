@@ -7,13 +7,23 @@ this file tells you where the work stands and how to run it, not what the code d
 
 ## WHERE THINGS STAND
 
-- **Repo:** HEAD `80760ff`, branch `main`, clean tree, 544 tracked files.
-- **Phase 6:** 6.1–6.4 executed and reported. **6.5 (the tutor's states, the account surface, and the
-  honest distance) is BUILT** — `audit/tutor-states.cjs` + `tutor-states.json`/`-baseline.json`,
-  `docs/TUTOR_DISTANCE.md`, DEC-018 in `docs/DECISIONS.md` — **but its REPORT WAS NEVER WRITTEN.** There is
-  no `PHASE6_STEP5_REPORT.md`. Treat "built" as unverified until that report exists.
-- **6.6 (the tutor gate) is WRITTEN, NOT RUN:** `phase-6-step-06-tutor-gate.md` is the spec;
-  `phase-6-step-06-gate-chunks.md` is the run order — **eleven small windows, W1 → W11.**
+- **PHASE 6 IS CLOSED (2026-10-08).** Steps 6.1–6.5 built and reported; **6.6 THE TUTOR GATE RAN TO
+  VERDICT in eleven windows (W1–W11)** — the full record is `PHASE6_STEP6_REPORT.md` at the repo root:
+  the promise ledger (3 contradictions found and corrected by fixing the CLAIM half, W4/DEC-020), the
+  second ledger (W5), the journey (W6), the identity matrix as a set with its coverage gate catching
+  real drift (W7), the inside/outside pass (W8), the honesty audit 30/30 clean (W9), performance with
+  sample counts (W10), and the phase-close verdict with the nine questions answered (W11).
+- **Work lives on branch `arena/e6e6e569-tutors-academy`, pushed to origin** — commits `f3db035` (the
+  owed 6.5 report) → `b4ba8cc` (P6-R21 + self-hosted fonts) → `77e1efb`…`65a375f` (gate windows) →
+  this close-out. The sandbox re-provisioned repeatedly during the run; history survived on origin.
+- **The phase's debt list is final and declared** (the report's "Owed to a credentialed environment"):
+  live migration apply · credentialed harness re-runs · homepage baseline re-pin (DEC-020) · the
+  identity-matrix `--write` re-run pinning `/dev/tutor-states{,/frame}` (W7 drift) · a signed-in
+  journey re-walk with timings/screenshots · LCP/fold/320 live re-measurement · P6-R20 round-trip
+  confirmation · timing-parity of probe denials · the two static-guard rulings (W1, declared red).
+- **Open owner questions carried forward:** the homepage "Live tutoring" tagline (surfaced in W4,
+  not rewritten inside the gate) · the co-teacher read grant (refused; DEC-018 Item 5) · the
+  silent-shaping attribution candidate (W5/W8 recommendation for Phase 7).
 - **These prompt files lived only in a chat workspace and were nearly lost.** They now live in the repo.
   **Version them with the code. Never keep a brief only in a chat.**
 
@@ -33,15 +43,16 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## IMMEDIATE ORDER
 
-1. **LINEAGE CHECK** — read-only, one window. Do the hashes recorded in `prompts/README.md` and
-   `docs/DECISIONS.md` exist on this remote? *If the remote's history was re-imported, every recorded
-   commit hash is unverifiable — record that rather than silently ignoring it.*
-2. **THE 6.5 REPORT** — a few small windows. Run 6.5's tests from
-   `prompts/phase-6-step-05-tutor-states-account.md`, write `PHASE6_STEP5_REPORT.md`, commit it. **Nothing
-   else.**
-3. **THEN the gate** — `prompts/phase-6-step-06-gate-chunks.md`, W1 → W11, one window per message.
-   **Do not start the gate before 6.5's report exists** — its precondition is "6.5 REPORTED", and it
-   reads the report and `docs/TUTOR_DISTANCE.md` as evidence.
+1. **PHASE 7 AWAITS ITS BRIEF.** Phase 6 closed with a verdict; the gate doc's end rule was honoured —
+   nothing of Phase 7 has been started or touched. When the brief arrives, its first task is already
+   ruled: **create `progress_record`** (DEC-009; the accepted shape is `docs/proposed/progress_record.sql`),
+   then the cohort model that reopens P6-R13 (DEC-018 Item 4), the attend-versus-resume sentence rule,
+   and P6-R15's settling-GET check on every new write. Delivering module: `live-classroom`.
+2. **Credentialed environment first, when available:** run the debt list above before new construction —
+   the harness re-runs, the baseline re-pin (DEC-020), the matrix `--write` re-pin (W7), the signed-in
+   journey re-walk. Read `PHASE6_STEP6_REPORT.md` end to end; it is the handover document.
+3. **Rulings owed to the owner:** the two static guards (W1) · the tagline question (W4) · the
+   co-teacher grant question (DEC-018 Item 5).
 
 ## STANDING
 
