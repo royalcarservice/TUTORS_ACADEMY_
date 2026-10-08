@@ -1637,6 +1637,32 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       smoke: /tutor 307 · relationship URL 307 unsigned · mathematics
       200 · server killed by port. DEC-035 records it; STATE_LANGUAGE
       9.3 pins the panel's sentences.
+- [x] Gate — The Phase 9 Socratic Engine Gate (W1–W5) -> PHASE 9 GATE SPEC (2026-10-08) — **CERTIFIED.**
+      The strongest gate this lineage has run: Phase 9 shipped clean, and W1's full battery
+      confirmed it — ZERO remediation needed. W1 cold start (subject-import guard at its 4
+      declared false-positives — zero new hits; the 3 declared breakpoint drifts — count
+      unchanged; validate-subjects ALL VALID; full battery green — next-action 34 · progress 16
+      · socratic-logic 31 · progress-record 18 · archive-logic 26 · archive-surface 16 ·
+      archive-viewer 22 · academic-surface 20 · milestone-synthesis 21 · socratic-surface 19 ·
+      socratic-oversight 15; build clean, 34 pages) · W2 the pedagogical boundary (new
+      gate9-pedagogy-audit 12/12 — zero filler/exclamation/emoji/widget anatomy; the guidance
+      union pinned closed, "answer" unrepresentable; fourteen demand markers → ONE redirect;
+      question-first; brevity end-to-end, 300 < 500 = DB; honest absence pinned; prompt-type
+      union cross-pinned against 0009) · W3 privacy, surveillance & grading (new
+      gate9-privacy-audit 14/14 — RLS forced, no updates, anon nowhere, payload bounds
+      500/128/16 KB; zero surveillance and zero grading vocabulary; zero clocks; subject
+      isolation in SQL AND logic; honest failure and dormancy pinned; gate7 re-run PASS over 296
+      files, rebaselined from 284) · W4 mobile & performance (new gate9-perf-audit 11/11 —
+      fluid regions, native inputs, ≥44px marks by construction; zero timers in the island; the
+      oversight ships zero client JS; payload MEASURED from the build: 6 scripts · 538.6 KB raw
+      · 165.9 KB gzip, ALL chunks shared with the archive rehearsal — zero socratic-only
+      load-time bundle) · W5 phase close (no new exceptions — the lens and the mirror speak
+      only where real rows stand and 0004–0010 are unapplied, so every reachable state is a
+      pinned honest absence; count 19 open unchanged; nine phase-close questions answered).
+      Baselines committed: `audit/phase9-*.json`. Full record: `PHASE9_GATE_REPORT.md`. The
+      debt list stands: live apply 0004–0010, the populated lens and oversight walks, baseline
+      re-pins (relationship 6.3 owed), the credentialed harness re-runs, the browsered 390px
+      walk. DEC-036 records the gate; STATE_LANGUAGE 9.4 records the close.
 **Phase 10 — Polish + Performance**
 
 ## Brand direction (locked in Phase 2.1)

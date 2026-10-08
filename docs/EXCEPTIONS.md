@@ -79,3 +79,27 @@ the record does not hold, and no surface says something false about the archive'
 W1–W5 gate (PHASE8_GATE_REPORT.md) verified this with committed baselines
 (`audit/phase8-archive.json` · `audit/phase8-language.json` · `audit/phase8-performance.json`).
 Count unchanged: **19 open.**
+
+
+### Phase 9 gate note — no new product exception (2026-10-08)
+
+Phase 9 built the Socratic engine and its two surfaces — the student's lens
+(Steps 1–2, DEC-033/034) and the tutor's diagnostic mirror (Step 3,
+DEC-035). **No new product exception opened, for the same structural reason
+as the archive:** nothing Phase 9 built can be met half-finished. The lens
+and the panel speak only where real rows stand, and the schema that holds
+them (migrations 0009–0010, with 0004–0008) is unapplied in the project DB:
+today the exchange read fails and BOTH surfaces render nothing (the isolate
+posture — silence, not a box); the composer cannot write without the schema;
+the panel's empty overview returns null (no DOM); the `ai-assistant` module
+stays `planned` in the registry (the lens renders facts-gated, the DEC-008
+precedent, declared — no homepage drift). The one visible surface, the dev
+rehearsal, 404s in production and says SPECIMEN where it stands. Two
+DECLARED evolutions, both recorded, neither an exception: the environment
+slot map's `ai-assistance` entry moved to gate "facts" (DEC-034), and the
+relationship surface's statement sentence evolved to name preparation
+(DEC-035) — the 6.3 browsered baseline re-pin stands owed with the DEC-030
+debt. The W1–W5 gate (PHASE9_GATE_REPORT.md) verified this with committed
+baselines (`audit/phase9-pedagogy.json` · `audit/phase9-privacy.json` ·
+`audit/phase9-performance.json`; `audit/phase7-privacy.json` rebaselined
+284 → 296 files, declared). Count unchanged: **19 open.**

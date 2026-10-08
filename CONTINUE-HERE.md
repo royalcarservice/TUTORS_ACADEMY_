@@ -43,7 +43,9 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## IMMEDIATE ORDER
 
-1. **PHASE 9 IS UNDER WAY.** Step 1 done (2026-10-08, DEC-033): the SOCRATIC ASSISTANCE ENGINE &
+1. **PHASE 9 IS CERTIFIED (2026-10-08).** The Socratic Engine Gate (W1–W5) ran to verdict —
+   `PHASE9_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase9-*.json`;
+   DEC-036 records the gate; STATE_LANGUAGE 9.4 records the close. Step 1 done (2026-10-08, DEC-033): the SOCRATIC ASSISTANCE ENGINE &
    PEDAGOGICAL CONTRACT — schema, contract and pure logic; no surface yet. Migration 0009
    (numbered sequential — the brief's 0006 slot belongs to cohort_readers) creates
    `socratic_exchanges`: one bounded exchange per row, scoped strictly to
@@ -105,10 +107,36 @@ whole pass. These rules are the fix, not ceremony.*
    check-subject-sql PASS · guard at its declared baseline · tsc clean · build exit 0
    (34 pages) · smoke: /tutor 307 · relationship URL 307 unsigned · mathematics 200 ·
    server killed by port.
+   **The gate (2026-10-08, DEC-036): five windows, five passes — the strongest gate this
+   lineage has run, ZERO remediation needed.** W1 cold start: both static guards at their
+   declared baselines (subject-import 4 declared FPs, zero new; breakpoints 3 declared
+   drifts, count unchanged); validate-subjects ALL VALID; full battery green (next-action
+   34 · progress 16 · socratic-logic 31 · progress-record 18 · archive-logic 26 ·
+   archive-surface 16 · archive-viewer 22 · academic-surface 20 · milestone-synthesis 21 ·
+   socratic-surface 19 · socratic-oversight 15); build clean, 34 pages. W2 the pedagogical
+   boundary (new gate9-pedagogy-audit 12/12): zero filler/exclamation/emoji/widget anatomy;
+   the guidance union pinned closed — "answer" unrepresentable; fourteen demand markers →
+   ONE redirect; question-first; brevity end-to-end (300 composer < 500 contract = DB);
+   honest absence pinned; prompt-type union cross-pinned byte-for-byte against 0009. W3
+   privacy (new gate9-privacy-audit 14/14): RLS forced on both tables, no updates, anon
+   nowhere, bounds 500/128/16 KB; zero surveillance and zero grading vocabulary; zero
+   clocks or timers; subject isolation in SQL AND logic; gate7 re-run PASS over 296 files
+   (rebaselined 284 → 296, declared). W4 mobile & performance (new gate9-perf-audit 11/11):
+   fluid regions, native inputs, ≥44px marks by construction; zero timers in the island;
+   the oversight ships zero client JS; payload MEASURED from the build — 6 scripts ·
+   538.6 KB raw · 165.9 KB gzip, ALL chunks shared with the archive rehearsal (zero
+   socratic-only load-time bundle). W5 close: no new exceptions (register 19 open,
+   unchanged); nine phase-close questions answered. Rule 18: zero identities created —
+   every window ran offline. Declared harness fixes: one W3 false-positive class
+   ("amplitude" = specimen physics vocabulary) and three W4 harness defects corrected on
+   first run, each verified against the build — zero product drift.
    **Next:** live apply of 0004–0010 in the credentialed environment and the populated
    walks — the lens round-trip (the student's own INSERT) and the oversight round-trip (a
-   marked inquiry), plus the relationship-baseline re-pin; the provider-backed capability
-   ruling, when the owner is ready, decides the registry flip.
+   marked inquiry) · the RLS and tutor-visibility harness re-runs (baselines committed) ·
+   the relationship-baseline re-pin (DEC-035, owed with the DEC-030 debt) · the
+   environment/tutor baseline re-pins (DEC-030 debt, carried) · the browsered 390px walks ·
+   the provider-backed capability ruling, when the owner is ready, decides the registry
+   flip. Phase 10 (Polish + Performance) awaits its brief.
 2. **PHASE 8 IS CERTIFIED (2026-10-08).** The Archive Gate (W1–W5) ran to verdict —
    `PHASE8_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase8-*.json`.
    Step 1 done (2026-10-08, DEC-029): the archive's foundation —

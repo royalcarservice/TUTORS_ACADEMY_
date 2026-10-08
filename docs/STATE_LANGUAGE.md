@@ -483,3 +483,39 @@ no such word. The relationship surface's statement evolves with the mark
 (declared, DEC-035): `This page reads the record and prepares the next
 dialogue. Nothing else is done here by a tutor yet: teaching surfaces are
 not built.`
+
+
+## 9.4 addendum — the gate closes the phase (Phase 9 · Gate, DEC-036)
+
+The gate's language is the phase's language, held still. Five windows ran;
+every verdict is committed under `audit/phase9-*.json`, and the full record
+stands in `PHASE9_GATE_REPORT.md`. What the close adds to the register:
+
+- **The engine is certified bounded.** W2's audit pins what DEC-033 declared
+  by construction: "answer" is unrepresentable in the guidance union; the
+  completion demand has ONE path, the redirect; the disciplined question
+  leads; the honest absence is the only answer an unknown milestone
+  receives. Brevity is measured end-to-end — three hundred at the point of
+  composition, five hundred in the contract and the schema.
+- **The engine is certified private.** W3's audit proves the mirror is not
+  a wiretap: zero surveillance vocabulary, zero grading vocabulary, zero
+  clock or timer, no evaluative column in either table. The only write
+  anywhere is the tutor's own binary preparation mark; the inquiry stands
+  exactly as asked. Subject isolation holds in SQL and in logic alike.
+- **The engine is certified light.** W4 measured what construction claims:
+  the island carries zero timers, the oversight ships zero client
+  JavaScript, and the payload stands at 165.9 KB gzip on chunks shared
+  with the archive rehearsal — zero socratic-only bundle.
+- **Nothing new owes an exception.** The register holds at nineteen open:
+  every Phase 9 surface speaks only where real rows stand, and the schema
+  that holds them is unapplied — so every reachable state today is the
+  pinned honest absence (the isolate posture). Two declared evolutions,
+  both recorded, neither an exception: the slot map's `ai-assistance` gate
+  (DEC-034) and the relationship statement (DEC-035, re-pin owed).
+- **The gate creates zero identities** — every window ran offline; the
+  credentialed harnesses stand owed with their committed baselines.
+
+The lineage: DEC-033 the engine · DEC-034 the lens · DEC-035 the mirror ·
+DEC-036 the gate. The engine waits for its schema — bounded, private, and
+dignified — and opens the day migrations 0004–0010 land, with zero edits.
+Phase 10 awaits its brief.
