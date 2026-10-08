@@ -34,6 +34,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { LiveControls } from "@/components/live/live-controls";
+import { ParticipantDock } from "@/components/live/participant-dock";
 import { ParticipantTile } from "@/components/live/participant-tile";
 import {
   blockForError,
@@ -243,11 +244,12 @@ export function RoomParticipant({
         </p>
       )}
 
-      {/* One tile: the participant's own. Remote participants are facts the
-          transport will bring; until then the grid does not invent them. */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(16rem, 1fr))", gap: "var(--ta-space-3)", maxWidth: "48rem" }}>
+      {/* One tile: the participant's own, standing in the dock (Milestone 3).
+          Remote participants are facts the transport will bring; until then
+          the dock does not invent them. */}
+      <ParticipantDock>
         <ParticipantTile label={label} stream={visibleStream} monogram={monogram} speaking={speaking && flags.mic} sharing={shareStream !== null} />
-      </div>
+      </ParticipantDock>
 
       <LiveControls flags={flags} onMic={onMic} onCamera={onCamera} onShare={onShare} onLeave={onLeave} stateSentenceId={block ? "live-media-state" : undefined} />
 

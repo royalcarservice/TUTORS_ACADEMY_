@@ -60,8 +60,10 @@ t("live-stage is a SERVER component — no client directive, no timers, no surve
   assert.match(src, /data-live-grid/, "the reserved tile grid");
 });
 t("live-stage carries the brief's standby sentence verbatim (student form)", () => {
+  // Declared pin update (DEC-026): the Milestone-2 brief supersedes the
+  // DEC-024 standby wording; the sentence is pinned to the newer original.
   const src = rawFile("src/components/live/live-stage.tsx");
-  assert.match(src, /The live acoustic room is staged\. Live sessions will initiate when your tutor opens the chamber\./);
+  assert.match(src, /The chamber is staged\. Live connection will initiate once your tutor opens the session\./);
 });
 t("live route — server component, honest guards, no vendor modal words", () => {
   const src = rawFile("src/app/subjects/[subject]/live/page.tsx");
@@ -77,7 +79,7 @@ t("banned corporate vocabulary — no Call/Meeting/Conference/Webinar/Join in ne
   const sentences = [
     sessionActionSentence("attend", "Mathematics").title, sessionActionSentence("attend", "Mathematics").cta,
     sessionActionSentence("resume", "Mathematics").title, sessionActionSentence("resume", "Mathematics").cta,
-    "The live acoustic room is staged. Live sessions will initiate when your tutor opens the chamber.",
+    "The chamber is staged. Live connection will initiate once your tutor opens the session.",
     `Resume work in Mathematics`,
   ];
   for (const s of sentences) assert.doesNotMatch(s, /\bcall\b|\bmeeting\b|\bconference\b|\bwebinar\b|\bjoin\b/i, s);

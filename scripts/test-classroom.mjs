@@ -122,6 +122,58 @@ t("migration — names no subject STATUS (E-13) and creates no duplicate progres
   assert.doesNotMatch(sql, /create table[^;]*progress_record/i);
 });
 
+/* ── 6 · Milestone 2 — the chamber shell and the page pivot ──────────────── */
+t("page pivot — /live reads cohort_sessions through the classroom data layer", () => {
+  const src = file("src/app/subjects/[subject]/live/page.tsx");
+  assert.match(src, /getSessions/, "the session facts come from the classroom reader");
+  assert.match(src, /sessionOfRecord/, "the chamber stands for ONE session");
+  assert.match(src, /chamberState/, "the state machine names the chamber");
+  assert.match(src, /CHAMBER_STATE_WORD/, "the status bar speaks the machine's word");
+  assert.match(src, /isolateAsync\("live:classroom"/, "the read is isolated (5.7)");
+  assert.doesNotMatch(src, /getCohortSessions|sessionForSubject/, "the cohorts reader no longer feeds this surface");
+});
+t("live-chamber — client shell: status bar facts, room composition, no surveillance", () => {
+  const src = rawFile("src/components/live/live-chamber.tsx");
+  assert.match(src, /^"use client"/, "the shell is the client island");
+  assert.match(src, /<SubjectMark subject=\{subject\.id\}/, "the subject's own mark");
+  assert.match(src, /\{sessionTitle\}/, "the session's title");
+  assert.match(src, /\{stateWord\}/, "the state machine's word");
+  assert.match(src, /aria-live="polite"/, "state changes announce politely");
+  assert.match(src, /chamber=\{<RoomParticipant subjectId=\{subject\.id\} displayName=\{displayName\} role=\{viewer\} \/\>\}/);
+  assert.match(src, /surface=\{<AcademicSurface subjectId=\{subject\.id\} motif=\{subject\.motif\} density=\{density\} \/\>\}/);
+  assert.doesNotMatch(strip(src), /setTimeout|setInterval|navigator\.mediaDevices|getUserMedia/, "the shell owns no media, no timers");
+});
+t("standby copy — the Milestone-2 sentences, verbatim, both forms", () => {
+  const src = rawFile("src/components/live/live-stage.tsx");
+  assert.match(src, /The chamber is staged\. Live connection will initiate once your tutor opens the session\./);
+  assert.match(src, /The chamber is staged\. Live connection will initiate once you open the session\./);
+  assert.doesNotMatch(src, /live acoustic room is staged/, "the superseded wording is gone");
+});
+
+/* ── 7 · Milestone 3 — dock and controls, one implementation each ────────── */
+t("participant-dock — the tile strip exists and room-participant docks in it", () => {
+  const dock = rawFile("src/components/live/participant-dock.tsx");
+  assert.match(dock, /data-participant-dock/);
+  assert.doesNotMatch(strip(dock), /useState|useEffect|getUserMedia/, "the dock owns no state, no media");
+  assert.match(rawFile("src/components/live/room-participant.tsx"), /<ParticipantDock>/);
+});
+t("chamber-controls — the bridge re-exports the one control cluster, labels intact", () => {
+  const bridge = rawFile("src/components/live/chamber-controls.tsx");
+  assert.match(bridge, /export \{ LiveControls, LiveControls as ChamberControls \} from "\.\/live-controls"/);
+  const controls = rawFile("src/components/live/live-controls.tsx");
+  for (const label of [/"Mute"/, /"Unmute"/, /"Camera On"/, /"Camera Off"/, /"Share Surface"/, /\bLeave Chamber\b/]) {
+    assert.match(controls, label); // the departure label is JSX text, not a quoted literal
+  }
+});
+
+/* ── 8 · Milestone 4 — the sync hook has ONE implementation ──────────────── */
+t("use-surface-sync — the classroom address re-exports the tested protocol", () => {
+  const bridge = rawFile("src/lib/classroom/use-surface-sync.ts");
+  assert.match(bridge, /useSurfaceSync,/);
+  assert.match(bridge, /from "@\/lib\/livekit\/surface-sync"/);
+  assert.doesNotMatch(strip(bridge), /function useSurfaceSync/, "no second implementation");
+});
+
 /* ── verdict ──────────────────────────────────────────────────────────────── */
 console.log(`\n${n - failed}/${n} classroom tests passed`);
 process.exit(failed === 0 ? 0 : 1);

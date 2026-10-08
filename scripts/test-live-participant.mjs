@@ -139,18 +139,22 @@ t("motion — the glow's only transition obeys the reduced-motion contract", () 
 
 /* ── 6 · the integration gates ────────────────────────────────────────────── */
 t("/live — the island renders ONLY when the room is truly open", () => {
+  /* Declared pin update (DEC-026): Milestone 2 pivots the gate to the state
+     machine's words — the room opens on ACTIVE and stays through SETTLING —
+     and the room composition now lives inside the LiveChamber shell
+     (chamber={<RoomParticipant… is pinned against live-chamber.tsx in
+     test-classroom). The gate's THREE-FACT shape is unchanged. */
   const src = rawFile("src/app/subjects/[subject]/live/page.tsx");
-  assert.match(src, /roomOpen = module\?\.status === "live" && readiness\.configured && session !== null/);
-  /* 7.4 (DEC-025): the gate is unchanged; the island is now composed inside
-     the room layout (chamber pane + academic surface). */
-  assert.match(src, /participant=\{roomOpen \? \(/);
-  assert.match(src, /chamber=\{<RoomParticipant/);
+  assert.match(src, /roomOpen = module\?\.status === "live" && readiness\.configured && \(chamber === "ACTIVE" \|\| chamber === "SETTLING"\)/);
+  assert.match(src, /participant=\{roomOpen && session \? \(/);
+  assert.match(src, /<LiveChamber/);
   assert.doesNotMatch(src, /"use client"|'use client'/, "the page stays a server component");
 });
 t("stage — the reserved grid and standby stand while the room is closed", () => {
+  // Declared pin update (DEC-026): standby wording updated to the Milestone-2 brief's sentence.
   const src = rawFile("src/components/live/live-stage.tsx");
   assert.match(src, /data-live-grid/);
-  assert.match(src, /The live acoustic room is staged\. Live sessions will initiate when your tutor opens the chamber\./);
+  assert.match(src, /The chamber is staged\. Live connection will initiate once your tutor opens the session\./);
   assert.match(src, /\{participant \? \(/);
   assert.match(src, /\{!participant && \(!readiness\.configured \? \(/);
 });

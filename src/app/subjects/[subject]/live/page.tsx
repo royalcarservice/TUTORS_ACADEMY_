@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
 import { LiveStage } from "@/components/live/live-stage";
-import { AcademicSurface } from "@/components/live/academic-surface";
-import { RoomLayout } from "@/components/live/room-layout";
-import { RoomParticipant } from "@/components/live/room-participant";
+import { LiveChamber } from "@/components/live/live-chamber";
 import { ROUTES } from "@/config/routes";
 import { MODULE_STATUS_LABEL, PLATFORM_MODULES } from "@/config/modules";
 import { getIdentity } from "@/lib/auth/session";
-import { getCohortSessions } from "@/lib/cohort/data";
-import { sessionForSubject } from "@/lib/cohort/session";
+import { getSessions } from "@/lib/classroom/data";
+import { CHAMBER_STATE_WORD, chamberState, sessionOfRecord } from "@/lib/classroom/state-machine";
 import { getEnvironmentSettings } from "@/lib/environment/settings";
 import { liveKitReadiness, LIVEKIT_ENV_KEYS } from "@/lib/livekit/config";
 import { liveCapabilities, scheduledPhrase } from "@/lib/next-action";
@@ -21,7 +19,12 @@ import type { SubjectId } from "@/lib/student/contract";
 import { getSubject } from "@/lib/subjects/subjects";
 import { getTutorSubjectIds } from "@/lib/tutor/data";
 
-/* /subjects/[subject]/live — THE COHORT SESSION SURFACE (Phase 7 · Step 2, DEC-023)
+/* /subjects/[subject]/live — THE LIVE CHAMBER SURFACE (Phase 7 · Milestone 2, DEC-026)
+ *
+ * Pivoted from the cohorts table to cohort_sessions (migration 0007): the
+ * session-of-record this chamber stands inside is read by the classroom data
+ * layer and named by the pure state machine (STANDBY → ACTIVE → SETTLING →
+ * CONCLUDED). The cohorts grouping surface elsewhere is untouched.
  *
  * Server-rendered, complete with NO client JavaScript: identity, session
  * facts, the attend-versus-resume sentence and the standby state all arrive
@@ -43,7 +46,7 @@ import { getTutorSubjectIds } from "@/lib/tutor/data";
  * Draft subjects keep the environment's guard (5.3): enrolled student or
  * related tutor admitted in production, everyone else 404s.
  *
- * FAILURE HONESTY (5.7): the cohort and progress reads are SUPPLEMENTAL —
+ * FAILURE HONESTY (5.7): the session and progress reads are SUPPLEMENTAL —
  * each is isolated; a failed read renders the standby stage (the truthful
  * minimum) and logs; the page itself never fails for them. The identity and
  * enrolment reads are PRIMARY — a failed read fails the page, because
@@ -91,10 +94,16 @@ export default async function LiveSessionPage({ params }: Params) {
      absence = the authored default; failure = default + one log line. */
   const settings = await getEnvironmentSettings(s.id as SubjectId);
 
-  /* THE COHORT FACTS — the first reader of migration 0006's policies.
+  /* The clock is read ONCE, here — the phrase and the state machine are
+     pure below (Milestone 2's pivot, DEC-026). */
+  const now = new Date().toISOString();
+
+  /* THE SESSION FACTS — the first reader of migration 0007's policies:
+     cohort_sessions is the session-of-record this chamber stands inside.
      Isolated (5.7): a failed read renders the standby stage, not an error. */
-  const sessionsRead = await isolateAsync("live:cohorts", () => getCohortSessions(s.id), { subject: s.id });
-  const session = sessionsRead.ok ? sessionForSubject(sessionsRead.value, s.id) : null;
+  const sessionsRead = await isolateAsync("live:classroom", () => getSessions(s.id), { subject: s.id });
+  const session = sessionsRead.ok ? sessionOfRecord(sessionsRead.value, now) : null;
+  const chamber = chamberState(session, now);
 
   /* DEC-022 — the verb is chosen by the RECORD. The student's own events are
      read (RLS: own rows only, migration 0004) and isolated; the tutor has no
@@ -117,17 +126,16 @@ export default async function LiveSessionPage({ params }: Params) {
   const module = PLATFORM_MODULES.find((m) => m.id === "live-classroom");
   const moduleStatusLabel = module ? MODULE_STATUS_LABEL[module.status] : "Planned";
 
-  /* The clock is read ONCE, here — the phrase is pure below. */
-  const now = new Date().toISOString();
-
-  /* THE ROOM IS OPEN only when three facts hold at once: the module is live
-     in the registry, the credentials are staged, and a session is named.
-     Until then the stage keeps its standby state (DEC-023): nothing about
-     the participant interface renders ahead of the room it belongs to.
-     When open, the room composition (7.3/7.4) takes the reserved grid —
-     the participant's OWN media and the shared academic surface, opt-in and
+  /* THE ROOM IS OPEN when the facts say the chamber is standing: the module
+     is live in the registry, the credentials are staged, and the state
+     machine names ACTIVE (the tutor has opened the session) — or SETTLING,
+     while a concluded session keeps the door open for its settling window
+     (DEC-026). Standby and Concluded keep the stage: nothing about the
+     participant interface renders ahead of the room it belongs to (DEC-023).
+     When open, the LiveChamber shell takes the reserved grid — the
+     participant's OWN media and the shared academic surface, opt-in and
      local-first, nothing invented (DEC-024, DEC-025). */
-  const roomOpen = module?.status === "live" && readiness.configured && session !== null;
+  const roomOpen = module?.status === "live" && readiness.configured && (chamber === "ACTIVE" || chamber === "SETTLING");
 
   return (
     <LiveStage
@@ -136,14 +144,18 @@ export default async function LiveSessionPage({ params }: Params) {
       motionChar={settings.levers.motionChar}
       readiness={readiness}
       moduleStatusLabel={moduleStatusLabel}
-      session={session}
+      session={session ? { id: session.id, title: session.title, state: session.state, scheduledAt: session.scheduledAt } : null}
       verb={verb}
       scheduled={session ? scheduledPhrase(session.scheduledAt, now) : null}
       viewer={viewer}
-      participant={roomOpen ? (
-        <RoomLayout
-          chamber={<RoomParticipant subjectId={s.id} displayName={identity.displayName} role={viewer} />}
-          surface={<AcademicSurface subjectId={s.id} motif={s.motif} density={settings.levers.density} />}
+      participant={roomOpen && session ? (
+        <LiveChamber
+          subject={{ id: s.id, name: s.name, motif: s.motif }}
+          density={settings.levers.density}
+          sessionTitle={session.title}
+          stateWord={CHAMBER_STATE_WORD[chamber]}
+          viewer={viewer}
+          displayName={identity.displayName}
         />
       ) : undefined}
     />

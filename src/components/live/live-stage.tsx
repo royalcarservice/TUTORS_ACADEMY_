@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import { SubjectMark } from "@/components/brand/subject-mark";
 import { Stage } from "@/components/motif/stage";
+import type { SessionRowState } from "@/lib/classroom/state-machine";
 import type { LiveKitReadiness } from "@/lib/livekit/config";
-import type { CohortSession } from "@/lib/cohort/session";
 import type { Density, MotionChar, Motif } from "@/lib/subjects/subjects";
 
 /* ════════════════════════════════════════════════════════════════════════
@@ -24,9 +24,11 @@ import type { Density, MotionChar, Motif } from "@/lib/subjects/subjects";
      with the one pronoun made true. No spinner, no vendor modal, no error
      theatre — a staged room says it is staged.
 
-   · SESSION STAGED — a cohort session exists (active, or the earliest
-     scheduled). Its facts render as facts: the cohort's name, its scheduled
-     day, the attend-versus-resume sentence chosen by the record (DEC-022 —
+   · SESSION STAGED — a classroom session exists (active, the earliest
+     scheduled, or the most recent concluded still within its settling
+     window — Milestone 2's pivot to cohort_sessions, DEC-026). Its facts
+     render as facts: the session's title, its scheduled day, the
+     attend-versus-resume sentence chosen by the record (DEC-022 —
      src/lib/progress/record.ts), and the RESERVED TILE GRID: an empty,
      named place on the substrate where tiles will sit. Nothing inside the
      grid is invented — no fake participants, no placeholder faces.
@@ -43,6 +45,16 @@ export interface LiveStageSubject {
   tagline: string;
   motif: Motif;
   accent: { ink: string; ivory: string };
+}
+
+/** The session fact the stage may speak about — one row, four fields, no
+ *  more. Milestone 2 pivoted this surface to cohort_sessions (DEC-026); the
+ *  shape is deliberately the state machine's facts, not a cohort's. */
+export interface LiveSessionView {
+  id: string;
+  title: string;
+  state: SessionRowState;
+  scheduledAt: string;
 }
 
 const MONO_LABEL: React.CSSProperties = {
@@ -72,8 +84,8 @@ export function LiveStage({
   readiness: LiveKitReadiness;
   /** The registry's honest label for live-classroom — "In progress", never "coming soon". */
   moduleStatusLabel: string;
-  /** The one session this surface may speak about (src/lib/cohort/session.ts), or none. */
-  session: CohortSession | null;
+  /** The one session this surface may speak about (cohort_sessions → LiveSessionView), or none. */
+  session: LiveSessionView | null;
   /** DEC-022's verb, chosen by the record: "attend" while the record is silent. */
   verb: "attend" | "resume";
   /** scheduledPhrase(session.scheduledAt, now) — "today" · "on 12 Sep 2026" · null. */
@@ -91,8 +103,8 @@ export function LiveStage({
   const sentence = verb === "resume" ? `Resume the ${subject.name} session` : `Attend the ${subject.name} session`;
   const standbySentence =
     viewer === "tutor"
-      ? "The live acoustic room is staged. Live sessions will initiate when you open the chamber."
-      : "The live acoustic room is staged. Live sessions will initiate when your tutor opens the chamber.";
+      ? "The chamber is staged. Live connection will initiate once you open the session."
+      : "The chamber is staged. Live connection will initiate once your tutor opens the session.";
 
   return (
     <div data-subject={subject.id} data-spatial="stage" data-live-stage data-density={density} data-motion-char={motionChar} data-live-configured={readiness.configured ? "true" : "false"}>
@@ -132,9 +144,11 @@ export function LiveStage({
                   padding: "var(--ta-space-6)",
                 }}
               >
-                <p style={MONO_LABEL}>{session.state === "active" ? "Session open" : "Next session"}</p>
+                <p style={MONO_LABEL}>
+                  {session.state === "active" ? "Session open" : session.state === "concluded" ? "Session concluded" : "Next session"}
+                </p>
                 <p style={{ margin: "var(--ta-space-2) 0 0", fontFamily: "var(--ta-font-display)", fontSize: "var(--ta-text-xl)", fontWeight: 500 }}>
-                  {session.name}
+                  {session.title}
                 </p>
                 {session.state === "scheduled" && scheduled && (
                   <p style={{ margin: "var(--ta-space-1) 0 0", color: "var(--ta-text-secondary)" }}>Scheduled {scheduled}.</p>
@@ -171,7 +185,7 @@ export function LiveStage({
                         />
                       ))}
                     </div>
-                    <p style={{ ...MONO_LABEL, marginTop: "var(--ta-space-3)" }}>The room is staged for {session.name}.</p>
+                    <p style={{ ...MONO_LABEL, marginTop: "var(--ta-space-3)" }}>The room is staged for {session.title}.</p>
                   </>
                 )}
               </section>

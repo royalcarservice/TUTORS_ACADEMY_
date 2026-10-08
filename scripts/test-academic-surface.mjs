@@ -178,9 +178,14 @@ t("layout — desktop split pane, small-screen toggle, observed live", () => {
   assert.equal((src.match(/aria-pressed=/g) ?? []).length >= 1, true);
 });
 t("integration — the production room composes chamber + surface inside the gate", () => {
+  /* Declared pin update (DEC-026): Milestone 2 wraps the room composition in
+     the LiveChamber shell; the exact RoomLayout/AcademicSurface props are
+     pinned against live-chamber.tsx in test-classroom. The gate shape is
+     unchanged: the surface mounts ONLY when the room is open. */
   const src = rawFile("src/app/subjects/[subject]/live/page.tsx");
-  assert.match(src, /roomOpen \? \(\s*<RoomLayout/);
-  assert.match(src, /surface=\{<AcademicSurface subjectId=\{s\.id\} motif=\{s\.motif\} density=\{settings\.levers\.density\} \/\>/);
+  assert.match(src, /roomOpen && session \? \(\s*<LiveChamber/);
+  const shell = rawFile("src/components/live/live-chamber.tsx");
+  assert.match(shell, /surface=\{<AcademicSurface subjectId=\{subject\.id\} motif=\{subject\.motif\} density=\{density\} \/\>/, "surface props pinned in the chamber shell");
 });
 t("integration — the rehearsal composes the same room, named as rehearsal", () => {
   const src = rawFile("src/app/dev/live-stage/page.tsx");
