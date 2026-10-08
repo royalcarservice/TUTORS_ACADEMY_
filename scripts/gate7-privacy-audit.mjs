@@ -80,6 +80,18 @@ const ALLOWLIST = {
     "pauses/resumes the ambient WebGL scene when the tab hides — performance + battery respect; no record of the visit",
   "src/lib/motion.ts":
     "sets the data-ambient-paused CSS hook when the tab hides — presentation only",
+  // Track 1 admin console (2026-10-08): the operations chrome uses the
+  // shared Badge primitive for status pills (Active/Ended, Verified/Pending).
+  // Administrative surfaces only; NONE of these mount inside a live
+  // classroom — the strict pass proves the live surfaces stay clean.
+  "src/app/(portal)/admin/page.tsx":
+    "admin operations overview status pills via the shared Badge primitive — administrative chrome, never a student-facing live surface",
+  "src/components/admin/placements-table.tsx":
+    "placement state pills (Active/Ended) via the shared Badge primitive — administrative chrome, never a student-facing live surface",
+  "src/components/admin/tutor-roster.tsx":
+    "credentialing state pills (Verified/Pending) via the shared Badge primitive — administrative chrome, never a student-facing live surface",
+  "src/components/admin/subject-levers.tsx":
+    "current lever-value pill via the shared Badge primitive — administrative chrome, never a student-facing live surface",
   "src/components/switch/subject-switch.tsx":
     "completes the subject-switch morph if the tab hides mid-flight, so the room never lands half-morphed; no tracking",
   "src/app/dev/motion/preview.tsx":

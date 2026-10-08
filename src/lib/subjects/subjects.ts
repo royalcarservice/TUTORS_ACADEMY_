@@ -188,3 +188,10 @@ export const SUBJECTS: SubjectConfig[] = [
 ];
 
 export const getSubject = (id: string) => SUBJECTS.find((s) => s.id === id);
+
+/** Room name as authored in each subject's tagline ("The Lattice — …"). */
+export const roomNameOf = (id: string): string => {
+  const s = getSubject(id);
+  if (!s) return id;
+  return s.tagline.split(" — ")[0] ?? s.name;
+};

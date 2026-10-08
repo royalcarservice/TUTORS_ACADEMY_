@@ -105,10 +105,38 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
   {
     id: "admin-portal",
     name: "Admin portal",
-    summary: "Architecture only: a route and a guard. No admin account exists.",
-    status: "planned",
+    /* Unfinished Work · Track 1: the operations console ships — overview,
+       placements, credentialing and subject-room oversight. Strictly gated
+       to role 'admin' in configured deployments; a fixture ledger with a
+       banner otherwise. */
+    summary: "The operations console: placements, credentialing and subject rooms.",
+    status: "live",
     surfaces: ["admin"],
     routePrefix: "/admin",
+  },
+  {
+    id: "admin-placements",
+    name: "Placements",
+    summary: "Establish and end student–tutor placements within subjects.",
+    status: "live",
+    surfaces: ["admin"],
+    routePrefix: "/admin/placements",
+  },
+  {
+    id: "admin-tutor-roster",
+    name: "Tutor Roster",
+    summary: "Review registered tutors and approve the subjects they teach.",
+    status: "live",
+    surfaces: ["admin"],
+    routePrefix: "/admin/tutors",
+  },
+  {
+    id: "admin-subject-rooms",
+    name: "Subject Rooms",
+    summary: "Global oversight of the six rooms: density and motion character.",
+    status: "live",
+    surfaces: ["admin"],
+    routePrefix: "/admin/subjects",
   },
   {
     /* PHASE 7 PREREQUISITE (5.6 close-out): before this module records anything,

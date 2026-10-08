@@ -469,3 +469,30 @@ flag exists in a process environment, never in the tree.
 flag is used only for the Arena preview server; the production header set
 is the one the Phase 10 security audit measured (audit/phase10-security.json),
 and a rebuild without the flag restores the wall exactly.
+
+---
+
+## DEC-042 — The Admin Operations Console (Unfinished Work · Track 1, 2026-10-08)
+
+**The problem:** the admin portal was architecture only — a route and a
+guard. The manager needed a working back office: placements, credentialing,
+subject-room oversight, testable without live credentials.
+
+**The ruling:** the console lives inside the existing `(portal)/admin`
+segment — no duplicate architecture. One data layer, `src/lib/admin/data.ts`,
+two modes: LIVE (service-role client, its declared purpose; every mutating
+action re-verifies role 'admin' before touching a row) and DEMONSTRATION
+(credentials absent — the fixture ledger in the specimen register, mutated
+in-process only, banner states exactly that). The P5-R1 proxy boundary
+carves ONE narrow exception: with NO credentials, the /admin prefix passes
+to its layout; with credentials the carve-out is unreachable and the layout's
+role check stands as the second gate. Student and tutor boundaries are never
+carved.
+
+**Honesty held:** credentialing WRITES are not wired to a live database yet —
+the approve action says so plainly instead of pretending (no false
+affordance, P6-R11). The subject-room surface exposes exactly the two levers
+a room honestly has (density, motion character), with their reach stated.
+The sweep's gamification family flags the shared Badge primitive on the
+admin chrome; four allowlist entries record why status pills are not
+gamification, and the strict pass keeps the live surfaces clean.

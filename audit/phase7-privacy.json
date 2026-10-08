@@ -1,7 +1,7 @@
 {
   "gate": "PHASE 7 · W2 — Privacy & Surveillance Audit",
   "date": "2026-10-08",
-  "scanned_files": 311,
+  "scanned_files": 320,
   "verdict": "PASS",
   "broad_pass": {
     "families": [
@@ -13,6 +13,12 @@
     ],
     "unexplained": [],
     "allowlisted": [
+      {
+        "file": "src/app/(portal)/admin/page.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "admin operations overview status pills via the shared Badge primitive — administrative chrome, never a student-facing live surface"
+      },
       {
         "file": "src/app/(public)/legal/privacy/page.tsx",
         "family": "dwell_or_idle_tracking",
@@ -120,6 +126,24 @@
         "family": "gamification",
         "pattern": "/\\bbadge\\b/i",
         "reason": "typography specimen paragraph (tabular figures demo); 'a streak of 14 days' is type sample copy with zero logic, dev-only"
+      },
+      {
+        "file": "src/components/admin/placements-table.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "placement state pills (Active/Ended) via the shared Badge primitive — administrative chrome, never a student-facing live surface"
+      },
+      {
+        "file": "src/components/admin/subject-levers.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "current lever-value pill via the shared Badge primitive — administrative chrome, never a student-facing live surface"
+      },
+      {
+        "file": "src/components/admin/tutor-roster.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "credentialing state pills (Verified/Pending) via the shared Badge primitive — administrative chrome, never a student-facing live surface"
       },
       {
         "file": "src/components/ambient/ambient-stage.tsx",
