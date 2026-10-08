@@ -43,7 +43,29 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## IMMEDIATE ORDER
 
-1. **PHASE 7 IS CERTIFIED (2026-10-08).** The Live Classroom Gate (W1–W5) ran to verdict —
+1. **PHASE 8 IS UNDER WAY.** Step 1 done (2026-10-08, DEC-029): the archive's foundation —
+   migration 0008 creates `session_artifacts` (board snapshot · pedagogical notes · recording, a
+   closed three; one row belongs STRICTLY to one session of one subject — a composite foreign key
+   into `cohort_sessions(subject_id, id)` makes crossing the boundary unrepresentable;
+   storage_path unique; metadata capped at 16 KB) and the PRIVATE `session-artifacts` bucket with
+   one authenticated SELECT policy deferring to the standing predicates — uploads and lifecycle
+   stay service-role, anon admitted nowhere. The SELECT-only data layer (classroom posture: no
+   userId — RLS is the only boundary): concluded sessions newest-first with their artifacts
+   (`fetchSubjectArchive`); details sign a 60-second bearer URL through the service client only
+   after the row proves visible, degrading to `unsigned` without credentials — invisible and
+   unknown are the SAME null (`fetchArtifactDetails`). Pure seam `src/lib/archive/artifact.ts`
+   (classification · path convention · isolation predicate · the visibility mirror, provable
+   offline); zero engagement metrics by construction (no counter column exists; the banned
+   vocabulary swept). Verified: archive-logic 19/19 (new) · full battery green · both gate-7
+   audits still PASS · validate-subjects · check-subject-sql · tsc · build exit 0. Reconciliations
+   recorded in DEC-029: numbered 0008 not the brief's 0005 (cohorts owns it) · the subject "FK" is
+   the `is_subject_id` CHECK (E-13) · `is_related_tutor(auth.uid(), …)` cannot stand as written
+   (DEC-026 verbatim) — the tutor READS by relationship, WRITES only into sessions they opened.
+   **No surface ships with Step 1 and `recorded-classes` stays `planned`** (E-26 posture). Live
+   apply of 0008 joins 0004–0007 in the credentialed environment. **Next:** the archive's writer
+   (service role: board snapshots, notes, recordings) and the archive surface the student and
+   tutor read — in the brief's order.
+2. **PHASE 7 IS CERTIFIED (2026-10-08).** The Live Classroom Gate (W1–W5) ran to verdict —
    `PHASE7_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase7-*.json`
    (privacy · ledger · performance). Five windows, five passes: cold start & static health ·
    the privacy & surveillance audit (zero-tolerance on the fourteen live surfaces, zero
@@ -92,11 +114,11 @@ whole pass. These rules are the fix, not ceremony.*
    clear-permission ruling.
    Reconnaissance: `docs/proposed/livekit_recon.md`. **Kinds stay inadmissible until the module is
    live** — the scaffolding alone changes nothing on the arc.
-2. **Credentialed environment first, when available:** apply migrations 0004/0005/0006/0007, then run the
-   Phase 6 debt list (`PHASE6_STEP6_REPORT.md` — the handover document): harness re-runs, DEC-020
-   baseline re-pin, the matrix `--write` re-pin (W7 — the filesystem scan now includes
-   `/subjects/[subject]/live`), the signed-in journey re-walk.
-3. **Rulings owed to the owner:** the two static guards (gate W1) · the tagline question (W4) · the
+3. **Credentialed environment first, when available:** apply migrations 0004/0005/0006/0007/0008,
+   then run the Phase 6 debt list (`PHASE6_STEP6_REPORT.md` — the handover document): harness
+   re-runs, DEC-020 baseline re-pin, the matrix `--write` re-pin (W7 — the filesystem scan now
+   includes `/subjects/[subject]/live`), the signed-in journey re-walk.
+4. **Rulings owed to the owner:** the two static guards (gate W1) · the tagline question (W4) · the
    co-teacher grant question (DEC-018 Item 5) · the tile-grid composition ruling for when remote
    participants become facts (DEC-024) · the surface's owed rulings: session bus, clear-permission,
    keyboard stroke input, late-packet ordering (DEC-025) · whether `academicNotes` ever gains an

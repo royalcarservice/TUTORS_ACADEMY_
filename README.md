@@ -1412,6 +1412,25 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       declared; nine phase-close questions answered). Baselines committed: `audit/phase7-*.json`.
       Full record: `PHASE7_GATE_REPORT.md`. The debt list stands: wiring, rulings, the manual walk.
 **Phase 8 — Recordings**
+- [x] Step 1 — Session archive schema & storage policies -> PHASE 8 BRIEF (2026-10-08) — **BUILT.**
+      The archive's foundation, schema-first: migration 0008 creates `session_artifacts` — one row
+      = one artifact (board snapshot · pedagogical notes · recording, a closed three) belonging
+      STRICTLY to one session of one subject, enforced twice (composite foreign key into
+      `cohort_sessions(subject_id, id)` + the brief's requested index; storage_path unique, one
+      artifact per object key). Reconciled and recorded (DEC-029): numbered 0008, not the brief's
+      0005 (cohorts owns it) · the "subject foreign key" is the `is_subject_id` CHECK (E-13 — no
+      subjects table) · `is_related_tutor(auth.uid(), …)` cannot stand as written (DEC-026's ruling
+      applies verbatim) — the tutor READS by standing relationship and WRITES only into sessions
+      they opened · the data layer carries no userId (identity rides the cookie session; RLS is the
+      only boundary). One PRIVATE bucket `session-artifacts` with one authenticated SELECT policy
+      deferring to the same predicates; uploads and lifecycle stay service-role; anon admitted
+      nowhere. The data layer (SELECT-only, classroom posture): concluded sessions newest-first
+      with their artifacts; details sign a 60-second bearer URL through the service client only
+      after the row proves visible, degrading to `unsigned` without credentials — invisible and
+      unknown are the SAME null (zero leakage). Zero engagement metrics by construction (no counter
+      column exists; the banned vocabulary is swept). Verified: archive-logic 19/19 (new) · full
+      battery green · both gate-7 audits still PASS · tsc clean · build exit 0. Live apply owed to
+      the credentialed environment; no surface ships and `recorded-classes` stays `planned`.
 **Phase 9 — AI Learning Layer**
 **Phase 10 — Polish + Performance**
 
