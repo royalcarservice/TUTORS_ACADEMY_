@@ -109,6 +109,28 @@ whole pass. These rules are the fix, not ceremony.*
    observed live). rls_test.sql's "every account is flagged test" premise documents
    the pre-onboarding era — against a project DB holding real signups it fails BY
    DESIGN; declared, not weakened.
+   **Step 3 done (2026-10-08, DEC-039): SECURITY HARDENING, CSP & CREDENTIAL AUDIT.**
+   Six security headers stand on every route (CSP with frame-ancestors 'none' —
+   unsafe-eval OUT because the WebGL lattice is a bundled canvas module · HSTS ·
+   nosniff · DENY framing · referrer discipline · Permissions-Policy refusing
+   interest-cohort). The sensitive routes are limited by an in-memory sliding
+   window keyed on one-way hashes: /login 5/15min · /register 3/hour ·
+   verify-guardian 10/hour — writes only count; the 429 speaks one calm pinned
+   sentence with an honest Retry-After. The zero-leak sweep
+   (`scripts/audit-secrets.mjs`) is CLEAN over 532 tracked text files (no
+   secrets, no real identities, no tracked .env files, only the three declared
+   NEXT_PUBLIC_ vars); one dev placeholder moved to a reserved domain to keep
+   it strict. Anti-enumeration pinned: sign-in failures stay generic. Verified:
+   test-security-logic 14/14 (new) · the brief's full battery green · full
+   Phase 5–9 battery green · guards at declared baselines · gate7 privacy audit
+   PASS over 311 files (rebaselined) · build clean, 41 pages · smoke: headers
+   live, 429 at exactly limit+1, server killed by port. STATE_LANGUAGE 10.3
+   pins the 429 sentence.
+   **Owed, declared:** nonce-based CSP tightening · the LiveKit connect-src
+   addition (the day the live module wires credentials) · the shared-store rate
+   limiter for multi-instance deployments · the timing-parity walk · the
+   credentialed round-trips (carried). DECLARED COST: frame-ancestors 'none'
+   refuses any iframe embedding — previews open at their own URL.
 2. **PHASE 9 IS CERTIFIED (2026-10-08).** The Socratic Engine Gate (W1–W5) ran to verdict —
    `PHASE9_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase9-*.json`;
    DEC-036 records the gate; STATE_LANGUAGE 9.4 records the close. Step 1 done (2026-10-08, DEC-033): the SOCRATIC ASSISTANCE ENGINE &

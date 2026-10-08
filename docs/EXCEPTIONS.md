@@ -130,3 +130,14 @@ credentialed round-trip walks. One premise-shift declared: rls_test.sql's
 "every account is flagged test" assertion documents the pre-onboarding
 era; against a project DB holding real signups it will fail BY DESIGN —
 declared, never weakened. Count unchanged: **18 open.**
+
+### Phase 10 · Step 3 note — hardening stands, count unchanged (2026-10-08)
+
+Step 3 hardened the edge (DEC-039): the six security headers on every
+route, the sliding-window limiter on the sensitive routes, and the
+zero-leak sweep CLEAN over 532 tracked text files. **No new exception
+opened.** The declared costs and owed upgrades live in DEC-039:
+frame-ancestors 'none' refuses iframe embedding by design · nonce-based
+CSP tightening · the LiveKit connect-src addition · the shared-store
+limiter for multi-instance deployments · the timing-parity walk. Count
+unchanged: **18 open.**

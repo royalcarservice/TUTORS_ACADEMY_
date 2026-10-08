@@ -322,3 +322,74 @@ declared, not weakened; the `--local` throwaway run stays green.
 **Rule 18:** no identities created; every verification ran offline. The sandbox holds no
 credentials, so the credentialed walks (a real adult signup round-trip, a minor→guardian
 verification round-trip, the trigger's refusal observed live) stand owed with this record.
+
+
+---
+
+### DEC-039 — Phase 10 · Step 3: security hardening, CSP & credential audit (2026-10-08)
+
+**The ruling:** the platform hardens for launch. Six security headers stand on every route
+(CSP · HSTS · nosniff · DENY framing · referrer discipline · Permissions-Policy with
+interest-cohort refused); the sensitive routes are limited by an in-memory sliding window
+keyed on one-way hashes; and the zero-leak sweep proves the committed tree carries no
+secrets, no real identities, no stale env files. Verified: test-security-logic 14/14 (new) ·
+audit-secrets clean (532 tracked text files) · the brief's full battery green (validate ·
+subject-sql · next-action 34 · progress 16 · legal 23 · onboarding 33) · full Phase 5–9
+battery green (188) · guards at declared baselines · gate7 privacy audit PASS over 311 files
+(rebaselined 310 → 311) · build clean, 41 pages · smoke: all six headers on every route,
+login 5/15min held at the 6th POST (429, the calm sentence verbatim), register 3/hour
+(write-only budget — GETs never consume it), verify-guardian 10/hour held at the 11th GET,
+server killed by port.
+
+**The CSP, tuned to what loads — nothing looser:** `default-src 'self'` · `script-src 'self'
+'unsafe-inline'` (the app's bundles plus Next's streamed bootstrap — nonce-based tightening
+stands as the owed upgrade, declared) · `style-src 'self' 'unsafe-inline'` (Tailwind + the
+token-driven inline styles) · `font-src 'self' data:` · `img-src 'self' data: blob:` ·
+`connect-src 'self' https://*.supabase.co wss://*.supabase.co` · `frame-ancestors 'none'` +
+`base-uri 'self'` + `form-action 'self'` + `object-src 'none'`. **`unsafe-eval` stays OUT:**
+the WebGL lattice is a bundled module drawing to a canvas (src/lib/ambient/webgl-lattice.ts)
+— proven eval-free by test. The brief's requirement holds exactly. LiveKit cloud endpoints
+join connect-src the day the live module wires credentials (owed, declared — no loose
+wildcard stands in their place today).
+
+**The declared cost of `frame-ancestors 'none'`:** any environment that embeds the app in an
+iframe is refused by design (anti-clickjacking is the point); previews are opened at their
+own URL. Recorded here so the refusal is never mistaken for a defect.
+
+**The rate limiter (`src/lib/security/rate-limit.ts`, wired in `src/proxy.ts`):** sliding
+window, zero dependencies, thresholds pinned — /login 5/15 min · /register 3/hour ·
+/auth/verify-guardian 10/hour. Only ATTEMPTS count: POSTs to the auth routes (the
+server-action submissions) and GETs to the verification handler; page reads are never
+limited (proven in smoke). Keys are SHA-256 digests of `bucket:address-source` — the raw
+address never becomes a map key, the consent audit's own address convention reused. Refusals
+speak the pinned sentence with an honest Retry-After and never extend the refusal. DECLARED
+properties: in-memory per process (the brief's shape; a shared store is the owed upgrade) ·
+the store caps at 20 000 keys with blunt eviction · a refused probe cannot enumerate
+accounts, because the refusal is identical whether or not the email exists.
+
+**The zero-leak sweep (`scripts/audit-secrets.mjs`):** scans every git-tracked text file for
+JWTs, cloud key shapes, private key blocks, credentialed connection strings, secret-looking
+literals, real-looking emails, phone shapes, tracked .env files and undeclared NEXT_PUBLIC_
+variables. CLEAN over 532 files. The email allowlist is RFC-based, not a waiver: RFC-2606/6761
+reserved domains (example.* · *.example · *.invalid · *.test) · the RLS fixture domain
+(test.local, rls_test.sql) · validator test cases (a@b.com and its kin) · ONE file-level
+allowance with a hand-read reason (the P5-R2 report quotes an address its own guard REFUSED).
+One source-fix landed during the sweep: a dev preview's placeholder moved from a real-looking school domain
+to the reserved `you@school.example` — the sweep stays strict.
+
+**Anti-enumeration:** sign-in failures stay generic — one vague refusal sentence regardless
+of which half was wrong (the 5.7 decision, pinned by test: no "wrong password" / "no such
+account" sentence exists). Response-TIME parity rides the auth service's own behaviour and
+cannot be equalized from this side of the wire; the message-side guarantee is what this step
+pins, and the timing walk stands owed with the credentialed debt (the P6 precedent).
+
+**Zero-leak, client-side:** `SUPABASE_SERVICE_ROLE_KEY` has no NEXT_PUBLIC_ prefix and is
+read only in src/lib/supabase/service.ts (browser-guarded); the sweep proves only the three
+declared NEXT_PUBLIC_ variables exist anywhere in the tree.
+
+**Owed, declared:** nonce-based CSP tightening · the LiveKit connect-src addition · the
+shared-store rate limiter for multi-instance deployments · the timing-parity walk · the
+credentialed round-trips (carried from Step 2).
+
+**Rule 18:** the sweep asserts zero real identities in the tree; the gate's fixtures remain
+the only named people, on reserved domains. No identities created by this step.

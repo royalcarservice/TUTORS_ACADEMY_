@@ -1735,6 +1735,37 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       · build clean, 41 pages · smoke: DoB gate live, guardian page
       doors to login, verify handler honest, server killed by port.
       DEC-038 records the step; STATE_LANGUAGE 10.2 pins the sentences.
+- [x] Step 3 — Security hardening, CSP & credential audit -> PHASE 10 BRIEF (2026-10-08) — **BUILT.**
+      The platform hardens for launch. Six security headers stand on
+      every route: the CSP (default-src 'self'; script/style 'self' +
+      'unsafe-inline' for Next's streamed bootstrap and the token-driven
+      styles; font 'self' data:; img 'self' data: blob:; connect 'self' +
+      the Supabase REST/Realtime endpoints; frame-ancestors 'none';
+      base-uri/form-action 'self'; object-src 'none' — unsafe-eval stays
+      OUT: the WebGL lattice is a bundled canvas module, proven eval-free)
+      · HSTS · X-Content-Type-Options nosniff · X-Frame-Options DENY ·
+      Referrer-Policy strict-origin-when-cross-origin · Permissions-Policy
+      camera=(self), microphone=(self), geolocation=(), interest-cohort=().
+      The sensitive routes are limited by an in-memory sliding window
+      (zero dependencies) keyed on one-way SHA-256 hashes: /login 5/15min
+      · /register 3/hour · /auth/verify-guardian 10/hour — WRITES only
+      count, page reads are never limited; the 429 speaks one calm pinned
+      sentence with an honest Retry-After, and a refused attempt does not
+      extend the refusal. The zero-leak sweep (scripts/audit-secrets.mjs)
+      is CLEAN over 532 tracked text files: no JWTs, no cloud keys, no
+      private key blocks, no credentialed connection strings, no real
+      emails (the allowlist is RFC-based and hand-read), no tracked .env
+      files, only the three declared NEXT_PUBLIC_ variables; one dev
+      placeholder moved to a reserved domain to keep the sweep strict.
+      Anti-enumeration pinned: sign-in failures stay generic — the
+      platform never names the absence of an account. Verified:
+      test-security-logic 14/14 (new) · audit-secrets clean · the brief's
+      full battery green · full Phase 5–9 battery green · guards at
+      declared baselines · gate7 privacy audit PASS over 311 files
+      (rebaselined) · build clean, 41 pages · smoke: headers live on
+      every route, 429 at exactly limit+1 (login, register, guardian),
+      server killed by port. DEC-039 records the step; STATE_LANGUAGE
+      10.3 pins the 429 sentence.
 
 ## Brand direction (locked in Phase 2.1)
 

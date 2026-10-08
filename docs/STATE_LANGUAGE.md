@@ -581,3 +581,24 @@ accounts only" alert and the test-account acknowledgement checkbox — real
 onboarding stands, so the form no longer claims every account is a test
 account. Test accounts keep their own path (`scripts/test-account.mjs`),
 untouched and unnamed in the form.
+
+
+## 10.3 addendum — the hardening's language (Phase 10 · Step 3, DEC-039)
+
+The defenses speak once, and calmly. One new sentence joins the register:
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `Too many attempts have been made recently. Please wait a few moments before trying again.` | the 429 body of /login, /register and /auth/verify-guardian | the limit — stated without accusation, without a count, without blame |
+
+The sentence is pinned by `scripts/test-security-logic.mjs` (14 checks):
+zero exclamation marks, no disclosure of which budget was spent, and an
+honest Retry-After beside it.
+
+Refusals stay indistinguishable by design: a sign-in failure speaks one
+vague sentence whether the email exists or not — the platform never names
+the absence of an account, and the sweep proves no "wrong password"
+variant exists. The zero-leak sweep asserts what silence looks like in
+the tree: no secrets, no real addresses, no tracked env files — 532
+files scanned, zero unexplained findings, the allowlist RFC-based and
+hand-read, never a waiver.
