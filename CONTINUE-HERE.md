@@ -48,8 +48,10 @@ whole pass. These rules are the fix, not ceremony.*
    18/18 tests · full battery green, build clean. **Next:** the live-classroom capability that owns
    the `session-attended` referent — its sessions table decides the referent ruling (DEC-009's open
    question), its surface writes the first cohorts RLS policies, and P6-R15's settling-GET rule binds
-   every new write. **Kinds stay inadmissible until the module is live** — the table alone changes
-   nothing on the arc.
+   every new write. Reconnaissance for that capability is already recorded:
+   `docs/proposed/livekit_recon.md` (server-SDK facts, the cohort-session ↔ room mapping, webhook
+   writer for `session-attended`, and the three questions owed to the next brief). **Kinds stay
+   inadmissible until the module is live** — the table alone changes nothing on the arc.
 2. **Credentialed environment first, when available:** apply migrations 0004/0005, then run the Phase 6
    debt list (`PHASE6_STEP6_REPORT.md` — the handover document): harness re-runs, DEC-020 baseline
    re-pin, the matrix `--write` re-pin (W7), the signed-in journey re-walk.
