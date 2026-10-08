@@ -43,7 +43,41 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## IMMEDIATE ORDER
 
-1. **PHASE 9 IS CERTIFIED (2026-10-08).** The Socratic Engine Gate (W1–W5) ran to verdict —
+1. **PHASE 10 IS UNDER WAY.** Step 1 done (2026-10-08, DEC-037): **THE LEGAL FRAMEWORK &
+   GUARDIAN CONSENT GATES — Exception E-07 CLOSED, the register drops to 18 open.** Three
+   public legal routes stand: `/legal/terms` (Terms of Academy Practice — the pedagogical
+   relationship, the student's ownership of their proofs, no commercial lock-in) ·
+   `/legal/privacy` (Privacy & Data Protection Notice — enumerates what IS collected
+   (milestones, session notations, lens exchanges) and what is NEVER collected (facial
+   recognition, keystroke logs, attention metrics, third-party advertising data; zero
+   trackers — there is no cookie banner because there is nothing to consent to) ·
+   `/legal/guardian-consent` (the DPDP Act 2023 framework). Serif headings, a reading
+   measure, zero exclamation marks, zero tracking. Migration **0011** (the brief's 0007 slot
+   belongs to classroom_sessions — the DEC-029/033 precedent) creates `legal_consents`, the
+   consent audit: closed union terms_v1 · privacy_v1 · guardian_consent_v1 · guardian_email
+   REQUIRED for a guardian consent and FORBIDDEN otherwise · ip_hash a one-way SHA-256
+   digest computed server-side (the raw address never stored; absence hashes honestly via
+   the `no-address` sentinel) · RLS enabled AND forced, own-only SELECT/INSERT,
+   tutors/admin/anon denied by absence, no update/delete. APPEND-ONLY by deliberation — no
+   unique constraint (a future withdrawal-and-regrant deserves both rows); idempotency is
+   the write action's calm refusal. The guardian gate
+   (`src/components/legal/guardian-gate.tsx`): the brief's DPDP sentence VERBATIM, ONE
+   email field with its purpose stated, ONE act, zero dark patterns (no pre-checked boxes,
+   no countdowns, no coercive alternatives — swept by test). Proven at
+   `/dev/guardian-rehearsal` (404 in production); owed to real onboarding the day it opens.
+   The footer gains the three legal links (its own pre-declared growth point); the
+   login/register notices now state the framework stands (E-22 anticipated this
+   replacement). Verified: test-legal-logic 23/23 (new) · validate-subjects ALL VALID ·
+   check-subject-sql PASS · next-action 34 · progress 16 · full Phase 5–9 battery green
+   (188 tests) · guards at declared baselines · gate7 privacy audit PASS over 304 files
+   (rebaselined 296 → 304; the notice's refusal vocabulary allowlisted, declared) · build
+   clean, 38 pages · smoke: routes 200 with their sentences, rehearsal 404, footer links
+   live, server killed by port. STATE_LANGUAGE 10.1 pins the legal sentences.
+   **Owed, declared:** the gate's wiring into real onboarding (no date-of-birth question
+   exists yet) · the confirmation-link delivery channel (no email provider stands) · live
+   apply of 0011 with 0004–0010 · the standing contact route, published the day real
+   onboarding opens. Real onboarding stays CLOSED — test accounts only.
+2. **PHASE 9 IS CERTIFIED (2026-10-08).** The Socratic Engine Gate (W1–W5) ran to verdict —
    `PHASE9_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase9-*.json`;
    DEC-036 records the gate; STATE_LANGUAGE 9.4 records the close. Step 1 done (2026-10-08, DEC-033): the SOCRATIC ASSISTANCE ENGINE &
    PEDAGOGICAL CONTRACT — schema, contract and pure logic; no surface yet. Migration 0009
@@ -137,7 +171,7 @@ whole pass. These rules are the fix, not ceremony.*
    environment/tutor baseline re-pins (DEC-030 debt, carried) · the browsered 390px walks ·
    the provider-backed capability ruling, when the owner is ready, decides the registry
    flip. Phase 10 (Polish + Performance) awaits its brief.
-2. **PHASE 8 IS CERTIFIED (2026-10-08).** The Archive Gate (W1–W5) ran to verdict —
+3. **PHASE 8 IS CERTIFIED (2026-10-08).** The Archive Gate (W1–W5) ran to verdict —
    `PHASE8_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase8-*.json`.
    Step 1 done (2026-10-08, DEC-029): the archive's foundation —
    migration 0008 creates `session_artifacts` (board snapshot · pedagogical notes · recording, a
@@ -244,7 +278,7 @@ whole pass. These rules are the fix, not ceremony.*
    the chamber audio) — the shelf has its reader and its chronology; it still owes its objects —
    then live-classroom's `live` flip (the carrier wiring, DEC-023/028), and a populated-shelf +
    signed-playback + populated-chronology verification in the credentialed environment.
-3. **PHASE 7 IS CERTIFIED (2026-10-08).** The Live Classroom Gate (W1–W5) ran to verdict —
+4. **PHASE 7 IS CERTIFIED (2026-10-08).** The Live Classroom Gate (W1–W5) ran to verdict —
    `PHASE7_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase7-*.json`
    (privacy · ledger · performance). Five windows, five passes: cold start & static health ·
    the privacy & surveillance audit (zero-tolerance on the fourteen live surfaces, zero

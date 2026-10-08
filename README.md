@@ -1664,6 +1664,41 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       re-pins (relationship 6.3 owed), the credentialed harness re-runs, the browsered 390px
       walk. DEC-036 records the gate; STATE_LANGUAGE 9.4 records the close.
 **Phase 10 — Polish + Performance**
+- [x] Step 1 — Legal framework & guardian consent gates -> PHASE 10 BRIEF (2026-10-08) — **BUILT. E-07 CLOSED.**
+      The legal framework stands on three public routes: `/legal/terms`
+      (Terms of Academy Practice — the pedagogical relationship, the
+      student's ownership of their proofs, no commercial lock-in) ·
+      `/legal/privacy` (Privacy & Data Protection Notice — enumerates what
+      is collected and what is NEVER collected: facial recognition,
+      keystroke logs, attention metrics, third-party advertising data; zero
+      tracking stated as fact) · `/legal/guardian-consent` (the Guardian
+      Consent Framework under the DPDP Act 2023). Serif headings, a
+      reading measure, the platform's chrome, zero exclamation marks.
+      Migration 0011 (the brief's 0007 slot belongs to classroom_sessions —
+      the DEC-029/033 precedent) creates `legal_consents`, the consent
+      audit: closed union terms_v1 · privacy_v1 · guardian_consent_v1;
+      guardian_email REQUIRED for a guardian consent and FORBIDDEN
+      otherwise; ip_hash a one-way SHA-256 digest computed server-side
+      (the raw address never stored; absence hashes honestly); RLS enabled
+      AND forced, own-only SELECT/INSERT, tutors/admin/anon denied by
+      absence, no update/delete; append-only by deliberation (no unique
+      constraint — a future withdrawal-and-regrant deserves both rows;
+      idempotency is the write action's calm refusal). The guardian gate
+      (`src/components/legal/guardian-gate.tsx`): the brief's DPDP
+      sentence VERBATIM, ONE email field with its purpose stated, ONE act,
+      zero dark patterns — proven at `/dev/guardian-rehearsal` (404 in
+      production), owed to real onboarding the day it opens (declared,
+      with the confirmation-link delivery channel). The footer gains the
+      three legal links (its own pre-declared growth point); the
+      login/register notices state the framework stands (E-22 anticipated
+      this). Verified: test-legal-logic 23/23 (new) · validate-subjects
+      ALL VALID · check-subject-sql PASS · next-action 34 · progress 16 ·
+      full Phase 5–9 battery green · guards at declared baselines · gate7
+      privacy audit PASS over 304 files (rebaselined; the notice's
+      refusal vocabulary allowlisted, declared) · build clean, 38 pages ·
+      smoke: routes 200, rehearsal 404, footer links live, server killed
+      by port. DEC-037 records the step; STATE_LANGUAGE 10.1 pins the
+      legal sentences; the register drops to 18 open.
 
 ## Brand direction (locked in Phase 2.1)
 

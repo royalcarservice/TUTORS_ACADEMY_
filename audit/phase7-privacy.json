@@ -1,7 +1,7 @@
 {
   "gate": "PHASE 7 · W2 — Privacy & Surveillance Audit",
   "date": "2026-10-08",
-  "scanned_files": 296,
+  "scanned_files": 304,
   "verdict": "PASS",
   "broad_pass": {
     "families": [
@@ -13,6 +13,12 @@
     ],
     "unexplained": [],
     "allowlisted": [
+      {
+        "file": "src/app/(public)/legal/privacy/page.tsx",
+        "family": "dwell_or_idle_tracking",
+        "pattern": "/\\bdwell\\b/i",
+        "reason": "the privacy NOTICE's never-collected list names surveillance vocabulary in refusal sentences (DEC-037): 'dwell' appears as 'idle or dwell timers' — what the platform refuses to collect; the list is the public record of the refusals the gates sweep for"
+      },
       {
         "file": "src/app/dev/motion/preview.tsx",
         "family": "tab_or_focus_monitoring",

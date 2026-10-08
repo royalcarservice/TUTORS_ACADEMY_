@@ -10,6 +10,10 @@ export const ROUTES = {
   student: "/student",
   tutor: "/tutor",
   admin: "/admin",
+  /** The legal framework (Phase 10 · Step 1, DEC-037 — resolves E-07). */
+  legalTerms: "/legal/terms",
+  legalPrivacy: "/legal/privacy",
+  legalGuardianConsent: "/legal/guardian-consent",
 } as const;
 
 export type AppRoute = (typeof ROUTES)[keyof typeof ROUTES];

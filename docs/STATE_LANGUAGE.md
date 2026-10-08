@@ -519,3 +519,35 @@ The lineage: DEC-033 the engine · DEC-034 the lens · DEC-035 the mirror ·
 DEC-036 the gate. The engine waits for its schema — bounded, private, and
 dignified — and opens the day migrations 0004–0010 land, with zero edits.
 Phase 10 awaits its brief.
+
+
+## 10.1 addendum — the legal framework's language (Phase 10 · Step 1, DEC-037)
+
+The legal pages speak the way the rest of the platform behaves: clear,
+honest, calm — no exclamation marks, no coercion, no decorative urgency.
+Three documents stand on three public routes, and the register's E-07
+closes with them.
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `As a student under 18, the Digital Personal Data Protection Act requires verified guardian consent before enrolling in subject chambers.` | the guardian gate, the framework page, the privacy notice | the gate's legal basis, the brief's requirement verbatim |
+| `Used only to verify this consent. Never for marketing, never shared with the student's tutors.` | beside the gate's single field | the email's purpose, stated once |
+| `Guardian consent recorded. The confirmation email channel is not wired in this deployment, so the link stands recorded but unsent; it will be delivered when the channel opens.` | the gate, after the act | the honest outcome — never "email sent" while the channel is owed |
+| `The consent could not be recorded. Nothing was changed; repeating is safe.` | the closed failure | claims only what is known |
+| `There is no cookie banner on this site because there is nothing to consent to — no tracker runs here.` | the privacy notice, §3 | zero tracking stated as a fact, not a preference |
+
+The consent vocabulary is closed and swept: zero exclamation marks, zero
+countdowns, zero pre-checked boxes, zero coercive alternatives — proven by
+`scripts/test-legal-logic.mjs` (23 checks). The connecting address reaches
+the audit ONLY as a one-way SHA-256 digest, computed server-side; absence
+hashes indistinguishably (the `no-address` sentinel). The audit is
+append-only by deliberation: a consent is an occurrence, recorded once,
+exactly as given; idempotency is the write action's calm refusal, not a
+database constraint.
+
+What is owed, in the register's own words: the gate's wiring into real
+onboarding (no date-of-birth question exists yet) · the confirmation-link
+delivery channel · live apply of migration 0011 with 0004–0010 · the
+standing contact route, published the day real onboarding opens. Real
+onboarding stays closed — the framework stands so the door can open
+honestly, not so it opens today.

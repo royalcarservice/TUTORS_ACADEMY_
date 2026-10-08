@@ -14,8 +14,9 @@ import { siteConfig } from "@/config/site";
    STRUCTURALLY HONEST, therefore sparse: the lockup, one closing line, one
    group of links to routes that resolve today, a copyright line. Nothing
    else exists, so nothing else is shown — no capture, no social, no badges,
-   no accreditations, no statistics, no address, no legal links (the legal
-   pages do not exist; drafting them here would look like compliance).
+   no accreditations, no statistics, no address. The legal links stand since
+   Phase 10 · Step 1 (DEC-037, resolves E-07): the three routes resolve, so
+   the footer's own rule admits them.
    The previous foundation-era footer (three link columns, a description
    claiming unbuilt features, an `.example` support address) is retired by
    this step; see PHASE4_STEP8_RETURN_REPORT.md for the blocker list.
@@ -31,6 +32,9 @@ export const FOOTER_COPY = {
 export const FOOTER_LINKS = [
   { label: "How it works", href: "/#how-it-works" },
   { label: "Subjects", href: "/subjects" },
+  { label: "Terms of Practice", href: ROUTES.legalTerms },
+  { label: "Privacy Notice", href: ROUTES.legalPrivacy },
+  { label: "Guardian Consent", href: ROUTES.legalGuardianConsent },
   { label: "Sign in", href: ROUTES.login },
 ] as const;
 

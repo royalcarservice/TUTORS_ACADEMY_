@@ -69,6 +69,8 @@ const STRICT_FAMILIES = {
  * NONE of these files mount inside the live classroom — the strict pass
  * proves the live surfaces themselves are clean. */
 const ALLOWLIST = {
+  "src/app/(public)/legal/privacy/page.tsx":
+    "the privacy NOTICE's never-collected list names surveillance vocabulary in refusal sentences (DEC-037): 'dwell' appears as 'idle or dwell timers' — what the platform refuses to collect; the list is the public record of the refusals the gates sweep for",
   "src/components/live/room-participant.tsx":
     "the participant island's OWN opt-in capture (DEC-024): getUserMedia is gated behind an explicit button, nothing leaves the device, no timers, no persistence — pinned by test-live-participant",
   "src/app/dev/scene-enter/preview.tsx":

@@ -21,9 +21,11 @@ import { signUp, type AuthResult } from "./actions";
  * Registration form (Phase 5 · 5.1). Posts to the `signUp` server action
  * (Supabase Auth). Role is student or tutor; admin is never self-serve.
  *
- * PHASE 5: TEST ACCOUNTS ONLY (ruling P5-R1 Part 7). No privacy policy, terms
- * or contact route exist yet, so this form does not pretend to collect
- * agreement to them. Real onboarding is out of scope for all of Phase 5.
+ * PHASE 5: TEST ACCOUNTS ONLY (ruling P5-R1 Part 7). The legal framework —
+ * terms, privacy notice, guardian consent gate — stands since Phase 10 ·
+ * Step 1 (DEC-037, resolves E-07); this form still does not collect
+ * agreement to it, because consent collection belongs to real onboarding,
+ * which stays closed. Real onboarding is out of scope for all of Phase 5.
  */
 export function RegisterForm({ configured }: { configured: boolean }) {
   const [state, action, pending] = useActionState<AuthResult, FormData>(signUp, { error: null });
@@ -46,8 +48,9 @@ export function RegisterForm({ configured }: { configured: boolean }) {
         {configured && (
           <Alert variant="info" title="Test accounts only">
             <p>
-              Accounts created here are test accounts. There is no privacy
-              policy or terms of use yet, so this is not open to real students.
+              Accounts created here are test accounts. The terms and
+              privacy notice now stand (linked in the footer); this is not
+              open to real students yet.
             </p>
           </Alert>
         )}

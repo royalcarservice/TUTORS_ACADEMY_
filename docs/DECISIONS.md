@@ -171,3 +171,73 @@ harness defects corrected in W4 on first run, each verified against the build be
 wakes BOTH surfaces with zero edits — the student's own INSERT writes the exchange, the
 related tutor reads it, the mark lands. The capability ruling decides the registry flip;
 until then the deterministic engine is honestly named. Phase 10 awaits its brief.
+
+
+---
+
+### DEC-037 — Phase 10 · Step 1: the legal framework & guardian consent gates — E-07 CLOSED (2026-10-08)
+
+**The ruling:** the legal framework stands and Exception E-07 is CLOSED. Three public routes —
+`/legal/terms` (Terms of Academy Practice) · `/legal/privacy` (Privacy & Data Protection
+Notice) · `/legal/guardian-consent` (Guardian Consent Framework) — carry dignified legal copy:
+serif headings (Fraunces), a reading measure, the platform's public chrome, zero tracking,
+zero exclamation marks. Migration 0011 creates the consent audit; the guardian gate is built,
+proven in a dev rehearsal, and owed to real onboarding. Verified: test-legal-logic 23/23 (new)
+· validate-subjects ALL VALID · check-subject-sql PASS · next-action 34 · progress 16 · full
+Phase 5–9 battery green (188 tests) · both static guards at their declared baselines · build
+clean, 38 pages · smoke: the three routes 200 with their sentences, the rehearsal 404 in
+production, the footer carries the three links, server killed by port.
+
+**The brief's reconciliations (all declared):**
+- **Numbered 0011, sequential** — the brief's `20261008000007` slot belongs to
+  classroom_sessions; the DEC-029/033 numbering precedent applies.
+- **The brief's schema stands complete**, with three declared completions: (1)
+  `guardian_email` is CHECKed REQUIRED for `guardian_consent_v1` and FORBIDDEN otherwise —
+  the column means one thing; (2) `ip_hash` is CHECKed at 64 characters (the digest's shape);
+  (3) the brief is silent on duplicates, and the table is deliberately **append-only WITHOUT
+  a (user_id, consent_type) unique constraint** — this is a consent AUDIT, not a state flag,
+  and a future withdrawal-and-regrant flow deserves both rows. Idempotency lives in the write
+  action instead (it reads the standing consent first and refuses a duplicate calmly).
+- **The address is never stored.** The action hashes the connecting address server-side
+  (first x-forwarded-for entry, else x-real-ip) with SHA-256 and writes only the digest.
+  When no address is visible, the literal sentinel `no-address` is hashed — the audit records
+  absence honestly, and the column's shape never reveals which case occurred. DECLARED
+  residual risk: unsalted SHA-256 of an IPv4 address is brute-forceable by a reader who holds
+  the row; the upgrade path is an HMAC keyed server-side, and it waits on the owner's ruling.
+  The brief said "one-way SHA-256 hash for audit, never raw IP" — that stands exactly.
+- **The contact clause.** E-07 named four absences; three stand as routes. The fourth —
+  "no contact route" — is met by the privacy notice's grievance section: this deployment is
+  test-accounts-only and holds no real students' data, so no standing channel is published
+  yet; it publishes the day real onboarding opens. Declared, not hidden.
+
+**The gate's owed debts (declared in the closure record):**
+1. The gate's wiring into real onboarding — no date-of-birth question exists anywhere yet;
+   the gate mounts the day real onboarding opens (which stays closed, test accounts only).
+2. The confirmation-link delivery channel — no email provider stands in the codebase; the
+   gate's success sentence says so at the moment of consent, honestly.
+3. Live apply of migration 0011 joins 0004–0010 in the credentialed environment.
+
+**The lineage's evolutions, declared:**
+- The footer gains the three legal links — the footer's own comment documented this exact
+  absence ("the legal pages do not exist; drafting them here would look like compliance");
+  the routes now resolve, so the footer's own rule admits them. Comment updated.
+- The `/login` and `/register` notices no longer say the legal work is awaited — they state
+  the framework stands. E-22 anticipated this replacement; its fold declaration stands, its
+  copy premise is gone (row updated).
+- The gate7 privacy audit allowlist gains ONE entry: the privacy notice's never-collected
+  list names surveillance vocabulary in refusal sentences ("idle or dwell timers") — the
+  refusal-context precedent (the W3 "scores" ruling). Re-run PASS over 304 files
+  (rebaselined 296 → 304); `audit/phase7-privacy.json` updated.
+
+**Verification beyond the brief's four commands (house discipline):** test-legal-logic 23/23 ·
+subject-import guard at its 4 declared FPs (zero new) · breakpoint drift count unchanged ·
+socratic-logic 31 · socratic-surface 19 · socratic-oversight 15 · archive-logic 26 ·
+archive-surface 16 · archive-viewer 22 · progress-record 18 · academic-surface 20 ·
+milestone-synthesis 21 · gate7-privacy-audit PASS (304 files) · production smoke.
+
+**Zero tracking, proven:** the legal pages ship no third-party beacons, cookies or pixels —
+the platform never had any, and the gate7 re-run re-proves it over the new files. There is no
+cookie banner because there is nothing to consent to; the privacy notice says so.
+
+**Rule 18:** no identities created; every verification ran offline. The credentialed
+harnesses stand owed with their committed baselines, unchanged.
