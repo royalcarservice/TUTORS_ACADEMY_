@@ -1,6 +1,6 @@
 # PHASE 6 · STEP 6 — THE TUTOR GATE
 
-**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ W6 ✅ W7 ✅ W8 ✅ **W9 ✅ (this report)** — W10 onward pending.
+**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ W6 ✅ W7 ✅ W8 ✅ W9 ✅ **W10 ✅ (this report)** — gate complete, final close-out pending.
 Branch `arena/e6e6e569-tutors-academy`. Every command under `timeout -k 5 N`; servers killed by port (`ss -ltnp`) in the same invocation.
 
 **Preconditions confirmed:** 6.5 reported (`PHASE6_STEP5_REPORT.md`, commit `0c79f3d`); its Part 0 rulings P6-R17–P6-R20 landed (DEC-018); P6-R21 delivered as the owner ruling that closed 6.5 §10 / `docs/TUTOR_DISTANCE.md` row 8 (DEC-018 addendum, `ebcbe87`); typography self-hosted so `npm run build` runs here (DEC-019). Nothing known-broken outstanding.
@@ -377,9 +377,69 @@ And the honesty ledger balances: no surface claims what does not exist (W4's led
 
 ---
 
+## Part W10 — MATRIX AND PERFORMANCE
+
+**Instruments and honesty order.** Live numbers this window: production build (`npm run build` exit 0, validator first), route payload audit from the build artifacts, and a timed TTFB battery — n = 8 samples per route, warm-up #1 discarded, medians of 7, server on port 3200 torn down by port in the same invocation (port confirmed free). Recorded numbers, labelled RECORDED: the credentialed CDP/Lighthouse runs pinned in `audit/environment-baseline.json`, `audit/lighthouse-page.json`, `audit/tutor-baseline.json`. **No client JS was added — nothing was added at all.**
+
+### Step 1 — route payload audit (zero unnecessary client JS, proven)
+
+- **The manifest is the proof:** `.next/build-manifest.json` maps exactly ONE route — `/_app` — to **zero chunks**; no other route carries a client-JS entry, and `.next/static/chunks/app/` (where per-route client component chunks would live) **does not exist**. Every route in the app — all 16 production routes including every tutor surface — is a pure server component (the segment's single `"use client"` file is the dumb error boundary, W9 C4).
+- **Shared first load (all routes, no route pays more):** 4 files · **429.2 kB raw pre-compression** (framework 228.9 + runtime 158.0 + app 32.1 + turbopack loader 9.5 kB) + 0.7 kB manifests. RECORDED transfer figure from the credentialed Lighthouse runs: **359 kB** on the wire.
+- **Served documents (what the browser fetches besides the shared shell):** `/` 203 kB HTML · 2 script tags; `/subjects/mathematics` 42.7 kB · 1; a draft-subject 404 13.3 kB · 1. A 404 costs a third of a page and carries no extra machinery.
+
+### Step 2 — route timings, live (n=8, warm-up discarded, median of 7; loopback, no emulated network)
+
+| route | outcome | TTFB median | min | max |
+|---|---|---|---|---|
+| `/` | 200 page | 10.4 ms | 8.0 | 13.5 |
+| `/subjects` | 200 page | 4.3 ms | 4.1 | 6.0 |
+| `/subjects/mathematics` | 200 room | 23.0 ms | 19.5 | 35.7 |
+| `/login` | 200 | 14.7 ms | 13.1 | 26.3 |
+| `/register` | 200 | 3.9 ms | 3.6 | 4.2 |
+| `/tutor` | 307 (signed-out) | 2.2 ms | 2.1 | 2.3 |
+| `/tutor/account` | 307 | 2.2 ms | 2.0 | 2.4 |
+| `/admin` | 307 | 2.1 ms | 1.6 | 5.5 |
+
+**LCP variance (RECORDED — no Chrome in this sandbox to measure live):** the visitor environment page under the declared profile (CDP 4× CPU · 150 ms RTT · 1.6 Mbps), n = 8, warm-up discarded, kept 7: **390×844 — TTFB median 151 ms, samples 123–339; LCP median 316 ms, samples 288–460. 1280×800 — TTFB median 147 ms, samples 130–180; LCP median 360 ms, samples 320–424.** Lighthouse (recorded): homepage performance 100 desktop / 97–98 mobile, CLS 0 everywhere, TBT 50–70 ms mobile, jsKB 359.
+
+### Step 3 — mobile-first & the fold gate
+
+- **390 is the measurement viewport throughout the gate** — the identity matrix, the fold harness and the declared-cost runs all ran at 390×844 emulated mobile (1280 as the reproduction check), and the recorded Lighthouse mobile runs confirm it renders at phone width with zero layout shift.
+- **Fold gate (RECORDED, `audit/tutor-baseline.json`, 38 gates pass):** state A — h1 bottom 255 px, primary surface complete at 395 px of the 844 viewport; state B — h1 218, primary complete 358, first subject-group heading 468, first relationship row 532; at 1280 the claim reproduces (one h1, primary above fold at 320). The tutor's whole world — statement, reason, first row — is inside the first screenful.
+- **The 320 floor, stated structurally (live 320 rendering is owed — no browser here):** single-column statements, container max-widths with `clamp()` padding, no fixed widths anywhere on a tutor surface; the two declared off-by-one max-widths (479 px nav shell, 47.99 rem enter, W1) sit above 320 by design. Nothing on a tutor surface can overflow a 320 px viewport by construction; a live 320 pass joins the owed re-run.
+
+### Step 4 — P6-R20 re-measured, with the limit named
+
+**Observed here:** `/subjects` (no settings read) median 4.3 ms vs `/subjects/mathematics` (the room, settings read) median 23.0 ms — **+18.8 ms, which is the cost of rendering the room itself, NOT the database round trip**: this sandbox has no Supabase, so `getEnvironmentSettings` short-circuits to the authored default without a network call. **The declared cost therefore stands as recorded (2026-10-03, same sample discipline as above): visitor TTFB rose from the 15–36 ms range before 6.4 to a 151 ms median — ≈120 ms, one anon `environment_settings` round trip in parallel with the identity read; accepted by ruling, no cross-request cache** (*"a stale room after a tutor saves is a worse defect than the round trip"*). A credentialed re-measurement owes confirmation, not discovery: the code path has not changed since it was declared.
+
+### Step 5 — the comprehensive evaluation matrix
+
+| route (×6 reader classes, W7) | status posture | live TTFB med. | route-specific JS | LCP (recorded, visitor) | verdict |
+|---|---|---|---|---|---|
+| `/` | 200 all six | 10.4 ms | **0** — shared shell only | n/a (desktop Lighthouse 100) | ✅ |
+| `/subjects` | 200 all six | 4.3 ms | **0** | n/a | ✅ |
+| `/subjects/[ready]` | door / regions / identity by class | 23.0 ms | **0** | median 316 ms @390 (288–460) | ✅ declared cost paid, P6-R20 |
+| `/subjects/[draft]` | 404 visitor/unplaced · 200 enrolled/related | (404 path) 13.3 kB doc | **0** | — | ✅ readiness, not secrecy (W8 C28) |
+| `/login` `/register` | 200 all six | 14.7 / 3.9 ms | **0** | — | ✅ |
+| `/student` `/student/account` | students 200 · tutors 307 to own shell · anon 307 | (307 path) 2.2 ms | **0** | — | ✅ roles never mixed |
+| `/tutor` | tutors 200 · others 307 to own space | 2.2 ms | **0** | fold recorded: complete ≤395 px | ✅ |
+| `/tutor/account` | tutors 200 | 2.2 ms | **0** | — | ✅ |
+| `/tutor/[subject]/[relationship]` | 200 related-only; five probe-truths → one 404 | (307 path signed-out) | **0** | — | ✅ anti-enumeration (W8 Q5) |
+| `/tutor/[subject]/environment` | 200 placed · 404 unplaced | (307 path) | **0** | — | ✅ |
+| `POST …/shape` | write path; 405 GET; refusal matrix recorded | n/a | **0** (form POST, no JS) | — | ✅ works with JS off |
+| `/admin` | 307 everyone (not built, E-26) | 2.1 ms | **0** | — | ✅ honest redirect |
+
+**Matrix verdict: 80 pinned cells of behaviour stand; every route pays exactly the shared shell in JS and nothing more; timings are flat and fast on loopback with the credentialed, throttled, sample-disciplined figures recorded beside them.**
+
+### W10 limits, plainly
+
+Loopback timings are not the production network (the recorded CDP-profile numbers are the production reference); LCP and fold cannot be re-measured without a browser (owed to the credentialed re-run together with the P6-R20 confirmation); the +18.8 ms delta measured here excludes the DB round trip for the reason stated. No server was left running — every boot was killed by port in the same invocation, each verified free.
+
+---
+
 ## Owed to a credentialed environment (cumulative through W6)
 
-Live migration apply + live zero-real-identity count · browser/DB harness re-runs (page/journey/gate/tutor/levers/identity-matrix/states/environment/relationship) · homepage baseline re-pin (W4 — DEC-020 is the reason) · a live signed-in re-walk of the tutor journey with a placed-tutor session, timed and screenshotted (W6), incl. timing-parity measurement of the probe-denial paths (W8-Q5) · the identity-matrix `--write` re-run to pin `/dev/tutor-states{,/frame}` (W7 drift) · the two static-guard rulings.
+Live migration apply + live zero-real-identity count · browser/DB harness re-runs (page/journey/gate/tutor/levers/identity-matrix/states/environment/relationship) · homepage baseline re-pin (W4 — DEC-020 is the reason) · a live signed-in re-walk of the tutor journey with a placed-tutor session, timed and screenshotted (W6), incl. timing-parity measurement of the probe-denial paths (W8-Q5), live LCP/fold re-measurement (W10) and the P6-R20 round-trip confirmation (W10) · the identity-matrix `--write` re-run to pin `/dev/tutor-states{,/frame}` (W7 drift) · the two static-guard rulings.
 
 ## STOP
 
