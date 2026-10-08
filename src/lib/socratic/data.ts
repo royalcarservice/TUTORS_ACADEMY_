@@ -25,6 +25,7 @@ import type { ArtifactRecord } from "@/lib/archive/artifact";
 import { createClient } from "@/lib/supabase/server";
 
 import { PROMPT_TYPE_OF_GUIDANCE, type GuidanceKind, type SocraticPromptType } from "./contract";
+import { groupInquiries, TUTOR_OVERVIEW_LIMIT, type InquiryGroup, type TutorInquiry } from "./oversight";
 import { milestoneKeysFor, scaffoldFor } from "./resolver";
 
 /** How many of the student's own exchanges the lens shows, newest first. */
@@ -154,3 +155,81 @@ export async function fetchSocraticLensData(subjectId: string): Promise<Socratic
     .map((key) => ({ key, path: scaffoldFor(subjectId, key)?.path ?? key }));
   return { exchanges, artifacts, options };
 }
+
+/* ── THE TUTOR'S DIAGNOSTIC MIRROR (Phase 9 · Step 3, DEC-035) ───────────── */
+
+/** One inquiry as the oversight renders it — the row plus the marker's state. */
+export interface OversightInquiry extends TutorInquiry {
+  /** The related tutor has marked this inquiry for their next live dialogue. */
+  pinned: boolean;
+}
+
+/** One milestone's inquiries, marked and unmarked together. */
+export interface OversightGroup {
+  milestoneKey: string;
+  path: string;
+  inquiries: readonly OversightInquiry[];
+}
+
+/** Everything the oversight panel renders for one relationship. */
+export interface TutorSocraticOverview {
+  groups: readonly OversightGroup[];
+}
+
+/**
+ * THE TUTOR'S OVERVIEW — the brief's `fetchTutorSocraticOverview`,
+ * reconciled (DEC-035): the signature carries NO tutorId. The marker's
+ * identity rides the cookie session; `is_related_tutor` is enforced where
+ * boundaries live — in 0009's tutor-read policy on the exchanges and in
+ * 0010's policies on the marks. The `studentId` argument is the
+ * relationship's join key (the DEC-032 precedent): it names whose record
+ * this is, never the viewer's identity.
+ *
+ * Recent inquiries, newest first, capped at TUTOR_OVERVIEW_LIMIT, grouped
+ * by the milestone they name. A relationship the boundary has ended admits
+ * nothing — the policies re-decide on every read. No client or no rows →
+ * the honest empty. A thrown read propagates to the caller's isolate.
+ */
+export async function fetchTutorSocraticOverview(
+  subjectId: string,
+  studentId: string,
+): Promise<TutorSocraticOverview> {
+  const supabase = await createClient();
+  if (!supabase) return { groups: [] };
+
+  const { data, error } = await supabase
+    .from("socratic_exchanges")
+    .select("id, milestone_key, query_text, created_at")
+    .eq("subject_id", subjectId)
+    .eq("student_id", studentId)
+    .order("created_at", { ascending: false })
+    .limit(TUTOR_OVERVIEW_LIMIT);
+  if (error) throw new Error(`socratic: oversight read failed (${error.code ?? "unknown"})`);
+
+  /* The marker's own pins for the subject — 0010's select policy admits
+     only the cookie tutor's rows, so no identity argument is passed. A
+     failed pin read leaves marks absent, never the inquiries. */
+  let pinnedIds = new Set<string>();
+  const { data: pins, error: pinError } = await supabase
+    .from("socratic_pins")
+    .select("exchange_id")
+    .eq("subject_id", subjectId);
+  if (!pinError && pins) pinnedIds = new Set(pins.map((p) => String(p.exchange_id)));
+
+  const rows: TutorInquiry[] = (data ?? []).map((row) => ({
+    id: String(row.id),
+    milestoneKey: String(row.milestone_key),
+    queryText: String(row.query_text),
+    createdAt: String(row.created_at),
+  }));
+  const groups = groupInquiries(rows, (key) => scaffoldFor(subjectId, key)?.path ?? key);
+  return {
+    groups: groups.map((g) => ({
+      milestoneKey: g.milestoneKey,
+      path: g.path,
+      inquiries: g.inquiries.map((q): OversightInquiry => ({ ...q, pinned: pinnedIds.has(q.id) })),
+    })),
+  };
+}
+
+

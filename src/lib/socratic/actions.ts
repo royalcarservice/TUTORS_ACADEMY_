@@ -107,3 +107,75 @@ export async function reflectOnInquiry(input: {
     return { ok: false, reason: "refused" }; // a failed write is an absence, never an alarm
   }
 }
+
+// ============================================================================
+// THE PREPARATION MARK — Phase 9 · Step 3 (DEC-035)
+//
+// ONE more server action: toggleSocraticPin. The oversight panel's mark is
+// the tutor's OWN preparation note for their next live dialogue — a
+// diagnostic mirror, never an evaluation. The action carries NO identity
+// argument (the cookie session is the only source): it verifies the marker
+// is a tutor, verifies the exchange is visible to them in that subject for
+// that student (the read re-decides under 0009's RLS), and then lets the
+// mark's own shape decide — an existing mark is withdrawn (DELETE), an
+// absent one is made (INSERT, the unique pair keeping idempotence). No
+// success theatre: the panel re-renders from the read, and the read is
+// truth. A failure leaves the mark as it stood — silence, never alarm.
+// ============================================================================
+
+/** Toggle the tutor's preparation mark on one inquiry. */
+export async function toggleSocraticPin(input: {
+  studentId: string;
+  subjectId: string;
+  exchangeId: string;
+}): Promise<void> {
+  if (typeof input !== "object" || input === null) return;
+  const { studentId, subjectId, exchangeId } = input;
+  if (typeof studentId !== "string" || typeof subjectId !== "string" || typeof exchangeId !== "string") return;
+  if (studentId.length === 0 || subjectId.length === 0 || exchangeId.length === 0) return;
+
+  try {
+    const identity = await getIdentity();
+    if (!identity || identity.role !== "tutor") return;
+
+    const supabase = await createClient();
+    if (!supabase) return;
+
+    /* The exchange must be visible to THIS marker in THIS subject for THIS
+       student — 0009's tutor-read policy re-decides; invisible and unknown
+       are the same refusal: the action simply does nothing. */
+    const { data: exchange, error: exchangeError } = await supabase
+      .from("socratic_exchanges")
+      .select("id")
+      .eq("id", exchangeId)
+      .eq("subject_id", subjectId)
+      .eq("student_id", studentId)
+      .maybeSingle();
+    if (exchangeError || !exchange) return;
+
+    /* The mark's own state decides the act: present → withdraw; absent → make. */
+    const { data: existing, error: pinReadError } = await supabase
+      .from("socratic_pins")
+      .select("id")
+      .eq("exchange_id", exchangeId)
+      .maybeSingle();
+    if (pinReadError) return;
+
+    if (existing) {
+      const { error } = await supabase.from("socratic_pins").delete().eq("id", existing.id);
+      if (error) return;
+    } else {
+      const { error } = await supabase.from("socratic_pins").insert({
+        tutor_id: identity.id,
+        student_id: studentId,
+        subject_id: subjectId,
+        exchange_id: exchangeId,
+      });
+      if (error) return;
+    }
+
+    revalidatePath("/tutor", "layout");
+  } catch {
+    /* a failed toggle is an absence, never an alarm — the mark stands as it stood */
+  }
+}

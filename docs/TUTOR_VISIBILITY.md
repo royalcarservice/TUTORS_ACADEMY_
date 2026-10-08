@@ -30,6 +30,7 @@ All rows below are **SELECT only**. No role other than the student themself can 
 | the relationship itself | `relationships` (tutor, student, subject, state, started/ended) | the tutor named in it; the student named in it | party to the row (active **or** ended) | each side may know who can see what, and that it ended (DPDP transparency; "ended ≠ never existed") | anyone else; anon; aggregates over other tutors' rows (no such policy) |
 | arc position | `enrolments` (subject, status, enrolled_at) + `environment_state` (first/last entered, position) | the related tutor | `is_related_tutor(student_id, subject_id)` — an **active** relationship for **that student in that subject** | this is the arc the student is on in that subject; the tutor shapes that environment | the same student's **other subjects**; any **non-related** student; students who merely **share the subject**; everything after the relationship **ended** |
 | learning events in that subject | *(none exist yet — Phase 7+ tables)* | the related tutor | same predicate, same scope, when such a table exists | — | nothing is pre-granted; a future table must add its own policy using the same predicate |
+| the student's Socratic inquiries in that subject | `socratic_exchanges` (milestone · inquiry · structured guidance, migration 0009) | the related tutor | `is_related_tutor(student_id, subject_id)` — the standing predicate, re-decided on every read | preparation for the next live dialogue — a **diagnostic mirror**, never an evaluation (DEC-035) | other subjects; the non-related; everything after the relationship **ended**; **all evaluative data — no rating, difficulty flag or comprehension figure exists anywhere in the schema** |
 | display name | `profiles.display_name` | the related tutor | an active relationship with that student in **any** subject | so the tutor can address the person | the unrelated; after ending |
 | contact / auth / account state | `auth.users` (email, confirmation, sessions), passwords, sign-in history | **nobody** | — | not the tutor's business; no policy touches `auth.*` | always |
 | behavioural data | `environment_state.entry_count` *(see "what rides along")*, timing patterns, device, session | **nobody by design** | — | P6-R3: not a management console | always as a rendered value; see §4 |
@@ -56,6 +57,14 @@ A SELECT policy admits a **row**; it cannot hide a column. Two consequences, sta
 | enrolments | `enrolments_select_related_tutor` | authenticated | `is_related_tutor(student_id, subject_id)` |
 | environment_state | `env_select_related_tutor` | authenticated | `is_related_tutor(student_id, subject_id)` |
 | profiles | `profiles_select_related_tutor` | authenticated | `EXISTS active relationship WHERE tutor_id = auth.uid() AND student_id = profiles.id` |
+| socratic_exchanges | `socratic_select_own_student` | authenticated | `student_id = auth.uid()` |
+| socratic_exchanges | `socratic_select_related_tutor` | authenticated | `is_related_tutor(student_id, subject_id)` |
+| socratic_exchanges | `socratic_insert_own_student` | authenticated | `student_id = auth.uid()` (WITH CHECK) |
+| socratic_exchanges | *(no update/delete)* | — | an exchange is an occurrence; lifecycle is service-role managed |
+| socratic_pins | `pins_select_own_tutor` | authenticated | `tutor_id = auth.uid() AND is_related_tutor(student_id, subject_id)` |
+| socratic_pins | `pins_insert_own_tutor` | authenticated | `tutor_id = auth.uid()` AND EXISTS the exchange visible with the mark's own (student, subject) pair (WITH CHECK) |
+| socratic_pins | `pins_delete_own_tutor` | authenticated | `tutor_id = auth.uid()` |
+| socratic_pins | *(no update)* | — | a mark is binary: it stands or it does not |
 | *(all 5.1 policies)* | unchanged | | owner-only remains the student's boundary |
 
 `public.is_related_tutor(student, subject)` is the **one predicate**: `EXISTS … tutor_id = auth.uid() AND student_id = $1 AND subject_id = $2 AND state = 'active'`. It is `security definer` so the enrolments/environment_state policies can consult `relationships` without recursing through its own RLS. It takes no role shortcut: a student, an admin, or anyone without an active row *as tutor* gets `false`.

@@ -459,3 +459,27 @@ bound the schema mirrors. Cheerful conversational filler ("Hey there",
 swept; the engine's 9.1 postures govern every guidance body the card
 renders. Zero animation in the region: the lens is architecture, not
 theatre.
+
+
+## 9.3 addendum — the oversight's language (Phase 9 · Step 3, DEC-035)
+
+The tutor's diagnostic mirror speaks preparation, never judgment. It sits
+beneath the record region of the relationship surface and inherits Phase
+6's typographic calm: mono eyebrows, the reading face, hairline rules.
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `Conceptual Explorations · {Subject}` | the panel's heading | one subject's inquiries, in the relationship the tutor stands in |
+| `Conceptual inquiries` | the list's accessible name | what the panel holds, plainly |
+| `The student's inquiries to the study lens, preserved as asked. They stand here to prepare the next dialogue — nothing on this panel scores, rates or flags them.` | the purpose sentence | the mirror's boundary, stated once |
+| `Mark for Next Live Session` / `Marked for Next Live Session` | the one act, unpressed / pressed | the tutor's own preparation note — binary, withdrawable |
+
+Each inquiry stands exactly as asked, beside its milestone path and its
+instant in words (`24 September 2026 · 12:00 UTC`). The register's
+refusals are structural: no comprehension rating, no difficulty flag, no
+"struggled", no count of questions, no idle time, no recency beyond the
+read's own order — the schema holds no such column, and the panel renders
+no such word. The relationship surface's statement evolves with the mark
+(declared, DEC-035): `This page reads the record and prepares the next
+dialogue. Nothing else is done here by a tutor yet: teaching surfaces are
+not built.`

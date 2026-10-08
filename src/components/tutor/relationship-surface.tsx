@@ -13,7 +13,8 @@ import { MONO } from "./tutor-shell";
    THE RELATIONSHIP'S SURFACE (Phase 6 · Step 3). One relationship; one
    addressable page. Pure render from the relationship reader's view.
 
-   READING ORDER (the brief's, as built):
+   READING ORDER (the brief's, as built; DEC-035 amends it by adding ONE
+   declared fill point — the oversight):
      1 WHO    — the display name (the one h1). Nothing else about the account.
      2 WHICH  — the subject's environment identity: mark · name · environment
                 name · "Environment in draft" when the config says so (3.1).
@@ -22,16 +23,24 @@ import { MONO } from "./tutor-shell";
                 interaction. Its heading says whose by saying WHAT: "Where
                 the learning is" — the h1 already names the student, and
                 position is a state of the learning, not of the person.
-     4 RECORD — the region where learning events will live. Renders NOTHING:
-                no heading, no box. (See RECORD below.)
+     4 RECORD — the region where learning events live (filled by the
+                milestone synthesis, DEC-032). Renders NOTHING while absent.
+     4b EXPLORATIONS — the diagnostic mirror (DEC-035): the student's
+                inquiries to the study lens, grouped by milestone, each with
+                the tutor's preparation mark. A DECLARED fill point — it
+                renders ONLY when inquiries exist for this relationship;
+                absent = no DOM (the slot contract's rule, carried).
      5 STATEMENTS — (a) the empty-record boundary — ARC_COPY.boundary,
                 rendered by ArcRegion itself: ONE constant, so the sentence
                 cannot vary by anything a student did; (b) what a tutor does
                 here — a constant too.
      6 BACK   — one link to the shell.
 
-   NOTHING ELSE. No avatar, card, chip, date, count, tab, action, export,
-   comparison, other student, beacon. The harness sweeps for each.
+   NOTHING ELSE. No avatar, card, chip, count, tab, export, comparison,
+   other student, beacon. The two declared fill points (record,
+   explorations) are the ONLY regions that may render data; the harness
+   sweeps for the rest. (DEC-035 declared: the 6.3 pin set predates the
+   fill points; the re-pin stands owed with the DEC-030 baseline debt.)
    ════════════════════════════════════════════════════════════════════════ */
 
 const DRAFT_LABEL = "Environment in draft";
@@ -42,13 +51,16 @@ export const RELATIONSHIP_COPY = {
   arcHeading: "Where the learning is",
   /** aria-label of the list (the student's default says "Where you are in …"). */
   arcLabel: (subjectName: string) => `Where the learning is in ${subjectName}`,
-  /** What a tutor does here, today — a fact, not an apology (P6-R4). Subject: this page. */
-  tutorStatement: "This page reads the record and changes nothing. Nothing here is done by a tutor yet: teaching surfaces are not built.",
+  /** What a tutor does here, today — a fact, not an apology (P6-R4). Subject: this page.
+   *  DEC-035 declared evolution: the oversight's preparation mark is the one
+   *  thing a tutor may write here, so the sentence names the page's posture
+   *  (reading + preparation) instead of claiming nothing is written. */
+  tutorStatement: "This page reads the record and prepares the next dialogue. Nothing else is done here by a tutor yet: teaching surfaces are not built.",
   /** The way back. Subject: the list. */
   back: "Back to the students placed with you",
 } as const;
 
-export function RelationshipSurface({ view, subject, record }: { view: RelationshipView; subject: ShellSubjectInfo; record: React.ReactNode | null }) {
+export function RelationshipSurface({ view, subject, record, oversight }: { view: RelationshipView; subject: ShellSubjectInfo; record: React.ReactNode | null; oversight?: React.ReactNode | null }) {
   const name = view.displayName.trim();
   return (
     <article data-relationship-surface data-subject={view.subjectId} data-density="compact" style={{ display: "flex", flexDirection: "column", gap: "var(--ta-space-8)" }}>
@@ -75,6 +87,10 @@ export function RelationshipSurface({ view, subject, record }: { view: Relations
 
       {/* 4 RECORD — nothing renders until a learning event exists for this relationship (Phase 7). No container when empty. */}
       {record}
+
+      {/* 4b EXPLORATIONS — the diagnostic mirror (DEC-035): the student's inquiries to the study lens,
+          grouped by milestone, with the tutor's preparation mark. No container when absent. */}
+      {oversight}
 
       {/* 5 (b) what a tutor does here. */}
       <p data-tutor-statement style={{ margin: 0, fontSize: "var(--ta-text-sm)", lineHeight: 1.5, color: "var(--ta-text-secondary)", maxWidth: "var(--ta-measure)" }}>

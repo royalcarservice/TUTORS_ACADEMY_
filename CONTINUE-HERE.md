@@ -83,9 +83,32 @@ whole pass. These rules are the fix, not ceremony.*
    next-action 34 · progress 16 · guard at its declared baseline · tsc clean · build exit 0
    (34 pages) · smoke: rehearsal 404 · mathematics 200 (zero socratic markup in a visitor's
    HTML) · server killed by port.
-   **Next:** live apply of 0004–0009 in the credentialed environment and the populated-lens
-   walk (a real exchange round-trip through the student's own INSERT); the provider-backed
-   capability ruling, when the owner is ready, decides the registry flip.
+   **Step 3 done (2026-10-08, DEC-035): TUTOR REFLECTION SURFACE & SOCRATIC OVERSIGHT.** The
+   diagnostic mirror, not a wiretap: `socratic-reflections.tsx` renders the student's
+   inquiries to the study lens inside the relationship surface, beneath the record region —
+   "Conceptual Explorations · {Subject}", each inquiry exactly as asked, its milestone path,
+   its instant in words, and ONE act: "Mark for Next Live Session" (the tutor's own
+   preparation note). Migration 0010 creates `socratic_pins` — binary marks (INSERT/DELETE,
+   no update), unique per tutor and exchange, structurally bound to the subject (the insert
+   policy re-derives the pair from the exchange itself under 0009's RLS — a mark can never
+   name an inquiry its marker cannot read). The reader `fetchTutorSocraticOverview(subjectId,
+   studentId)` carries NO tutorId (the cookie session rides the boundary; `is_related_tutor`
+   re-decides on every read); twelve inquiries at most, newest first, grouped by milestone
+   through the pure half. Zero evaluative vocabulary — no rating, no difficulty flag, no
+   "struggled", no count, no idle word; empty means ABSENT; with 0004–0010 unapplied the
+   panel stands honestly absent in production today. Placement view and levers untouched;
+   the relationship statement evolves by declaration, and the 6.3 baseline re-pin stands
+   owed with the DEC-030 debt. TUTOR_VISIBILITY gains the mirror's row + the 0009/0010
+   policy matrix; TUTOR_DISTANCE affirms the engine does not grade or score inquiry
+   history. Verified: test-socratic-oversight 15/15 (new) · socratic-logic 31 ·
+   socratic-surface 19 · next-action 34 · progress 16 · validate-subjects ALL VALID ·
+   check-subject-sql PASS · guard at its declared baseline · tsc clean · build exit 0
+   (34 pages) · smoke: /tutor 307 · relationship URL 307 unsigned · mathematics 200 ·
+   server killed by port.
+   **Next:** live apply of 0004–0010 in the credentialed environment and the populated
+   walks — the lens round-trip (the student's own INSERT) and the oversight round-trip (a
+   marked inquiry), plus the relationship-baseline re-pin; the provider-backed capability
+   ruling, when the owner is ready, decides the registry flip.
 2. **PHASE 8 IS CERTIFIED (2026-10-08).** The Archive Gate (W1–W5) ran to verdict —
    `PHASE8_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase8-*.json`.
    Step 1 done (2026-10-08, DEC-029): the archive's foundation —
