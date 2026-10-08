@@ -963,7 +963,16 @@
   .ta-progress[data-indeterminate="true"] .ta-progress__fill { animation: none; width: 40%; transform: none; }
 }
 [data-reduced-motion="on"] .ta-btn[data-variant="primary"]:active { transform: none; }
-[data-reduced-motion="on"] .ta-progress[data-indeterminate="true"] .ta-progress__fill { animation: none; width: 40%; transform: none; }
+[data-reduced-motion="on"] .ta-progress[data-indeterminate="true"] .ta-progress__fill { transition: none; animation: none; width: 40%; transform: none; }
+
+/* LIVE TILE (Phase 7 · Step 3) — the speaking glow is the only motion: the
+   subject's own accent, muted (DEC-024). Reduced motion keeps the glow as a
+   STATIC border change — meaning preserved, movement removed. */
+.ta-live-tile { transition: box-shadow 240ms ease, border-color 240ms ease; }
+@media (prefers-reduced-motion: reduce) {
+  .ta-live-tile { transition: none; }
+}
+[data-reduced-motion="on"] .ta-live-tile { transition: none; }
 
 @layer components {
   /* OVERFLOW — wide tables / long equations scroll INSIDE their own

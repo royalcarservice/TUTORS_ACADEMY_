@@ -1319,6 +1319,17 @@ tutor-assigned enrolment arrives (P6/P7).
       Verified: cohort-live 27/27 · next-action 34/34 (one pin refined, reason declared) · progress
       16/16 · progress-record 18/18 · subjects 108/108 · build clean · HTTP smoke (307 login door,
       themed 404, preserved environment). DEC-023 records it all.
+- [x] Step 3 — Live stage participant interface & audio discipline -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      The participant interface against the one media reality that needs no transport: the participant's
+      OWN devices, opt-in — camera, microphone (speaking glow via local WebAudio, never stored, never
+      sent), shared surface, and a Leave Chamber that stops every track. Subject-accent framing
+      (Mathematics indigo, Physics ember — the tokens do it). STATE_LANGUAGE's 7.3 addendum: the brief's
+      denied sentence verbatim + a no-device state, calm, no banner, no exclamation. Island mounts on
+      `/live` only when the room is truly open; exercisable now at `/dev/live-stage` (rehearsal,
+      production-gated). Zero capture on load · zero timers · zero persistence · zero surveillance.
+      Verified: live-participant 23/23 · full battery green · build clean · smoke (307 / 404 / 200).
+      DEC-024 records it — including the sandbox honesty note: no browser here, devices proven by
+      construction, the manual walk owed to a browsered environment.
 
 - [x] Step 1 — Progress record schema & cohort architecture -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
       `progress_record` applied (migration 0004, the DEC-009 shape: interim-neutral referent, tutor

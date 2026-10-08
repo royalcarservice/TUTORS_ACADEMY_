@@ -249,3 +249,23 @@ URL (which answers a GET with 405 — the dead end 6.5 found and fixed). A write
 **Where relationship management will live (P6-R14).** Not the account surface (three things only). The tutor
 shell is the named future home: active relationships are already its rows; ended ones become a quieter group
 there when the consent ruling exists. See `docs/TUTOR_DISTANCE.md` row 5.
+
+## 7.3 addendum — the chamber's media states (Phase 7 · Step 3, DEC-024)
+
+The participant interface introduces two ACTION-scope states about the
+participant's OWN devices. Same register as every row above: a state, not a
+verdict; the browser or the devices are the subject — never the person; no
+banner, no red, no exclamation mark; one sentence in the running type beside
+the controls, `aria-live="polite"`, `aria-describedby` from the controls.
+
+| state | sentence (verbatim) | what it claims |
+| --- | --- | --- |
+| the browser did not grant access (or it was not asked successfully) | `Media access was not granted by your browser. You can still listen and participate via text or enable permissions in your browser settings.` | access was not granted — and what remains possible |
+| no such device exists on this machine | `No camera or microphone was found on this device. The session can still be joined with what is available.` | the device is absent; retrying stays open (a camera may be plugged in), so no control is disabled for it |
+
+Error CLASSES go to the log (`{scope:"live:media", errorClass:"MediaDenied"}`);
+the screen receives only the sentence. Privacy is the INITIAL state: the first
+render requests nothing — capture exists only inside a click handler the
+participant chose, and departure (Leave Chamber) stops every track. Zero
+timers, zero persistence, zero attendance signal: the speaking glow is a
+transient boolean on the participant's own opted-in microphone.

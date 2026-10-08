@@ -64,6 +64,7 @@ export function LiveStage({
   verb,
   scheduled,
   viewer,
+  participant,
 }: {
   subject: LiveStageSubject;
   density: Density;
@@ -78,6 +79,13 @@ export function LiveStage({
   /** scheduledPhrase(session.scheduledAt, now) — "today" · "on 12 Sep 2026" · null. */
   scheduled: string | null;
   viewer: "student" | "tutor";
+  /**
+   * THE ROOM, OPEN — the participant island (7.3), passed by the page ONLY
+   * when the room is truly open (module live, credentials staged, a session
+   * named). While absent, the reserved grid and the standby state stand:
+   * the stage says exactly what is missing and nothing else.
+   */
+  participant?: React.ReactNode;
 }) {
   const environmentName = subject.tagline.split(" — ")[0].trim();
   const sentence = verb === "resume" ? `Resume the ${subject.name} session` : `Attend the ${subject.name} session`;
@@ -132,36 +140,46 @@ export function LiveStage({
                   <p style={{ margin: "var(--ta-space-1) 0 0", color: "var(--ta-text-secondary)" }}>Scheduled {scheduled}.</p>
                 )}
 
-                {/* THE RESERVED TILE GRID — the place tiles will sit, on this
-                    subject's substrate, never a vendor grid. Empty by honesty:
-                    participants are facts, and no participant fact exists yet. */}
-                <div
-                  data-live-grid
-                  aria-hidden="true"
-                  style={{
-                    marginTop: "var(--ta-space-6)",
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(12rem, 1fr))",
-                    gap: "var(--ta-space-3)",
-                  }}
-                >
-                  {[0, 1, 2, 3].map((i) => (
+                {participant ? (
+                  /* THE ROOM, OPEN (7.3) — the participant island takes the
+                     place the reserved grid held. Decided by the page. */
+                  <div style={{ marginTop: "var(--ta-space-6)" }}>{participant}</div>
+                ) : (
+                  <>
+                    {/* THE RESERVED TILE GRID — the place tiles will sit, on this
+                        subject's substrate, never a vendor grid. Empty by honesty:
+                        participants are facts, and no participant fact exists yet. */}
                     <div
-                      key={i}
+                      data-live-grid
+                      aria-hidden="true"
                       style={{
-                        aspectRatio: "16 / 9",
-                        borderRadius: "var(--ta-radius-2)",
-                        border: "1px dashed color-mix(in srgb, var(--ta-accent-1) 30%, transparent)",
-                        background: "var(--ta-surface-sunken)",
+                        marginTop: "var(--ta-space-6)",
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(12rem, 1fr))",
+                        gap: "var(--ta-space-3)",
                       }}
-                    />
-                  ))}
-                </div>
-                <p style={{ ...MONO_LABEL, marginTop: "var(--ta-space-3)" }}>The room is staged for {session.name}.</p>
+                    >
+                      {[0, 1, 2, 3].map((i) => (
+                        <div
+                          key={i}
+                          style={{
+                            aspectRatio: "16 / 9",
+                            borderRadius: "var(--ta-radius-2)",
+                            border: "1px dashed color-mix(in srgb, var(--ta-accent-1) 30%, transparent)",
+                            background: "var(--ta-surface-sunken)",
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <p style={{ ...MONO_LABEL, marginTop: "var(--ta-space-3)" }}>The room is staged for {session.name}.</p>
+                  </>
+                )}
               </section>
             )}
 
-            {!readiness.configured ? (
+            {/* The status block stands only while the room is NOT open: once
+                the participant island is mounted, the room speaks for itself. */}
+            {!participant && (!readiness.configured ? (
               <section data-live-standby aria-label="Room status" style={{ marginTop: session ? "var(--ta-space-6)" : 0 }}>
                 <p style={MONO_LABEL}>Live classroom — {moduleStatusLabel}</p>
                 <p style={{ margin: "var(--ta-space-3) 0 0", fontSize: "var(--ta-text-lg)", maxWidth: "36em", color: "var(--ta-text-primary)" }}>
@@ -179,7 +197,7 @@ export function LiveStage({
                   Credentials are staged. The connection itself is wired by the live-classroom module.
                 </p>
               </section>
-            )}
+            ))}
 
             {/* the way back — the brief's no-session sentence for the student,
                 the same truth worded for the tutor. A plain link: no JS. */}

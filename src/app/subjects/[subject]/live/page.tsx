@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
 import { LiveStage } from "@/components/live/live-stage";
+import { RoomParticipant } from "@/components/live/room-participant";
 import { ROUTES } from "@/config/routes";
 import { MODULE_STATUS_LABEL, PLATFORM_MODULES } from "@/config/modules";
 import { getIdentity } from "@/lib/auth/session";
@@ -117,6 +118,14 @@ export default async function LiveSessionPage({ params }: Params) {
   /* The clock is read ONCE, here — the phrase is pure below. */
   const now = new Date().toISOString();
 
+  /* THE ROOM IS OPEN only when three facts hold at once: the module is live
+     in the registry, the credentials are staged, and a session is named.
+     Until then the stage keeps its standby state (DEC-023): nothing about
+     the participant interface renders ahead of the room it belongs to.
+     When open, the participant island (7.3) takes the reserved grid — the
+     participant's OWN media, opt-in, nothing invented (DEC-024). */
+  const roomOpen = module?.status === "live" && readiness.configured && session !== null;
+
   return (
     <LiveStage
       subject={{ id: s.id, name: s.name, tagline: s.tagline, motif: s.motif, accent: s.accent1 }}
@@ -128,6 +137,7 @@ export default async function LiveSessionPage({ params }: Params) {
       verb={verb}
       scheduled={session ? scheduledPhrase(session.scheduledAt, now) : null}
       viewer={viewer}
+      participant={roomOpen ? <RoomParticipant subjectId={s.id} displayName={identity.displayName} role={viewer} /> : undefined}
     />
   );
 }
