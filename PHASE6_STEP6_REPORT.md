@@ -1,6 +1,6 @@
 # PHASE 6 · STEP 6 — THE TUTOR GATE
 
-**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ W6 ✅ W7 ✅ **W8 ✅ (this report)** — W9 onward pending.
+**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ W6 ✅ W7 ✅ W8 ✅ **W9 ✅ (this report)** — W10 onward pending.
 Branch `arena/e6e6e569-tutors-academy`. Every command under `timeout -k 5 N`; servers killed by port (`ss -ltnp`) in the same invocation.
 
 **Preconditions confirmed:** 6.5 reported (`PHASE6_STEP5_REPORT.md`, commit `0c79f3d`); its Part 0 rulings P6-R17–P6-R20 landed (DEC-018); P6-R21 delivered as the owner ruling that closed 6.5 §10 / `docs/TUTOR_DISTANCE.md` row 8 (DEC-018 addendum, `ebcbe87`); typography self-hosted so `npm run build` runs here (DEC-019). Nothing known-broken outstanding.
@@ -317,6 +317,63 @@ And the honesty ledger balances: no surface claims what does not exist (W4's led
 ### W8 verdict
 
 **All six questions answered with source-level evidence; the inside and the outside tell one story.** The tutor sees stage words and nothing more (Q1); their one act is subject-wide, consent-sentenced, reversible, refusal-guarded (Q2); every absence is declared at the point of absence (Q3); role isolation is enforced in SQL, with the brief's co-teacher premise corrected to the ruled truth (Q4); probing reveals one fingerprint for five different truths and writes nothing (Q5); and the two silences that remain are named (Q6). Zero defects; zero changes made.
+
+---
+
+## Part W9 — THE HONESTY AUDIT (30 categories)
+
+**Scope:** every string and structure on the tutor surfaces and shared environments — `src/components/tutor/*`, `src/app/(portal)/tutor/**`, `src/lib/tutor/*`, `src/lib/environment/*`, plus the shared surfaces they render (the subject page, the account pages, the layout) where a category crosses the boundary. **Instruments:** grep/regex sweeps over committed source, the pinned matrix (credentialed renders), and structural reads of guards, policies and components. **Result: 30/30 CLEAN — zero defects, zero copy changes required.** For each category: method → finding → evidence of absence. Counts are hits in **rendered copy**; comment/documentation hits are classified separately and never counted as copy.
+
+### Categories 1–22 (dark-pattern sweep)
+
+| # | Category | Method | Finding · Evidence of absence |
+|---|---|---|---|
+| 1 | Fake urgency / countdowns | sweep `countdown·timer·hurry·ends soon·last chance·limited·right now` | **CLEAN** — 0 hits; the shell's copy is explicitly timeless (same two sentences every visit, W6 step 3) |
+| 2 | Streaks / XP / vanity points | sweep `streak·xp·level_up·points·reward·congrat·well done` | **CLEAN** — 0 hits; no mechanic exists that could award anything (no events table) |
+| 3 | Surveillance metrics | sweep `idle·dwell·active_time·keystroke·time-on-page` + W5 vocabulary sweep | **CLEAN** — 0 hits. Declared residue, not a surface: `environment_state.entry_count` is REST-readable by a related tutor (RLS is row-grained) but **no surface renders it** (TUTOR_VISIBILITY §2 "what rides along") |
+| 4 | Engagement traps / infinite scroll | client-code census: the ONLY `"use client"` file in the segment is `tutor/error.tsx` (a dumb honest page) — no client fetch, list virtualization or pagination can exist | **CLEAN** — surfaces are server-rendered statements with static rows |
+| 5 | Social-proof manipulation | sweep `viewing·others are·online now·active now·presence` | **CLEAN** — 0 hits; the only "other" sentence is structural: *"Last shaped by another tutor."* (no name, no count) |
+| 6 | Forced notification prompts | sweep `notification·notify·push message·subscribe·opt-in` | **CLEAN** — 0 hits; no notification system exists in the codebase |
+| 7 | Hidden dismissals / dark dismiss | sweep `modal·dialog` + W6 `disabled` sweep | **CLEAN** — no modal exists anywhere on a tutor surface; nothing to dismiss, nothing hidden |
+| 8 | Unearned praise | sweep `congrat·great job·well done` | **CLEAN** — 0 hits; the arc renders stage facts, never adjectives |
+| 9 | Mock CTA chains | every `href` on the tutor surfaces enumerated (6 destinations: shell · account · relationship · shaping · room · the 409's settling GET) and each verified 200-for-tutorT in the pinned matrix; nav items are declaratively *"all real, every one 200 today… nothing named that the registry does not declare built"* | **CLEAN** — zero stubs, zero coming-soon targets |
+| 10 | False activity indicators | sweep `green dot·status dot·online·active now` | **CLEAN** — 0 hits; the only state rendered is the settings row's authorship fact (`as authored` / `Last shaped by…`) |
+| 11 | Roster comparison / ranking | sweep `rank·score·compare` + order audit | **CLEAN** — 0 rendered hits; the one sort is `localeCompare` by display name (fixed, non-evaluative; *"Never by start date… never by anything a student did"*) |
+| 12 | "Needs attention" flagging | P6-R3 refusal, in the slot contract itself | **CLEAN** — `config/student-slots.ts`: *"anything evaluative about a student… there is no 'attention', 'progress' or 'activity' region in this scope and none may be added"* |
+| 13 | Phantom unread badges | sweep `badge·unread` in the segment | **CLEAN** — 0 hits (the one `StatusBadge` in the codebase is student-space sidebar chrome; the tutor layout does not import it, W6) |
+| 14 | Churn scores / dropout prediction | sweep `predict·churn·dropout·at-risk·propensity` | **CLEAN** — 0 hits; no model, no input data, no surface |
+| 15 | Commercial upselling | money-word sweep `price·plan·subscription·tier·billing·invoice·payment·premium·upgrade` | **CLEAN** — 0 rendered hits; one code comment (*"wall-clock cost"*, `settings.ts` — performance prose, not money) |
+| 16 | Calendar auto-booking | sweep `calendar·schedule·booking` | **CLEAN** — 0 hits; no session object exists to book |
+| 17 | Inferred emotions / sentiment | sweep `sentiment·emotion·mood` + the reader's column list | **CLEAN** — 0 hits; the reader fetches three facts, none behavioural |
+| 18 | Hidden telemetry / trackers | sweep `analytics·gtag·mixpanel·segment·sentry·hotjar·posthog·beacon` + layout script census + `next.config` remote domains | **CLEAN** — 0 hits (the one "beacon" match is the relationship surface's refusal-list comment); the layout emits no external `<script>`; fonts are self-hosted (DEC-019); no remote image domains configured |
+| 19 | Asymmetric deletion / trapped states | deletion census of both portals | **CLEAN, and honest about its shape:** no self-service deletion exists for ANY role (symmetry, not asymmetry) — *"no delete policy: account deletion cascades from auth.users (service role / dashboard)"* (migration 0001); sign-out is real (`POST /auth/signout`, the account page's one act); test accounts say plainly *"It may be deleted while the academy is being built."* Nothing is trapped: the product holds no payment, no lock-in data, no obligation |
+| 20 | Masked error states | trace of every write/read failure path | **CLEAN** — a failed save 303s to the surface which says *"That did not save. The environment is unchanged — the values shown are the ones in force."*; a stale save gets the 409 sentence; a failed read throws `DataReadError` → the honest page (*"Your students could not be read just now…"*) — never state A, never a silent success |
+| 21 | Pretend AI assistance | sweep `ai·smart·intelligent·machine learning·llm·assistant` on tutor surfaces | **CLEAN** — 0 hits; the assistant exists only as a homepage promise labelled *"Next · not built yet"* (W4 fix removed even the deleted `tests` module from that promise) |
+| 22 | Misleading loading states | sweep `spinner·skeleton·shimmer` + `loading.tsx` census | **CLEAN** — 0 hits, no `loading.tsx` in the segment; the 5.7 refusals hold segment-wide: no artificial delay exists to disguise |
+
+### Categories 23–30 (Phase 6 specifics)
+
+| # | Category | Method | Finding · Evidence |
+|---|---|---|---|
+| 23 | Role claims | account page read + profiles UPDATE policy | **CLEAN** — the account surface renders `["Role", id.role]` as a fact among three facts; there is no form that edits it, and the SQL makes the claim structural: `profiles_update_own … WITH CHECK (… role = public.current_role_of(auth.uid()))` — a role change through the app is unrepresentable |
+| 24 | Capability reachability (P6-R17) | ShapeLink consumer census + matrix | **CLEAN** — the shaping surface has two doors, both rendered only where the write permission exists: the subject-group link on the shell and the header link on the environment page; relationship surfaces carry no shaping entry by ruling (*"beside a student invites the reading P6-R10 forbids"*). No orphaned feature: every built surface is linked from a place the tutor already stands |
+| 25 | Blast radius stated | LEVERS_COPY + form wiring | **CLEAN** — *"Saving changes the {Subject} environment for everyone in {Subject} — every student, including students you do not teach, and any other tutor placed in {Subject}. There is one {Subject} room."* renders in reading order BEFORE Save, and the button's `aria-describedby="blast-radius"` binds it to the sentence |
+| 26 | Co-teacher claim | state-line copy + policy census | **CLEAN** — the co-tutor fact is five words (*"Last shaped by another tutor."*), no name, no date; no policy admits another tutor's rows (W8 Q4); the co-tutor read grant was refused outright (DEC-018 Item 5) |
+| 27 | Money language | the sweep of category 15, across all tutor learning surfaces | **CLEAN** — total absence; 0 rendered hits |
+| 28 | Readiness vs secrecy | draft vocabulary sweep + draft-guard behaviour | **CLEAN** — 0 hits for `locked·secret·exclusive·privileged·private` in rendered copy (comment hits: *"locked decision"* design notes); draft is presented as readiness: the label *"Environment in draft"*, the tutor shell's draft tag, and the ruling's own words — *"a draft flag is a readiness flag, not a secrecy flag"*; unplaced readers simply get the same 404 as any unknown address, never a "restricted" framing |
+| 29 | Permission visibility | `disabled` sweep + ShapeLink gating | **CLEAN** — 0 disabled controls; missing permission = absent control (the link does not render without an active relationship; the route answers `nothing()` — bare 404). Nothing shames, nothing withholds while pretending to offer |
+| 30 | Cross-role leakage | import census both directions + matrix | **CLEAN** — student code imports nothing from `components/tutor` or `lib/tutor` (0 hits); tutor surfaces read only through the two relationship-scoped readers; the matrix confirms no student record on any tutor index (rows are name+subject only) and no tutor control in any student view (shape link absent for students: 0 student-side consumers) |
+
+### The audit's limits, stated plainly
+
+1. **Static + recorded, not live-behavioural.** This sandbox has no browser and no database; the live-instrument part of the audit (what the credentialed renders actually returned) rests on the pinned matrix of 2026-10-03 and the recorded harness baselines, cited throughout. Tutor surfaces have not changed since (W4–W9 touched homepage copy, docs and one proof script only), so the recordings remain current — but a credentialed re-run still owes confirmation, as listed in the owed section.
+2. **Client-side timing is unmeasured here.** Category claims about "no artificial delay" are structural (no client code exists that could introduce one), not stopwatch measurements.
+3. **Third-party absence is proven structurally, not by network observation:** no external scripts in the layout, self-hosted fonts, no remote image domains — but this audit cannot observe what a deployed host might inject outside the repository.
+4. **RLS claims rest on the migrations as written plus the recorded `rls_test`/tutor-visibility proofs** (56 + 17 assertions, credentialed runs), not on live queries this window.
+
+### W9 verdict
+
+**30/30 clean.** Every category carries a method and concrete evidence of absence; the two declared residues (the REST-visible `entry_count`, the symmetric absence of self-service deletion) are documented decisions, not oversights. Pedagogical dignity, structural truth, and the absence of dark patterns hold across the entire tutor surface area — and where the product is silent, the silence is now inventoried (W8 Q6) rather than accidental.
 
 ---
 
