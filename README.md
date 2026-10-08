@@ -1308,6 +1308,16 @@ tutor-assigned enrolment arrives (P6/P7).
       phase-close questions answered · verdict: **PHASE 6 IS COMPLETE.** The owed credentialed
       re-runs and two static-guard rulings are declared in the report's debt list.
 **Phase 7 — Live Classes**
+
+- [x] Step 1 — Progress record schema & cohort architecture -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      `progress_record` applied (migration 0004, the DEC-009 shape: interim-neutral referent, tutor
+      read via `is_related_tutor`, no authenticated writes, retention untouched — DEC-022 records the
+      reconciliation with the brief's sketched columns) · cohort model drafted (migration 0005:
+      `cohorts` + `cohort_tutors` junction, zero policies, nothing pre-granted) · pure helpers in
+      `src/lib/progress/record.ts` (attend-vs-resume sentence rule) with `test-progress-record.mjs`
+      18/18. Battery green: validate-subjects 108/108 · check-subject-sql · progress 16/16 ·
+      next-action 34/34 · build clean. **Creating the table changes no admissibility — kinds stay
+      gated on module liveness.** Live migration apply owed to the credentialed environment.
 **Phase 8 — Recordings**
 **Phase 9 — AI Learning Layer**
 **Phase 10 — Polish + Performance**

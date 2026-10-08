@@ -43,16 +43,19 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## IMMEDIATE ORDER
 
-1. **PHASE 7 AWAITS ITS BRIEF.** Phase 6 closed with a verdict; the gate doc's end rule was honoured —
-   nothing of Phase 7 has been started or touched. When the brief arrives, its first task is already
-   ruled: **create `progress_record`** (DEC-009; the accepted shape is `docs/proposed/progress_record.sql`),
-   then the cohort model that reopens P6-R13 (DEC-018 Item 4), the attend-versus-resume sentence rule,
-   and P6-R15's settling-GET check on every new write. Delivering module: `live-classroom`.
-2. **Credentialed environment first, when available:** run the debt list above before new construction —
-   the harness re-runs, the baseline re-pin (DEC-020), the matrix `--write` re-pin (W7), the signed-in
-   journey re-walk. Read `PHASE6_STEP6_REPORT.md` end to end; it is the handover document.
-3. **Rulings owed to the owner:** the two static guards (W1) · the tagline question (W4) · the
-   co-teacher grant question (DEC-018 Item 5).
+1. **PHASE 7 IS UNDER WAY.** Step 1 done (2026-10-08): `progress_record` applied (migration 0004,
+   DEC-022) · cohort model drafted (migration 0005, zero policies by design) · pure record helpers +
+   18/18 tests · full battery green, build clean. **Next:** the live-classroom capability that owns
+   the `session-attended` referent — its sessions table decides the referent ruling (DEC-009's open
+   question), its surface writes the first cohorts RLS policies, and P6-R15's settling-GET rule binds
+   every new write. **Kinds stay inadmissible until the module is live** — the table alone changes
+   nothing on the arc.
+2. **Credentialed environment first, when available:** apply migrations 0004/0005, then run the Phase 6
+   debt list (`PHASE6_STEP6_REPORT.md` — the handover document): harness re-runs, DEC-020 baseline
+   re-pin, the matrix `--write` re-pin (W7), the signed-in journey re-walk.
+3. **Rulings owed to the owner:** the two static guards (gate W1) · the tagline question (W4) · the
+   co-teacher grant question (DEC-018 Item 5). DEC-018 Item 4's cohort condition is now MET —
+   cohort-scoped levers are arguable, but only by ruling, never by schema side effect.
 
 ## STANDING
 
