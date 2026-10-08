@@ -446,3 +446,26 @@ with their committed baselines.
 **The lineage:** DEC-037 the legal framework (E-07 closed) · DEC-038 the age gate · DEC-039
 the security edge · DEC-040 the certificate. States 10.1–10.3 record the steps; 10.4 records
 this close. Phase 11 awaits its brief.
+
+
+---
+
+## DEC-041 — The Arena Live-Preview Frame Door (2026-10-08)
+
+**The problem:** DEC-039 locked the frame posture — `frame-ancestors 'none'`
+plus `X-Frame-Options: DENY`, the anti-clickjacking wall. The Arena
+live-preview environment embeds the app in an iframe; the wall refused it
+by design, and the preview rendered blank.
+
+**The ruling:** one narrow door, flagged and explicit. `next.config.ts`
+reads `TA_PREVIEW_FRAME`; when a build starts with it set to `open`, the
+two frame directives stand down and every other header ships byte-for-byte
+identical — the CSP keeps `unsafe-eval` OUT, nosniff, referrer policy,
+permissions policy and HSTS all hold. Without the flag — the committed
+default, every production build — DEC-039's wall stands untouched. The
+flag exists in a process environment, never in the tree.
+
+**The cost, declared:** a process started with the flag can be framed. The
+flag is used only for the Arena preview server; the production header set
+is the one the Phase 10 security audit measured (audit/phase10-security.json),
+and a rebuild without the flag restores the wall exactly.
