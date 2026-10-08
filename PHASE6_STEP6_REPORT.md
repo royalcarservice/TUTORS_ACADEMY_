@@ -1,6 +1,6 @@
 # PHASE 6 · STEP 6 — THE TUTOR GATE
 
-**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ W6 ✅ **W7 ✅ (this report)** — W8 onward pending.
+**Verification, not construction.** Windows run in gate order: W1 ✅ W2 ✅ W3 ✅ W4 ✅ W5 ✅ W6 ✅ W7 ✅ **W8 ✅ (this report)** — W9 onward pending.
 Branch `arena/e6e6e569-tutors-academy`. Every command under `timeout -k 5 N`; servers killed by port (`ss -ltnp`) in the same invocation.
 
 **Preconditions confirmed:** 6.5 reported (`PHASE6_STEP5_REPORT.md`, commit `0c79f3d`); its Part 0 rulings P6-R17–P6-R20 landed (DEC-018); P6-R21 delivered as the owner ruling that closed 6.5 §10 / `docs/TUTOR_DISTANCE.md` row 8 (DEC-018 addendum, `ebcbe87`); typography self-hosted so `npm run build` runs here (DEC-019). Nothing known-broken outstanding.
@@ -267,9 +267,62 @@ PASS  drop simulation: the gate DETECTS the unmapped route
 
 ---
 
+## Part W8 — THE INSIDE/OUTSIDE PASS
+
+**The gate's asymmetry question: the builder sees every surface; the user sees three destinations and a door. Six questions, each answered from source, SQL, and the pinned matrix. Verification window — zero defects found, zero copy changes needed.**
+
+### Q1 · Tutor-Sees — what the builder knows vs what the tutor sees vs what the student expects
+
+**The reader fetches three things and nothing else** (`src/lib/tutor/relationship.ts`, every `select` quoted): `profiles.display_name` · `enrolments.status` (active-or-not, this subject only) · `environment_state.first_entered_at`. **Assertions hold:**
+- **Arc stage words only.** The fetched facts feed `arcPosition` — the same seven words every reader sees (`ARC_STEPS`: See the system · See the doors · Watch the crossing · Learn in the room · Work with a tutor · Watch your record grow · Master the subject), rendered done/ahead. No score exists anywhere in the codebase to leak.
+- **Zero timestamps beyond `first_entered_at` — and even that one never renders as a date.** The reader's own header is the enforcement: *"WHAT IT DOES NOT READ, BY RULING: last_entered_at, entry_count, any timestamp of behaviour. Position is a state of the learning; recency is a measure of the person."* `first_entered_at` enters `arcPosition` and exits as the stage word for "entered".
+- **Zero cross-subject.** The argument type is `{ subjectId, relationshipId }` — *"no field through which a caller could name a student, and no call without a subject"*; the RLS predicate `is_related_tutor(student_id, subject_id)` is row-scoped the same way (migration 0002: *"Other subjects of the same student stay invisible."*).
+- **Student expectation vs delivery:** a student would expect the tutor to see "where I am" — exactly what the tutor sees, since both sides read one arc definition. The builder additionally knows the row machinery (shaped_by, updated_at); none of it is on a tutor surface — the hidden `version` input never renders as a date, the co-tutor fact renders as five words with no name.
+
+### Q2 · Tutor-Changes — the exact scope of what a tutor's save touches
+
+**Exactly two levers, closed sets, named in the URL, the form, the reader and the SQL** (`LeverId = "density" | "motionChar"`; density {sparse, balanced, dense} × motion character {precise, energetic, reactive, growing, editorial, sequential} = 18 reachable combinations). The route reads exactly `intent`, `density`, `motionChar`, `version` from the form — any other field is unread; an unauthored value is a failed save (303 `?shape=failed`), never a 400 with advice. **Who it touches, as stated on the surface itself before Save:** *"Saving changes the {Subject} environment for everyone in {Subject} — every student, including students you do not teach, and any other tutor placed in {Subject}. There is one {Subject} room."* — and the SQL matches the sentence: one row keyed by `subject_id` (`environment_settings`), readable by **everyone including anon** (`environment_settings_select_all … using (true)`), writable only by a tutor holding an active relationship in that subject. The silence afterwards is stated too: *"Nothing announces the change."* Revert puts the authored default back; P6-R21 refuses a write that cannot prove its freshness. **Scope verdict: subject-wide, person-less, reversible, consent-sentenced — the inside (a 1-row upsert) and the outside (the blast-radius sentence) say the same thing.**
+
+### Q3 · What-Is-Missing — broken feature, or declared distance?
+
+`docs/TUTOR_DISTANCE.md` rows 1–11 name every capability a tutor would reach for — teach, teach this student, see the record, be placed, see arrangements, a subject page, co-tutor awareness, conflict awareness, notifications, per-student anything, export/aggregate/roster — each with *where they would look*, *the sentence that is there*, and *what delivers it (or never will)*. Verified against the surfaces this gate (W5 sweep + W6 dead-end inventory): video, messaging, assignment dispatch, grading, removal — **zero components, zero routes, zero disabled controls, zero spinners**; the stopping sentences are facts (*"Teaching surfaces are not built."* · *"This page reads the record and changes nothing."* · *"No student is placed with you."* + reasons). **Nothing absent looks broken: every hole has a sentence, and every sentence names the phase or ruling that fills it (or the decision that never will).**
+
+### Q4 · Role-Visibility — the structural isolation, from the SQL
+
+Census of **every** policy in the three migrations (no others exist):
+
+| read/write | policy | verdict |
+|---|---|---|
+| Student → own data | `*_select_own` / enrol+env writes (0001) | ✅ the student's boundary |
+| Tutor → related student (arc facts, name) | `enrolments_select_related_tutor` · `env_select_related_tutor` · `profiles_select_related_tutor` — each `USING is_related_tutor(student_id, subject_id)` / active-relationship EXISTS (0002) | ✅ per-row, per-subject |
+| **Student → tutor** | **none.** `profiles_select_related_tutor` requires `r.tutor_id = auth.uid()` — a student cannot satisfy it; students read only their OWN relationship rows (`relationships_select_student`), which carry the tutor's opaque id, **no name** | ✅ blocked — and no student surface reads the row either (grep: zero hits in student code) |
+| **Tutor → other tutor** | **none.** `relationships_select_tutor` is `tutor_id = auth.uid()`; no policy admits another tutor's rows, anywhere | ✅ blocked (the co-tutor read grant was explicitly refused — DEC-018 Item 5) |
+| **Co-teacher write** | the brief's "refused by default" needs correcting to the truth: the room is **subject-keyed, so a co-tutor CAN write it** — that is P6-R10/R12's one-room design, consent-sentenced on the surface. What IS refused: writes by an unplaced tutor (route: 404, same bytes), stale writes (409, P6-R21), any write not stamped `shaped_by = auth.uid()` (the update/insert `WITH CHECK`), and **all writes to `relationships` itself — zero insert/update/delete policies for any role; service role only** (0002 header: the arrangement is never API-writable) | ✅ as ruled |
+| Admin | **no admin policy exists in any migration**; `/admin` 307s every signed-in role to their own shell (E-26) | ✅ absence is structural |
+| `auth.users` (email, sessions) | touched by **no** product policy | ✅ always refused |
+
+### Q5 · What-Probing-Reveals — anti-enumeration
+
+**All five relationship probes collapse to one result** (pinned matrix, credentialed run): active → 200 `relationship-surface`; **ended → 404 · nonexistent → 404 · wrong-subject → 404 · a-user-id-in-the-slot → 404 · unrelated tutor × the active id → 404** — five different truths, one fingerprint (`not-found`). *"Never-related, ended and nonexistent are ONE code path with ONE result (P6-R9): the surface cannot confirm or deny that a person exists."* Supporting structure: malformed UUIDs die at a regex before any query (the reader returns null — never a distinguishable database error); unplaced subjects and unknown subjects 404 identically; the write route answers every non-tutor with `nothing()` (bare 404) or a redirect, and the recorded write probes show **rowBefore/rowAfter: none/none for every denied class** — probing writes nothing. Error pages disclose zero facts (5.7/5.8: no table name, SQL, digest or stack — proven in DEC-010 by revoking grants and observing the honest 500). Timing parity is by construction (one query shape, one denial path) and owes its measurement to the credentialed re-run, as declared.
+
+### Q6 · What-The-Product-Never-Says — silence vs honesty
+
+Two unsaid truths found; neither is a copy defect this gate can fix, both are recorded so the silence is at least *known*:
+
+1. **Silent shaping** (carried from W5, unchanged): the tutor's surface declares the silence (*"Nothing announces the change…"*); the student's side never will know the room was rearranged, or by whom. Declared decision (TUTOR_DISTANCE row 9); the recommendation stands — a Phase 7 candidate if the owner rules for attribution.
+2. **The placement is invisible to the student.** The RLS deliberately lets a student read their own relationship row (DPDP transparency — *"each side may know who can see what"*), but **no student-facing surface reads it** (grep across `src/lib/student`, `src/components/student`, the student portal: zero), and no policy lets a student read the tutor's name. A student placed today would not know they have a tutor until Phase 7 builds a surface that says so. Assessment: defensible while teaching surfaces do not exist (nothing acts on the student through the relationship), but it is an unsaid truth all the same — named here so Phase 7 meets it consciously rather than accidentally.
+
+And the honesty ledger balances: no surface claims what does not exist (W4's ledger), every absence carries a sentence (Q3), the product never says *"your tutor is watching"* — because structurally, the tutor is not: no behavioural data, no recency, no counts, no cross-subject, no export — and it never says *"nothing is recorded"* where something is: the one record that exists (the arc) is the same for both sides.
+
+### W8 verdict
+
+**All six questions answered with source-level evidence; the inside and the outside tell one story.** The tutor sees stage words and nothing more (Q1); their one act is subject-wide, consent-sentenced, reversible, refusal-guarded (Q2); every absence is declared at the point of absence (Q3); role isolation is enforced in SQL, with the brief's co-teacher premise corrected to the ruled truth (Q4); probing reveals one fingerprint for five different truths and writes nothing (Q5); and the two silences that remain are named (Q6). Zero defects; zero changes made.
+
+---
+
 ## Owed to a credentialed environment (cumulative through W6)
 
-Live migration apply + live zero-real-identity count · browser/DB harness re-runs (page/journey/gate/tutor/levers/identity-matrix/states/environment/relationship) · homepage baseline re-pin (W4 — DEC-020 is the reason) · a live signed-in re-walk of the tutor journey with a placed-tutor session, timed and screenshotted (W6) · the identity-matrix `--write` re-run to pin `/dev/tutor-states{,/frame}` (W7 drift) · the two static-guard rulings.
+Live migration apply + live zero-real-identity count · browser/DB harness re-runs (page/journey/gate/tutor/levers/identity-matrix/states/environment/relationship) · homepage baseline re-pin (W4 — DEC-020 is the reason) · a live signed-in re-walk of the tutor journey with a placed-tutor session, timed and screenshotted (W6), incl. timing-parity measurement of the probe-denial paths (W8-Q5) · the identity-matrix `--write` re-run to pin `/dev/tutor-states{,/frame}` (W7 drift) · the two static-guard rulings.
 
 ## STOP
 
