@@ -1,0 +1,224 @@
+{
+  "gate": "PHASE 7 · W2 — Privacy & Surveillance Audit",
+  "date": "2026-10-08",
+  "scanned_files": 267,
+  "verdict": "PASS",
+  "broad_pass": {
+    "families": [
+      "facial_or_gaze_tracking",
+      "tab_or_focus_monitoring",
+      "dwell_or_idle_tracking",
+      "capture_or_exfiltration",
+      "gamification"
+    ],
+    "unexplained": [],
+    "allowlisted": [
+      {
+        "file": "src/app/dev/motion/preview.tsx",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/\\bvisibilitychange\\b/",
+        "reason": "dev-only fps probe gated on visibility; measurement only"
+      },
+      {
+        "file": "src/app/dev/motion/preview.tsx",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/document\\.hidden/",
+        "reason": "dev-only fps probe gated on visibility; measurement only"
+      },
+      {
+        "file": "src/app/dev/scene-promise/page.tsx",
+        "family": "gamification",
+        "pattern": "/\\bleaderboard\\b/i",
+        "reason": "PROGRESS_UI_TERMS is the scene's REFUSAL list (the sweep vocabulary that bans streak/xp/badge from copy)"
+      },
+      {
+        "file": "src/app/dev/scene-promise/page.tsx",
+        "family": "gamification",
+        "pattern": "/\\bstreak\\b/i",
+        "reason": "PROGRESS_UI_TERMS is the scene's REFUSAL list (the sweep vocabulary that bans streak/xp/badge from copy)"
+      },
+      {
+        "file": "src/app/dev/scene-promise/page.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "PROGRESS_UI_TERMS is the scene's REFUSAL list (the sweep vocabulary that bans streak/xp/badge from copy)"
+      },
+      {
+        "file": "src/app/dev/scene-promise/page.tsx",
+        "family": "gamification",
+        "pattern": "/\\bxp\\b/i",
+        "reason": "PROGRESS_UI_TERMS is the scene's REFUSAL list (the sweep vocabulary that bans streak/xp/badge from copy)"
+      },
+      {
+        "file": "src/app/dev/scene-promise/page.tsx",
+        "family": "gamification",
+        "pattern": "/\\btrophy\\b/i",
+        "reason": "PROGRESS_UI_TERMS is the scene's REFUSAL list (the sweep vocabulary that bans streak/xp/badge from copy)"
+      },
+      {
+        "file": "src/app/dev/scene-promise/preview.tsx",
+        "family": "gamification",
+        "pattern": "/\\bstreak\\b/i",
+        "reason": "asserts the refusal: 'no progress bar / ring / streak / XP / badge in copy'"
+      },
+      {
+        "file": "src/app/dev/scene-promise/preview.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "asserts the refusal: 'no progress bar / ring / streak / XP / badge in copy'"
+      },
+      {
+        "file": "src/app/dev/scene-promise/preview.tsx",
+        "family": "gamification",
+        "pattern": "/\\bxp\\b/i",
+        "reason": "asserts the refusal: 'no progress bar / ring / streak / XP / badge in copy'"
+      },
+      {
+        "file": "src/app/dev/scenes-practice/preview.tsx",
+        "family": "gamification",
+        "pattern": "/\\bstreak\\b/i",
+        "reason": "states the practice scene's refusal ('no streak, no calendar…')"
+      },
+      {
+        "file": "src/app/dev/student-shell/fixtures.tsx",
+        "family": "gamification",
+        "pattern": "/\\bxp\\b/i",
+        "reason": "the shell's REFUSED-by-design list: 'Streaks, XP, levels, badges, leaderboards, points'"
+      },
+      {
+        "file": "src/app/dev/switch/preview.tsx",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/\\bvisibilitychange\\b/",
+        "reason": "dev-only rehearsal that SIMULATES a backgrounded tab to prove the switch completes; no real monitoring"
+      },
+      {
+        "file": "src/app/dev/tutor-shell/page.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "the tutor shell's refused list + P6-R3 row; naming what the surface will never do"
+      },
+      {
+        "file": "src/app/dev/tutor-shell/page.tsx",
+        "family": "gamification",
+        "pattern": "/\\bxp\\b/i",
+        "reason": "the tutor shell's refused list + P6-R3 row; naming what the surface will never do"
+      },
+      {
+        "file": "src/app/dev/type/preview.tsx",
+        "family": "gamification",
+        "pattern": "/\\bstreak\\b/i",
+        "reason": "typography specimen paragraph (tabular figures demo); 'a streak of 14 days' is type sample copy with zero logic, dev-only"
+      },
+      {
+        "file": "src/app/dev/type/preview.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "typography specimen paragraph (tabular figures demo); 'a streak of 14 days' is type sample copy with zero logic, dev-only"
+      },
+      {
+        "file": "src/components/ambient/ambient-stage.tsx",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/\\bvisibilitychange\\b/",
+        "reason": "pauses/resumes the ambient WebGL scene when the tab hides — performance + battery respect; no record of the visit"
+      },
+      {
+        "file": "src/components/ambient/ambient-stage.tsx",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/document\\.hidden/",
+        "reason": "pauses/resumes the ambient WebGL scene when the tab hides — performance + battery respect; no record of the visit"
+      },
+      {
+        "file": "src/components/ambient/ambient-stage.tsx",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/addEventListener\\(\\s*[\"']blur[\"']/",
+        "reason": "pauses/resumes the ambient WebGL scene when the tab hides — performance + battery respect; no record of the visit"
+      },
+      {
+        "file": "src/components/layout/portal-sidebar.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "renders StatusBadge (draft/in-progress chip) on the module list — informational, never evaluative"
+      },
+      {
+        "file": "src/components/layout/theme.tsx",
+        "family": "capture_or_exfiltration",
+        "pattern": "/\\blocalStorage\\b/",
+        "reason": "the ONE app-level preference: ta-theme (dark/light) in localStorage — Phase 2 feature, certified in the Phase 6 gate; no live surface holds device storage (pinned)"
+      },
+      {
+        "file": "src/components/spine/scenes/choice.tsx",
+        "family": "capture_or_exfiltration",
+        "pattern": "/\\blocalStorage\\b/",
+        "reason": "the hit is the REFUSAL sentence itself: 'Nothing persisted: no localStorage, no cookie, no query string'"
+      },
+      {
+        "file": "src/components/switch/subject-switch.tsx",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/\\bvisibilitychange\\b/",
+        "reason": "completes the subject-switch morph if the tab hides mid-flight, so the room never lands half-morphed; no tracking"
+      },
+      {
+        "file": "src/components/switch/subject-switch.tsx",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/document\\.hidden/",
+        "reason": "completes the subject-switch morph if the tab hides mid-flight, so the room never lands half-morphed; no tracking"
+      },
+      {
+        "file": "src/components/ui/badge.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "the Badge UI primitive — a neutral label chip (module status), not a reward; name collision only"
+      },
+      {
+        "file": "src/components/ui/index.ts",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "barrel re-export of the Badge primitive"
+      },
+      {
+        "file": "src/components/ui/section-heading.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "composes the Badge primitive as a section label"
+      },
+      {
+        "file": "src/lib/motion.ts",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/\\bvisibilitychange\\b/",
+        "reason": "sets the data-ambient-paused CSS hook when the tab hides — presentation only"
+      },
+      {
+        "file": "src/lib/motion.ts",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/document\\.hidden/",
+        "reason": "sets the data-ambient-paused CSS hook when the tab hides — presentation only"
+      },
+      {
+        "file": "src/lib/motion.ts",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/addEventListener\\(\\s*[\"']blur[\"']/",
+        "reason": "sets the data-ambient-paused CSS hook when the tab hides — presentation only"
+      }
+    ]
+  },
+  "strict_pass": {
+    "live_surfaces": [
+      "src/components/live/live-chamber.tsx",
+      "src/components/live/live-stage.tsx",
+      "src/components/live/participant-dock.tsx",
+      "src/components/live/participant-tile.tsx",
+      "src/components/live/chamber-controls.tsx",
+      "src/components/live/academic-surface.tsx",
+      "src/components/live/session-settlement.tsx",
+      "src/components/live/room-layout.tsx",
+      "src/lib/classroom/use-classroom-session.ts",
+      "src/lib/classroom/transport.ts",
+      "src/lib/classroom/types.ts",
+      "src/lib/classroom/state-machine.ts",
+      "src/lib/livekit/surface-sync.ts",
+      "src/lib/livekit/config.ts"
+    ],
+    "hits": [],
+    "note": "zero tolerance; room-participant's single audited opt-in capture button is the only recorded exemption — timers are never exempt"
+  }
+}

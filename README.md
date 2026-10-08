@@ -1307,7 +1307,9 @@ tutor-assigned enrolment arrives (P6/P7).
       honesty audit 30/30 clean · exceptions register 21 → 19 · zero real identities · nine
       phase-close questions answered · verdict: **PHASE 6 IS COMPLETE.** The owed credentialed
       re-runs and two static-guard rulings are declared in the report's debt list.
-**Phase 7 — Live Classes**
+**Phase 7 — Live Classes** — **CERTIFIED at the Live Classroom Gate (2026-10-08, W1–W5;
+`PHASE7_GATE_REPORT.md`).** The classroom stands staged, honest and surveillance-free; the door to
+a live room opens the day the wiring (credentials + carrier) lands — never before.
 - [x] Step 2 — Cohort surfaces & real-time room integration -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
       The first reader's policies (migration 0006: enrolment boundary for students, assignment for
       tutors, zero writes, zero surveillance) · `/subjects/[subject]/live` staged surface (server
@@ -1398,6 +1400,17 @@ tutor-assigned enrolment arrives (P6/P7).
       18/18. Battery green: validate-subjects 108/108 · check-subject-sql · progress 16/16 ·
       next-action 34/34 · build clean. **Creating the table changes no admissibility — kinds stay
       gated on module liveness.** Live migration apply owed to the credentialed environment.
+- [x] Gate — The Phase 7 Live Classroom Gate (W1–W5) -> PHASE 7 GATE SPEC (2026-10-08) — **CERTIFIED.**
+      Verification only — five windows: W1 cold start & static health (validators at their declared
+      baselines, full logic battery green, build clean) · W2 the privacy & surveillance audit
+      (zero-tolerance on the fourteen live surfaces: 0 hits; 31 app-wide hits audited and allowlisted;
+      zero facial/gaze/tab/dwell/gamification; zero real identities) · W3 the pedagogical ledger
+      (attend-vs-resume from facts, settlement dignity, no rating instrument anywhere — 8/8) ·
+      W4 mobile & performance (one plane at a time below the tested 900px split behind a real
+      aria-pressed toggle; normalized resize-safe canvas; client payload MEASURED: 5 scripts ·
+      165.2 KB gzip) · W5 phase close (exceptions consolidated — 19 open, count corrected and
+      declared; nine phase-close questions answered). Baselines committed: `audit/phase7-*.json`.
+      Full record: `PHASE7_GATE_REPORT.md`. The debt list stands: wiring, rulings, the manual walk.
 **Phase 8 — Recordings**
 **Phase 9 — AI Learning Layer**
 **Phase 10 — Polish + Performance**

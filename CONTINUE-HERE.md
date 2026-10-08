@@ -43,7 +43,15 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## IMMEDIATE ORDER
 
-1. **PHASE 7 IS UNDER WAY.** Steps 1–4 done (DEC-022…DEC-025): `progress_record` applied · the
+1. **PHASE 7 IS CERTIFIED (2026-10-08).** The Live Classroom Gate (W1–W5) ran to verdict —
+   `PHASE7_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase7-*.json`
+   (privacy · ledger · performance). Five windows, five passes: cold start & static health ·
+   the privacy & surveillance audit (zero-tolerance on the fourteen live surfaces, zero
+   unexplained hits app-wide, zero real identities) · the pedagogical ledger (attend-vs-resume,
+   settlement dignity, no rating instrument anywhere) · mobile & performance (one plane at a
+   time below 900px, normalized canvas, payload measured) · phase close (exceptions consolidated
+   — 19 open, count corrected and declared; nine phase-close questions answered). The debt list
+   stands in the report's final section. **Steps 1–6 done (DEC-022…DEC-028):** `progress_record` applied · the
    first reader's policies (0006) + staged `/live` surface + silent `class` provider · the
    participant interface (opt-in local media) · the shared academic surface (canvas, motif
    substrate, one stroke protocol over the in-memory bus). **MILESTONES 1–4 OF THE AUTONOMOUS

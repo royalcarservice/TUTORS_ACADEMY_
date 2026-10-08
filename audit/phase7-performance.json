@@ -1,0 +1,25 @@
+{
+  "gate": "PHASE 7 · W4 — Mobile & Performance Pass",
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "checks_run": 8,
+  "checks_failed": 0,
+  "sandbox_note": "no browser/Puppeteer here — 390px behaviour proven by construction and pinned thresholds (Phase 6 precedent); measured values are chunk payloads from the committed production build",
+  "client_payload_by_route": {
+    "liveRoom": {
+      "scripts": 5,
+      "rawKB": 538.4,
+      "gzipKB": 165.2
+    }
+  },
+  "client_islands_on_live_route": [
+    "live-chamber",
+    "room-participant",
+    "academic-surface"
+  ],
+  "server_only": [
+    "page.tsx (gate + facts)",
+    "live-stage (standby)",
+    "session-settlement (aftermath)"
+  ]
+}
