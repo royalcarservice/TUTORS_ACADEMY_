@@ -49,24 +49,28 @@ whole pass. These rules are the fix, not ceremony.*
    registered per the extension doc's P7 row (silent until `live-classroom` reads "live") · LiveKit
    readiness on env NAMES only, no dependency yet · module flipped to in-progress. Step 3 done
    (2026-10-08, DEC-024): the participant interface — tile, controls, media state — built against the
-   participant's OWN devices (opt-in, zero capture on load, zero timers, zero persistence); the
-   island mounts on `/live` only when the room is truly open, and rehearses at `/dev/live-stage`;
-   STATE_LANGUAGE carries the 7.3 media-state addendum. **Next:** the WIRING step that makes the room
-   real — the sessions table (settles DEC-009's referent question and unlocks Tier 1 by ruling a
-   session END), LiveKit credentials + `livekit-server-sdk`, the signed webhook that writes
-   `session-attended` rows through the service role, and the transport the island is waiting for.
-   Reconnaissance: `docs/proposed/livekit_recon.md`. P6-R15's settling-GET rule binds every new
-   write. **Kinds stay inadmissible until the module is live** — the scaffolding alone changes
-   nothing on the arc.
+   participant's OWN devices (opt-in, zero capture on load, zero timers, zero persistence). Step 4
+   done (2026-10-08, DEC-025): the shared academic surface — canvas, disciplined palette, the
+   subject's OWN motif as substrate, one serializable stroke protocol over the in-memory bus (local
+   mode fully functional; the session data channel is the seam). The whole room rehearses at
+   `/dev/live-stage`; STATE_LANGUAGE carries the 7.3 media-state addendum. **Next:** the WIRING step
+   that makes the room real — the sessions table (settles DEC-009's referent question and unlocks
+   Tier 1 by ruling a session END), LiveKit credentials + `livekit-server-sdk`, the signed webhook
+   that writes `session-attended` rows through the service role, the session bus the surface is
+   waiting for, and the clear-permission ruling. Reconnaissance: `docs/proposed/livekit_recon.md`.
+   P6-R15's settling-GET rule binds every new write. **Kinds stay inadmissible until the module is
+   live** — the scaffolding alone changes nothing on the arc.
 2. **Credentialed environment first, when available:** apply migrations 0004/0005/0006, then run the
    Phase 6 debt list (`PHASE6_STEP6_REPORT.md` — the handover document): harness re-runs, DEC-020
    baseline re-pin, the matrix `--write` re-pin (W7 — the filesystem scan now includes
    `/subjects/[subject]/live`), the signed-in journey re-walk.
 3. **Rulings owed to the owner:** the two static guards (gate W1) · the tagline question (W4) · the
    co-teacher grant question (DEC-018 Item 5) · the tile-grid composition ruling for when remote
-   participants become facts (DEC-024). DEC-018 Item 4's cohort condition is now MET — cohort-scoped
-   levers are arguable, but only by ruling, never by schema side effect. **Manual walk owed:** the
-   media rehearsal (`/dev/live-stage`) in a real browser — the sandbox has none.
+   participants become facts (DEC-024) · the surface's owed rulings: session bus, clear-permission,
+   keyboard stroke input, late-packet ordering (DEC-025). DEC-018 Item 4's cohort condition is now
+   MET — cohort-scoped levers are arguable, but only by ruling, never by schema side effect.
+   **Manual walk owed:** the whole room rehearsal (`/dev/live-stage`) in a real browser — media,
+   drawing feel, substrate legibility — the sandbox has none.
 
 ## STANDING
 

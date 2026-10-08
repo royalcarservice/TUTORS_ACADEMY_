@@ -1330,6 +1330,18 @@ tutor-assigned enrolment arrives (P6/P7).
       Verified: live-participant 23/23 · full battery green · build clean · smoke (307 / 404 / 200).
       DEC-024 records it — including the sandbox honesty note: no browser here, devices proven by
       construction, the manual walk owed to a browsered environment.
+- [x] Step 4 — Shared substrate & collaborative academic surface -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      The academic drawing/notation surface: a canvas and nothing else (high-DPI, normalized strokes,
+      quadratic smoothing, pen-pressure width). The substrate is the subject's OWN motif — lattice for
+      Mathematics, field for Physics, bonds for Chemistry — inherited from 3.3, never invented twice.
+      Palette strictly Ink (fine/medium) · Line · Eraser · Reset, three colours (ivory · slate · the
+      subject accent); no stickers, no emoji — enforced by tests. Sync: one serializable packet
+      `{id, tool, points, colour-ID, width}`, a validating idempotent reducer, the in-memory bus (local
+      mode is fully functional — not degraded), optimistic non-blocking apply; the session data channel
+      is the seam the wiring step plugs into. Composition: desktop split pane, small screens a real
+      toggle. Verified: academic-surface 20/20 · battery green · build clean · smoke (307 / 404-draft /
+      preserved). DEC-025 records it, with the owed rulings: the session bus, clear-permission,
+      keyboard stroke input, late-packet ordering.
 
 - [x] Step 1 — Progress record schema & cohort architecture -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
       `progress_record` applied (migration 0004, the DEC-009 shape: interim-neutral referent, tutor

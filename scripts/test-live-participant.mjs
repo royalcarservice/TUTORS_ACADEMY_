@@ -141,7 +141,10 @@ t("motion — the glow's only transition obeys the reduced-motion contract", () 
 t("/live — the island renders ONLY when the room is truly open", () => {
   const src = rawFile("src/app/subjects/[subject]/live/page.tsx");
   assert.match(src, /roomOpen = module\?\.status === "live" && readiness\.configured && session !== null/);
-  assert.match(src, /participant=\{roomOpen \? <RoomParticipant/);
+  /* 7.4 (DEC-025): the gate is unchanged; the island is now composed inside
+     the room layout (chamber pane + academic surface). */
+  assert.match(src, /participant=\{roomOpen \? \(/);
+  assert.match(src, /chamber=\{<RoomParticipant/);
   assert.doesNotMatch(src, /"use client"|'use client'/, "the page stays a server component");
 });
 t("stage — the reserved grid and standby stand while the room is closed", () => {

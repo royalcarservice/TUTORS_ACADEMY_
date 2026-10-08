@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
 import { LiveStage } from "@/components/live/live-stage";
+import { AcademicSurface } from "@/components/live/academic-surface";
+import { RoomLayout } from "@/components/live/room-layout";
 import { RoomParticipant } from "@/components/live/room-participant";
 import { ROUTES } from "@/config/routes";
 import { MODULE_STATUS_LABEL, PLATFORM_MODULES } from "@/config/modules";
@@ -122,8 +124,9 @@ export default async function LiveSessionPage({ params }: Params) {
      in the registry, the credentials are staged, and a session is named.
      Until then the stage keeps its standby state (DEC-023): nothing about
      the participant interface renders ahead of the room it belongs to.
-     When open, the participant island (7.3) takes the reserved grid — the
-     participant's OWN media, opt-in, nothing invented (DEC-024). */
+     When open, the room composition (7.3/7.4) takes the reserved grid —
+     the participant's OWN media and the shared academic surface, opt-in and
+     local-first, nothing invented (DEC-024, DEC-025). */
   const roomOpen = module?.status === "live" && readiness.configured && session !== null;
 
   return (
@@ -137,7 +140,12 @@ export default async function LiveSessionPage({ params }: Params) {
       verb={verb}
       scheduled={session ? scheduledPhrase(session.scheduledAt, now) : null}
       viewer={viewer}
-      participant={roomOpen ? <RoomParticipant subjectId={s.id} displayName={identity.displayName} role={viewer} /> : undefined}
+      participant={roomOpen ? (
+        <RoomLayout
+          chamber={<RoomParticipant subjectId={s.id} displayName={identity.displayName} role={viewer} />}
+          surface={<AcademicSurface subjectId={s.id} motif={s.motif} density={settings.levers.density} />}
+        />
+      ) : undefined}
     />
   );
 }

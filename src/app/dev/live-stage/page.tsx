@@ -2,24 +2,44 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { AcademicSurface } from "@/components/live/academic-surface";
+import { RoomLayout } from "@/components/live/room-layout";
 import { RoomParticipant } from "@/components/live/room-participant";
+import { getEnvironmentSettings } from "@/lib/environment/settings";
 import { getIdentity } from "@/lib/auth/session";
 import { isolateAsync } from "@/lib/state/isolate";
+import type { SubjectId } from "@/lib/student/contract";
 import { getSubject, SUBJECTS } from "@/lib/subjects/subjects";
 
 /* DEV-ONLY SPECIMEN · /dev/live-stage — 404s in production.
 
-   The rehearsal space for the chamber's participant interface (Phase 7 ·
-   Step 3, DEC-024): the island, the tile, the controls and the state
-   language, exercised against the reader's OWN devices — camera, microphone,
-   shared surface — with everything staying on this device (no transport is
-   wired yet; the caption says so). Nothing here is reachable in production,
-   and nothing here captures on load: the first render is privacy.
+   The rehearsal space for the chamber (Phase 7 · Steps 3–4, DEC-024/025):
+   the participant island — tile, controls, state language — exercised
+   against the reader's OWN devices, and the shared ACADEMIC SURFACE —
+   canvas, palette, substrate — exercised in local working mode (the
+   in-memory bus; no transport is wired yet, and the caption says so).
+   Nothing here is reachable in production, and nothing captures on load.
 
    Subject is chosen with ?subject=<id> so the accent framing (the speaking
-   glow, the disciplined border) can be checked against each of the six.   */
+   glow, the disciplined border) AND the substrate motif (lattice for
+   Mathematics, field for Physics, bonds for Chemistry…) can be checked
+   against each of the six.                                            */
 
 export const metadata: Metadata = { title: "Live stage rehearsal" };
+
+/* The rehearsal room, composed exactly as the production room composes it
+   (DEC-025): participant pane + academic surface, responsive. The density
+   lever is read as the environment reads it — authored default here unless
+   a shaping row exists. */
+async function RehearsalRoom({ subjectId, motif, displayName, role }: { subjectId: string; motif: import("@/lib/subjects/subjects").Motif; displayName: string; role: "student" | "tutor" }) {
+  const settings = await getEnvironmentSettings(subjectId as SubjectId);
+  return (
+    <RoomLayout
+      chamber={<RoomParticipant subjectId={subjectId} displayName={displayName} role={role} rehearsal />}
+      surface={<AcademicSurface subjectId={subjectId} motif={motif} density={settings.levers.density} />}
+    />
+  );
+}
 
 interface Params {
   searchParams: Promise<{ subject?: string }>;
@@ -53,12 +73,7 @@ export default async function DevLiveStagePage({ searchParams }: Params) {
       </header>
 
       <div data-subject={s.id} style={{ background: "var(--ta-surface-sunken)", borderRadius: "var(--ta-radius-2)", padding: "var(--ta-space-8)" }}>
-        <RoomParticipant
-          subjectId={s.id}
-          displayName={identity?.displayName ?? "Rehearsal"}
-          role={identity?.role === "tutor" ? "tutor" : "student"}
-          rehearsal
-        />
+        <RehearsalRoom subjectId={s.id} motif={s.motif} displayName={identity?.displayName ?? "Rehearsal"} role={identity?.role === "tutor" ? "tutor" : "student"} />
       </div>
 
       <p style={{ marginTop: "var(--ta-space-6)" }}>
