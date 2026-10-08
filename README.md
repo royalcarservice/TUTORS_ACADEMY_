@@ -1529,6 +1529,42 @@ a live room opens the day the wiring (credentials + carrier) lands — never bef
       Full record: `PHASE8_GATE_REPORT.md`. The debt list stands: the writer, the credentialed
       walks, baseline re-pins, the manual browsered pass.
 **Phase 9 — AI Learning Layer**
+- [x] Step 1 — Socratic assistance engine & pedagogical contract -> PHASE 9 BRIEF (2026-10-08) — **BUILT.**
+      Bounded Socratic reflection and milestone-aware study guidance — schema,
+      contract and pure engine; no surface yet. Migration 0009 (numbered
+      sequential: the brief's 0006 slot belongs to cohort_readers — the
+      DEC-026/029 precedent) creates `socratic_exchanges`: one row = one
+      bounded exchange — a student's inquiry at a named milestone and the
+      structured guidance returned — scoped strictly to (student_id,
+      subject_id); subject CHECKed in the DB (E-13); RLS enabled AND forced:
+      students SELECT/INSERT their OWN exchanges only, related tutors SELECT
+      through the standing predicate, NO update/delete (an exchange is an
+      occurrence), anon admitted nowhere. The 500-character brevity limit is
+      MIRRORED in the DB (the contract's cap); the payload caps at 16 KB and
+      carries guidance structure only — zero psychological diagnosis, zero
+      sentiment grading, by construction. `src/lib/socratic/contract.ts`
+      states the pedagogical contract: `SocraticPrompt` and
+      `SocraticGuidance` exactly as briefed, with a guidance union of
+      hint/question/reference — "answer" is unrepresentable, so homework
+      completion cannot be emitted. `src/lib/socratic/resolver.ts` is the
+      deterministic milestone-to-concept engine (no clock, no randomness, no
+      network — pinned): one curated scaffold map covering all six subjects
+      (the brief's example stands: physics:harmonic-motion, "Classical
+      Mechanics → Harmonic Motion"), each milestone yielding one disciplined
+      question, one conceptual hint and one canonical proof; completion
+      demands receive one calm redirect, never a working; unknown milestones
+      receive one honest sentence, never an invention; cross-subject keys
+      resolve to nothing. When the student's own archive speaks to the
+      subject, the guidance POINTS at the most recent relevant row by id in
+      the archive's own words (Session Notation with a summary preferred,
+      then the newest Board Record) — re-states nothing. Verified:
+      test-socratic-logic 30/30 (new — determinism, isolation, brevity,
+      completion-demand classes, honest absence, archive reference rule,
+      register sweeps, migration↔contract cross-pins) · validate-subjects
+      ALL VALID · check-subject-sql PASS · next-action 34 · progress 16 ·
+      tsc clean · build exit 0 (33 pages — no route added). DEC-033 records
+      it; STATE_LANGUAGE 9.1 pins the engine's sentences. The persistence
+      seam and the speaking surface stand owed to later steps.
 **Phase 10 — Polish + Performance**
 
 ## Brand direction (locked in Phase 2.1)

@@ -43,9 +43,29 @@ whole pass. These rules are the fix, not ceremony.*
 
 ## IMMEDIATE ORDER
 
-1. **PHASE 8 IS CERTIFIED (2026-10-08).** The Archive Gate (W1–W5) ran to verdict —
+1. **PHASE 9 IS UNDER WAY.** Step 1 done (2026-10-08, DEC-033): the SOCRATIC ASSISTANCE ENGINE &
+   PEDAGOGICAL CONTRACT — schema, contract and pure logic; no surface yet. Migration 0009
+   (numbered sequential — the brief's 0006 slot belongs to cohort_readers) creates
+   `socratic_exchanges`: one bounded exchange per row, scoped strictly to
+   (student_id, subject_id); RLS enabled AND forced — students SELECT/INSERT their OWN
+   exchanges only, related tutors SELECT through the standing predicate, no update/delete,
+   anon nowhere; the 500-character brevity limit mirrored in the DB; zero psychological
+   diagnosis, zero sentiment grading, by construction. `src/lib/socratic/contract.ts` states
+   the contract (guidance union hint/question/reference — "answer" is unrepresentable);
+   `src/lib/socratic/resolver.ts` is the deterministic engine: one curated scaffold map over
+   all six subjects (the brief's example stands verbatim — physics:harmonic-motion,
+   "Classical Mechanics → Harmonic Motion"), one disciplined question + one hint + one proof
+   per milestone; completion demands get one calm redirect, never a working; unknown
+   milestones get one honest sentence, never an invention; cross-subject keys resolve to
+   nothing; the student's own archive is POINTED at by id in the archive's own words,
+   re-stated never. Verified: test-socratic-logic 30/30 (new) · validate-subjects ALL VALID
+   · check-subject-sql PASS · next-action 34 · progress 16 · tsc clean · build exit 0
+   (33 pages). STATE_LANGUAGE 9.1 pins the engine's sentences. Live apply of 0009 is owed
+   with 0004–0008. **Next:** the persistence seam (the student's own INSERT, RLS first) and
+   the surface where guidance is spoken.
+2. **PHASE 8 IS CERTIFIED (2026-10-08).** The Archive Gate (W1–W5) ran to verdict —
    `PHASE8_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase8-*.json`.
-   Step 1 done (2026-10-08, DEC-029): Step 1 done (2026-10-08, DEC-029): the archive's foundation —
+   Step 1 done (2026-10-08, DEC-029): the archive's foundation —
    migration 0008 creates `session_artifacts` (board snapshot · pedagogical notes · recording, a
    closed three; one row belongs STRICTLY to one session of one subject — a composite foreign key
    into `cohort_sessions(subject_id, id)` makes crossing the boundary unrepresentable;
@@ -150,7 +170,7 @@ whole pass. These rules are the fix, not ceremony.*
    the chamber audio) — the shelf has its reader and its chronology; it still owes its objects —
    then live-classroom's `live` flip (the carrier wiring, DEC-023/028), and a populated-shelf +
    signed-playback + populated-chronology verification in the credentialed environment.
-2. **PHASE 7 IS CERTIFIED (2026-10-08).** The Live Classroom Gate (W1–W5) ran to verdict —
+3. **PHASE 7 IS CERTIFIED (2026-10-08).** The Live Classroom Gate (W1–W5) ran to verdict —
    `PHASE7_GATE_REPORT.md` at the repo root; baselines committed under `audit/phase7-*.json`
    (privacy · ledger · performance). Five windows, five passes: cold start & static health ·
    the privacy & surveillance audit (zero-tolerance on the fourteen live surfaces, zero

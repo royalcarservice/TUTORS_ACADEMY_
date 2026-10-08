@@ -394,3 +394,30 @@ date, no count, no ratio, no bar, no ring. Empty means ABSENT — the slot
 renders no DOM, the record region renders none; "nothing is recorded" is
 never spoken as "0". The links go to the subject archive, where the record
 stands; the chronology is the index, the archive is the shelf.
+
+
+## 9.1 addendum — the Socratic engine's language (Phase 9 · Step 1, DEC-033)
+
+The Socratic assistance engine speaks scaffolding, never solutions. Its
+guidance union is hint, question, reference — there is no "answer" kind, so
+a completed working cannot be emitted by construction. A student's inquiry
+that demands the working itself receives ONE calm redirect; the working
+stays the student's own.
+
+| posture | the engine's sentence (verbatim) | what it does |
+| --- | --- | --- |
+| empty inquiry | `Name the concept you are working on, and say what about it feels unresolved. One or two sentences serve reflection best.` | asks for the concept, declines to guess |
+| overlong inquiry (past 500 chars) | `A shorter question serves reflection best. Restate what you are asking in at most five hundred characters, and the scaffold will meet it there.` | enforces the brevity discipline |
+| completion demand | `This engine keeps the concept's scaffold and its questions; the working stays the student's own. Take the first step the concept asks of you, and say what you notice.` | scaffolds, never answers |
+| unknown milestone | `No scaffold is recorded yet for this milestone in {Subject}. Bring the question to your next session, or ask about a stage the subject's scaffold names.` | honest absence; nothing invented |
+| archive citation | `Your own {Board Record · Session Notation · Chamber Audio} of {date} stands in the archive beside this stage. Open it, and read the record before you answer.` | points at the student's own record, re-states nothing |
+
+The engine's register inherits the archive's discipline: the three artifact
+words stand verbatim; no exclamation mark, no emoji, no reward vocabulary,
+and — new in this phase — **zero psychological diagnosis, zero sentiment
+grading**: guidance speaks the concept, never the student's mood, traits or
+worth. Brevity is the contract (500 characters, mirrored in the DB); a
+disciplined question serves reflection better than a lengthy essay. No
+surface speaks these sentences yet — the engine is schema and pure logic;
+the day a surface renders them, it renders them exactly as pinned in
+`scripts/test-socratic-logic.mjs`.
