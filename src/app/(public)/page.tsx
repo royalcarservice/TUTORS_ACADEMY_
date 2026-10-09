@@ -114,9 +114,9 @@ export default function HomePage() {
         <h2 id="mentor-h" className="mt-4 max-w-2xl text-3xl sm:text-4xl" style={{ ...SERIF, color: IVORY }}>How we mentor.</h2>
         <div className="mt-12 grid gap-10 lg:grid-cols-3">
           {[
-            ["Individual intellectual arcs", "Progression tailored to the learner in front of the tutor. No conveyor belts, no one-size-fits-all syllabus march — the arc bends to the student, never the reverse."],
-            ["Relational mentorship", "Real subject masters who guide thinking. The study lens scaffolds with questions and hints and never supplies answers — the understanding is earned, so it holds."],
-            ["Record of mastery", "Milestones co-certified by tutor and student, preserved as a record of real understanding. Achievement substantiated in words, not scores or ranks."],
+            ["Individual Intellectual Arcs", "Progression tailored to the learner in front of the tutor. No conveyor belts, no one-size-fits-all syllabus march — the arc bends to the student, never the reverse."],
+            ["Relational Mentorship", "Real subject masters who guide thinking. The study lens scaffolds with questions and hints and never supplies answers — the understanding is earned, so it holds."],
+            ["Record of Mastery", "Milestones co-certified by tutor and student, preserved as a record of real understanding. Achievement substantiated in words, not scores or ranks."],
           ].map(([t, d]) => (
             <div key={t}>
               <div className="h-px w-10" style={{ background: GOLD_DEEP }} />
@@ -133,10 +133,10 @@ export default function HomePage() {
         <h2 id="journey-h" className="mt-4 text-3xl sm:text-4xl" style={{ ...SERIF, color: IVORY }}>The student journey.</h2>
         <ol className="mt-12 flex flex-col gap-0">
           {[
-            ["Diagnostic conversation", "A first dialogue about where the learner stands — preparation material for the relationship, never a score."],
-            ["Atmosphere placement", "The student enters the chamber of their subject and settles into its environment."],
-            ["Collaborative discovery", "Sessions inside the chamber: the board, the dialogue, the work — preserved as the board record."],
-            ["Certified milestone", "Tutor and student certify the milestone together; the record holds it."],
+            ["Diagnostic Conversation", "A first dialogue about where the learner stands — preparation material for the relationship, never a score."],
+            ["Atmosphere Placement", "The student enters the chamber of their subject and settles into its environment."],
+            ["Collaborative Discovery", "Sessions inside the chamber: the board, the dialogue, the work — preserved as the board record."],
+            ["Certified Milestone", "Tutor and student certify the milestone together; the record holds it."],
           ].map(([t, d], i) => (
             <li key={t} className="relative flex gap-6 pb-10">
               <div className="flex flex-col items-center">
