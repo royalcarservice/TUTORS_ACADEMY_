@@ -93,11 +93,31 @@ create unique index if not exists tutor_registration_one_pending_payment
 create index if not exists tutor_registration_payment_history
   on public.tutor_registration_payments (application_id, created_at desc);
 
+-- Database gate for stale/concurrent tabs: no new charge attempt can be
+-- inserted after the application has moved out of pending_payment.
+create or replace function public.require_pending_tutor_application_for_payment() returns trigger
+language plpgsql set search_path = public as $$
+declare
+  application_status text;
+begin
+  select status into application_status
+    from public.tutor_applications where id = new.application_id for update;
+  if not found or application_status <> 'pending_payment' then
+    raise exception 'Tutor application is not awaiting payment';
+  end if;
+  return new;
+end $$;
+
+drop trigger if exists tutor_registration_payment_application_gate on public.tutor_registration_payments;
+create trigger tutor_registration_payment_application_gate
+  before insert on public.tutor_registration_payments
+  for each row execute function public.require_pending_tutor_application_for_payment();
+
 alter table public.tutor_applications enable row level security;
 alter table public.tutor_applications force row level security;
 alter table public.tutor_registration_payments enable row level security;
 alter table public.tutor_registration_payments force row level security;
-revoke all on public.tutor_applications, public.tutor_registration_payments from anon, authenticated;
+revoke all on public.tutor_applications, public.tutor_registration_payments from public, anon, authenticated;
 grant all on public.tutor_applications, public.tutor_registration_payments to service_role;
 -- No anon/authenticated policies. The service role is the sole data path.
 
@@ -198,6 +218,12 @@ begin
     set approval_status = 'pending_approval'
     where id = app_id and role = 'tutor';
   if not found then raise exception 'Tutor profile is unavailable'; end if;
+
+  -- Close any stale attempt rows in the same transaction. The server will
+  -- also expire other still-open Stripe sessions after verifying this payment.
+  update public.tutor_registration_payments
+    set status = 'failed'
+    where application_id = app_id and id <> p_payment_id and status = 'pending';
   return true;
 end $$;
 

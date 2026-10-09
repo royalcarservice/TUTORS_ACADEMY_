@@ -195,17 +195,7 @@ function mapTutorApplication(data: Record<string, unknown>): TutorApplicationRec
   };
 }
 
-export async function getLatestTutorRegistrationPayment(applicationId: string): Promise<TutorRegistrationPaymentRecord | null> {
-  const service = createServiceClient();
-  if (!service) return null;
-  const { data, error } = await service
-    .from("tutor_registration_payments")
-    .select("id, status, mode, provider_payment_id, checkout_session_id, created_at, paid_at")
-    .eq("application_id", applicationId)
-    .order("created_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
-  if (error || !data) return null;
+function mapTutorRegistrationPayment(data: Record<string, unknown>): TutorRegistrationPaymentRecord {
   return {
     id: data.id as string,
     status: data.status as TutorRegistrationPaymentStatus,
@@ -215,6 +205,31 @@ export async function getLatestTutorRegistrationPayment(applicationId: string): 
     createdAt: String(data.created_at ?? ""),
     paidAt: data.paid_at ? String(data.paid_at) : null,
   };
+}
+
+export async function getLatestTutorRegistrationPayment(applicationId: string): Promise<TutorRegistrationPaymentRecord | null> {
+  const service = createServiceClient();
+  if (!service) return null;
+  const fields = "id, status, mode, provider_payment_id, checkout_session_id, created_at, paid_at";
+  const { data: paid, error: paidError } = await service
+    .from("tutor_registration_payments")
+    .select(fields)
+    .eq("application_id", applicationId)
+    .eq("status", "paid")
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (paidError) return null;
+  if (paid) return mapTutorRegistrationPayment(paid);
+
+  const { data, error } = await service
+    .from("tutor_registration_payments")
+    .select(fields)
+    .eq("application_id", applicationId)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  return error || !data ? null : mapTutorRegistrationPayment(data);
 }
 
 async function getStripeClient() {
@@ -249,7 +264,7 @@ async function markPaymentAttempt(
     .eq("id", paymentId)
     .eq("checkout_session_id", sessionId)
     .maybeSingle();
-  return !readError && current?.status === status;
+  return !readError && ["failed", "expired", "paid", "refunded"].includes(String(current?.status ?? ""));
 }
 
 export interface TutorPaymentVerification {
@@ -259,6 +274,36 @@ export interface TutorPaymentVerification {
   reference?: string;
   paidAt?: string;
   mode?: "test" | "live";
+}
+
+async function expireOtherOpenTutorCheckouts(
+  applicationId: string,
+  paidPaymentId: string,
+  stripe: import("stripe").Stripe,
+): Promise<void> {
+  const service = createServiceClient();
+  if (!service) return;
+  const { data, error } = await service
+    .from("tutor_registration_payments")
+    .select("checkout_session_id")
+    .eq("application_id", applicationId)
+    .neq("id", paidPaymentId)
+    .not("checkout_session_id", "is", null);
+  if (error) return;
+
+  for (const row of data ?? []) {
+    const otherSessionId = row.checkout_session_id as string | null;
+    if (!otherSessionId) continue;
+    try {
+      const otherSession = await stripe.checkout.sessions.retrieve(otherSessionId);
+      if (otherSession.status === "open" && otherSession.payment_status !== "paid") {
+        await stripe.checkout.sessions.expire(otherSessionId);
+      }
+    } catch {
+      // A session may complete between retrieve and expire. Settlement remains
+      // based on its own independently verified row and cannot be duplicated.
+    }
+  }
 }
 
 /** Retrieve and verify Stripe's server-side Checkout record before settlement. */
@@ -274,7 +319,7 @@ export async function verifyTutorRegistrationCheckout(
   try {
     session = await stripe.checkout.sessions.retrieve(sessionId);
   } catch {
-    return { status: "invalid" };
+    return { status: "unavailable" };
   }
 
   const metadata = session.metadata ?? {};
@@ -300,6 +345,7 @@ export async function verifyTutorRegistrationCheckout(
   if ((payment.mode === "live") !== session.livemode) return { status: "invalid" };
 
   if (payment.status === "paid") {
+    await expireOtherOpenTutorCheckouts(applicationId, paymentId, stripe);
     return {
       status: "paid",
       applicationId,
@@ -333,6 +379,7 @@ export async function verifyTutorRegistrationCheckout(
     p_currency: TUTOR_REGISTRATION_CURRENCY,
   });
   if (settleError || settled !== true) return { status: "pending", applicationId, paymentId, mode: payment.mode as "test" | "live" };
+  await expireOtherOpenTutorCheckouts(applicationId, paymentId, stripe);
 
   return {
     status: "paid",
@@ -355,13 +402,15 @@ export async function handleTutorRegistrationStripeEvent(
   if (!applicationId) return;
 
   if (type === "checkout.session.completed" || type === "checkout.session.async_payment_succeeded") {
-    await verifyTutorRegistrationCheckout(sessionId, applicationId);
+    const verification = await verifyTutorRegistrationCheckout(sessionId, applicationId);
+    if (verification.status === "unavailable" || (session.payment_status === "paid" && verification.status === "pending")) {
+      throw new Error("Tutor registration payment verification could not be completed");
+    }
     return;
   }
 
   if (type !== "checkout.session.expired" && type !== "checkout.session.async_payment_failed") return;
-  const service = createServiceClient();
-  if (!service) return;
+  if (!createServiceClient()) throw new Error("Tutor registration payment storage is unavailable");
   const paymentId = session.metadata.payment_id;
   if (!paymentId) return;
   const marked = await markPaymentAttempt(paymentId, sessionId, type === "checkout.session.expired" ? "expired" : "failed");
@@ -430,7 +479,17 @@ export async function createTutorRegistrationCheckoutUrl(application: TutorAppli
     if (ageMs < 3 * 60 * 1000) {
       return { ok: false, note: "A payment session is being prepared. Refresh shortly before trying again." };
     }
-    await service.from("tutor_registration_payments").update({ status: "failed" }).eq("id", active.id).eq("status", "pending");
+    const { data: retired, error: retireError } = await service
+      .from("tutor_registration_payments")
+      .update({ status: "failed" })
+      .eq("id", active.id)
+      .eq("status", "pending")
+      .is("checkout_session_id", null)
+      .select("id")
+      .maybeSingle();
+    if (retireError || !retired) {
+      return { ok: false, note: "The previous payment attempt could not be closed safely. No new checkout was created; refresh shortly." };
+    }
   }
 
   const { data: payment, error: insertError } = await service
@@ -455,6 +514,7 @@ export async function createTutorRegistrationCheckoutUrl(application: TutorAppli
       mode: "payment",
       customer_email: application.email,
       client_reference_id: application.id,
+      payment_intent_data: { receipt_email: application.email },
       metadata: { flow: "tutor_registration", application_id: application.id, payment_id: payment.id as string },
       line_items: [{
         quantity: 1,
@@ -471,12 +531,14 @@ export async function createTutorRegistrationCheckoutUrl(application: TutorAppli
     }, { idempotencyKey: `tutor-reg-${payment.id}` });
 
     if (!session.url) throw new Error("Stripe returned no hosted checkout URL");
-    const { error: updateError } = await service
+    const { data: linked, error: updateError } = await service
       .from("tutor_registration_payments")
       .update({ checkout_session_id: session.id })
       .eq("id", payment.id)
-      .eq("status", "pending");
-    if (updateError) throw new Error("Payment attempt could not be linked");
+      .eq("status", "pending")
+      .select("id")
+      .maybeSingle();
+    if (updateError || !linked) throw new Error("Payment attempt could not be linked");
     return { ok: true, url: session.url };
   } catch {
     await service.from("tutor_registration_payments").update({ status: "failed" }).eq("id", payment.id).eq("status", "pending");
