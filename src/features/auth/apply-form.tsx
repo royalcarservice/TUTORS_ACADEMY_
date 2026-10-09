@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState } from "react";
+import { useActionState, type CSSProperties } from "react";
 
 import { Alert, Button, Checkbox, Input, Label, Textarea } from "@/components/ui";
 import { ROUTES } from "@/config/routes";
@@ -10,6 +10,13 @@ import { saveTutorApplicationAction } from "@/lib/tutor/registration-actions";
 import type { TutorApplicationActionResult, TutorApplicationRecord } from "@/lib/tutor/registration";
 
 const CLASSES = Array.from({ length: 12 }, (_, index) => String(index + 1));
+const FIELD_STYLE: CSSProperties = {
+  backgroundColor: "#FFFEFA",
+  borderColor: "#CFC6B2",
+  color: "#0A192F",
+  colorScheme: "light",
+};
+const LABEL_STYLE: CSSProperties = { color: "#0A192F" };
 
 export function ApplyForm({
   storageConfigured,
@@ -24,7 +31,7 @@ export function ApplyForm({
 
   if (initialApplication && initialApplication.status !== "pending_payment") {
     return (
-      <div className="mx-auto max-w-2xl rounded-2xl border border-[#D8BD78]/50 bg-white/90 p-7 shadow-xl sm:p-10">
+      <div data-theme="light" className="mx-auto max-w-2xl rounded-2xl border border-[#D8BD78]/50 bg-white/90 p-7 shadow-xl sm:p-10">
         <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#9A7830]">Tutor registration</p>
         <h1 className="mt-3 text-3xl font-semibold text-[#0A192F]" style={{ fontFamily: "var(--ta-font-display)" }}>
           Your application is already submitted
@@ -44,7 +51,7 @@ export function ApplyForm({
   }
 
   return (
-    <div className="mx-auto max-w-2xl rounded-2xl border border-[#D8BD78]/50 bg-white/90 p-6 shadow-xl backdrop-blur-xl sm:p-10">
+    <div data-theme="light" className="mx-auto max-w-2xl rounded-2xl border border-[#D8BD78]/50 bg-white/90 p-6 shadow-xl backdrop-blur-xl sm:p-10">
       <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#9A7830]">Tutor application</p>
       <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#0A192F] sm:text-4xl" style={{ fontFamily: "var(--ta-font-display)" }}>
         Apply to teach
@@ -69,11 +76,11 @@ export function ApplyForm({
 
       <form action={action} className="mt-7 flex flex-col gap-5">
         <div className="flex flex-col gap-2">
-          <Label htmlFor="apply-name">Full name</Label>
-          <Input id="apply-name" name="name" autoComplete="name" defaultValue={initialApplication?.name ?? ""} maxLength={80} required />
+          <Label htmlFor="apply-name" style={LABEL_STYLE}>Full name</Label>
+          <Input id="apply-name" name="name" autoComplete="name" defaultValue={initialApplication?.name ?? ""} maxLength={80} required className="placeholder:text-slate-500" style={FIELD_STYLE} />
         </div>
         <div className="flex flex-col gap-2">
-          <Label htmlFor="apply-email">Email address</Label>
+          <Label htmlFor="apply-email" style={LABEL_STYLE}>Email address</Label>
           <Input
             id="apply-email"
             name="email"
@@ -82,23 +89,25 @@ export function ApplyForm({
             defaultValue={initialApplication?.email ?? ""}
             readOnly={Boolean(initialApplication)}
             required
+            className="placeholder:text-slate-500"
+            style={FIELD_STYLE}
           />
           {initialApplication ? <p className="text-xs text-slate-600">This email is attached to the account created for the saved application.</p> : null}
         </div>
         {!initialApplication ? (
           <div className="flex flex-col gap-2">
-            <Label htmlFor="apply-password">Password</Label>
-            <Input id="apply-password" name="password" type="password" autoComplete="new-password" minLength={8} maxLength={128} required />
+            <Label htmlFor="apply-password" style={LABEL_STYLE}>Password</Label>
+            <Input id="apply-password" name="password" type="password" autoComplete="new-password" minLength={8} maxLength={128} required className="placeholder:text-slate-500" style={FIELD_STYLE} />
             <p className="text-xs leading-relaxed text-slate-600">At least 8 characters. Your password is handled by the account provider and is never stored in the application record.</p>
           </div>
         ) : null}
         <div className="flex flex-col gap-2">
-          <Label htmlFor="apply-background">Academic background</Label>
-          <Textarea id="apply-background" name="background" rows={5} maxLength={2000} defaultValue={initialApplication?.background ?? ""} required />
+          <Label htmlFor="apply-background" style={LABEL_STYLE}>Academic background</Label>
+          <Textarea id="apply-background" name="background" rows={5} maxLength={2000} defaultValue={initialApplication?.background ?? ""} required className="placeholder:text-slate-500" style={FIELD_STYLE} />
         </div>
         <div className="flex flex-col gap-2">
-          <Label htmlFor="apply-board">Board</Label>
-          <Input id="apply-board" name="board" autoComplete="organization-title" maxLength={100} placeholder="e.g. CBSE, ICSE, State Board" defaultValue={initialApplication?.board ?? ""} required />
+          <Label htmlFor="apply-board" style={LABEL_STYLE}>Board</Label>
+          <Input id="apply-board" name="board" autoComplete="organization-title" maxLength={100} placeholder="e.g. CBSE, ICSE, State Board" defaultValue={initialApplication?.board ?? ""} required className="placeholder:text-slate-500" style={FIELD_STYLE} />
         </div>
         <fieldset className="flex flex-col gap-2">
           <legend className="text-sm font-medium text-[#0A192F]">Classes you teach</legend>
