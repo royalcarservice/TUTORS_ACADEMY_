@@ -83,7 +83,7 @@ export function SiteNav() {
               boxShadow: "inset 0 0 12px rgba(223,177,91,0.18)",
             }}
           >
-            Book a Free Demo
+            Apply Now
           </Link>
         </nav>
 
@@ -121,7 +121,7 @@ export function SiteNav() {
                 className={goldCta + " w-full"}
                 style={{ borderColor: "#C59A3F", color: "#DFB15B", boxShadow: "inset 0 0 12px rgba(223,177,91,0.18)" }}
               >
-                Book a Free Demo
+                Apply Now
               </Link>
             </li>
           </ul>

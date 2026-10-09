@@ -66,14 +66,14 @@ export default function HomePage() {
                 className={goldOutline}
                 style={{ borderColor: GOLD_DEEP, color: GOLD, boxShadow: "inset 0 0 16px rgba(223,177,91,0.2)" }}
               >
-                Book a Free Demo
+                Apply as a Student or Parent
               </Link>
               <Link
-                href="/subjects"
+                href={ROUTES.tutorApply}
                 className="inline-flex min-h-[3rem] items-center justify-center rounded-full px-7 text-sm font-medium transition-colors hover:text-white"
                 style={{ color: MUTED }}
               >
-                Explore Our Programs
+                Become a Tutor
               </Link>
             </div>
           </HeroDrift>
@@ -197,7 +197,7 @@ export default function HomePage() {
               className={goldOutline}
               style={{ borderColor: GOLD_DEEP, color: GOLD, boxShadow: "inset 0 0 16px rgba(223,177,91,0.2)" }}
             >
-              Book a Free Demo
+              Apply as a Student or Parent
             </Link>
           </div>
           <nav aria-label="Footer" className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm" >

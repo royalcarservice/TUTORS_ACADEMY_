@@ -620,3 +620,15 @@ spine stands; only the presentation changed.
 - **HTML-first.** All copy and doors live in markup; if the canvas fails
   or never mounts, CSS gradients keep the night sky. Mobile serves the
   compact meadow with the reduced particle budget.
+
+### DEC-046-A — CTA vocabulary revision (owner, 2026-10-09)
+
+Owner direction superseded the brief's pinned hero CTAs: "Book a Free
+Demo" + "Explore Our Programs" became "Apply as a Student or Parent"
+(→ /register, the real onboarding door with the guardian-consent path)
+and "Become a Tutor" (→ /tutor/apply, the Track 2 credential-review
+door). The invitation section's closing CTA carries the same
+student/parent apply label, and the nav CTA reads "Apply Now" for
+width. Every CTA on the public surface now opens a real door; no demo
+promise remains anywhere in src. The original verbatim CTAs above are
+kept as the historical record of the brief as delivered.
