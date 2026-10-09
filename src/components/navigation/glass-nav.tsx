@@ -3,8 +3,9 @@
 /* ════════════════════════════════════════════════════════════════════
    GLASS NAV — floating liquid-glass header for the cinematic hero
    (DEC-049). Left: the official lockup, kept modest. Center: rounded
-   liquid-glass pill — HOME · SUBJECTS · WHY US · CONTACT. Right: glass
-   BOOK A FREE DEMO door into the existing booking flow (/register).
+   liquid-glass pill — HOME · SUBJECTS · WHY US · CONTACT. DEC-050: the
+   header CTA was removed by owner override; the home carries exactly two
+   buttons (Apply as Student / Become a Tutor) in the hero.
    Mobile collapses to an accessible compact menu; nothing overlaps.
    ════════════════════════════════════════════════════════════════════ */
 
@@ -59,13 +60,6 @@ export function GlassNav() {
 
         {/* Right — glass demo door */}
         <div className="flex items-center gap-2.5">
-          <Link
-            href={ROUTES.register}
-            className="liquid-glass hidden rounded-full px-5 py-2.5 text-[0.7rem] font-semibold tracking-[0.14em] transition-transform hover:scale-[1.03] sm:inline-flex"
-            style={{ color: WHITE, textShadow: SHADOW }}
-          >
-            BOOK A FREE DEMO
-          </Link>
           <button
             type="button"
             className="liquid-glass inline-flex size-10 items-center justify-center rounded-full lg:hidden"
@@ -99,16 +93,6 @@ export function GlassNav() {
                 </Link>
               </li>
             ))}
-            <li className="mt-2">
-              <Link
-                href={ROUTES.register}
-                onClick={() => setOpen(false)}
-                className="liquid-glass block rounded-full px-4 py-3 text-center text-xs font-semibold tracking-[0.14em]"
-                style={{ color: WHITE }}
-              >
-                BOOK A FREE DEMO
-              </Link>
-            </li>
           </ul>
         </nav>
       ) : null}

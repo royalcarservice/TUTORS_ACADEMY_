@@ -728,3 +728,17 @@ pathname switch.
 - **Deployment**: production CD rides the pushed branch; a pull request
   additionally yields a Netlify deploy PREVIEW so the owner can review
   without production changing underneath them.
+
+## DEC-050 — Two Buttons, Exactly (owner override, 2026-10-09)
+
+Owner override: the homepage carries exactly two buttons — **Apply as
+Student** (solid warm-white pill, navy text → /register) and **Become a
+Tutor** (liquid-glass pill, fine white border, white text →
+/tutor/apply) — side by side beneath the hero support copy, stacked on
+small screens, subtle hover, explicit keyboard focus outlines. "Book a
+Free Demo", "Explore Our Programs", the header CTA and every other
+homepage button are removed; the invitation section keeps its copy and
+footer links but no buttons. Both targets are REAL flows (register and
+the Track 2 tutor-application door) — nothing invented. Logo and
+cinematic video stand. DEC-046-A's application-door intent returns in
+this tighter form; DEC-049's demo labels are superseded.

@@ -48,12 +48,15 @@ export default function HomePage() {
           box-shadow: 0 8px 24px -8px rgba(10,25,47,0.35);
           background-color: #16294a;
         }
-        .ta-hero-cta { transition: transform .25s ease, box-shadow .25s ease; }
-        .ta-hero-cta:hover, .ta-hero-cta:focus-visible {
-          transform: scale(1.03);
-          box-shadow: 0 0 28px rgba(255,255,255,0.4), 0 6px 24px -6px rgba(8,22,40,0.35);
-        }
-        @media (prefers-reduced-motion: reduce) { .ta-hero-cta:hover { transform: none; } }
+        .ta-btn { transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease; }
+        .ta-btn:hover { transform: translateY(-1px) scale(1.02); }
+        .ta-btn-solid { background: #FFF9F0; color: #0A192F; box-shadow: 0 6px 24px -6px rgba(8,22,40,0.35); }
+        .ta-btn-solid:hover { box-shadow: 0 0 26px rgba(255,255,255,0.45), 0 8px 28px -8px rgba(8,22,40,0.4); }
+        .ta-btn-solid:focus-visible { outline: 2px solid #0A192F; outline-offset: 3px; }
+        .ta-btn-glass { color: #FFFFFF; text-shadow: 0 1px 10px rgba(8,22,40,0.4); }
+        .ta-btn-glass:hover { background-color: rgba(255,255,255,0.12); }
+        .ta-btn-glass:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { .ta-btn:hover { transform: none; } }
         .ta-quiet-link { transition: color .2s ease; }
         .ta-quiet-link:hover, .ta-quiet-link:focus-visible { color: ${NAVY} !important; }
         @media (prefers-reduced-motion: reduce) {
@@ -97,13 +100,21 @@ export default function HomePage() {
                 Build understanding, grow in confidence, and take your next step with Tutors Academy.
               </p>
             </div>
-            <Link
-              href={ROUTES.register}
-              className="ta-hero-cta inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm font-semibold"
-              style={{ background: "#FFFFFF", color: "#0A192F", boxShadow: "0 6px 24px -6px rgba(8,22,40,0.35)" }}
-            >
-              Book a Free Demo
-            </Link>
+            <div className="flex w-full max-w-md flex-col items-stretch justify-center gap-4 sm:w-auto sm:max-w-none sm:flex-row sm:items-center">
+              <Link
+                href={ROUTES.register}
+                className="ta-btn ta-btn-solid inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm font-semibold"
+              >
+                Apply as Student
+              </Link>
+              <Link
+                href={ROUTES.tutorApply}
+                className="ta-btn ta-btn-glass liquid-glass inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm font-semibold"
+                style={{ border: "1px solid rgba(255,255,255,0.55)" }}
+              >
+                Become a Tutor
+              </Link>
+            </div>
             <p className="text-[0.68rem] font-semibold tracking-[0.3em]" style={{ color: "rgba(255,255,255,0.92)", textShadow: "0 1px 12px rgba(8,22,40,0.5)" }}>
               LEARN • GROW • SUCCEED
             </p>
@@ -208,27 +219,6 @@ export default function HomePage() {
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed" style={{ color: SLATE }}>
             Experience a session tailored to your exact learning needs.
           </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href={ROUTES.register}
-              className="ta-cta-primary inline-flex items-center justify-center rounded-full border px-7 min-h-[3rem] text-sm font-semibold"
-              style={{
-                borderColor: GOLD_BRIGHT,
-                background: "rgba(255,255,255,0.92)",
-                color: NAVY,
-                boxShadow: "0 4px 12px -2px rgba(212,175,55,0.25)",
-              }}
-            >
-              Apply as a Student or Parent
-            </Link>
-            <Link
-              href={ROUTES.tutorApply}
-              className="ta-quiet-link inline-flex min-h-[3rem] items-center justify-center rounded-full border px-7 text-sm font-medium"
-              style={{ borderColor: "rgba(197,160,89,0.45)", color: SLATE_DEEP, background: "rgba(255,255,255,0.6)" }}
-            >
-              Become a Tutor
-            </Link>
-          </div>
           <nav aria-label="Footer" className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">
             <Link href="/subjects" className="ta-quiet-link" style={{ color: SLATE }}>Subjects</Link>
             <Link href={ROUTES.tuition} className="ta-quiet-link" style={{ color: SLATE }}>Tuition</Link>
