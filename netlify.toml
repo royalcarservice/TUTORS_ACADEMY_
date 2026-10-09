@@ -14,7 +14,7 @@
 #                                    is_test_account flips)
 #
 # Without them every auth surface states plainly that it is not configured
-# — no half-open doors. Supabase migrations 0001–0012 must be applied in
+# — no half-open doors. Supabase migrations 0001–0014 must be applied in
 # the Supabase project first (supabase/migrations/); Netlify never runs
 # SQL migrations.
 #
@@ -35,5 +35,9 @@
   # The zero-tracking posture, carried to the build itself.
   NEXT_TELEMETRY_DISABLED = "1"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# NOTE (2026-10-09): the explicit [[plugins]] @netlify/plugin-nextjs entry was
+# REMOVED after the first deploy attempt failed on Next 16.3.6. Netlify's
+# Next.js runtime installs automatically for Next.js sites and tracks the
+# latest runtime — an unpinned manual declaration adds a failure point
+# without adding capability. If a build ever needs a PINNED runtime, install
+# @netlify/plugin-nextjs as a devDependency AND declare it here.
