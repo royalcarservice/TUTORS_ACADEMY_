@@ -11,6 +11,8 @@ export const ROUTES = {
   tutor: "/tutor",
   /** Track 2 — the credential-review door for prospective tutors. */
   tutorApply: "/tutor/apply",
+  tutorApplyPayment: "/tutor/apply/payment",
+  tutorApplySuccess: "/tutor/apply/payment/success",
   admin: "/admin",
   /** The legal framework (Phase 10 · Step 1, DEC-037 — resolves E-07). */
   legalTerms: "/legal/terms",

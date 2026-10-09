@@ -55,7 +55,7 @@ export async function updateSession(request: NextRequest) {
   if (isProtectedPath(pathname) && !userId) {
     /* Track 2 (DEC-043): the tutor application door stands open to signed-out
        visitors in every deployment — an applicant has no account yet. */
-    if (pathname === ROUTES.tutorApply) {
+    if (pathname === ROUTES.tutorApply || pathname.startsWith(`${ROUTES.tutorApply}/`)) {
       return response;
     }
     /* Unfinished Work · Track 1 (DEC-042): with NO credentials configured,

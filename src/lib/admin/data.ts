@@ -7,9 +7,7 @@ import { LEVER_OPTIONS, type EnvironmentLevers } from "@/lib/environment/levers"
 import { DataReadError } from "@/lib/state/read-error";
 import { roomNameOf, SUBJECTS } from "@/lib/subjects/subjects";
 import { isAuthConfigured } from "@/lib/supabase/env";
-import { createClient } from "@/lib/supabase/server";
 import { createServiceClient } from "@/lib/supabase/service";
-import { ONBOARDING_COPY } from "@/lib/auth/onboarding";
 
 /* ════════════════════════════════════════════════════════════════════════
    THE ADMIN OPERATIONS READER (Unfinished Work · Track 1)
@@ -80,6 +78,8 @@ export interface TutorApplication {
   email: string;
   background: string;
   subjects: string[];
+  board?: string;
+  classes?: string[];
   status: "pending_approval" | "approved" | "rejected";
   submittedAt: string;
 }
@@ -473,68 +473,33 @@ export async function fetchTutorApplications(): Promise<TutorApplication[]> {
   const supabase = createServiceClient();
   if (!supabase) throw new DataReadError("admin.applications", new Error("service client unavailable"));
   const { data, error } = await supabase
-    .from("profiles")
-    .select("id, display_name, created_at")
-    .eq("role", "tutor")
-    .eq("approval_status", "pending_approval")
-    .order("created_at");
-  if (error) throw new DataReadError("profiles", error);
-  return (data ?? []).map((p) => ({
-    id: p.id as string,
-    name: (p.display_name as string) || "",
-    email: "",
-    background: "",
-    subjects: [],
-    status: "pending_approval" as const,
-    submittedAt: String(p.created_at ?? "").slice(0, 10),
+    .from("tutor_applications")
+    .select("id, applicant_name, email, academic_background, subject_ids, board, class_levels, status, submitted_at")
+    .eq("status", "pending_approval")
+    .order("submitted_at");
+  if (error) throw new DataReadError("tutor_applications", error);
+  return (data ?? []).map((application) => ({
+    id: application.id as string,
+    name: (application.applicant_name as string) || "",
+    email: (application.email as string) || "",
+    background: (application.academic_background as string) || "",
+    subjects: ((application.subject_ids as string[]) ?? []).map(subjectNameOf),
+    board: (application.board as string) || "",
+    classes: (application.class_levels as string[] | null) ?? [],
+    status: application.status as "pending_approval",
+    submittedAt: String(application.submitted_at ?? "").slice(0, 10),
   }));
 }
 
-/** Track 2 — the application door's act. LIVE: signs the applicant up as a
- *  tutor and marks the account pending_approval (service role). DEMO: the
- *  application joins the demonstration ledger an administrator reviews. */
-export async function submitTutorApplication(_prev: ActionResult | null, formData: FormData): Promise<ActionResult> {
-  const name = String(formData.get("name") ?? "").trim().slice(0, 80);
-  const email = String(formData.get("email") ?? "").trim();
-  const background = String(formData.get("background") ?? "").trim().slice(0, 600);
-  const subjects = formData.getAll("subjects").map(String);
-  if (!name || !email) return { ok: false, note: "A name and an email are required for review. Nothing was submitted." };
-  if (subjects.length === 0) return { ok: false, note: ONBOARDING_COPY.tutorApplySubjectsRequired };
-
-  if (!isAuthConfigured()) {
-    ledger.applications.unshift({
-      id: `d0000000-0000-4000-8000-${String(Date.now()).slice(-12)}`,
-      name,
-      email,
-      background,
-      subjects: subjects.map(subjectNameOf),
-      status: "pending_approval",
-      submittedAt: new Date().toISOString().slice(0, 10),
-    });
-    refresh();
-    return { ok: true, note: ONBOARDING_COPY.tutorApplyDemonstration };
-  }
-
-  const supabase = await createClient();
-  const service = createServiceClient();
-  if (!supabase || !service) return { ok: false, note: ONBOARDING_COPY.onboardingUnavailable };
-  const password = String(formData.get("password") ?? "");
-  if (password.length < 8) return { ok: false, note: "Use at least 8 characters for the password. Nothing was submitted." };
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: { data: { role: "tutor", display_name: name } },
-  });
-  if (error) return { ok: false, note: "The application could not be recorded. Nothing was submitted." };
-  const userId = data.user?.id;
-  if (!userId) return { ok: false, note: ONBOARDING_COPY.recordFailed };
-  const { error: flagErr } = await service
-    .from("profiles")
-    .update({ approval_status: "pending_approval", is_test_account: false })
-    .eq("id", userId);
-  if (flagErr) return { ok: false, note: ONBOARDING_COPY.recordFailed };
-  refresh();
-  return { ok: true, note: ONBOARDING_COPY.tutorApplySubmitted };
+/** Legacy action retained for old links but closed so it cannot bypass the
+ * registration-fee save → checkout → server verification path. */
+export async function submitTutorApplication(_prev: ActionResult | null, _formData: FormData): Promise<ActionResult> {
+  void _prev;
+  void _formData;
+  return {
+    ok: false,
+    note: "This older application action is disabled. Submit through /tutor/apply so the details are durably saved as Pending Payment before checkout.",
+  };
 }
 
 /** The administrator's decision on an application. */
@@ -555,8 +520,8 @@ export async function approveTutorApplication(_prev: ActionResult | null, formDa
 
   const supabase = createServiceClient();
   if (!supabase) return { ok: false, note: "The service client is unavailable in this deployment. Nothing was changed." };
-  const { error } = await supabase.from("profiles").update({ approval_status: "approved" }).eq("id", id);
-  if (error) return { ok: false, note: "The database refused the decision. Nothing was changed." };
+  const { data: decided, error } = await supabase.rpc("decide_tutor_application", { p_id: id, p_decision: "approved" });
+  if (error || decided !== true) return { ok: false, note: "The database refused the decision. Nothing was changed." };
   refresh();
   return { ok: true, note: "The application is approved." };
 }

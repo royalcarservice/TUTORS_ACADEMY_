@@ -14,9 +14,12 @@
 #                                    is_test_account flips)
 #
 # Without them every auth surface states plainly that it is not configured
-# — no half-open doors. Supabase migrations 0001–0014 must be applied in
+# — no half-open doors. Supabase migrations through 0016 must be applied in
 # the Supabase project first (supabase/migrations/); Netlify never runs
-# SQL migrations.
+# SQL migrations. Tutor registration additionally requires server-only
+# STRIPE_SECRET_KEY + STRIPE_WEBHOOK_SECRET and an owner-approved
+# TUTOR_REGISTRATION_REFUND_POLICY. Use Stripe test keys for deploy previews;
+# live charges require CONTEXT=production plus the explicit live opt-in.
 #
 # DECLARED (DEC-039/040): the rate limiter is in-memory per instance, so on
 # serverless instances the windows are per-instance — the shared-store

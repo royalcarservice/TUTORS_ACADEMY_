@@ -86,7 +86,7 @@ export async function POST(req: Request, { params }: { params: Params }) {
   if (!identityRead.ok) return seeOther(`${back}?shape=failed`);
   const identity = identityRead.value;
   if (!identity) return seeOther(`${ROUTES.login}?next=${encodeURIComponent(back)}`);
-  if (identity.role !== "tutor") return nothing();
+  if (identity.role !== "tutor" || identity.approvalStatus !== "approved") return nothing();
   const ctx = await getTutorContext();
   if (!ctx || !ctx.groups.some((g) => g.subjectId === s.id)) return nothing();
 

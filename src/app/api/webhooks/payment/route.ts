@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { settleInvoice } from "@/lib/payments/settle";
+import { handleTutorRegistrationStripeEvent } from "@/lib/tutor/registration";
 
 /* ════════════════════════════════════════════════════════════════════════
    PAYMENT WEBHOOK (Track 3, DEC-044)
@@ -35,11 +36,20 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ received: false, note: "The notice could not be verified." }, { status: 400 });
   }
 
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object;
-    const invoiceId = typeof session.metadata?.invoice_id === "string" ? session.metadata.invoice_id : null;
-    if (invoiceId) {
-      await settleInvoice(invoiceId, typeof session.payment_intent === "string" ? session.payment_intent : null);
+  if (
+    event.type === "checkout.session.completed"
+    || event.type === "checkout.session.async_payment_succeeded"
+    || event.type === "checkout.session.async_payment_failed"
+    || event.type === "checkout.session.expired"
+  ) {
+    const session = event.data.object as import("stripe").Stripe.Checkout.Session;
+    await handleTutorRegistrationStripeEvent(event.type, session);
+
+    if (event.type === "checkout.session.completed") {
+      const invoiceId = typeof session.metadata?.invoice_id === "string" ? session.metadata.invoice_id : null;
+      if (invoiceId) {
+        await settleInvoice(invoiceId, typeof session.payment_intent === "string" ? session.payment_intent : null);
+      }
     }
   }
 

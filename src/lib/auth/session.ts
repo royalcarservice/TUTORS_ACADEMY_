@@ -12,6 +12,7 @@ export interface Identity {
   role: UserRole;
   displayName: string;
   isTestAccount: boolean;
+  approvalStatus: "approved" | "pending_payment" | "pending_approval" | "rejected";
 }
 
 /**
@@ -28,7 +29,7 @@ export async function getIdentity(): Promise<Identity | null> {
   if (!user) return null;
   const { data: profile, error: profileError } = await supabase
     .from("profiles")
-    .select("role, display_name, is_test_account")
+    .select("role, display_name, is_test_account, approval_status")
     .eq("id", user.id)
     .maybeSingle();
   // P5-R9: a failed profile read must not become role "student" / an empty name.
@@ -39,6 +40,7 @@ export async function getIdentity(): Promise<Identity | null> {
     role: (profile?.role as UserRole | undefined) ?? "student",
     displayName: profile?.display_name ?? "",
     isTestAccount: profile?.is_test_account ?? true,
+    approvalStatus: (profile?.approval_status as Identity["approvalStatus"] | undefined) ?? "pending_approval",
   };
 }
 
@@ -47,5 +49,8 @@ export async function requireIdentity(role?: UserRole, nextPath?: string): Promi
   const identity = await getIdentity();
   if (!identity) redirect(`${ROUTES.login}?next=${encodeURIComponent(nextPath ?? ROUTES.student)}`);
   if (role && identity.role !== role) redirect(ROUTES[identity.role]);
+  if (identity.role === "tutor" && identity.approvalStatus !== "approved") {
+    redirect(ROUTES.tutorApplyPayment);
+  }
   return identity;
 }

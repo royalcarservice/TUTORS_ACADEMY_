@@ -44,6 +44,13 @@ function ApplicationCard({ application }: { application: TutorApplication }) {
             ))}
           </div>
         ) : null}
+        {application.board || application.classes?.length ? (
+          <p className="text-xs leading-relaxed text-foreground-muted">
+            {application.board ? `Board: ${application.board}` : ""}
+            {application.board && application.classes?.length ? " · " : ""}
+            {application.classes?.length ? `Classes: ${application.classes.map((level) => `Class ${level}`).join(", ")}` : ""}
+          </p>
+        ) : null}
         <div className="flex items-start justify-end gap-3">
           {result ? (
             <p aria-live="polite" className="text-xs leading-relaxed text-foreground-muted">{result.note}</p>

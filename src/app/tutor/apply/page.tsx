@@ -1,16 +1,22 @@
-import type { Metadata } from "next";
-
 import { ApplyForm } from "@/features/auth/apply-form";
-import { isAuthConfigured } from "@/lib/supabase/env";
+import { getTutorApplicationAccess, getTutorPaymentReadiness } from "@/lib/tutor/registration";
 
-export const metadata: Metadata = {
-  title: "Apply to teach · Tutors Academy",
-  description:
-    "Submit your academic background for administrator review. Nothing opens until an application is approved.",
+export const metadata = {
+  title: "Become a Tutor | Tutors Academy",
+  description: "Apply to teach at Tutors Academy. Submit your details for review.",
 };
 
-/** Track 2 — the credential-review door. Public by design: an applicant
- *  has no account yet; the proxy carve-out (DEC-043) keeps it open. */
-export default function TutorApplyPage() {
-  return <ApplyForm configured={isAuthConfigured()} />;
+export default async function TutorApplyPage() {
+  const access = await getTutorApplicationAccess();
+  const readiness = getTutorPaymentReadiness();
+
+  return (
+    <main className="min-h-[calc(100vh-4rem)] bg-[#FDFBF7] px-4 py-12 sm:px-6 sm:py-16">
+      <ApplyForm
+        storageConfigured={readiness.storageConfigured}
+        initialApplication={access.application}
+        applicationAccessNeedsRecovery={access.hasCookie && !access.application}
+      />
+    </main>
+  );
 }
