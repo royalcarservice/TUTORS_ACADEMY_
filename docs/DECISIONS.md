@@ -766,3 +766,31 @@ gallery heading and cards reveal with staggered depth via
 ScrollTrigger. New support line: "Explore your interests. Build your
 understanding. Shape your future." Layout, links and the two-button
 contract (DEC-050) stand; no new CTA buttons.
+
+## DEC-052 — Scroll-Driven Horizontal 3D Carousel (owner brief, 2026-10-09)
+
+The subject grid is superseded by a pinned 560vh scene whose scrubbed
+scroll progress drives a controlled 3D carousel (0→6): cards glide
+right→left in subject order, the centred card faces forward and closest,
+neighbours rotate 28°, recede 140px and scale to 0.92 at 28px gaps.
+Scroll up reverses; after Computer Science the pin releases into the
+next section — no trapped scroll, no second scrollbar. Keyboard ← →,
+drag and touch swipe all translate into the SAME scroll position
+(ScrollToPlugin/scrollBy), so nothing fights GSAP. A seven-dot
+indicator tracks position. Background gradients are extracted live from
+the active image, mixed 72% toward ivory, blurred 24px — pale and warm.
+
+- **Carousel component** (`subject-carousel.tsx`) implements the
+  owner-supplied prop API verbatim (maxRotationDegrees, maxDepthPx,
+  minScale, cardGap, backgroundBlur, gradientSize, gradientIntensity,
+  enableKeyboard, cardAspectRatio, initialIndex) and exposes a
+  controlled setPosition handle; no wheel/inertia of its own.
+- **Data**: `SUBJECT_CARD_DATA` in subject-carousel-data.ts is the ONE
+  array for images — current values are TEMPORARY placeholders; the
+  owner's supplied collage assets did not persist into the workspace,
+  so finals swap in as one-line `image` edits.
+- Reduced motion collapses the pin (CSS) to a horizontal scroll-snap
+  gallery; all seven stay reachable by touch and keyboard.
+- The valley journey (DEC-051) now hands off into the carousel; the
+  grid components (subject-gallery-cards/layer, gallery-reveal) retire
+  unreferenced per the standing no-delete rule.

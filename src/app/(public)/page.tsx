@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ValleyJourney } from "@/components/home/valley-journey";
-import { GalleryReveal } from "@/components/home/gallery-reveal";
-import SubjectGalleryCards from "@/components/home/subject-gallery-cards";
-import SubjectGalleryLayer from "@/components/home/subject-gallery-layer";
+import { CarouselJourney } from "@/components/home/carousel-journey";
 import { ROUTES } from "@/config/routes";
 
 export const metadata: Metadata = {
@@ -68,9 +66,7 @@ export default function HomePage() {
       <ValleyJourney />
 
       {/* ── SECTION 2 · THE CORE DISCIPLINES — INTERACTIVE 3D GALLERY (DEC-047) ── */}
-      <SubjectGalleryCards />
-      <SubjectGalleryLayer />
-      <GalleryReveal />
+      <CarouselJourney />
 
       {/* ── SECTION 3 · HOW WE MENTOR ──────────────────────────────────── */}
       <section id="mentor" className="mx-auto max-w-[96rem] px-4 py-24 sm:px-6 lg:px-8" style={{ background: CREAM }} aria-labelledby="mentor-h">
