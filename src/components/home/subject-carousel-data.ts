@@ -14,6 +14,8 @@ export interface SubjectCardData {
   /** TEMPORARY placeholder — replace with the final asset URL. */
   image: string;
   alt: string;
+  /** CSS object-position (%) for each replacement image's focal point. */
+  focalPoint?: string;
 }
 
 export const SUBJECT_CARD_DATA: SubjectCardData[] = [

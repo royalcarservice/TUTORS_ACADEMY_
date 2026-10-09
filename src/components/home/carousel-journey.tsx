@@ -4,22 +4,20 @@
    CAROUSEL JOURNEY — pinned scroll-driven horizontal 3D carousel
    (DEC-052, owner brief)
 
-   Vertical scroll progress maps 1:1 onto the carousel's horizontal
-   position (0→6) via a scrubbed ScrollTrigger on a sticky 560vh scene:
-   cards glide right→left in order, the centred card faces forward,
-   neighbours rotate/recede/scale per the carousel spec. Scrolling up
-   reverses smoothly; after Computer Science centres, the pin releases
-   into the next section. No trapped scroll, no second scrollbar.
+   The 560vh scene stays pinned with a sticky viewport. ScrollTrigger's
+   0→1 progress maps directly to the controlled card position 0→6, so
+   the seven subjects glide right-to-left in order. The forward card
+   faces the viewer; side cards rotate, recede and scale per the
+   supplied component settings. Scroll-up naturally reverses the same
+   mapping; at Computer Science, the pin releases into the next section.
 
-   Keyboard ← → and touch/drag translate into the SAME scroll position
-   (ScrollToPlugin / scrollBy), so every input stays synchronised with
-   GSAP — no competing wheel or inertia systems.
-
-   Reduced motion: the pin collapses (CSS) and the carousel renders a
-   simple accessible horizontal snap gallery.
+   Arrow keys and focusing a card scroll to the matching progress point.
+   Pointer/touch dragging also moves page scroll itself. There are no
+   competing wheel handlers or inertia. Reduced motion removes the tall
+   pin and renders a simple horizontal snap gallery.
    ════════════════════════════════════════════════════════════════════ */
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -28,107 +26,178 @@ import { SubjectCarousel, type SubjectCarouselHandle } from "./subject-carousel"
 const NAVY = "#0A192F";
 const SLATE = "#475569";
 const GOLD = "#C5A059";
+const SUBJECT_COUNT = 7;
 
 export function CarouselJourney() {
   const outerRef = useRef<HTMLElement | null>(null);
   const headRef = useRef<HTMLDivElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const carouselRef = useRef<SubjectCarouselHandle | null>(null);
-  const reduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const triggerRef = useRef<ScrollTrigger | null>(null);
+  const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduced(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  const focusCard = useCallback((index: number) => {
     if (reduced) return;
+    const trigger = triggerRef.current;
+    if (!trigger) return;
+    const y = trigger.start + (index / (SUBJECT_COUNT - 1)) * (trigger.end - trigger.start);
+    gsap.to(window, {
+      scrollTo: { y, autoKill: false },
+      duration: 0.55,
+      ease: "power2.inOut",
+      overwrite: "auto",
+    });
+  }, [reduced]);
+
+  useEffect(() => {
+    if (reduced || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     const outer = outerRef.current;
-    if (!outer) return;
+    const stage = stageRef.current;
+    const heading = headRef.current;
+    if (!outer || !stage) return;
 
-    let self: ScrollTrigger | null = null;
-    const st = ScrollTrigger.create({
+    const trigger = ScrollTrigger.create({
+      id: "subject-carousel-progress",
       trigger: outer,
       start: "top top",
       end: "bottom bottom",
-      onUpdate: (s) => {
-        self = s as ScrollTrigger;
-        carouselRef.current?.setPosition(s.progress * 6);
+      onUpdate: (self) => {
+        carouselRef.current?.setPosition(self.progress * (SUBJECT_COUNT - 1));
+      },
+      onRefresh: (self) => {
+        carouselRef.current?.setPosition(self.progress * (SUBJECT_COUNT - 1));
       },
     });
+    triggerRef.current = trigger;
+    carouselRef.current?.setPosition(0);
 
-    if (headRef.current) {
-      gsap.from(headRef.current, {
-        y: 48,
-        opacity: 0,
-        duration: 0.9,
-        ease: "power2.out",
-        scrollTrigger: { trigger: outer, start: "top 85%" },
-      });
+    if (heading) {
+      gsap.fromTo(
+        heading,
+        { y: 38, autoAlpha: 0 },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            id: "subject-carousel-heading",
+            trigger: outer,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
     }
 
-    /* keyboard ← → steps the scroll position (stays synchronised) */
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-      const s = self;
-      if (!s || s.progress <= 0 || s.progress >= 1) return; // outside the pin: default behaviour
-      const target = (ev: KeyboardEvent) => document.activeElement === ev.target;
-      if (!target(e) && (document.activeElement as HTMLElement | null)?.closest("input,textarea,select,[contenteditable]")) return;
-      e.preventDefault();
-      const idx = Math.round(s.progress * 6);
-      const next = Math.max(0, Math.min(6, idx + (e.key === "ArrowRight" ? 1 : -1)));
+    /* Keyboard navigation is scoped to the carousel, not the whole page. */
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      const target = event.target as HTMLElement | null;
+      if (target?.closest("input, textarea, select, [contenteditable='true']")) return;
+
+      const currentTrigger = triggerRef.current;
+      if (!currentTrigger) return;
+      const currentIndex = Math.round(currentTrigger.progress * (SUBJECT_COUNT - 1));
+      const delta = event.key === "ArrowRight" ? 1 : -1;
+      const nextIndex = Math.max(0, Math.min(SUBJECT_COUNT - 1, currentIndex + delta));
+      event.preventDefault();
+
+      /* Keep the keyboard focus on the carousel region during the glide. */
+      stage.focus({ preventScroll: true });
+      const y = currentTrigger.start + (nextIndex / (SUBJECT_COUNT - 1)) * (currentTrigger.end - currentTrigger.start);
       gsap.to(window, {
-        scrollTo: { y: s.start + (next / 6) * (s.end - s.start), autoKill: false },
-        duration: 0.7,
+        scrollTo: { y, autoKill: false },
+        duration: 0.65,
         ease: "power2.inOut",
         overwrite: "auto",
       });
     };
-    window.addEventListener("keydown", onKey);
+    stage.addEventListener("keydown", onKeyDown);
 
-    /* drag / touch swipe → the same vertical scroll */
-    const stage = stageRef.current;
+    /* Drag/swipe changes document scroll, keeping GSAP as sole position source. */
     let dragging = false;
+    let dragged = false;
+    let activePointer = -1;
+    let startX = 0;
     let lastX = 0;
-    const down = (e: PointerEvent) => {
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.button !== 0) return;
       dragging = true;
-      lastX = e.clientX;
+      dragged = false;
+      activePointer = event.pointerId;
+      startX = lastX = event.clientX;
     };
-    const move = (e: PointerEvent) => {
-      if (!dragging) return;
-      const dx = e.clientX - lastX;
-      lastX = e.clientX;
-      window.scrollBy(0, -dx * 3);
+    const onPointerMove = (event: PointerEvent) => {
+      if (!dragging || event.pointerId !== activePointer) return;
+      const delta = event.clientX - lastX;
+      lastX = event.clientX;
+      if (Math.abs(event.clientX - startX) > 6) dragged = true;
+      if (dragged) window.scrollBy(0, -delta * 2.8);
     };
-    const up = () => {
+    const onPointerUp = (event: PointerEvent) => {
+      if (event.pointerId !== activePointer) return;
       dragging = false;
+      activePointer = -1;
+      if (dragged) window.setTimeout(() => { dragged = false; }, 450);
     };
-    if (stage) {
-      stage.addEventListener("pointerdown", down);
-      window.addEventListener("pointermove", move);
-      window.addEventListener("pointerup", up);
-      window.addEventListener("pointercancel", up);
-    }
+    const onClickCapture = (event: MouseEvent) => {
+      if (!dragged) return;
+      event.preventDefault();
+      event.stopPropagation();
+      dragged = false;
+    };
+
+    stage.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerUp);
+    stage.addEventListener("click", onClickCapture, true);
 
     return () => {
-      st.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      window.removeEventListener("keydown", onKey);
-      if (stage) {
-        stage.removeEventListener("pointerdown", down);
-        window.removeEventListener("pointermove", move);
-        window.removeEventListener("pointerup", up);
-        window.removeEventListener("pointercancel", up);
-      }
+      trigger.kill();
+      gsap.killTweensOf(window);
+      triggerRef.current = null;
+      ScrollTrigger.getById("subject-carousel-heading")?.kill();
+      gsap.killTweensOf(heading);
+      stage.removeEventListener("keydown", onKeyDown);
+      stage.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerUp);
+      stage.removeEventListener("click", onClickCapture, true);
     };
   }, [reduced]);
 
   return (
-    <section id="disciplines" ref={outerRef} className="cj-outer relative h-[560vh]" aria-label="Seven subjects">
+    <section
+      id="disciplines"
+      ref={outerRef}
+      className="cj-outer relative h-[560vh]"
+      aria-label="Seven subjects"
+    >
       <style>{`
         @media (prefers-reduced-motion: reduce) {
-          .cj-outer { height: auto; }
-          .cj-sticky { position: relative; }
+          .cj-outer { height: auto !important; }
+          .cj-sticky { position: relative !important; height: auto !important; min-height: 100svh; overflow: visible !important; }
         }
       `}</style>
-      <div className="cj-sticky sticky top-0 flex h-screen h-[100svh] flex-col overflow-hidden" style={{ background: "linear-gradient(180deg, #FDFBF7 0%, #F9F6F0 100%)" }}>
-        <div ref={headRef} className="relative z-10 mx-auto w-full max-w-4xl px-4 pt-20 text-center sm:pt-24">
+      <div
+        className="cj-sticky sticky top-0 flex h-screen h-[100svh] flex-col overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #FDFBF7 0%, #F9F6F0 100%)", height: "100svh" }}
+      >
+        <div ref={headRef} className="relative z-10 mx-auto w-full max-w-4xl px-4 pt-16 text-center sm:pt-20">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: GOLD }}>
             Explore your potential
           </p>
@@ -143,7 +212,12 @@ export function CarouselJourney() {
           </p>
         </div>
 
-        <div ref={stageRef} className="relative z-0 mt-2 flex-1 cursor-grab active:cursor-grabbing">
+        <div
+          ref={stageRef}
+          className="relative z-0 mt-2 min-h-0 flex-1 cursor-grab active:cursor-grabbing"
+          tabIndex={-1}
+          style={{ touchAction: reduced ? "auto" : "pan-y" }}
+        >
           <SubjectCarousel
             ref={carouselRef}
             reduced={reduced}
@@ -157,6 +231,7 @@ export function CarouselJourney() {
             enableKeyboard={true}
             cardAspectRatio={0.8}
             initialIndex={0}
+            onCardFocus={focusCard}
           />
         </div>
       </div>

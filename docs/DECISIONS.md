@@ -789,6 +789,10 @@ the active image, mixed 72% toward ivory, blurred 24px — pale and warm.
   array for images — current values are TEMPORARY placeholders; the
   owner's supplied collage assets did not persist into the workspace,
   so finals swap in as one-line `image` edits.
+- The card width/height adapts to preserve the requested 0.8 aspect ratio
+  while fitting the viewport; replacement-image focal points live next
+  to each URL in the same data array. Tab focus auto-centres its card;
+  ←/→ from the carousel region steps the vertical scroll position.
 - Reduced motion collapses the pin (CSS) to a horizontal scroll-snap
   gallery; all seven stay reachable by touch and keyboard.
 - The valley journey (DEC-051) now hands off into the carousel; the

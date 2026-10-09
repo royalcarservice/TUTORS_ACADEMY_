@@ -65,7 +65,7 @@ export default function HomePage() {
       {/* ── HERO → VALLEY JOURNEY (DEC-051): pinned scroll transition into the gallery ── */}
       <ValleyJourney />
 
-      {/* ── SECTION 2 · THE CORE DISCIPLINES — INTERACTIVE 3D GALLERY (DEC-047) ── */}
+      {/* ── SECTION 2 · THE CORE DISCIPLINES — SCROLL-DRIVEN 3D CAROUSEL (DEC-052) ── */}
       <CarouselJourney />
 
       {/* ── SECTION 3 · HOW WE MENTOR ──────────────────────────────────── */}
@@ -124,7 +124,7 @@ export default function HomePage() {
           Reflections, held honestly.
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed" style={{ color: SLATE }}>
-          Illustrative specimens in the academy's register: real voices land here when students and
+          Illustrative specimens in the academy&apos;s register: real voices land here when students and
           parents choose to give them. No star ratings, no invented counts.
         </p>
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
