@@ -1,7 +1,7 @@
 {
   "gate": "PHASE 7 · W2 — Privacy & Surveillance Audit",
   "date": "2026-10-08",
-  "scanned_files": 332,
+  "scanned_files": 333,
   "verdict": "PASS",
   "broad_pass": {
     "families": [
@@ -24,6 +24,12 @@
         "family": "gamification",
         "pattern": "/\\bbadge\\b/i",
         "reason": "admin operations overview status pills via the shared Badge primitive — administrative chrome, never a student-facing live surface"
+      },
+      {
+        "file": "src/app/(portal)/admin/system/page.tsx",
+        "family": "gamification",
+        "pattern": "/\\bbadge\\b/i",
+        "reason": "service-state pills (Live/Demo/Standby/Certified) via the shared Badge primitive — administrative inspection chrome, never a student-facing live surface"
       },
       {
         "file": "src/app/(public)/legal/privacy/page.tsx",

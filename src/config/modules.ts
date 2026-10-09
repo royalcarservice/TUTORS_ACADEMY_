@@ -147,6 +147,14 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
     routePrefix: "/admin/billing",
   },
   {
+    id: "admin-system",
+    name: "System",
+    summary: "Service connection status: live or demonstration, per service.",
+    status: "live",
+    surfaces: ["admin"],
+    routePrefix: "/admin/system",
+  },
+  {
     /* Unfinished Work · Track 3 (DEC-044): the financial threshold. One
        flat term tuition; checkout and webhook settlement; chambers stay
        free of commerce (P6-R8). The 6.3 removal is reversed by the phase

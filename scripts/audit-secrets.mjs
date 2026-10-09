@@ -110,7 +110,7 @@ for (const file of files) {
   }
 
   // NEXT_PUBLIC_ surface: only the declared three may appear.
-  const declared = new Set(["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY", "NEXT_PUBLIC_SITE_URL"]);
+  const declared = new Set(["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY", "NEXT_PUBLIC_SITE_URL", "NEXT_PUBLIC_APP_URL", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"]);
   for (const match of text.matchAll(/NEXT_PUBLIC_[A-Z0-9_]+/g)) {
     if (!declared.has(match[0])) {
       findings.push({ file, kind: "undeclared NEXT_PUBLIC_ variable", sample: match[0] });

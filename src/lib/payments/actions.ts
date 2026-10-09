@@ -75,8 +75,8 @@ export async function checkoutAction(_prev: CheckoutActionResult | null, formDat
         },
       },
     ],
-    success_url: `${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/checkout/success?subject=${subjectId}&placed=0`,
-    cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/checkout/${subjectId}`,
+    success_url: `${(process.env.NEXT_PUBLIC_APP_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "")}/checkout/success?subject=${subjectId}&placed=0`,
+    cancel_url: `${(process.env.NEXT_PUBLIC_APP_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "")}/checkout/${subjectId}`,
   });
   redirect(session.url ?? `/checkout/${subjectId}`);
 }

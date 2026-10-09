@@ -531,6 +531,24 @@ endpoints answer with one calm sentence and change nothing.
 
 ---
 
+## DEC-045 — Production Wiring & the Live-Health Harness (Track 4, 2026-10-08)
+
+**The problem:** the bridge to live services existed only as named absences.
+The owner needed one template, one probe, one inspection panel — and a
+handover the manager can hold.
+
+**The ruling:** `.env.production.example` documents every name (Supabase
+core, Stripe, LiveKit, APP_URL) and the migration push, values never in
+Git. `scripts/smoke-live-production.mjs` probes pooler TCP, RLS-bounded
+REST (anon must see zero profiles rows), Auth health, Stripe balance and
+a signed LiveKit ListRooms — absent credentials are calm DEMONSTRATION
+rows (exit 0); a CONFIGURED service failing is the only exit 1. The
+`/admin/system` panel renders the same posture in the console, names
+only. NEXT_PUBLIC_APP_URL becomes canonical; NEXT_PUBLIC_SITE_URL stands
+as legacy alias. The Executive Handover Dossier closes the track.
+
+---
+
 ## DEC-043 — Real Onboarding & the Tutor Application Door (Unfinished Work · Track 2, 2026-10-08)
 
 **The problem:** student self-serve registration existed but the schema held

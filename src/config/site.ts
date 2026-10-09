@@ -9,7 +9,7 @@ export const siteConfig = {
   tagline: "Live tutoring, built for real learning outcomes.",
   description:
     "A tutoring academy built one subject environment at a time: six subjects, each with its own room, and a tutor who has a place in it.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_APP_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   locale: "en_IN",
 } as const;
 
