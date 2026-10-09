@@ -291,7 +291,7 @@ export const SubjectCarousel = forwardRef<SubjectCarouselHandle, SubjectCarousel
   );
 });
 
-/* ── card: art, title, concise copy, local legibility veil ────────────── */
+/* ── dark card only: art, title, concise copy, local legibility veil ── */
 function CarouselCard({
   slug,
   name,
@@ -320,9 +320,9 @@ function CarouselCard({
       className="group block h-full w-full overflow-hidden rounded-3xl border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0A192F]"
       style={{
         width,
-        borderColor: "rgba(212,175,55,0.35)",
-        background: "#FFFFFF",
-        boxShadow: "0 24px 60px -18px rgba(15,23,42,0.18), 0 6px 18px -6px rgba(212,175,55,0.12)",
+        borderColor: "rgba(212,175,55,0.5)",
+        background: "#17283B",
+        boxShadow: "0 28px 64px -20px rgba(6,16,30,0.42), 0 8px 24px -8px rgba(197,160,89,0.18)",
       }}
       aria-label={`${name} — ${description}`}
     >
@@ -336,15 +336,21 @@ function CarouselCard({
           style={{ objectPosition: focalPoint ?? "center" }}
           loading={staticCard ? "lazy" : "eager"}
         />
-        {/* restrained local overlay protects copy without obscuring the art */}
+        {/* a cool, translucent tint gives every image a dark-card finish */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{ background: "rgba(12,27,43,0.22)" }}
+        />
+        {/* opaque lower navy-slate gradient keeps the white copy legible */}
         <div
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 h-2/5"
-          style={{ background: "linear-gradient(to top, rgba(253,251,247,0.96) 18%, rgba(253,251,247,0.75) 55%, transparent)" }}
+          style={{ background: "linear-gradient(to top, rgba(13,27,43,0.98) 0%, rgba(13,27,43,0.94) 54%, rgba(13,27,43,0.58) 82%, transparent 100%)" }}
         />
         <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-          <h3 className="text-2xl" style={{ fontFamily: "var(--ta-font-display)", fontWeight: 500, color: "#0A192F" }}>{name}</h3>
-          <p className="mt-1.5 text-sm leading-snug" style={{ color: "#334155" }}>{description}</p>
+          <h3 className="text-2xl" style={{ fontFamily: "var(--ta-font-display)", fontWeight: 500, color: "#FFF9F0" }}>{name}</h3>
+          <p className="mt-1.5 text-sm leading-snug" style={{ color: "#E5EAF0" }}>{description}</p>
         </div>
       </div>
     </a>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { ValleyJourney } from "@/components/home/valley-journey";
+import { HomepageHero } from "@/components/home/homepage-hero";
 import { CarouselJourney } from "@/components/home/carousel-journey";
 import { ROUTES } from "@/config/routes";
 
@@ -62,8 +62,8 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* ── HERO → VALLEY JOURNEY (DEC-051): pinned scroll transition into the gallery ── */}
-      <ValleyJourney />
+      {/* ── HERO (DEC-053): cinematic video, no valley/scroll transition ── */}
+      <HomepageHero />
 
       {/* ── SECTION 2 · THE CORE DISCIPLINES — SCROLL-DRIVEN 3D CAROUSEL (DEC-052) ── */}
       <CarouselJourney />

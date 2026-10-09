@@ -798,3 +798,20 @@ the active image, mixed 72% toward ivory, blurred 24px — pale and warm.
 - The valley journey (DEC-051) now hands off into the carousel; the
   grid components (subject-gallery-cards/layer, gallery-reveal) retire
   unreferenced per the standing no-delete rule.
+
+## DEC-053 — Remove Valley Transition; Dark Cards Only (owner override, 2026-10-09)
+
+The pinned valley journey is removed. Keep the existing cinematic video
+as a regular full-screen homepage hero with the same headline, support
+copy, logo/nav layer, and exactly two existing buttons; no depth-layered
+valley, pin, ScrollTrigger camera move, veil, or hero-to-gallery scrub.
+The horizontal subject carousel remains scroll-driven and follows the
+hero through normal document scrolling.
+
+Apply the requested dark theme to the seven subject cards only: deep
+blue-slate card surface, image tint and lower contrast veil, warm-white
+subject copy, champagne border and restrained shadow. The carousel
+section, headings, progress indicator, and all other homepage surfaces
+remain in the existing light ivory palette. This narrowly overrides
+DEC-048's light-surface direction for card interiors only; no other
+panels or sections change theme.
