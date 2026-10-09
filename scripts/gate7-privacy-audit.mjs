@@ -80,6 +80,8 @@ const ALLOWLIST = {
     "pauses/resumes the ambient WebGL scene when the tab hides — performance + battery respect; no record of the visit",
   "src/lib/motion.ts":
     "sets the data-ambient-paused CSS hook when the tab hides — presentation only",
+  "src/components/home/hero-canvas.tsx":
+    "DEC-046 meadow canvas pauses its particle loop when the tab hides (battery/performance); no focus tracking, no telemetry, no record of the visit",
   // Track 1 admin console (2026-10-08): the operations chrome uses the
   // shared Badge primitive for status pills (Active/Ended, Verified/Pending).
   // Administrative surfaces only; NONE of these mount inside a live
@@ -117,6 +119,8 @@ const ALLOWLIST = {
     "the tutor shell's refused list + P6-R3 row; naming what the surface will never do",
   "src/app/dev/type/preview.tsx":
     "typography specimen paragraph (tabular figures demo); 'a streak of 14 days' is type sample copy with zero logic, dev-only",
+  "src/app/(public)/page.tsx":
+    "DEC-046: 'leaderboard' appears only inside a specimen testimonial's refusal sentence ('no leaderboard, no attention timers…') — naming what the platform refuses, not a feature",
   "src/components/ui/badge.tsx":
     "the Badge UI primitive — a neutral label chip (module status), not a reward; name collision only",
   "src/components/ui/index.ts":

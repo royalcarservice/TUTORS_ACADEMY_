@@ -569,3 +569,54 @@ untouched — date of birth still decides server-side, minors still wait on
 guardian consent, and the consent writes still roll the account back on
 any failure. Demonstration mode records applications in the fixture ledger
 under the console's banner; nothing pretends.
+
+## DEC-046 — The Cinematic 3D Homepage (owner brief, 2026-10-09)
+
+The public home was rebuilt as the owner's "Meadow of Minds" cinematic
+experience. Every route, subject door, and working feature from the prior
+spine stands; only the presentation changed.
+
+- **Spine retired by owner mandate, not deleted.** `HomeSpine`, the
+  `src/components/spine/*` scene stack and `SiteHeader` are no longer
+  referenced by the home or layout. The files remain in tree because the
+  standing instruction is never to delete working components; a future
+  owner decision can revive or remove them. The layout now mounts
+  `SiteNav` (client, fixed): transparent over the hero, solid midnight
+  with the gold rule everywhere else so ivory type stays legible on the
+  light legal/tuition/subjects pages.
+- **Brand mark.** `src/components/home/brand-mark.tsx` is the new vector
+  lockup — TA monogram with a graduation-cap crossbar, the book opened in
+  the A's counter, the gold swoosh — replacing raster. Gradient ids are
+  namespaced (`ta-gold`, `ta-navy`).
+- **Canvas.** `hero-canvas.tsx` is an optimized custom 2D canvas under the
+  DOM overlay (the brief's R3F was an authorized either/or). Three Z-layers
+  of ~1500 particles desktop / ~400 at 390px: twinkling stars, rising
+  embers, drifting petals, plus the meadow floor — students at glowing
+  desks among marigolds and book stacks, monitor amber + moonlight rim.
+  Pointer parallax is capped at ±3.5° across planes; scroll pushes the
+  camera in and drifts the headline. `visibilitychange` pauses the loop
+  (battery, allowlisted in the sweep). Under `prefers-reduced-motion` the
+  canvas renders one static lit frame: no parallax, no scroll camera, no
+  animation loop.
+- **The closed subject set stood.** The brief named "Computer Science &
+  Logic" and "Humanities & Literature" among example doors; those ids do
+  not exist in the immutable schema, and adding enum values is a schema
+  change, not a homepage decision. The six REAL doors render instead, each
+  with its live room name and subject accent as the door glow. This
+  deviation is reported here rather than silently extending the set.
+- **Copy is verbatim from the brief:** "Where curiosity rises. And futures
+  begin." / "Discover personalised tutoring that builds confidence,
+  deepens understanding, and helps every learner move forward." / CTAs
+  "Book a Free Demo" + "Explore Our Programs" / "Learn • Grow • Succeed." /
+  journey steps Diagnostic Conversation → Atmosphere Placement →
+  Collaborative Discovery → Certified Milestone / mentor trio Individual
+  Intellectual Arcs, Relational Mentorship, Record of Mastery.
+- **Honesty preserved.** Testimonials are labelled specimen voices; the
+  "Record of Mastery" panel states the refusals (no leaderboard, no
+  attention timers); "Book a Free Demo" routes to the real `/register`
+  door; no fake star ratings anywhere. The sweep's two new allowlist
+  entries (hero canvas pause, refusal-vocabulary testimonial) are audited
+  findings, not waivers.
+- **HTML-first.** All copy and doors live in markup; if the canvas fails
+  or never mounts, CSS gradients keep the night sky. Mobile serves the
+  compact meadow with the reduced particle budget.

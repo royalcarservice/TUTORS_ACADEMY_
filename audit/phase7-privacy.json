@@ -1,7 +1,7 @@
 {
   "gate": "PHASE 7 · W2 — Privacy & Surveillance Audit",
   "date": "2026-10-08",
-  "scanned_files": 333,
+  "scanned_files": 336,
   "verdict": "PASS",
   "broad_pass": {
     "families": [
@@ -36,6 +36,12 @@
         "family": "dwell_or_idle_tracking",
         "pattern": "/\\bdwell\\b/i",
         "reason": "the privacy NOTICE's never-collected list names surveillance vocabulary in refusal sentences (DEC-037): 'dwell' appears as 'idle or dwell timers' — what the platform refuses to collect; the list is the public record of the refusals the gates sweep for"
+      },
+      {
+        "file": "src/app/(public)/page.tsx",
+        "family": "gamification",
+        "pattern": "/\\bleaderboard\\b/i",
+        "reason": "DEC-046: 'leaderboard' appears only inside a specimen testimonial's refusal sentence ('no leaderboard, no attention timers…') — naming what the platform refuses, not a feature"
       },
       {
         "file": "src/app/dev/motion/preview.tsx",
@@ -180,6 +186,18 @@
         "family": "tab_or_focus_monitoring",
         "pattern": "/addEventListener\\(\\s*[\"']blur[\"']/",
         "reason": "pauses/resumes the ambient WebGL scene when the tab hides — performance + battery respect; no record of the visit"
+      },
+      {
+        "file": "src/components/home/hero-canvas.tsx",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/\\bvisibilitychange\\b/",
+        "reason": "DEC-046 meadow canvas pauses its particle loop when the tab hides (battery/performance); no focus tracking, no telemetry, no record of the visit"
+      },
+      {
+        "file": "src/components/home/hero-canvas.tsx",
+        "family": "tab_or_focus_monitoring",
+        "pattern": "/document\\.hidden/",
+        "reason": "DEC-046 meadow canvas pauses its particle loop when the tab hides (battery/performance); no focus tracking, no telemetry, no record of the visit"
       },
       {
         "file": "src/components/layout/portal-sidebar.tsx",
