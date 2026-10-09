@@ -5,7 +5,7 @@ import { useActionState } from "react";
 import { CheckCircle2, LockKeyhole, ShieldCheck } from "lucide-react";
 
 import { Alert, Button } from "@/components/ui";
-import { HeroCanvas } from "@/components/home/hero-canvas";
+import { TutorRegistrationBackdrop } from "@/features/auth/tutor-registration-backdrop";
 import { ROUTES } from "@/config/routes";
 import { SUBJECTS } from "@/lib/subjects/subjects";
 import { startTutorRegistrationPaymentAction } from "@/lib/tutor/registration-actions";
@@ -51,13 +51,7 @@ export function TutorPaymentPanel({
 
   return (
     <main className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-[#FDFBF7] px-4 py-10 sm:px-6 sm:py-16">
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute inset-0 opacity-25">
-          <HeroCanvas />
-        </div>
-        <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(253,251,247,0.78),rgba(253,251,247,0.44)_52%,rgba(253,251,247,0.8))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(255,255,255,0.7),transparent_68%)]" />
-      </div>
+      <TutorRegistrationBackdrop />
 
       <div className="relative z-10 w-full max-w-3xl">
         <div className="mb-5 flex items-center justify-between gap-4">
