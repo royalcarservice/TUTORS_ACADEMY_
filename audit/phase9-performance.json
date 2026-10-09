@@ -1,0 +1,114 @@
+{
+  "gate": "phase9-performance",
+  "window": "W4 — the mobile & performance pass",
+  "phase": "Phase 9 · Step 4",
+  "decision": "DEC-036",
+  "at": "2026-10-08",
+  "posture": "construction pins + payload measured from the committed production build — no browser in the sandbox (the Phase 6–8 precedent); the visual 390px walk is owed",
+  "payload": {
+    "scripts": 6,
+    "rawKB": 538.6,
+    "gzipKB": 165.9,
+    "rows": [
+      {
+        "script": "3qq9fjtagffmo.js",
+        "rawKB": 32.1,
+        "gzipKB": 8.6
+      },
+      {
+        "script": "0542cuk_va8g1.js",
+        "rawKB": 228.9,
+        "gzipKB": 71.6
+      },
+      {
+        "script": "2_6_o2958vsr_.js",
+        "rawKB": 131.3,
+        "gzipKB": 34.8
+      },
+      {
+        "script": "turbopack-3h4qvs59cbb39.js",
+        "rawKB": 9.5,
+        "gzipKB": 3.8
+      },
+      {
+        "script": "0cz1d0mv5g_q7.js",
+        "rawKB": 110,
+        "gzipKB": 38.7
+      },
+      {
+        "script": "43qi2ef0_-07u.js",
+        "rawKB": 26.8,
+        "gzipKB": 8.4
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "M1",
+      "name": "the lens panel stacks: flex column, wrapped header, token padding, no fixed widths",
+      "pass": true,
+      "detail": "one fluid bordered column; the header wraps at narrow widths; zero fixed widths"
+    },
+    {
+      "id": "M2",
+      "name": "the composer's inputs are fluid and the controls wrap",
+      "pass": true,
+      "detail": "select and field cap at 100%; the Reflect row wraps; zero pixel-fixed inputs"
+    },
+    {
+      "id": "M3",
+      "name": "the guidance card is fluid: rail + reading measure, never a fixed box",
+      "pass": true,
+      "detail": "rail + fluid body with the reading measure; zero fixed widths"
+    },
+    {
+      "id": "M4",
+      "name": "the oversight panel stacks and its mark meets the touch target",
+      "pass": true,
+      "detail": "flex column panel; the mark is a ta-btn sm — min-height max(2.75rem, control-h) ≥ 44px"
+    },
+    {
+      "id": "M5",
+      "name": "the input constraints hold at any width: cap, slice, counter, native select",
+      "pass": true,
+      "detail": "maxLength + slice + counter pinned; milestone select and inquiry field are native controls"
+    },
+    {
+      "id": "P1",
+      "name": "the island holds zero timers and zero effects: nothing ticks at rest",
+      "pass": true,
+      "detail": "zero timers, zero rAF, zero effects — the island re-renders only on input"
+    },
+    {
+      "id": "P2",
+      "name": "server-first: one client island for the lens; the oversight panel ships no client JS",
+      "pass": true,
+      "detail": "composer = the sole island; lens, card, panel and surface render server-side; the mark is a plain form"
+    },
+    {
+      "id": "P3",
+      "name": "zero animation paint work in every Socratic surface",
+      "pass": true,
+      "detail": "no transitions, animations or transforms anywhere in the five components"
+    },
+    {
+      "id": "B1",
+      "name": "the island's client payload, MEASURED from the committed build",
+      "pass": true,
+      "detail": "6 scripts · 538.6 KB raw · 165.9 KB gzip (framework runtime included)"
+    },
+    {
+      "id": "B2",
+      "name": "the island rides the platform's shared chunks — no socratic-only load-time bundle",
+      "pass": true,
+      "detail": "6 chunks shared with the archive rehearsal; 0 rehearsal-only chunk(s) — the islands ride the shared bundles"
+    },
+    {
+      "id": "B3",
+      "name": "the oversight panel's import surface is server-pure and dependency-light",
+      "pass": true,
+      "detail": "6 imports, all app-internal (relative + @/); zero third-party, zero database client"
+    }
+  ],
+  "summary": "11/11 checks passed"
+}

@@ -46,11 +46,14 @@
  */
 
 import { isolate } from "@/lib/state/isolate";
+import type { CohortSession } from "@/lib/cohort/session";
 import { PLATFORM_MODULES } from "../../config/modules";
 import type { Enrolment, EnvironmentState, SubjectId } from "../student/contract";
+import type { ProgressEvent } from "../progress";
+import { attendanceState } from "../progress/record";
 
 import type { Candidate } from "./resolver";
-import { whenPhrase } from "./when";
+import { scheduledPhrase, whenPhrase } from "./when";
 
 /** Display facts a provider may state about a subject — resolved by the caller from the 3.1 config. */
 export interface SubjectFacts {
@@ -67,7 +70,22 @@ export interface ProviderInput {
   /** The server's clock, read ONCE by the caller. ISO string. */
   now: string;
   /** Where an environment lives and where the choice lives — routes are the caller's to know. */
-  hrefs: { subject: (id: SubjectId) => string; choose: string };
+  hrefs: { subject: (id: SubjectId) => string; choose: string; /** Phase 7: the live surface — supplied only when the caller may name it. */ live?: (id: SubjectId) => string };
+  /**
+   * Phase 7 · Step 2 — cohort session rows, passed by the caller ONLY while
+   * `live-classroom` is live (the fetch is gated on the same registry).
+   * Absent until then: a provider that sees no sessions emits nothing.
+   */
+  cohortSessions?: readonly CohortSession[];
+  /**
+   * The student's progress-record events (DEC-022's attend-versus-resume
+   * verb reads them). Absent or empty until live-classroom is live — the
+   * table has no writer yet, so the record is silent and the verb is
+   * "attend".
+   */
+  progressEvents?: readonly ProgressEvent[];
+  /** Module ids the caller knows to be live — the verb's admissibility gate (EVENT_KIND_MODULE). */
+  liveModules?: readonly string[];
 }
 
 export interface CandidateProvider {
@@ -181,12 +199,98 @@ export const originProvider: CandidateProvider = {
   },
 };
 
+/* ── Tier 2 — the class provider (Phase 7 · Step 2, DEC-023) ─────────────── */
+
+export const CLASS_CAPABILITY = "live-classroom";
+
+/**
+ * THE SESSION ACTION SENTENCE — DEC-022's attend-versus-resume rule, worded
+ * as an instruction. Never "Join", never a vendor noun ("Call", "Meeting",
+ * "Conference", "Webinar" are banned platform-wide): a session is ATTENDED
+ * the first time and RESUMED thereafter, and the verb is chosen by the
+ * record (attendanceState), never by a timer or a click.
+ *
+ * The extension doc's P7 note holds: this sentence is the SCHEDULED/NOW
+ * instruction (source `class`). The record's own recency language is a
+ * different source and never shares this string.
+ */
+export function sessionActionSentence(verb: "attend" | "resume", subjectName: string): { title: string; cta: string } {
+  return verb === "resume"
+    ? { title: `Resume the ${subjectName} session`, cta: "Resume the session" }
+    : { title: `Attend the ${subjectName} session`, cta: "Attend the session" };
+}
+
+/**
+ * The ungated core of the class provider — pure over ProviderInput so the
+ * fixture tests can see its candidates while the module is still planned
+ * (the gate itself is tested against the real registry, separately).
+ *
+ * TIER 2, NEVER TIER 1 — by construction, not by choice: `cohorts` carries a
+ * scheduled instant but no END, so no candidate can carry the honest
+ * `expiresAt` Tier 1 demands ("no expiry, no Tier 1 — rejected, never
+ * demoted"). When the session table gains an end, Tier 1 returns with it —
+ * by ruling (docs/NEXT_ACTION_EXTENSION.md).
+ *
+ * The roster is the enrolment: no cohort-memberships table exists (0005
+ * refuses to pre-solve membership), so a subject's cohorts belong to its
+ * enrolled students — the same boundary that opens the environment.
+ */
+export function classCandidatesFor(input: ProviderInput): Candidate[] {
+  const sessions = input.cohortSessions ?? [];
+  const liveHref = input.hrefs.live;
+  if (!liveHref) return [];                    // no resolvable destination → no candidate (the contract)
+  const out: Candidate[] = [];
+  for (const s of input.subjects) {
+    const enrolled = input.enrolments.some((x) => x.subjectId === s.id && x.status === "active");
+    if (!enrolled) continue;
+    // ONE candidate per subject: an active session, else the earliest scheduled (src/lib/cohort/session.ts).
+    const open = sessions
+      .filter((x) => x.subjectId === s.id && x.state !== "concluded")
+      .sort((a, b) => Date.parse(a.scheduledAt) - Date.parse(b.scheduledAt) || a.id.localeCompare(b.id));
+    const next = open.find((x) => x.state === "active") ?? open.find((x) => x.state === "scheduled");
+    if (!next) continue;
+    // DEC-022: the verb is chosen by the RECORD (silent today → "attend").
+    const { verb } = attendanceState(input.progressEvents ?? [], s.id, input.liveModules ?? []);
+    const sentence = sessionActionSentence(verb, s.name);
+    const when = scheduledPhrase(next.scheduledAt, input.now);
+    const detail = next.state === "active" ? next.name : when ? `${next.name}, scheduled ${when}` : next.name;
+    out.push({
+      id: `class:${s.id}:session:${next.id}`,
+      source: "class",
+      tier: 2,
+      kind: "attend",
+      capability: CLASS_CAPABILITY,
+      subjectId: s.id,
+      eyebrow: next.state === "active" ? "Session open" : "Next session",
+      title: sentence.title,
+      detail,
+      cta: sentence.cta,
+      href: liveHref(s.id),
+      at: next.scheduledAt,
+    });
+  }
+  return out;
+}
+
+export const classProvider: CandidateProvider = {
+  id: "class",
+  capability: CLASS_CAPABILITY,
+  phase: "7.2",
+  provide(input) {
+    // THE CONTRACT: the registry first. While live-classroom is not live the
+    // provider is silent — the same truth that labels the module on the
+    // homepage governs the student's instruction.
+    if (!isLive(CLASS_CAPABILITY)) return [];
+    return classCandidatesFor(input);
+  },
+};
+
 /**
  * THE PROVIDER REGISTRY. Order is irrelevant to the answer (the resolver
  * ranks); it is the order the WHY panel lists them in. Phases 6–9 append
  * here — see docs/NEXT_ACTION_EXTENSION.md for what each may contribute.
  */
-export const PROVIDERS: readonly CandidateProvider[] = [enrolmentProvider, originProvider];
+export const PROVIDERS: readonly CandidateProvider[] = [enrolmentProvider, originProvider, classProvider];
 
 /**
  * Run every provider, isolating failures: a provider that throws contributes

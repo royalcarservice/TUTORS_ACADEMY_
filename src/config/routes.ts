@@ -9,7 +9,21 @@ export const ROUTES = {
   register: "/register",
   student: "/student",
   tutor: "/tutor",
+  /** Track 2 — the credential-review door for prospective tutors. */
+  tutorApply: "/tutor/apply",
   admin: "/admin",
+  /** The legal framework (Phase 10 · Step 1, DEC-037 — resolves E-07). */
+  legalTerms: "/legal/terms",
+  legalPrivacy: "/legal/privacy",
+  legalGuardianConsent: "/legal/guardian-consent",
+  /** The onboarding continuation (Phase 10 · Step 2, DEC-038). */
+  registerGuardian: "/register/guardian",
+  verifyGuardian: "/auth/verify-guardian",
+  /** The financial threshold (Unfinished Work · Track 3, DEC-044). */
+  tuition: "/tuition",
+  checkout: "/checkout",
+  checkoutSuccess: "/checkout/success",
+  adminBilling: "/admin/billing",
 } as const;
 
 export type AppRoute = (typeof ROUTES)[keyof typeof ROUTES];

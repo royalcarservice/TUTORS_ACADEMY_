@@ -1,0 +1,79 @@
+{
+  "gate": "PHASE 10 · WINDOW W2 — THE LEGAL & COMPLIANCE CERTIFICATION",
+  "run": "2026-10-08",
+  "verdict": "PASS",
+  "passed": 14,
+  "total": 14,
+  "checks": [
+    {
+      "id": "D1",
+      "detail": "the gate's DPDP sentence stands verbatim in the copy module, the framework page and the gate",
+      "pass": true
+    },
+    {
+      "id": "D2",
+      "detail": "age is computed server-side; the browser's opinion is UX only",
+      "pass": true
+    },
+    {
+      "id": "D3",
+      "detail": "the minor halt: account pending_guardian, enrolment trigger-blocked, consent deferred to the guardian",
+      "pass": true
+    },
+    {
+      "id": "D4",
+      "detail": "the verification flow is complete: ledger, token handler, confirmed page, pinned outcome",
+      "pass": true
+    },
+    {
+      "id": "D5",
+      "detail": "the consent audit is one-way: SHA-256 digests, the sentinel, own-only RLS",
+      "pass": true
+    },
+    {
+      "id": "T1",
+      "detail": "the never-collected list stands in public, complete",
+      "pass": true
+    },
+    {
+      "id": "T2",
+      "detail": "zero cookie banner, stated as fact — there is nothing to consent to",
+      "pass": true
+    },
+    {
+      "id": "T3",
+      "detail": "no third-party tracker vocabulary anywhere in the tree",
+      "pass": true
+    },
+    {
+      "id": "C1",
+      "detail": "the terms define the pedagogical relationship and the engine's boundary",
+      "pass": true
+    },
+    {
+      "id": "C2",
+      "detail": "the student owns their proofs; no commercial lock-in",
+      "pass": true
+    },
+    {
+      "id": "E1",
+      "detail": "Exception E-07 stands CLOSED in the register",
+      "pass": true
+    },
+    {
+      "id": "E2",
+      "detail": "the register's count stands at 18 open, with the Phase 10 notes",
+      "pass": true
+    },
+    {
+      "id": "G1",
+      "detail": "the gate stays one field, one act — zero dark-pattern anatomy",
+      "pass": true
+    },
+    {
+      "id": "G2",
+      "detail": "the onboarding gate stands at /register/guardian, wired to the real act",
+      "pass": true
+    }
+  ]
+}

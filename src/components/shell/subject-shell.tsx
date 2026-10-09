@@ -204,7 +204,9 @@ export function SubjectShell({
                   return (
                     <section key={r.id} data-shell-region={r.id} aria-label={r.title}>
                       {Slot ? (
-                        <Slot />
+                        /* 8.2 (DEC-030): the slot receives the subject it stands in —
+                           the fill point's one declared contract growth. */
+                        <Slot subjectId={subject.id} subjectName={subject.name} regionTitle={r.title} />
                       ) : (
                         <div
                           style={{

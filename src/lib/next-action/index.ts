@@ -11,14 +11,18 @@ import { explainResolution, type Candidate, type Resolution, type ResolverState 
 export type { Candidate, CandidateKind, CandidateSource, Considered, Resolution, ResolverState, Tier, Treatment, Verdict } from "./resolver";
 export { explainResolution, judge, resolveNextAction, TIER_1_WINDOW_BEFORE_START_MINUTES, TREATMENT } from "./resolver";
 export type { CandidateProvider, ProviderInput, SubjectFacts } from "./providers";
-export { collectCandidates, enrolmentProvider, isLive, liveCapabilities, originProvider, PROVIDERS } from "./providers";
-export { whenPhrase } from "./when";
+export { classCandidatesFor, classProvider, CLASS_CAPABILITY, collectCandidates, enrolmentProvider, isLive, liveCapabilities, originProvider, PROVIDERS, sessionActionSentence } from "./providers";
+export { scheduledPhrase, whenPhrase } from "./when";
 
 /** The resolver state for this student: config order, live modules, and which hrefs resolve today. */
 export function resolverStateFor(input: ProviderInput): ResolverState {
   const enrolled = new Set(input.enrolments.filter((e) => e.status === "active").map((e) => e.subjectId));
   const subjectOrder = input.subjects.map((s) => s.id);
-  const resolvable = new Set<string>([input.hrefs.choose, ...subjectOrder.filter((id) => enrolled.has(id)).map((id) => input.hrefs.subject(id))]);
+  const enrolledIds = subjectOrder.filter((id) => enrolled.has(id));
+  const resolvable = new Set<string>([input.hrefs.choose, ...enrolledIds.map((id) => input.hrefs.subject(id))]);
+  // Phase 7 · Step 2: when the caller supplies the live surface href, it
+  // resolves for an enrolled student exactly like the environment does.
+  if (input.hrefs.live) for (const id of enrolledIds) resolvable.add(input.hrefs.live(id));
   return { subjectOrder, liveCapabilities: liveCapabilities(), resolvesToday: (href) => resolvable.has(href) };
 }
 

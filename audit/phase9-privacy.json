@@ -1,0 +1,95 @@
+{
+  "gate": "phase9-privacy",
+  "window": "W3 — the privacy, surveillance & grading audit",
+  "phase": "Phase 9 · Step 4",
+  "decision": "DEC-036",
+  "at": "2026-10-08",
+  "posture": "pure text audit over committed migrations and sources — zero network, zero database, zero identities (Rule 18)",
+  "checks": [
+    {
+      "id": "S1",
+      "name": "socratic_exchanges: RLS enabled AND forced; the standing policies; no update/delete; anon nowhere",
+      "pass": true,
+      "detail": "enabled+forced · own-student select/insert · related-tutor select · no update/delete · anon revoked"
+    },
+    {
+      "id": "S2",
+      "name": "socratic_pins: RLS enabled AND forced; the mark's policies; binary shape; anon nowhere",
+      "pass": true,
+      "detail": "enabled+forced · own-tutor select re-decides relatedness · insert re-derives the pair · delete own-only · no update · anon revoked"
+    },
+    {
+      "id": "S3",
+      "name": "subject identity CHECKed in the DB on both tables; the mark is structurally bound to the exchange",
+      "pass": true,
+      "detail": "is_subject_id on both tables; the mark cascades with its exchange"
+    },
+    {
+      "id": "S4",
+      "name": "zero engagement columns: neither table can hold a counter or a popularity figure",
+      "pass": true,
+      "detail": "both DDLs swept — zero engagement vocabulary"
+    },
+    {
+      "id": "S5",
+      "name": "bounded payloads: the inquiry cap, the milestone cap and the 16 KB budget all stand",
+      "pass": true,
+      "detail": "query_text ≤500 · milestone_key ≤128 · response_payload ≤16 KB"
+    },
+    {
+      "id": "B1",
+      "name": "zero surveillance vocabulary in the engine and its surfaces",
+      "pass": true,
+      "detail": "18 surveillance classes swept across 12 files — zero hits"
+    },
+    {
+      "id": "B2",
+      "name": "zero psychological diagnosis, zero sentiment grading, zero difficulty scoring",
+      "pass": true,
+      "detail": "19 grading/diagnosis classes swept — zero hits; the one 'scores' is the refusal sentence itself"
+    },
+    {
+      "id": "B3",
+      "name": "nothing reads a clock or a timer; no telemetry anywhere in the engine",
+      "pass": true,
+      "detail": "zero Date/timer/telemetry sources; instants render from stored ISO words alone"
+    },
+    {
+      "id": "C1",
+      "name": "cross-subject keys resolve to nothing; foreign artifacts are never cited",
+      "pass": true,
+      "detail": "cross-subject keys → null; citations see only the prompt's own subject; the key grammar holds"
+    },
+    {
+      "id": "C2",
+      "name": "every reader spells its boundary; no identity argument rides a signature",
+      "pass": true,
+      "detail": "three readers, all boundary-spelling; zero identity arguments in the seam"
+    },
+    {
+      "id": "C3",
+      "name": "the actions re-decide identity from the cookie and verify visibility before any write",
+      "pass": true,
+      "detail": "student writes re-decide role=student; tutor writes re-decide role=tutor AND read-verify the boundary pair before writing"
+    },
+    {
+      "id": "C4",
+      "name": "the surfaces carry identity only by props; the join key is never displayed",
+      "pass": true,
+      "detail": "guard-clean surfaces; the panel's studentId feeds the mark's write and renders nowhere"
+    },
+    {
+      "id": "D1",
+      "name": "invisible and refused are the same answer; failures speak the closed vocabulary, calmly",
+      "pass": true,
+      "detail": "reflect speaks the closed three; toggle fails silent in every branch; the calm sentences stand verbatim"
+    },
+    {
+      "id": "D2",
+      "name": "dormancy: surfaces render nothing until the boundary admits them; rehearsal 404s in production",
+      "pass": true,
+      "detail": "no client → honest empty; failed read → absent region; empty overview → no DOM; rehearsal 404 in prod"
+    }
+  ],
+  "summary": "14/14 checks passed"
+}

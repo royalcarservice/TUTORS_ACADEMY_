@@ -18,5 +18,7 @@ export type SpecimenKey = keyof typeof SPECIMENS;
 
 export function specimenView(key: SpecimenKey): RelationshipView {
   const s = SPECIMENS[key];
-  return { subjectId: s.subjectId, displayName: s.displayName, position: positionFor({ subjectId: s.subjectId, ...s.facts }) };
+  /* The specimen student key is deliberately unaddressable — a fixture's
+     record read can name no real row (DEC-032). */
+  return { subjectId: s.subjectId, displayName: s.displayName, studentId: `specimen-student-${key}`, position: positionFor({ subjectId: s.subjectId, ...s.facts }) };
 }

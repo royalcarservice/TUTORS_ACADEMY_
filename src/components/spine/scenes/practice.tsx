@@ -89,7 +89,10 @@ export const PRACTICE_COPY = {
 const BEAT_PHRASE: Record<Beat["id"], string> = {
   live: "live classes",
   recorded: "recordings and notes",
-  assisted: "assignments, tests and the assistant",
+  /* 6.6 gate W4 (DEC-020): was "assignments, tests and the assistant" — `tests` was
+     deleted from the registry in 6.3 (P6-R8: no phase delivers it), so the promise
+     sequence must not name it. The beat's modules are `assignments` + `ai-assistant`. */
+  assisted: "assignments and the assistant",
   progress: "your record of progress",
 };
 

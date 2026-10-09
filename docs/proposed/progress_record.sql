@@ -1,8 +1,11 @@
 -- ============================================================================
--- PROPOSED — NOT APPLIED.  docs/proposed/ is NOT supabase/migrations/.
--- This file must never be run by `psql -f`, `supabase db push`, or any script.
--- It becomes a migration only when PHASE 7 moves it there, after the open
--- question below is decided. THE LOCATION IS THE CONTROL.
+-- APPLIED (2026-10-08) — superseded by supabase/migrations/20261008000004_progress_record.sql
+-- (DEC-022). This file is kept as the record of the ruled shape. The applied
+-- migration carries the declared resolutions: referent = interim-neutral
+-- ref_id (no FK until P7's session table; variant (b)-lite, cost stated);
+-- uniqueness refined to (student_id, subject_id, kind, at); tutor SELECT via
+-- is_related_tutor (the standing P6 predicate); no authenticated writes.
+-- THE TEXT BELOW IS HISTORY, NOT THE LIVE DDL.
 --
 -- Status : proposal, accepted in shape by the owner (5.6 close-out, 2026-09-29)
 -- Origin : Phase 5 · Step 6 (P5-R6 "progress is a record, not a score");

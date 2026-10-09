@@ -64,11 +64,18 @@ t("8b tier 1 without expiry is REJECTED, not demoted", () => {
   assert.equal(v.accepted, false); assert.match(v.reason, /rejected, not demoted/);
   const r = explainResolution(st, [c, F.FUTURE.find((f) => f.id === "t3").candidate], F.NOW); assert.equal(r.winner.id, "enrolment:physics:resume");
 });
-/* 9 no shipped provider emits tier 1/2 */
-t("9 shipped providers emit only tier 3 and 4", () => {
+/* 9 tier declarations stay declared, never computed.
+   REFINED 7.2 (DEC-023), DECLARED REASON: docs/NEXT_ACTION_EXTENSION.md's P7 row
+   grants the `class` provider Tier 1 (window, needs a session END) and Tier 2
+   (next scheduled). `cohorts` carries no end, so the class provider declares
+   Tier 2 only — and Tier 1 stays UNDECLARABLE in providers.ts until a session
+   end exists ("no expiry, no Tier 1 — rejected, never demoted"). The runtime
+   half is unchanged: while live-classroom is not live, every EMITTED candidate
+   is still Tier 3 or 4. */
+t("9 tier declarations ⊆ {2,3,4} — Tier 1 undeclarable until a session end is ruled; emitted candidates stay ≥3 while the module is not live", () => {
   const src = readFileSync(new URL("../src/lib/next-action/providers.ts", import.meta.url), "utf8");
   const tiers = [...src.matchAll(/tier:\s*(\d)/g)].map((m) => m[1]); console.log(`        tier declarations in providers.ts: ${tiers.join(", ")}`);
-  assert.ok(tiers.every((x) => x === "3" || x === "4"));
+  assert.ok(tiers.every((x) => x === "2" || x === "3" || x === "4"), `Tier 1 may not be declared in providers.ts: ${tiers.join(", ")}`);
   for (const row of F.MATRIX) for (const c of collectCandidates(PROVIDERS, row.input).candidates) assert.ok(c.tier >= 3);
 });
 /* 10 expiry */

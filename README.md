@@ -1259,15 +1259,17 @@ tutor-assigned enrolment arrives (P6/P7).
 
 **Phase 6 — Tutor Experience** *(the first role that reads another person's data)*
 
-- [ ] Step 1 — The tutor architecture -> `phase-6-step-01-tutor-architecture.md`
+- [x] Step 1 — The tutor architecture -> `phase-6-step-01-tutor-architecture.md` — **BUILT & REPORTED**
+      (`PHASE6_STEP1_TUTOR_ARCHITECTURE_REPORT.md`).
       **BUILDS NO INTERFACE.** Relationship model · the visibility ruling · the portal architecture ·
       the role path · the levers as a model question. Rulings P6-R1, P6-R2, P6-R3.
 - [x] Step 2 — The tutor shell -> `phase-6-step-02-tutor-shell.md` — **BUILT, commit `15da5a5`.**
       P6-R4 (no next act → state it) · P6-R5 (stale strings are defects) · P6-R6 (the identity axis is
       standing). Shell 57/57 · environment 23/23 · states 45/45 · gate 11/11 · RLS 56/56 · visibility
       17/17 · tutor 36/36 · identity-matrix 51 routes x 6 classes with the coverage gate proven.
-- [~] Step 3 — The relationship's surface -> `phase-6-step-03-relationship-surface.md`
-      THE GAZE. One student, one subject. **Prompt issued; quote its report state in 6.5.**
+- [x] Step 3 — The relationship's surface -> `phase-6-step-03-relationship-surface.md` — **BUILT &
+      REPORTED** (`PHASE6_STEP3_RELATIONSHIP_SURFACE_REPORT.md`, quoted in 6.5 §1).
+      THE GAZE. One student, one subject.
       P6-R2 amended (position, never recency) · P6-R9 (an absent relationship is indistinguishable from
       a student who does not exist) · P6-R7 (attacks are gates) · P6-R8 (an entry names a phase).
 - [x] Step 4 — The levers -> `phase-6-step-04-the-levers.md` — **BUILT, commit `8b85d58`.**
@@ -1279,24 +1281,522 @@ tutor-assigned enrolment arrives (P6/P7).
       (`e58e35e9f5106ffd` ×5)** · absence = authored default · attacks 6–7-8 fail with declared TS codes ·
       matrix re-pinned (3 write probes per class) · levers 32/32 · homepage unchanged.
       Rulings P6-R10/11/12 built; **P6-R13: 6.1's per-tutor recommendation superseded, not built.**
-- [~] Step 5 — The tutor's states, the account surface, and the honest distance
-      -> `phase-6-step-05-tutor-states-account.md` <- **RUN THIS NEXT**
+- [x] Step 5 — The tutor's states, the account surface, and the honest distance
+      -> `phase-6-step-05-tutor-states-account.md` — **REPORTED: `PHASE6_STEP5_REPORT.md` (2026-10-06).**
+      **Report written AFTER the workspace re-import** (single squashed commit `a893f5b`), assembled from
+      the recorded on-disk evidence — the 2026-10-03 harness run (`audit/tutor-states.json`, 14 gates),
+      its baseline, `docs/TUTOR_DISTANCE.md`, DEC-018 and the 6.5 addenda — plus a fresh static
+      re-verification pass. Browser/DB-dependent tests are carried from the recorded run, not re-executed
+      (no Chrome, no Supabase credentials in the current environment — the report §11 lists every gap).
+      **The §10 owner ruling is RESOLVED (2026-10-06): P6-R21 REFUSE_STALE_WRITE** — the silent
+      concurrent overwrite is refused by a conditional write; DEC-018 addendum, `docs/TUTOR_DISTANCE.md`
+      row 8, STATE_LANGUAGE T9 and the `write-concurrent` gate updated to assert the refusal.
       **Prompt in the workspace since the P6-R17–R20 patch; its chat delivery did NOT arrive — read it
       from disk, not from the message.** Carries **P6-R13** and P6-R17 to P6-R20 in Part 0. **The arc line
       "states with real content" was stale and is CORRECTED — there is no content until P7.** P6-R14 (the
       account surface is identity and exit) · P6-R15 (every write has a GET that settles it) · P6-R16 (the
-      distance is named where the capability would be). **Its precondition is 6.3 AND 6.4 reported** — it
-      must quote 6.3's report state, which has never been surfaced. **Report run order: seven small windows - `phase-6-step-05-report-chunks.md`. 6.5's CODE is built; its REPORT is what is owed.**
-- [ ] Step 6 — The tutor experience validation gate -> `phase-6-step-06-tutor-gate.md`
-      **WRITTEN, AND GATED BEHIND 6.5.** *Do not run it until 6.5 has reported:* its precondition is
-      "6.5 REPORTED", and it reads `docs/TUTOR_DISTANCE.md` and the account surface as evidence.
-      **Verification, not construction.** The promise ledger for Scene 5 · **the second ledger: what a
-      student would think if they knew** · the identity matrix read as a set · the inside/outside pass ·
-      the honesty audit at 30 categories · the cold-start pass · nine phase-close questions. **Cold-start is measured in chunks across windows, and may close honestly partial.** **Run order: ELEVEN small windows - `phase-6-step-06-gate-chunks.md`.**
-**Phase 7 — Live Classes**
-**Phase 8 — Recordings**
+      distance is named where the capability would be). **Its precondition is 6.3 AND 6.4 reported** — both
+      reports exist on disk (`PHASE6_STEP3_RELATIONSHIP_SURFACE_REPORT.md`, `PHASE6_STEP4_LEVERS_REPORT.md`)
+      and are quoted in the 6.5 report §1. **Report run order: seven small windows - `phase-6-step-05-report-chunks.md`.**
+- [x] Step 6 — The tutor experience validation gate -> `phase-6-step-06-tutor-gate.md`
+      — **CLOSED (2026-10-08), full record: `PHASE6_STEP6_REPORT.md` (W1–W11, branch
+      `arena/e6e6e569-tutors-academy`).** Verification, not construction — three homepage
+      contradictions found and corrected by fixing the CLAIM half (DEC-020) · the second ledger:
+      11 rows read well, 1 reads both ways (silent shaping, declared + recommended) · the identity
+      matrix proven as a closed set, its coverage gate catching real drift (2 dev rows owed a pin) ·
+      honesty audit 30/30 clean · exceptions register 21 → 19 · zero real identities · nine
+      phase-close questions answered · verdict: **PHASE 6 IS COMPLETE.** The owed credentialed
+      re-runs and two static-guard rulings are declared in the report's debt list.
+**Phase 7 — Live Classes** — **CERTIFIED at the Live Classroom Gate (2026-10-08, W1–W5;
+`PHASE7_GATE_REPORT.md`).** The classroom stands staged, honest and surveillance-free; the door to
+a live room opens the day the wiring (credentials + carrier) lands — never before.
+- [x] Step 2 — Cohort surfaces & real-time room integration -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      The first reader's policies (migration 0006: enrolment boundary for students, assignment for
+      tutors, zero writes, zero surveillance) · `/subjects/[subject]/live` staged surface (server
+      component, zero client JS: the subject's graphite/substrate atmosphere, the brief's standby
+      sentence verbatim, a reserved tile grid empty by honesty) · the `class` provider registered in
+      the next-action engine per the extension doc's P7 row (Tier 2 only — no session end, no Tier 1;
+      silent until the module is live) with DEC-022's attend-vs-resume sentence · LiveKit readiness on
+      env NAMES only, no dependency, no speculative wiring · `live-classroom` flipped to in-progress.
+      Verified: cohort-live 27/27 · next-action 34/34 (one pin refined, reason declared) · progress
+      16/16 · progress-record 18/18 · subjects 108/108 · build clean · HTTP smoke (307 login door,
+      themed 404, preserved environment). DEC-023 records it all.
+- [x] Step 3 — Live stage participant interface & audio discipline -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      The participant interface against the one media reality that needs no transport: the participant's
+      OWN devices, opt-in — camera, microphone (speaking glow via local WebAudio, never stored, never
+      sent), shared surface, and a Leave Chamber that stops every track. Subject-accent framing
+      (Mathematics indigo, Physics ember — the tokens do it). STATE_LANGUAGE's 7.3 addendum: the brief's
+      denied sentence verbatim + a no-device state, calm, no banner, no exclamation. Island mounts on
+      `/live` only when the room is truly open; exercisable now at `/dev/live-stage` (rehearsal,
+      production-gated). Zero capture on load · zero timers · zero persistence · zero surveillance.
+      Verified: live-participant 23/23 · full battery green · build clean · smoke (307 / 404 / 200).
+      DEC-024 records it — including the sandbox honesty note: no browser here, devices proven by
+      construction, the manual walk owed to a browsered environment.
+- [x] Step 4 — Shared substrate & collaborative academic surface -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      The academic drawing/notation surface: a canvas and nothing else (high-DPI, normalized strokes,
+      quadratic smoothing, pen-pressure width). The substrate is the subject's OWN motif — lattice for
+      Mathematics, field for Physics, bonds for Chemistry — inherited from 3.3, never invented twice.
+      Palette strictly Ink (fine/medium) · Line · Eraser · Reset, three colours (ivory · slate · the
+      subject accent); no stickers, no emoji — enforced by tests. Sync: one serializable packet
+      `{id, tool, points, colour-ID, width}`, a validating idempotent reducer, the in-memory bus (local
+      mode is fully functional — not degraded), optimistic non-blocking apply; the session data channel
+      is the seam the wiring step plugs into. Composition: desktop split pane, small screens a real
+      toggle. Verified: academic-surface 20/20 · battery green · build clean · smoke (307 / 404-draft /
+      preserved). DEC-025 records it, with the owed rulings: the session bus, clear-permission,
+      keyboard stroke input, late-packet ordering.
+- [x] Milestones 1–5 — Autonomous runner: sessions table, chamber machine, live chamber -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      Migration 0007 `cohort_sessions` (the session-of-record; students read by enrolment, tutors
+      read and open by relationship — as themselves; lifecycle stays service-role) plus the symmetric
+      profile read that lets the tile say "Dr. Vance (Tutor)". DEC-009's referent question settled in
+      shape: `progress_record.ref_id` names a session row (FK deferred — the column is polymorphic).
+      The pure chamber state machine (STANDBY→ACTIVE→SETTLING→CONCLUDED, 15-minute settling window)
+      and the SELECT-only classroom data layer. `/live` pivots its session facts to `cohort_sessions`
+      and opens on ACTIVE-or-SETTLING; the `live-chamber.tsx` shell carries the status bar (mark ·
+      title · state word) around the tested room composition, with the brief's superseded standby
+      sentence. `participant-dock.tsx` docks the tiles; `chamber-controls.tsx` and
+      `classroom/use-surface-sync.ts` are bridge re-exports — one implementation, two names.
+      Verified: classroom 22/22 (new) · cohort-live 27/27 · live-participant 23/23 · academic-surface
+      20/20 · next-action 34/34 · progress 16/16 · progress-record 18/18 · subjects 108/108 ·
+      check-subject-sql · build clean · smoke (307 / 404 / 200). DEC-026 records it, including the
+      declared pin updates (standby wording, gate shape, composition moved into the shell).
+- [x] Step 5 — Session settlement & progress capture -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      The lifecycle closes: the tutor concludes the session (ONE atomic guarded UPDATE — ACTIVE →
+      CONCLUDED, service role, standing decided by RLS on the read), confirms on the settlement
+      surface, and the record is written — one session-attended fact per enrolled student, ref_id =
+      the session row (the DEC-026 referent), idempotent by the unique. The settlement component is
+      dignified: the brief's closing sentence verbatim, one departure action per view, no stars, no
+      survey, no evaluative drop-down — notes about a student are not kept and the surface says so
+      (P5-R6; milestoneKey validated against STEP_EVIDENCE and stored nowhere: the arc derives its
+      position from facts). The open room narrows to ACTIVE; SETTLING and CONCLUDED show the
+      settlement; conclusion unmounts the room — nothing of the session lingers on the device. The
+      write is registered in the P6-R15 settling table; every outcome 303s to the settling GET.
+      Verified: settlement 26/26 (new) · full battery green · build clean · smoke + GET-settle 405.
+      DEC-027 records it, with the owed owner ruling on whether notes ever gain an adjudicated home.
+- [x] Step 6 — Real-time data channels & acoustic sync engine -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      The session channel: one closed vocabulary — `PRESENCE_UPDATE` · `CANVAS_STROKE` · `STAGE_STATE`
+      over one envelope; the stroke IS the adjudicated SurfacePacket (DEC-025), never a second opinion;
+      the stage words round-trip with the chamber machine. Isolation is STRUCTURAL: every room is named
+      `subject:session` and a wrong-room signal is refused at the door before any listener hears it
+      (pinned). The 16 KB budget rejects with a named defect, measured in bytes. The memory transport
+      delivers synchronously to the whole room including the sender; `chooseTransport` names the LiveKit
+      seam per DEC-023 — no carrier dependency. The hook (`use-classroom-session`) seeds presence with
+      the local participant alone, reports speaking/video facts upward through the island's OPTIONAL tap,
+      gives the tutor alone the lifecycle word, and unsubscribes completely — zero telemetry vocabulary
+      (no focus, keys, visibility, idle, gaze; swept). The chamber binds it: the banner word rides the
+      channel (server word is the seed — zero hydration drift), a presence line names who the room knows,
+      the surface draws on the session's OPTIONAL bus (local default preserved), and a concluded signal
+      closes the workspace calmly — Step 5's confidentiality mirrored client-side. `/dev/live-stage`
+      rehearses the whole channel: presence, shared strokes, conclude/reopen, no credentials. Verified:
+      signaling 26/26 (new) · classroom 22/22 · academic-surface 20/20 (pins updated, declared) ·
+      cohort-live · live-participant · settlement · next-action · progress suites green · build clean ·
+      smoke (307 / 404 / 200 / GET-settle 405). DEC-028 records it; the carrier wiring stands owed.
+
+- [x] Step 1 — Progress record schema & cohort architecture -> PHASE 7 BRIEF (2026-10-08) — **BUILT.**
+      `progress_record` applied (migration 0004, the DEC-009 shape: interim-neutral referent, tutor
+      read via `is_related_tutor`, no authenticated writes, retention untouched — DEC-022 records the
+      reconciliation with the brief's sketched columns) · cohort model drafted (migration 0005:
+      `cohorts` + `cohort_tutors` junction, zero policies, nothing pre-granted) · pure helpers in
+      `src/lib/progress/record.ts` (attend-vs-resume sentence rule) with `test-progress-record.mjs`
+      18/18. Battery green: validate-subjects 108/108 · check-subject-sql · progress 16/16 ·
+      next-action 34/34 · build clean. **Creating the table changes no admissibility — kinds stay
+      gated on module liveness.** Live migration apply owed to the credentialed environment.
+- [x] Gate — The Phase 7 Live Classroom Gate (W1–W5) -> PHASE 7 GATE SPEC (2026-10-08) — **CERTIFIED.**
+      Verification only — five windows: W1 cold start & static health (validators at their declared
+      baselines, full logic battery green, build clean) · W2 the privacy & surveillance audit
+      (zero-tolerance on the fourteen live surfaces: 0 hits; 31 app-wide hits audited and allowlisted;
+      zero facial/gaze/tab/dwell/gamification; zero real identities) · W3 the pedagogical ledger
+      (attend-vs-resume from facts, settlement dignity, no rating instrument anywhere — 8/8) ·
+      W4 mobile & performance (one plane at a time below the tested 900px split behind a real
+      aria-pressed toggle; normalized resize-safe canvas; client payload MEASURED: 5 scripts ·
+      165.2 KB gzip) · W5 phase close (exceptions consolidated — 19 open, count corrected and
+      declared; nine phase-close questions answered). Baselines committed: `audit/phase7-*.json`.
+      Full record: `PHASE7_GATE_REPORT.md`. The debt list stands: wiring, rulings, the manual walk.
+**Phase 8 — Recordings** — **CERTIFIED at the Archive Gate (2026-10-08, W1–W5; `PHASE8_GATE_REPORT.md`).**
+- [x] Step 1 — Session archive schema & storage policies -> PHASE 8 BRIEF (2026-10-08) — **BUILT.**
+      The archive's foundation, schema-first: migration 0008 creates `session_artifacts` — one row
+      = one artifact (board snapshot · pedagogical notes · recording, a closed three) belonging
+      STRICTLY to one session of one subject, enforced twice (composite foreign key into
+      `cohort_sessions(subject_id, id)` + the brief's requested index; storage_path unique, one
+      artifact per object key). Reconciled and recorded (DEC-029): numbered 0008, not the brief's
+      0005 (cohorts owns it) · the "subject foreign key" is the `is_subject_id` CHECK (E-13 — no
+      subjects table) · `is_related_tutor(auth.uid(), …)` cannot stand as written (DEC-026's ruling
+      applies verbatim) — the tutor READS by standing relationship and WRITES only into sessions
+      they opened · the data layer carries no userId (identity rides the cookie session; RLS is the
+      only boundary). One PRIVATE bucket `session-artifacts` with one authenticated SELECT policy
+      deferring to the same predicates; uploads and lifecycle stay service-role; anon admitted
+      nowhere. The data layer (SELECT-only, classroom posture): concluded sessions newest-first
+      with their artifacts; details sign a 60-second bearer URL through the service client only
+      after the row proves visible, degrading to `unsigned` without credentials — invisible and
+      unknown are the SAME null (zero leakage). Zero engagement metrics by construction (no counter
+      column exists; the banned vocabulary is swept). Verified: archive-logic 19/19 (new) · full
+      battery green · both gate-7 audits still PASS · tsc clean · build exit 0. Live apply owed to
+      the credentialed environment; no surface ships and `recorded-classes` stays `planned`.
+- [x] Step 2 — The subject archive surface & artifact shelf -> PHASE 8 BRIEF (2026-10-08) — **BUILT.**
+      The archive reads like a library, never a feed. `/subjects/[subject]/archive` carries the
+      live chamber's gate unchanged (unknown subject 404 · no identity → login door with `next` ·
+      enrolment/relationship decide · everyone else the SAME 404 — no enumeration) and renders
+      server-complete with zero client JS; the archive read is PRIMARY — a failed read fails the
+      page honestly. `artifact-shelf.tsx`: an ordered shelf, most recent session first (date ·
+      title · the tutor only when the boundary allows), the brief's empty sentence verbatim.
+      `artifact-card.tsx`: the three kinds in the archive's own words — Board Record · Session
+      Notation · Chamber Audio ("VOD" · "Replay File" · "Recording Upload" banned and swept); the
+      board's preview is a short signed URL when the service key stands, chamber audio states its
+      owed playback calmly — no counts, badges, thumbnails or share icons anywhere. Doors: the
+      `recordings-notes` shell region filled through the documented fill point (the slot contract's
+      one declared growth — the shell hands a slot its subject) and one quiet `ArchiveLink` per
+      tutor subject group in the ShapeLink's grammar; the relationship surface stays untouched
+      (P6-R10 distance). No second layout.tsx (DEC-026's ruling carries). Verified: archive-surface
+      16/16 (new) · full battery green · both gate-7 audits PASS (273 files scanned) · tsc clean ·
+      build exit 0 · smoke: visitor 307 login door · bogus 404 · environment preserved. Declared:
+      the recordings-notes region's visitor HTML changes (baseline re-pins owed, P6-R17 precedent);
+      `recorded-classes` stays `planned` (E-26). DEC-030 records it; the playback island and the
+      artifact writer stand owed.
+- [x] Step 3 — Artifact viewer & vector whiteboard replay engine -> PHASE 8 BRIEF (2026-10-08) — **BUILT.**
+      The scholarly review mode. Every artifact card carries ONE quiet opener island; it lifts the
+      artifact into `artifact-viewer.tsx` — a real dialog (modal, backdrop-blurred graphite drawer)
+      whose header names date · kind · session title and wears the subject mark. Escape, the
+      backdrop or Close departs; focus enters the drawer on open and returns to the handle on
+      close — seamless both ways. Board records replay through `canvas-replay.tsx`: the Phase 7
+      StrokePacket vocabulary VERBATIM on the subject's own motif, devicePixelRatio-crisp, two
+      modes by pressed buttons — BOARD (whole record at once; pan by arrow keys, zoom by +/− /
+      Reset buttons — keyboard first, drag the enhancement) and PLAYBACK (strokes return in
+      recorded order along one scrubber; rAF only while playing). The fluid line and token
+      palette moved to ONE renderer (`stroke-render.ts`) that live surface and replay both
+      consume — no second stroke vocabulary; the record reads back through surface-sync's own
+      validatePacket + applyPacket, one bad entry refusing the whole. The opening state is always
+      the static board: motion starts only when asked — the reduced-motion contract honored by
+      default. Chamber audio plays in `media-player.tsx`: native HTML5, no library — play/pause,
+      MM:SS scrubber, the three speeds (1.0 · 1.25 · 1.5, never pitched), volume/mute; no
+      autoplay, no up-next, nothing recommended, nothing to share. Bytes arrive ONLY by signed
+      URL minted at open time through one `"use server"` action over the standing
+      fetchArtifactDetails (RLS first, then the signature); the window follows the kind —
+      records 60 s, chamber audio MEDIA_URL_SECONDS = 900. Declared: Step 2's owed-playback
+      sentence discharged; the academic-surface quadraticCurveTo pin relocated to the renderer.
+      Verified: archive-viewer 22/22 (new) · archive-logic 26/26 · archive-surface 16/16 ·
+      academic-surface 20/20 · next-action 34 · progress 16 · validate-subjects ALL VALID ·
+      check-subject-sql PASS · tsc clean · build exit 0 (33 pages) · smoke: rehearsal 200 (math +
+      physics) · archive visitor 307 · bogus 404 · gate-7 privacy PASS (282 files, zero island
+      hits) · ledger 8/8. The engine is proven in `/dev/archive-rehearsal` (404 in production) —
+      the sandbox holds no artifacts; the writer that gives the shelf real objects stands owed.
+      DEC-031 records it; STATE_LANGUAGE 8.2 speaks it.
+- [x] Step 4 — Milestone synthesis & record consolidation -> PHASE 8 BRIEF (2026-10-08) — **BUILT.**
+      The chronology that joins what happened to what it left behind. `src/lib/progress/synthesis.ts`
+      (pure, node-tested, outside the 5.6 barrel by the record.ts precedent) composes the record:
+      a progress fact (`progress_record`, migration 0004) evidences an arc step by STEP_EVIDENCE's
+      own rule, and the artifacts preserved from that fact's session substantiate the entry — the
+      join is `ref_id = session_id`, both tables' session truth, no new column or table. The reader
+      `fetchSubjectMilestonesWithArtifacts(subjectId, studentId)` makes three RLS-bounded reads
+      (facts · session titles · artifacts), every one spelling the subject it means and whose record
+      is meant; the second argument is the record's subject, never the viewer's identity; RLS decides,
+      a mismatch yields the honest empty (zero leakage, zero enumeration). `milestone-synthesis.tsx`
+      renders it as a scholarly timeline — subject mark, date, session title, the tutor's notation,
+      each artifact a "Substantiated by …" link to its card in the subject archive (the cards gain
+      `#artifact-<id>` anchors). THE REGISTER, scoped by ruling (DEC-032): "milestone" is admitted
+      in the CHRONOLOGICAL sense only — a named stage, evidenced, pointing at real rows; the reward
+      register stays banned and is swept (no badge, XP, level, unlock, streak, points, trophy,
+      percent, bar, rank, congratulations). Embeddings: the student shell's written-map
+      `achievements` slot — the fill point the map itself demanded — renders "Your Milestone Record
+      in {Subject}" per active enrolment; the tutor relationship surface's record region (6.3's
+      declared fill point) renders "Milestones co-certified", reading by the relationship's new
+      `studentId` join key, declared never-displayed (P6-R2 governs what the surface shows, swept).
+      Empty means absent — no box, no heading, no zero. `live-classroom` is in-progress in the
+      registry, so both production surfaces stand honestly absent today; the rehearsal proves the
+      engine in both registers on specimen facts (`/dev/archive-rehearsal`). Verified:
+      milestone-synthesis 21/21 (new) · progress 16 · progress-record 18 · archive-logic 26 ·
+      archive-surface 16 · archive-viewer 22 · next-action 34 · validate-subjects ALL VALID ·
+      check-subject-sql PASS · tsc clean · build exit 0 · smoke: rehearsal 200 (both registers) ·
+      /student 307 (door) · bogus archive 404 · gate-7 privacy PASS (284 files, zero island hits) ·
+      ledger 8/8. test-tutor-visibility is the credentialed live-RLS harness (baseline
+      audit/tutor-visibility.json) — owed, unchanged. DEC-032 records it; STATE_LANGUAGE 8.3 speaks
+      it. The artifact writer and live-classroom's `live` flip stand owed.
+- [x] Gate — The Phase 8 Archive Gate (W1–W5) -> PHASE 8 GATE SPEC (2026-10-08) — **CERTIFIED.**
+      Verification only — five windows: W1 cold start & static health (validators at declared
+      baselines after one remediated Phase 8 subject-import regression — guard restored to the
+      exact 4 declared false-positives; full logic battery green incl. milestone-synthesis 21/21;
+      build clean, 33 pages) · W2 privacy & isolation (gate7-privacy-audit PASS, 284 files; new
+      gate8-archive-audit 16/16 — RLS enabled+forced, reads by enrolment or relationship, writes
+      by the opening tutor alone, one PRIVATE bucket, composite FK makes cross-subject
+      unrepresentable, invisible = unknown = same null, zero engagement columns) · W3
+      pedagogical truth & language (new gate8-language-audit 11/11 — banned archive vocabulary,
+      commercial register and autoplay absent; zero engagement & zero gamified progress with
+      declared allowances; required vocabulary verbatim; gate7-ledger 8/8) · W4 mobile &
+      performance (new gate8-perf-audit 11/11 — one column at 390 by construction, fluid drawer
+      and board; replay clock disciplined, zero timers at rest; payload MEASURED from the build:
+      5 scripts · 538.4 KB raw · 165.2 KB gzip, shared chunks identical to the chamber) · W5
+      phase close (no new exceptions — the archive speaks only where real rows stand and the
+      writer is unwired, so every reachable state is a pinned honest absence; count 19 open
+      unchanged; nine phase-close questions answered). Baselines committed: `audit/phase8-*.json`.
+      Full record: `PHASE8_GATE_REPORT.md`. The debt list stands: the writer, the credentialed
+      walks, baseline re-pins, the manual browsered pass.
 **Phase 9 — AI Learning Layer**
-**Phase 10 — Polish + Performance**
+- [x] Step 1 — Socratic assistance engine & pedagogical contract -> PHASE 9 BRIEF (2026-10-08) — **BUILT.**
+      Bounded Socratic reflection and milestone-aware study guidance — schema,
+      contract and pure engine; no surface yet. Migration 0009 (numbered
+      sequential: the brief's 0006 slot belongs to cohort_readers — the
+      DEC-026/029 precedent) creates `socratic_exchanges`: one row = one
+      bounded exchange — a student's inquiry at a named milestone and the
+      structured guidance returned — scoped strictly to (student_id,
+      subject_id); subject CHECKed in the DB (E-13); RLS enabled AND forced:
+      students SELECT/INSERT their OWN exchanges only, related tutors SELECT
+      through the standing predicate, NO update/delete (an exchange is an
+      occurrence), anon admitted nowhere. The 500-character brevity limit is
+      MIRRORED in the DB (the contract's cap); the payload caps at 16 KB and
+      carries guidance structure only — zero psychological diagnosis, zero
+      sentiment grading, by construction. `src/lib/socratic/contract.ts`
+      states the pedagogical contract: `SocraticPrompt` and
+      `SocraticGuidance` exactly as briefed, with a guidance union of
+      hint/question/reference — "answer" is unrepresentable, so homework
+      completion cannot be emitted. `src/lib/socratic/resolver.ts` is the
+      deterministic milestone-to-concept engine (no clock, no randomness, no
+      network — pinned): one curated scaffold map covering all six subjects
+      (the brief's example stands: physics:harmonic-motion, "Classical
+      Mechanics → Harmonic Motion"), each milestone yielding one disciplined
+      question, one conceptual hint and one canonical proof; completion
+      demands receive one calm redirect, never a working; unknown milestones
+      receive one honest sentence, never an invention; cross-subject keys
+      resolve to nothing. When the student's own archive speaks to the
+      subject, the guidance POINTS at the most recent relevant row by id in
+      the archive's own words (Session Notation with a summary preferred,
+      then the newest Board Record) — re-states nothing. Verified:
+      test-socratic-logic 30/30 (new — determinism, isolation, brevity,
+      completion-demand classes, honest absence, archive reference rule,
+      register sweeps, migration↔contract cross-pins) · validate-subjects
+      ALL VALID · check-subject-sql PASS · next-action 34 · progress 16 ·
+      tsc clean · build exit 0 (33 pages — no route added). DEC-033 records
+      it; STATE_LANGUAGE 9.1 pins the engine's sentences. The persistence
+      seam and the speaking surface stand owed to later steps.
+- [x] Step 2 — The Socratic lens & reflection surface -> PHASE 9 BRIEF (2026-10-08) — **BUILT.**
+      The lens, embedded. An integrated ARCHITECTURAL region on the
+      subject's substrate — bordered, the subject mark beside
+      "Pedagogical Reflection · {Subject}", one honest capabilities
+      statement ("It does not replace your tutor or solve exercises
+      directly") — NOT a floating chatbot widget: no avatar, no bubble,
+      no typing indicator, no greeting, zero animation (all swept by
+      test). The seam DEC-033 owed is built: `src/lib/socratic/data.ts`
+      reads the student's OWN recent exchanges (RLS the only boundary,
+      0009) and assembles the lens's data; `src/lib/socratic/actions.ts`
+      is one `"use server"` action — resolve through the pure engine,
+      enrich any citation with the record's own word and date, persist
+      ONE row per exchange through the student's own INSERT. The
+      composer is the one client island: a milestone select, one field
+      capped at 300 characters (the contract's 500 stays the outer
+      bound the DB mirrors) with a quiet counter, the placeholder
+      "Formulate a question about {concept}...", ONE action — Reflect —
+      and failures as one calm sentence from a closed vocabulary
+      (STATE_LANGUAGE 9.2). Each guidance renders as a structured card:
+      the badge ("Guiding Question" · "Conceptual Hint" · "Proof
+      Reference"), the body in the reading face, and a citation as one
+      compact link — "Review {Board Record · Session Notation · Chamber
+      Audio} from session on {date}" — into the subject archive. The
+      wiring: the slot map's pre-declared `ai-assistance` entry moves
+      to gate "facts" (the DEC-008 precedent, declared) — the engine is
+      self-contained, so the lens renders from enrolment; `ai-assistant`
+      STAYS `planned` in the registry until a provider-backed capability
+      lands (summary rewritten honestly). With 0004–0009 unapplied, the
+      exchange read fails and the lens stands honestly absent in
+      production today — wired, dormant, waking with the live apply.
+      `/dev/socratic-rehearsal` proves it on specimen data (404 in
+      production). Verified: test-socratic-surface 19/19 (new) ·
+      test-socratic-logic 31/31 · validate-subjects ALL VALID ·
+      check-subject-sql PASS · next-action 34 · progress 16 · guard at
+      its declared baseline · tsc clean · build exit 0 (34 pages) ·
+      smoke: rehearsal 404 · mathematics 200 (zero socratic markup in a
+      visitor's HTML) · server killed by port. DEC-034 records it.
+- [x] Step 3 — Tutor reflection surface & Socratic oversight -> PHASE 9 BRIEF (2026-10-08) — **BUILT.**
+      The diagnostic mirror, not a wiretap. `socratic-reflections.tsx`
+      renders the student's inquiries to the study lens inside the
+      relationship surface, beneath the record region: "Conceptual
+      Explorations · {Subject}", each inquiry exactly as asked, its
+      milestone path, its instant in words — and ONE act: "Mark for
+      Next Live Session", the tutor's own preparation note. Migration
+      0010 creates `socratic_pins`: binary marks (INSERT/DELETE, no
+      update), unique per tutor and exchange, structurally bound to
+      the subject — the insert policy re-derives the pair from the
+      exchange itself under 0009's RLS, so a mark can never name an
+      inquiry its marker cannot read. The reader
+      (`fetchTutorSocraticOverview(subjectId, studentId)` — no
+      tutorId argument; the cookie session rides the boundary, and
+      `is_related_tutor` re-decides on every read) caps at twelve
+      inquiries, newest first, grouped by milestone through the pure
+      half. THE REGISTER, swept: zero evaluative vocabulary — no
+      comprehension rating, no difficulty flag, no "struggled", no
+      count, no idle or timing word; the one write is preparation.
+      Empty means ABSENT (no DOM); with 0004–0010 unapplied the panel
+      stands honestly absent in production today. The placement view,
+      the levers and every other surface are untouched; the
+      relationship surface's statement evolves by declaration ("reads
+      the record and prepares the next dialogue…"), and the 6.3
+      baseline re-pin stands owed with the DEC-030 debt. Documents
+      updated: TUTOR_VISIBILITY gains the mirror's row and the policy
+      matrix for 0009/0010; TUTOR_DISTANCE affirms the engine does
+      not grade or score inquiry history. Verified:
+      test-socratic-oversight 15/15 (new) · test-socratic-logic 31 ·
+      test-socratic-surface 19 · next-action 34 · progress 16 ·
+      validate-subjects ALL VALID · check-subject-sql PASS · guard at
+      its declared baseline · tsc clean · build exit 0 (34 pages) ·
+      smoke: /tutor 307 · relationship URL 307 unsigned · mathematics
+      200 · server killed by port. DEC-035 records it; STATE_LANGUAGE
+      9.3 pins the panel's sentences.
+- [x] Gate — The Phase 9 Socratic Engine Gate (W1–W5) -> PHASE 9 GATE SPEC (2026-10-08) — **CERTIFIED.**
+      The strongest gate this lineage has run: Phase 9 shipped clean, and W1's full battery
+      confirmed it — ZERO remediation needed. W1 cold start (subject-import guard at its 4
+      declared false-positives — zero new hits; the 3 declared breakpoint drifts — count
+      unchanged; validate-subjects ALL VALID; full battery green — next-action 34 · progress 16
+      · socratic-logic 31 · progress-record 18 · archive-logic 26 · archive-surface 16 ·
+      archive-viewer 22 · academic-surface 20 · milestone-synthesis 21 · socratic-surface 19 ·
+      socratic-oversight 15; build clean, 34 pages) · W2 the pedagogical boundary (new
+      gate9-pedagogy-audit 12/12 — zero filler/exclamation/emoji/widget anatomy; the guidance
+      union pinned closed, "answer" unrepresentable; fourteen demand markers → ONE redirect;
+      question-first; brevity end-to-end, 300 < 500 = DB; honest absence pinned; prompt-type
+      union cross-pinned against 0009) · W3 privacy, surveillance & grading (new
+      gate9-privacy-audit 14/14 — RLS forced, no updates, anon nowhere, payload bounds
+      500/128/16 KB; zero surveillance and zero grading vocabulary; zero clocks; subject
+      isolation in SQL AND logic; honest failure and dormancy pinned; gate7 re-run PASS over 296
+      files, rebaselined from 284) · W4 mobile & performance (new gate9-perf-audit 11/11 —
+      fluid regions, native inputs, ≥44px marks by construction; zero timers in the island; the
+      oversight ships zero client JS; payload MEASURED from the build: 6 scripts · 538.6 KB raw
+      · 165.9 KB gzip, ALL chunks shared with the archive rehearsal — zero socratic-only
+      load-time bundle) · W5 phase close (no new exceptions — the lens and the mirror speak
+      only where real rows stand and 0004–0010 are unapplied, so every reachable state is a
+      pinned honest absence; count 19 open unchanged; nine phase-close questions answered).
+      Baselines committed: `audit/phase9-*.json`. Full record: `PHASE9_GATE_REPORT.md`. The
+      debt list stands: live apply 0004–0010, the populated lens and oversight walks, baseline
+      re-pins (relationship 6.3 owed), the credentialed harness re-runs, the browsered 390px
+      walk. DEC-036 records the gate; STATE_LANGUAGE 9.4 records the close.
+**Phase 10 — Polish + Performance** — **CERTIFIED at the Final Platform Gate (2026-10-08, W1–W5; `PHASE10_FINAL_GATE_REPORT.md`). READY FOR PRODUCTION.**
+- [x] Step 1 — Legal framework & guardian consent gates -> PHASE 10 BRIEF (2026-10-08) — **BUILT. E-07 CLOSED.**
+      The legal framework stands on three public routes: `/legal/terms`
+      (Terms of Academy Practice — the pedagogical relationship, the
+      student's ownership of their proofs, no commercial lock-in) ·
+      `/legal/privacy` (Privacy & Data Protection Notice — enumerates what
+      is collected and what is NEVER collected: facial recognition,
+      keystroke logs, attention metrics, third-party advertising data; zero
+      tracking stated as fact) · `/legal/guardian-consent` (the Guardian
+      Consent Framework under the DPDP Act 2023). Serif headings, a
+      reading measure, the platform's chrome, zero exclamation marks.
+      Migration 0011 (the brief's 0007 slot belongs to classroom_sessions —
+      the DEC-029/033 precedent) creates `legal_consents`, the consent
+      audit: closed union terms_v1 · privacy_v1 · guardian_consent_v1;
+      guardian_email REQUIRED for a guardian consent and FORBIDDEN
+      otherwise; ip_hash a one-way SHA-256 digest computed server-side
+      (the raw address never stored; absence hashes honestly); RLS enabled
+      AND forced, own-only SELECT/INSERT, tutors/admin/anon denied by
+      absence, no update/delete; append-only by deliberation (no unique
+      constraint — a future withdrawal-and-regrant deserves both rows;
+      idempotency is the write action's calm refusal). The guardian gate
+      (`src/components/legal/guardian-gate.tsx`): the brief's DPDP
+      sentence VERBATIM, ONE email field with its purpose stated, ONE act,
+      zero dark patterns — proven at `/dev/guardian-rehearsal` (404 in
+      production), owed to real onboarding the day it opens (declared,
+      with the confirmation-link delivery channel). The footer gains the
+      three legal links (its own pre-declared growth point); the
+      login/register notices state the framework stands (E-22 anticipated
+      this). Verified: test-legal-logic 23/23 (new) · validate-subjects
+      ALL VALID · check-subject-sql PASS · next-action 34 · progress 16 ·
+      full Phase 5–9 battery green · guards at declared baselines · gate7
+      privacy audit PASS over 304 files (rebaselined; the notice's
+      refusal vocabulary allowlisted, declared) · build clean, 38 pages ·
+      smoke: routes 200, rehearsal 404, footer links live, server killed
+      by port. DEC-037 records the step; STATE_LANGUAGE 10.1 pins the
+      legal sentences; the register drops to 18 open.
+- [x] Step 2 — Production onboarding & age-gated authentication -> PHASE 10 BRIEF (2026-10-08) — **BUILT.**
+      The legal framework gains its teeth. Migration 0012 adds
+      `profiles.date_of_birth` (nullable — fixtures and test accounts
+      carry none, and the gate treats absence as no age condition) and
+      `profiles.guardian_verified`, extends the signup trigger to carry
+      the birth date safely, creates `guardian_verifications` (the
+      verification ledger — token SHA-256 digests only, service-role-only,
+      zero policies), and puts the age boundary IN THE DATABASE: a
+      BEFORE INSERT trigger on enrolments refuses a minor whose guardian
+      consent is unverified (`dob + interval '18 years' > current_date` —
+      the 18th birthday itself is the first adult day; 29 February clamps
+      to 28 February in common years, the Postgres convention mirrored
+      exactly by the pure logic and pinned by test). Registration is
+      age-gated: the server computes the age; an adult consents plainly
+      (two unticked boxes linking the Step 1 documents, never
+      pre-checked) and is provisioned real (consent writes + the
+      `is_test_account` flip, with rollback if the writes fail — no
+      half-open doors); a minor lands pending_guardian — the account
+      exists, enrolment waits, and the guardian gate stands at
+      `/register/guardian`. The token handler `/auth/verify-guardian`
+      hashes immediately, redeems once (guarded by `verified_at IS
+      NULL`), performs the three service-role writes, and lands the
+      guardian on one calm sentence: "Consent has been confirmed. The
+      student's academy access is now active." Tutors meet the
+      invitation gate — self-service refused with dignity, form and
+      action alike; the credential-review flow stands owed (collecting
+      credentials the platform cannot review would be a false feature).
+      `scripts/test-account.mjs` untouched; the test-era alert and
+      test_ack checkbox retired (declared). Verified:
+      test-onboarding-logic 33/33 (new) · validate-subjects ALL VALID ·
+      check-subject-sql PASS · next-action 34 · progress 16 ·
+      legal-logic 23 · full Phase 5–9 battery green · guards at declared
+      baselines · gate7 privacy audit PASS over 310 files (rebaselined)
+      · build clean, 41 pages · smoke: DoB gate live, guardian page
+      doors to login, verify handler honest, server killed by port.
+      DEC-038 records the step; STATE_LANGUAGE 10.2 pins the sentences.
+- [x] Step 3 — Security hardening, CSP & credential audit -> PHASE 10 BRIEF (2026-10-08) — **BUILT.**
+      The platform hardens for launch. Six security headers stand on
+      every route: the CSP (default-src 'self'; script/style 'self' +
+      'unsafe-inline' for Next's streamed bootstrap and the token-driven
+      styles; font 'self' data:; img 'self' data: blob:; connect 'self' +
+      the Supabase REST/Realtime endpoints; frame-ancestors 'none';
+      base-uri/form-action 'self'; object-src 'none' — unsafe-eval stays
+      OUT: the WebGL lattice is a bundled canvas module, proven eval-free)
+      · HSTS · X-Content-Type-Options nosniff · X-Frame-Options DENY ·
+      Referrer-Policy strict-origin-when-cross-origin · Permissions-Policy
+      camera=(self), microphone=(self), geolocation=(), interest-cohort=().
+      The sensitive routes are limited by an in-memory sliding window
+      (zero dependencies) keyed on one-way SHA-256 hashes: /login 5/15min
+      · /register 3/hour · /auth/verify-guardian 10/hour — WRITES only
+      count, page reads are never limited; the 429 speaks one calm pinned
+      sentence with an honest Retry-After, and a refused attempt does not
+      extend the refusal. The zero-leak sweep (scripts/audit-secrets.mjs)
+      is CLEAN over 532 tracked text files: no JWTs, no cloud keys, no
+      private key blocks, no credentialed connection strings, no real
+      emails (the allowlist is RFC-based and hand-read), no tracked .env
+      files, only the three declared NEXT_PUBLIC_ variables; one dev
+      placeholder moved to a reserved domain to keep the sweep strict.
+      Anti-enumeration pinned: sign-in failures stay generic — the
+      platform never names the absence of an account. Verified:
+      test-security-logic 14/14 (new) · audit-secrets clean · the brief's
+      full battery green · full Phase 5–9 battery green · guards at
+      declared baselines · gate7 privacy audit PASS over 311 files
+      (rebaselined) · build clean, 41 pages · smoke: headers live on
+      every route, 429 at exactly limit+1 (login, register, guardian),
+      server killed by port. DEC-039 records the step; STATE_LANGUAGE
+      10.3 pins the 429 sentence.
+- [x] Gate — The Phase 10 Final Platform Gate & Launch Certification (W1–W5) -> PHASE 10 GATE SPEC (2026-10-08) — **CERTIFIED · READY FOR PRODUCTION.**
+      The capstone ran to verdict with ZERO product remediation. W1 the
+      master battery (308 tests green across all ten phases · both static
+      guards exactly at declared baselines · validate-subjects ALL VALID ·
+      the zero-leak sweep clean over 535 tracked files — one self-clean
+      fix to the sweep's own documentation, declared · build clean, 41
+      pages) · W2 the legal & compliance certification (new
+      gate10-compliance-audit 14/14 — DPDP sentence verbatim in three
+      places; server-side age; the minor halt complete; the token flow
+      whole; the one-way consent audit; the never-collected list public;
+      zero cookie banner stated as fact; zero tracker vocabulary; the
+      terms' clauses pinned; E-07 CLOSED, register 18 open — plus the
+      gate7 app-wide re-run PASS over 311 files) · W3 security MEASURED
+      LIVE (new gate10-security-audit 8/8 — six headers live on real
+      responses; CSP exact, no unsafe-eval; login 5/15min, register
+      3/hour, verify-guardian 10/hour each held at limit+1 with the calm
+      sentence; the harness booted its own production server and killed it
+      strictly by port) · W4 the persona walk (all four personas measured
+      live at their honest boundaries — visitor 8 routes 200 with the
+      visitor door; student/tutor/admin unsigned 307 with `next`
+      preserved; guardian honest `unavailable` without credentials; the
+      390px posture pinned by construction, viewport meta measured in the
+      live HTML — the browsered visual walk stands owed, declared) · W5
+      the verdict (whole-platform integrity table across all ten phases;
+      the prompt tracker closed — its substance stands in CONTINUE-HERE,
+      DEC-001…040 and the four gate reports; the launch certificate with
+      the six-item owner checklist). Baselines committed:
+      `audit/phase10-compliance.json` · `audit/phase10-security.json`.
+      Full record: `PHASE10_FINAL_GATE_REPORT.md`. DEC-040 records the
+      gate; STATE_LANGUAGE 10.4 records the close. The platform waits now
+      for credentials, not code.
 
 ## Brand direction (locked in Phase 2.1)
 

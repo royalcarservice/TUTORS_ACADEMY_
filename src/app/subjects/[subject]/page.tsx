@@ -7,6 +7,7 @@ import { EnvironmentRegions, liveModuleIds, resolveEnvironmentSlots } from "@/co
 import { Threshold, VisitorDoor } from "@/components/student/threshold";
 import { getIdentity } from "@/lib/auth/session";
 import { getEnvironmentSettings } from "@/lib/environment/settings";
+import { fetchSocraticLensData } from "@/lib/socratic/data";
 import { isolateAsync } from "@/lib/state/isolate";
 import { getEnrolledSubjectIds, getEnvironmentFacts } from "@/lib/student/data";
 import { mayEnrol } from "@/lib/student/enrol";
@@ -113,9 +114,24 @@ export default async function SubjectEnvironmentPage({ params, searchParams }: P
   if (identity?.role === "student" && isEnrolled) {
     /* 5.7: the regions are SUPPLEMENTAL — the environment (the primary answer)
        stands without them. A failed facts read renders no region and one log
-       line (src/lib/state/isolate.ts); the page itself never fails for it. */
-    const facts = await isolateAsync("region:facts", () => getEnvironmentFacts(s.id as SubjectId, true), { subject: s.id });
-    if (facts.ok) studentSlots = resolveEnvironmentSlots({ subjectId: s.id, subjectName: s.name, facts: facts.value, events: [], liveModules: liveModuleIds() });
+       line (src/lib/state/isolate.ts); the page itself never fails for it.
+       DEC-034: the Socratic lens's data is read IN PARALLEL with the facts —
+       one supplemental read for the enrolled student; a failed read leaves
+       the lens absent (P5-R8.9), never the environment. */
+    const [facts, socratic] = await Promise.all([
+      isolateAsync("region:facts", () => getEnvironmentFacts(s.id as SubjectId, true), { subject: s.id }),
+      isolateAsync("region:socratic", () => fetchSocraticLensData(s.id), { subject: s.id }),
+    ]);
+    if (facts.ok) {
+      studentSlots = resolveEnvironmentSlots({
+        subjectId: s.id,
+        subjectName: s.name,
+        facts: facts.value,
+        events: [],
+        liveModules: liveModuleIds(),
+        socratic: socratic.ok ? socratic.value : undefined,
+      });
+    }
   }
   /* 5.7 · ACTION scope: the entry POST answered with a KNOWN failure and sent
      the student back here (303 ?entry=failed). The sentence renders only while

@@ -1,8 +1,12 @@
 import { DataReadError } from "@/lib/state/read-error";
 import { createClient } from "@/lib/supabase/server";
+import { isolateAsync } from "@/lib/state/isolate";
 
-import { nextActionFor, type Candidate, type ProviderInput } from "@/lib/next-action";
-import type { EnvironmentFacts } from "@/lib/progress";
+import { getStudentCohortSessions } from "@/lib/cohort/data";
+import type { CohortSession } from "@/lib/cohort/session";
+import { isLive, liveCapabilities, nextActionFor, type Candidate, type ProviderInput } from "@/lib/next-action";
+import type { EnvironmentFacts, ProgressEvent } from "@/lib/progress";
+import { getOwnProgressEvents } from "@/lib/progress/data";
 import { SUBJECTS } from "@/lib/subjects/subjects";
 
 import { deriveShellState, type Enrolment, type EnvironmentState, type ShellState, type SubjectId } from "./contract";
@@ -18,13 +22,21 @@ export interface StudentContext {
 }
 
 /** Everything the engine is allowed to know, assembled ONCE per request. The clock is read here and nowhere below. */
-export function providerInputFor(enrolments: readonly Enrolment[], environmentStates: readonly EnvironmentState[], now: string): ProviderInput {
+export function providerInputFor(
+  enrolments: readonly Enrolment[],
+  environmentStates: readonly EnvironmentState[],
+  now: string,
+  phase7?: { cohortSessions?: readonly CohortSession[]; progressEvents?: readonly ProgressEvent[] },
+): ProviderInput {
   return {
     enrolments,
     environmentStates,
     subjects: SUBJECTS.map((s) => ({ id: s.id as SubjectId, name: s.name, environmentName: s.tagline.split(" — ")[0].trim() })),
     now,
-    hrefs: { subject: (id) => `/subjects/${id}`, choose: "/subjects" },
+    hrefs: { subject: (id) => `/subjects/${id}`, choose: "/subjects", live: (id) => `/subjects/${id}/live` },
+    liveModules: liveCapabilities(),
+    ...(phase7?.cohortSessions ? { cohortSessions: phase7.cohortSessions } : {}),
+    ...(phase7?.progressEvents ? { progressEvents: phase7.progressEvents } : {}),
   };
 }
 
@@ -57,8 +69,25 @@ export async function getStudentContext(): Promise<StudentContext | null> {
   const enrolments: Enrolment[] = (enr ?? []).map((r) => ({ subjectId: r.subject_id as SubjectId, status: r.status as Enrolment["status"], enrolledAt: r.enrolled_at }));
   const environmentStates: EnvironmentState[] = (env ?? []).map((r) => ({ subjectId: r.subject_id as SubjectId, firstEnteredAt: r.first_entered_at, lastEnteredAt: r.last_entered_at, entryCount: r.entry_count, position: r.position ?? null }));
   const state = deriveShellState(enrolments, environmentStates);
-  const engine = nextActionFor(providerInputFor(enrolments, environmentStates, new Date().toISOString()));
-  return { enrolments, environmentStates, state, candidate: engine.action, failedProviders: engine.failedProviders };
+  /* PHASE 7 · STEP 2 — the engine's cohort rows. Fetched ONLY while
+     live-classroom is live in src/config/modules (it is not, today): no
+     speculative query runs for a module that cannot emit. While the fetch is
+     gated off, `phase7` stays absent and the class provider sees no
+     sessions. A failed read silences the provider and records the failure —
+     never a fake empty answer (5.7). */
+  let phase7: { cohortSessions?: readonly CohortSession[]; progressEvents?: readonly ProgressEvent[] } | undefined;
+  let classReadFailed = false;
+  if (isLive("live-classroom")) {
+    const activeIds = enrolments.filter((e) => e.status === "active").map((e) => e.subjectId);
+    const [sessionsRes, eventsRes] = await Promise.all([
+      isolateAsync("engine:cohorts", () => getStudentCohortSessions(activeIds), {}),
+      isolateAsync("engine:progress", () => getOwnProgressEvents(), {}),
+    ]);
+    if (sessionsRes.ok && eventsRes.ok) phase7 = { cohortSessions: sessionsRes.value, progressEvents: eventsRes.value };
+    else classReadFailed = true;
+  }
+  const engine = nextActionFor(providerInputFor(enrolments, environmentStates, new Date().toISOString(), phase7));
+  return { enrolments, environmentStates, state, candidate: engine.action, failedProviders: classReadFailed ? [...engine.failedProviders, "class"] : engine.failedProviders };
 }
 
 /**

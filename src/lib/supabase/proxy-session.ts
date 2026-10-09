@@ -53,6 +53,21 @@ export async function updateSession(request: NextRequest) {
   }
 
   if (isProtectedPath(pathname) && !userId) {
+    /* Track 2 (DEC-043): the tutor application door stands open to signed-out
+       visitors in every deployment — an applicant has no account yet. */
+    if (pathname === ROUTES.tutorApply) {
+      return response;
+    }
+    /* Unfinished Work · Track 1 (DEC-042): with NO credentials configured,
+       the admin prefix passes to its layout, which renders the fixture
+       ledger under an explicit demonstration banner — the operations
+       console must be testable out of the box. When credentials exist,
+       this carve-out is unreachable: the boundary below stands untouched,
+       and the admin layout's own role check is the second gate. The
+       student and tutor boundaries are never carved. */
+    if (!env && (pathname === ROUTES.admin || pathname.startsWith(ROUTES.admin + "/"))) {
+      return response;
+    }
     /* 5.7 · Part 6: WHY they are at /login is knowable here and nowhere else.
        Auth cookies present but no valid user = a session that ENDED (expired
        or signed out elsewhere); no auth cookies at all = never signed in. The

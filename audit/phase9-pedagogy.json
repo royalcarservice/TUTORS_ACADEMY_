@@ -1,0 +1,83 @@
+{
+  "gate": "phase9-pedagogy",
+  "window": "W2 — the pedagogical boundary & anti-chatbot audit",
+  "phase": "Phase 9 · Step 4",
+  "decision": "DEC-036",
+  "at": "2026-10-08",
+  "posture": "pure text audit over committed sources — zero network, zero database, zero identities",
+  "checks": [
+    {
+      "id": "P1",
+      "name": "zero conversational greetings and filler in every Socratic surface (comments stripped)",
+      "pass": true,
+      "detail": "21 filler classes swept across 12 files — zero hits"
+    },
+    {
+      "id": "P2",
+      "name": "zero exclamation marks in quoted copy, zero emoji anywhere",
+      "pass": true,
+      "detail": "540 literals swept for '!', 12 files swept for emoji — zero hits"
+    },
+    {
+      "id": "P3",
+      "name": "zero chatbot-widget anatomy; the lens is a bordered region, not a widget",
+      "pass": true,
+      "detail": "no avatar/bubble/typing/launcher; bordered region pinned; zero animation vocabulary in all four components"
+    },
+    {
+      "id": "A1",
+      "name": "the guidance union has no answer kind: hint, question, reference only",
+      "pass": true,
+      "detail": "union pinned closed; 'answer' unrepresentable"
+    },
+    {
+      "id": "A2",
+      "name": "completion demands are detected by machinery and redirected, never answered",
+      "pass": true,
+      "detail": "14 demand markers; the single question-kind redirect is pinned and is the only path a demand takes"
+    },
+    {
+      "id": "A3",
+      "name": "questions lead: for a known milestone the disciplined question is emitted first",
+      "pass": true,
+      "detail": "question → hint → proof, pinned in the resolution body"
+    },
+    {
+      "id": "A4",
+      "name": "brevity end-to-end: 300 composer < 500 contract = DB mirror; every authored guidance fits",
+      "pass": true,
+      "detail": "300 < 500 = DB; field capped thrice; 54 authored scaffold texts all within (0, 500]"
+    },
+    {
+      "id": "E1",
+      "name": "unknown milestones receive the honest absence — nothing invented",
+      "pass": true,
+      "detail": "the single calm sentence is the only path an unknown milestone takes"
+    },
+    {
+      "id": "E2",
+      "name": "the capability statements stand verbatim and refuse what they refuse",
+      "pass": true,
+      "detail": "both statements verbatim; the lens names its refusal to solve, the panel its refusal to score"
+    },
+    {
+      "id": "E3",
+      "name": "the prompt-type union is closed, cross-pinned against the schema; reflection_summary stays reserved",
+      "pass": true,
+      "detail": "closed four cross-pinned (conceptual_hint · proof_reference · reflection_summary · socratic_question); reflection_summary reserved, no guidance kind emits it"
+    },
+    {
+      "id": "R1",
+      "name": "the archive's words are kept and its banned vocabulary stays absent",
+      "pass": true,
+      "detail": "VOD/Replay File/Recording Upload absent; citation sentence and ARTIFACT_WORD wiring pinned"
+    },
+    {
+      "id": "R2",
+      "name": "the reward register stays banned in every scaffold text and surface string",
+      "pass": true,
+      "detail": "reward register swept across all literals — zero hits; the one geometric 'point' remains the secant's"
+    }
+  ],
+  "summary": "12/12 checks passed"
+}

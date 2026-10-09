@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import { requireIdentity } from "@/lib/auth/session";
+import { fetchInvoicesForStudent } from "@/lib/payments/settle";
+import { formatTuition } from "@/lib/payments/tuition";
 
 /* /student/account — the third real destination. Profile facts the row
  * actually holds, and the real sign-out. No settings that do nothing.     */
@@ -12,6 +14,7 @@ const MONO: React.CSSProperties = { fontFamily: "var(--ta-font-mono)", fontSize:
 
 export default async function StudentAccountPage() {
   const id = await requireIdentity("student", "/student/account");
+  const invoices = await fetchInvoicesForStudent(id.id);
   const rows: Array<[string, string]> = [
     ["Name", id.displayName || "—"],
     ["Email", id.email ?? "—"],
@@ -38,6 +41,29 @@ export default async function StudentAccountPage() {
           </div>
         ))}
       </dl>
+      <section aria-labelledby="receipts">
+        <p style={MONO} id="receipts">Tuition receipts</p>
+        {invoices.rows.length === 0 ? (
+          <p style={{ margin: "var(--ta-space-3) 0 0", fontSize: "var(--ta-text-sm)", color: "var(--ta-text-secondary)" }}>
+            No tuition settled yet. The threshold, when it comes, is one payment per term per subject.
+          </p>
+        ) : (
+          <ul style={{ listStyle: "none", margin: "var(--ta-space-3) 0 0", padding: 0, display: "flex", flexDirection: "column", gap: "var(--ta-space-3)" }}>
+            {invoices.rows.map((row) => (
+              <li
+                key={row.id}
+                style={{ display: "flex", flexWrap: "wrap", gap: "var(--ta-space-4)", alignItems: "baseline", border: "1px solid var(--ta-border)", borderRadius: 8, padding: "var(--ta-space-3) var(--ta-space-4)", fontSize: "var(--ta-text-sm)" }}
+              >
+                <span style={{ color: "var(--ta-text-primary)", fontWeight: 500 }}>{row.subjectName}</span>
+                <span style={{ color: "var(--ta-text-secondary)" }}>{formatTuition(row.amountCents, row.currency)} · {row.status}</span>
+                <span style={{ color: "var(--ta-text-muted)", fontFamily: "var(--ta-font-mono)", fontSize: "var(--ta-text-2xs)" }}>
+                  {row.settledAt ?? row.createdAt}{row.providerPaymentId ? ` · …${row.providerPaymentId.slice(-4)}` : ""}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
       <form action="/auth/signout" method="post">
         <button type="submit" className="ta-btn" data-variant="secondary" data-size="md">Sign out</button>
       </form>

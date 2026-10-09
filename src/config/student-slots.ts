@@ -79,7 +79,12 @@ export const ENVIRONMENT_SLOTS: readonly EnvironmentSlotDef[] = [
   { id: "progress", name: "Where you are", phase: "5.6", region: "record", module: "student-portal", gate: "facts", needs: "an enrolment (the arc's first steps); later steps need live modules AND real events", today: "the arc — seven steps, three done, four ahead; no count" },
   { id: "recordings", name: "Recordings here", phase: "Phase 8", region: "library", module: "recorded-classes", needs: "recorded sessions in this subject the student attended", today: "nothing (absent)" },
   { id: "resources", name: "Resources here", phase: "Phase 8", region: "library", module: "recorded-classes", needs: "tutor-shared material scoped to this enrolment", today: "nothing (absent)" },
-  { id: "ai-assistance", name: "Assistance here", phase: "Phase 9", region: "assistance", module: "ai-assistant", needs: "a real assistant scoped to this subject's material", today: "nothing (absent)" },
+  /* DEC-034 (the DEC-008 precedent, declared): the lens is facts-gated,
+     exactly as the arc — the assistant it names IS the deterministic
+     scaffold engine (built, self-contained, no external provider), so the
+     slot renders from enrolment; the `ai-assistant` registry flip stands
+     owed to the provider-backed capability, which is still ahead. */
+  { id: "ai-assistance", name: "Assistance here", phase: "Phase 9 · Step 2", region: "assistance", module: "ai-assistant", gate: "facts", needs: "an enrolment (the lens's boundary); migrations 0004–0009 applied for the exchange log", today: "the Socratic lens for the enrolled student — conceptual scaffolding and disciplined questions per milestone; absent until the socratic schema is applied (a failed read renders nothing, P5-R8.9); proven at /dev/socratic-rehearsal" },
 ] as const;
 
 export interface StudentSlotDef {
@@ -93,8 +98,9 @@ export interface StudentSlotDef {
   position: StudentSlotPosition;
   /** What real data it needs before it may render anything. */
   needs: string;
-  /** What renders today. Always the same answer. */
-  today: "nothing (absent)";
+  /** What renders today. Every entry answers "nothing (absent)" — except
+      where an owner ruling has filled the slot (DEC-032: achievements). */
+  today: string;
   /** Composition note: fit, or a restructuring risk reported now. */
   fit: string;
 }
@@ -129,9 +135,9 @@ export const STUDENT_SLOTS: readonly StudentSlotDef[] = [
   { id: "progress", name: "Progress", phase: "5.6 / Phase 9", region: "reflection", position: "region",
     needs: "a measured progress language (5.6) with real observations — never a bar over nothing", today: "nothing (absent)",
     fit: "Fits as PROSE (5.6 decides the language). A metric grid does not fit and will not be admitted." },
-  { id: "achievements", name: "Achievements", phase: "Phase 9", region: "reflection", position: "region",
-    needs: "an owner decision that milestones exist as text records", today: "nothing (absent)",
-    fit: "DOES NOT FIT AS BADGES/POINTS/STREAKS — those are on the never-contains list. If Phase 9 wants milestones, they render as dated sentences in Progress, or the decision is revisited then." },
+  { id: "achievements", name: "Achievements", phase: "Phase 8 · Step 4 — the owner's milestone-as-record ruling (DEC-032)", region: "reflection", position: "region",
+    needs: "an owner decision that milestones exist as text records", today: "the milestone chronology per enrolled subject — dated, evidenced, substantiated by the sessions' artifacts; nothing when nothing is recorded",
+    fit: "FILLED AS TEXT RECORDS, never badges/points/streaks — the reward register stays on the never-contains list. The chronology renders as dated sentences with artifact links (the DEC-032 composition); if a later phase wants more, the decision is revisited then." },
   { id: "ai-assistance", name: "AI assistance", phase: "Phase 9", region: "tools", position: "region",
     needs: "a real assistant scoped to the student's own material", today: "nothing (absent)",
     fit: "Fits as ONE quiet entry row (a link to its own surface). A floating chat widget over the shell does NOT fit and will not be admitted." },

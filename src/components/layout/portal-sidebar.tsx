@@ -6,7 +6,7 @@ import { ArrowLeft, LayoutGrid, X } from "lucide-react";
 
 import { Logo } from "@/components/shared/logo";
 import { StatusBadge } from "@/components/ui/badge";
-import { getModulesForSurface } from "@/config/modules";
+import { getModulesForSurface, getPlannedModules } from "@/config/modules";
 import { PORTAL_META, ROUTES, type PortalId } from "@/config/routes";
 import { cn } from "@/lib/cn";
 
@@ -29,7 +29,12 @@ export function PortalSidebar({
 }) {
   const pathname = usePathname();
   const meta = PORTAL_META[portal];
-  const modules = getModulesForSurface(portal);
+  /* Shipped modules (Track 1) become real links; the roadmap below keeps
+     only what is not live yet — the app never advertises a dead URL. */
+  const shipped = getModulesForSurface(portal).filter(
+    (m) => m.status === "live" && m.routePrefix && m.routePrefix !== meta.home,
+  );
+  const modules = getPlannedModules(portal);
 
   return (
     <>
@@ -101,10 +106,30 @@ export function PortalSidebar({
                   Overview
                 </Link>
               </li>
+              {shipped.map((m) => (
+                <li key={m.id}>
+                  <Link
+                    href={m.routePrefix as string}
+                    onClick={onClose}
+                    aria-current={pathname === m.routePrefix ? "page" : undefined}
+                    title={m.summary}
+                    className={cn(
+                      "flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                      pathname === m.routePrefix
+                        ? "bg-brand-600 text-white shadow-brand"
+                        : "text-foreground-muted hover:bg-ink-100 hover:text-foreground",
+                    )}
+                  >
+                    <LayoutGrid className="size-4" aria-hidden />
+                    {m.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
           {/* Roadmap — not yet navigable */}
+          {modules.length > 0 ? (
           <div className="mt-6">
             <p className="px-3 text-[0.6875rem] font-semibold tracking-wide text-foreground-subtle uppercase">
               Coming to this portal
@@ -126,6 +151,7 @@ export function PortalSidebar({
               ))}
             </ul>
           </div>
+          ) : null}
         </div>
 
         {/* Footer */}

@@ -26,11 +26,13 @@ do $$ begin
   create type public.user_role as enum ('student', 'tutor', 'admin');
 exception when duplicate_object then null; end $$;
 
--- ── Subjects: the six immutable slugs (3.1). Mirrors src/lib/subjects config;
---    scripts/check-subject-sql.mjs asserts the two lists are identical. ──────
+-- ── Subjects: the governed slugs (3.1). Mirrors src/lib/subjects config;
+--    scripts/check-subject-sql.mjs asserts the two lists are identical.
+--    DEC-047 (2026-10-09): seven by explicit owner mandate — computer-science
+--    joins as a first-class subject (live DBs converge via migration 0015). ──
 create or replace function public.is_subject_id(p text) returns boolean
 language sql immutable as $$
-  select p in ('mathematics','physics','chemistry','biology','english','history')
+  select p in ('mathematics','physics','chemistry','biology','english','history','computer-science')
 $$;
 
 -- ── profiles ─────────────────────────────────────────────────────────────────

@@ -185,6 +185,32 @@ export const SUBJECTS: SubjectConfig[] = [
     roomMood: "layered, still, archival — strata as quiet rules.",
     degradation: { reduced: "sequence instant, strata static", static: "flat record + cyan stratum rules" },
   },
+  /* DEC-047 (2026-10-09): the closed six became seven BY EXPLICIT OWNER
+     MANDATE — the Interactive 3D Subject Gallery brief directs Computer
+     Science as a first-class subject. This is the governed schema change
+     the identity file warns about: reported (DEC-047), migration 0015,
+     never silent. Accent validated by scripts/validate-subjects.mjs:
+     electric blue, mutually distinct (ΔE ≥15) and ≥20 from brass/teal. */
+  {
+    id: "computer-science",
+    name: "Computer Science",
+    tagline: "The Circuit — logic you can build.",
+    status: "ready",
+    environment:
+      "Computer Science is a dark substrate of luminous circuits: electric traces radiate across near-black silicon, data moving as light. The environment rewards sequence — stepwise, debuggable, exact — so an algorithm reads as a path of glowing decisions, never as noise.",
+    accent1: { ink: "#00b4ff", ivory: "#0369a1" }, ...t({ ink: "#00b4ff", ivory: "#0369a1" }),
+    atmosphere: "glass", motif: "lattice", motionChar: "sequential", density: "dense",
+    motionCharter: { enterChoreo: "reveal→stagger (2.3)", exitChoreo: "exit (2.3)", morphTarget: "circuit node", ambient: { enabled: true, budget: 6, pauseOffscreen: true, stopsOnBlur: true, fallback: "static" } },
+    roomMood: "sequential glow — traces dim to a steady schematic calm.",
+    degradation: { reduced: "traces static, packets to opacity", static: "flat substrate + single electric contour" },
+  },
 ];
 
 export const getSubject = (id: string) => SUBJECTS.find((s) => s.id === id);
+
+/** Room name as authored in each subject's tagline ("The Lattice — …"). */
+export const roomNameOf = (id: string): string => {
+  const s = getSubject(id);
+  if (!s) return id;
+  return s.tagline.split(" — ")[0] ?? s.name;
+};

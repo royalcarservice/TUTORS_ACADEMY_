@@ -26,3 +26,18 @@ export function whenPhrase(iso: string, nowIso: string): string | null {
   if (d <= 14) return `${d} days ago`;
   return `on ${absDate(iso)}`;
 }
+
+/**
+ * Phase 7 · Step 2: the phrase for a SCHEDULED instant (never a recency —
+ * whenPhrase stays the past-tense phrase). "today" when the scheduled day is
+ * the current day, else the absolute date. Returns null for an invalid
+ * timestamp — never a filler phrase. Pure: `nowIso` is an argument.
+ */
+export function scheduledPhrase(iso: string, nowIso: string): string | null {
+  if (!Number.isFinite(Date.parse(iso)) || !Number.isFinite(Date.parse(nowIso))) return null;
+  const a = new Date(iso), b = new Date(nowIso);
+  const ad = Date.UTC(a.getUTCFullYear(), a.getUTCMonth(), a.getUTCDate());
+  const bd = Date.UTC(b.getUTCFullYear(), b.getUTCMonth(), b.getUTCDate());
+  if (ad === bd) return "today";
+  return `on ${absDate(iso)}`;
+}

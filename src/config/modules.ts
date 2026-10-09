@@ -105,10 +105,66 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
   {
     id: "admin-portal",
     name: "Admin portal",
-    summary: "Architecture only: a route and a guard. No admin account exists.",
-    status: "planned",
+    /* Unfinished Work · Track 1: the operations console ships — overview,
+       placements, credentialing and subject-room oversight. Strictly gated
+       to role 'admin' in configured deployments; a fixture ledger with a
+       banner otherwise. */
+    summary: "The operations console: placements, credentialing and subject rooms.",
+    status: "live",
     surfaces: ["admin"],
     routePrefix: "/admin",
+  },
+  {
+    id: "admin-placements",
+    name: "Placements",
+    summary: "Establish and end student–tutor placements within subjects.",
+    status: "live",
+    surfaces: ["admin"],
+    routePrefix: "/admin/placements",
+  },
+  {
+    id: "admin-tutor-roster",
+    name: "Tutor Roster",
+    summary: "Review registered tutors and approve the subjects they teach.",
+    status: "live",
+    surfaces: ["admin"],
+    routePrefix: "/admin/tutors",
+  },
+  {
+    id: "admin-subject-rooms",
+    name: "Subject Rooms",
+    summary: "Global oversight of the six rooms: density and motion character.",
+    status: "live",
+    surfaces: ["admin"],
+    routePrefix: "/admin/subjects",
+  },
+  {
+    id: "admin-billing",
+    name: "Billing",
+    summary: "The invoice ledger for platform audit; tutors have no read path.",
+    status: "live",
+    surfaces: ["admin"],
+    routePrefix: "/admin/billing",
+  },
+  {
+    id: "admin-system",
+    name: "System",
+    summary: "Service connection status: live or demonstration, per service.",
+    status: "live",
+    surfaces: ["admin"],
+    routePrefix: "/admin/system",
+  },
+  {
+    /* Unfinished Work · Track 3 (DEC-044): the financial threshold. One
+       flat term tuition; checkout and webhook settlement; chambers stay
+       free of commerce (P6-R8). The 6.3 removal is reversed by the phase
+       that delivers it — this is that phase. */
+    id: "tuition-payments",
+    name: "Tuition & payments",
+    summary: "One flat term tuition per chamber; settlement provisions enrolment.",
+    status: "live",
+    surfaces: ["public", "student", "admin"],
+    routePrefix: "/tuition",
   },
   {
     /* PHASE 7 PREREQUISITE (5.6 close-out): before this module records anything,
@@ -118,7 +174,16 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
     id: "live-classroom",
     name: "Live classroom",
     summary: "Real-time video sessions with a shared whiteboard and chat.",
-    status: "planned",
+    /* 7.2 (DEC-023): corrected from "planned" by the same rule as student-portal
+       (P5-R4 Addendum 2). The prerequisite is DONE (progress_record, migration
+       0004) and the module's first scaffolding is shipped: the cohort model
+       (0005/0006), the cohort data reader, the attend-versus-resume sentence in
+       the next-action engine (gated — emits nothing until this entry reads
+       "live"), and the staged live surface /subjects/[subject]/live. Sessions,
+       credentials and connection do NOT exist; "in-progress" is the honest
+       value the registry can express. The provider gate still requires "live",
+       so nothing new is emitted. */
+    status: "in-progress",
     surfaces: ["student", "tutor"],
     routePrefix: null,
   },
@@ -141,7 +206,11 @@ export const PLATFORM_MODULES: readonly PlatformModule[] = [
   {
     id: "ai-assistant",
     name: "AI learning assistant",
-    summary: "Context-aware tutor aid for doubt solving and revision.",
+    /* DEC-034: the summary names what EXISTS — the deterministic Socratic
+       engine (scaffolding, never answers). The status stays `planned` until
+       a provider-backed capability lands; the lens renders facts-gated in
+       the environment meanwhile (the DEC-008 precedent, student-slots). */
+    summary: "Bounded Socratic reflection and milestone-aware study guidance — conceptual scaffolding and disciplined questions, never solutions.",
     status: "planned",
     surfaces: ["student", "tutor"],
     routePrefix: null,

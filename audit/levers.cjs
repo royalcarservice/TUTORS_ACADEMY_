@@ -145,11 +145,16 @@ const envFingerprint = (p) => p.evaluate(() => {
     R.write.noJs = { postStatus: chain[0]?.response()?.status(), landed: new URL(nj.url()).pathname + new URL(nj.url()).search, row: row("physics"), shaped: await nj.evaluate(() => document.querySelector("[data-environment-levers]")?.getAttribute("data-shaped")), state: await nj.evaluate(() => document.querySelector("[data-shaped-state]")?.textContent.trim()), selected: await nj.evaluate(() => Array.from(document.querySelectorAll("select")).map((s) => s.value)) };
     gate("write (JS off): real form submit → 303 → back on the surface; row = dense/energetic shaped by T; surface shows 'Last shaped by you.' and the values", R.write.noJs.postStatus === 303 && R.write.noJs.landed === SURFACE && R.write.noJs.row === `dense/energetic/${T_ID}` && R.write.noJs.shaped === "row" && R.write.noJs.state === "Last shaped by you." && JSON.stringify(R.write.noJs.selected) === '["dense","energetic"]', JSON.stringify(R.write.noJs));
     await nj.screenshot({ path: path.join(OUT, "surface-shaped-nojs-390.png"), fullPage: true });
-    /* idempotent: same save twice → one row */
+    /* idempotent: save the same values again FROM A FRESH LOAD → one row.
+       P6-R21: the reload matters — the form carries the freshness token it
+       loaded with, and a submit over a state that moved is a REFUSED write,
+       not a second save. So the re-save is done as the user would: land,
+       re-open, save. */
     const updated1 = sql("select updated_at from public.environment_settings where subject_id='physics'");
+    await nj.goto(P + SURFACE, { waitUntil: "load" });
     await Promise.all([nj.waitForNavigation({ waitUntil: "load" }), nj.click("[data-shape-form] button[type=submit]")]);
     R.write.again = { rows: sql("select count(*) from public.environment_settings where subject_id='physics'"), row: row("physics"), updatedChanged: updated1 !== sql("select updated_at from public.environment_settings where subject_id='physics'") };
-    gate("idempotent: saving the same values again → still one row, same values", R.write.again.rows === "1" && R.write.again.row === `dense/energetic/${T_ID}`, JSON.stringify(R.write.again));
+    gate("idempotent: reloading and saving the same values again → still one row, same values", R.write.again.rows === "1" && R.write.again.row === `dense/energetic/${T_ID}`, JSON.stringify(R.write.again));
     /* unauthored value through the same handler */
     const post = (body) => p.evaluate(async (u, b) => { const r = await fetch(u, { method: "POST", body: b, headers: { "content-type": "application/x-www-form-urlencoded" }, redirect: "manual" }); return r.type === "opaqueredirect" ? 303 : r.status; }, P + SHAPE, body);
     await p.goto(P + SURFACE, { waitUntil: "load" });

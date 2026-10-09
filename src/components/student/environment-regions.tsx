@@ -1,8 +1,10 @@
 import { PLATFORM_MODULES } from "@/config/modules";
 import { ENVIRONMENT_REGIONS, ENVIRONMENT_SLOTS, type EnvironmentRegion } from "@/config/student-slots";
 import type { EnvironmentFacts, ProgressEvent } from "@/lib/progress";
+import type { SocraticLensData } from "@/lib/socratic/data";
 import { isolate } from "@/lib/state/isolate";
 
+import { SocraticLens } from "../socratic/socratic-lens";
 import { resolveArc } from "./arc-region";
 
 /* STUDENT REGIONS INSIDE AN ENVIRONMENT (Phase 5 · Step 5 · Part 5)
@@ -33,6 +35,12 @@ export interface SlotContext {
   /** Progress events for this student. `[]` in production today — there is no table (5.1 amendment pending). */
   events: readonly ProgressEvent[];
   liveModules: readonly string[];
+  /** DECLARED EXTENSION (DEC-034, the DEC-008 precedent): the assembled
+      Socratic lens data — the student's own exchanges (RLS-bounded, 0009),
+      the subject's preserved artifacts and the scaffold options. Absent
+      (undefined) when the read fails or the schema is unapplied — the slot
+      then renders nothing (P5-R8.9). */
+  socratic?: SocraticLensData;
 }
 export type SlotResolver = (ctx: SlotContext) => React.ReactNode | null;
 
@@ -60,9 +68,19 @@ export function resolveEnvironmentSlots(
   return out;
 }
 
-/** THE FILL POINT for the environment scope. One entry: the arc (5.6). Every other capability is absent. */
+/** THE FILL POINT for the environment scope. Two entries: the arc (5.6)
+ *  and the Socratic lens (DEC-034 — facts-gated, exactly as the arc's). */
 export const ENVIRONMENT_SLOT_RESOLVERS: Partial<Record<string, SlotResolver>> = {
   progress: (ctx) => resolveArc(ctx.facts, ctx.events, ctx.liveModules, ctx.subjectName),
+  "ai-assistance": (ctx) =>
+    ctx.socratic ? (
+      <SocraticLens
+        subjectId={ctx.subjectId}
+        subjectName={ctx.subjectName}
+        exchanges={ctx.socratic.exchanges}
+        options={ctx.socratic.options}
+      />
+    ) : null,
 };
 
 const MONO: React.CSSProperties = { fontFamily: "var(--ta-font-mono)", fontSize: "var(--ta-text-2xs)", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--ta-text-muted)", margin: 0 };

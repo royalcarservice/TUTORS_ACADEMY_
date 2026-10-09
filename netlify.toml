@@ -1,0 +1,43 @@
+# ════════════════════════════════════════════════════════════════════════
+# NETLIFY DEPLOYMENT — Tutors Academy (Next.js 16)
+#
+# Netlify serves this app through its Next.js runtime: SSR, server actions
+# and route handlers all stand. Three environment variables MUST be set in
+# the Netlify project settings before the build (names only — values never
+# committed):
+#
+#   NEXT_PUBLIC_SUPABASE_URL         your Supabase project URL
+#   NEXT_PUBLIC_SUPABASE_ANON_KEY    your Supabase anon key
+#   SUPABASE_SERVICE_ROLE_KEY        your Supabase service-role key
+#                                    (server-only: consent writes, the
+#                                    guardian verification ledger, the
+#                                    is_test_account flips)
+#
+# Without them every auth surface states plainly that it is not configured
+# — no half-open doors. Supabase migrations 0001–0014 must be applied in
+# the Supabase project first (supabase/migrations/); Netlify never runs
+# SQL migrations.
+#
+# DECLARED (DEC-039/040): the rate limiter is in-memory per instance, so on
+# serverless instances the windows are per-instance — the shared-store
+# upgrade stands owed. The CSP ships frame-ancestors 'none': Netlify's
+# in-dashboard preview pane embeds the site in an iframe and will show
+# blank by design — open the deploy URL in its own tab.
+# ════════════════════════════════════════════════════════════════════════
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Next 16 requires Node 20+.
+  NODE_VERSION = "22"
+  # The zero-tracking posture, carried to the build itself.
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# NOTE (2026-10-09): the explicit [[plugins]] @netlify/plugin-nextjs entry was
+# REMOVED after the first deploy attempt failed on Next 16.3.6. Netlify's
+# Next.js runtime installs automatically for Next.js sites and tracks the
+# latest runtime — an unpinned manual declaration adds a failure point
+# without adding capability. If a build ever needs a PINNED runtime, install
+# @netlify/plugin-nextjs as a devDependency AND declare it here.

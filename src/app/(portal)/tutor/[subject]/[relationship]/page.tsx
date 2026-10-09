@@ -4,6 +4,7 @@ import { cache } from "react";
 
 import { resolveRecord } from "@/components/tutor/record";
 import { RelationshipSurface } from "@/components/tutor/relationship-surface";
+import { resolveOversight } from "@/components/tutor/socratic-reflections";
 import { shellSubjectInfo } from "@/lib/student/subject-info";
 import type { SubjectId } from "@/lib/student/contract";
 import { getSubject } from "@/lib/subjects/subjects";
@@ -42,6 +43,9 @@ export default async function RelationshipPage({ params }: { params: Params }) {
   if (!r) notFound();
   const info = shellSubjectInfo()[r.view.subjectId];
   if (!info) notFound();
-  const record = await resolveRecord(r.view);
-  return <RelationshipSurface view={r.view} subject={info} record={record} />;
+  const [record, oversight] = await Promise.all([
+    resolveRecord(r.view, undefined, r.subject.name),
+    resolveOversight(r.view),
+  ]);
+  return <RelationshipSurface view={r.view} subject={info} record={record} oversight={oversight} />;
 }

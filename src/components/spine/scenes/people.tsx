@@ -29,13 +29,20 @@ export const PEOPLE_COPY = {
   leadCandidateB: "You will not find a list of tutors here, because none has been invented for you. When tutors arrive, each will own an environment and shape it.",
   /* ≤3 supporting lines. */
   lines: [
-    "Five things are theirs to set: accent, atmosphere, motif, motion character, density.",
+    /* 6.6 gate W4 (DEC-020): was "Five things are theirs to set: accent, atmosphere,
+       motif, motion character, density." — contradicted by 6.4/P6-R11/P6-R13: identity
+       levers are immutable, atmosphere is authored-once and not presented. Corrected
+       to the shipped truth (two adjustable character levers). */
+    "Two things are theirs to set: density and motion character. Everything else in the room — accent, atmosphere, motif — is the subject's own: authored, not adjustable.",
     "The environment is the workspace. You meet your tutor inside it.",
   ],
   statusSubject: "The tutor's side of the environment",
 } as const;
 
-/** The five levers, as named in the subject schema (3.1). Rendered as text, never as a list of tutors. */
+/** The five levers as named in the subject schema (3.1). Since 6.4/P6-R13 the scene
+ * renders the distinction: TWO adjustable (density, motion character) — the identity
+ * levers are immutable, atmosphere is authored-once. Kept for the record; never a
+ * list of tutors. */
 export const LEVERS = ["accent", "atmosphere", "motif", "motion character", "density"] as const;
 
 /* The module registry is the documented roadmap-as-data (it already feeds
@@ -53,7 +60,13 @@ const MONO: React.CSSProperties = {
 };
 
 export function PeopleScene({ modules = REGISTRY }: { entries?: unknown; modules?: ModuleEntry[] }) {
-  const status = statusFor(modules, ["tutor-portal"]);
+  /* 6.6 gate W4 (DEC-020): the sentence's subject — "the tutor's side of the
+     environment" — has had its OWN registry entry since 6.4 (`tutor-environment`,
+     live: "shipped and reachable now"). The binding read `tutor-portal` (planned),
+     so the page said "Next · not built yet" about the thing the registry declares
+     live — E-26's own rule (the label is bound to the fact its sentence asserts)
+     applied to the post-6.4 registry. `tutor-portal` itself stays `planned`. */
+  const status = statusFor(modules, ["tutor-environment"]);
   return (
     <div data-people>
       <style>{`
@@ -77,8 +90,10 @@ export function PeopleScene({ modules = REGISTRY }: { entries?: unknown; modules
       <p data-people-lead>{PEOPLE_COPY.lead}</p>
 
       <div data-people-lines>
+        {/* DEC-020: the two ADJUSTABLE levers, named; the identity/authored ones stated
+            as not adjustable — the shipped truth since 6.4 (was: five settable). */}
         <p>
-          Five things are theirs to set: <em>{LEVERS.join(", ")}</em>.
+          Two things are theirs to set: <em>density</em> and <em>motion character</em>. Everything else in the room — accent, atmosphere, motif — is the subject&rsquo;s own: authored, not adjustable.
         </p>
         <p>{PEOPLE_COPY.lines[1]}</p>
       </div>

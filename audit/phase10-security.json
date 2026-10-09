@@ -1,0 +1,53 @@
+{
+  "gate": "PHASE 10 · WINDOW W3 — THE SECURITY & ZERO-LEAK AUDIT",
+  "run": "2026-10-08",
+  "measured": {
+    "port": 3126,
+    "serverKilledByPort": true
+  },
+  "verdict": "PASS",
+  "passed": 8,
+  "total": 8,
+  "checks": [
+    {
+      "id": "S1",
+      "detail": "the six security headers stand live on a real response",
+      "pass": true
+    },
+    {
+      "id": "S2",
+      "detail": "the live CSP carries no unsafe-eval and locks framing",
+      "pass": true
+    },
+    {
+      "id": "S3",
+      "detail": "headers reach every route class (legal pages sampled)",
+      "pass": true
+    },
+    {
+      "id": "S4",
+      "detail": "/login: exactly five POSTs admitted, the sixth is the calm 429",
+      "pass": true
+    },
+    {
+      "id": "S5",
+      "detail": "/register: three POST budget, and GETs never spend it",
+      "pass": true
+    },
+    {
+      "id": "S6",
+      "detail": "/auth/verify-guardian: ten GET budget, the eleventh is 429",
+      "pass": true
+    },
+    {
+      "id": "S7",
+      "detail": "the zero-leak sweep is clean over the committed tree",
+      "pass": true
+    },
+    {
+      "id": "S8",
+      "detail": "the static security suite is green (14 pins)",
+      "pass": true
+    }
+  ]
+}

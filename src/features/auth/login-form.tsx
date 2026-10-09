@@ -53,8 +53,10 @@ export function LoginForm({ configured, next, error, context }: { configured: bo
         {configured && (
           <Alert variant="info" title="Test accounts only">
             <p>
-              Phase 5 sign-in is for test accounts. Real student onboarding
-              waits on the privacy, terms and data-protection work.
+              Phase 5 sign-in is for test accounts. The terms, privacy
+              notice and guardian-consent framework now stand (linked in
+              the footer); real student onboarding remains closed until the
+              owner opens it.
             </p>
           </Alert>
         )}

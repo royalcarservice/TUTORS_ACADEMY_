@@ -104,7 +104,7 @@ export default function PrimitivesSpecimen() {
         <h2 style={H2}>Field + Input — states with real copy</h2>
         <div className="pm-grid" id="field">
           <Field id="f-default" label="Student email" hint="We only use this for session reminders.">
-            <Input placeholder="you@school.edu" />
+            <Input placeholder="you@school.example" />
           </Field>
           <Field id="f-filled" label="Full name">
             <Input value="Amara Okafor" onChange={() => {}} />

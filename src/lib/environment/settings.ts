@@ -47,6 +47,12 @@ export interface EnvironmentSettingsView {
   shapedBy: string | null;
   /** Source of the levers: "row" · "authored" · "authored-after-failed-read" (the last is logged). */
   source: "row" | "authored" | "authored-after-failed-read";
+  /** P6-R21 — the FRESHNESS TOKEN: the row's `updated_at` exactly as read, carried by the shaping
+   * form's hidden input so the write can prove it is saving over the state it saw. `null` = no row
+   * existed at read time (the write must be an INSERT or it is stale). Never rendered, never a date
+   * on screen — a token for the write path only. Null on failed reads too: a failed read renders the
+   * honest page and there is no form to carry it. */
+  version: string | null;
 }
 
 interface Row { subject_id: string; density: string; motion_char: string; shaped_by: string; updated_at: string }
@@ -55,19 +61,19 @@ interface Row { subject_id: string; density: string; motion_char: string; shaped
 export async function getEnvironmentSettings(subjectId: SubjectId): Promise<EnvironmentSettingsView> {
   const authored = authoredLevers(subjectId);
   const env = publicSupabaseEnv();
-  if (!env) return { subjectId, levers: authored, authored, shaped: false, shapedBy: null, source: "authored" };
+  if (!env) return { subjectId, levers: authored, authored, shaped: false, shapedBy: null, source: "authored", version: null };
   try {
     const anon = createAnonClient(env.url, env.anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
     const { data, error } = await anon.from("environment_settings").select("subject_id, density, motion_char, shaped_by, updated_at").eq("subject_id", subjectId).maybeSingle<Row>();
     if (error) throw new DataReadError("environment_settings", error);
-    if (!data) return { subjectId, levers: authored, authored, shaped: false, shapedBy: null, source: "authored" }; // ABSENCE = AUTHORED (see header)
+    if (!data) return { subjectId, levers: authored, authored, shaped: false, shapedBy: null, source: "authored", version: null }; // ABSENCE = AUTHORED (see header)
     // The DB CHECKs make an unauthored value unstorable; this guard is the TS-side closed set, not a second policy.
     const levers: EnvironmentLevers = { density: isDensity(data.density) ? data.density : authored.density, motionChar: isMotionChar(data.motion_char) ? data.motion_char : authored.motionChar };
-    return { subjectId, levers, authored, shaped: true, shapedBy: data.shaped_by, source: "row" };
+    return { subjectId, levers, authored, shaped: true, shapedBy: data.shaped_by, source: "row", version: data.updated_at };
   } catch (e) {
     // A FAILED READ: the room renders the authored default (see header) — logged, never equal to "as authored" in the record.
     if (!(e instanceof DataReadError)) logFailure({ scope: "read:environment_settings", errorClass: errorClassOf(e), what: "settings read failed — environment renders the AUTHORED DEFAULT (design has a value without the database)", ids: { subject: subjectId } });
     else logFailure({ scope: "region:environment-settings", errorClass: `DataReadError(${e.code || "?"})`, what: "settings read failed — environment renders the AUTHORED DEFAULT", ids: { subject: subjectId } });
-    return { subjectId, levers: authored, authored, shaped: false, shapedBy: null, source: "authored-after-failed-read" };
+    return { subjectId, levers: authored, authored, shaped: false, shapedBy: null, source: "authored-after-failed-read", version: null };
   }
 }

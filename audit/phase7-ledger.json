@@ -1,0 +1,18 @@
+{
+  "gate": "PHASE 7 · W3 — Pedagogical Ledger",
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "checks_run": 8,
+  "checks_failed": 0,
+  "supporting_suites": {
+    "test-progress-record": "18/18 (W1)",
+    "test-settlement": "26/26 (W1)",
+    "test-next-action": "34/34 (W1)"
+  },
+  "rules": [
+    "attend-vs-resume single vocabulary (DEC-022)",
+    "settlement dignity, refusal stated (DEC-027 · STATE_LANGUAGE 7.5)",
+    "no rating/survey/feedback instruments anywhere",
+    "no exclamations in the live vocabulary"
+  ]
+}

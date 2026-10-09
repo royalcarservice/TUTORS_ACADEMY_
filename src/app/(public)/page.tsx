@@ -1,32 +1,244 @@
-import { HomeSpine } from "@/components/spine/home-spine";
-import { SPINE, validateSpine } from "@/lib/spine/scenes";
-import { SUBJECTS } from "@/lib/subjects/subjects";
+import type { Metadata } from "next";
+import Link from "next/link";
 
-/* `/` — THE NARRATIVE SPINE (Phase 4 · Step 1 · Part 5)
+import { HeroVideo } from "@/components/home/hero-video";
+import { HeroEnter } from "@/components/home/hero-enter";
+import SubjectGalleryCards from "@/components/home/subject-gallery-cards";
+import SubjectGalleryLayer from "@/components/home/subject-gallery-layer";
+import { ROUTES } from "@/config/routes";
 
-   EXTENDED, NOT REPLACED, AS A ROUTE: this file remains the (public) group's
-   page for `/`, inside the unchanged SiteHeader/SiteFooter chrome. The
-   foundation-era marketing body (hero, module grid, portal sections and its
-   copy) is RETIRED by this step's mandate — Phase 4 rebuilds the homepage as
-   nine scenes; this step renders the spine skeleton so `/` is always live,
-   always coherent, and improves one scene per later step.
+export const metadata: Metadata = {
+  title: "Tutors Academy — Where curiosity rises",
+  description:
+    "Personalised tutoring inside seven living subject environments. Learn, grow, succeed — with a tutor placed in your subject.",
+};
 
-   The retired page's anchor targets are preserved as scene ids
-   (#how-it-works #for-students #for-tutors #platform) so the existing public
-   nav keeps resolving.
+/* THE MORNING STUDY SANCTUARY (DEC-048, owner pivot 2026-10-09).
+   Deliberate pivot: the midnight-navy night meadow is overridden by warm
+   morning sunlight — ivory substrates, navy typography, champagne gold.
+   Routing, doors, copy and the shared-canvas gallery all stand; only the
+   atmosphere changed. HTML first: every word renders without JavaScript. */
 
-   CORRECT WITH NO JAVASCRIPT: every scene's content is server-rendered in
-   order; motion classes are applied only as progressive enhancement.        */
+const CANVAS = "#FDFBF7"; // warm ivory primary canvas
+const CREAM = "#F9F6F0";
+const ALABASTER = "#F4EFE6";
+const NAVY = "#0A192F"; // deep academic navy
+const NAVY_SOFT = "#0F172A";
+const SLATE = "#475569"; // refined slate navy secondary text
+const SLATE_DEEP = "#334155";
+const GOLD = "#C5A059"; // champagne gold
+const GOLD_BRIGHT = "#D4AF37";
+
+const CARD_SHADOW =
+  "0 12px 36px -8px rgba(15,23,42,0.06), 0 4px 12px -2px rgba(212,175,55,0.08)";
+
+const SERIF: React.CSSProperties = { fontFamily: "var(--ta-font-display)", fontWeight: 500 };
 
 export default function HomePage() {
-  /* The validator is loud at build time, like 3.1. */
-  const errors = validateSpine(SPINE);
-  if (errors.length) throw new Error(`[spine] invalid: ${errors.join("; ")}`);
-
   return (
-    <HomeSpine
-      scenes={SPINE}
-      subjectEntries={SUBJECTS.map((s) => ({ id: s.id, name: s.name, href: `/subjects/${s.id}`, motif: s.motif, density: s.density, status: s.status, tagline: s.tagline, accent: s.accent1 }))}
-    />
+    <div style={{ background: CANVAS, color: NAVY }}>
+      <style>{`
+        .ta-cta-primary { transition: box-shadow .25s ease, transform .25s ease; }
+        .ta-cta-primary:hover, .ta-cta-primary:focus-visible {
+          box-shadow: 0 0 30px rgba(212,175,55,0.4), 0 4px 12px -2px rgba(212,175,55,0.25);
+          transform: translateY(-1px);
+        }
+        .ta-cta-secondary { transition: box-shadow .25s ease, background-color .25s ease; }
+        .ta-cta-secondary:hover, .ta-cta-secondary:focus-visible {
+          box-shadow: 0 8px 24px -8px rgba(10,25,47,0.35);
+          background-color: #16294a;
+        }
+        .ta-hero-cta { transition: transform .25s ease, box-shadow .25s ease; }
+        .ta-hero-cta:hover, .ta-hero-cta:focus-visible {
+          transform: scale(1.03);
+          box-shadow: 0 0 28px rgba(255,255,255,0.4), 0 6px 24px -6px rgba(8,22,40,0.35);
+        }
+        @media (prefers-reduced-motion: reduce) { .ta-hero-cta:hover { transform: none; } }
+        .ta-quiet-link { transition: color .2s ease; }
+        .ta-quiet-link:hover, .ta-quiet-link:focus-visible { color: ${NAVY} !important; }
+        @media (prefers-reduced-motion: reduce) {
+          .ta-cta-primary:hover, .ta-cta-secondary:hover { transform: none; }
+        }
+      `}</style>
+
+      {/* ── HERO · CINEMATIC MORNING VIDEO (DEC-049, Wanderful-aligned) ────── */}
+      <HeroEnter />
+      <section className="relative flex min-h-screen min-h-[100svh] flex-col overflow-hidden" aria-label="Tutors Academy">
+        <HeroVideo />
+
+        {/* headline near the top, ~120px on desktop; centre stays open */}
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center" style={{ paddingTop: "clamp(96px, 12vh, 120px)" }}>
+          <h1
+            data-hero-enter
+            className="ta-font-inter mx-auto"
+            style={{
+              fontSize: "clamp(40px, 5.4vw, 72px)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              fontWeight: 400,
+              color: "#FFFFFF",
+              textShadow: "0 2px 28px rgba(8,22,40,0.38)",
+            }}
+          >
+            Learn without limits.
+            <br />
+            <span style={{ color: "rgba(255,255,255,0.88)" }}>Grow beyond expectations.</span>
+          </h1>
+        </div>
+
+        {/* bottom-centered block, 56px above the hero's edge */}
+        <div className="absolute inset-x-0 z-10 flex flex-col items-center px-4 text-center" style={{ bottom: 56 }}>
+          <div data-hero-enter className="flex flex-col items-center gap-5">
+            <div className="ta-font-barlow mx-auto max-w-xl space-y-1.5">
+              <p className="text-base" style={{ color: "rgba(255,255,255,0.96)", textShadow: "0 1px 14px rgba(8,22,40,0.45)" }}>
+                Personalised tutoring shaped around your pace, your goals, and your potential.
+              </p>
+              <p className="text-sm" style={{ color: "rgba(255,255,255,0.88)", textShadow: "0 1px 14px rgba(8,22,40,0.45)" }}>
+                Build understanding, grow in confidence, and take your next step with Tutors Academy.
+              </p>
+            </div>
+            <Link
+              href={ROUTES.register}
+              className="ta-hero-cta inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm font-semibold"
+              style={{ background: "#FFFFFF", color: "#0A192F", boxShadow: "0 6px 24px -6px rgba(8,22,40,0.35)" }}
+            >
+              Book a Free Demo
+            </Link>
+            <p className="text-[0.68rem] font-semibold tracking-[0.3em]" style={{ color: "rgba(255,255,255,0.92)", textShadow: "0 1px 12px rgba(8,22,40,0.5)" }}>
+              LEARN • GROW • SUCCEED
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 2 · THE CORE DISCIPLINES — INTERACTIVE 3D GALLERY (DEC-047) ── */}
+      <SubjectGalleryCards />
+      <SubjectGalleryLayer />
+
+      {/* ── SECTION 3 · HOW WE MENTOR ──────────────────────────────────── */}
+      <section id="mentor" className="mx-auto max-w-[96rem] px-4 py-24 sm:px-6 lg:px-8" style={{ background: CREAM }} aria-labelledby="mentor-h">
+        <p className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: GOLD }}>The pedagogical difference</p>
+        <h2 id="mentor-h" className="mt-4 max-w-2xl text-3xl sm:text-4xl" style={{ ...SERIF, color: NAVY }}>How we mentor.</h2>
+        <div className="mt-12 grid gap-10 lg:grid-cols-3">
+          {[
+            ["Individual Intellectual Arcs", "Progression tailored to the learner in front of the tutor. No conveyor belts, no one-size-fits-all syllabus march — the arc bends to the student, never the reverse."],
+            ["Relational Mentorship", "Real subject masters who guide thinking. The study lens scaffolds with questions and hints and never supplies answers — the understanding is earned, so it holds."],
+            ["Record of Mastery", "Milestones co-certified by tutor and student, preserved as a record of real understanding. Achievement substantiated in words, not scores or ranks."],
+          ].map(([t, d]) => (
+            <div key={t}>
+              <div className="h-px w-10" style={{ background: GOLD_BRIGHT }} />
+              <h3 className="mt-4 text-lg" style={{ ...SERIF, color: NAVY_SOFT }}>{t}</h3>
+              <p className="mt-3 text-sm leading-relaxed" style={{ color: SLATE }}>{d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── SECTION 4 · THE STUDENT JOURNEY ────────────────────────────── */}
+      <section id="journey" className="mx-auto max-w-5xl px-4 py-24 sm:px-6" style={{ background: ALABASTER }} aria-labelledby="journey-h">
+        <p className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: GOLD }}>From curiosity to mastery</p>
+        <h2 id="journey-h" className="mt-4 text-3xl sm:text-4xl" style={{ ...SERIF, color: NAVY }}>The student journey.</h2>
+        <ol className="mt-12 flex flex-col gap-0">
+          {[
+            ["Diagnostic Conversation", "A first dialogue about where the learner stands — preparation material for the relationship, never a score."],
+            ["Atmosphere Placement", "The student enters the chamber of their subject and settles into its environment."],
+            ["Collaborative Discovery", "Sessions inside the chamber: the board, the dialogue, the work — preserved as the board record."],
+            ["Certified Milestone", "Tutor and student certify the milestone together; the record holds it."],
+          ].map(([t, d], i) => (
+            <li key={t} className="relative flex gap-6 pb-10">
+              <div className="flex flex-col items-center">
+                <span
+                  className="flex size-9 shrink-0 items-center justify-center rounded-full border text-sm tabular-nums"
+                  style={{ borderColor: GOLD, color: SLATE_DEEP, background: "rgba(255,255,255,0.7)" }}
+                >
+                  {i + 1}
+                </span>
+                {i < 3 ? <span className="mt-2 w-px flex-1" style={{ background: "rgba(197,160,89,0.4)" }} /> : null}
+              </div>
+              <div className="pt-1.5">
+                <h3 className="text-lg" style={{ ...SERIF, color: NAVY_SOFT }}>{t}</h3>
+                <p className="mt-2 max-w-xl text-sm leading-relaxed" style={{ color: SLATE }}>{d}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* ── SECTION 5 · VOICES OF THE ACADEMY ──────────────────────────── */}
+      <section id="voices" className="mx-auto max-w-[96rem] px-4 py-24 sm:px-6 lg:px-8" style={{ background: CREAM }} aria-labelledby="voices-h">
+        <p className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: GOLD }}>Voices of the academy</p>
+        <h2 id="voices-h" className="mt-4 max-w-2xl text-3xl sm:text-4xl" style={{ ...SERIF, color: NAVY }}>
+          Reflections, held honestly.
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed" style={{ color: SLATE }}>
+          Illustrative specimens in the academy's register: real voices land here when students and
+          parents choose to give them. No star ratings, no invented counts.
+        </p>
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          {[
+            ["The first session felt like someone turned the lights on in a room I had been memorising in the dark. My tutor asked what I noticed — before telling me anything.", "Specimen voice · student, Mathematics"],
+            ["What convinced us was what the platform refuses: no leaderboard, no attention timers, no noise. Just the work, the tutor, and a record we can reread.", "Specimen voice · parent"],
+            ["I stopped asking 'is this right' and started asking 'what is this doing'. That change in the question was the whole education.", "Specimen voice · student, Physics"],
+          ].map(([q, a]) => (
+            <figure
+              key={a}
+              className="rounded-2xl border p-6 backdrop-blur-md"
+              style={{ borderColor: "rgba(212,175,55,0.22)", background: "rgba(255,255,255,0.75)", boxShadow: CARD_SHADOW }}
+            >
+              <blockquote className="text-sm leading-relaxed" style={{ color: SLATE_DEEP }}>“{q}”</blockquote>
+              <figcaption className="mt-4 text-xs tracking-wide" style={{ color: GOLD }}>{a}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      {/* ── SECTION 6 · THE INVITATION ─────────────────────────────────── */}
+      <section id="invitation" className="relative overflow-hidden px-4 py-28 text-center sm:px-6" aria-labelledby="invite-h">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 0%, #FFF1E6 0%, #FFF8ED 42%, #F9F6F0 78%)",
+          }}
+        />
+        <div className="relative">
+          <h2 id="invite-h" className="mx-auto max-w-3xl text-4xl sm:text-5xl" style={{ ...SERIF, color: NAVY, textShadow: "0 2px 26px rgba(245,230,200,0.9)" }}>
+            Begin Your Academic Journey Today.
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed" style={{ color: SLATE }}>
+            Experience a session tailored to your exact learning needs.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href={ROUTES.register}
+              className="ta-cta-primary inline-flex items-center justify-center rounded-full border px-7 min-h-[3rem] text-sm font-semibold"
+              style={{
+                borderColor: GOLD_BRIGHT,
+                background: "rgba(255,255,255,0.92)",
+                color: NAVY,
+                boxShadow: "0 4px 12px -2px rgba(212,175,55,0.25)",
+              }}
+            >
+              Apply as a Student or Parent
+            </Link>
+            <Link
+              href={ROUTES.tutorApply}
+              className="ta-quiet-link inline-flex min-h-[3rem] items-center justify-center rounded-full border px-7 text-sm font-medium"
+              style={{ borderColor: "rgba(197,160,89,0.45)", color: SLATE_DEEP, background: "rgba(255,255,255,0.6)" }}
+            >
+              Become a Tutor
+            </Link>
+          </div>
+          <nav aria-label="Footer" className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">
+            <Link href="/subjects" className="ta-quiet-link" style={{ color: SLATE }}>Subjects</Link>
+            <Link href={ROUTES.tuition} className="ta-quiet-link" style={{ color: SLATE }}>Tuition</Link>
+            <Link href={ROUTES.legalTerms} className="ta-quiet-link" style={{ color: SLATE }}>Terms</Link>
+            <Link href={ROUTES.legalPrivacy} className="ta-quiet-link" style={{ color: SLATE }}>Privacy</Link>
+            <Link href={ROUTES.admin} className="ta-quiet-link" style={{ color: SLATE }}>Admin</Link>
+          </nav>
+          <p className="mt-8 text-xs tracking-[0.3em] uppercase" style={{ color: GOLD }}>Learn • Grow • Succeed</p>
+        </div>
+      </section>
+    </div>
   );
 }

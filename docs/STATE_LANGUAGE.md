@@ -205,7 +205,7 @@ The shaping surface introduces no student-facing state and no new scope. Its own
 | row, `shaped_by` = viewer | `Last shaped by you.` | the tutor's own action on design config |
 | row, `shaped_by` ≠ viewer | `Last shaped by another tutor.` | the same fact about another tutor — no name, no date |
 
-A save that did not land adds one sentence (`That did not save. The environment is unchanged — the values shown are the ones in force.`) in the 5.7 register: a state, not a verdict; no "try again", no "contact". The room itself never says any of this: toward students the shaping is silent by decision (P6-R10).
+A save that did not land adds one sentence (`That did not save. The environment is unchanged — the values shown are the ones in force.`) in the 5.7 register: a state, not a verdict; no "try again", no "contact". A save that was REFUSED because the room moved (P6-R21, 2026-10-06) adds its own single sentence in the same register: `The room settings were updated in another session. Reload to review the current state before applying changes.` — a 409 document, the fact named, nobody blamed, and the action it names (reload) is the settling GET itself. The room itself never says any of this: toward students the shaping is silent by decision (P6-R10).
 
 ## 6.5 addendum — the tutor's states as a set (P6-R14 · P6-R15 · P6-R16)
 
@@ -225,7 +225,7 @@ renders it. Evidence: `audit/tutor-states.cjs` → `audit/tutor-states.json`.
 | T6 | the write failed, known | `?shape=failed` | one sentence beside Save; row untouched | the values shown are in force | yes |
 | T7 | the write's outcome is unknown | POST cut mid-flight | nothing of ours; the settling GET shows the truth | nothing | yes |
 | T8 | the session ended mid-save | POST with expired cookies | `/login?next=/tutor/[subject]/environment&reason=ended` — **the settling GET, not the write URL**; `That session ended. Signing in again goes back to the Physics environment.`; sign-in lands on the shaping surface | the session ended; where sign-in goes | yes |
-| T9 | a co-tutor changed the values between load and submit | the shaping POST | **last-write-wins, silent** — recorded, STOPPED AND REPORTED (design decision) | — | recorded |
+| T9 | a co-tutor changed the values between load and submit | the shaping POST | **the save is REFUSED** (P6-R21, 2026-10-06): one 409 document — *Not saved* · *"The room settings were updated in another session. Reload to review the current state before applying changes."* · one action back to the settling GET. Nothing written; the newer row stands. Names the fact, never the person | the room moved; the save did not land | yes (code + gate re-pinned to assert the refusal; harness re-run pending) |
 | T10 | a relationship ends while the page is open | the next request | 404, P6-R9's one document; nothing the tutor could have caused | there is no page here | yes (identity matrix) |
 | T11 | no settings row | the shaping surface | the authored values; `This environment is as authored.`; no Revert | a complete value | yes |
 | T12 | 500 / 404 on each route | all three | the tutor boundary's honest page / the global 404 (framework defect #99287 declared) | nothing was recorded / there is no page | yes |
@@ -249,3 +249,386 @@ URL (which answers a GET with 405 — the dead end 6.5 found and fixed). A write
 **Where relationship management will live (P6-R14).** Not the account surface (three things only). The tutor
 shell is the named future home: active relationships are already its rows; ended ones become a quieter group
 there when the consent ruling exists. See `docs/TUTOR_DISTANCE.md` row 5.
+
+## 7.3 addendum — the chamber's media states (Phase 7 · Step 3, DEC-024)
+
+The participant interface introduces two ACTION-scope states about the
+participant's OWN devices. Same register as every row above: a state, not a
+verdict; the browser or the devices are the subject — never the person; no
+banner, no red, no exclamation mark; one sentence in the running type beside
+the controls, `aria-live="polite"`, `aria-describedby` from the controls.
+
+| state | sentence (verbatim) | what it claims |
+| --- | --- | --- |
+| the browser did not grant access (or it was not asked successfully) | `Media access was not granted by your browser. You can still listen and participate via text or enable permissions in your browser settings.` | access was not granted — and what remains possible |
+| no such device exists on this machine | `No camera or microphone was found on this device. The session can still be joined with what is available.` | the device is absent; retrying stays open (a camera may be plugged in), so no control is disabled for it |
+
+Error CLASSES go to the log (`{scope:"live:media", errorClass:"MediaDenied"}`);
+the screen receives only the sentence. Privacy is the INITIAL state: the first
+render requests nothing — capture exists only inside a click handler the
+participant chose, and departure (Leave Chamber) stops every track. Zero
+timers, zero persistence, zero attendance signal: the speaking glow is a
+transient boolean on the participant's own opted-in microphone.
+
+## 7.5 addendum — the session's aftermath (Phase 7 · Step 5, DEC-027)
+
+The settlement surface speaks once a session is concluded — SETTLING (its
+window) and CONCLUDED alike. Same register as every row above: a fact named
+calmly, never a verdict about a person; no stars, no survey, no feedback
+modal, no evaluative drop-down; one primary action per view.
+
+| state | who | sentence (verbatim) | what it claims |
+| --- | --- | --- | --- |
+| session concluded, record written | student | `The session in {Subject} has concluded. Your record in {Subject} has been updated.` | the session ended and the student's own record carries the attendance fact |
+| session concluded, record pending | student | `The session in {Subject} has concluded.` | the session ended; nothing is claimed about the record, because none is written yet |
+| session concluded, nothing recorded | tutor | `The session in {Subject} has concluded. Confirm to record attendance for the enrolled students.` + `The record holds one fact — attendance — and evidences the Learn and Progress steps of the arc, in the arc's own vocabulary.` + `Notes about the student are not kept: the record holds facts, never summaries.` | the tutor's one remaining act; the refusal of notes is stated, not hidden (P5-R6) |
+| session concluded, recorded | tutor | `Attendance is recorded for the students enrolled in {Subject}.` | the facts stand; the way back is the placements |
+| a settlement the route refused | either | `The session could not be settled. Its current state stands.` | the attempt failed and nothing changed — the surface re-read shows the truth |
+
+Departure actions: the student returns to the student workspace; the tutor to
+the placements. The conclude action itself ("Conclude the session") is the
+tutor's alone and stands apart from the four-control cluster: lifecycle is
+not a media control. Confidentiality at conclusion: the room unmounts — the
+canvas state and every media track are discarded; nothing of the session
+lingers on the device.
+
+## 7.6 addendum — the session channel's presence (Phase 7 · Step 6, DEC-028)
+
+The room's status bar gains a presence line once the session channel stands —
+who the channel knows, named calmly. Same register as every row above: a fact
+announced, never a score, never a verdict about a person. No attention
+metering, no speaking-rank, no engagement number — presence is binary and
+plain.
+
+| state | who | sentence (verbatim) | what it claims |
+| --- | --- | --- | --- |
+| the channel knows the tutor | anyone in the room | `Tutor present` | the tutor's presence fact has arrived on the channel |
+| the channel knows a student | anyone in the room | `Student present` | the student's presence fact has arrived on the channel |
+| the channel knows no one | anyone in the room | `The room is empty` | no presence facts stand — nothing is invented |
+| the lifecycle word | anyone in the room | the chamber state word (`Standby` · `In session` · `Settling` · `Concluded`) | unchanged — the word rides the channel now, but the vocabulary is the state machine's own (7.2) |
+
+Speaking and video travel as presence FACTS (`isSpeaking`, `hasVideo`), never
+as rankings or durations; an unchanged fact never travels. The rehearsal
+lifecycle actions ("Rehearsal — conclude the session" · "Rehearsal — reopen
+the session") are the tutor's alone and are clearly named as rehearsal —
+dev-only copy that never appears on the production surface. Conclusion by
+signal speaks the same closing sentence as settlement's 7.5 (`The session in
+{Subject} has concluded.`) and unmounts the workspace: confidentiality rides
+the channel exactly as it rides the settle route.
+
+## 8.1 addendum — the archive's shelf language (Phase 8 · Step 2, DEC-030)
+
+The subject archive speaks like a library, never like a feed. Same register
+as every row above: a fact named calmly, nothing counted, nothing ranked,
+nothing recommended. The three artifacts take the archive's own words — one
+constant each, so the shelf cannot drift.
+
+| artifact | the archive's word | banned instead |
+| --- | --- | --- |
+| the session's whiteboard, preserved | `Board Record` | "thumbnail", "snapshot preview grid" |
+| the tutor's pedagogical notes | `Session Notation` | "summary card", "lesson recap video" |
+| the session's audio, kept whole | `Chamber Audio` | "VOD", "Replay File", "Recording Upload" |
+
+| state | sentence (verbatim) | what it claims |
+| --- | --- | --- |
+| no concluded sessions yet | `No archived sessions in {Subject} yet. Artifacts are preserved here after learning sessions conclude.` | the shelf is honestly empty; preservation begins at conclusion |
+| chamber audio, playback unwired | ~~`Playback opens with the recordings wiring.`~~ — DISCHARGED by DEC-031 (Step 3 wired the player); the row stands as history | the audio was held; the debt is paid |
+| a notation row with no readable text | `The notation for this session is held in the archive.` | the fact exists; its words are not yet readable |
+
+The shelf reads most-recent-first, and each session names its date, its
+title, and — only when the boundary allows it — the tutor who opened it.
+What the boundary withholds stays silent rather than guessed. There is no
+view count, no duration badge, no "watch next", no share icon: the
+zero-engagement rule (DEC-029) shapes the surface exactly as it shapes the
+schema. The doors that lead here are quiet links in the ShapeLink's own
+grammar — never a primary, never beside a student.
+
+## 8.2 addendum — the archive's review language (Phase 8 · Step 3, DEC-031)
+
+The artifact viewer is a scholarly review mode: one artifact stands alone in
+a dark graphite drawer above the shelf, framed by the subject's own tokens.
+Its register is the shelf's — a fact named calmly, one sentence per state,
+never an exclamation mark, never a counter, never a second thing to look at.
+
+| state | sentence (verbatim) | what it claims |
+| --- | --- | --- |
+| the drawer is fetching | `The archive is fetching this artifact.` | the bytes are being signed and read, at the moment of inspection |
+| no service key stands | `This artifact stands in the archive; its bytes open in a credentialed environment.` | the fact exists; the signed URL is an environment's gift, not a fabrication |
+| the read fails | `This artifact could not be opened. The archive has not lost it.` | a failure of access, never a loss of record |
+| the board record is malformed | `The board record could not be read back.` | one bad entry refuses the whole record — a partial board would be a fabrication |
+| a notation carries no text | `The notation for this session is held in the archive.` | carried from 8.1, unchanged |
+
+The board record returns stroke by stroke in Playback, or stands whole in
+Board — the two modes are real buttons with pressed state, and the opening
+state is always the static board: motion begins only when the reader asks,
+which is how the reduced-motion contract is honored by default rather than
+by special case. Pan and zoom are keys and buttons first — arrow keys pan,
+plus and minus zoom, zero resets — and the drag is the enhancement, never
+the only route. The chamber audio plays at 1.0, 1.25 or 1.5, never faster,
+never pitched; there is no up-next, nothing recommended, nothing to share —
+the recording belongs to the session's participants, reached by a signed URL
+that opens only when a reader reaches for it. Leaving is seamless: Escape,
+the backdrop or the Close button returns the reader to the shelf, and focus
+goes back to the handle that opened the drawer.
+
+## 8.3 addendum — the chronology's language (Phase 8 · Step 4, DEC-032)
+
+The milestone synthesis speaks the archive's register, chronologically: what
+a student reached, in the order it happened, each entry substantiated by
+what that very session left behind. The owner's Step 4 ruling admits the
+word "milestone" in the CHRONOLOGICAL sense only — a named stage of the
+arc, evidenced by real facts, pointing at real rows. The reward register
+remains refused, everywhere: no badge, no XP, no level, no unlock, no
+congratulations — a milestone is a date with evidence, never a prize.
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `Conceptual Arc` | the chronology's eyebrow | the timeline follows the arc's own steps |
+| `Your Milestone Record in {Subject}` | the student's heading | one subject's chronology, owned by the reader |
+| `Milestones co-certified` | the tutor's heading | the tutor sees only the relationship they stand in |
+| `Milestone Reached` | each dated entry | a fact happened; the stage it evidences is named |
+| `Substantiated by {Board Record · Session Notation · Chamber Audio}` | each artifact line | the entry points at the preserved object itself |
+
+The chronology renders nothing that is not a fact: no numeral that is not a
+date, no count, no ratio, no bar, no ring. Empty means ABSENT — the slot
+renders no DOM, the record region renders none; "nothing is recorded" is
+never spoken as "0". The links go to the subject archive, where the record
+stands; the chronology is the index, the archive is the shelf.
+
+
+## 9.1 addendum — the Socratic engine's language (Phase 9 · Step 1, DEC-033)
+
+The Socratic assistance engine speaks scaffolding, never solutions. Its
+guidance union is hint, question, reference — there is no "answer" kind, so
+a completed working cannot be emitted by construction. A student's inquiry
+that demands the working itself receives ONE calm redirect; the working
+stays the student's own.
+
+| posture | the engine's sentence (verbatim) | what it does |
+| --- | --- | --- |
+| empty inquiry | `Name the concept you are working on, and say what about it feels unresolved. One or two sentences serve reflection best.` | asks for the concept, declines to guess |
+| overlong inquiry (past 500 chars) | `A shorter question serves reflection best. Restate what you are asking in at most five hundred characters, and the scaffold will meet it there.` | enforces the brevity discipline |
+| completion demand | `This engine keeps the concept's scaffold and its questions; the working stays the student's own. Take the first step the concept asks of you, and say what you notice.` | scaffolds, never answers |
+| unknown milestone | `No scaffold is recorded yet for this milestone in {Subject}. Bring the question to your next session, or ask about a stage the subject's scaffold names.` | honest absence; nothing invented |
+| archive citation | `Your own {Board Record · Session Notation · Chamber Audio} of {date} stands in the archive beside this stage. Open it, and read the record before you answer.` | points at the student's own record, re-states nothing |
+
+The engine's register inherits the archive's discipline: the three artifact
+words stand verbatim; no exclamation mark, no emoji, no reward vocabulary,
+and — new in this phase — **zero psychological diagnosis, zero sentiment
+grading**: guidance speaks the concept, never the student's mood, traits or
+worth. Brevity is the contract (500 characters, mirrored in the DB); a
+disciplined question serves reflection better than a lengthy essay. No
+surface speaks these sentences yet — the engine is schema and pure logic;
+the day a surface renders them, it renders them exactly as pinned in
+`scripts/test-socratic-logic.mjs`.
+
+
+## 9.2 addendum — the Socratic lens's language (Phase 9 · Step 2, DEC-034)
+
+The lens speaks the engine's register on the subject's substrate: an
+architectural region — bordered, marked, titled — never a chatbot widget.
+No avatar, no bubble, no typing indicator, no greeting, no exclamation.
+The region names what it does and what it refuses, in one sentence.
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `Pedagogical Reflection · {Subject}` | the lens's title, beside the subject mark | one region, one subject, one reader |
+| `This lens provides conceptual scaffolding and references based on your active milestones. It does not replace your tutor or solve exercises directly.` | the capabilities statement | the engine's boundary, stated once |
+| `No reflections are recorded here yet. Ask about the stage you are working on; the lens keeps the guidance it returns.` | the empty log | absence, named; the composer still works |
+| `Formulate a question about {concept}...` | the composer's placeholder | the inquiry names its milestone |
+| `Reflect` | the composer's ONE action | the verb of the region |
+
+The card's badges are the closed three — `Guiding Question`, `Conceptual
+Hint`, `Proof Reference`; a citation stands in one compact sentence:
+`Review {Board Record · Session Notation · Chamber Audio} from session on
+{date}`, in the archive's own word, linking to the record's anchor in the
+subject archive.
+
+The composer's failures speak the closed vocabulary, calmly:
+
+| state | the sentence (verbatim) |
+| --- | --- |
+| empty inquiry | `Write the question first; the lens reflects on what you ask.` |
+| past the 300-character composer limit | `A shorter question serves reflection best. The limit is three hundred characters.` |
+| the seam could not record | `The reflection could not be recorded. The lens stays as it was; try again when you are ready.` |
+
+Brevity is structural: the composer enforces three hundred characters at
+the point of composition; the contract's five hundred remains the outer
+bound the schema mirrors. Cheerful conversational filler ("Hey there",
+"How can I help you today", "Certainly", "Great question") is banned and
+swept; the engine's 9.1 postures govern every guidance body the card
+renders. Zero animation in the region: the lens is architecture, not
+theatre.
+
+
+## 9.3 addendum — the oversight's language (Phase 9 · Step 3, DEC-035)
+
+The tutor's diagnostic mirror speaks preparation, never judgment. It sits
+beneath the record region of the relationship surface and inherits Phase
+6's typographic calm: mono eyebrows, the reading face, hairline rules.
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `Conceptual Explorations · {Subject}` | the panel's heading | one subject's inquiries, in the relationship the tutor stands in |
+| `Conceptual inquiries` | the list's accessible name | what the panel holds, plainly |
+| `The student's inquiries to the study lens, preserved as asked. They stand here to prepare the next dialogue — nothing on this panel scores, rates or flags them.` | the purpose sentence | the mirror's boundary, stated once |
+| `Mark for Next Live Session` / `Marked for Next Live Session` | the one act, unpressed / pressed | the tutor's own preparation note — binary, withdrawable |
+
+Each inquiry stands exactly as asked, beside its milestone path and its
+instant in words (`24 September 2026 · 12:00 UTC`). The register's
+refusals are structural: no comprehension rating, no difficulty flag, no
+"struggled", no count of questions, no idle time, no recency beyond the
+read's own order — the schema holds no such column, and the panel renders
+no such word. The relationship surface's statement evolves with the mark
+(declared, DEC-035): `This page reads the record and prepares the next
+dialogue. Nothing else is done here by a tutor yet: teaching surfaces are
+not built.`
+
+
+## 9.4 addendum — the gate closes the phase (Phase 9 · Gate, DEC-036)
+
+The gate's language is the phase's language, held still. Five windows ran;
+every verdict is committed under `audit/phase9-*.json`, and the full record
+stands in `PHASE9_GATE_REPORT.md`. What the close adds to the register:
+
+- **The engine is certified bounded.** W2's audit pins what DEC-033 declared
+  by construction: "answer" is unrepresentable in the guidance union; the
+  completion demand has ONE path, the redirect; the disciplined question
+  leads; the honest absence is the only answer an unknown milestone
+  receives. Brevity is measured end-to-end — three hundred at the point of
+  composition, five hundred in the contract and the schema.
+- **The engine is certified private.** W3's audit proves the mirror is not
+  a wiretap: zero surveillance vocabulary, zero grading vocabulary, zero
+  clock or timer, no evaluative column in either table. The only write
+  anywhere is the tutor's own binary preparation mark; the inquiry stands
+  exactly as asked. Subject isolation holds in SQL and in logic alike.
+- **The engine is certified light.** W4 measured what construction claims:
+  the island carries zero timers, the oversight ships zero client
+  JavaScript, and the payload stands at 165.9 KB gzip on chunks shared
+  with the archive rehearsal — zero socratic-only bundle.
+- **Nothing new owes an exception.** The register holds at nineteen open:
+  every Phase 9 surface speaks only where real rows stand, and the schema
+  that holds them is unapplied — so every reachable state today is the
+  pinned honest absence (the isolate posture). Two declared evolutions,
+  both recorded, neither an exception: the slot map's `ai-assistance` gate
+  (DEC-034) and the relationship statement (DEC-035, re-pin owed).
+- **The gate creates zero identities** — every window ran offline; the
+  credentialed harnesses stand owed with their committed baselines.
+
+The lineage: DEC-033 the engine · DEC-034 the lens · DEC-035 the mirror ·
+DEC-036 the gate. The engine waits for its schema — bounded, private, and
+dignified — and opens the day migrations 0004–0010 land, with zero edits.
+Phase 10 awaits its brief.
+
+
+## 10.1 addendum — the legal framework's language (Phase 10 · Step 1, DEC-037)
+
+The legal pages speak the way the rest of the platform behaves: clear,
+honest, calm — no exclamation marks, no coercion, no decorative urgency.
+Three documents stand on three public routes, and the register's E-07
+closes with them.
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `As a student under 18, the Digital Personal Data Protection Act requires verified guardian consent before enrolling in subject chambers.` | the guardian gate, the framework page, the privacy notice | the gate's legal basis, the brief's requirement verbatim |
+| `Used only to verify this consent. Never for marketing, never shared with the student's tutors.` | beside the gate's single field | the email's purpose, stated once |
+| `Guardian consent recorded. The confirmation email channel is not wired in this deployment, so the link stands recorded but unsent; it will be delivered when the channel opens.` | the gate, after the act | the honest outcome — never "email sent" while the channel is owed |
+| `The consent could not be recorded. Nothing was changed; repeating is safe.` | the closed failure | claims only what is known |
+| `There is no cookie banner on this site because there is nothing to consent to — no tracker runs here.` | the privacy notice, §3 | zero tracking stated as a fact, not a preference |
+
+The consent vocabulary is closed and swept: zero exclamation marks, zero
+countdowns, zero pre-checked boxes, zero coercive alternatives — proven by
+`scripts/test-legal-logic.mjs` (23 checks). The connecting address reaches
+the audit ONLY as a one-way SHA-256 digest, computed server-side; absence
+hashes indistinguishably (the `no-address` sentinel). The audit is
+append-only by deliberation: a consent is an occurrence, recorded once,
+exactly as given; idempotency is the write action's calm refusal, not a
+database constraint.
+
+What is owed, in the register's own words: the gate's wiring into real
+onboarding (no date-of-birth question exists yet) · the confirmation-link
+delivery channel · live apply of migration 0011 with 0004–0010 · the
+standing contact route, published the day real onboarding opens. Real
+onboarding stays closed — the framework stands so the door can open
+honestly, not so it opens today.
+
+
+## 10.2 addendum — the onboarding's language (Phase 10 · Step 2, DEC-038)
+
+The age gate speaks the way the legal framework does: plainly, once,
+without urgency. The sentences below are pinned by
+`scripts/test-onboarding-logic.mjs` (33 checks); the surfaces render them
+verbatim.
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `Consent has been confirmed. The student's academy access is now active.` | the verification's confirmation page | the brief's sentence, verbatim — the subject placeholder omitted, because no enrolment exists at verification time |
+| `Tutor accounts are opened by invitation. Self-service registration for tutors is not open in this deployment.` | the tutor invitation gate, and the action's refusal | the gate's complete answer — a refusal is a sentence, not a dead end |
+| `Your account is created. Confirm your email and sign in — the guardian consent gate stands next, and enrolment waits for your guardian's confirmation.` | the minor's signup outcome | the pending_guardian state, stated once |
+| `You are under 18. A guardian will be asked to confirm consent before you can enrol in subject chambers.` | the form, when the entered birth date is under 18 | the gate announced before the act, never after |
+| `The verification link stands recorded. The delivery channel is not wired in this deployment, so the link is not shown here — it will be emailed to the guardian when the channel opens.` | the guardian gate's recorded outcome | the honest delivery debt — and the security posture: the token never reaches the student's browser |
+| `That could not be recorded. Nothing was changed; repeating is safe.` | the closed failure | claims only what is known |
+
+The age boundary is language too: "under 18" is computed server-side from
+the date of birth, and its edges are pinned in words — the 18th birthday
+is the FIRST adult day; a 29 February birth observes its majority on
+28 February in common years (the Postgres convention, mirrored by the
+pure logic). Form, action and trigger can never disagree, because all
+three read the same pure module.
+
+Two test-era words are retired from the register surface: the "Test
+accounts only" alert and the test-account acknowledgement checkbox — real
+onboarding stands, so the form no longer claims every account is a test
+account. Test accounts keep their own path (`scripts/test-account.mjs`),
+untouched and unnamed in the form.
+
+
+## 10.3 addendum — the hardening's language (Phase 10 · Step 3, DEC-039)
+
+The defenses speak once, and calmly. One new sentence joins the register:
+
+| phrase (verbatim) | where it stands | what it claims |
+| --- | --- | --- |
+| `Too many attempts have been made recently. Please wait a few moments before trying again.` | the 429 body of /login, /register and /auth/verify-guardian | the limit — stated without accusation, without a count, without blame |
+
+The sentence is pinned by `scripts/test-security-logic.mjs` (14 checks):
+zero exclamation marks, no disclosure of which budget was spent, and an
+honest Retry-After beside it.
+
+Refusals stay indistinguishable by design: a sign-in failure speaks one
+vague sentence whether the email exists or not — the platform never names
+the absence of an account, and the sweep proves no "wrong password"
+variant exists. The zero-leak sweep asserts what silence looks like in
+the tree: no secrets, no real addresses, no tracked env files — 532
+files scanned, zero unexplained findings, the allowlist RFC-based and
+hand-read, never a waiver.
+
+
+## 10.4 addendum — the certificate's language (Phase 10 · Gate, DEC-040)
+
+The gate's language is the platform's language, held still one last time.
+Five windows ran; every verdict is committed under `audit/phase10-*.json`,
+and the full record stands in `PHASE10_FINAL_GATE_REPORT.md`. What the
+certificate adds to the register:
+
+- **Ready means proven.** 308 tests green, five gates passed, the edge
+  defenses measured live, zero leaks, zero surveillance, zero real
+  identities in the tree. It does NOT mean the sandbox proved what only
+  credentials can prove — the launch checklist names that boundary in the
+  open.
+- **The calm refusals held to the end.** The 429 sentence, the sign-in's
+  vague refusal, the guardian gate's honest delivery debt, the
+  verification handler's `unavailable` — each states what is known and
+  nothing more. The platform never guesses aloud.
+- **The honest absence is the platform's native tongue.** Every dormant
+  surface — the lens awaiting 0009, the archive awaiting its writer, the
+  gate awaiting its email channel — says so. Nothing asserts a fact the
+  record does not hold.
+- **Nothing owed is hidden.** Eighteen exceptions stand stated in the
+  register; the launch checklist states the six steps that stand between
+  the build and real students; the credentialed walks and the browsered
+  baselines stand with their committed baselines.
+
+The lineage closes its tenth phase: DEC-001…DEC-040 record the rulings,
+the four gate reports record the verdicts, and the platform waits now for
+credentials, not code.

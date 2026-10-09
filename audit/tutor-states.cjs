@@ -13,7 +13,7 @@
  *   write-unknown-outcome    a POST cut mid-flight claims nothing; the GET shows the settled state
  *   write-failed-known       an invalid body → 303 ?shape=failed → one sentence beside the control, row unchanged
  *   write-session-ended      an expired-session POST → login with reason=ended and next = THE SETTLING GET (not the write URL)
- *   write-concurrent         a row changed between load and submit: reports last-write-wins and whether it is SILENT
+ *   write-concurrent         a row changed between load and submit: P6-R21 REFUSE_STALE_WRITE — asserts the 409 refusal (was: recorded last-write-wins)
  *   shaping-read-failed      the shaping surface's failed-read branch is an honest page, never a form (dev frame + code gate)
  *   never-contains           the consolidated banned-term sweep across every tutor surface
  *   pii-floor                no email / uuid / auth metadata about a student on any tutor surface
@@ -183,17 +183,26 @@ const tutorUId = () => sql(`select id from auth.users where email='${ACC.tutorU}
   R.evidence.write.sessionEnded.afterSignIn = { landed: T.p.url().replace(P, ""), status: 200, state: (strip(await T.p.content()).match(/This environment is as authored\.|Last shaped by you\.|Last shaped by another tutor\./) || [null])[0] };
   gate("write-session-ended", /^\/login\?/.test(ended.final) && R.evidence.write.sessionEnded.reason && decodeURIComponent(nextParam) === ENV && !!R.evidence.write.sessionEnded.sentence && R.evidence.write.sessionEnded.rowAfter === before && R.evidence.write.sessionEnded.afterSignIn.landed === ENV, R.evidence.write.sessionEnded);
 
-  /* case 4: CONCURRENT — the row changes between load and submit (another tutor's write, done here with SQL as tutor U) */
+  /* case 4: CONCURRENT — the row changes between load and submit (another tutor's write, done here with SQL as tutor U).
+     P6-R21 (ruling of 2026-10-06, DEC-018 addendum): last-write-wins was REJECTED. The stale save must be REFUSED —
+     a 409 carrying the ruling's sentence, nothing written, and the other tutor's row left standing. */
   await get(T.p, P + ENV);
   const uId = tutorUId();
   sql(`insert into public.environment_settings (subject_id, density, motion_char, shaped_by, updated_at) values ('physics','sparse','precise','${uId}',now()) on conflict (subject_id) do update set density='sparse', motion_char='precise', shaped_by='${uId}', updated_at=now()`);
   const during = rowOf("physics");
+  let concStatus = null;
+  const onConc = (r) => { if (/\/environment\/shape$/.test(r.url()) && r.request().method() === "POST") concStatus = r.status(); };
+  T.p.on("response", onConc);
   const conc = await submitForm(T.p, "form[data-shape-form]", { density: "dense", motionChar: "editorial" });
+  T.p.off("response", onConc);
   const concText = strip(mainOf(conc.html));
   const afterConc = rowOf("physics");
-  R.evidence.write.concurrent = { rowAtLoad: before, rowChangedUnderneath: during, landed: conc.final, rowAfterSubmit: afterConc, surfaceState: (concText.match(/This environment is as authored\.|Last shaped by you\.|Last shaped by another tutor\./) || [null])[0], anySentenceAboutTheOtherWrite: /another tutor|changed since|was changed|since you opened/.test(concText), verdict: null };
-  R.evidence.write.concurrent.verdict = afterConc !== during && !R.evidence.write.concurrent.anySentenceAboutTheOtherWrite ? "LAST-WRITE-WINS, SILENT — the other tutor's change was overwritten and nothing on the surface says so" : afterConc !== during ? "LAST-WRITE-WINS, STATED" : "the submit did not overwrite";
-  gate("write-concurrent", true, { ...R.evidence.write.concurrent, note: "this gate RECORDS; it does not pass/fail — the verdict is a design decision for the user (6.5 test 8)" });
+  const CONFLICT_SENTENCE = "The room settings were updated in another session. Reload to review the current state before applying changes.";
+  R.evidence.write.concurrent = { rowAtLoad: before, rowChangedUnderneath: during, status: concStatus, landed: conc.final, rowAfterSubmit: afterConc, conflictSentence: concText.includes(CONFLICT_SENTENCE), verdict: null };
+  R.evidence.write.concurrent.verdict = afterConc === during && concStatus === 409 && R.evidence.write.concurrent.conflictSentence
+    ? "REFUSED — the stale save did not land; the other tutor's row stands; the ruling's sentence rendered (P6-R21)"
+    : "UNEXPECTED — the stale write was not refused as ruled; see evidence";
+  gate("write-concurrent", afterConc === during && concStatus === 409 && R.evidence.write.concurrent.conflictSentence && conc.final === ENV + "/shape", { ...R.evidence.write.concurrent, note: "P6-R21 REFUSE_STALE_WRITE: 409 + the ruling's sentence + no redirect; the gate now ASSERTS the refusal (it recorded last-write-wins until the 2026-10-06 ruling)" });
   /* restore the fixture: physics back to what it was */
   if (before === "ABSENT") sql("delete from public.environment_settings where subject_id='physics'");
   else { const [d, m, by] = before.split("/"); sql(`insert into public.environment_settings (subject_id, density, motion_char, shaped_by, updated_at) values ('physics','${d}','${m}','${by}',now()) on conflict (subject_id) do update set density='${d}', motion_char='${m}', shaped_by='${by}', updated_at=now()`); }
