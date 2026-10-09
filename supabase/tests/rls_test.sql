@@ -79,6 +79,13 @@ do $$ begin
   raise exception 'RLS ASSERTION FAILED: A changed her own role';
 exception when insufficient_privilege or check_violation then raise notice 'ok — A cannot change her own role (%)', sqlerrm; end $$;
 update t set n = n + 1;
+-- Nor can a user alter a server-owned approval state; own-row RLS is not a
+-- column boundary, so migration 0016 removes the table-wide UPDATE grant.
+do $$ begin
+  update public.profiles set approval_status = 'pending_approval' where id = auth.uid();
+  raise exception 'RLS ASSERTION FAILED: A changed a server-owned approval state';
+exception when insufficient_privilege then raise notice 'ok — A cannot change approval_status (%)', sqlerrm; end $$;
+update t set n = n + 1;
 -- but she CAN edit her display name
 update public.profiles set display_name = 'A renamed' where id = auth.uid();
 select pg_temp.ok((select display_name from public.profiles where id = auth.uid()) = 'A renamed', 'A can update her own display name');

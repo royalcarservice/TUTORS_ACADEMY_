@@ -15,6 +15,15 @@ alter table public.profiles
   add constraint profiles_approval_status_check
   check (approval_status in ('approved', 'pending_payment', 'pending_approval', 'rejected'));
 
+-- The legacy own-row RLS policy only constrains which row a user can update;
+-- it does not constrain which columns they can change. Remove the old
+-- table-wide UPDATE grant so a tutor cannot self-set approval_status (or alter
+-- role, guardian state, or other server-owned fields). Existing client code
+-- only edits display_name; privileged server actions retain their service-role
+-- access and continue to perform onboarding/approval transitions.
+revoke update on table public.profiles from authenticated;
+grant update (display_name) on table public.profiles to authenticated;
+
 -- A newly-created tutor must not inherit the legacy profile default of
 -- approved, even for the short interval before the application save RPC runs.
 -- Preserve the existing guardian DOB metadata behavior for student signups.
