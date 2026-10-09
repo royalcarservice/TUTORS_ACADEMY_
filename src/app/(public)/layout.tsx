@@ -1,5 +1,5 @@
 import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteNav } from "@/components/navigation/site-nav";
+import { PublicNavSwitch } from "@/components/navigation/public-nav-switch";
 
 /**
  * Public website chrome: the cinematic navigation + main + footer.
@@ -15,7 +15,7 @@ export default function PublicLayout({
 }) {
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <SiteNav />
+      <PublicNavSwitch />
       <main id="main" className="flex-1">
         {children}
       </main>

@@ -695,3 +695,36 @@ All contracts stand: 1500/400 particles, ±3.5° hero parallax, reduced-
 motion static frames, visibility pause, HTML-first markup, AA-legible
 ink accents on ivory (GALLERY_INK), damped ±3° card tilt with hover
 lift, single shared WebGL context with View portals.
+
+## DEC-049 — Cinematic Video Hero & Liquid-Glass Navigation (owner brief, 2026-10-09)
+
+The Wanderful-aligned reference overrides the earlier hero concepts:
+full-viewport cinematic video (owner-supplied CloudFront mp4, autoplay
+muted loop playsInline, object-cover in a 1.08 wrapper, playbackRate
+1.25, subtle lower gradient only), GSAP pointer parallax (offsets × 20,
+lerp 0.06; disabled on touch and reduced motion — reduced motion also
+freezes the video on a lit frame). Headline "Learn without limits. /
+Grow beyond expectations." in Inter 400 at clamp(40px,5.4vw,72px);
+bottom-centered support copy, white pill "Book a Free Demo" (→ the
+existing /register booking door) and LEARN • GROW • SUCCEED. Header:
+official lockup left at modest size, centered liquid-glass pill
+(HOME · SUBJECTS · WHY US · CONTACT), glass BOOK A FREE DEMO right;
+compact accessible mobile menu. Other public pages keep SiteNav via a
+pathname switch.
+
+- **DEMO LABELS RETURN.** The owner brief re-mandates "Book a Free Demo";
+  this supersedes DEC-046-A's labels on the hero and nav. The application
+  doors stand elsewhere: invitation keeps "Apply as a Student or Parent"
+  plus a "Become a Tutor" door; /register and /tutor/apply untouched.
+- **CSP — two DECLARED exceptions** (next.config.ts): media-src for the
+  video CDN host, and style-src/font-src for fonts.googleapis.com /
+  fonts.gstatic.com (Instrument Serif, Barlow, Inter per brief). No other
+  external source stands; the sweep and this entry are the record.
+- **Honesty of technique**: the hero is a cinematic video with pointer
+  parallax — never described as interactive 3D. The rendered 3D subject
+  gallery below stands unchanged (seven doors, shared canvas).
+- **HeroCanvas/HeroDrift** (the morning meadow) retire unreferenced, per
+  the standing no-delete rule; a future owner decision may revive them.
+- **Deployment**: production CD rides the pushed branch; a pull request
+  additionally yields a Netlify deploy PREVIEW so the owner can review
+  without production changing underneath them.

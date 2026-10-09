@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { HeroCanvas, HeroDrift } from "@/components/home/hero-canvas";
+import { HeroVideo } from "@/components/home/hero-video";
+import { HeroEnter } from "@/components/home/hero-enter";
 import SubjectGalleryCards from "@/components/home/subject-gallery-cards";
 import SubjectGalleryLayer from "@/components/home/subject-gallery-layer";
 import { ROUTES } from "@/config/routes";
@@ -47,6 +48,12 @@ export default function HomePage() {
           box-shadow: 0 8px 24px -8px rgba(10,25,47,0.35);
           background-color: #16294a;
         }
+        .ta-hero-cta { transition: transform .25s ease, box-shadow .25s ease; }
+        .ta-hero-cta:hover, .ta-hero-cta:focus-visible {
+          transform: scale(1.03);
+          box-shadow: 0 0 28px rgba(255,255,255,0.4), 0 6px 24px -6px rgba(8,22,40,0.35);
+        }
+        @media (prefers-reduced-motion: reduce) { .ta-hero-cta:hover { transform: none; } }
         .ta-quiet-link { transition: color .2s ease; }
         .ta-quiet-link:hover, .ta-quiet-link:focus-visible { color: ${NAVY} !important; }
         @media (prefers-reduced-motion: reduce) {
@@ -54,52 +61,53 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* ── HERO · THE MORNING STUDY SANCTUARY ─────────────────────────── */}
-      <section className="relative flex min-h-[100svh] flex-col overflow-hidden" aria-label="Tutors Academy">
-        <HeroCanvas />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-28"
-          style={{ zIndex: 1, background: `linear-gradient(transparent, ${CANVAS})` }}
-        />
-        <div className="relative mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-4 pt-24 text-center" style={{ zIndex: 10 }}>
-          <HeroDrift>
-            <p className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: GOLD }}>
-              Learn • Grow • Succeed
-            </p>
-            <h1
-              className="mt-6 text-5xl leading-[1.05] tracking-tight sm:text-7xl"
-              style={{ ...SERIF, color: NAVY, textShadow: "0 2px 30px rgba(245,230,200,0.9)" }}
-            >
-              Where curiosity rises.
-              <br />
-              And futures begin.
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed sm:text-lg" style={{ color: SLATE }}>
-              Discover personalised tutoring that builds confidence, deepens understanding, and helps
-              every learner move forward.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href={ROUTES.register}
-                className="ta-cta-primary inline-flex items-center justify-center rounded-full border px-7 min-h-[3rem] text-sm font-semibold"
-                style={{
-                  borderColor: GOLD_BRIGHT,
-                  background: "rgba(255,255,255,0.92)",
-                  color: NAVY,
-                  boxShadow: "0 4px 12px -2px rgba(212,175,55,0.25), inset 0 0 0 1px rgba(255,255,255,0.6)",
-                }}
-              >
-                Apply as a Student or Parent
-              </Link>
-              <Link
-                href={ROUTES.tutorApply}
-                className="ta-cta-secondary inline-flex min-h-[3rem] items-center justify-center rounded-full border px-7 text-sm font-medium"
-                style={{ background: NAVY_SOFT, borderColor: "rgba(212,175,55,0.35)", color: "#FDFBF7" }}
-              >
-                Become a Tutor
-              </Link>
+      {/* ── HERO · CINEMATIC MORNING VIDEO (DEC-049, Wanderful-aligned) ────── */}
+      <HeroEnter />
+      <section className="relative flex min-h-screen min-h-[100svh] flex-col overflow-hidden" aria-label="Tutors Academy">
+        <HeroVideo />
+
+        {/* headline near the top, ~120px on desktop; centre stays open */}
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center" style={{ paddingTop: "clamp(96px, 12vh, 120px)" }}>
+          <h1
+            data-hero-enter
+            className="ta-font-inter mx-auto"
+            style={{
+              fontSize: "clamp(40px, 5.4vw, 72px)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              fontWeight: 400,
+              color: "#FFFFFF",
+              textShadow: "0 2px 28px rgba(8,22,40,0.38)",
+            }}
+          >
+            Learn without limits.
+            <br />
+            <span style={{ color: "rgba(255,255,255,0.88)" }}>Grow beyond expectations.</span>
+          </h1>
+        </div>
+
+        {/* bottom-centered block, 56px above the hero's edge */}
+        <div className="absolute inset-x-0 z-10 flex flex-col items-center px-4 text-center" style={{ bottom: 56 }}>
+          <div data-hero-enter className="flex flex-col items-center gap-5">
+            <div className="ta-font-barlow mx-auto max-w-xl space-y-1.5">
+              <p className="text-base" style={{ color: "rgba(255,255,255,0.96)", textShadow: "0 1px 14px rgba(8,22,40,0.45)" }}>
+                Personalised tutoring shaped around your pace, your goals, and your potential.
+              </p>
+              <p className="text-sm" style={{ color: "rgba(255,255,255,0.88)", textShadow: "0 1px 14px rgba(8,22,40,0.45)" }}>
+                Build understanding, grow in confidence, and take your next step with Tutors Academy.
+              </p>
             </div>
-          </HeroDrift>
+            <Link
+              href={ROUTES.register}
+              className="ta-hero-cta inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm font-semibold"
+              style={{ background: "#FFFFFF", color: "#0A192F", boxShadow: "0 6px 24px -6px rgba(8,22,40,0.35)" }}
+            >
+              Book a Free Demo
+            </Link>
+            <p className="text-[0.68rem] font-semibold tracking-[0.3em]" style={{ color: "rgba(255,255,255,0.92)", textShadow: "0 1px 12px rgba(8,22,40,0.5)" }}>
+              LEARN • GROW • SUCCEED
+            </p>
+          </div>
         </div>
       </section>
 
@@ -200,7 +208,7 @@ export default function HomePage() {
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed" style={{ color: SLATE }}>
             Experience a session tailored to your exact learning needs.
           </p>
-          <div className="mt-9">
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <Link
               href={ROUTES.register}
               className="ta-cta-primary inline-flex items-center justify-center rounded-full border px-7 min-h-[3rem] text-sm font-semibold"
@@ -212,6 +220,13 @@ export default function HomePage() {
               }}
             >
               Apply as a Student or Parent
+            </Link>
+            <Link
+              href={ROUTES.tutorApply}
+              className="ta-quiet-link inline-flex min-h-[3rem] items-center justify-center rounded-full border px-7 text-sm font-medium"
+              style={{ borderColor: "rgba(197,160,89,0.45)", color: SLATE_DEEP, background: "rgba(255,255,255,0.6)" }}
+            >
+              Become a Tutor
             </Link>
           </div>
           <nav aria-label="Footer" className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">

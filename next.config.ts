@@ -35,8 +35,12 @@ const PREVIEW_FRAME_OPEN = process.env.TA_PREVIEW_FRAME === "open";
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline'",
-  "style-src 'self' 'unsafe-inline'",
-  "font-src 'self' data:",
+  // DEC-049: two DECLARED third-party exceptions, owner-mandated —
+  // the cinematic hero video's CDN (media only) and the Google Fonts
+  // origins (stylesheet + font files). Nothing else external stands.
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "media-src 'self' https://d8j0ntlcm91z4.cloudfront.net",
   "img-src 'self' data: blob:",
   "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
   // The frame posture: DEC-039 locks it; DEC-041 opens ONE narrow door
