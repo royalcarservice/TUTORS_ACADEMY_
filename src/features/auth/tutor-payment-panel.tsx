@@ -50,7 +50,7 @@ export function TutorPaymentPanel({
   const classList = application?.classes.map((level) => `Class ${level}`).join(", ") || "Not available";
 
   return (
-    <main className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-[#FDFBF7] px-4 py-10 sm:px-6 sm:py-16">
+    <main data-theme="light" className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-[#FDFBF7] px-4 py-10 sm:px-6 sm:py-16">
       <TutorRegistrationBackdrop />
 
       <div className="relative z-10 w-full max-w-3xl">
