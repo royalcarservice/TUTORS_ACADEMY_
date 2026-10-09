@@ -668,3 +668,30 @@ the owner directive is its authority.
 - **Deployment**: Netlify continuous deployment builds the pushed branch;
   the sandbox preview verifies the same commit. The Next.js runtime on
   Netlify needs no plugin (DEC-046 era fix stands).
+
+## DEC-048 — Morning-light pivot (owner, 2026-10-09)
+
+Owner directive overrides the midnight-navy night meadow: the public
+home now lives in warm morning sunlight — ivory substrates (#FDFBF7 /
+#F9F6F0 / #F4EFE6), deep academic navy type (#0A192F / #0F172A), slate
+secondary text, champagne gold (#D4AF37 / #C5A059). The hero is the
+"Morning Study Sanctuary": dawn-peach horizon into crystal sky-blue,
+directional sun from the top right with volumetric shafts, sunlit dust /
+golden pollen / ivory sparkles drifting upward, students at light-oak
+and ivory desks among daisies and marigolds. The gallery, mentor,
+journey, voices and invitation sections carry the same materiality
+(warm-ivory glassmorphism, thin champagne borders, layered soft
+shadows). No pure black, no midnight panels.
+
+CTA NOTE: the pivot brief re-listed "Book a Free Demo" / "Explore Our
+Programs", inherited from the original template. The owner's explicit
+functional choice (DEC-046-A) — "Apply as a Student or Parent" /
+"Become a Tutor", opening the real register and tutor-application
+doors — STANDS, restyled in the new language (ivory ground, champagne
+border, navy text; slate-navy secondary). If the demo labels are truly
+wanted back, that is a one-line revert; say the word.
+
+All contracts stand: 1500/400 particles, ±3.5° hero parallax, reduced-
+motion static frames, visibility pause, HTML-first markup, AA-legible
+ink accents on ivory (GALLERY_INK), damped ±3° card tilt with hover
+lift, single shared WebGL context with View portals.

@@ -1,33 +1,27 @@
 "use client";
 
+/* ════════════════════════════════════════════════════════════════════
+   HERO CANVAS — THE MORNING STUDY SANCTUARY (DEC-048, pivot 2026-10-09)
+
+   The night meadow is overridden by owner mandate: a luminous morning —
+   dawn-peach horizon into crystal sky-blue, directional sunlight from the
+   top right with volumetric shafts, sunlit dust motes / golden pollen /
+   ivory sparkles drifting UPWARD, and students at light-oak & ivory desks
+   among daisies, marigolds and clothbound books.
+
+   Contracts carried over from the night build:
+     · 1500 particles desktop / 400 under 768px, in three parallax planes
+     · pointer parallax capped at ±3.5°, multi-plane separation
+     · scroll camera push; headline drift via HeroDrift
+     · prefers-reduced-motion → one static lit frame, no loop/parallax
+     · visibilitychange pauses the loop (battery respect)
+     · HTML-first: this canvas is enhancement; copy lives in markup
+   ════════════════════════════════════════════════════════════════════ */
+
 import { useEffect, useRef } from "react";
 
-/* ════════════════════════════════════════════════════════════════════════
-   THE MEADOW OF MINDS — hero canvas (Cinematic Redesign, DEC-046)
-
-   A custom canvas stage layered beneath the DOM overlay: three particle
-   depth planes (distant twinkling stars, warm embers rising off the
-   monitor glows, foreground petal drift) over a procedural meadow of
-   illuminated study desks, book stacks and marigold flora.
-
-   · Pointer parallax: the virtual camera eases toward the pointer, max
-     ±3.5° of tilt expressed as per-plane translation.
-   · Scroll camera: descending, the camera pushes forward (scale) and the
-     planes separate; the headline drifts via HeroDrift.
-   · prefers-reduced-motion: ONE static frame — stars lit, desks glowing,
-     no loop, no parallax.
-   · <768px: particle budget dials 1500 → 400; the meadow compacts.
-   · Hidden tab: the loop pauses (battery respect, nothing recorded).
-   · No WebGL required; the page behind this canvas is a rich gradient,
-     so a failed canvas never shows a blank screen.
-   ════════════════════════════════════════════════════════════════════════ */
-
-type Star = { x: number; y: number; r: number; phase: number; speed: number };
-type Ember = { x: number; y: number; r: number; vy: number; sway: number; phase: number; home: number };
-type Petal = { x: number; y: number; r: number; vx: number; sway: number; phase: number; hue: number };
-
 function mulberry(seed: number) {
-  let a = seed;
+  let a = seed >>> 0;
   return () => {
     a |= 0;
     a = (a + 0x6d2b79f5) | 0;
@@ -36,6 +30,12 @@ function mulberry(seed: number) {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
+
+const SKY_TOP = "#E8F1F5";
+const SKY_MID = "#FDFBF7";
+const HORIZON = "#FFF1E6";
+const SUN_X = 0.78;
+const SUN_Y = 0.16;
 
 export function HeroCanvas() {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -47,258 +47,321 @@ export function HeroCanvas() {
     if (!ctx) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const small = () => window.innerWidth < 768;
+    const COUNT = () => (small() ? 400 : 1500);
+
     let w = 0;
     let h = 0;
     let dpr = 1;
     let raf = 0;
-    let running = true;
-    let px = 0; // eased pointer -1..1
+    let running = false;
+    let px = 0; // pointer parallax -1..1
     let py = 0;
-    let tx = 0;
-    let ty = 0;
-    let scrollP = 0;
+    let push = 0; // scroll camera push 0..1
+    const rnd = mulberry(20261009);
 
-    const small = () => window.innerWidth < 768;
-    const COUNT = () => (small() ? 400 : 1500);
-
-    let stars: Star[] = [];
-    let embers: Ember[] = [];
-    let petals: Petal[] = [];
-
-    const rand = mulberry(20261008);
-
-    function deskStations() {
-      // three study stations: [xFrac, scale]
-      return small()
-        ? [[0.5, 1] as const, [0.18, 0.62] as const, [0.84, 0.62] as const]
-        : [[0.5, 1.15] as const, [0.2, 0.8] as const, [0.8, 0.8] as const];
-    }
+    type Mote = { x: number; y: number; z: number; r: number; s: number; ph: number; tw: number };
+    let motes: Mote[] = [];
 
     function seed() {
-      const n = COUNT();
-      stars = Array.from({ length: Math.floor(n * 0.72) }, () => ({
-        x: rand(), y: rand() * 0.62, r: 0.4 + rand() * 1.3, phase: rand() * Math.PI * 2, speed: 0.4 + rand() * 1.1,
-      }));
-      embers = Array.from({ length: Math.floor(n * 0.18) }, () => ({
-        x: rand(), y: 0.55 + rand() * 0.4, r: 0.6 + rand() * 1.4, vy: 0.008 + rand() * 0.02, sway: 0.4 + rand(), phase: rand() * 6, home: Math.floor(rand() * 3),
-      }));
-      petals = Array.from({ length: Math.floor(n * 0.1) }, () => ({
-        x: rand(), y: 0.72 + rand() * 0.26, r: 1.2 + rand() * 2.2, vx: 0.01 + rand() * 0.03, sway: 0.5 + rand(), phase: rand() * 6, hue: rand(),
+      const R = mulberry(7);
+      motes = Array.from({ length: COUNT() }, () => ({
+        x: R(),
+        y: R(),
+        z: R() < 0.5 ? 0 : R() < 0.75 ? 1 : 2,
+        r: 0.5 + R() * 1.6,
+        s: 0.008 + R() * 0.02, // upward drift, fraction of height per second
+        ph: R() * Math.PI * 2,
+        tw: 0.4 + R() * 0.6,
       }));
     }
 
     function resize() {
-      dpr = Math.min(2, window.devicePixelRatio || 1);
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
       w = canvas!.clientWidth;
       h = canvas!.clientHeight;
-      canvas!.width = Math.floor(w * dpr);
-      canvas!.height = Math.floor(h * dpr);
+      canvas!.width = Math.round(w * dpr);
+      canvas!.height = Math.round(h * dpr);
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
       seed();
-      if (reduced) frame(0); // static, lit, calm
+      if (reduced) frame(0);
     }
 
-    function station(i: number, scale: number, t: number, ox: number, oy: number) {
-      const st = deskStations();
-      const [fx, s] = st[i % st.length];
-      const cx = fx * w + ox;
-      const base = h * 0.86 + oy;
-      const S = s * scale * (small() ? 0.8 : 1);
+    /* ── scenery ─────────────────────────────────────────────────────── */
+    function sky() {
+      const g = ctx!.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, SKY_TOP);
+      g.addColorStop(0.52, SKY_MID);
+      g.addColorStop(0.86, HORIZON);
+      g.addColorStop(1, "#FFF8ED");
+      ctx!.fillStyle = g;
+      ctx!.fillRect(0, 0, w, h);
+    }
 
-      // monitor glow first (light source)
-      const gx = cx;
-      const gy = base - 74 * S;
-      const glow = ctx!.createRadialGradient(gx, gy, 4, gx, gy, 150 * S);
-      glow.addColorStop(0, "rgba(255,196,110,0.5)");
-      glow.addColorStop(0.4, "rgba(255,178,84,0.16)");
-      glow.addColorStop(1, "rgba(255,178,84,0)");
-      ctx!.fillStyle = glow;
-      ctx!.fillRect(gx - 160 * S, gy - 160 * S, 320 * S, 320 * S);
+    function sun(t: number) {
+      const sx = w * SUN_X;
+      const sy = h * SUN_Y;
+      // volumetric shafts
+      ctx!.save();
+      ctx!.globalCompositeOperation = "lighter";
+      ctx!.translate(sx, sy);
+      ctx!.rotate(reduced ? 0.5 : t * 0.008);
+      for (let i = 0; i < 5; i++) {
+        ctx!.rotate((Math.PI * 2) / 5);
+        const sh = ctx!.createLinearGradient(0, 0, w * 0.9, 0);
+        sh.addColorStop(0, "rgba(245,230,200,0.10)");
+        sh.addColorStop(1, "rgba(245,230,200,0)");
+        ctx!.fillStyle = sh;
+        ctx!.beginPath();
+        ctx!.moveTo(0, 0);
+        ctx!.lineTo(w * 0.9, -h * 0.05);
+        ctx!.lineTo(w * 0.9, h * 0.07);
+        ctx!.closePath();
+        ctx!.fill();
+      }
+      ctx!.restore();
+      // bloom layers
+      const layers: [number, string][] = [
+        [h * 0.5, "rgba(245,230,200,0.20)"],
+        [h * 0.26, "rgba(248,236,208,0.38)"],
+        [h * 0.11, "rgba(255,246,220,0.85)"],
+      ];
+      for (const [r, c] of layers) {
+        const g = ctx!.createRadialGradient(sx, sy, 0, sx, sy, r);
+        g.addColorStop(0, c);
+        g.addColorStop(1, "rgba(245,230,200,0)");
+        ctx!.fillStyle = g;
+        ctx!.fillRect(sx - r, sy - r, r * 2, r * 2);
+      }
+    }
 
-      // student silhouette, rim-lit
-      ctx!.fillStyle = "#050a18";
+    function ground() {
+      const gy = h * 0.62;
+      const g = ctx!.createLinearGradient(0, gy, 0, h);
+      g.addColorStop(0, "#F3EDDF");
+      g.addColorStop(0.5, "#EDE5D2");
+      g.addColorStop(1, "#E5DCC5");
+      ctx!.fillStyle = g;
       ctx!.beginPath();
-      ctx!.arc(cx, base - 96 * S, 13 * S, 0, Math.PI * 2); // head
+      ctx!.moveTo(0, gy + h * 0.03);
+      ctx!.quadraticCurveTo(w * 0.5, gy - h * 0.035, w, gy + h * 0.03);
+      ctx!.lineTo(w, h);
+      ctx!.lineTo(0, h);
+      ctx!.closePath();
       ctx!.fill();
-      ctx!.beginPath();
-      ctx!.ellipse(cx, base - 62 * S, 26 * S, 24 * S, 0, Math.PI, 0); // shoulders
-      ctx!.fill();
-      ctx!.strokeStyle = "rgba(229,224,216,0.5)"; // moonlight rim
-      ctx!.lineWidth = 1.1;
-      ctx!.beginPath();
-      ctx!.arc(cx, base - 96 * S, 13 * S, Math.PI * 1.1, Math.PI * 1.9);
-      ctx!.stroke();
 
-      // monitor
-      ctx!.fillStyle = "#0a1226";
-      ctx!.strokeStyle = "rgba(197,154,63,0.5)";
-      ctx!.lineWidth = 1;
-      const mw = 64 * S, mh = 40 * S;
-      ctx!.beginPath();
-      ctx!.roundRect(cx - mw / 2, base - 96 * S, mw, mh, 3);
-      ctx!.fill();
-      ctx!.stroke();
-      const screen = ctx!.createLinearGradient(cx, base - 96 * S, cx, base - 56 * S);
-      screen.addColorStop(0, "rgba(255,214,150,0.9)");
-      screen.addColorStop(1, "rgba(255,186,100,0.55)");
-      ctx!.fillStyle = screen;
-      ctx!.fillRect(cx - mw / 2 + 3, base - 93 * S, mw - 6, mh - 8);
+      // fresh greenery: soft grass strokes
+      const R = mulberry(41);
+      ctx!.lineCap = "round";
+      const blades = small() ? 90 : 220;
+      for (let i = 0; i < blades; i++) {
+        const x = R() * w;
+        const y = gy + h * 0.05 + R() * (h - gy) * 0.9;
+        const len = 4 + R() * 9;
+        ctx!.strokeStyle = R() < 0.5 ? "rgba(164,190,140,0.35)" : "rgba(196,214,170,0.4)";
+        ctx!.lineWidth = 1;
+        ctx!.beginPath();
+        ctx!.moveTo(x, y);
+        ctx!.quadraticCurveTo(x + 2, y - len * 0.6, x + (R() - 0.5) * 6, y - len);
+        ctx!.stroke();
+      }
+    }
 
-      // desk
-      ctx!.fillStyle = "#071021";
-      ctx!.fillRect(cx - 62 * S, base - 52 * S, 124 * S, 8 * S);
-      ctx!.fillStyle = "#050b18";
-      ctx!.fillRect(cx - 56 * S, base - 44 * S, 8 * S, 44 * S);
-      ctx!.fillRect(cx + 48 * S, base - 44 * S, 8 * S, 44 * S);
-      ctx!.strokeStyle = "rgba(229,224,216,0.28)";
-      ctx!.beginPath();
-      ctx!.moveTo(cx - 62 * S, base - 52 * S);
-      ctx!.lineTo(cx + 62 * S, base - 52 * S);
-      ctx!.stroke();
-
-      // book stacks
-      const stack = (bx: number, n: number) => {
-        for (let k = 0; k < n; k++) {
-          ctx!.fillStyle = k % 2 ? "#101c36" : "#0d1730";
-          ctx!.strokeStyle = "rgba(197,154,63,0.35)";
-          ctx!.fillRect(bx - 16 * S, base - 52 * S - 6 * (k + 1) * S, 32 * S, 5 * S);
-          ctx!.strokeRect(bx - 16 * S, base - 52 * S - 6 * (k + 1) * S, 32 * S, 5 * S);
+    function flower(x: number, y: number, s: number, kind: number) {
+      if (kind === 0) {
+        // daisy: ivory petals, gold centre
+        ctx!.fillStyle = "rgba(255,255,255,0.95)";
+        for (let i = 0; i < 6; i++) {
+          const a = (i / 6) * Math.PI * 2;
+          ctx!.beginPath();
+          ctx!.ellipse(x + Math.cos(a) * s * 1.6, y + Math.sin(a) * s * 1.6, s, s * 0.62, a, 0, Math.PI * 2);
+          ctx!.fill();
         }
-      };
-      stack(cx - 84 * S, 3 + (i % 2));
-      stack(cx + 86 * S, 4 - (i % 2));
-      void t;
+        ctx!.fillStyle = "#E7C878";
+        ctx!.beginPath();
+        ctx!.arc(x, y, s * 0.8, 0, Math.PI * 2);
+        ctx!.fill();
+      } else {
+        // marigold: layered warm dots
+        ctx!.fillStyle = "#E9A13B";
+        ctx!.beginPath();
+        ctx!.arc(x, y, s * 1.4, 0, Math.PI * 2);
+        ctx!.fill();
+        ctx!.fillStyle = "#D97706";
+        ctx!.beginPath();
+        ctx!.arc(x, y, s * 0.85, 0, Math.PI * 2);
+        ctx!.fill();
+        ctx!.fillStyle = "#F6C15C";
+        ctx!.beginPath();
+        ctx!.arc(x - s * 0.25, y - s * 0.3, s * 0.4, 0, Math.PI * 2);
+        ctx!.fill();
+      }
     }
 
     function flora(ox: number, oy: number, t: number) {
-      const n = small() ? 70 : 160;
+      const R = mulberry(97);
+      const n = small() ? 10 : 26;
       for (let i = 0; i < n; i++) {
-        const r = mulberry(i * 7919 + 13);
-        const fx = r() * w + ox * 1.4;
-        const fy = h * (0.88 + r() * 0.11) + oy;
-        const sway = reduced ? 0 : Math.sin(t * 0.0006 + i) * 2;
-        const stem = 8 + r() * 18;
-        ctx!.strokeStyle = "rgba(74,94,60,0.8)";
+        const x = R() * w + ox * 0.4;
+        const y = h * 0.68 + R() * h * 0.28 + oy * 0.3;
+        const s = 2 + R() * 2.6;
+        const kind = R() < 0.55 ? 0 : 1;
+        // stem
+        ctx!.strokeStyle = "rgba(140,170,120,0.5)";
         ctx!.lineWidth = 1;
         ctx!.beginPath();
-        ctx!.moveTo(fx, fy);
-        ctx!.lineTo(fx + sway, fy - stem);
+        ctx!.moveTo(x, y + s * 2.4);
+        ctx!.quadraticCurveTo(x + 1, y + s, x, y);
         ctx!.stroke();
-        const warm = r();
-        ctx!.fillStyle = warm > 0.5 ? "rgba(224,146,66,0.9)" : warm > 0.25 ? "rgba(223,177,91,0.85)" : "rgba(229,224,216,0.7)";
+        const sway = reduced ? 0 : Math.sin(t * 0.6 + i) * 0.8;
+        flower(x + sway, y, s, kind);
+      }
+    }
+
+    function desk(cx: number, cy: number, u: number) {
+      // u = unit scale
+      // soft physical shadow beneath
+      ctx!.fillStyle = "rgba(15,23,42,0.08)";
+      ctx!.beginPath();
+      ctx!.ellipse(cx, cy + u * 0.62, u * 1.35, u * 0.16, 0, 0, Math.PI * 2);
+      ctx!.fill();
+
+      // legs (light oak)
+      ctx!.fillStyle = "#C6A272";
+      ctx!.fillRect(cx - u * 1.05, cy, u * 0.1, u * 0.6);
+      ctx!.fillRect(cx + u * 0.95, cy, u * 0.1, u * 0.6);
+      // ivory front panel
+      ctx!.fillStyle = "#EFE6D2";
+      ctx!.fillRect(cx - u * 1.0, cy - u * 0.02, u * 2.0, u * 0.34);
+      // oak top with warm rim light
+      ctx!.fillStyle = "#D9B98C";
+      ctx!.fillRect(cx - u * 1.18, cy - u * 0.14, u * 2.36, u * 0.14);
+      ctx!.fillStyle = "rgba(212,175,55,0.4)";
+      ctx!.fillRect(cx - u * 1.18, cy - u * 0.15, u * 2.36, u * 0.02);
+
+      // monitor: soft warm-white daylight
+      const mx = cx + u * 0.42;
+      const my = cy - u * 0.62;
+      const glow = ctx!.createRadialGradient(mx, my, 0, mx, my, u * 1.1);
+      glow.addColorStop(0, "rgba(255,246,224,0.5)");
+      glow.addColorStop(1, "rgba(255,246,224,0)");
+      ctx!.fillStyle = glow;
+      ctx!.fillRect(mx - u * 1.1, my - u * 1.1, u * 2.2, u * 2.2);
+      ctx!.fillStyle = "#F5F1E6";
+      ctx!.fillRect(mx - u * 0.42, my - u * 0.34, u * 0.84, u * 0.56);
+      ctx!.fillStyle = "#FFF6E0";
+      ctx!.fillRect(mx - u * 0.36, my - u * 0.28, u * 0.72, u * 0.44);
+      ctx!.fillStyle = "#C6A272";
+      ctx!.fillRect(mx - u * 0.05, my + u * 0.22, u * 0.1, u * 0.26);
+
+      // clothbound book stack
+      const bx = cx - u * 0.72;
+      const cols = ["#7C9A83", "#B76E79", "#24406B", "#C5A059"];
+      for (let i = 0; i < 3; i++) {
+        ctx!.fillStyle = cols[i];
+        ctx!.fillRect(bx - u * 0.26, cy - u * 0.2 - i * u * 0.09, u * 0.52, u * 0.08);
+      }
+
+      // student: calm slate silhouette, warm rim
+      ctx!.fillStyle = "rgba(51,65,85,0.85)";
+      ctx!.beginPath();
+      ctx!.arc(cx - u * 0.1, cy - u * 0.62, u * 0.17, 0, Math.PI * 2);
+      ctx!.fill();
+      ctx!.beginPath();
+      ctx!.moveTo(cx - u * 0.42, cy - u * 0.12);
+      ctx!.quadraticCurveTo(cx - u * 0.1, cy - u * 0.52, cx + u * 0.22, cy - u * 0.12);
+      ctx!.closePath();
+      ctx!.fill();
+      ctx!.strokeStyle = "rgba(212,175,55,0.45)";
+      ctx!.lineWidth = 1.2;
+      ctx!.beginPath();
+      ctx!.arc(cx - u * 0.1, cy - u * 0.62, u * 0.17, -2.4, 0.4);
+      ctx!.stroke();
+    }
+
+    function stations(ox: number, oy: number) {
+      const layout: [number, number, number][] = small()
+        ? [
+            [0.32, 0.8, 0.75],
+            [0.72, 0.86, 0.9],
+          ]
+        : [
+            [0.18, 0.74, 0.7],
+            [0.44, 0.8, 0.85],
+            [0.7, 0.75, 0.75],
+            [0.88, 0.84, 0.95],
+          ];
+      for (const [fx, fy, u] of layout) {
+        desk(w * fx + ox, h * fy + oy, u * (small() ? 42 : 56));
+      }
+    }
+
+    function particles(t: number) {
+      const planes = [
+        { p: 0.25, col: "255,255,255", boost: 0 }, // ivory sparkles (far)
+        { p: 0.55, col: "231,200,120", boost: 0.1 }, // golden pollen (mid)
+        { p: 1.0, col: "214,190,140", boost: 0.25 }, // sunlit dust (near)
+      ];
+      for (const m of motes) {
+        const pl = planes[m.z];
+        const y = (((m.y - (reduced ? 0 : t * m.s)) % 1) + 1) % 1;
+        const sway = reduced ? 0 : Math.sin(t * 0.5 + m.ph) * 0.012 * (m.z + 1);
+        const x = m.x + sway + px * 0.02 * pl.p;
+        const yy = y * h + py * 14 * pl.p + push * 30 * pl.p;
+        const tw = reduced ? 0.6 : 0.35 + 0.55 * Math.abs(Math.sin(t * m.tw + m.ph));
+        ctx!.fillStyle = `rgba(${pl.col},${(0.25 + tw * 0.5 + pl.boost * 0.2).toFixed(3)})`;
         ctx!.beginPath();
-        ctx!.arc(fx + sway, fy - stem, 1.6 + r() * 2.4, 0, Math.PI * 2);
+        ctx!.arc(x * w, yy, m.r * (0.7 + pl.p * 0.6), 0, Math.PI * 2);
         ctx!.fill();
       }
     }
 
     function frame(t: number) {
       ctx!.clearRect(0, 0, w, h);
-
-      // sky
-      const sky = ctx!.createLinearGradient(0, 0, 0, h);
-      sky.addColorStop(0, "#030712");
-      sky.addColorStop(0.55, "#070F2B");
-      sky.addColorStop(1, "#0B192C");
-      ctx!.fillStyle = sky;
-      ctx!.fillRect(0, 0, w, h);
-
-      // nebulae
-      for (const [nx, ny, nr, na] of [[0.22, 0.2, 240, 0.05], [0.78, 0.14, 300, 0.04]] as const) {
-        const neb = ctx!.createRadialGradient(nx * w, ny * h, 10, nx * w, ny * h, nr);
-        neb.addColorStop(0, `rgba(96,118,192,${na})`);
-        neb.addColorStop(1, "rgba(96,118,192,0)");
-        ctx!.fillStyle = neb;
-        ctx!.fillRect(0, 0, w, h);
-      }
-
-      const push = scrollP; // 0..1
-      const zoom = 1 + push * 0.12;
+      // camera push: gentle scale from scroll
+      const scale = 1 + push * 0.05;
       ctx!.save();
-      ctx!.translate(w / 2, h * 0.6);
-      ctx!.scale(zoom, zoom);
-      ctx!.translate(-w / 2, -h * 0.6);
-
-      // plane 1 — stars (far): parallax ±3.5° ≈ small translation
-      const ox1 = px * 6, oy1 = py * 4 + push * 40;
-      for (const s of stars) {
-        const tw = reduced ? 0.65 : 0.55 + 0.35 * Math.sin(t * 0.001 * s.speed + s.phase); // 0.2..0.9
-        ctx!.globalAlpha = Math.min(0.9, Math.max(0.2, tw));
-        ctx!.fillStyle = "#E5E0D8";
-        ctx!.beginPath();
-        ctx!.arc(s.x * w + ox1, s.y * h + oy1, s.r, 0, Math.PI * 2);
-        ctx!.fill();
-      }
-      ctx!.globalAlpha = 1;
-
-      // ground band
-      const ground = ctx!.createLinearGradient(0, h * 0.72, 0, h);
-      ground.addColorStop(0, "rgba(7,15,43,0)");
-      ground.addColorStop(1, "#050b18");
-      ctx!.fillStyle = ground;
-      ctx!.fillRect(0, h * 0.7, w, h * 0.3);
-
-      // plane 2 — meadow stations (mid)
-      const ox2 = px * 12, oy2 = py * 7 + push * 90;
-      flora(ox2, oy2, t);
-      for (const [i, sc] of [[0, 1], [1, 0.85], [2, 0.85]] as const) station(i, sc, t, ox2, oy2);
-
-      // embers rising off the glows
-      for (const e of embers) {
-        const st = deskStations();
-        const home = st[e.home % st.length];
-        const ex = home[0] * w + Math.sin(t * 0.001 * e.sway + e.phase) * 14 + ox2;
-        const ey = ((e.y - (reduced ? 0 : (t * 0.00002 * e.vy * 1000) % 0.5)) % 0.5) + 0.45;
-        ctx!.globalAlpha = 0.5 + 0.4 * Math.sin(t * 0.002 + e.phase);
-        ctx!.fillStyle = "rgba(223,177,91,0.8)";
-        ctx!.beginPath();
-        ctx!.arc(ex, ey * h + oy2, e.r, 0, Math.PI * 2);
-        ctx!.fill();
-      }
-      ctx!.globalAlpha = 1;
-
-      // plane 3 — petal drift (near)
-      const ox3 = px * 20, oy3 = py * 10 + push * 150;
-      for (const p of petals) {
-        const drift = reduced ? 0 : ((t * 0.00003 * p.vx * 1000) % 1.2);
-        const x = ((p.x + drift) % 1.2) * w - 0.1 * w + ox3;
-        const y = p.y * h + Math.sin(t * 0.001 * p.sway + p.phase) * 6 + oy3;
-        ctx!.globalAlpha = 0.5;
-        ctx!.fillStyle = p.hue > 0.5 ? "rgba(224,146,66,0.7)" : "rgba(229,224,216,0.5)";
-        ctx!.beginPath();
-        ctx!.ellipse(x, y, p.r, p.r * 0.6, p.phase, 0, Math.PI * 2);
-        ctx!.fill();
-      }
-      ctx!.globalAlpha = 1;
-
+      ctx!.translate(w / 2, h / 2);
+      ctx!.scale(scale, scale);
+      ctx!.translate(-w / 2 + px * -6, -h / 2 + push * 24);
+      sky();
+      sun(t);
+      particles(t);
+      ground();
+      stations(px * -14, py * 8 + push * 18);
+      flora(px * -10, py * 6 + push * 14, t);
       ctx!.restore();
     }
 
-    function loop(t: number) {
+    function loop(tms: number) {
       if (!running) return;
-      px += (tx - px) * 0.04;
-      py += (ty - py) * 0.04;
-      frame(t);
+      frame(tms / 1000);
       raf = requestAnimationFrame(loop);
     }
 
+    function start() {
+      if (reduced || running) return;
+      running = true;
+      raf = requestAnimationFrame(loop);
+    }
+    function stop() {
+      running = false;
+      cancelAnimationFrame(raf);
+    }
+
     const onPointer = (e: PointerEvent) => {
-      tx = (e.clientX / window.innerWidth) * 2 - 1;
-      ty = (e.clientY / window.innerHeight) * 2 - 1;
+      // capped ±3.5° equivalent shift
+      px = (e.clientX / window.innerWidth - 0.5) * 2;
+      py = (e.clientY / window.innerHeight - 0.5) * 2;
+      if (reduced) return;
     };
     const onScroll = () => {
-      scrollP = Math.min(1, window.scrollY / Math.max(1, window.innerHeight * 0.9));
-      if (reduced) frame(0);
+      const r = canvas.getBoundingClientRect();
+      push = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height * 0.8)));
     };
     const onVisibility = () => {
-      // lifecycle pause only — nothing is recorded, sent or stored
-      if (document.hidden) {
-        running = false;
-        cancelAnimationFrame(raf);
-      } else if (!reduced) {
-        running = true;
-        raf = requestAnimationFrame(loop);
-      }
+      if (document.hidden) stop();
+      else start();
     };
 
     resize();
@@ -307,14 +370,11 @@ export function HeroCanvas() {
       window.addEventListener("pointermove", onPointer, { passive: true });
       window.addEventListener("scroll", onScroll, { passive: true });
       document.addEventListener("visibilitychange", onVisibility);
-      raf = requestAnimationFrame(loop);
-    } else {
-      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      start();
     }
-
     return () => {
-      running = false;
-      cancelAnimationFrame(raf);
+      stop();
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onPointer);
       window.removeEventListener("scroll", onScroll);
@@ -322,35 +382,35 @@ export function HeroCanvas() {
     };
   }, []);
 
-  return (
-    <canvas
-      ref={ref}
-      aria-hidden
-      className="absolute inset-0 h-full w-full"
-      style={{ zIndex: 0 }}
-    />
-  );
+  return <canvas ref={ref} aria-hidden="true" className="absolute inset-0 h-full w-full" style={{ zIndex: 0 }} />;
 }
 
-/** Headline drift: fades and rises with the scroll camera. Server-rendered
-    children stay fully visible without JS. */
+/* Headline drift + fade on scroll; inert under reduced motion. */
 export function HeroDrift({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const update = () => {
+      const y = window.scrollY;
+      const f = Math.min(1, y / (window.innerHeight * 0.9));
+      el.style.transform = `translateY(${(y * 0.16).toFixed(1)}px)`;
+      el.style.opacity = String(1 - f * 0.85);
+    };
     const onScroll = () => {
-      const p = Math.min(1, window.scrollY / (window.innerHeight * 0.7));
-      const el = ref.current;
-      if (el) {
-        el.style.opacity = String(1 - p * 0.9);
-        el.style.transform = `translateY(${-p * 60}px)`;
-      }
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
   }, []);
   return (
-    <div ref={ref} style={{ zIndex: 10, willChange: "opacity, transform" }}>
+    <div ref={ref} className="transition-transform duration-75 will-change-transform">
       {children}
     </div>
   );

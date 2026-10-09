@@ -62,3 +62,13 @@ export const GALLERY_COPY: Record<GallerySlug, { title: string; description: str
     linkLabel: "Explore Computer Science ↗",
   },
 };
+/** Darker accent inks — AA-legible link/stroke colours on warm ivory. */
+export const GALLERY_INK: Record<GallerySlug, string> = {
+  mathematics: "#1D4ED8",
+  physics: "#D97706",
+  chemistry: "#6D28D9",
+  biology: "#059669",
+  english: "#E11D48",
+  history: "#0891B2",
+  "computer-science": "#0891B2",
+};

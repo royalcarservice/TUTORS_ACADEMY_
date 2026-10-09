@@ -52,11 +52,11 @@ export function BrandMark({ size = 40, withWordmark = false }: { size?: number; 
         <span className="flex flex-col leading-none">
           <span
             className="text-lg font-semibold tracking-[0.08em]"
-            style={{ fontFamily: "var(--ta-font-display)", color: "#FAF7F2" }}
+            style={{ fontFamily: "var(--ta-font-display)", color: "#0A192F" }}
           >
             TUTORS
           </span>
-          <span className="text-[0.6rem] font-medium tracking-[0.34em]" style={{ color: "#DFB15B" }}>
+          <span className="text-[0.6rem] font-medium tracking-[0.34em]" style={{ color: "#C5A059" }}>
             ACADEMY
           </span>
         </span>

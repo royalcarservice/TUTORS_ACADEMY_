@@ -50,8 +50,8 @@ export function SiteNav() {
     <header
       className="fixed inset-x-0 top-0 z-40 transition-colors duration-300"
       style={{
-        background: solid ? "rgba(3,7,18,0.92)" : "transparent",
-        borderBottom: solid ? "1px solid rgba(197,154,63,0.35)" : "1px solid transparent",
+        background: solid ? "rgba(253,251,247,0.92)" : "transparent",
+        borderBottom: solid ? "1px solid rgba(212,175,55,0.35)" : "1px solid transparent",
         backdropFilter: solid ? "blur(8px)" : undefined,
       }}
     >
@@ -66,21 +66,22 @@ export function SiteNav() {
               key={l.href}
               href={l.href}
               className="text-sm font-medium transition-colors"
-              style={{ color: "#E5E0D8" }}
+              style={{ color: "#334155" }}
             >
               {l.label}
             </Link>
           ))}
-          <Link href={ROUTES.login} className="text-sm font-medium" style={{ color: "#E5E0D8" }}>
+          <Link href={ROUTES.login} className="text-sm font-medium" style={{ color: "#334155" }}>
             Sign in
           </Link>
           <Link
             href={ROUTES.register}
             className={goldCta}
             style={{
-              borderColor: "#C59A3F",
-              color: "#DFB15B",
-              boxShadow: "inset 0 0 12px rgba(223,177,91,0.18)",
+              borderColor: "#D4AF37",
+              color: "#0A192F",
+              background: "rgba(255,255,255,0.92)",
+              boxShadow: "0 4px 12px -2px rgba(212,175,55,0.25)",
             }}
           >
             Apply Now
@@ -90,7 +91,7 @@ export function SiteNav() {
         <button
           type="button"
           className="inline-flex size-10 items-center justify-center rounded-lg lg:hidden"
-          style={{ color: "#E5E0D8" }}
+          style={{ color: "#334155" }}
           aria-label={open ? "Close navigation" : "Open navigation"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -100,17 +101,17 @@ export function SiteNav() {
       </div>
 
       {open ? (
-        <nav aria-label="Primary mobile" className="border-t px-4 pb-6 pt-3 lg:hidden" style={{ borderColor: "rgba(197,154,63,0.25)", background: "rgba(3,7,18,0.97)" }}>
+        <nav aria-label="Primary mobile" className="border-t px-4 pb-6 pt-3 lg:hidden" style={{ borderColor: "rgba(212,175,55,0.25)", background: "rgba(253,251,247,0.98)" }}>
           <ul className="flex flex-col gap-1">
             {LINKS.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} onClick={() => setOpen(false)} className="block rounded-lg px-3 py-2.5 text-sm font-medium" style={{ color: "#E5E0D8" }}>
+                <Link href={l.href} onClick={() => setOpen(false)} className="block rounded-lg px-3 py-2.5 text-sm font-medium" style={{ color: "#334155" }}>
                   {l.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href={ROUTES.login} onClick={() => setOpen(false)} className="block rounded-lg px-3 py-2.5 text-sm font-medium" style={{ color: "#E5E0D8" }}>
+              <Link href={ROUTES.login} onClick={() => setOpen(false)} className="block rounded-lg px-3 py-2.5 text-sm font-medium" style={{ color: "#334155" }}>
                 Sign in
               </Link>
             </li>
@@ -119,7 +120,7 @@ export function SiteNav() {
                 href={ROUTES.register}
                 onClick={() => setOpen(false)}
                 className={goldCta + " w-full"}
-                style={{ borderColor: "#C59A3F", color: "#DFB15B", boxShadow: "inset 0 0 12px rgba(223,177,91,0.18)" }}
+                style={{ borderColor: "#D4AF37", color: "#0A192F", background: "rgba(255,255,255,0.92)", boxShadow: "0 4px 12px -2px rgba(212,175,55,0.25)" }}
               >
                 Apply Now
               </Link>

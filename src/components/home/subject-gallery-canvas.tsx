@@ -198,7 +198,7 @@ function ChemistryScene({ accent, reduced, lite }: SceneProps) {
       {atoms.map((p, i) => (
         <mesh key={i} position={p}>
           <sphereGeometry args={[0.16, lite ? 12 : 20, lite ? 12 : 20]} />
-          {glowMat(i % 2 ? "#ede9fe" : accent)}
+          <meshStandardMaterial color={i % 2 ? "#ede9fe" : accent} roughness={0.18} metalness={0.1} />
         </mesh>
       ))}
       {sticks.map((s, i) => (
@@ -281,17 +281,17 @@ function EnglishScene({ accent, reduced, lite }: SceneProps) {
       <Spin reduced={reduced} speed={0.14}>
         <mesh position={[-0.5, -0.03, 0]} rotation={[0, 0, 0.42]}>
           <boxGeometry args={[1.02, 0.045, 0.78]} />
-          <meshBasicMaterial color="#3f1d2e" />
+          <meshStandardMaterial color="#8a5a66" roughness={0.55} />
         </mesh>
         <mesh position={[0.5, -0.03, 0]} rotation={[0, 0, -0.42]}>
           <boxGeometry args={[1.02, 0.045, 0.78]} />
-          <meshBasicMaterial color="#3f1d2e" />
+          <meshStandardMaterial color="#8a5a66" roughness={0.55} />
         </mesh>
         <group ref={pages}>
           {[-0.46, -0.3, 0.3, 0.46].map((x, i) => (
             <mesh key={i} position={[x, 0.02, 0]} rotation={[0, 0, (i % 2 ? -1 : 1) * 0.42]}>
               <boxGeometry args={[0.86, 0.016, 0.7]} />
-              <meshBasicMaterial color={i % 2 ? "#ffe4e6" : "#fff1f2"} transparent opacity={0.92} />
+              <meshStandardMaterial color={i % 2 ? "#ffe4e6" : "#fff8ee"} roughness={0.5} transparent opacity={0.95} />
             </mesh>
           ))}
         </group>
@@ -374,11 +374,11 @@ function ComputerScienceScene({ accent, reduced, lite }: SceneProps) {
       <Spin reduced={reduced} speed={0.12}>
         <mesh>
           <boxGeometry args={[0.82, 0.82, 0.1]} />
-          <meshBasicMaterial color="#06131f" />
+          <meshStandardMaterial color="#12283d" roughness={0.3} metalness={0.45} />
         </mesh>
         <mesh>
           <boxGeometry args={[0.5, 0.5, 0.12]} />
-          <meshBasicMaterial color={accent} transparent opacity={0.85} />
+          <meshStandardMaterial color={accent} emissive={accent} emissiveIntensity={0.45} roughness={0.2} />
         </mesh>
         <lineSegments>
           <edgesGeometry args={[new THREE.BoxGeometry(0.82, 0.82, 0.1)]} />
@@ -438,29 +438,41 @@ export default function SubjectGalleryCanvas() {
     return () => io.disconnect();
   }, []);
 
-  /* pointer tilt (±4°) + glow parallax on the cards; skipped when reduced */
+  /* pointer tilt (±3°, spring-damped) + hover lift; skipped when reduced */
   useEffect(() => {
     if (reduced) return;
     const cards = GALLERY_SLUGS.map((s) => document.getElementById(`ta-card-${s}`)).filter(Boolean) as HTMLElement[];
     const cleanups = cards.map((card) => {
       let raf = 0;
+      const st = { rx: 0, ry: 0, lift: 0, trx: 0, try_: 0, tl: 0 };
+      const tick = () => {
+        st.rx += (st.trx - st.rx) * 0.14;
+        st.ry += (st.try_ - st.ry) * 0.14;
+        st.lift += (st.tl - st.lift) * 0.16;
+        card.style.transform = `perspective(900px) rotateX(${st.rx.toFixed(2)}deg) rotateY(${st.ry.toFixed(2)}deg) translateY(${st.lift.toFixed(1)}px)`;
+        if (Math.abs(st.trx - st.rx) > 0.01 || Math.abs(st.try_ - st.ry) > 0.01 || Math.abs(st.tl - st.lift) > 0.05) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          raf = 0;
+        }
+      };
+      const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
       const move = (ev: PointerEvent) => {
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => {
-          const r = card.getBoundingClientRect();
-          const dx = (ev.clientX - (r.left + r.width / 2)) / r.width;
-          const dy = (ev.clientY - (r.top + r.height / 2)) / r.height;
-          card.style.transform = `perspective(900px) rotateX(${(-dy * 4).toFixed(2)}deg) rotateY(${(dx * 4).toFixed(2)}deg)`;
-        });
+        const r = card.getBoundingClientRect();
+        const dx = (ev.clientX - (r.left + r.width / 2)) / r.width;
+        const dy = (ev.clientY - (r.top + r.height / 2)) / r.height;
+        st.try_ = dx * 3;
+        st.trx = -dy * 3;
+        kick();
       };
-      const leave = () => {
-        cancelAnimationFrame(raf);
-        card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
-      };
+      const enter = () => { st.tl = -4; kick(); };
+      const leave = () => { st.trx = 0; st.try_ = 0; st.tl = 0; kick(); };
       card.addEventListener("pointermove", move);
+      card.addEventListener("pointerenter", enter);
       card.addEventListener("pointerleave", leave);
       return () => {
         card.removeEventListener("pointermove", move);
+        card.removeEventListener("pointerenter", enter);
         card.removeEventListener("pointerleave", leave);
         cancelAnimationFrame(raf);
       };
@@ -490,8 +502,9 @@ export default function SubjectGalleryCanvas() {
         {GALLERY_SLUGS.map((slug) =>
           els[slug] ? (
             <View key={slug} track={els[slug]}>
-              <ambientLight intensity={0.85} />
-              <pointLight position={[2.5, 2, 3]} intensity={30} color={GALLERY_ACCENTS[slug]} />
+              <ambientLight intensity={0.8} color="#FFF8ED" />
+              <directionalLight position={[2.6, 3.2, 2.2]} intensity={1.2} color="#FFF3DC" />
+              <pointLight position={[-2, 1, 2.4]} intensity={6} color={GALLERY_ACCENTS[slug]} />
               {SCENES[slug]({ accent: GALLERY_ACCENTS[slug], reduced, lite })}
             </View>
           ) : null
