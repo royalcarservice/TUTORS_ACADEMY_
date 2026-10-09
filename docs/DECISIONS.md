@@ -742,3 +742,27 @@ footer links but no buttons. Both targets are REAL flows (register and
 the Track 2 tutor-application door) — nothing invented. Logo and
 cinematic video stand. DEC-046-A's application-door intent returns in
 this tighter form; DEC-049's demo labels are superseded.
+
+## DEC-051 — The Valley Journey: scroll-driven hero → gallery transition (owner brief, 2026-10-09)
+
+A pinned 380vh sticky scene, scrubbed by GSAP ScrollTrigger, carries the
+visitor forward through the valley into the gallery. The cinematic
+video is blended into a depth-separated layered valley (sky-matched
+far hills, mid meadow, foreground grass + wildflowers). On scroll: the
+headline and the two buttons fade and drift, the video dollies in
+(scale →1.32) as a camera push, foreground grass sweeps outward past
+the frame edges, mid/far layers part at differing rates, and an ivory
+veil with golden sun-motes rises — its ivory is exactly the gallery
+canvas, so the hand-off has no seam. Scrubbing upward rewinds every
+layer; there are no cuts or blanks. Reduced motion collapses the pin
+via CSS to a gentle static hero → gallery flow; no timeline is built.
+
+Cards now layer THREE depth planes: a generated warm-light subject
+image as backdrop (public/gallery/, fades the SVG motif on load), the
+animated 3D object in front via the shared-canvas View portals, and
+stable HTML text above. Hover/focus: card tilt, CSS image shift, and an
+independent 3D HoverDrift (extra spin + lift) — layered parallax. The
+gallery heading and cards reveal with staggered depth via
+ScrollTrigger. New support line: "Explore your interests. Build your
+understanding. Shape your future." Layout, links and the two-button
+contract (DEC-050) stand; no new CTA buttons.

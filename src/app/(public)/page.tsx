@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { HeroVideo } from "@/components/home/hero-video";
-import { HeroEnter } from "@/components/home/hero-enter";
+import { ValleyJourney } from "@/components/home/valley-journey";
+import { GalleryReveal } from "@/components/home/gallery-reveal";
 import SubjectGalleryCards from "@/components/home/subject-gallery-cards";
 import SubjectGalleryLayer from "@/components/home/subject-gallery-layer";
 import { ROUTES } from "@/config/routes";
@@ -64,67 +64,13 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* ── HERO · CINEMATIC MORNING VIDEO (DEC-049, Wanderful-aligned) ────── */}
-      <HeroEnter />
-      <section className="relative flex min-h-screen min-h-[100svh] flex-col overflow-hidden" aria-label="Tutors Academy">
-        <HeroVideo />
-
-        {/* headline near the top, ~120px on desktop; centre stays open */}
-        <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center" style={{ paddingTop: "clamp(96px, 12vh, 120px)" }}>
-          <h1
-            data-hero-enter
-            className="ta-font-inter mx-auto"
-            style={{
-              fontSize: "clamp(40px, 5.4vw, 72px)",
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              fontWeight: 400,
-              color: "#FFFFFF",
-              textShadow: "0 2px 28px rgba(8,22,40,0.38)",
-            }}
-          >
-            Learn without limits.
-            <br />
-            <span style={{ color: "rgba(255,255,255,0.88)" }}>Grow beyond expectations.</span>
-          </h1>
-        </div>
-
-        {/* bottom-centered block, 56px above the hero's edge */}
-        <div className="absolute inset-x-0 z-10 flex flex-col items-center px-4 text-center" style={{ bottom: 56 }}>
-          <div data-hero-enter className="flex flex-col items-center gap-5">
-            <div className="ta-font-barlow mx-auto max-w-xl space-y-1.5">
-              <p className="text-base" style={{ color: "rgba(255,255,255,0.96)", textShadow: "0 1px 14px rgba(8,22,40,0.45)" }}>
-                Personalised tutoring shaped around your pace, your goals, and your potential.
-              </p>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.88)", textShadow: "0 1px 14px rgba(8,22,40,0.45)" }}>
-                Build understanding, grow in confidence, and take your next step with Tutors Academy.
-              </p>
-            </div>
-            <div className="flex w-full max-w-md flex-col items-stretch justify-center gap-4 sm:w-auto sm:max-w-none sm:flex-row sm:items-center">
-              <Link
-                href={ROUTES.register}
-                className="ta-btn ta-btn-solid inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm font-semibold"
-              >
-                Apply as Student
-              </Link>
-              <Link
-                href={ROUTES.tutorApply}
-                className="ta-btn ta-btn-glass liquid-glass inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm font-semibold"
-                style={{ border: "1px solid rgba(255,255,255,0.55)" }}
-              >
-                Become a Tutor
-              </Link>
-            </div>
-            <p className="text-[0.68rem] font-semibold tracking-[0.3em]" style={{ color: "rgba(255,255,255,0.92)", textShadow: "0 1px 12px rgba(8,22,40,0.5)" }}>
-              LEARN • GROW • SUCCEED
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* ── HERO → VALLEY JOURNEY (DEC-051): pinned scroll transition into the gallery ── */}
+      <ValleyJourney />
 
       {/* ── SECTION 2 · THE CORE DISCIPLINES — INTERACTIVE 3D GALLERY (DEC-047) ── */}
       <SubjectGalleryCards />
       <SubjectGalleryLayer />
+      <GalleryReveal />
 
       {/* ── SECTION 3 · HOW WE MENTOR ──────────────────────────────────── */}
       <section id="mentor" className="mx-auto max-w-[96rem] px-4 py-24 sm:px-6 lg:px-8" style={{ background: CREAM }} aria-labelledby="mentor-h">

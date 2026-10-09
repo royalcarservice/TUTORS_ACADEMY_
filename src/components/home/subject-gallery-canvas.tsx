@@ -405,6 +405,26 @@ function ComputerScienceScene({ accent, reduced, lite }: SceneProps) {
 
 type SceneProps = { accent: string; reduced: boolean; lite: boolean };
 
+/* Independent 3D response while a card is hovered/focused — layered
+   parallax against the CSS image shift and card tilt (DEC-051). */
+function HoverDrift({ slug, hoverRef, children }: {
+  slug: GallerySlug;
+  hoverRef: { current: Record<string, boolean> };
+  children: React.ReactNode;
+}) {
+  const g = useRef<THREE.Group>(null);
+  const cur = useRef(0);
+  useFrame((st, dt) => {
+    const target = hoverRef.current[slug] ? 1 : 0;
+    cur.current += (target - cur.current) * Math.min(1, dt * 6);
+    if (!g.current) return;
+    g.current.rotation.y += dt * 0.35 * cur.current;
+    g.current.position.z = 0.18 * cur.current;
+    g.current.position.y = 0.05 * cur.current * Math.sin(st.clock.elapsedTime * 2.2);
+  });
+  return <group ref={g}>{children}</group>;
+}
+
 const SCENES: Record<GallerySlug, (p: SceneProps) => React.ReactNode> = {
   mathematics: (p) => <MathScene {...p} />,
   physics: (p) => <PhysicsScene {...p} />,
@@ -419,6 +439,7 @@ const SCENES: Record<GallerySlug, (p: SceneProps) => React.ReactNode> = {
 export default function SubjectGalleryCanvas() {
   const [els, setEls] = useState<Record<string, { current: HTMLElement }> | null>(null);
   const [ready, setReady] = useState(false);
+  const hoverRef = useRef<Record<string, boolean>>({});
   const sectionRef = useRef<HTMLElement | null>(null);
   const [inView, setInView] = useState(true);
   const reduced = useMemo(() => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, []);
@@ -441,8 +462,8 @@ export default function SubjectGalleryCanvas() {
   /* pointer tilt (±3°, spring-damped) + hover lift; skipped when reduced */
   useEffect(() => {
     if (reduced) return;
-    const cards = GALLERY_SLUGS.map((s) => document.getElementById(`ta-card-${s}`)).filter(Boolean) as HTMLElement[];
-    const cleanups = cards.map((card) => {
+    const pairs = GALLERY_SLUGS.map((slug) => [slug, document.getElementById(`ta-card-${slug}`)] as const).filter(([, el]) => el) as [GallerySlug, HTMLElement][];
+    const cleanups = pairs.map(([slug, card]) => {
       let raf = 0;
       const st = { rx: 0, ry: 0, lift: 0, trx: 0, try_: 0, tl: 0 };
       const tick = () => {
@@ -465,8 +486,8 @@ export default function SubjectGalleryCanvas() {
         st.trx = -dy * 3;
         kick();
       };
-      const enter = () => { st.tl = -4; kick(); };
-      const leave = () => { st.trx = 0; st.try_ = 0; st.tl = 0; kick(); };
+      const enter = () => { st.tl = -4; hoverRef.current[slug] = true; kick(); };
+      const leave = () => { st.trx = 0; st.try_ = 0; st.tl = 0; hoverRef.current[slug] = false; kick(); };
       card.addEventListener("pointermove", move);
       card.addEventListener("pointerenter", enter);
       card.addEventListener("pointerleave", leave);
@@ -505,7 +526,9 @@ export default function SubjectGalleryCanvas() {
               <ambientLight intensity={0.8} color="#FFF8ED" />
               <directionalLight position={[2.6, 3.2, 2.2]} intensity={1.2} color="#FFF3DC" />
               <pointLight position={[-2, 1, 2.4]} intensity={6} color={GALLERY_ACCENTS[slug]} />
-              {SCENES[slug]({ accent: GALLERY_ACCENTS[slug], reduced, lite })}
+              <HoverDrift slug={slug} hoverRef={hoverRef}>
+                {SCENES[slug]({ accent: GALLERY_ACCENTS[slug], reduced, lite })}
+              </HoverDrift>
             </View>
           ) : null
         )}

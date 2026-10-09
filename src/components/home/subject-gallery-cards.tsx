@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { GALLERY_SLUGS, GALLERY_ACCENTS, GALLERY_INK, GALLERY_COPY, type GallerySlug } from "./subject-gallery-data";
 
@@ -123,6 +125,21 @@ function Slot({ slug, tall = false }: { slug: GallerySlug; tall?: boolean }) {
         aria-hidden="true"
       />
       <FallbackMotif slug={slug} ink={GALLERY_INK[slug]} />
+      <img
+        src={`/gallery/${slug}.jpg`}
+        alt=""
+        aria-hidden="true"
+        onLoad={(e) => {
+          const m = e.currentTarget.previousElementSibling as HTMLElement | null;
+          if (m) m.style.opacity = "0";
+        }}
+        className="g-img absolute inset-0 h-full w-full object-cover"
+        style={{
+          opacity: 0.5,
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(0,0,0,0.45) 68%, transparent)",
+          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(0,0,0,0.45) 68%, transparent)",
+        }}
+      />
     </div>
   );
 }
@@ -152,7 +169,7 @@ export default function SubjectGalleryCards() {
       {/* soft sunlit motes carrying the hero atmosphere down */}
       <div className="ta-motes pointer-events-none absolute inset-0" aria-hidden="true" />
 
-      <div className="relative">
+      <div className="g-header relative">
         <p className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: GOLD }}>
           Explore your potential
         </p>
@@ -170,7 +187,7 @@ export default function SubjectGalleryCards() {
           </span>
         </h2>
         <p className="mt-4 max-w-xl text-base leading-relaxed" style={{ color: SLATE }}>
-          Discover a world of understanding in every subject.
+          Explore your interests. Build your understanding. Shape your future.
         </p>
 
         {/* upper block: six tall doors, 3×2 → 2-col tablet → single column */}
@@ -207,6 +224,9 @@ export default function SubjectGalleryCards() {
         .g-card:hover .g-glow, .g-card:focus-visible .g-glow { opacity: 1; }
         .g-card:hover .g-link, .g-card:focus-visible .g-link { transform: translateX(5px); }
         .g-glow { opacity: .75; transition: opacity .3s; }
+        .g-img { transition: transform .5s ease; }
+        .g-card:hover .g-img, .g-card:focus-visible .g-img { transform: scale(1.06) translateY(-8px); }
+        @media (prefers-reduced-motion: reduce) { .g-card:hover .g-img, .g-card:focus-visible .g-img { transform: none; } }
         .g-link { transition: transform .2s ease; }
         .ta-motes {
           background-image:
