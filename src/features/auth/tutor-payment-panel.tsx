@@ -198,7 +198,7 @@ export function TutorPaymentPanel({
                 </div>
 
                 {readiness.mode !== "live" ? (
-                  <Alert variant="info" title={readiness.mode === "test" ? "Test mode · no real payment" : "Preview mode · no payment"} className="mt-5">
+                  <Alert variant="info" title={readiness.mode === "test" ? "Test mode · no real payment" : "Preview test mode · no live payment"} className="mt-5">
                     <p>{readiness.mode === "test" ? "Checkout, if enabled, uses Stripe test credentials only. No real funds move and this is not a live registration payment." : "This preview cannot take payment. Successful payment is not simulated."}</p>
                   </Alert>
                 ) : null}

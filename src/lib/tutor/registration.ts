@@ -105,7 +105,7 @@ export function getTutorPaymentReadiness(): TutorPaymentReadiness {
     ? "LIVE PAYMENT"
     : mode === "test"
       ? "TEST MODE · Stripe test account only; no real funds move."
-      : "PREVIEW MODE · No payment can be completed here.";
+      : "PREVIEW TEST MODE · No live payment can be completed here.";
 
   return { storageConfigured, gatewayConfigured, returnUrlConfigured, refundPolicy, canPay, mode, modeLabel, message };
 }
