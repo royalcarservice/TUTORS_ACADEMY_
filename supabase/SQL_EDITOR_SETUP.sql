@@ -1,9 +1,7 @@
 -- ════════════════════════════════════════════════════════════════════
 -- TUTORS ACADEMY — ONE-SHOT SQL EDITOR SETUP
--- Concatenation of supabase/migrations/ 0001-0014 in exact order.
+-- Concatenation of supabase/migrations/ 0001-0015 in exact order.
 -- Paste the ENTIRE file into the Supabase SQL Editor and press Run.
--- Safe on a fresh project. If any statement errors, NOTHING applies
--- (single transaction) — report the error line and stop.
 -- ════════════════════════════════════════════════════════════════════
 
 -- ── 20260927000001_identity.sql ─────────────────────────────────────────────
@@ -35,11 +33,13 @@ do $$ begin
   create type public.user_role as enum ('student', 'tutor', 'admin');
 exception when duplicate_object then null; end $$;
 
--- ── Subjects: the six immutable slugs (3.1). Mirrors src/lib/subjects config;
---    scripts/check-subject-sql.mjs asserts the two lists are identical. ──────
+-- ── Subjects: the governed slugs (3.1). Mirrors src/lib/subjects config;
+--    scripts/check-subject-sql.mjs asserts the two lists are identical.
+--    DEC-047 (2026-10-09): seven by explicit owner mandate — computer-science
+--    joins as a first-class subject (live DBs converge via migration 0015). ──
 create or replace function public.is_subject_id(p text) returns boolean
 language sql immutable as $$
-  select p in ('mathematics','physics','chemistry','biology','english','history')
+  select p in ('mathematics','physics','chemistry','biology','english','history','computer-science')
 $$;
 
 -- ── profiles ─────────────────────────────────────────────────────────────────
@@ -1444,3 +1444,13 @@ create policy tuition_invoices_select_admin on public.tuition_invoices
 -- no insert/update policy for authenticated clients: writes arrive only
 -- through the service role (webhook settlement) or the admin console.
 -- Tutors: no policy names them — default deny is the pedagogical boundary.
+
+-- ── 20261009000015_computer_science.sql ─────────────────────────────────────────────
+-- DEC-047 (2026-10-09): Computer Science joins the governed subject set by
+-- explicit owner mandate (Interactive 3D Subject Gallery brief). Fresh
+-- installs get this via the amended 0001; databases that already applied the
+-- six-slug 0001 converge here. Mirrors src/lib/subjects/subjects.ts.
+create or replace function public.is_subject_id(p text) returns boolean
+language sql immutable as $$
+  select p in ('mathematics','physics','chemistry','biology','english','history','computer-science')
+$$;

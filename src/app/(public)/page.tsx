@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { HeroCanvas, HeroDrift } from "@/components/home/hero-canvas";
-import { roomNameOf } from "@/lib/subjects/subjects";
-import { SUBJECTS } from "@/lib/subjects/subjects";
+import SubjectGalleryCards from "@/components/home/subject-gallery-cards";
+import SubjectGalleryLayer from "@/components/home/subject-gallery-layer";
 import { ROUTES } from "@/config/routes";
 
 export const metadata: Metadata = {
   title: "Tutors Academy — Where curiosity rises",
   description:
-    "Personalised tutoring inside six living subject environments. Learn, grow, succeed — with a tutor placed in your subject.",
+    "Personalised tutoring inside seven living subject environments. Learn, grow, succeed — with a tutor placed in your subject.",
 };
 
 /* THE MEADOW OF MINDS (Cinematic Redesign, DEC-046).
@@ -31,14 +31,6 @@ const SERIF: React.CSSProperties = { fontFamily: "var(--ta-font-display)", fontW
 export default function HomePage() {
   return (
     <div style={{ background: "#030712", color: IVORY }}>
-      <style>{`
-        .ta-door { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
-        .ta-door:hover { transform: perspective(900px) rotateX(2.2deg) rotateY(-2.2deg) translateY(-4px);
-          box-shadow: 0 0 34px var(--glow), inset 0 0 18px rgba(223,177,91,0.08);
-          border-color: rgba(223,177,91,0.65); }
-        @media (prefers-reduced-motion: reduce) { .ta-door:hover { transform: none; } }
-      `}</style>
-
       {/* ── HERO · THE MEADOW OF MINDS ─────────────────────────────────── */}
       <section className="relative flex min-h-[100svh] flex-col overflow-hidden" aria-label="Tutors Academy">
         <HeroCanvas />
@@ -80,33 +72,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 2 · THE CORE DISCIPLINES ───────────────────────────── */}
-      <section id="disciplines" className="relative mx-auto max-w-[96rem] px-4 py-24 sm:px-6 lg:px-8" aria-labelledby="disciplines-h">
-        <p className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: GOLD }}>The core disciplines</p>
-        <h2 id="disciplines-h" className="mt-4 max-w-2xl text-3xl sm:text-4xl" style={{ ...SERIF, color: IVORY }}>
-          Six chambers, each its own world of the subject.
-        </h2>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SUBJECTS.map((s) => (
-            <Link
-              key={s.id}
-              href={`/subjects/${s.id}`}
-              className="ta-door rounded-xl border p-6 backdrop-blur-md"
-              style={{
-                borderColor: "rgba(197,154,63,0.35)",
-                background: "rgba(7,15,43,0.55)",
-                ["--glow" as string]: `${s.accent1.ink}55`,
-              }}
-            >
-              <p className="text-[0.65rem] font-semibold tracking-[0.28em] uppercase" style={{ color: s.accent1.ink }}>
-                {roomNameOf(s.id)}
-              </p>
-              <h3 className="mt-3 text-xl" style={{ ...SERIF, color: IVORY }}>{s.name}</h3>
-              <p className="mt-2 text-sm leading-relaxed" style={{ color: MUTED }}>{s.tagline}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {/* ── SECTION 2 · THE CORE DISCIPLINES — INTERACTIVE 3D GALLERY (DEC-047) ── */}
+      <SubjectGalleryCards />
+      <SubjectGalleryLayer />
 
       {/* ── SECTION 3 · HOW WE MENTOR ──────────────────────────────────── */}
       <section id="mentor" className="mx-auto max-w-[96rem] px-4 py-24 sm:px-6 lg:px-8" aria-labelledby="mentor-h">

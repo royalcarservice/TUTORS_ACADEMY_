@@ -632,3 +632,39 @@ student/parent apply label, and the nav CTA reads "Apply Now" for
 width. Every CTA on the public surface now opens a real door; no demo
 promise remains anywhere in src. The original verbatim CTAs above are
 kept as the historical record of the brief as delivered.
+
+## DEC-047 — The Interactive 3D Subject Gallery & the Seventh Subject (owner brief, 2026-10-09)
+
+The owner's gallery brief directed Computer Science as a first-class
+door. The identity schema warns that a new subject is a SCHEMA CHANGE to
+be reported, never a silent extension — this entry IS that report, and
+the owner directive is its authority.
+
+- **Schema**: `computer-science` joins the governed set (status `ready`,
+  so the production draft-gate does not 404 it). Migration 0015 converges
+  live databases; 0001 was amended for fresh installs; the one-shot SQL
+  bundle was regenerated. `scripts/check-subject-sql.mjs` now accepts
+  hyphenated ids and asserts seven-way parity. Accent validated by the
+  validator: electric blue ink `#00b4ff` / ivory `#0369a1`, mutually
+  distinct (ΔE ≥15) and ≥20 from brass and signal teal.
+- **Identity vs display**: the schema accent (validated) and the gallery
+  display accents from the brief (sapphire/amber/violet/emerald/rose/
+  turquoise/cyan+gold) are separate layers by design.
+- **Architecture**: ONE shared WebGL context — a fixed `<Canvas>` with
+  drei `<View>` portals scissored into the seven tracked DOM slots.
+  IntersectionObserver flips the frameloop to "never" offscreen;
+  `prefers-reduced-motion` renders lit static angles with tilt and
+  rotation disabled; sub-768px steps geometry/particles down. The orbiting
+  glyphs (π ∑ ∞, A & Q Ω, { } 01 =>) are 2D-canvas → CanvasTexture
+  sprites: zero network font fetches, so the CSP connect-src posture
+  stands. Cards are server HTML with static SVG motifs that hold the
+  composition until the first GL frame fades them — HTML-first, no
+  layout shift.
+- **Cards**: six tall doors 3×2 (2-col tablet, 1-col mobile) plus the
+  full-width Computer Science split-pane feature (text 45% / scene 55%,
+  scene above text on mobile). Copy, accents and links verbatim from the
+  brief; every card links to its real route — `/subjects/computer-science`
+  now exists.
+- **Deployment**: Netlify continuous deployment builds the pushed branch;
+  the sandbox preview verifies the same commit. The Next.js runtime on
+  Netlify needs no plugin (DEC-046 era fix stands).
